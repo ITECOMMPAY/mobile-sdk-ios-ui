@@ -1,0 +1,65 @@
+//
+//  PrefixHeader.pch
+//  TestClient
+//
+//  Created by Ecommpay on 27/11/2018.
+//  Copyright © 2018 Ecommpay. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+// PaymentInfo
+#define PROJECT_ID_KEY @"project_id"
+#define PAYMENT_ID_KEY @"payment_id"
+#define PAYMENT_AMOUNT_KEY @"payment_amount"
+#define PAYMENT_DESCRIPTION_KEY @"payment_description"
+#define PAYMENT_CURRENCY_KEY @"payment_currency"
+#define CUSTOMER_ID_KEY @"customer_id"
+#define REGION_CODE_KEY @"region_code"
+#define TOKEN_CODE_KEY @"account_token"
+#define LANGUAGE_CODE_KEY @"language_code"
+#define RECEIPT_DATA_CODE_KEY @"receipt_data"
+#define FORCE_PAYMENT_METHOD_KEY @"force_payment_method"
+#define APPLE_PAY_DESCRIPTION_KEY @"apple_pay_description"
+
+// RecurrentInfo
+#define RECURRENT_TYPE_KEY @"recurrent_type"
+#define EXPIR_DAY_KEY @"expir_day"
+#define EXPIR_MONTH_KEY @"expir_month"
+#define EXPIR_YEAR_KEY @"expir_year"
+#define RECURRENT_PERIOD_KEY @"recurrent_period"
+#define RECURRENT_TIME_KEY @"recurrent_time"
+#define RECURRENT_START_DATE @"recurrent_start_date"
+#define RECURRENT_SCHEDULED_PAYMENT_ID_KEY @"scheduled_payment_id"
+#define RECURRENT_AMOUNT_KEY @"recurrent_amount"
+#define BUTTON_RECURRENT_SCHEDULE @"recurrent_schedule_button"
+
+
+//Other
+#define SALT_KEY @"salt"
+#define API_URL_KEY @"api"
+#define SOCKET_URL_KEY @"socket"
+
+#define BUTTON_PAYMENT @"payment_id_button"
+#define BUTTON_TOGGLE_SALT @"salt_button"
+#define BUTTON_RECURRENT @"recurrent_button"
+#define BUTTON_REQUEST_LOCATION @"request_location_button"
+#define BUTTON_SALE @"button_sale"
+#define BUTTON_AUTH @"button_auth"
+#define BUTTON_TOKENIZE @"button_tokenize"
+#define BUTTON_VERIFY @"button_verify"
+#define BUTTON_THEME_SWITCH @"button_theme_switch"
+#define BUTTON_SETTING @"button_setting"
+#define BUTTON_APPLE_PAY_SETTING @"button_apple_pay_setting"
+#define BUTTON_ADDITIONAL_FIELDS @"button_additional_fields"
+#define BUTTON_THREE_D_SECURE @"three_d_secure_params"
+#define BUTTON_RECIPIENT_INFO @"button_recipient_info"
+
+#define SDK_VERSION @"SDK_VERSION"
+#define BUILD_NUMBER @"BUILD_NUMBER"
+
+#endif /* PrefixHeader_pch */
