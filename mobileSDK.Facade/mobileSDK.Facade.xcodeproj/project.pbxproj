@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		845507CF285B0463002BBFE0 /* MobileSDKEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507B7285B0463002BBFE0 /* MobileSDKEnums.swift */; };
+		845507D0285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */; };
+		845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BC285B0463002BBFE0 /* SDKInteractor.swift */; };
+		845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BD285B0463002BBFE0 /* PaymentResult.swift */; };
+		845507D7285B0463002BBFE0 /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C2285B0463002BBFE0 /* PaymentInfo.swift */; };
+		845507D8285B0463002BBFE0 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C3285B0463002BBFE0 /* Payment.swift */; };
+		845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C5285B0463002BBFE0 /* EcommpaySDK.swift */; };
+		845507DA285B0463002BBFE0 /* ECPPaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C6285B0463002BBFE0 /* ECPPaymentStatus.swift */; };
+		845507DB285B0463002BBFE0 /* ECPPaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C7285B0463002BBFE0 /* ECPPaymentResult.swift */; };
+		845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; };
+		845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */; };
+		845507DE285B0463002BBFE0 /* ECMPCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507CA285B0463002BBFE0 /* ECMPCallback.swift */; };
+		84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13D12852086E008814EB /* mobileSDK_Facade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84BC4F5B285843C800CD7EA5 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; };
+		84BC4F5F285843C800CD7EA5 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		84D87CDF285C7E6A0009FD38 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CDD285C7E6A0009FD38 /* ColorTheme.swift */; };
+		84D87CE0285C7E6A0009FD38 /* ECPTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CDE285C7E6A0009FD38 /* ECPTheme.swift */; };
+		84D87CE2285C7EC20009FD38 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE1285C7EC20009FD38 /* UIColor+Hex.swift */; };
+		84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */; };
+		84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */; };
+		84D87CE8285C81320009FD38 /* RecurrentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE7285C81320009FD38 /* RecurrentInfo.swift */; };
+		84D87CEC285C81B00009FD38 /* ThreeDSecureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEB285C81B00009FD38 /* ThreeDSecureInfo.swift */; };
+		84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEE285C88770009FD38 /* RecipientInfo.swift */; };
+		E75838E87603A44C68BF9B72 /* Pods_ecommpaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F576EE03D79FB4B90A760A67 /* Pods_ecommpaySDK.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8455077A28587283002BBFE0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84550769285871FF002BBFE0;
+			remoteInfo = SwiftUIPreview;
+		};
+		84BC13F0285208A3008814EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 84BC13E22852088F008814EB;
+			remoteInfo = mobileSDK.UI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84BC4F5E285843C800CD7EA5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84BC4F5F285843C800CD7EA5 /* mobileSDK_UI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		25AD3C47AA942F1BDA699176 /* Pods-ecommpaySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.debug.xcconfig"; sourceTree = "<group>"; };
+		2D38AA9484EED6C89A997829 /* Pods_ecommpaySDK_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommpaySDK_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F9F57D9EADF618A190DE0A9 /* Pods-ecommpaySDK-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.debug.xcconfig"; sourceTree = "<group>"; };
+		5CA2540030ED3E4B21D9A029 /* Pods-ecommpaySDK-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		845507B7285B0463002BBFE0 /* MobileSDKEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileSDKEnums.swift; sourceTree = "<group>"; };
+		845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
+		845507BC285B0463002BBFE0 /* SDKInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInteractor.swift; sourceTree = "<group>"; };
+		845507BD285B0463002BBFE0 /* PaymentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResult.swift; sourceTree = "<group>"; };
+		845507C2285B0463002BBFE0 /* PaymentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
+		845507C3285B0463002BBFE0 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		845507C5285B0463002BBFE0 /* EcommpaySDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EcommpaySDK.swift; sourceTree = "<group>"; };
+		845507C6285B0463002BBFE0 /* ECPPaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECPPaymentStatus.swift; sourceTree = "<group>"; };
+		845507C7285B0463002BBFE0 /* ECPPaymentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECPPaymentResult.swift; sourceTree = "<group>"; };
+		845507C8285B0463002BBFE0 /* EcommpaySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommpaySDK.h; sourceTree = "<group>"; };
+		845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPScreenDisplayMode.swift; sourceTree = "<group>"; };
+		845507CA285B0463002BBFE0 /* ECMPCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPCallback.swift; sourceTree = "<group>"; };
+		84BC13D12852086E008814EB /* mobileSDK_Facade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_Facade.h; sourceTree = "<group>"; };
+		84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.UI.xcodeproj; path = ../mobileSDK.UI/mobileSDK.UI.xcodeproj; sourceTree = "<group>"; };
+		84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D87CDD285C7E6A0009FD38 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		84D87CDE285C7E6A0009FD38 /* ECPTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECPTheme.swift; sourceTree = "<group>"; };
+		84D87CE1285C7EC20009FD38 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalField.swift; sourceTree = "<group>"; };
+		84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalFieldEnums.swift; sourceTree = "<group>"; };
+		84D87CE7285C81320009FD38 /* RecurrentInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurrentInfo.swift; sourceTree = "<group>"; };
+		84D87CEB285C81B00009FD38 /* ThreeDSecureInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeDSecureInfo.swift; sourceTree = "<group>"; };
+		84D87CEE285C88770009FD38 /* RecipientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientInfo.swift; sourceTree = "<group>"; };
+		F576EE03D79FB4B90A760A67 /* Pods_ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB739A2AAA27E76EC79940AF /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84BC4F5A285843C800CD7EA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84BC4F5B285843C800CD7EA5 /* mobileSDK_UI.framework in Frameworks */,
+				E75838E87603A44C68BF9B72 /* Pods_ecommpaySDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		073538FFE940D30FDC2844B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25AD3C47AA942F1BDA699176 /* Pods-ecommpaySDK.debug.xcconfig */,
+				FB739A2AAA27E76EC79940AF /* Pods-ecommpaySDK.release.xcconfig */,
+				3F9F57D9EADF618A190DE0A9 /* Pods-ecommpaySDK-Dev.debug.xcconfig */,
+				5CA2540030ED3E4B21D9A029 /* Pods-ecommpaySDK-Dev.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../TestClient/Pods;
+			sourceTree = "<group>";
+		};
+		845507B6285B0463002BBFE0 /* Facade */ = {
+			isa = PBXGroup;
+			children = (
+				84D87CDA285C7E4E0009FD38 /* Theme */,
+				845507B7285B0463002BBFE0 /* MobileSDKEnums.swift */,
+				845507B8285B0463002BBFE0 /* Internal */,
+				845507C0285B0463002BBFE0 /* PublicApi */,
+			);
+			path = Facade;
+			sourceTree = "<group>";
+		};
+		845507B8285B0463002BBFE0 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */,
+				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
+				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		845507C0285B0463002BBFE0 /* PublicApi */ = {
+			isa = PBXGroup;
+			children = (
+				845507C1285B0463002BBFE0 /* Common */,
+				845507C4285B0463002BBFE0 /* Ecommpay */,
+			);
+			path = PublicApi;
+			sourceTree = "<group>";
+		};
+		845507C1285B0463002BBFE0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				84D87CEE285C88770009FD38 /* RecipientInfo.swift */,
+				84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */,
+				84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */,
+				845507C2285B0463002BBFE0 /* PaymentInfo.swift */,
+				845507C3285B0463002BBFE0 /* Payment.swift */,
+				84D87CE7285C81320009FD38 /* RecurrentInfo.swift */,
+				84D87CEB285C81B00009FD38 /* ThreeDSecureInfo.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		845507C4285B0463002BBFE0 /* Ecommpay */ = {
+			isa = PBXGroup;
+			children = (
+				845507C5285B0463002BBFE0 /* EcommpaySDK.swift */,
+				845507C6285B0463002BBFE0 /* ECPPaymentStatus.swift */,
+				845507C7285B0463002BBFE0 /* ECPPaymentResult.swift */,
+				845507C8285B0463002BBFE0 /* EcommpaySDK.h */,
+				845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */,
+				845507CA285B0463002BBFE0 /* ECMPCallback.swift */,
+			);
+			path = Ecommpay;
+			sourceTree = "<group>";
+		};
+		84AFF7CF285208CD00E6F1DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F576EE03D79FB4B90A760A67 /* Pods_ecommpaySDK.framework */,
+				2D38AA9484EED6C89A997829 /* Pods_ecommpaySDK_Dev.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84BC13C42852086E008814EB = {
+			isa = PBXGroup;
+			children = (
+				84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */,
+				84BC13D02852086E008814EB /* mobileSDK.Facade */,
+				84BC13CF2852086E008814EB /* Products */,
+				84AFF7CF285208CD00E6F1DE /* Frameworks */,
+				073538FFE940D30FDC2844B4 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		84BC13CF2852086E008814EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84BC13D02852086E008814EB /* mobileSDK.Facade */ = {
+			isa = PBXGroup;
+			children = (
+				845507B6285B0463002BBFE0 /* Facade */,
+				84BC13D12852086E008814EB /* mobileSDK_Facade.h */,
+			);
+			path = mobileSDK.Facade;
+			sourceTree = "<group>";
+		};
+		84BC13ED285208A3008814EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84BC13F1285208A3008814EB /* mobileSDK_UI.framework */,
+				8455077B28587283002BBFE0 /* SwiftUIPreview.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84D87CDA285C7E4E0009FD38 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				84D87CDD285C7E6A0009FD38 /* ColorTheme.swift */,
+				84D87CDE285C7E6A0009FD38 /* ECPTheme.swift */,
+				84D87CE1285C7EC20009FD38 /* UIColor+Hex.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		84BC4F57285843C800CD7EA5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */,
+				84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		84BC4F56285843C800CD7EA5 /* ecommpaySDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84BC4F60285843C800CD7EA5 /* Build configuration list for PBXNativeTarget "ecommpaySDK" */;
+			buildPhases = (
+				8DDAE9BA55CDCFCA9384D0E4 /* [CP] Check Pods Manifest.lock */,
+				84BC4F57285843C800CD7EA5 /* Headers */,
+				84BC4F59285843C800CD7EA5 /* Sources */,
+				84BC4F5A285843C800CD7EA5 /* Frameworks */,
+				84BC4F5C285843C800CD7EA5 /* Resources */,
+				84BC4F5E285843C800CD7EA5 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ecommpaySDK;
+			productName = mobileSDK.Facade;
+			productReference = 84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84BC13C52852086E008814EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1330;
+			};
+			buildConfigurationList = 84BC13C82852086E008814EB /* Build configuration list for PBXProject "mobileSDK.Facade" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84BC13C42852086E008814EB;
+			productRefGroup = 84BC13CF2852086E008814EB /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 84BC13ED285208A3008814EB /* Products */;
+					ProjectRef = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				84BC4F56285843C800CD7EA5 /* ecommpaySDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8455077B28587283002BBFE0 /* SwiftUIPreview.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwiftUIPreview.app;
+			remoteRef = 8455077A28587283002BBFE0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84BC13F1285208A3008814EB /* mobileSDK_UI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = mobileSDK_UI.framework;
+			remoteRef = 84BC13F0285208A3008814EB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84BC4F5C285843C800CD7EA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8DDAE9BA55CDCFCA9384D0E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ecommpaySDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84BC4F59285843C800CD7EA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D87CE2285C7EC20009FD38 /* UIColor+Hex.swift in Sources */,
+				84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */,
+				845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */,
+				845507DB285B0463002BBFE0 /* ECPPaymentResult.swift in Sources */,
+				845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */,
+				84D87CEC285C81B00009FD38 /* ThreeDSecureInfo.swift in Sources */,
+				84D87CE0285C7E6A0009FD38 /* ECPTheme.swift in Sources */,
+				84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */,
+				84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */,
+				84D87CDF285C7E6A0009FD38 /* ColorTheme.swift in Sources */,
+				84D87CE8285C81320009FD38 /* RecurrentInfo.swift in Sources */,
+				845507CF285B0463002BBFE0 /* MobileSDKEnums.swift in Sources */,
+				845507DA285B0463002BBFE0 /* ECPPaymentStatus.swift in Sources */,
+				845507D7285B0463002BBFE0 /* PaymentInfo.swift in Sources */,
+				845507D8285B0463002BBFE0 /* Payment.swift in Sources */,
+				845507D0285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */,
+				845507DE285B0463002BBFE0 /* ECMPCallback.swift in Sources */,
+				845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */,
+				845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		84BC13D32852086E008814EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		84BC13D42852086E008814EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		84BC4F61285843C800CD7EA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25AD3C47AA942F1BDA699176 /* Pods-ecommpaySDK.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ecommpay.mobilesdk-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = "DEBUG DEVELOPMENT";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84BC4F62285843C800CD7EA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB739A2AAA27E76EC79940AF /* Pods-ecommpaySDK.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ecommpay.mobilesdk-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84BC13C82852086E008814EB /* Build configuration list for PBXProject "mobileSDK.Facade" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84BC13D32852086E008814EB /* Debug */,
+				84BC13D42852086E008814EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84BC4F60285843C800CD7EA5 /* Build configuration list for PBXNativeTarget "ecommpaySDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84BC4F61285843C800CD7EA5 /* Debug */,
+				84BC4F62285843C800CD7EA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84BC13C52852086E008814EB /* Project object */;
+}
