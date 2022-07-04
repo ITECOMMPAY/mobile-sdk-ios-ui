@@ -18,9 +18,6 @@ struct RedactedView_Previews: PreviewProvider {
 }
 
 struct RedactedView : View {
-    @State var show = false
-    var center = (UIScreen.main.bounds.width / 2) //+ 110
-
     var body : some View{
         UIScheme.color.shimmeringBackground
             .shimmering()

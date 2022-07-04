@@ -60,7 +60,11 @@ class SDKInteractor {
     public func presentPayment(at viewController: UIViewController,
                                paymentInfo: PaymentInfo,
                                completion: PaymentCompletion?) {
-        viewController.present(UIHostingController(rootView: PaymentsMethodsLoadingView()), animated: true)
+        let vc = UIHostingController(rootView: PaymentsMethodsLoadingView())
+        vc.view.backgroundColor = .clear
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overFullScreen
+        viewController.present(vc, animated: true)
     }
 }
 
