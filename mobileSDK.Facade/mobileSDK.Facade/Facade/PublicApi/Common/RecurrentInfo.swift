@@ -112,7 +112,7 @@ public class RecurrentInfo: NSObject, Codable {
     }
 
     @objc(setAmount:)
-        /// Custom amount to charge (by default paymentInfo.amount is charged)
+        /// Custom amount to charge (by default paymentOptions.amount is charged)
         /// - Parameter amount: Amount to charge for recurrent
     public func setAmount(amount: Int) {
         self.amount = amount
