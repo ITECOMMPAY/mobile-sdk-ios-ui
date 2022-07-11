@@ -11,9 +11,9 @@ import Foundation
 @objc public enum ECPPaymentStatus: Int {
     case Success = 0
     case Decline = 100
-    case Cancelled = 301
-    case Error = 501
-    case Unknown = 20000
+    case Cancelled = 200
+    case Error = 500
+    case Failed = 300
 }
 
 internal extension PaymentStatus {
@@ -27,8 +27,8 @@ internal extension PaymentStatus {
             return .Cancelled
         case .Error:
             return .Error
-        case .Unknown:
-            return .Unknown
+        case .Failed:
+            return .Failed
         }
     }
 }
@@ -44,8 +44,8 @@ internal extension ECPPaymentStatus {
             return .Cancelled
         case .Error:
             return .Error
-        case .Unknown:
-            return .Unknown
+        case .Failed:
+            return .Failed
         }
     }
 }

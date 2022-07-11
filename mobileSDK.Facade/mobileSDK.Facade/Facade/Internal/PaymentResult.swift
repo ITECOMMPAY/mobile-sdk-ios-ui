@@ -25,3 +25,11 @@ class PaymentResult {
         self.token = nil
     }
 }
+
+enum PaymentStatus: Int {
+    case Success = 0
+    case Decline = 100
+    case Cancelled = 200
+    case Error = 500
+    case Failed = 300
+}
