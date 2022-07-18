@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "belcard-7522110-be-4604-c-729-b-73-e-53969851820.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "belcard-7522110-be-4604-c-729-b-73-e-53969851820@3x-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "belcard-7522110-be-4604-c-729-b-73-e-53969851820@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

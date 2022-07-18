@@ -11,7 +11,7 @@ import SwiftUI
 enum PaymentMethodsViewState {
     case initial
     case loading
-    case loaded(data: PaymentMethodsData, expanded: PaymentMethod?)
+    case loaded(data: PaymentMethodsData)
     case closed(withError: CoreError?)
 }
 
@@ -64,14 +64,20 @@ public struct PaymentMethodsData {
 }
 
 public struct PaymentMethod {
-    var id: Int
+    public init(id: Int64, name: String, type: UISupportedPaymentMethod) {
+        self.id = id
+        self.name = name
+        self.type = type
+    }
+
+    var id: Int64
     var name: String
     var type: UISupportedPaymentMethod
 }
 
-public enum UISupportedPaymentMethod {
+public enum UISupportedPaymentMethod: Equatable {
     case ApplePay
     case SavedCard
-    case Card
+    case NewCard
     case Unsupported(name: String)
 }

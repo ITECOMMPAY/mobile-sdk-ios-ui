@@ -29,7 +29,11 @@ struct PaymentSummaryView: View {
             .overlay(alignment: .bottomLeading) {
                 price
             }
-            .frame(height: UIScheme.dimension.infoCardHeight)
+            .frame(height:
+                    logoImage != nil ? UIScheme.dimension.infoCardHeight : UIScheme.dimension.infoCardShortenedHeight
+            )
+            .shadow(color: UIScheme.color.paymentInfoCardShadow,
+                    radius: 9, x: 0, y: 4)
     }
 
     var cardBackground: some View {
@@ -48,8 +52,8 @@ struct PaymentSummaryView: View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.smallSpacing){
             HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
                 Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
-                    .font(UIScheme.font.priceValueFont)
-                Text(currency).font(UIScheme.font.priceCurrencyFont)
+                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
+                Text(currency).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
             }
             vat
         }
@@ -58,8 +62,8 @@ struct PaymentSummaryView: View {
     }
 
     var vat: some View {
-        Text("Total Price ").font(UIScheme.font.commonSemiBold) +
-        Text(isVatIncluded ? "(VAT included)" : "").font(UIScheme.font.commonRegular)
+        Text("Total Price ").font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont)) +
+        Text(isVatIncluded ? "(VAT included)" : "").font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
 
     }
 }

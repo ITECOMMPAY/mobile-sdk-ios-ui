@@ -17,7 +17,7 @@ public struct CoreError: Error {
     let message: String
 }
 
-public enum CoreErrorCode {
+public enum CoreErrorCode: String {
     case interactorNotRunning
     case serverUnauthorized
     case serverMethodNotFound

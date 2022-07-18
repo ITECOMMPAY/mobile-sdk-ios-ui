@@ -15,6 +15,7 @@ public class PaymentOptions: NSObject {
     /// - **paymentID** - Unique identifier of the payment in your project
     /// - **paymentAmount** - Payment amount in minor units of currency, 1999 means 19.99, 10 means 0.10
     /// - **paymentCurrency** - Payment currency in ISO 4217 alpha-3 format
+    /// - **customerId** - Unique identifier of the customer in your project
     /// and other optional params, complete reference of those presented in documentation
     public var paymentInfo: PaymentInfo
 
@@ -29,8 +30,6 @@ public class PaymentOptions: NSObject {
     public var logoImage: UIImage? = nil
     /// Payment description, for example, T-Shirt with print
     public var paymentDescription: String? = nil
-    /// Unique identifier of the customer in your project
-    public var customerID: String?
     /// Region code of a customer
     public var regionCode: String?
     /// Action of payment, by default its Sale
@@ -106,7 +105,7 @@ public class PaymentOptions: NSObject {
                                                         paymentAmount: paymentAmount,
                                                         paymentCurrency: paymentCurrency)
         self.paymentDescription = paymentDescription
-        self.customerID = customerID
+        self.paymentInfo.customerId = customerID
         self.regionCode = regionCode
         super.init()
     }

@@ -11,28 +11,30 @@ struct PaymentMethodCell<Content: View>: View {
     let methodTitle: String
     let methodImage: Image?
     var isSavedAccount: Bool = false
-    @State var isExpanded: Bool = false
+    let isExpanded: Bool
 
     let content: Content
+    let onTap: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                iconView
-                Spacer()
-                titleView
-                chevronButton
+            Button(action: onTap) {
+                HStack {
+                    iconView
+                    Spacer()
+                    titleView
+                    chevron
+                }
+            }.padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
+                .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
+                .background {
+                    isSavedAccount && !isExpanded
+                    ? UIScheme.color.savedAccountBackground
+                    : UIScheme.color.paymentMethodBackground
             }
-            .padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
-            .frame(height: 50).onTapGesture {
-                isExpanded.toggle()
+            if isExpanded {
+                content
             }
-            content.applyIf(!isExpanded) {
-                $0.hidden().frame(height: 0)
-            }
-        }
-        .background {
-            isSavedAccount ? UIScheme.color.savedAccountBackground : Color.clear
         }
         .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)
         .overlay(
@@ -46,35 +48,44 @@ struct PaymentMethodCell<Content: View>: View {
     }
 
     var titleView: some View {
-        Text(methodTitle).font(UIScheme.font.commonRegular).foregroundColor(UIScheme.color.text)
+        Text(methodTitle)
+            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+            .foregroundColor(UIScheme.color.text)
     }
 
-    var chevronButton: some View {
-        Button {
-            onTapExpand()
-        } label: {
-            IR.chevron.image.rotationEffect(isExpanded ? .degrees(180) : .zero)
-        }
+    var chevron: some View {
+        IR.chevron.image.rotationEffect(isExpanded ? .degrees(180) : .zero)
     }
 
-    func onTapExpand() {
-        isExpanded.toggle()
-    }
 }
 
 #if DEBUG
+
 struct PaymentMethodCell_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            PaymentMethodCell(methodTitle: "Alipay",
-                              methodImage: IR.alipay.image,
-                              isSavedAccount: false,
-                              content: Color.red.frame(height: 100))
-            PaymentMethodCell(methodTitle: "*** 3456",
-                              methodImage: IR.visa.image,
-                              isSavedAccount: true,
-                              content: Color.red.frame(height: 200))
+
+    struct PaymentMethodCellExample: View {
+        @State var expanded: Int = 0
+        var body: some View {
+            VStack {
+                PaymentMethodCell(methodTitle: "Alipay",
+                                  methodImage: IR.alipay.image,
+                                  isSavedAccount: false,
+                                  isExpanded: expanded == 1,
+                                  content: Color.red.frame(height: 100),
+                                  onTap: { expanded = 1 })
+                PaymentMethodCell(methodTitle: "*** 3456",
+                                  methodImage: IR.visa.image,
+                                  isSavedAccount: true,
+                                  isExpanded: expanded == 2,
+                                  content: SavedCardCheckoutView(),
+                                  onTap: { expanded = 2 })
+
+            }
         }
+    }
+
+    static var previews: some View {
+        PaymentMethodCellExample().previewLayout(.sizeThatFits)
     }
 }
 #endif
