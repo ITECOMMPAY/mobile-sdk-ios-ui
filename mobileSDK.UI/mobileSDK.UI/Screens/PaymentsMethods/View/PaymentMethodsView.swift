@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     @ObservedObject var viewModel: VM
+    @State private var expandedMethodID: Int64?
 
     public var body: some View {
         return BottomCardView(cardShown: viewModel.state.isVisible) {
@@ -21,25 +22,47 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
-                switch viewModel.state {
-                case .initial, .loading:
-                    loadingStateHeader
-                case .loaded, .closed:
-                    header
-                }
+                header
             }.padding([.trailing, .leading, .top], UIScheme.dimension.largeSpacing)
         } content: {
-            VStack {
-                CompatibleVStack(spacing: UIScheme.dimension.smallSpacing)  {
-                    switch viewModel.state {
-                    case  .initial, .loading:
-                        paymentMethodsPlaceholders
-                    case .loaded, .closed:
-                        paymentMethodsList
-                    }
-                    FooterView().padding(.bottom, UIScheme.dimension.largeSpacing)
-                }.padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
-            }.padding(.top, UIScheme.dimension.middleSpacing)
+            VStack(spacing: .zero) {
+                switch viewModel.state {
+                case  .initial, .loading:
+                    paymentMethodsPlaceholders
+                case .loaded(let data):
+                    PaymentSummaryView(isVatIncluded: data.paymentSummary.isVatIncluded,
+                                       priceValue: data.paymentSummary.value,
+                                       currency: data.paymentSummary.currency,
+                                       backgroundTemplate: UIScheme.infoCardBackground,
+                                       logoImage: data.paymentSummary.logo)
+                    ApplePayButton().padding([.top, .bottom], UIScheme.dimension.middleSpacing)
+                    paymentMethodsList
+                    PolicyView()
+                        .padding(.top, UIScheme.dimension.middleSpacing)
+                case .closed:
+                    EmptyView()
+                }
+                FooterView()
+                    .padding(.bottom, UIScheme.dimension.largeSpacing)
+            }
+            .padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
+            .padding(.top, UIScheme.dimension.middleSpacing)
+        }
+        .alert(isPresented: .constant(alert != nil)) {
+            alert!
+        }
+    }
+
+    private var alert: Alert? {
+        switch viewModel.state {
+        case .closed(let error):
+            guard let error = error else { return nil }
+            return Alert(title: Text(error.code.rawValue),
+                         message: Text(error.message),
+                         dismissButton: Alert.Button.default(Text("Close")))
+        default:
+            return nil
+
         }
     }
 
@@ -60,46 +83,61 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     }
 
     private var paymentMethodsPlaceholders: some View {
-        ForEach((0..<6), id: \.self)  {_ in
-            RedactedView()
-                .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
-                .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+        VStack(spacing: UIScheme.dimension.smallSpacing) {
+            ForEach((0..<6), id: \.self)  {_ in
+                RedactedView()
+                    .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
+                    .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+            }
         }
     }
 
     @ViewBuilder
     private var header: some View  {
         switch(viewModel.state) {
-        case .loaded(data: let data, expanded: _):
+        case .loaded(data: let data):
             PaymentDetailsView(details: data.paymentDetails)
-            PaymentSummaryView(isVatIncluded: data.paymentSummary.isVatIncluded,
-                               priceValue: data.paymentSummary.value,
-                               currency: data.paymentSummary.currency,
-                               backgroundTemplate: .lines,
-                               logoImage: data.paymentSummary.logo)
-        default:
+        case .loading, .initial:
+            loadingStateHeader
+        case .closed:
             EmptyView()
         }
-        ApplePayButton()
     }
 
     @ViewBuilder
     private var paymentMethodsList: some View {
         switch viewModel.state {
-        case .loaded(let data, expanded: let expandedMethod):
-            ForEach(data.availablePaymentMethods, id: \.id) { method in
-                PaymentMethodCell(methodTitle: method.name,
-                                  methodImage: nil,
-                                  isSavedAccount: false,
-                                  isExpanded: expandedMethod?.id == method.id,
-                                  content: Color.red.frame(height: 100))
+        case .loaded(let data):
+            VStack(spacing: UIScheme.dimension.smallSpacing) {
+                ForEach(data.availablePaymentMethods, id: \.id) { method in
+                    PaymentMethodCell(methodTitle: method.name,
+                                      methodImage: nil,
+                                      isSavedAccount: method.type == .SavedCard,
+                                      isExpanded: expandedMethodID == method.id,
+                                      content: expandableContent(for: method.type),
+                                      onTap: { expandedMethodID = method.id }
+                    )
+                }
             }
         default:
             EmptyView()
         }
     }
 
-
+    private func expandableContent(for methodType: UISupportedPaymentMethod) -> some View {
+        return Group {
+            switch methodType {
+            case .SavedCard:
+                SavedCardCheckoutView()
+            case .ApplePay:
+                ApplePayCheckoutView()
+            case .NewCard:
+                NewCardCheckoutView()
+            default:
+                Color.red.frame(height: 10)
+            }
+        }
+    }
 }
 
 #if DEBUG
@@ -108,7 +146,7 @@ struct PaymentMethodsView_Previews: PreviewProvider {
     typealias PaymentMethodsPreviewModel = StaticViewModel<PaymentMethodsViewState, PaymentMethodsIntent>
 
     static let previewModel = PaymentMethodsPreviewModel(
-        state: .loading,
+        state: .initial,
         intentReducers: [.close : { _ in return .closed(withError: nil)}]
     )
 
@@ -128,11 +166,12 @@ struct PaymentMethodsView_Previews: PreviewProvider {
             ZStack {
                 backgroundAppImitation
                 PaymentMethodsView(viewModel: previewModel).onAppear {
+                    previewModel.state = .loading
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         previewModel.state = .loaded(
                             data: PaymentMethodsData(
                                 paymentDetails: [
-
+                                    PaymentDetailData(title: "PaymentID", description: "123", canBeCopied: true)
                                 ],
                                 paymentSummary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
                                                                    currency: "RUB",
@@ -141,13 +180,11 @@ struct PaymentMethodsView_Previews: PreviewProvider {
                                 availablePaymentMethods: [
                                     PaymentMethod(id: 1, name: "**** 3456", type: .SavedCard),
                                     PaymentMethod(id: 2, name: "**** 5555", type: .SavedCard),
-                                    PaymentMethod(id: 3, name: "Bank Card", type: .Card),
+                                    PaymentMethod(id: 3, name: "Bank Card", type: .NewCard),
                                     PaymentMethod(id: 4, name: "Apple Pay", type: .ApplePay),
                                 ]
-                            ),
-                            expanded: nil
+                            )
                         )
-                        previewModel.objectWillChange.send()
                     }
                 }
             }.edgesIgnoringSafeArea(.vertical)
@@ -158,6 +195,3 @@ struct PaymentMethodsView_Previews: PreviewProvider {
 extension PaymentMethodsView_Previews.PaymentMethodsPreviewModel: PaymentMethodsViewModelProtocol {}
 
 #endif
-
-
-

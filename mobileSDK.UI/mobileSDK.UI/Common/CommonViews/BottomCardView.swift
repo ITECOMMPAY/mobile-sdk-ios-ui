@@ -21,7 +21,7 @@ struct BottomCardView<Header: View, Content: View>: View {
     var cardShown: Bool
 
     @State private var fixedAreaHeight: CGFloat = 40
-    @State private var scrolableAreaHeight: CGFloat = 40
+    @State private var scrollableAreaHeight: CGFloat = 40
 
     init(cardShown: Bool = false, sizingBehavior: SizingBehavior = .proportionalToScreen(0.9),
          @ViewBuilder header: () -> Header,
@@ -33,7 +33,7 @@ struct BottomCardView<Header: View, Content: View>: View {
     }
 
     private var contentHeight: CGFloat {
-        return fixedAreaHeight + scrolableAreaHeight
+        return fixedAreaHeight + scrollableAreaHeight
     }
 
     private var cardHeight: CGFloat {
@@ -56,16 +56,16 @@ struct BottomCardView<Header: View, Content: View>: View {
                 VStack {
                     VStack {
                         header
-                    }.overlay(GeometryReader { geo -> Color in
+                    }.background(GeometryReader { geo -> Color in
                         DispatchQueue.main.async {
                             fixedAreaHeight = geo.size.height
                         }
                         return Color.clear
                     })
                     ScrollView {
-                        content.overlay(GeometryReader { geo -> Color in
+                        content.background(GeometryReader { geo -> Color in
                             DispatchQueue.main.async {
-                                scrolableAreaHeight = geo.size.height
+                                scrollableAreaHeight = geo.size.height
                             }
                             return Color.clear
                         })
@@ -76,29 +76,54 @@ struct BottomCardView<Header: View, Content: View>: View {
                 .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
             }
             .frame(height: UIScreen.main.bounds.height, alignment: .bottom)
-            .offset(y: cardShown ? 0 : cardHeight)
-            .animation(Animation.default.delay(0.2))
+            .offset(y: cardOffset)
+            .animation(.default.delay(0.2), value: cardOffset)
         }
         .edgesIgnoringSafeArea(.all)
+    }
+
+    var cardOffset: CGFloat {
+        cardShown ? 0 : cardHeight
     }
 }
 
 #if DEBUG
 
 struct BottomCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Color.red
-            BottomCardView(cardShown: true, sizingBehavior: .proportionalToScreen(0.9)) {
-                Text("Screen header").font(UIScheme.font.screenHeader)
-                RedactedView().frame(height: 100)
-            } content: {
-                RedactedView().frame(height: 50)
-                RedactedView().frame(height: 50)
-                RedactedView().frame(height: 50)
-            }
 
-        }.edgesIgnoringSafeArea(.all)
+    struct BottomCardViewExample: View {
+        @State var cardShown: Bool = false
+        @State var expanded: Bool = false
+
+        var body: some View {
+            ZStack {
+                Color.red
+                BottomCardView(cardShown: cardShown, sizingBehavior: .proportionalToScreen(0.9)) {
+                    HStack {
+                        Text("Screen header").font(UIScheme.font.screenHeader).padding()
+                        Spacer()
+                        CloseButton {
+                            cardShown = false
+                        }.padding()
+                    }.padding()
+                    RedactedView().frame(height: 100)
+                    PaymentMethodCell(methodTitle: "Test", methodImage: IR.alipay.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
+                        expanded.toggle()
+                    }
+                } content: {
+                    RedactedView().frame(height: 50).padding(2)
+                    RedactedView().frame(height: 50).padding(2)
+                    RedactedView().frame(height: 50).padding(2)
+                }
+            }.onAppear {
+                cardShown = true
+            }
+        }
+    }
+
+    static var previews: some View {
+        BottomCardViewExample()
+            .edgesIgnoringSafeArea(.all)
             .previewDisplayName("Fixed")
     }
 }

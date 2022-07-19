@@ -8,6 +8,7 @@
 import Foundation
 
 class UIScheme {
+    static let infoCardBackground: InfoCardBackground = .lines
     static let color: ColorScheme = DefaultLight()
     static let dimension: DimensionScheme = DefaultDimensionScheme()
     static let font: FontLibrary = DefaultFontLibrary()

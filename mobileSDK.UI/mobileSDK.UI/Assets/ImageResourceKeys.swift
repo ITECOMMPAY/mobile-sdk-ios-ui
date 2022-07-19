@@ -16,6 +16,8 @@ enum ImageResourceKeys: String {
     case closeButton
     case copyButton
     case chevron
+    case infoButton
+
     // MARK: Placeholders
 
     // MARK: Basic payment methods

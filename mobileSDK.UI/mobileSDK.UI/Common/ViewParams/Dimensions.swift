@@ -30,15 +30,51 @@ protocol DimensionScheme {
     var smallestCornerRadius: CGFloat { get }
     /// Наименьшая облась нажатия по гайдлайнам интерфейса iOS. **default: 44**
     var minimumTapAreaSize: CGFloat { get }
-    /// Размер обводки элементов **default: 44**
+    /// Размер обводки элементов **default: 1**
     var borderWidth: CGFloat { get }
     /// Высона карточки с информацией **default: 150**
     var infoCardHeight: CGFloat { get }
+    /// Высона карточки с информацией без логотипа**default: 92**
+    var infoCardShortenedHeight: CGFloat { get }
     /// Растояние между суммой и валютой на карточке платежа**default: 8**
     var valueToCurrencySpacing: CGFloat { get }
+    /// Растояние между элементами  в горизонтальном списке на форме оплаты**default: 12**
+    var formSmallSpacing: CGFloat { get }
+    /// Большой вертикальный отступ на форме оплаты**default: 22**
+    var formLargeVerticalSpacing: CGFloat { get }
+    /// Высота кнопки оплаты**default: 45**
+    var payButtonHeight: CGFloat { get }
+    /// Расстояние между "оплатить" и суммой на кнопке оплаты**default: 5**
+    var payButtonPayPriceSpacing: CGFloat { get }
+    /// Высота полей ввода**default: 55**
+    var textFieldHeight: CGFloat { get }
+     
+    // MARK: Fot sizes
+    /// **default: 12**
+    var tinyFont: CGFloat { get }
+    /// **default: 14**
+    var smallFont: CGFloat { get }
+    /// **default: 16**
+    var middleFont: CGFloat { get }
+    /// **default: 22**
+    var bigFont: CGFloat { get }
+    /// **default: 28**
+    var hugeFont: CGFloat { get }
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
+    let tinyFont: CGFloat = 12
+    let smallFont: CGFloat = 14
+    let middleFont: CGFloat = 16
+    let bigFont: CGFloat = 22
+    let hugeFont: CGFloat = 28
+
+    let textFieldHeight: CGFloat = 55
+    let payButtonPayPriceSpacing: CGFloat = 5
+    let payButtonHeight: CGFloat = 45
+    let infoCardShortenedHeight: CGFloat = 92
+    let formSmallSpacing: CGFloat = 12
+    let formLargeVerticalSpacing: CGFloat = 22
     let backgroundSheetCornerRadius: CGFloat = 12
     let paymentMethodButtonHeight: CGFloat = 50
     let applePayButtonHeight: CGFloat = 48

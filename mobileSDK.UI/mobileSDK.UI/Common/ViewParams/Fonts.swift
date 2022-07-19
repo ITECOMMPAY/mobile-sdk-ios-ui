@@ -10,20 +10,24 @@ import SwiftUI
 protocol FontLibrary {
     /// Шрифт заголовка экрана
     var screenHeader: Font { get }
-    /// Шрифт основного размера и обычного начертания
-    var commonRegular: Font { get }
-    /// Шрифт основного размера и полужирного начертания
-    var commonSemiBold: Font { get }
-    /// 28 pt Bold
-    var priceValueFont: Font { get }
-    /// 16 pt Regular
-    var priceCurrencyFont: Font { get }
+
+    func commonRegular(size: CGFloat) -> Font
+    func commonBold(size: CGFloat) -> Font
+    func commonSemiBold(size: CGFloat) -> Font
 }
 
 struct DefaultFontLibrary: FontLibrary {
     let screenHeader: Font = Font.system(size: 22, weight: .bold, design: .default)
-    let commonRegular: Font = Font.system(size: 14, weight: .regular, design: .default)
-    let commonSemiBold: Font = Font.system(size: 14, weight: .semibold, design: .default)
-    let priceValueFont: Font = Font.system(size: 28, weight: .bold, design: .default)
-    let priceCurrencyFont: Font = Font.system(size: 16, weight: .regular, design: .default)
+
+    func commonRegular(size: CGFloat) -> Font {
+        return Font.system(size: size, weight: .regular, design: .default)
+    }
+
+    func commonBold(size: CGFloat) -> Font {
+        return Font.system(size: size, weight: .bold, design: .default)
+    }
+
+    func commonSemiBold(size: CGFloat) -> Font {
+        return Font.system(size: size, weight: .semibold, design: .default)
+    }
 }

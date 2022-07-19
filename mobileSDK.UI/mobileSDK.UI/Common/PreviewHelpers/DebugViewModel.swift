@@ -27,4 +27,5 @@ class StaticViewModel<ViewState, UserIntent: Hashable>: ViewModel {
         state = intentReducerMap[intent]?(self.state) ?? state
     }
 }
+
 #endif

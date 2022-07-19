@@ -21,6 +21,8 @@ class SDKInteractor {
     /// session identifier
     private var msdkSession: MSDKCoreSession
     private(set) var pkPaymentRequest: PKPaymentRequest?
+    /// completion that would be executed in merchant app on mSDK finish
+    internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
     public init(callback: OnPaymentResult? = nil) {
@@ -32,7 +34,11 @@ class SDKInteractor {
 
     /// DEVELOPMENT initializer, should not be present in release version!
     public init(apiUrlString: String, socketUrlString: String, callback: OnPaymentResult? = nil) {
+        #if DEBUG
+        let msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
+        #else
         let msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString, wsApiHost: socketUrlString)
+        #endif
         msdkSession = MSDKCoreSession(config: msdkConfig)
     }
 
@@ -61,10 +67,16 @@ class SDKInteractor {
     public func presentPayment(at viewController: UIViewController,
                                paymentOptions: PaymentOptions,
                                completion: PaymentCompletion?) {
+        self.completionHandler = completion
         let delegateProxy = InitDelegateProxy(paymentOptions: paymentOptions, msdkSession: msdkSession)
 
-        let view = ViewFactory.assemblePaymentMethodsView(futureData: delegateProxy.requestInit(),
-                                                          onDismiss: { viewController.dismiss(animated: true) })
+        let view = ViewFactory.assemblePaymentMethodsView(futureData: delegateProxy.requestInit().eraseToAnyPublisher(),
+                                                          onDismiss: {
+            viewController.dismiss(animated: true) { [weak self] in
+                #warning("TODO: return proper status")
+                self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
+            }
+        })
 
         let vc = UIHostingController(rootView: view)
         vc.view.backgroundColor = .clear
@@ -75,59 +87,5 @@ class SDKInteractor {
 
     }
 
-
-}
-
-class InitDelegateProxy: NSObject {
-    internal init(paymentOptions: PaymentOptions, msdkSession: MSDKCoreSession) {
-        self.paymentOptions = paymentOptions
-        self.msdkSession = msdkSession
-    }
-
-    let paymentOptions: PaymentOptions
-    let msdkSession: MSDKCoreSession
-
-    private var initRequest: InitRequest {
-        InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                    recurrentInfo: nil, // TODO: fill that parameter from paymentOptions.recurrentInfo,
-                    threeDSecureInfo: nil) // TODO: fill that parameter too
-    }
-
-    private var promise: Future<PaymentMethodsData, CoreError>.Promise? = nil
-
-    func requestInit() -> Future<PaymentMethodsData, CoreError> {
- 
-        return Future { promise in
-            self.promise = promise
-            self.msdkSession.getInitInteractor().execute(request: self.initRequest, callback: self)
-        }
-    }
-}
-
-extension InitDelegateProxy: InitDelegate {
-    func onPaymentRestored(payment: EcmpMsdkCore.Payment) {
-        // TODO: implement restore flow
-    }
-
-    func onError(code: ErrorCode, message: String) {
-        promise?(.failure(CoreError(code: CoreErrorCode.createFrom(code: code), message: message)))
-    }
-
-    func onInitReceived(paymentMethods: [EcmpMsdkCore.PaymentMethod], savedAccounts: [SavedAccount]) {
-        var paymentDetails = [
-            PaymentDetailData(title: "Payment ID", description: paymentOptions.paymentInfo.paymentId, canBeCopied: true)
-        ]
-        if let description = paymentOptions.paymentInfo.paymentDescription {
-            paymentDetails += [PaymentDetailData(title: "Description", description: description, canBeCopied: false)]
-        }
-        let paymentSummary = PaymentSummaryData(logo: paymentOptions.logoImage.map({ Image(uiImage: $0)}),
-                                               currency: paymentOptions.paymentInfo.paymentCurrency,
-                                               value: Decimal(paymentOptions.paymentInfo.paymentAmount) / 100,
-                                               isVatIncluded: false)
-        let paymentMethodsData = PaymentMethodsData(paymentDetails: paymentDetails,
-                                                    paymentSummary: paymentSummary,
-                                                    availablePaymentMethods: [])
-        promise?(.success(paymentMethodsData))
-    }
 
 }

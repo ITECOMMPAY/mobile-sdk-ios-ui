@@ -9,15 +9,14 @@ import Foundation
 import Combine
 
 protocol PaymentMethodsViewModelProtocol: ViewModel
-where ViewState == PaymentMethodsViewState, UserIntent == PaymentMethodsIntent {
-}
+where ViewState == PaymentMethodsViewState, UserIntent == PaymentMethodsIntent {}
 
 class PaymentMethodsViewModel: PaymentMethodsViewModelProtocol {
-    let futureData: Future<PaymentMethodsData, CoreError>
+    let futureData: AnyPublisher<PaymentMethodsData, CoreError>
     private var paymentMethodsCancelable: AnyCancellable?
     var dismissCompletion: (() -> Void)?
 
-    init(futureData: Future<PaymentMethodsData, CoreError>,
+    init(futureData: AnyPublisher<PaymentMethodsData, CoreError>,
          state: PaymentMethodsViewState = .initial,
          dismissCompletion: (() -> Void)? = nil) {
         self.futureData = futureData
@@ -35,7 +34,7 @@ class PaymentMethodsViewModel: PaymentMethodsViewModelProtocol {
                     self?.state = .closed(withError: error)
                 }
             }, receiveValue: { [weak self] paymentMethodsData in
-                self?.state = .loaded(data: paymentMethodsData, expanded: nil)
+                self?.state = .loaded(data: paymentMethodsData)
             })
     }
 
