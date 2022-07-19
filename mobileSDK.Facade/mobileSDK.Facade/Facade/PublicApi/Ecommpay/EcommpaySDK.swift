@@ -46,6 +46,7 @@ public class EcommpaySDK: NSObject {
             callback?.onPaymentResult(paymentData: data)
         }
     }
+    
     #endif
     
     private let interactor: SDKInteractor
@@ -84,14 +85,14 @@ public class EcommpaySDK: NSObject {
     ///
     /// - Parameters:
     ///   - viewController: controller from what you would like to present payment UI
-    ///   - paymentInfo: info that is needed to perform payment (merchant_id, proeject_id, etc)
+    ///   - paymentOptions: info that is needed to perform payment (merchant_id, proeject_id, etc)
     ///   - completion: result of payment flow
-    @objc(presentPaymentAt:paymentInfo:completionHandler:)
+    @objc(presentPaymentAt:paymentOptions:completionHandler:)
     public func presentPayment(at viewController: UIViewController,
-                               paymentInfo: PaymentInfo,
+                               paymentOptions: PaymentOptions,
                                completion: ((_ result: ECPPaymentResult) -> Void)?) {
         interactor.presentPayment(at: viewController,
-                                  paymentInfo: paymentInfo) { result in
+                                  paymentOptions: paymentOptions) { result in
             completion?(ECPPaymentResult(internalResult: result))
         }
 

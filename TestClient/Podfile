@@ -1,8 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '13.0'
 use_frameworks!
-workspace 'TestClient.xcworkspace'
-project 'TestClient'
+workspace 'TestClientUI.xcworkspace'
+project 'TestClientUI'
 project '../mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
 
 #TestClient
@@ -11,10 +11,11 @@ TestClientTargets = ["TestClient", "TestClient_1D3", "TestClient_JetPay"]
 
 for targetName in TestClientTargets
   target targetName do
-    project 'TestClient'
+    project 'TestClientUI'
     pod 'EFColorPicker'
     pod 'SnapKit'
     pod 'AppCenter'
+    pod 'Reachability'
   end
 end
 

@@ -14,8 +14,8 @@
 
 @implementation MainViewControllerActions
 
-+ (PaymentInfo *)composePaymentInfoFromItems:(NSArray *)items {
-    return [[PaymentInfo alloc] initWithProjectID:[[self getDataValueWith:PROJECT_ID_KEY fromItems:items].value integerValue]
++ (PaymentOptions *)composePaymentInfoFromItems:(NSArray *)items {
+    return [[PaymentOptions alloc] initWithProjectID:[[self getDataValueWith:PROJECT_ID_KEY fromItems:items].value integerValue]
                                         paymentID:[self getDataValueWith:PAYMENT_ID_KEY fromItems:items].value
                                     paymentAmount:[[self getDataValueWith:PAYMENT_AMOUNT_KEY fromItems:items].value integerValue]
                                   paymentCurrency:[self getDataValueWith:PAYMENT_CURRENCY_KEY fromItems:items].value
@@ -25,8 +25,8 @@
 
 }
 
-+ (PaymentInfo *)composeOnlyRequiredPaymentInfoFromItems:(NSArray *)items {
-    return [[PaymentInfo alloc] initWithProjectID:[[self getDataValueWith:PROJECT_ID_KEY fromItems:items].value integerValue]
++ (PaymentOptions *)composeOnlyRequiredPaymentInfoFromItems:(NSArray *)items {
+    return [[PaymentOptions alloc] initWithProjectID:[[self getDataValueWith:PROJECT_ID_KEY fromItems:items].value integerValue]
                                         paymentID:[self getDataValueWith:PAYMENT_ID_KEY fromItems:items].value
                                     paymentAmount:[[self getDataValueWith:PAYMENT_AMOUNT_KEY fromItems:items].value integerValue]
                                   paymentCurrency:[self getDataValueWith:PAYMENT_CURRENCY_KEY fromItems:items].value];

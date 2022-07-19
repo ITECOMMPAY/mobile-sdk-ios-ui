@@ -91,7 +91,7 @@ bool isOpen = true;
         #endif
 
         // Compose Params
-        PaymentInfo *paymentInfo = [MainViewControllerActions composePaymentInfoFromItems:self.items];
+        PaymentOptions *paymentInfo = [MainViewControllerActions composePaymentInfoFromItems:self.items];
 
         [paymentInfo setAdditionalFields:[self getArrayOfNonEmptyAdditionalFieldsItems]];
         [paymentInfo setRecipientInfo:self.recipientInfo];
@@ -142,10 +142,7 @@ bool isOpen = true;
         if (![applePayDescription isEqualToString:@""]) {
             [paymentInfo setApplePayDescription:applePayDescription];
         }
-        //
-        //    PaymentInfo *paymentInfo = [MainViewControllerActions composeOnlyRequiredPaymentInfoFromItems:self.items]; // If you only want a required items
-        NSDictionary *params = [paymentInfo dictionaryRepresentation];
-        NSLog(@"finalParams:\n%@", params);
+ 
 
         NSString *paramsForSignature = [paymentInfo getParamsForSignature];
 
@@ -174,7 +171,7 @@ bool isOpen = true;
 
         // Call action to buy
         isOpen = false;
-        [self.paymentSDK presentPaymentAt:self paymentInfo:paymentInfo completionHandler:^(PaymentResulType *result) {
+        [self.paymentSDK presentPaymentAt:self paymentOptions:paymentInfo completionHandler:^(PaymentResulType *result) {
             if (result.error != nil) { // If error
                 id code = [result.error.userInfo objectForKey:SDKFacadeType.kSDKInitErrorCodeKey];
                 NSString *title = [NSString stringWithFormat: @"ErrorCode: %@", code ?: @"empty"];
