@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ApplePayCheckoutView: View {
-   
+
     var body: some View {
         VStack(spacing: 0) {
             EmbeddedAdditionalFieldsView()

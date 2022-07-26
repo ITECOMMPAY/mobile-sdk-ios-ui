@@ -15,20 +15,20 @@ protocol AutoLayoutPrepareable {
 extension UIView: AutoLayoutPrepareable { }
 
 extension AutoLayoutPrepareable where Self: UIView {
-    
+
     @discardableResult func setupAutoLayout() -> Self {
         translatesAutoresizingMaskIntoConstraints = false
         return self
     }
-    
+
 }
 
 extension Array where Element == UIView {
-    
+
     func setupAutoLayout() {
         for element in self {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
+
 }

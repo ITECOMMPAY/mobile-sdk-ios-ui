@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ThreeDSecureViewCellDelegate {
+protocol ThreeDSecureViewCellDelegate: AnyObject {
     func onChangeJson(vo: ThreeDSecureVO)
 }
 
@@ -17,17 +17,17 @@ class ThreeDSecureViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var reset: UIButton!
     @IBOutlet weak var clear: UIButton!
     @IBOutlet weak var jsonBody: UITextView!
-    
+
     @IBOutlet weak var rootView: UIView!
     @IBOutlet weak var header: UIView!
-    
+
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     @IBOutlet weak var title: UILabel!
     private var vo: ThreeDSecureVO?
-    private var delegate: ThreeDSecureViewCellDelegate?
-    
+    private weak var delegate: ThreeDSecureViewCellDelegate?
+
     public static let identifier: String = "ThreeDSecureViewCell"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code        
@@ -36,8 +36,8 @@ class ThreeDSecureViewCell: UITableViewCell, UITextViewDelegate {
         self.clear.layer.cornerRadius = 9
         self.clear.clipsToBounds = true
     }
-    
-    func configure(_ vo: ThreeDSecureVO,_ delegate: ThreeDSecureViewCellDelegate?) {
+
+    func configure(_ vo: ThreeDSecureVO, _ delegate: ThreeDSecureViewCellDelegate?) {
         self.vo = vo
         self.title.text = vo.type
         if let json = vo.json {
@@ -48,10 +48,10 @@ class ThreeDSecureViewCell: UITableViewCell, UITextViewDelegate {
         }
         self.jsonBody.delegate = self
         self.delegate = delegate
-        jsonBody.isScrollEnabled = false        
+        jsonBody.isScrollEnabled = false
         resize(textView: jsonBody)
     }
-    
+
     @IBAction func onReset(_ sender: Any) {
         self.jsonBody.text = self.vo?.defaultJson
         resize(textView: self.jsonBody)
@@ -62,7 +62,7 @@ class ThreeDSecureViewCell: UITableViewCell, UITextViewDelegate {
         self.vo?.json = ""
         resize(textView: self.jsonBody)
     }
-    
+
     fileprivate func resize(textView: UITextView) {
         var newFrame = textView.frame
         let width = newFrame.size.width
@@ -71,10 +71,10 @@ class ThreeDSecureViewCell: UITableViewCell, UITextViewDelegate {
         newFrame.size = CGSize(width: width, height: newSize.height)
         textView.frame = newFrame
     }
-    
+
     func textViewDidChange(_ textView: UITextView) {
         if let vo = self.vo {
-            if (!textView.text.isEmpty) {
+            if !textView.text.isEmpty {
                 vo.json = textView.text
                 resize(textView: self.jsonBody)
                 self.delegate?.onChangeJson(vo: vo)

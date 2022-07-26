@@ -28,34 +28,34 @@ import Foundation
     @objc(customer_language)         case customer_language
     @objc(customer_screen_res)       case customer_screen_res
     @objc(customer_save)             case customer_save
-    
+
     @objc(billing_postal)            case billing_postal
     @objc(billing_country)           case billing_country
     @objc(billing_region)            case billing_region
     @objc(billing_city)              case billing_city
     @objc(billing_address)           case billing_address
-    
+
     @objc(identify_doc_number)       case identify_doc_number
     @objc(identify_doc_type)         case identify_doc_type
     @objc(identify_doc_issue_date)   case identify_doc_issue_date
     @objc(identify_doc_issue_by)     case identify_doc_issue_by
-    
+
     @objc(custom)                    case custom
-    
+
     // Doku
     @objc(doku_customer_first_name)  case doku_customer_first_name
     @objc(doku_customer_email)       case doku_customer_email
-    
+
     // Neteller
     @objc(neteller_account_number)   case neteller_account_number
-    
+
     // Qiwi
     @objc(qiwi_account_number)       case qiwi_account_number
-    
+
     // WebMoney-Classic
     @objc(webmoney_classic_account_number)     case webmoney_classic_account_number
     @objc(webmoney_classic_account_type)       case webmoney_classic_account_type
-    
+
     public var description: String {
         switch self {
         case .billing_address: return "billing_address"

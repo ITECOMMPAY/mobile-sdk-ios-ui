@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PayButton<Label: View>: View {
     let label: Label
+    let disabled: Bool
     let action: () -> Void
 
     var body: some View {
@@ -19,6 +20,7 @@ struct PayButton<Label: View>: View {
                 .background(UIScheme.color.brandColor)
                 .cornerRadius(8)
         })
+        .disabled(disabled)
     }
 }
 
@@ -56,7 +58,7 @@ import AVFoundation
 
 struct PayButton_Previews: PreviewProvider {
     static var previews: some View {
-        PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB"))) {
+        PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB")), disabled: false) {
             AudioServicesPlaySystemSound(1016)
         }.padding()
     }

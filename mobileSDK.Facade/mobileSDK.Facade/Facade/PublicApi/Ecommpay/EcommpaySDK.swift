@@ -8,7 +8,7 @@
 
 import Foundation
 import PassKit
-import EcmpMsdkCore
+import MsdkCore
 
 typealias ECPPaymentCompletion = (_ result: ECPPaymentResult) -> Void
 
@@ -20,8 +20,8 @@ public class EcommpaySDK: NSObject {
     @objc public static let sdkVersion: String = EcommpaySDK.getBundleVersion(for: EcommpaySDK.self)
 
     #if DEVELOPMENT
-    @objc public static let apiURL: NSURL = NSURL(string: MSDKCoreSessionConfig.companion.nl3WithDebug().apiHost)!
-    @objc public static let socketURL: NSURL = NSURL(string: MSDKCoreSessionConfig.companion.nl3WithDebug().wsApiHost)!
+    @objc public static let apiURL: NSURL = NSURL(string: "pp-sdk.westresscode.net")!
+    @objc public static let socketURL: NSURL = NSURL(string: "paymentpage.westresscode.net")!
 
     /// Debug initializer, should not be present in release version!
     ///
@@ -46,9 +46,9 @@ public class EcommpaySDK: NSObject {
             callback?.onPaymentResult(paymentData: data)
         }
     }
-    
+
     #endif
-    
+
     private let interactor: SDKInteractor
 
     @objc(init) public override init() {

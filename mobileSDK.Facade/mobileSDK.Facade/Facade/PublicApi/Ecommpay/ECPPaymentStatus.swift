@@ -18,7 +18,7 @@ import Foundation
 
 internal extension PaymentStatus {
     var publicStatus: ECPPaymentStatus {
-        switch(self) {
+        switch self {
         case .Success:
             return .Success
         case .Decline:
@@ -35,7 +35,7 @@ internal extension PaymentStatus {
 
 internal extension ECPPaymentStatus {
     var internalStatus: PaymentStatus {
-        switch(self) {
+        switch self {
         case .Success:
             return .Success
         case .Decline:

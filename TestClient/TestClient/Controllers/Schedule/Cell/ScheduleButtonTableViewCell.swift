@@ -16,7 +16,7 @@ class ScheduleButtonTableViewCell: UITableViewCell {
 
     public weak var delegate: ScheduleButtonTableViewCellDelegate?
     public static let identifier: String = "ScheduleButtonTableViewCell"
-    
+
     @IBAction func onAddNewPress(_ sender: Any) {
         self.delegate?.onAddNew()
     }

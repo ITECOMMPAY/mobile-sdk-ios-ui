@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "attributedtext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/AttributedText",
+      "state" : {
+        "revision" : "2dc2d7864e0fee4b524a5850d7d7cf9a7eeda0fc",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "uikit-textfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vinceplusplus/uikit-textfield.git",
+      "state" : {
+        "revision" : "5e940a0e08f3e44922266d4bf4f0c0a31ebf7eaf",
+        "version" : "2.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}

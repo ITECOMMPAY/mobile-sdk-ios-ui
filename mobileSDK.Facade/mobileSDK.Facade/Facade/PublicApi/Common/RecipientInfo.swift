@@ -29,7 +29,7 @@ import Foundation
         self.walletId = walletId
         self.country = country
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case walletOwner = "wallet_owner"
         case walletId = "wallet_id"

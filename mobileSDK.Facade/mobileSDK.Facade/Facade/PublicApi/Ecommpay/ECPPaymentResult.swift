@@ -12,20 +12,20 @@ public class ECPPaymentResult: NSObject {
     @objc public let status: ECPPaymentStatus
     @objc public let error: Error?
     @objc public let token: String?
-    
+
     public init(status: ECPPaymentStatus, error: Error?, token: String?) {
         self.status = status
         self.error = error
         self.token = token
-        
+
         super.init()
     }
-    
+
     public init(status: ECPPaymentStatus, error: Error?) {
         self.status = status
         self.error = error
         self.token = nil
-        
+
         super.init()
     }
 }

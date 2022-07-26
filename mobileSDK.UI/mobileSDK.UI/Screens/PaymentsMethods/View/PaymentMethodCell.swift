@@ -11,7 +11,7 @@ struct PaymentMethodCell<Content: View>: View {
     let methodTitle: String
     let methodImage: Image?
     var isSavedAccount: Bool = false
-    let isExpanded: Bool
+    var isExpanded: Bool
 
     let content: Content
     let onTap: () -> Void
@@ -32,9 +32,11 @@ struct PaymentMethodCell<Content: View>: View {
                     ? UIScheme.color.savedAccountBackground
                     : UIScheme.color.paymentMethodBackground
             }
-            if isExpanded {
-                content
-            }
+            VStack {
+                if isExpanded {
+                    content.transition(.move(edge: .top).combined(with: .opacity))
+                }
+            }.clipped()
         }
         .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)
         .overlay(
@@ -66,20 +68,15 @@ struct PaymentMethodCell_Previews: PreviewProvider {
     struct PaymentMethodCellExample: View {
         @State var expanded: Int = 0
         var body: some View {
-            VStack {
-                PaymentMethodCell(methodTitle: "Alipay",
-                                  methodImage: IR.alipay.image,
-                                  isSavedAccount: false,
-                                  isExpanded: expanded == 1,
-                                  content: Color.red.frame(height: 100),
-                                  onTap: { expanded = 1 })
-                PaymentMethodCell(methodTitle: "*** 3456",
-                                  methodImage: IR.visa.image,
-                                  isSavedAccount: true,
-                                  isExpanded: expanded == 2,
-                                  content: SavedCardCheckoutView(),
-                                  onTap: { expanded = 2 })
-
+            ScrollView {
+                VStack {
+                    PaymentMethodCell(methodTitle: "Alipay",
+                                      methodImage: IR.alipay.image,
+                                      isSavedAccount: false,
+                                      isExpanded: expanded == 1,
+                                      content: Color.red.frame(height: 100),
+                                      onTap: { expanded = 1 })
+                }
             }
         }
     }
@@ -89,5 +86,3 @@ struct PaymentMethodCell_Previews: PreviewProvider {
     }
 }
 #endif
-
-

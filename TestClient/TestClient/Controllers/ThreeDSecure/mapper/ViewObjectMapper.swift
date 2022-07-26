@@ -16,58 +16,58 @@ import ecommpaySDK
 #endif
 
 internal class TheeDSecureInfoToRequestObjectMapper {
-    
+
     func map(viewObjectList: [ThreeDSecureVO]) -> ThreeDSecureInfo {
         let merchantRisk = getPaymentMerchantRisk(viewObjectList)
         let accountInfo = getCustomerAccountInfo(viewObjectList)
         let shipping = getCustomerShipping(viewObjectList)
         let mpiResult = getCustomerMpiResult(viewObjectList)
         let billingRegionCode = getBillingRegionCode(viewObjectList)
-        
+
         var threeDSecurePaymentInfo: ThreeDSecurePaymentInfo?
         if let merchantRisk = merchantRisk {
             threeDSecurePaymentInfo = mapToThreeDSecurePaymentInfo(merchantRisk)
         }
-        
+
         let threeDSecureCustomerInfo = mapToThreeDSecureCustomerInfo(
             accountInfo,
             shipping,
             mpiResult,
             billingRegionCode)
-        
+
         return ThreeDSecureInfo(threeDSecurePaymentInfo, threeDSecureCustomerInfo)
     }
-    
+
     func mapToThreeDSecureCustomerInfo(
         _ accountInfoJson: ThreeDSecureCustomerAccountInfoRequest?,
         _ shipping: ThreeDSecureCustomerShippingRequest?,
         _ mpiResult: ThreeDSecureCustomerMpiResultRequest?,
         _ billingRegionCode: ThreeDSecureBillingRegionCode?) -> ThreeDSecureCustomerInfo? {
-        
+
         let threeDSecureCustomerInfo = ThreeDSecureCustomerInfo()
         threeDSecureCustomerInfo.addressMatch = accountInfoJson?.customer?.address_match
         threeDSecureCustomerInfo.homePhone = accountInfoJson?.customer?.home_phone
         threeDSecureCustomerInfo.workPhone = accountInfoJson?.customer?.work_phone
         threeDSecureCustomerInfo.billingRegionCode = billingRegionCode?.billing_region_code
-        
+
         if let accountInfoJson = accountInfoJson {
             if let accountJson = accountInfoJson.customer?.account {
                 threeDSecureCustomerInfo.accountInfo = mapToThreeDSecureAccountInfo(accountJson)
             }
-            
+
         }
-        
+
         if let shippingJson = shipping {
             threeDSecureCustomerInfo.shippingInfo = mapToThreeDSecureShippingInfo(shippingJson)
         }
-        
+
         if let mpiResultJson = mpiResult {
             threeDSecureCustomerInfo.mpiResultInfo = mapToThreeDSecureMpiResultInfo(mpiResultJson)
         }
-        
+
         return threeDSecureCustomerInfo
     }
-    
+
     func mapToThreeDSecureMpiResultInfo(_ mpiResultJson: ThreeDSecureCustomerMpiResultRequest) -> ThreeDSecureMpiResultInfo? {
         let threeDSecureMpiResultInfo = ThreeDSecureMpiResultInfo()
         threeDSecureMpiResultInfo.acsOperationId = mpiResultJson.customer?.mpi_result.acs_operation_id
@@ -75,10 +75,10 @@ internal class TheeDSecureInfoToRequestObjectMapper {
         threeDSecureMpiResultInfo.authenticationTimestamp = mpiResultJson.customer?.mpi_result.authentication_timestamp
         return threeDSecureMpiResultInfo
     }
-    
+
     func mapToThreeDSecureShippingInfo(_ shippingJson: ThreeDSecureCustomerShippingRequest) -> ThreeDSecureShippingInfo? {
         let threeDSecureShippingInfo = ThreeDSecureShippingInfo()
-        
+
         threeDSecureShippingInfo.address = shippingJson.customer?.shipping.address
         threeDSecureShippingInfo.addressUsage = shippingJson.customer?.shipping.address_usage
         threeDSecureShippingInfo.addressUsageIndicator = shippingJson.customer?.shipping.address_usage_indicator
@@ -92,7 +92,7 @@ internal class TheeDSecureInfoToRequestObjectMapper {
         threeDSecureShippingInfo.type = shippingJson.customer?.shipping.type
         return threeDSecureShippingInfo
     }
-    
+
     func mapToThreeDSecureAccountInfo(_ accountJson: ThreeDSecureAccountRequest) -> ThreeDSecureAccountInfo? {
         let threeDSecureAccountInfo = ThreeDSecureAccountInfo()
         threeDSecureAccountInfo.activityDay = accountJson.activity_day
@@ -114,7 +114,7 @@ internal class TheeDSecureInfoToRequestObjectMapper {
         threeDSecureAccountInfo.suspiciousActivity = accountJson.suspicious_activity
         return threeDSecureAccountInfo
     }
-    
+
     func mapToThreeDSecurePaymentInfo(_ merchantRisk: ThreeDSecurePaymentMerchantRiskRequest) -> ThreeDSecurePaymentInfo? {
         let threedSecurePaymentInfo = ThreeDSecurePaymentInfo()
         threedSecurePaymentInfo.reorder = merchantRisk.payment?.reorder
@@ -127,7 +127,7 @@ internal class TheeDSecureInfoToRequestObjectMapper {
         }
         return threedSecurePaymentInfo
     }
-    
+
     func mapToThreeDSecureGiftCardInfo(_ giftCard: ThreeDSecureGifCardRequest) -> ThreeDSecureGiftCardInfo? {
         let threeDSecureGifCard = ThreeDSecureGiftCardInfo()
         threeDSecureGifCard.amount = giftCard.amount
@@ -135,35 +135,35 @@ internal class TheeDSecureInfoToRequestObjectMapper {
         threeDSecureGifCard.currency = giftCard.currency
         return threeDSecureGifCard
     }
-    
+
     func getPaymentMerchantRisk(_ viewObjectList: [ThreeDSecureVO]) -> ThreeDSecurePaymentMerchantRiskRequest? {
         if let jsonData = viewObjectList.first(where: { vo in vo.type == "payment_merchant_risk" })?.json?.data(using: .utf8) {
             return try? JSONDecoder().decode(ThreeDSecurePaymentMerchantRiskRequest.self, from: jsonData)
         }
         return nil
     }
-    
+
     func getCustomerAccountInfo(_ viewObjectList: [ThreeDSecureVO]) -> ThreeDSecureCustomerAccountInfoRequest? {
         if let jsonData = viewObjectList.first(where: { vo in vo.type == "customer_account_info" })?.json?.data(using: .utf8) {
             return try? JSONDecoder().decode(ThreeDSecureCustomerAccountInfoRequest.self, from: jsonData)
         }
         return nil
     }
-    
+
     func getCustomerShipping(_ viewObjectList: [ThreeDSecureVO]) -> ThreeDSecureCustomerShippingRequest? {
         if let jsonData = viewObjectList.first(where: { vo in vo.type == "customer_shipping" })?.json?.data(using: .utf8) {
             return try? JSONDecoder().decode(ThreeDSecureCustomerShippingRequest.self, from: jsonData)
         }
         return nil
     }
-    
+
     func getCustomerMpiResult(_ viewObjectList: [ThreeDSecureVO]) -> ThreeDSecureCustomerMpiResultRequest? {
         if let jsonData = viewObjectList.first(where: { vo in vo.type == "customer_mpi_result" })?.json?.data(using: .utf8) {
             return try? JSONDecoder().decode(ThreeDSecureCustomerMpiResultRequest.self, from: jsonData)
         }
         return nil
     }
-    
+
     func getBillingRegionCode(_ viewObjectList: [ThreeDSecureVO]) -> ThreeDSecureBillingRegionCode? {
         if let jsonData = viewObjectList.first(where: { vo in vo.type == "billing_region_code" })?.json?.data(using: .utf8) {
             return try? JSONDecoder().decode(ThreeDSecureBillingRegionCode.self, from: jsonData)
@@ -177,9 +177,9 @@ internal class ThreeDSecureBillingRegionCode: Codable {
 }
 
 internal class ThreeDSecurePaymentMerchantRiskRequest: Codable {
-    
+
     var payment: Payment?
-    
+
     class Payment: Codable {
         public var reorder: String?
         public var preorder_purchase: String?
@@ -197,9 +197,9 @@ internal class ThreeDSecureGifCardRequest: Codable {
 }
 
 internal class ThreeDSecureCustomerAccountInfoRequest: Codable {
-    
+
     var customer: Customer?
-    
+
     class Customer: Codable {
         public var address_match: String?
         public var home_phone: String?
@@ -230,10 +230,10 @@ internal class ThreeDSecureAccountRequest: Codable {
 
 internal class ThreeDSecureCustomerShippingRequest: Codable {
     var customer: Customer?
-    
+
     class Customer: Codable {
         var shipping: Shipping
-        
+
         class Shipping: Codable {
             public var type: String?
             public var delivery_time: String?
@@ -252,10 +252,10 @@ internal class ThreeDSecureCustomerShippingRequest: Codable {
 
 internal class ThreeDSecureCustomerMpiResultRequest: Codable {
     var customer: Customer?
-    
+
     class Customer: Codable {
         var mpi_result: MpiResult
-        
+
         class MpiResult: Codable {
             public var acs_operation_id: String?
             public var authentication_flow: String?

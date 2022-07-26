@@ -10,7 +10,7 @@ import UIKit
 import PassKit
 import SwiftUI
 import mobileSDK_UI
-import EcmpMsdkCore
+import MsdkCore
 import Combine
 
 class SDKInteractor {
@@ -19,14 +19,19 @@ class SDKInteractor {
 
     // MARK: - Private variables
     /// session identifier
-    private var msdkSession: MSDKCoreSession
+    private var msdkSession: MSDKCoreSession {
+        didSet {
+            setupDependecy()
+        }
+    }
     private(set) var pkPaymentRequest: PKPaymentRequest?
     /// completion that would be executed in merchant app on mSDK finish
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
     public init(callback: OnPaymentResult? = nil) {
-        let msdkConfig = MSDKCoreSessionConfig.companion.nl3WithDebug()
+        let msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
+                                                                 wsApiHost: NetworkConfigType().socketHost)
         msdkSession = MSDKCoreSession(config: msdkConfig)
     }
 
@@ -37,7 +42,8 @@ class SDKInteractor {
         #if DEBUG
         let msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
         #else
-        let msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString, wsApiHost: socketUrlString)
+        let msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
+                                                               wsApiHost: socketUrlString)
         #endif
         msdkSession = MSDKCoreSession(config: msdkConfig)
     }
@@ -68,15 +74,32 @@ class SDKInteractor {
                                paymentOptions: PaymentOptions,
                                completion: PaymentCompletion?) {
         self.completionHandler = completion
-        let delegateProxy = InitDelegateProxy(paymentOptions: paymentOptions, msdkSession: msdkSession)
 
-        let view = ViewFactory.assemblePaymentMethodsView(futureData: delegateProxy.requestInit().eraseToAnyPublisher(),
-                                                          onDismiss: {
+        let delegateProxy = InitDelegateProxy()
+
+        let paymentSummary = PaymentSummaryData(logo: paymentOptions.logoImage.map({ Image(uiImage: $0)}),
+                                                currency: paymentOptions.paymentInfo.paymentCurrency,
+                                                value: Decimal(paymentOptions.paymentInfo.paymentAmount) / 100,
+                                                isVatIncluded: false)
+
+        var paymentDetails = [
+            PaymentDetailData(title: L.title_payment_id, description: paymentOptions.paymentInfo.paymentId, canBeCopied: true)
+        ]
+        if let description = paymentOptions.paymentInfo.paymentDescription {
+            paymentDetails += [PaymentDetailData(title: L.title_payment_information_description, description: description, canBeCopied: false)]
+        }
+
+        let view = ViewFactory.assemblePaymentMethodsView(staticData: (summary: paymentSummary, details: paymentDetails), initPublisher: delegateProxy.createPublisher(with: { delegate in
+            let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
+                                           recurrentInfo: nil, // TODO: fill that parameter from paymentOptions.recurrentInfo,
+                                           threeDSecureInfo: nil) // TODO: fill that parameter too
+            self.msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
+        })) {
             viewController.dismiss(animated: true) { [weak self] in
                 #warning("TODO: return proper status")
                 self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
             }
-        })
+        }
 
         let vc = UIHostingController(rootView: view)
         vc.view.backgroundColor = .clear
@@ -87,5 +110,11 @@ class SDKInteractor {
 
     }
 
-
+    private func setupDependecy() {
+        serviceLocator.addService(instance: CoreValidationService() as ValidationService)
+        serviceLocator.addService(instance: SdkExpiry.init(text: "") as CardExpiryFabric)
+        serviceLocator.addService(instance: PayInteractorWrapper(msdkSession: self.msdkSession) as mobileSDK_UI.PayInteractor)
+        serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
+        serviceLocator.addService(instance: CardTypesManagerFabric() as mobileSDK_UI.CardTypesManagerFabric)
+    }
 }

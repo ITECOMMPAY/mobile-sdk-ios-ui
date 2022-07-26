@@ -28,7 +28,7 @@ mSDKTargets = ["ecommpaySDK"]
 for targetName in mSDKTargets
   target targetName do
     project '../mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
-    pod 'EcmpMsdkCore', :path => '../mobileSDK.Core/EcmpMsdkCore'
+    pod 'MsdkCore', :path => '../mobileSDK.Core/MsdkCore'
   end
 end
 =begin

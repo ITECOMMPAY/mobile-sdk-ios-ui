@@ -17,4 +17,3 @@ protocol ViewModel: ObservableObject {
     /// property holds state
     var state: ViewState { get }
 }
-

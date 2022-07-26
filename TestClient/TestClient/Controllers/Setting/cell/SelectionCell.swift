@@ -11,12 +11,12 @@ import UIKit
 class SelectionCell: UITableViewCell {
 
     static var identifier = "SelectionCellIdentifier"
-    
+
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var selectionLogo: UIImageView?
-    
+
     private var value: Bool = false
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,10 +27,10 @@ class SelectionCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     func setup(displayModeVO: DisplayModeVO,
                index: Int) {
-        
+
         titleLabel?.text = displayModeVO.screenDisplayMode.description
         self.value = displayModeVO.value
         self.selectionLogo?.image = UIImage(named: self.value ? "select_selection_logo" : "no_select_selection_logo")!

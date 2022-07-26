@@ -9,7 +9,7 @@
 import UIKit
 
 public class ECPTheme: NSObject {
-    
+
     @objc public var overlayColor: UIColor = UIColor.init(hexFromString: "#000000", alpha: 0.4)
     @objc public var backgroundColor: UIColor = UIColor.init(hexFromString: "#eef3fb")
     @objc public var headingTextColor: UIColor = UIColor.init(hexFromString: "#000000")
@@ -53,10 +53,10 @@ public class ECPTheme: NSObject {
     @objc public var showLightAPSLogos: Bool = false
 
     @objc
-    public static func getLightTheme() -> ECPTheme { 
+    public static func getLightTheme() -> ECPTheme {
         return ECPTheme()
     }
-    
+
     @objc
     public static func getDarkTheme() -> ECPTheme {
         let theme = ECPTheme()

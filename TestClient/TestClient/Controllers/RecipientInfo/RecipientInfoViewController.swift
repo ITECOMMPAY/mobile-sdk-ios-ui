@@ -16,7 +16,6 @@ import jetpayhostsSDK
 import ecommpaySDK
 #endif
 
-
 @objc protocol RecipientInfoViewControllerDelegate {
     func onClose(with info: RecipientInfo?)
 }
@@ -24,15 +23,13 @@ import ecommpaySDK
 class RecipientInfoViewController: UIViewController {
     @objc public weak var delegate: RecipientInfoViewControllerDelegate?
 
-
-
     @objc class func intantiateWith(info: RecipientInfo?) -> RecipientInfoViewController {
         let vc = RecipientInfoViewController(nibName: "RecipientInfoViewController", bundle: nil)
         vc.isOn = info != nil
-        vc.walletOwner = info?.walletOwner;
-        vc.walletId = info?.walletId;
-        vc.country = info?.country;
-        return vc;
+        vc.walletOwner = info?.walletOwner
+        vc.walletId = info?.walletId
+        vc.country = info?.country
+        return vc
     }
 
     private var isOn: Bool = false

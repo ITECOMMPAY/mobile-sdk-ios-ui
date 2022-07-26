@@ -11,7 +11,7 @@ import SwiftUI
 enum PaymentMethodsViewState {
     case initial
     case loading
-    case loaded(data: PaymentMethodsData)
+    case loaded(PaymentMethodsLoadedState)
     case closed(withError: CoreError?)
 }
 
@@ -22,57 +22,22 @@ extension PaymentMethodsViewState {
         default: return false
         }
     }
-}
 
-public struct PaymentDetailData {
-    public init(title: String, description: String, canBeCopied: Bool) {
-        self.title = title
-        self.description = description
-        self.canBeCopied = canBeCopied
+    var loadedState: PaymentMethodsLoadedState? {
+        switch self {
+        case .loaded(let paymentMethodsLoadedState):
+            return paymentMethodsLoadedState
+        default:
+            return nil
+        }
     }
-
-    let title: String
-    let description: String
-    let canBeCopied: Bool
 }
 
-public struct PaymentSummaryData {
-    public init(logo: Image? = nil, currency: String, value: Decimal, isVatIncluded: Bool) {
-        self.logo = logo
-        self.currency = currency
-        self.value = value
-        self.isVatIncluded = isVatIncluded
-    }
-
-    var logo: Image?
-    var currency: String
-    var value: Decimal
-    var isVatIncluded: Bool
-}
-
-public struct PaymentMethodsData {
+struct PaymentMethodsLoadedState {
     var paymentDetails: [PaymentDetailData]
     var paymentSummary: PaymentSummaryData
+    var savedAccounts: [SavedAccount]
     var availablePaymentMethods: [PaymentMethod]
-
-    public init(paymentDetails: [PaymentDetailData], paymentSummary: PaymentSummaryData, availablePaymentMethods: [PaymentMethod]) {
-        self.paymentDetails = paymentDetails
-        self.paymentSummary = paymentSummary
-        self.availablePaymentMethods = availablePaymentMethods
-    }
-
-}
-
-public struct PaymentMethod {
-    public init(id: Int64, name: String, type: UISupportedPaymentMethod) {
-        self.id = id
-        self.name = name
-        self.type = type
-    }
-
-    var id: Int64
-    var name: String
-    var type: UISupportedPaymentMethod
 }
 
 public enum UISupportedPaymentMethod: Equatable {

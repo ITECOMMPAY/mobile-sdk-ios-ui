@@ -21,11 +21,11 @@ extension UIColor {
         var cString: String = hexFromString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         var rgbValue: UInt64 = 10066329 // color #999999 if string has wrong format
 
-        if (cString.hasPrefix("#")) {
+        if cString.hasPrefix("#") {
             cString.remove(at: cString.startIndex)
         }
 
-        if ((cString.count) == 6) {
+        if (cString.count) == 6 {
             Scanner(string: cString).scanHexInt64(&rgbValue)
         }
 

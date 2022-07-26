@@ -39,4 +39,3 @@ struct LinkButton_Previews: PreviewProvider {
 }
 
 #endif
-

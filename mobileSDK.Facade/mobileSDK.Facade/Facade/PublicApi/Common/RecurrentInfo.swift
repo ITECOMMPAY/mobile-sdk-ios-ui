@@ -80,14 +80,14 @@ public class RecurrentInfo: NSObject, Codable {
         let date = Date()
         let formatter = DateFormatter()
 
-        if (time == "") {
+        if time == "" {
             formatter.dateFormat = "HH:mm:ss"
             self.time = formatter.string(from: date)
         } else {
             self.time = time
         }
 
-        if (startDate == "") {
+        if startDate == "" {
             formatter.dateFormat = "dd-MM-yyyy"
             self.startDate = formatter.string(from: date)
         } else {

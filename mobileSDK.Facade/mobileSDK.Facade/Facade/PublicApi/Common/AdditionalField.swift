@@ -9,15 +9,15 @@
 import Foundation
 
 public class AdditionalField: NSObject {
-    
-    // MARK:- Variables
-    
+
+    // MARK: - Variables
+
     @objc public var type: AdditionalFieldType
     @objc public var value: String = ""
     @objc public var serverName: String = ""
 
-    // MARK:- Initialisation
-    
+    // MARK: - Initialisation
+
     @objc(initWithType:value:)
     /// - Parameters:
     ///   - type:  Type of additional field, one of AdditionalFieldType
@@ -27,7 +27,7 @@ public class AdditionalField: NSObject {
         self.type = type
         self.value = value
     }
-    
+
     @objc(initWithCustomName:value:)
     /// - Parameters:
     ///   - customName: Custom field key

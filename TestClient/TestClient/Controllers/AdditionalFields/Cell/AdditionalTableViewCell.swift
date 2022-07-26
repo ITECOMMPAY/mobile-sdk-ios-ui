@@ -16,16 +16,16 @@ import ecommpaySDK
 #endif
 
 class AdditionalTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var editFieldKey: UITextField!
     var additionalField: AdditionalField!
     public static let identifier: String = "AdditionalTableViewCell"
-    
+
     private let EDIT_TEXT_KEY_TAG = 100
-    
-    func setup(field:AdditionalField) {
+
+    func setup(field: AdditionalField) {
         self.additionalField = field
         self.textField.text = field.value
         self.labelName?.text = getNameByType(type: field.type)
@@ -39,8 +39,8 @@ extension AdditionalTableViewCell: UITextFieldDelegate {
             let textRange = Range(range, in: text) {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
-            
-            if(textField.tag == EDIT_TEXT_KEY_TAG) {
+
+            if textField.tag == EDIT_TEXT_KEY_TAG {
                self.additionalField.serverName = updatedText
             } else {
                 self.additionalField.value = updatedText

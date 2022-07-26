@@ -12,7 +12,7 @@ class ThreeDSecureVO: NSObject {
     var type: String = ""
     var json: String?
     var defaultJson: String = ""
-    
+
     @objc(type:defaultJson:)
     public init(type: String, defaultJson: String) {
         self.type = type

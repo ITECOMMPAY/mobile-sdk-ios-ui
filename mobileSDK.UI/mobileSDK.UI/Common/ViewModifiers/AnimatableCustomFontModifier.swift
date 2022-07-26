@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 /// A view modifier that makes the view's font size animatable.
 ///
 /// Inspired by Paul Hudson's <https://www.hackingwithswift.com/quick-start/swiftui/how-to-animate-the-size-of-text>

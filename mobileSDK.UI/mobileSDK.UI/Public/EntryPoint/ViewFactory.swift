@@ -9,9 +9,10 @@ import SwiftUI
 import Combine
 
 public struct ViewFactory {
-    public static func assemblePaymentMethodsView(futureData: AnyPublisher<PaymentMethodsData, CoreError>,
+    public static func assemblePaymentMethodsView(staticData: (summary: PaymentSummaryData, details: [PaymentDetailData]),
+                                                  initPublisher: AnyPublisher<InitEvent, CoreError>,
                                                   onDismiss completion: @escaping () -> Void) -> some View {
-        let viewModel = PaymentMethodsViewModel(futureData: futureData)
+        let viewModel = PaymentMethodsViewModel(staticInfo: staticData, futureData: initPublisher)
         viewModel.dismissCompletion = completion
         let view = PaymentMethodsView(viewModel: viewModel)
         return view
