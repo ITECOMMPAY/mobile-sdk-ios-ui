@@ -158,7 +158,7 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
             switch method.methodType {
             case .card:
                 if  let loadedState = viewModel.state.loadedState {
-                    NewCardCheckoutView(methodCardTypes: method.methodCardTypes,
+                    NewCardCheckoutView(paymentMethod: method,
                                         paymentAmount: loadedState.paymentSummary.value,
                                         paymentCurrency: loadedState.paymentSummary.currency) {
                         viewModel.dispatch(intent: $0)

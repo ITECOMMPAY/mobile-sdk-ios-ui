@@ -9,6 +9,10 @@ import MsdkCore
 import mobileSDK_UI
 
 extension MsdkCore.PaymentMethod: mobileSDK_UI.PaymentMethod {
+    public var cardTypeRecognizer: CardTypeRecognizer {
+        self.cardTypesManager
+    }
+
     public var methodCardTypes: [mobileSDK_UI.PaymentMethodCard] {
         self.cardTypes as [mobileSDK_UI.PaymentMethodCard]
     }
@@ -55,3 +59,35 @@ extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {}
 extension MsdkCore.PaymentStatus: mobileSDK_UI.PaymentStatus {}
 extension MsdkCore.Payment: mobileSDK_UI.Payment {}
 extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {}
+
+class StringResourceManagerAdapter:  mobileSDK_UI.StringResourceManager {
+    func getLinkMessageByKey(key: String) -> TranslationWithLink {
+        return manger.getLinkMessageByKey(key: key)
+    }
+
+    func getStringByKey(key: String) -> String {
+        manger.getStringByKey(key: key)
+    }
+
+    let manger: MsdkCore.StringResourceManager
+
+    init(manger: MsdkCore.StringResourceManager) {
+        self.manger = manger
+    }
+}
+
+extension LinkMessage: TranslationWithLink {
+    public var name: String? {
+        self.message
+    }
+
+    public var messageLinks: [mobileSDK_UI.Link]? {
+        return links
+    }
+}
+
+extension MsdkCore.Link: mobileSDK_UI.Link {
+    public var messageLink: String? {
+        message
+    }
+}

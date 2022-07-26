@@ -26,7 +26,7 @@ struct ExpiryField: View {
 
     var body: some View {
         FormTextField($expiryString,
-                      placeholder: L.title_expiration.string,
+                      placeholder: disabled ? L.title_expiration.string : L.title_expiration_placeholder.string,
                       keyboardType: .numberPad,
                       secure: false,
                       isValidCharacter: allowedCharacters,

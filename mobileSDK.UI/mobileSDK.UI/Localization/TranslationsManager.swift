@@ -8,27 +8,22 @@
 
 import Foundation
 
-struct TranslationWithLink: Codable {
-    let name: String?
-    let message: String?
-    let links: [Link]?
+public protocol TranslationWithLink {
+    var name: String? { get }
+    var message: String? { get }
+    var messageLinks: [Link]? { get }
 }
 
-struct Link: Codable {
-    let url: String?
-    let messageLink: String?
-
-    enum CodingKeys: String, CodingKey {
-        case url
-        case messageLink = "message_link"
-    }
+public protocol Link {
+    var url: String? { get }
+    var messageLink: String? { get }
 }
 
 extension TranslationWithLink {
     var attributedString: NSAttributedString {
         guard let message = message else { return NSAttributedString(string: "") }
         let result = NSMutableAttributedString(string: message)
-        for linkStruct in links ?? [] {
+        for linkStruct in messageLinks ?? [] {
             if let text = linkStruct.messageLink, let link = linkStruct.url {
                 let range = result.mutableString.range(of: text)
                 result.setAttributes([.link: link], range: range)
@@ -39,28 +34,19 @@ extension TranslationWithLink {
 }
 
 class TranslationsManager {
-    // @Injected var resourceManager: StringResourceManger
+    @Injected var resourceManager: StringResourceManager?
+
     static let shared = TranslationsManager()
 
     private init() {}
 
-    private var languageDict: [String: String] = [:]
-    private(set) var language: String?
-
-    func setLanguageDict(_ languageDict: [String: String], forLanguage language: String?) {
-        self.languageDict = languageDict
-        self.language = language
-    }
-
-    func setValueToDict(value: String, key: String) {
-      self.languageDict[key] = value
-    }
-
     func stringValue(for key: String) -> String? {
-        guard let translationWithLink = getTranslationWithLink(for: key) else {
-            return languageDict[key]
+        if let string = resourceManager?.getStringByKey(key: key) {
+            return string
+        } else if let translationWithLink = resourceManager?.getLinkMessageByKey(key: key) {
+            return translationWithLink.message
         }
-        return translationWithLink.message
+        return nil
     }
 
     func hasLinksInValue(for key: String) -> Bool {
@@ -68,17 +54,11 @@ class TranslationsManager {
     }
 
     func getTranslationWithLink(for key: String) -> TranslationWithLink? {
-        guard let translation = languageDict[key]
-        else {
-            return nil
-        }
-        if  translation.first == "{" {
-            if let jsonData = translation.data(using: .utf8) {
-                return try? JSONDecoder().decode(TranslationWithLink.self, from: jsonData)
-            }
-        } else {
-            return TranslationWithLink(name: nil, message: translation, links: nil)
-        }
-        return nil
+        return resourceManager?.getLinkMessageByKey(key: key)
     }
+}
+
+public protocol StringResourceManager {
+    func getLinkMessageByKey(key: String) -> TranslationWithLink
+    func getStringByKey(key: String) -> String
 }

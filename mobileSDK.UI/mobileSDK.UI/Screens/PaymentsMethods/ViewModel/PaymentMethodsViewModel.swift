@@ -112,30 +112,13 @@ class PaymentMethodsViewModel: PaymentMethodsViewModelProtocol {
             }, receiveValue: { [weak self] payEvent in
                 guard let self = self else { return }
                 switch payEvent {
-                case .onCustomerFields(customerFields: let customerFields):
+                default:
                     // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onCustomerFields Unimplemented"))
-                case .onClarificationFields(clarificationFields: let clarificationFields, payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onClarificationFields Unimplemented"))
-                case .onCompleteWithDecline(payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onCompleteWithDecline Unimplemented"))
-                case .onCompleteWithFail(status: let status, payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onCompleteWithFail Unimplemented"))
-                case .onCompleteWithSuccess(payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onCompleteWithSuccess Unimplemented"))
-                case .onPaymentCreated:
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onPaymentCreated Unimplemented"))
-                case .onStatusChanged(status: let status, payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onStatusChanged Unimplemented"))
-                case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
-                    // TODO: Implement later
-                    self.state = .closed(withError: CoreError(code: .unknown, message: "onThreeDSecure Unimplemented"))
+                    self.state = .closed(
+                        withError:
+                            CoreError(code: .unknown,
+                                      message: "\(String(describing: payEvent)) event handling is unimplemented")
+                    )
                 }
             })
     }

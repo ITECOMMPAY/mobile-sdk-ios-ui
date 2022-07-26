@@ -8,7 +8,7 @@
 import mobileSDK_UI
 import MsdkCore
 
-extension MsdkCore.CardTypesManager: mobileSDK_UI.CardTypesManager {
+extension MsdkCore.CardTypesManager: mobileSDK_UI.CardTypeRecognizer {
     public func getCardType(for pan: String) -> mobileSDK_UI.PaymentMethodCard? {
         return self.search(pan: pan)
     }
@@ -23,13 +23,6 @@ extension MsdkCore.PaymentMethodCard: mobileSDK_UI.PaymentMethodCard {
     }
 
     public var cardType: CardType {
-        CardType.init(rawValue: self.type.value) ?? .unknown
-    }
-}
-
-struct CardTypesManagerFabric: mobileSDK_UI.CardTypesManagerFabric {
-    func create(with cardTypes: [mobileSDK_UI.PaymentMethodCard]) -> mobileSDK_UI.CardTypesManager? {
-        //TODO: Remove forcecasting
-        MsdkCore.CardTypesManager(cardTypes: cardTypes as! [MsdkCore.PaymentMethodCard])
+        return CardType.createFrom(self.type)
     }
 }

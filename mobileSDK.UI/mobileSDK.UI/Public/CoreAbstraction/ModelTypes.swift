@@ -18,9 +18,9 @@ public enum PayEvent {
     // received clarification fields, which need to fill and send
     case onClarificationFields(clarificationFields: [ClarificationField], payment: Payment)
 
-    case onCompleteWithDecline(payment: Payment)
+    case onCompleteWithDecline(paymentMessage: String?, payment: Payment)
 
-    case onCompleteWithFail(status: String?, payment: Payment)
+    case onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: Payment)
 
     case onCompleteWithSuccess(payment: Payment)
 
@@ -42,6 +42,7 @@ public protocol PaymentMethod {
     var methodType: PaymentMethodType { get }
     var name: String? { get }
     var methodCardTypes: [PaymentMethodCard] { get }
+    var cardTypeRecognizer: CardTypeRecognizer { get }
 }
 
 public protocol SavedAccount {
