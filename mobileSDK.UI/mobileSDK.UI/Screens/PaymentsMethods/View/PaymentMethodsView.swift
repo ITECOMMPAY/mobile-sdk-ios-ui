@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     @ObservedObject var viewModel: VM
-    @State private var expandedMethodID: Int64?
+    @State private var expandedListEntryID: String?
 
     public var body: some View {
         return BottomCardView(cardShown: viewModel.state.isVisible) {
             VStack(alignment: .leading, spacing: UIScheme.dimension.middleSpacing) {
-                HStack(alignment: .center){
+                HStack(alignment: .center) {
                     ScreenHeader(text: L.title_payment_methods.string)
                     Spacer()
                     CloseButton {
@@ -39,11 +39,11 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
                     paymentMethodsList
                     PolicyView()
                         .padding(.top, UIScheme.dimension.middleSpacing)
+                    FooterView()
+                        .padding(.bottom, UIScheme.dimension.largeSpacing)
                 case .closed:
                     EmptyView()
                 }
-                FooterView()
-                    .padding(.bottom, UIScheme.dimension.largeSpacing)
             }
             .padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
@@ -75,7 +75,7 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
             .frame(height: 150)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
         HStack {
-            ForEach((0..<2), id: \.self)  {_ in
+            ForEach((0..<2), id: \.self) {_ in
                 RedactedView()
                     .cornerRadius(UIScheme.dimension.buttonCornerRadius)
             }
@@ -84,7 +84,7 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
 
     private var paymentMethodsPlaceholders: some View {
         VStack(spacing: UIScheme.dimension.smallSpacing) {
-            ForEach((0..<6), id: \.self)  {_ in
+            ForEach((0..<6), id: \.self) {_ in
                 RedactedView()
                     .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
                     .cornerRadius(UIScheme.dimension.buttonCornerRadius)
@@ -93,8 +93,8 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     }
 
     @ViewBuilder
-    private var header: some View  {
-        switch(viewModel.state) {
+    private var header: some View {
+        switch viewModel.state {
         case .loaded(data: let data):
             PaymentDetailsView(details: data.paymentDetails)
         case .loading, .initial:
@@ -107,16 +107,31 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     @ViewBuilder
     private var paymentMethodsList: some View {
         switch viewModel.state {
-        case .loaded(let data):
+        case .loaded(let state):
             VStack(spacing: UIScheme.dimension.smallSpacing) {
-                ForEach(data.availablePaymentMethods, id: \.id) { method in
-                    PaymentMethodCell(methodTitle: method.name,
-                                      methodImage: nil,
-                                      isSavedAccount: method.type == .SavedCard,
-                                      isExpanded: expandedMethodID == method.id,
-                                      content: expandableContent(for: method.type),
-                                      onTap: { expandedMethodID = method.id }
-                    )
+                ForEach(state.mergedList, id: \.id) { listEtity in
+                    switch listEtity.entityType {
+                    case .savedAccount(let savedAccount):
+                        PaymentMethodCell(methodTitle: savedAccount.number ?? "***",
+                                          methodImage: nil,
+                                          isSavedAccount: true,
+                                          isExpanded: expandedListEntryID == listEtity.id,
+                                          content: savedCardView(for: savedAccount)) {
+                            withAnimation {
+                                expandedListEntryID = listEtity.id
+                            }
+                        }
+                    case .paymentMethod(let method):
+                        PaymentMethodCell(methodTitle: method.name ?? method.methodType.rawValue,
+                                          methodImage: nil,
+                                          isSavedAccount: false,
+                                          isExpanded: expandedListEntryID == listEtity.id,
+                                          content: expandableContent(for: method)) {
+                            withAnimation {
+                                expandedListEntryID = listEtity.id
+                            }
+                        }
+                    }
                 }
             }
         default:
@@ -124,15 +139,36 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
         }
     }
 
-    private func expandableContent(for methodType: UISupportedPaymentMethod) -> some View {
+    func savedCardView(for savedAccount: SavedAccount)  -> some View {
+        Group {
+            if let loadedState = viewModel.state.loadedState {
+                SavedCardCheckoutView(paymentAmount: loadedState.paymentSummary.value, paymentCurrency: loadedState.paymentSummary.currency, savedCard: savedAccount) {cvvText in
+                    viewModel.dispatch(intent: .paySavedAccountWith(id: savedAccount.id, cvv: cvvText))
+                } deleteCardAction: {
+                    // TODO: Implement later
+                }
+            } else {
+                EmptyView()
+            }
+        }
+    }
+
+    private func expandableContent(for method: PaymentMethod) -> some View {
         return Group {
-            switch methodType {
-            case .SavedCard:
-                SavedCardCheckoutView()
-            case .ApplePay:
+            switch method.methodType {
+            case .card:
+                if  let loadedState = viewModel.state.loadedState {
+                    NewCardCheckoutView(methodCardTypes: method.methodCardTypes,
+                                        paymentAmount: loadedState.paymentSummary.value,
+                                        paymentCurrency: loadedState.paymentSummary.currency) {
+                        viewModel.dispatch(intent: $0)
+                    }
+                } else {
+                        EmptyView()
+                }
+
+            case .applePay:
                 ApplePayCheckoutView()
-            case .NewCard:
-                NewCardCheckoutView()
             default:
                 Color.red.frame(height: 10)
             }
@@ -140,19 +176,44 @@ struct PaymentMethodsView<VM: PaymentMethodsViewModelProtocol>: View {
     }
 }
 
+private struct PaymentMethodsListEntity {
+    let entityType: PaymentMethodsListEntityType
+    var id: String {
+        switch entityType {
+        case .savedAccount(let savedAccount):
+            return String(savedAccount.id)
+        case .paymentMethod(let paymentMethod):
+            return paymentMethod.methodType.rawValue + (paymentMethod.name ?? "")
+        }
+    }
+}
+
+private enum PaymentMethodsListEntityType {
+    case savedAccount(SavedAccount)
+    case paymentMethod(PaymentMethod)
+}
+
+private extension PaymentMethodsLoadedState {
+    var mergedList: [PaymentMethodsListEntity] {
+        self.savedAccounts.map {  PaymentMethodsListEntity(entityType: .savedAccount($0))  }
+        + self.availablePaymentMethods.map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
+    }
+}
+
 #if DEBUG
 
 struct PaymentMethodsView_Previews: PreviewProvider {
+    /*
     typealias PaymentMethodsPreviewModel = StaticViewModel<PaymentMethodsViewState, PaymentMethodsIntent>
 
-    static let previewModel = PaymentMethodsPreviewModel(
-        state: .initial,
-        intentReducers: [.close : { _ in return .closed(withError: nil)}]
-    )
-
+     static let previewModel = PaymentMethodsPreviewModel(
+     state: .initial,
+     intentReducers: [.close : { _ in return .closed(withError: nil)}]
+     )
+     */
     static var backgroundAppImitation: some View {
         VStack {
-            ForEach((1...50), id: \.self)  {_ in
+            ForEach((1...50), id: \.self) {_ in
                 Color(red: .random(in: 0...1),
                       green: .random(in: 0...1),
                       blue: .random(in: 0...1),
@@ -165,33 +226,34 @@ struct PaymentMethodsView_Previews: PreviewProvider {
         Group {
             ZStack {
                 backgroundAppImitation
-                PaymentMethodsView(viewModel: previewModel).onAppear {
-                    previewModel.state = .loading
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        previewModel.state = .loaded(
-                            data: PaymentMethodsData(
-                                paymentDetails: [
-                                    PaymentDetailData(title: "PaymentID", description: "123", canBeCopied: true)
-                                ],
-                                paymentSummary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
-                                                                   currency: "RUB",
-                                                                   value: 100,
-                                                                   isVatIncluded: true),
-                                availablePaymentMethods: [
-                                    PaymentMethod(id: 1, name: "**** 3456", type: .SavedCard),
-                                    PaymentMethod(id: 2, name: "**** 5555", type: .SavedCard),
-                                    PaymentMethod(id: 3, name: "Bank Card", type: .NewCard),
-                                    PaymentMethod(id: 4, name: "Apple Pay", type: .ApplePay),
-                                ]
-                            )
-                        )
-                    }
-                }
+                // TODO: Repair preview
+                /*
+                 PaymentMethodsView(viewModel: previewModel).onAppear {
+                 previewModel.state = .loading
+                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                 previewModel.state = .loaded(
+                 data: PaymentMethodsData(
+                 paymentDetails: [
+                 PaymentDetailData(title: "PaymentID", description: "123", canBeCopied: true)
+                 ],
+                 paymentSummary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
+                 currency: "RUB",
+                 value: 100,
+                 isVatIncluded: true),
+                 availablePaymentMethods: [
+                 PaymentMethod(id: 1, name: "**** 3456", type: .SavedCard),
+                 PaymentMethod(id: 2, name: "**** 5555", type: .SavedCard),
+                 PaymentMethod(id: 3, name: "Bank Card", type: .NewCard),
+                 PaymentMethod(id: 4, name: "Apple Pay", type: .ApplePay),
+                 ]
+                 )
+                 )
+                 }
+                 }
+                 */
             }.edgesIgnoringSafeArea(.vertical)
         }
     }
 }
-
-extension PaymentMethodsView_Previews.PaymentMethodsPreviewModel: PaymentMethodsViewModelProtocol {}
 
 #endif

@@ -23,7 +23,7 @@ extension L {
 extension String {
     func localized(bundle: Bundle = SDKBundle.get(), tableName: String = "Localizable") -> String {
         // at first try to get string from TranslationsManager, if its not available then try to return one from bundle (current flow)
-        
+
         if let translation = TranslationsManager.shared.stringValue(for: self) {
             return translation
         }

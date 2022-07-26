@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct SavedCardCheckoutView: View {
-    @State var cvvText: String = ""
-    var payAction: () -> Void = {}
-    var deleteCardAction: () -> Void = {}
+    let paymentAmount: Decimal
+    let paymentCurrency: String
+    let savedCard: SavedAccount?
+
+     @State private var cvvText: String = ""
+     @State private var isValid: Bool = false
+
+    var payAction: (_ cvvText: String) -> Void
+    var deleteCardAction: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,11 +27,14 @@ struct SavedCardCheckoutView: View {
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
-            PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB")), action: payAction)
-                .padding(.bottom, UIScheme.dimension.middleSpacing)
+            PayButton(label: PayButtonLabel(style: .Pay(paymentAmount, currency: paymentCurrency)),
+                      disabled: !isValid) {
+                payAction(cvvText)
+            }
+            .disabled(!isValid)
+            .padding(.bottom, UIScheme.dimension.middleSpacing)
 
-
-            LinkButton(text: "Delete Card",
+            LinkButton(text: L.button_delete.string,
                        fontSize: UIScheme.dimension.smallFont,
                        foregroundColor: UIScheme.color.deleteCardButtonColor,
                        onTap: deleteCardAction)
@@ -34,33 +43,25 @@ struct SavedCardCheckoutView: View {
     }
 
     var dateField: some View {
-        FormTextField.init(.constant("07/23"),
-                           placeholder: "Expiration",
-                           required: false,
-                           hint: .constant(""),
-                           valid: .constant(true),
-                           disabled: .constant(true),
-                           accessoryView: EmptyView())
+        ExpiryField(disabled: true, expiryString: .constant(savedCard?.savedCardExpiry?.stringValue ?? ""), isValid: .constant(true))
     }
 
     var cvvField: some View {
-        FormTextField.init($cvvText,
-                           placeholder: "CVC",
-                           secure: true,
-                           required: true,
-                           hint: .constant(""),
-                           valid: .constant(true),
-                           disabled: .constant(false),
-                           accessoryView: EmptyView())
+        CvvField(showValidation: false, cvv: $cvvText, isValid: $isValid)
     }
 }
 
 #if DEBUG
-
+// TODO: repare preview
+/*
 struct SavedCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        SavedCardCheckoutView().previewLayout(.sizeThatFits)
+
+
+        SavedCardCheckoutView.init(paymentAmount: 100.50, paymentCurrency: "RUB", savedCard: nil, expiryString: "12/24")
+            .previewLayout(.sizeThatFits)
+
     }
 }
-
+ */
 #endif

@@ -5,7 +5,6 @@
 //  Created by Ivan Krapivev on 10.06.2022.
 //
 
-
 import SwiftUI
 
 #if DEBUG
@@ -19,10 +18,9 @@ struct RedactedView_Previews: PreviewProvider {
 }
 #endif
 
-struct RedactedView : View {
-    var body : some View{
+struct RedactedView: View {
+    var body : some View {
         UIScheme.color.shimmeringBackground
             .shimmering()
     }
 }
-

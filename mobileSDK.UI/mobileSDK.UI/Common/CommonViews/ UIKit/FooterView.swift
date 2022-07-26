@@ -24,4 +24,3 @@ struct FooterView_Previews: PreviewProvider {
 }
 
 #endif
-

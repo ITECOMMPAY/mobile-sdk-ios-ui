@@ -22,6 +22,7 @@ struct BottomCardView<Header: View, Content: View>: View {
 
     @State private var fixedAreaHeight: CGFloat = 40
     @State private var scrollableAreaHeight: CGFloat = 40
+    @State private var allHeight: CGFloat = 40
 
     init(cardShown: Bool = false, sizingBehavior: SizingBehavior = .proportionalToScreen(0.9),
          @ViewBuilder header: () -> Header,
@@ -37,37 +38,38 @@ struct BottomCardView<Header: View, Content: View>: View {
     }
 
     private var cardHeight: CGFloat {
-        switch (sizingBehavior) {
+        switch sizingBehavior {
         case .proportionalToScreen(let ratio):
             return UIScreen.main.bounds.height * ratio
         case .wrapContent:
-            return min(UIScreen.main.bounds.height * 0.9, contentHeight)
+            return min(allHeight * 0.9, contentHeight)
         }
     }
 
     var body: some View {
         ZStack {
-            GeometryReader { _ in
-                Spacer()
+            GeometryReader { reader in
+                Spacer().onAppear {
+                    allHeight = reader.size.height
+                }
             }.background(UIScheme.color.dimming)
                 .opacity(cardShown ? 1 : 0)
                 .animation(Animation.easeIn)
             VStack {
                 VStack {
-                    VStack {
-                        header
-                    }.background(GeometryReader { geo -> Color in
-                        DispatchQueue.main.async {
+                    header.background(GeometryReader { geo in
+                        Color.clear.onAppear {
                             fixedAreaHeight = geo.size.height
                         }
-                        return Color.clear
                     })
-                    ScrollView {
-                        content.background(GeometryReader { geo -> Color in
-                            DispatchQueue.main.async {
+                    List {
+                        content
+                            .buttonStyle(.plain)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: -1, trailing: 0))
+                            .background(GeometryReader { geo in
+                            Color.clear.onAppear {
                                 scrollableAreaHeight = geo.size.height
                             }
-                            return Color.clear
                         })
                     }
                 }
@@ -129,6 +131,3 @@ struct BottomCardView_Previews: PreviewProvider {
 }
 
 #endif
-
-
-

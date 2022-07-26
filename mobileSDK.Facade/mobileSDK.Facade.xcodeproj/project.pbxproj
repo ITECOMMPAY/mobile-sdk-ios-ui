@@ -21,6 +21,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */; };
+		8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */; };
+		8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */; };
+		8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */; };
 		845507D0285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */; };
 		845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BC285B0463002BBFE0 /* SDKInteractor.swift */; };
 		845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BD285B0463002BBFE0 /* PaymentResult.swift */; };
@@ -32,6 +36,12 @@
 		845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; };
 		845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */; };
 		845507DE285B0463002BBFE0 /* ECMPCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507CA285B0463002BBFE0 /* ECMPCallback.swift */; };
+		84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241672887D83C00259A50 /* ECMPConfigDev.swift */; };
+		84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
+		84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241822889069A00259A50 /* PayDelegateProxy.swift */; };
+		84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419E2889653500259A50 /* ProtocolConformance.swift */; };
+		84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
+		84B241A8288A61B700259A50 /* PaymentMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A7288A61B700259A50 /* PaymentMethodType.swift */; };
 		84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13D12852086E008814EB /* mobileSDK_Facade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84BC4F5B285843C800CD7EA5 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; };
 		84BC4F5F285843C800CD7EA5 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -84,6 +94,10 @@
 		2D38AA9484EED6C89A997829 /* Pods_ecommpaySDK_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ecommpaySDK_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F9F57D9EADF618A190DE0A9 /* Pods-ecommpaySDK-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		5CA2540030ED3E4B21D9A029 /* Pods-ecommpaySDK-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
+		8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInteractorWrapper.swift; sourceTree = "<group>"; };
+		8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRequestFactory.swift; sourceTree = "<group>"; };
+		8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypesManager.swift; sourceTree = "<group>"; };
 		845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
 		845507BC285B0463002BBFE0 /* SDKInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDKInteractor.swift; sourceTree = "<group>"; };
 		845507BD285B0463002BBFE0 /* PaymentResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentResult.swift; sourceTree = "<group>"; };
@@ -95,6 +109,13 @@
 		845507C8285B0463002BBFE0 /* EcommpaySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommpaySDK.h; sourceTree = "<group>"; };
 		845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPScreenDisplayMode.swift; sourceTree = "<group>"; };
 		845507CA285B0463002BBFE0 /* ECMPCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPCallback.swift; sourceTree = "<group>"; };
+		84B241672887D83C00259A50 /* ECMPConfigDev.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfigDev.swift; sourceTree = "<group>"; };
+		84B2416D2887D83C00259A50 /* ECMPConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfig.swift; sourceTree = "<group>"; };
+		84B2416E2887D83C00259A50 /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		84B241822889069A00259A50 /* PayDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDelegateProxy.swift; sourceTree = "<group>"; };
+		84B2419E2889653500259A50 /* ProtocolConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConformance.swift; sourceTree = "<group>"; };
+		84B241A028896AB200259A50 /* BaseDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateProxy.swift; sourceTree = "<group>"; };
+		84B241A7288A61B700259A50 /* PaymentMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodType.swift; sourceTree = "<group>"; };
 		84BC13D12852086E008814EB /* mobileSDK_Facade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_Facade.h; sourceTree = "<group>"; };
 		84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.UI.xcodeproj; path = ../mobileSDK.UI/mobileSDK.UI.xcodeproj; sourceTree = "<group>"; };
 		84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +158,23 @@
 			path = ../TestClient/Pods;
 			sourceTree = "<group>";
 		};
+		8421F8E5288EBF8700B6EED2 /* PayInteractorWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */,
+				8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */,
+			);
+			path = PayInteractorWrapper;
+			sourceTree = "<group>";
+		};
+		8421F8ED288FC1FF00B6EED2 /* CardTypesManagerAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */,
+			);
+			path = CardTypesManagerAdapter;
+			sourceTree = "<group>";
+		};
 		845507B6285B0463002BBFE0 /* Facade */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,8 +188,8 @@
 		845507B8285B0463002BBFE0 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				84F705C1287C531F00E7CD12 /* CoreDelegates */,
-				84EFA1602877086C0043C360 /* CoreAdapters */,
+				84B241A2288A5AD900259A50 /* Core */,
+				84B241652887D83C00259A50 /* Config */,
 				845507B9285B0463002BBFE0 /* ScreenDisplayMode.swift */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
@@ -204,6 +242,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84B241652887D83C00259A50 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				84B241672887D83C00259A50 /* ECMPConfigDev.swift */,
+				84B2416D2887D83C00259A50 /* ECMPConfig.swift */,
+				84B2416E2887D83C00259A50 /* NetworkConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		84B241A2288A5AD900259A50 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8421F8ED288FC1FF00B6EED2 /* CardTypesManagerAdapter */,
+				8421F8E5288EBF8700B6EED2 /* PayInteractorWrapper */,
+				84B2419E2889653500259A50 /* ProtocolConformance.swift */,
+				84F705C1287C531F00E7CD12 /* CoreDelegates */,
+				84EFA1602877086C0043C360 /* CoreAdaptersAndConverters */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		84BC13C42852086E008814EB = {
 			isa = PBXGroup;
 			children = (
@@ -251,18 +311,22 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		84EFA1602877086C0043C360 /* CoreAdapters */ = {
+		84EFA1602877086C0043C360 /* CoreAdaptersAndConverters */ = {
 			isa = PBXGroup;
 			children = (
 				84EFA163287708850043C360 /* CoreErrorCode.swift */,
+				84B241A7288A61B700259A50 /* PaymentMethodType.swift */,
+				8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */,
 			);
-			path = CoreAdapters;
+			path = CoreAdaptersAndConverters;
 			sourceTree = "<group>";
 		};
 		84F705C1287C531F00E7CD12 /* CoreDelegates */ = {
 			isa = PBXGroup;
 			children = (
 				84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */,
+				84B241822889069A00259A50 /* PayDelegateProxy.swift */,
+				84B241A028896AB200259A50 /* BaseDelegateProxy.swift */,
 			);
 			path = CoreDelegates;
 			sourceTree = "<group>";
@@ -415,13 +479,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */,
 				84D87CE2285C7EC20009FD38 /* UIColor+Hex.swift in Sources */,
 				84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */,
+				8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */,
 				845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */,
 				845507DB285B0463002BBFE0 /* ECPPaymentResult.swift in Sources */,
 				845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */,
 				84D87CEC285C81B00009FD38 /* ThreeDSecureInfo.swift in Sources */,
+				8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */,
+				8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */,
+				84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */,
 				84D87CE0285C7E6A0009FD38 /* ECPTheme.swift in Sources */,
+				84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */,
 				84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */,
 				84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */,
 				84D87CDF285C7E6A0009FD38 /* ColorTheme.swift in Sources */,
@@ -429,12 +499,16 @@
 				84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */,
 				845507DA285B0463002BBFE0 /* ECPPaymentStatus.swift in Sources */,
 				845507D7285B0463002BBFE0 /* PaymentOptions.swift in Sources */,
+				84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */,
+				84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */,
 				845507D8285B0463002BBFE0 /* Payment.swift in Sources */,
 				845507D0285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */,
+				84B241A8288A61B700259A50 /* PaymentMethodType.swift in Sources */,
 				845507DE285B0463002BBFE0 /* ECMPCallback.swift in Sources */,
 				84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */,
 				845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */,
 				845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */,
+				8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +566,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -549,7 +623,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -15,23 +15,23 @@ import jetpayhostsSDK
 import ecommpaySDK
 #endif
 
-class ThreeDSecureDTO : NSObject {
+class ThreeDSecureDTO: NSObject {
     @objc var isSendData: Bool = false
     @objc var threeDSecureObject: ThreeDSecureInfo?
-    
+
     override init() {}
-    
+
     @objc(isSendData:threeDSecureObject:)
     init(_ isSendData: Bool, _ threeDSecureObject: ThreeDSecureInfo) {
         self.isSendData = isSendData
         self.threeDSecureObject = threeDSecureObject
     }
-    
+
     @objc(isSendParams)
     public func isSendParams() -> Bool {
         return self.isSendData
     }
-    
+
     @objc(getThreeDSecureObject)
     public func getThreeDSecureObject() -> ThreeDSecureInfo? {
         return threeDSecureObject

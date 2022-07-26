@@ -14,16 +14,16 @@ class ThemeViewController: UIViewController {
 
     @IBOutlet weak var tableViewTheme: UITableView!
     @IBOutlet weak var themeSwitch: UISwitch!
-    
+
     var currentViewToColor: UIView?
-    var indexToUpdateTheme: Int = 0 //TODO: remove
+    var indexToUpdateTheme: Int = 0 // TODO: remove
     var currentNameToUpdate: String = ""
     var colorController: EFColorSelectionViewController?
     var themeObjects: [ThemeObject] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         reset()
         self.tableViewTheme.delegate = self
         themeSwitch.isOn = ThemeSetup.shared.isDarkThemeOn
@@ -34,33 +34,33 @@ class ThemeViewController: UIViewController {
         ThemeSetup.shared.theme = ThemeSetup.shared.isDarkThemeOn ? ECPTheme.getDarkTheme() : ECPTheme.getLightTheme()
         reset()
     }
-    
+
     @IBAction func onDonePress(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func onSwitchValueChange(_ sender: UISwitch) {
         ThemeSetup.shared.isDarkThemeOn = sender.isOn
         ThemeSetup.shared.theme = ThemeSetup.shared.isDarkThemeOn ? ECPTheme.getDarkTheme() : ECPTheme.getLightTheme()
         reset()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "EFColorSelectionViewController") {
+        if segue.identifier == "EFColorSelectionViewController" {
             let vc = segue.destination as! EFColorSelectionViewController
             vc.delegate = self
             vc.isColorTextFieldHidden = false
             colorController = vc
         }
     }
-    
+
     func reset() {
         themeObjects.removeAll()
         composeThemeObjects(currentTheme: ThemeSetup.shared.theme)
         tableViewTheme.reloadData()
     }
-    
-    func composeThemeObjects(currentTheme:ECPTheme) {
+
+    func composeThemeObjects(currentTheme: ECPTheme) {
         self.themeObjects.append(ThemeObject(name: ThemeObjectConstNames.overlayColor.rawValue))
         self.themeObjects.append(ThemeObject(name: ThemeObjectConstNames.backgroundColor.rawValue))
         self.themeObjects.append(ThemeObject(name: ThemeObjectConstNames.headingTextColor.rawValue))
@@ -87,7 +87,7 @@ class ThemeViewController: UIViewController {
         self.themeObjects.append(ThemeObject(name: ThemeObjectConstNames.apsLogoOnly.rawValue, isBoolValue: true, boolValue: ThemeSetup.shared.theme.apsLogoOnly))
         self.themeObjects.append(ThemeObject(name: ThemeObjectConstNames.showLightAPSLogos.rawValue, isBoolValue: true, boolValue: ThemeSetup.shared.theme.showLightAPSLogos))
     }
-    
+
     func updateTheme(name: String, color: UIColor) {
         switch name {
         case ThemeObjectConstNames.overlayColor.rawValue:                       ThemeSetup.shared.theme.overlayColor = color
@@ -113,7 +113,7 @@ class ThemeViewController: UIViewController {
             break
         }
     }
-    
+
     func updateTheme(name: String, boolValue: Bool) {
         switch name {
         case ThemeObjectConstNames.showShadow.rawValue:               ThemeSetup.shared.theme.showShadow = boolValue
@@ -126,7 +126,7 @@ class ThemeViewController: UIViewController {
             break
         }
     }
-    
+
     func getColorForThemeName(name: String) -> UIColor {
         switch name {
         case ThemeObjectConstNames.overlayColor.rawValue:                       return ThemeSetup.shared.theme.overlayColor
@@ -157,11 +157,11 @@ class ThemeViewController: UIViewController {
 extension ThemeViewController: EFColorSelectionViewControllerDelegate {
     func colorViewController(_ colorViewCntroller: EFColorSelectionViewController,
                              didChangeColor color: UIColor) {
-        
+
         if let currentViewToColor = self.currentViewToColor {
             currentViewToColor.backgroundColor = color
         }
-        
+
         updateTheme(name: currentNameToUpdate, color: color)
     }
 }
@@ -170,11 +170,11 @@ extension ThemeViewController: ThemeTableViewCellDelegate {
     func onBoolSelectionChange(item: String, newBoolValue: Bool) {
         updateTheme(name: item, boolValue: newBoolValue)
     }
-    
+
     func onColorSelectionStart(item: String, view: UIView) {
         clearSelection()
         currentNameToUpdate = item
-        
+
         if let colorController = self.colorController {
             currentViewToColor = view
             colorController.color = view.backgroundColor ?? UIColor.white
@@ -186,23 +186,23 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, UIScr
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.themeObjects.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let themeObject = self.themeObjects[indexPath.row]
         let cell: ThemeTableViewCell = tableView.dequeueReusableCell(withIdentifier: ThemeTableViewCell.identifier, for: indexPath) as! ThemeTableViewCell
         cell.delegate = self
-        if(themeObject.isBoolValue) {
+        if themeObject.isBoolValue {
             cell.setup(name: themeObject.name, value: themeObject.boolValue)
         } else {
             cell.setup(name: themeObject.name, color: getColorForThemeName(name: themeObject.name))
         }
-        
+
         cell.selected(selected: false)
-        
+
         return cell
     }
-    
+
     func clearSelection() {
         for item in self.tableViewTheme!.visibleCells {
             if let item = item as? ThemeTableViewCell {
@@ -210,7 +210,7 @@ extension ThemeViewController: UITableViewDelegate, UITableViewDataSource, UIScr
             }
         }
     }
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.currentNameToUpdate = ""
         self.currentViewToColor = nil

@@ -17,12 +17,12 @@ class ThreeDSecureParamsHelper: NSObject {
 
     @objc func getThreeDSecureInfo() -> ThreeDSecureInfo {
         let threeDSecureInfo = ThreeDSecureInfo()
-        
+
         let gifCard = ThreeDSecureGiftCardInfo()
         gifCard.amount = 12345
         gifCard.currency = "USD"
         gifCard.count = 1
-        
+
         let threeDSecurePaymentInfo = ThreeDSecurePaymentInfo()
         threeDSecurePaymentInfo.setReorder(reorder: "01")
         threeDSecurePaymentInfo.setPreorderPurchase(preorderPurchase: "01")
@@ -36,14 +36,14 @@ class ThreeDSecureParamsHelper: NSObject {
         let threeDSecureMpiResultInfo = ThreeDSecureMpiResultInfo()
         let threeDSecureShippingInfo = ThreeDSecureShippingInfo()
         threeDSecureAccountInfo.additional = "s"
-        
+
         threeDSecureCustomerInfo.accountInfo = threeDSecureAccountInfo
         threeDSecureCustomerInfo.mpiResultInfo = threeDSecureMpiResultInfo
         threeDSecureCustomerInfo.shippingInfo = threeDSecureShippingInfo
 
         threeDSecureInfo.setThreeDSecurePaymentInfo(threeDSecurePaymentInfo: threeDSecurePaymentInfo)
         threeDSecureInfo.threeDSecureCustomerInfo = threeDSecureCustomerInfo
-        
+
         return threeDSecureInfo
     }
 }

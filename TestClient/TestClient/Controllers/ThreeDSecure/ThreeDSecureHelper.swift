@@ -9,7 +9,7 @@
 import Foundation
 
 class ThreeDSecureHelper {
-    
+
     static func getVO() -> [ThreeDSecureVO] {
         var vo: [ThreeDSecureVO] = []
         let paymentMerchantRiskJson = """
@@ -28,7 +28,7 @@ class ThreeDSecureHelper {
                                             }
                                         }
                                       """
-        
+
         let customerAccountInfo = """
                                     {
                                         "customer": {
@@ -57,7 +57,7 @@ class ThreeDSecureHelper {
                                         }
                                     }
                                   """
-        
+
         let customerShipping = """
                                 {
                                     "customer": {
@@ -77,7 +77,7 @@ class ThreeDSecureHelper {
                                     }
                                 }
                                """
-        
+
         let customerMpiResult = """
                                     {
                                         "customer": {
@@ -89,19 +89,19 @@ class ThreeDSecureHelper {
                                         }
                                     }
                                   """
-        
+
         let billingRegionCode = """
                                   {
                                         "billing_region_code":"ABC"
                                   }
                                 """
-        
+
         vo.append(ThreeDSecureVO(type: "payment_merchant_risk", defaultJson: paymentMerchantRiskJson))
         vo.append(ThreeDSecureVO(type: "customer_account_info", defaultJson: customerAccountInfo))
         vo.append(ThreeDSecureVO(type: "customer_shipping", defaultJson: customerShipping))
         vo.append(ThreeDSecureVO(type: "customer_mpi_result", defaultJson: customerMpiResult))
         vo.append(ThreeDSecureVO(type: "billing_region_code", defaultJson: billingRegionCode))
-        
+
         return vo
     }
 }

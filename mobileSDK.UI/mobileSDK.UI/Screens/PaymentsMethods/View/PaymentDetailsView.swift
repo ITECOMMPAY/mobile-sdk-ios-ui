@@ -24,7 +24,7 @@ struct PaymentDetailsView: View {
         Button {
             expanded.toggle()
         } label: {
-            Text(L.payment_details.string)
+            Text(L.title_payment_information_screen.string)
                 .foregroundColor(UIScheme.color.brandColor)
                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                 .frame(alignment: .leading)
@@ -41,7 +41,7 @@ struct PaymentDetailsView: View {
 
             VStack(alignment: .leading, spacing: UIScheme.dimension.largeSpacing) {
                 ForEach(details, id: \.title) { detail in
-                    PaymentDetailsAttributes(labelText: detail.title,
+                    PaymentDetailsAttributes(labelText: detail.title.string,
                                              descriptionText: detail.description,
                                              canCopy: detail.canBeCopied)
                 }
@@ -93,12 +93,12 @@ struct PaymentDetailsView_Previews: PreviewProvider {
         ZStack {
             Color.red
             PaymentDetailsView(expanded: true, details: [
-                PaymentDetailData(title: "Payment ID",
+                PaymentDetailData(title: L.title_payment_id,
                                   description: "EP2e11-f018-RQR12-26VL-0412CS",
                                   canBeCopied: true),
-                PaymentDetailData(title: "Description",
+                PaymentDetailData(title: L.title_payment_information_description,
                                   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                  canBeCopied: false),
+                                  canBeCopied: false)
 
             ])
 
@@ -107,4 +107,3 @@ struct PaymentDetailsView_Previews: PreviewProvider {
 }
 
 #endif
-

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ApplePaySettingPresenterProtocol {
-    
+
     func onSubmit()
     func changedValue(id: String, title: String, value: String)
     func finish()
@@ -23,17 +23,17 @@ class ApplePaySettingPresenter: ApplePaySettingPresenterProtocol {
             view.setupFields(models: models)
         }
     }
-    
+
     private let view: ApplePaySettingViewControllerProtocol
-    
+
     required init(view: ApplePaySettingViewControllerProtocol) {
         self.view = view
     }
-    
+
     func onSubmit() {
         view.onFinish(models: models)
     }
-    
+
     func changedValue(id: String, title: String, value: String) {
         models = models.map { model in
             var copy = model
@@ -44,11 +44,11 @@ class ApplePaySettingPresenter: ApplePaySettingPresenterProtocol {
             return copy
         }
     }
-    
+
     func finish() {
-        
+
     }
-    
+
     func addNewField() {
         let uniqueId = UUID().uuidString
         models.append(.init(id: uniqueId,

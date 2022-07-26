@@ -54,7 +54,7 @@ enum ImageResourceKeys: String {
 }
 
 extension UIImage {
-    static func getImage(name: String) ->Image? {
+    static func getImage(name: String) -> Image? {
         return Image(name, bundle: SDKBundle.get())
     }
 }

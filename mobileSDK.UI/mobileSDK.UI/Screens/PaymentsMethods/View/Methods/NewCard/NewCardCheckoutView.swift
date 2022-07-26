@@ -8,65 +8,52 @@
 import SwiftUI
 
 struct NewCardCheckoutView: View {
-    var payAction: () -> Void = {}
+    @Injected var cardTypeManageFabric: CardTypesManagerFabric?
+    @Injected var CardExpiryFabric: CardExpiryFabric?
+
+    var methodCardTypes: [PaymentMethodCard]
+    var paymentAmount: Decimal
+    var paymentCurrency: String
+
+    var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
     @State var isCOFAgreementChecked: Bool = false
 
-    @State var cvvText: String = ""
+    @State var cardCVV: String = ""
+    @State var cardNumber: String = ""
+    @State var cardHolder: String = ""
+    @State var cardExpiry: String = ""
 
-    @State var cardNumber:  String = "" {
-        didSet {
-            isCardValid = cardValidator(cardNumber)
-        }
+    @State var isCardValid: Bool = false
+    @State var isCVVValid: Bool = false
+    @State var isCardHolderValid: Bool = false
+    @State var isExpiryValid: Bool = false
+
+    var isFormValid: Bool {
+        [
+            isCardValid,
+            isCVVValid,
+            isCardHolderValid,
+            isExpiryValid,
+        ].allSatisfy { $0 }
     }
 
-    var cardValidator: (String) -> Bool = {
-        !$0.contains {
-            !$0.isNumber
-        }
+    var expiry: CardExpiry {
+        return CardExpiryFabric!.createCardExpiry(with: cardExpiry)
     }
-    @State var isCardValid: Bool = true
-
 
 
     var body: some View {
         VStack(spacing: 0) {
-            FormTextField($cardNumber,
-                          placeholder: "Card Number",
-                          secure: false,
-                          required: true,
-                          hint: .constant(""),
-                          valid: $isCardValid,
-                          disabled: .constant(false),
-                          accessoryView: EmptyView())
+            PanField(cardTypesManager: cardTypeManageFabric?.create(with: methodCardTypes), cardNumber: $cardNumber, isValid: $isCardValid)
             .padding(.top, UIScheme.dimension.formSmallSpacing)
 
-            FormTextField($cardNumber,
-                          placeholder: "Cardholder",
-                          secure: false,
-                          required: true,
-                          hint: .constant(""),
-                          valid: .constant(true),
-                          disabled: .constant(false),
-                          accessoryView: EmptyView())
+            CardHolderField(cardHolder: $cardHolder, isValid: $isCardHolderValid)
             .padding(.top, UIScheme.dimension.formSmallSpacing)
 
-            HStack(spacing: UIScheme.dimension.formSmallSpacing) {
-                FormTextField.init(.constant("07/23"),
-                                   placeholder: "Expiration",
-                                   required: false,
-                                   hint: .constant(""),
-                                   valid: .constant(true),
-                                   disabled: .constant(true),
-                                   accessoryView: EmptyView())
-                FormTextField.init($cvvText,
-                                   placeholder: "CVC",
-                                   secure: true,
-                                   required: true,
-                                   hint: .constant(""),
-                                   valid: .constant(true),
-                                   disabled: .constant(false),
-                                   accessoryView: InfoButton())
+            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
+                ExpiryField(disabled: false, expiryString: $cardExpiry, isValid: $isExpiryValid)
+                CvvField(showValidation: true, cvv: $cardCVV, isValid: $isCVVValid)
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
 
@@ -78,10 +65,10 @@ struct NewCardCheckoutView: View {
                 CheckBoxView(checked: $isCOFAgreementChecked)
 
                 VStack(alignment: .leading, spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
-                    Text("Save card details")
+                    Text(L.title_saved_cards.string)
                         .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
                         .foregroundColor(UIScheme.color.text)
-                    Text("By clicking checkbox and saving card details.\n I agree with COF Agreement")
+                    Text(L.cof_agreements.string)
                         .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
                         .foregroundColor(UIScheme.color.textFieldPlaceholderColor)
 
@@ -90,12 +77,18 @@ struct NewCardCheckoutView: View {
             }
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
 
-            PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB")), action: payAction)
+            PayButton(label: PayButtonLabel(style: .Pay(paymentAmount, currency: paymentCurrency)), disabled: isFormValid) {
+                payAction(.payNewCardWith(cvv: cardCVV,
+                                          pan: cardNumber,
+                                          year: expiry.expiryYear!,
+                                          month: expiry.expiryMonth!,
+                                          cardHolder: cardHolder,
+                                          saveCard: isCOFAgreementChecked))
+            }
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
         }
         .padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
-
     }
 }
 
@@ -103,7 +96,7 @@ struct NewCardCheckoutView: View {
 
 struct NewCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardCheckoutView()
+        NewCardCheckoutView(methodCardTypes: [], paymentAmount: 100.500, paymentCurrency: "RUB")
     }
 }
 

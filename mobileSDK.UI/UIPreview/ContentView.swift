@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        //SavedCardCheckoutView_Previews.previews
-        PaymentMethodsView_Previews.previews
-        //PaymentMethodCell_Previews.previews
+        // SavedCardCheckoutView_Previews.previews
+        // PaymentMethodsView_Previews.previews
+        // PaymentMethodCell_Previews.previews
+        PanField_Previews.previews
     }
 }
 

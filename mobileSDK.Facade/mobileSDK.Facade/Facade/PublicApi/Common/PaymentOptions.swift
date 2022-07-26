@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import EcmpMsdkCore
+import MsdkCore
 
 public class PaymentOptions: NSObject {
     /// PaymentInfo contains this required fields:
@@ -27,9 +27,9 @@ public class PaymentOptions: NSObject {
     }
 
     /// Payment logo image
-    public var logoImage: UIImage? = nil
+    public var logoImage: UIImage?
     /// Payment description, for example, T-Shirt with print
-    public var paymentDescription: String? = nil
+    public var paymentDescription: String?
     /// Region code of a customer
     public var regionCode: String?
     /// Action of payment, by default its Sale
@@ -204,7 +204,7 @@ public class PaymentOptions: NSObject {
     /// - Parameter secureInfo: Parameters for 3D secure 2.0
     @objc(setSecureInfo:)
     public func setSecureInfo(secureInfo: ThreeDSecureInfo) {
-        
+
     }
 
     /// - Parameter value: Parameter for hide saved wallets
@@ -258,7 +258,7 @@ public class PaymentOptions: NSObject {
         #else
         let cases = ECMPScreenDisplayMode.allCases
         #endif
-        
+
         if let screenDisplayMode = cases.first(where: { mode in mode.description == value }) {
             return addScreenDisplayMode(screenDisplayMode: screenDisplayMode)
         }

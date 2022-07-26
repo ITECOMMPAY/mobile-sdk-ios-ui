@@ -7,12 +7,19 @@
 
 import SwiftUI
 import Combine
+import UIKitTextField
 
 struct FormTextField<AccessoryViewType: View>: View {
     // MARK: - Properties
     let accessoryView: AccessoryViewType
     let isSecure: Bool
     let isRequired: Bool
+    let onCommit: () -> Void
+    let keyboardType: UIKeyboardType
+    let forceUppercased: Bool
+    let formatter: Formatter
+    let maxLength: Int?
+    let isValidCharacter: (Character) -> Bool
 
     // MARK: View protocol properties
 
@@ -21,7 +28,11 @@ struct FormTextField<AccessoryViewType: View>: View {
             HStack(spacing: UIScheme.dimension.smallSpacing) {
                 ZStack {
                     textField
+                        .keyboardType(keyboardType)
                         .padding(textFieldPaddings)
+                        .applyIf(forceUppercased) {
+                            $0.textCase(.uppercase)
+                        }
                     HStack(spacing: .zero) {
                         Text(placeholder)
                             .foregroundColor(!disabled ? placeholderColor : UIScheme.color.textFieldDisabledColor)
@@ -62,26 +73,54 @@ struct FormTextField<AccessoryViewType: View>: View {
 
     @ViewBuilder
     var textField: some View {
-        if isSecure {
-            SecureField.init("",
-                             text: $text,
-                             onCommit: { editing = false })
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-            .foregroundColor(textFieldTextColor)
-            .disabled(disabled)
-            .onTapGesture {
-                editing = true
-            }
-        } else {
-            TextField("", text: $text) { isEditing in
-                editing = isEditing
-            } onCommit: {
-                editing = false
-            }
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-            .foregroundColor(textFieldTextColor)
-            .disabled(disabled)
+        UIKitTextField(config: .init()
+            .isSecureTextEntry(isSecure)
+            .value(
+                updateViewValue: { textField in
+                    if let text = formatter.string(for: $text.wrappedValue),
+                       text != textField.text {
+                        textField.text = text
+                    }
+                },
+                onViewValueChanged: { textField in
+                    var objectValue: AnyObject?
+                    if formatter.getObjectValue(&objectValue, for: textField.text ?? "", errorDescription: nil),
+                       let newValue = objectValue as? String {
+                        $text.wrappedValue = newValue
+                    } else {
+                        $text.wrappedValue = ""
+                    }
+                })
+                .shouldChangeCharacters(handler: shouldChangeCharacters)
+                    .onBeganEditing(handler: { _ in
+                        editing = true
+                    })
+                    .onEndedEditing(handler: { _, _ in
+                        editing = false
+                        onCommit()
+                    })
+                        .textColor(textFieldTextColor)
+        )
+        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
+        .foregroundColor(textFieldTextColor)
+        .disabled(disabled)
+    }
+
+    private func shouldChangeCharacters(uiTextField: BaseUITextField, range: NSRange, replacementString: String) -> Bool {
+        guard replacementString.filter(isValidCharacter) == replacementString
+        else {
+            return false
         }
+        guard let maxLength = maxLength else {
+            return true
+        }
+        guard let textFieldText = uiTextField.text,
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+            return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + replacementString.count
+        return count <= maxLength
     }
 
     // MARK: Private properties
@@ -107,8 +146,6 @@ struct FormTextField<AccessoryViewType: View>: View {
                                                              bottom: 17,
                                                              trailing: 0)
 
-
-
     private let placeholderColor = UIScheme.color.textFieldPlaceholderColor
     private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,
                                                            leading: UIScheme.dimension.middleSpacing,
@@ -133,13 +170,20 @@ struct FormTextField<AccessoryViewType: View>: View {
     ///   - valid: Whether the field is in the valid state.
     public init(_ text: Binding<String>,
                 placeholder: String,
+                keyboardType: UIKeyboardType = .default,
+                forceUppercased: Bool = false,
                 secure: Bool = false,
+                maxLength: Int? = nil,
+                isValidCharacter: @escaping (Character) -> Bool = {_ in true },
+                formatter: Formatter = EmptyFormatter(),
                 required: Bool = false,
                 hint: Binding<String>,
                 valid: Binding<Bool>,
                 disabled: Binding<Bool> = .constant(false),
-                accessoryView: AccessoryViewType) {
+                accessoryView: AccessoryViewType,
+                onCommit: @escaping () -> Void = {}) {
         self._text = text
+        self.onCommit = onCommit
         self.placeholder = placeholder
         self._hint = hint
         self._valid = valid
@@ -147,6 +191,11 @@ struct FormTextField<AccessoryViewType: View>: View {
         self.accessoryView = accessoryView
         self.isRequired = required
         self.isSecure = secure
+        self.keyboardType = keyboardType
+        self.forceUppercased = forceUppercased
+        self.formatter = formatter
+        self.maxLength = maxLength
+        self.isValidCharacter = isValidCharacter
     }
 
     // MARK: - Methods
@@ -215,11 +264,9 @@ struct FormTextField<AccessoryViewType: View>: View {
     }
 }
 
-
-
 #if DEBUG
 
-struct FormTextField_Previews: PreviewProvider  {
+struct FormTextField_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             FormTextField(.constant(""),
@@ -261,96 +308,4 @@ struct FormTextField_Previews: PreviewProvider  {
 
 }
 
-final class ExampleContentViewModel: ObservableObject {
-    let placeholder1 = "Number"
-    let placeholder2 = "Word"
-    @Published
-    var hint1 = "Hint 1"
-    @Published
-    var hint2 = "Hint 2"
-    @Published
-    var text1 = "" {
-        didSet {
-            validateText1()
-        }
-    }
-    @Published
-    var text2 = "" {
-        didSet {
-            validateText2()
-        }
-    }
-    @Published
-    var text1Valid = true {
-        didSet {
-            hint1 = text1Valid
-            ? "Some number"
-            : "Should contain only digits"
-        }
-    }
-    @Published
-    var text2Valid = true {
-        didSet {
-            hint2 = text2Valid
-            ? "Some words"
-            : "Should contain only letters"
-        }
-    }
-    func validateText1() {
-        text1Valid = !text1.contains(where: { !$0.isNumber })
-    }
-
-    func validateText2() {
-        text2Valid = !text2.contains(where: { !$0.isLetter })
-    }
-
-}
-
-struct ExampleContentView: View {
-
-    var body: some View {
-        VStack {
-            FormTextField($viewModel.text1,
-                          placeholder: viewModel.placeholder1,
-                          hint: $viewModel.hint1,
-                          valid: $viewModel.text1Valid,
-                          accessoryView: CloseButton())
-            .padding()
-            FormTextField($viewModel.text2,
-                          placeholder: viewModel.placeholder2,
-                          required: true,
-                          hint: $viewModel.hint2,
-                          valid: $viewModel.text2Valid,
-                          accessoryView: EmptyView())
-            .padding()
-            Spacer()
-        }
-        .contentShape(Rectangle())
-
-        .onTapGesture {
-            DispatchQueue.main.async {
-                UIApplication.shared.resignFirstResponder()
-            }
-        }
-    }
-
-    @ObservedObject
-    private var viewModel = ExampleContentViewModel()
-
-}
-
-struct ExampleContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExampleContentView().previewLayout(.sizeThatFits)
-    }
-
-}
-
 #endif
-
-
-
-
-
-
-

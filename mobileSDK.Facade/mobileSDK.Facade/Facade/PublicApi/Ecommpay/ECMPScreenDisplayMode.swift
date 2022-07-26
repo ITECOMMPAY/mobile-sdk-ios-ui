@@ -13,10 +13,10 @@ import Foundation
                                          CustomStringConvertible,
                                          RawRepresentable,
                                          ScreenDisplayModeConvertable {
-    
+
     @objc(hide_success_final_page) case hide_success_final_page
     @objc(hide_decline_final_page) case hide_decline_final_page
-    
+
     public var description: String {
         switch self {
             case .hide_decline_final_page:
@@ -27,7 +27,7 @@ import Foundation
                 return ""
         }
     }
-    
+
 }
 
 internal extension ECMPScreenDisplayMode {

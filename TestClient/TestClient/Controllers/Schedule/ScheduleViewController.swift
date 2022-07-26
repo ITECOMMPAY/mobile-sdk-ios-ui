@@ -23,43 +23,43 @@ class ScheduleViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @objc public weak var delegate: ScheduleViewControllerDelegate?
-    @objc public var items:[RecurrentInfoSchedule] = []
-    
+    @objc public var items: [RecurrentInfoSchedule] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.tableView.tableFooterView = UIView()
-        self.tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier:  ScheduleTableViewCell.identifier)
-         self.tableView.register(UINib(nibName: "ScheduleButtonTableViewCell", bundle: nil), forCellReuseIdentifier:  ScheduleButtonTableViewCell.identifier)
-        
+        self.tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleTableViewCell.identifier)
+         self.tableView.register(UINib(nibName: "ScheduleButtonTableViewCell", bundle: nil), forCellReuseIdentifier: ScheduleButtonTableViewCell.identifier)
+
         self.items = [
             RecurrentInfoSchedule(date: "12-10-2020", amount: 1000),
             RecurrentInfoSchedule(date: "12-11-2020", amount: 1200)
         ]
     }
-    
+
     @IBAction func onClosePress(_ sender: Any) {
-        self.dismiss(animated: true, completion:{
+        self.dismiss(animated: true, completion: {
             self.delegate?.onClose(items: self.items)
         })
     }
 }
 
 extension ScheduleViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count + 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         // Button add
-        if(indexPath.row == self.items.count) {
+        if indexPath.row == self.items.count {
              let cell: ScheduleButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: ScheduleButtonTableViewCell.identifier, for: indexPath) as! ScheduleButtonTableViewCell
             cell.delegate = self
             return cell
         }
-        
+
         let item = self.items[indexPath.row]
         let cell: ScheduleTableViewCell = tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier, for: indexPath) as! ScheduleTableViewCell
         cell.delegate = self
@@ -69,12 +69,12 @@ extension ScheduleViewController: UITableViewDataSource {
 }
 
 extension ScheduleViewController: ScheduleTableViewCellDelegate, ScheduleButtonTableViewCellDelegate {
-    
+
     func onItemRemove(item: RecurrentInfoSchedule) {
-        self.items.remove(at:self.items.firstIndex(of: item)!)
+        self.items.remove(at: self.items.firstIndex(of: item)!)
         self.tableView.reloadData()
     }
-    
+
     func onAddNew() {
         self.items.append(RecurrentInfoSchedule(date: "10-10-2020", amount: 1000))
         self.tableView.reloadData()

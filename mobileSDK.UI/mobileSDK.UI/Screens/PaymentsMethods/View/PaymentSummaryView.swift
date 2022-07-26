@@ -49,7 +49,7 @@ struct PaymentSummaryView: View {
     }
 
     var price: some View {
-        VStack(alignment: .leading, spacing: UIScheme.dimension.smallSpacing){
+        VStack(alignment: .leading, spacing: UIScheme.dimension.smallSpacing) {
             HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
                 Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
                     .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
@@ -71,9 +71,7 @@ struct PaymentSummaryView: View {
 #if DEBUG
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentSummaryView(isVatIncluded: true,  priceValue: Decimal(238.50), currency: "EUR", backgroundTemplate: .lines, logoImage: IR.applePayButtonLogo.image)
+        PaymentSummaryView(isVatIncluded: true, priceValue: Decimal(238.50), currency: "EUR", backgroundTemplate: .lines, logoImage: IR.applePayButtonLogo.image)
     }
 }
 #endif
-
-

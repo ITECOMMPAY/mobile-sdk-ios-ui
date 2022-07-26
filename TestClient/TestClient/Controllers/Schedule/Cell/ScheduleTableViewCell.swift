@@ -23,11 +23,11 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textFieldDate: UITextField!
     @IBOutlet weak var textFieldAmount: UITextField!
-    
+
     public weak var delegate: ScheduleTableViewCellDelegate?
     private var item: RecurrentInfoSchedule!
     public static let identifier: String = "ScheduleTableViewCell"
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,11 +36,11 @@ class ScheduleTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     @IBAction func onRemovePress(_ sender: Any) {
         self.delegate?.onItemRemove(item: self.item)
     }
-    
+
     func setupWith(item: RecurrentInfoSchedule) {
         self.item = item
         self.textFieldDate.text = item.date
@@ -49,5 +49,5 @@ class ScheduleTableViewCell: UITableViewCell {
 }
 
 extension ScheduleTableViewCell: UITextViewDelegate {
-    
+
 }

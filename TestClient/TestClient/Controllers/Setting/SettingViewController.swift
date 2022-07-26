@@ -36,39 +36,39 @@ struct DisplayModeVO {
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var settingList: UITableView?
-    
+
     var hideSavedWallets = false
     var settingVO: SettingVO?
     var screenDisplayModes: [ScreenDisplayMode] = []
     var displayVOList: [DisplayModeVO] = []
-    
-    @objc public var delegate: SettingViewControllerDelegate?
-    
+
+    @objc public weak var delegate: SettingViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.settingVO = SettingVO()
         self.settingVO?.screenDisplayModes = ScreenDisplayMode.allCases
-        
+
         for mode in self.settingVO!.screenDisplayModes {
             self.displayVOList.append(DisplayModeVO(value: false, screenDisplayMode: mode))
         }
-        
+
         settingList?.dataSource = self
         settingList?.delegate = self
-        
+
         settingList?.register(UINib.init(nibName: "SelectionCell", bundle: nil), forCellReuseIdentifier: SelectionCell.identifier)
         settingList?.register(UINib.init(nibName: "SwipeCell", bundle: nil), forCellReuseIdentifier: SwipeCell.identifier)
     }
 
     @IBAction func onDone(_ sender: Any) {
         for vo in displayVOList {
-            if (vo.value) { screenDisplayModes.append(vo.screenDisplayMode) }
+            if vo.value { screenDisplayModes.append(vo.screenDisplayMode) }
         }
-        
+
         self.dismiss(animated: true, completion: {
             self.settingVO?.hideSavedWallets = self.hideSavedWallets
             self.settingVO?.screenDisplayModes = self.screenDisplayModes
-            
+
             if let settingVO = self.settingVO {
                 self.delegate?.onSetupHideSavedWallets(value: settingVO.hideSavedWallets)
                 self.delegate?.onSetupScreenMode(screenDisplayModes: settingVO.screenDisplayModes.map { mode in mode.description })

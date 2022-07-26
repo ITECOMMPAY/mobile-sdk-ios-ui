@@ -11,11 +11,14 @@ struct CheckBoxView: View {
     @Binding var checked: Bool
 
     var body: some View {
-        Image(systemName: checked ? "checkmark.square.fill" : "square")
-            .foregroundColor(checked ? Color(UIColor.systemBlue) : Color.secondary)
-            .onTapGesture {
-                self.checked.toggle()
-            }
+        Button {
+            self.checked.toggle()
+        } label: {
+            Image(systemName: checked ? "checkmark.square.fill" : "square")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(checked ? UIScheme.color.brandColor : UIScheme.color.checkboxBorder)
+        }
     }
 }
 

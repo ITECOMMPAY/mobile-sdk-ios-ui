@@ -48,7 +48,7 @@ protocol DimensionScheme {
     var payButtonPayPriceSpacing: CGFloat { get }
     /// Высота полей ввода**default: 55**
     var textFieldHeight: CGFloat { get }
-     
+
     // MARK: Fot sizes
     /// **default: 12**
     var tinyFont: CGFloat { get }

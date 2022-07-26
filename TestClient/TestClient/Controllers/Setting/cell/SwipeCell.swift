@@ -15,14 +15,14 @@ protocol SwipeCellCallback {
 class SwipeCell: UITableViewCell {
 
     static let identifier: String = "SwipeCellIdentifier"
-    
+
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var switcher: UISwitch?
-    
+
     private var value: Bool = false
     private var index: Int?
     private var callback: SwipeCellCallback?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,7 +32,7 @@ class SwipeCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
+
     func setup(title: String,
                index: Int,
                callback: SwipeCellCallback?) {
@@ -40,10 +40,10 @@ class SwipeCell: UITableViewCell {
         self.index = index
         titleLabel?.text = title
         self.value = switcher?.isOn == true
-        
+
         callback?.onChangeValue(value: self.value, index: index)
     }
-    
+
     @IBAction func onChangeValue(_ smySwitch: UISwitch) {
         self.value = switcher?.isOn == true
         callback?.onChangeValue(value: self.value, index: index ?? -1)

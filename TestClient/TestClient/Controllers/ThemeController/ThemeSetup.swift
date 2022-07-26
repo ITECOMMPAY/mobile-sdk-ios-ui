@@ -11,11 +11,11 @@ import ecommpaySDK
 
 @objc
 class ThemeSetup: NSObject {
-    
+
  @objc static let shared = ThemeSetup()
- @objc var theme:ECPTheme
- @objc var isDarkThemeOn:Bool = false
-    
+ @objc var theme: ECPTheme
+ @objc var isDarkThemeOn: Bool = false
+
     private override init() {
         theme = ECPTheme.getLightTheme()
         super.init()

@@ -39,6 +39,7 @@ extension TranslationWithLink {
 }
 
 class TranslationsManager {
+    // @Injected var resourceManager: StringResourceManger
     static let shared = TranslationsManager()
 
     private init() {}
@@ -50,7 +51,7 @@ class TranslationsManager {
         self.languageDict = languageDict
         self.language = language
     }
-  
+
     func setValueToDict(value: String, key: String) {
       self.languageDict[key] = value
     }
