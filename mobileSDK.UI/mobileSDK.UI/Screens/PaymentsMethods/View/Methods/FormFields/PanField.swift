@@ -10,7 +10,7 @@ import SwiftUI
 struct PanField: View {
     @Injected private var validationService: ValidationService?
 
-    let cardTypesManager: CardTypesManager?
+    let cardTypeRecognizer: CardTypeRecognizer?
 
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
@@ -24,14 +24,22 @@ struct PanField: View {
 
     @State var errorMessage: String = ""
 
+    var formatter: Formatter {
+        if let cardTypeRecognizer = cardTypeRecognizer {
+            return CardNumberFormatter(cardTypeRecognizer: cardTypeRecognizer)
+        }
+        return EmptyFormatter()
+    }
+
     var body: some View {
         FormTextField($cardNumber,
-                      placeholder: L.title_holder_name.string,
+                      placeholder: L.title_card_number.string,
+                      keyboardType: .numberPad,
                       forceUppercased: true,
                       secure: false,
                       maxLength: 19,
                       isValidCharacter: allowedCharacters,
-                      formatter: CardNumberFormatter(),
+                      formatter: formatter,
                       required: true,
                       hint: $errorMessage,
                       valid: $isValid,
@@ -49,7 +57,7 @@ struct PanFieldPreview: View {
     @State var isValid: Bool = true
     @State var anotherText: String = ""
     var body: some View {
-        PanField(cardTypesManager: nil, cardNumber: $cardNumber, isValid: $isValid)
+        PanField(cardTypeRecognizer: nil, cardNumber: $cardNumber, isValid: $isValid)
         Text("cardNumber=\(cardNumber)  isValid=\(isValid.description)")
         TextField("Another textfield", text: $anotherText)
     }

@@ -10,6 +10,7 @@ import mobileSDK_UI
 import SwiftUI
 
 class PayDelegateProxy: BaseDelegateProxy<PayDelegate, PayEvent, CoreError>, PayDelegate {
+
     func onCustomerFields(customerFields: [MsdkCore.CustomerField]) {
         promise?(.success(.onCustomerFields(customerFields: customerFields)))
     }
@@ -22,12 +23,12 @@ class PayDelegateProxy: BaseDelegateProxy<PayDelegate, PayEvent, CoreError>, Pay
         promise?(.success(.onClarificationFields(clarificationFields: clarificationFields, payment: payment)))
     }
 
-    func onCompleteWithDecline(payment: MsdkCore.Payment) {
-        promise?(.success(.onCompleteWithDecline(payment: payment)))
+    func onCompleteWithDecline(paymentMessage: String?, payment: MsdkCore.Payment) {
+        promise?(.success(.onCompleteWithDecline(paymentMessage: paymentMessage, payment: payment)))
     }
 
-    func onCompleteWithFail(status: String?, payment: MsdkCore.Payment) {
-        promise?(.success(.onCompleteWithFail(status: status, payment: payment)))
+    func onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment)  {
+        promise?(.success(.onCompleteWithFail(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment)))
     }
 
     func onCompleteWithSuccess(payment: MsdkCore.Payment) {

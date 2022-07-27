@@ -28,11 +28,7 @@ struct FormTextField<AccessoryViewType: View>: View {
             HStack(spacing: UIScheme.dimension.smallSpacing) {
                 ZStack {
                     textField
-                        .keyboardType(keyboardType)
                         .padding(textFieldPaddings)
-                        .applyIf(forceUppercased) {
-                            $0.textCase(.uppercase)
-                        }
                     HStack(spacing: .zero) {
                         Text(placeholder)
                             .foregroundColor(!disabled ? placeholderColor : UIScheme.color.textFieldDisabledColor)
@@ -75,6 +71,8 @@ struct FormTextField<AccessoryViewType: View>: View {
     var textField: some View {
         UIKitTextField(config: .init()
             .isSecureTextEntry(isSecure)
+            .keyboardType(keyboardType)
+            .autocapitalizationType(forceUppercased ? .allCharacters : .none)
             .value(
                 updateViewValue: { textField in
                     if let text = formatter.string(for: $text.wrappedValue),

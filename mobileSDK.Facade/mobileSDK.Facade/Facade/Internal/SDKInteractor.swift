@@ -19,11 +19,7 @@ class SDKInteractor {
 
     // MARK: - Private variables
     /// session identifier
-    private var msdkSession: MSDKCoreSession {
-        didSet {
-            setupDependecy()
-        }
-    }
+    private var msdkSession: MSDKCoreSession
     private(set) var pkPaymentRequest: PKPaymentRequest?
     /// completion that would be executed in merchant app on mSDK finish
     internal var completionHandler: PaymentCompletion?
@@ -33,6 +29,7 @@ class SDKInteractor {
         let msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
                                                                  wsApiHost: NetworkConfigType().socketHost)
         msdkSession = MSDKCoreSession(config: msdkConfig)
+        setupDependecy()
     }
 
     #if DEVELOPMENT
@@ -46,6 +43,7 @@ class SDKInteractor {
                                                                wsApiHost: socketUrlString)
         #endif
         msdkSession = MSDKCoreSession(config: msdkConfig)
+        setupDependecy()
     }
 
     #endif
@@ -115,6 +113,6 @@ class SDKInteractor {
         serviceLocator.addService(instance: SdkExpiry.init(text: "") as CardExpiryFabric)
         serviceLocator.addService(instance: PayInteractorWrapper(msdkSession: self.msdkSession) as mobileSDK_UI.PayInteractor)
         serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
-        serviceLocator.addService(instance: CardTypesManagerFabric() as mobileSDK_UI.CardTypesManagerFabric)
+        serviceLocator.addService(instance: StringResourceManagerAdapter(manger: msdkSession.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
     }
 }

@@ -15,7 +15,7 @@ struct PolicyView: View {
         HStack(spacing: UIScheme.dimension.middleSpacing) {
             LinkButton(text: privacyPolicyLink?.message ?? L.privacy_policy.rawValue,
                        fontSize: UIScheme.dimension.tinyFont) {
-                guard let urlStr = privacyPolicyLink?.links?.first?.url,
+                guard let urlStr = privacyPolicyLink?.messageLinks?.first?.url,
                       let url = URL(string: urlStr)
                 else { return }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -24,7 +24,7 @@ struct PolicyView: View {
                 .foregroundColor(UIScheme.color.minorShapesColor)
             LinkButton(text: cookiePolicyLink?.message ?? L.cookie_policy.rawValue,
                        fontSize: UIScheme.dimension.tinyFont) {
-                guard let urlStr = cookiePolicyLink?.links?.first?.url,
+                guard let urlStr = cookiePolicyLink?.messageLinks?.first?.url,
                       let url = URL(string: urlStr)
                 else { return }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)

@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct NewCardCheckoutView: View {
-    @Injected var cardTypeManageFabric: CardTypesManagerFabric?
     @Injected var CardExpiryFabric: CardExpiryFabric?
 
-    var methodCardTypes: [PaymentMethodCard]
+    var paymentMethod: PaymentMethod?
     var paymentAmount: Decimal
     var paymentCurrency: String
 
@@ -34,7 +33,7 @@ struct NewCardCheckoutView: View {
             isCardValid,
             isCVVValid,
             isCardHolderValid,
-            isExpiryValid,
+            isExpiryValid
         ].allSatisfy { $0 }
     }
 
@@ -42,10 +41,9 @@ struct NewCardCheckoutView: View {
         return CardExpiryFabric!.createCardExpiry(with: cardExpiry)
     }
 
-
     var body: some View {
         VStack(spacing: 0) {
-            PanField(cardTypesManager: cardTypeManageFabric?.create(with: methodCardTypes), cardNumber: $cardNumber, isValid: $isCardValid)
+            PanField(cardTypeRecognizer: paymentMethod?.cardTypeRecognizer, cardNumber: $cardNumber, isValid: $isCardValid)
             .padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(cardHolder: $cardHolder, isValid: $isCardHolderValid)
@@ -96,7 +94,7 @@ struct NewCardCheckoutView: View {
 
 struct NewCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardCheckoutView(methodCardTypes: [], paymentAmount: 100.500, paymentCurrency: "RUB")
+        NewCardCheckoutView(paymentMethod: nil, paymentAmount: 100.500, paymentCurrency: "RUB")
     }
 }
 
