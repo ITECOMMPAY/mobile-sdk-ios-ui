@@ -8,42 +8,25 @@
 import SwiftUI
 import Combine
 
-struct BottomCardView<Header: View, Content: View>: View {
+struct BottomCardView<Content: View>: View {
     let content: Content
-    let header: Header
-    var sizingBehavior: SizingBehavior
-
-    enum SizingBehavior {
-        case proportionalToScreen(CGFloat)
-        case wrapContent
-    }
-
     var cardShown: Bool
+    let screenProportion: CGFloat
 
     @State private var fixedAreaHeight: CGFloat = 40
     @State private var scrollableAreaHeight: CGFloat = 40
     @State private var allHeight: CGFloat = 40
 
-    init(cardShown: Bool = false, sizingBehavior: SizingBehavior = .proportionalToScreen(0.9),
-         @ViewBuilder header: () -> Header,
+    init(cardShown: Bool = false,
+         screenProportion: CGFloat = 0.9,
          @ViewBuilder content: () -> Content) {
         self.cardShown = cardShown
-        self.sizingBehavior = sizingBehavior
-        self.header = header()
+        self.screenProportion = screenProportion
         self.content = content()
     }
 
-    private var contentHeight: CGFloat {
-        return fixedAreaHeight + scrollableAreaHeight
-    }
-
     private var cardHeight: CGFloat {
-        switch sizingBehavior {
-        case .proportionalToScreen(let ratio):
-            return UIScreen.main.bounds.height * ratio
-        case .wrapContent:
-            return min(allHeight * 0.9, contentHeight)
-        }
+        return allHeight * screenProportion
     }
 
     var body: some View {
@@ -56,26 +39,10 @@ struct BottomCardView<Header: View, Content: View>: View {
                 .opacity(cardShown ? 1 : 0)
                 .animation(Animation.easeIn)
             VStack {
-                VStack {
-                    header.background(GeometryReader { geo in
-                        Color.clear.onAppear {
-                            fixedAreaHeight = geo.size.height
-                        }
-                    })
-                    List {
-                        content
-                            .buttonStyle(.plain)
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: -1, trailing: 0))
-                            .background(GeometryReader { geo in
-                            Color.clear.onAppear {
-                                scrollableAreaHeight = geo.size.height
-                            }
-                        })
-                    }
-                }
-                .frame(maxHeight: cardHeight)
-                .background(UIScheme.color.mainBackground)
-                .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
+                content
+                    .frame(maxHeight: cardHeight)
+                    .background(UIScheme.color.mainBackground)
+                    .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
             }
             .frame(height: UIScreen.main.bounds.height, alignment: .bottom)
             .offset(y: cardOffset)
@@ -86,6 +53,29 @@ struct BottomCardView<Header: View, Content: View>: View {
 
     var cardOffset: CGFloat {
         cardShown ? 0 : cardHeight
+    }
+}
+
+struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
+    let content: ScrollableContent
+    let header: Header
+
+    init(@ViewBuilder header: () -> Header,
+         @ViewBuilder content: () -> ScrollableContent) {
+        self.header = header()
+        self.content = content()
+    }
+
+    var body: some View {
+        VStack {
+            header
+            List {
+                content
+                    .buttonStyle(.plain)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: -1, trailing: 0))
+            }
+        }
+        .background(UIScheme.color.mainBackground)
     }
 }
 
@@ -100,25 +90,27 @@ struct BottomCardView_Previews: PreviewProvider {
         var body: some View {
             ZStack {
                 Color.red
-                BottomCardView(cardShown: cardShown, sizingBehavior: .proportionalToScreen(0.9)) {
-                    HStack {
-                        Text("Screen header").font(UIScheme.font.screenHeader).padding()
-                        Spacer()
-                        CloseButton {
-                            cardShown = false
+                BottomCardView(cardShown: cardShown, screenProportion: 0.9) {
+                    BottomCardViewContent {
+                        HStack {
+                            Text("Screen header").font(UIScheme.font.screenHeader).padding()
+                            Spacer()
+                            CloseButton {
+                                cardShown = false
+                            }.padding()
                         }.padding()
-                    }.padding()
-                    RedactedView().frame(height: 100)
-                    PaymentMethodCell(methodTitle: "Test", methodImage: IR.alipay.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
-                        expanded.toggle()
+                        RedactedView().frame(height: 100)
+                        PaymentMethodCell(methodTitle: "Test", methodImage: IR.alipay.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
+                            expanded.toggle()
+                        }
+                    } content: {
+                        RedactedView().frame(height: 50).padding(2)
+                        RedactedView().frame(height: 50).padding(2)
+                        RedactedView().frame(height: 50).padding(2)
                     }
-                } content: {
-                    RedactedView().frame(height: 50).padding(2)
-                    RedactedView().frame(height: 50).padding(2)
-                    RedactedView().frame(height: 50).padding(2)
+                }.onAppear {
+                    cardShown = true
                 }
-            }.onAppear {
-                cardShown = true
             }
         }
     }

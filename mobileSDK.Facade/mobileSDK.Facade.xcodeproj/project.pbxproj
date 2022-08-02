@@ -36,6 +36,7 @@
 		845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; };
 		845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */; };
 		845507DE285B0463002BBFE0 /* ECMPCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507CA285B0463002BBFE0 /* ECMPCallback.swift */; };
+		84A35C4F2893B2A20037A604 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C4E2893B2A20037A604 /* FieldType.swift */; };
 		84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241672887D83C00259A50 /* ECMPConfigDev.swift */; };
 		84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
 		84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241822889069A00259A50 /* PayDelegateProxy.swift */; };
@@ -109,6 +110,7 @@
 		845507C8285B0463002BBFE0 /* EcommpaySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EcommpaySDK.h; sourceTree = "<group>"; };
 		845507C9285B0463002BBFE0 /* ECMPScreenDisplayMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPScreenDisplayMode.swift; sourceTree = "<group>"; };
 		845507CA285B0463002BBFE0 /* ECMPCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPCallback.swift; sourceTree = "<group>"; };
+		84A35C4E2893B2A20037A604 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
 		84B241672887D83C00259A50 /* ECMPConfigDev.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfigDev.swift; sourceTree = "<group>"; };
 		84B2416D2887D83C00259A50 /* ECMPConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfig.swift; sourceTree = "<group>"; };
 		84B2416E2887D83C00259A50 /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				84EFA163287708850043C360 /* CoreErrorCode.swift */,
 				84B241A7288A61B700259A50 /* PaymentMethodType.swift */,
 				8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */,
+				84A35C4E2893B2A20037A604 /* FieldType.swift */,
 			);
 			path = CoreAdaptersAndConverters;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 			files = (
 				84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */,
 				84D87CE2285C7EC20009FD38 /* UIColor+Hex.swift in Sources */,
+				84A35C4F2893B2A20037A604 /* FieldType.swift in Sources */,
 				84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */,
 				8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */,
 				845507DD285B0463002BBFE0 /* ECMPScreenDisplayMode.swift in Sources */,

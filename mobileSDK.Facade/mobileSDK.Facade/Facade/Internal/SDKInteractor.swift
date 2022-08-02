@@ -87,7 +87,7 @@ class SDKInteractor {
             paymentDetails += [PaymentDetailData(title: L.title_payment_information_description, description: description, canBeCopied: false)]
         }
 
-        let view = ViewFactory.assemblePaymentMethodsView(staticData: (summary: paymentSummary, details: paymentDetails), initPublisher: delegateProxy.createPublisher(with: { delegate in
+        let view = ViewFactory.assembleRootView(staticData: (summary: paymentSummary, details: paymentDetails), initPublisher: delegateProxy.createPublisher(with: { delegate in
             let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
                                            recurrentInfo: nil, // TODO: fill that parameter from paymentOptions.recurrentInfo,
                                            threeDSecureInfo: nil) // TODO: fill that parameter too

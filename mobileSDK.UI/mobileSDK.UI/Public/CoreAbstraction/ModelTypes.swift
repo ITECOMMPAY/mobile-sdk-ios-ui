@@ -31,7 +31,24 @@ public enum PayEvent {
     case onThreeDSecure(acsPage: AcsPage, isCascading: Bool, payment: Payment)
 }
 
-public protocol CustomerField {}
+public typealias Validator<Type> = (_ isValid: Type) -> Bool
+
+public protocol CustomerField {
+    var name: String { get }
+    var isRequired: Bool { get }
+    var isHidden: Bool { get }
+    var isTokenize: Bool { get }
+    var isVerify: Bool { get }
+    var hint: String? { get }
+    var label: String { get }
+    var placeholder: String? { get }
+    var validatorName: String? { get }
+    var validatonMethod: Validator<String>? { get }
+    var fieldType: FieldType { get }
+    var fieldServerType: FieldServerType { get }
+    var errorMessage: String? { get }
+    var errorMessageKey: String { get }
+}
 
 public protocol Payment {}
 

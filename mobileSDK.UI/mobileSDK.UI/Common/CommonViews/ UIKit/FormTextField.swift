@@ -1,5 +1,5 @@
 //
-//  FormTextField.swift
+//  CustomTextField.swift
 //  mobileSDK.UI
 //
 //  Created by Ivan Krapivev on 11.07.2022.
@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 import UIKitTextField
 
-struct FormTextField<AccessoryViewType: View>: View {
+struct CustomTextField<AccessoryViewType: View>: View {
     // MARK: - Properties
     let accessoryView: AccessoryViewType
     let isSecure: Bool
@@ -19,7 +19,7 @@ struct FormTextField<AccessoryViewType: View>: View {
     let forceUppercased: Bool
     let formatter: Formatter
     let maxLength: Int?
-    let isValidCharacter: (Character) -> Bool
+    let isAllowedCharacter: (Character) -> Bool
 
     // MARK: View protocol properties
 
@@ -105,7 +105,7 @@ struct FormTextField<AccessoryViewType: View>: View {
     }
 
     private func shouldChangeCharacters(uiTextField: BaseUITextField, range: NSRange, replacementString: String) -> Bool {
-        guard replacementString.filter(isValidCharacter) == replacementString
+        guard replacementString.filter(isAllowedCharacter) == replacementString
         else {
             return false
         }
@@ -172,7 +172,7 @@ struct FormTextField<AccessoryViewType: View>: View {
                 forceUppercased: Bool = false,
                 secure: Bool = false,
                 maxLength: Int? = nil,
-                isValidCharacter: @escaping (Character) -> Bool = {_ in true },
+                isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
                 formatter: Formatter = EmptyFormatter(),
                 required: Bool = false,
                 hint: Binding<String>,
@@ -193,7 +193,7 @@ struct FormTextField<AccessoryViewType: View>: View {
         self.forceUppercased = forceUppercased
         self.formatter = formatter
         self.maxLength = maxLength
-        self.isValidCharacter = isValidCharacter
+        self.isAllowedCharacter = isAllowedCharacter
     }
 
     // MARK: - Methods
@@ -264,33 +264,33 @@ struct FormTextField<AccessoryViewType: View>: View {
 
 #if DEBUG
 
-struct FormTextField_Previews: PreviewProvider {
+struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FormTextField(.constant(""),
+            CustomTextField(.constant(""),
                           placeholder: "placeholder text",
                           hint: .constant("hint text"),
                           valid: .constant(true),
                           accessoryView: EmptyView()).previewDisplayName("Empty")
-            FormTextField(.constant(""),
+            CustomTextField(.constant(""),
                           placeholder: "placeholder text",
                           required: true,
                           hint: .constant("hint text"),
                           valid: .constant(true),
                           accessoryView: EmptyView()).previewDisplayName("Requered")
-            FormTextField(.constant("some text"),
+            CustomTextField(.constant("some text"),
                           placeholder: "placeholder text",
                           hint: .constant("hint text"),
                           valid: .constant(false),
                           accessoryView: Color.red.frame(width: 20,
                                                          height: 20)).previewDisplayName("Error hint")
-            FormTextField(.constant("some text"),
+            CustomTextField(.constant("some text"),
                           placeholder: "placeholder text",
                           hint: .constant("hint text"),
                           valid: .constant(true),
                           disabled: .constant(true),
                           accessoryView: EmptyView()).previewDisplayName("Disabled")
-            FormTextField(.constant("cvc"),
+            CustomTextField(.constant("cvc"),
                           placeholder: "CVC",
                           secure: true,
                           required: true,

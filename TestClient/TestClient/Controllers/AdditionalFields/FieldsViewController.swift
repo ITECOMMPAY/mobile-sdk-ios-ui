@@ -1,5 +1,5 @@
 //
-//  AdditionalFieldsViewController.swift
+//  EmbeddedFieldViewController.swift
 //  TestClient
 //
 //  Created by Deniss Kaibagarovs on 20/06/2019.

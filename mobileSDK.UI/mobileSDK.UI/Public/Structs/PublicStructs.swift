@@ -25,11 +25,9 @@ public struct PaymentSummaryData {
         self.logo = logo
         self.currency = currency
         self.value = value
-        self.isVatIncluded = isVatIncluded
     }
 
     var logo: Image?
     var currency: String
     var value: Decimal
-    var isVatIncluded: Bool
 }

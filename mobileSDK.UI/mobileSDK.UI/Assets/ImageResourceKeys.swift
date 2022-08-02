@@ -17,6 +17,7 @@ enum ImageResourceKeys: String {
     case copyButton
     case chevron
     case infoButton
+    case backButton
 
     // MARK: Placeholders
 
