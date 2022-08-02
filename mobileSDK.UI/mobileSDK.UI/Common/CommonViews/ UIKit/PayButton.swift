@@ -46,8 +46,10 @@ struct PayButtonLabel: View {
                 Text("Pay").font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                 Text("\(amount as NSDecimalNumber, formatter: numberFormatter) \(currency)").font(UIScheme.font.commonBold(size: UIScheme.dimension.smallFont))
             }
-        default:
-            Color.red
+        case .Continue:
+            Text(L.button_confirmation.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+        case .TryAgain:
+            Text(L.button_try_again.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
         }
     }
 }

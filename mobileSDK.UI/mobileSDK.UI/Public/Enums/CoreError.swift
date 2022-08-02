@@ -37,3 +37,9 @@ public enum CoreErrorCode: String {
     case illegalArguments
     case unknown
 }
+
+extension CoreError {
+    static var unknown: CoreError {
+        CoreError(code: .unknown, message: "unknown")
+    }
+}

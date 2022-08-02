@@ -54,8 +54,25 @@ class CoreValidationService: ValidationService {
     }
 }
 
-extension MsdkCore.CustomerField: mobileSDK_UI.CustomerField {}
+extension MsdkCore.CustomerField: mobileSDK_UI.CustomerField {
+    public var fieldServerType: mobileSDK_UI.FieldServerType {
+        .createFrom(code: self.serverType)
+    }
+
+    public var validatonMethod: mobileSDK_UI.Validator<String>? {
+        guard let validator = self.validator else { return nil }
+        return {
+            validator.isValid(value: $0)
+        }
+    }
+
+    public var fieldType: mobileSDK_UI.FieldType {
+        return .createFrom(code: self.type)
+    }
+}
+
 extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {}
+
 extension MsdkCore.PaymentStatus: mobileSDK_UI.PaymentStatus {}
 extension MsdkCore.Payment: mobileSDK_UI.Payment {}
 extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {}
