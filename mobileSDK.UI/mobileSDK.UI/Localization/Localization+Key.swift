@@ -63,4 +63,5 @@ public enum L: String {
     case message_about_card_number
     case alert_message_payment_being_processed
     case message_required_field
+    case button_add_new_card
 }

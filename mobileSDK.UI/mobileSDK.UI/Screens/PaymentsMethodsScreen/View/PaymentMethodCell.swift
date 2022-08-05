@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PaymentMethodCell<Content: View>: View {
+struct PaymentMethodCell<Content: View, Logo: View>: View {
     let methodTitle: String
-    let methodImage: Image?
+    let methodImage: Logo
     var isSavedAccount: Bool = false
     var isExpanded: Bool
 
@@ -71,7 +71,7 @@ struct PaymentMethodCell_Previews: PreviewProvider {
             ScrollView {
                 VStack {
                     PaymentMethodCell(methodTitle: "Alipay",
-                                      methodImage: IR.alipay.image,
+                                      methodImage: EmptyView(),
                                       isSavedAccount: false,
                                       isExpanded: expanded == 1,
                                       content: Color.red.frame(height: 100),

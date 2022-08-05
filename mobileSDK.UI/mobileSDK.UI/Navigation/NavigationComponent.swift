@@ -11,18 +11,13 @@ import SwiftUI
 /// Компонент навигации, на основе своего состояния определяет текущий экран который будет отображён
 struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>: View, ViewWithViewModel {
     let viewModel: ViewModelType
-    var cardShown: Bool {
-        switch viewModel.state.currentScreen {
-        case .none:
-            return false
-        default:
-            return true
-        }
-    }
+    @State var cardShown: Bool = false
 
     var body: some View {
         BottomCardView(cardShown: cardShown) {
             currentScreen
+        }.onAppear {
+            cardShown = true
         }
     }
 
@@ -30,7 +25,7 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
     private var currentScreen: some View {
         switch viewModel.state.currentScreen {
         case .initialLoading:
-            EmptyView()
+            ViewFactory.assembleInitialLoadingScreen(parentModel: viewModel.parentViewModel)
         case .paymentMethods:
             ViewFactory.assemblePaymentMethodsScreen(parentModel: viewModel.parentViewModel)
         case .customerFields:
@@ -45,8 +40,6 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
             EmptyView()
         case .declineResult:
             EmptyView()
-        case .none:
-            Color.clear
         }
     }
 }

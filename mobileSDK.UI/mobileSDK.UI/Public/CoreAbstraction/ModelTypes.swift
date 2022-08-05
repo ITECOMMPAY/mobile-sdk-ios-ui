@@ -60,6 +60,7 @@ public protocol PaymentMethod {
     var name: String? { get }
     var methodCardTypes: [PaymentMethodCard] { get }
     var cardTypeRecognizer: CardTypeRecognizer { get }
+    var iconUrl: String? { get }
 }
 
 public protocol SavedAccount {
@@ -90,4 +91,15 @@ public protocol PaymentMethodCard {
     var cardNumberMinLength: Int? { get }
     var cardNumberMaxLength: Int? { get }
     var cardType: CardType { get }
+}
+
+public protocol PaymentOptions {
+    var summary: PaymentSummaryData { get }
+    var details: [PaymentDetailData] { get }
+    var uiAdditionalFields: [AdditionalField] { get }
+}
+
+public protocol AdditionalField {
+    var type: FieldType { get }
+    var value: String { get }
 }

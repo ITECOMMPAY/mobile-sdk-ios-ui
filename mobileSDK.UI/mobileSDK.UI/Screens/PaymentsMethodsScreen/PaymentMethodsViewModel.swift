@@ -22,22 +22,6 @@ class PaymentMethodsScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewMod
 }
 
 extension RootState: PaymentMethodsScreenState {
-    var isContinueButton: Bool {
-        visibleCustomerFields.count > 3
-    }
-
-    var visibleCustomerFields: [CustomerField] {
-        guard let method = currentMethod else { return [] }
-        switch method.entityType {
-        case .savedAccount:
-            return availablePaymentMethods?.first(where: {
-                $0.methodType == .card
-            })?.methodCustomerFields.filter { !$0.isHidden } ?? []
-        case .paymentMethod(let method):
-            return method.methodCustomerFields.filter { !$0.isHidden }
-        }
-    }
-
     var selectedPaymentMethod: PaymentMethodsListEntity? {
         currentMethod
     }
@@ -48,5 +32,9 @@ extension RootState: PaymentMethodsScreenState {
         }
         return savedAccounts.map {  PaymentMethodsListEntity(entityType: .savedAccount($0))  }
         + availablePaymentMethods.map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
+    }
+
+    var cardPaymentMethod: PaymentMethod? {
+        return availablePaymentMethods?.first(where: { $0.methodType == .card })
     }
 }

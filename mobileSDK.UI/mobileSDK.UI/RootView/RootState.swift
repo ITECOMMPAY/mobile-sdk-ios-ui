@@ -11,7 +11,7 @@ import Foundation
 /// Корневое состояние на основе которого строится предствление всех экранов
 struct RootState {
     var isLoading: Bool = false
-    var curentScreen: SDKScreen = .none
+    var currentScreen: SDKScreen = .initialLoading
     var currentMethod: PaymentMethodsListEntity?
     var payment: Payment?
     var customerFields: [CustomerField]?
@@ -19,8 +19,7 @@ struct RootState {
     var error: CoreError?
     var savedAccounts: [SavedAccount]?
     var availablePaymentMethods: [PaymentMethod]?
-    var paymentDetails: [PaymentDetailData]
-    var paymentSummary: PaymentSummaryData
+    var paymentOptions: PaymentOptions
 }
 
 // MARK: - Computed properties

@@ -17,7 +17,7 @@ struct PayButton<Label: View>: View {
             label.frame(maxWidth: .infinity)
                 .frame(height: UIScheme.dimension.payButtonHeight)
                 .foregroundColor(.white)
-                .background(UIScheme.color.brandColor)
+                .background(disabled ? UIScheme.color.brandColor.opacity(0.3) : UIScheme.color.brandColor)
                 .cornerRadius(8)
         })
         .disabled(disabled)
@@ -60,9 +60,14 @@ import AVFoundation
 
 struct PayButton_Previews: PreviewProvider {
     static var previews: some View {
-        PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB")), disabled: false) {
-            AudioServicesPlaySystemSound(1016)
-        }.padding()
+        VStack {
+            PayButton(label: PayButtonLabel(style: .Pay(100.50, currency: "RUB")), disabled: false) {
+                AudioServicesPlaySystemSound(1016)
+            }.padding()
+            PayButton(label: PayButtonLabel(style: .Continue), disabled: true) {
+                AudioServicesPlaySystemSound(1016)
+            }.padding()
+        }
     }
 }
 

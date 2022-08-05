@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ApplePayCheckoutView: View {
-    let additionalFieldsView: EmbeddedFieldView?
+    // let additionalFieldsView: EmbeddedCustomerFieldsView?
 
     var body: some View {
         VStack(spacing: 0) {
-            additionalFieldsView
+            // TODO: embed additional fields
+            /*
+             additionalFieldsView
             .padding(.top, UIScheme.dimension.formSmallSpacing)
-            .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-
+             */
             ApplePayButton()
-                .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+                .padding(.vertical, UIScheme.dimension.formLargeVerticalSpacing)
         }.padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
     }
 }
@@ -26,7 +27,7 @@ struct ApplePayCheckoutView: View {
 
 struct ApplePayCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        ApplePayCheckoutView(additionalFieldsView: nil)
+        ApplePayCheckoutView()
     }
 }
 

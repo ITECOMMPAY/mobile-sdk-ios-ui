@@ -8,8 +8,7 @@
 import Foundation
 
 protocol CustomerFieldsScreenState {
-    var paymentDetails: [PaymentDetailData] { get }
-    var paymentSummary: PaymentSummaryData { get }
+    var paymentOptions: PaymentOptions { get }
     var visibleCustomerFields: [CustomerField] { get }
     var isVatIncluded: Bool { get }
 }

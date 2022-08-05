@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct CvvField: View {
-    let showValidation: Bool
     var length: Int = 3
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
-    @Binding var cvv: String
+    @Binding var cvvValue: String
+    @Binding var isValueValid: Bool
 
-    @Binding var isValid: Bool {
+    @State private var isFieldValid: Bool = true {
         didSet {
-            errorMessage = isValid || !showValidation ? "" : L.message_invalid_cvv.string
+            errorMessage = isFieldValid ? "" : L.message_invalid_cvv.string
         }
     }
 
-    @State var errorMessage: String = ""
+    @State private var errorMessage: String = ""
 
     var body: some View {
-        CustomTextField($cvv,
+        CustomTextField($cvvValue,
                       placeholder: L.title_cvv.string,
                       keyboardType: .numberPad,
                       secure: true,
@@ -31,10 +31,11 @@ struct CvvField: View {
                       isAllowedCharacter: allowedCharacters,
                       required: true,
                       hint: $errorMessage,
-                      valid: $isValid,
+                      valid: $isFieldValid,
                       disabled: .constant(false),
                       accessoryView: EmptyView()) {
-            isValid = cvv.count == length
+            isFieldValid = cvvValue.count == length
+            isValueValid = isFieldValid
         }
     }
 }
@@ -42,7 +43,7 @@ struct CvvField: View {
 #if DEBUG
 struct CvvField_Previews: PreviewProvider {
     static var previews: some View {
-        CvvField(showValidation: false, cvv: .constant("123"), isValid: .constant(false))
+        CvvField(cvvValue: .constant("123"), isValueValid: .constant(false))
     }
 }
 #endif

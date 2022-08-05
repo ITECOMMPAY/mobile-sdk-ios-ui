@@ -38,4 +38,13 @@ class PayInteractorWrapper: mobileSDK_UI.PayInteractor {
             interactor.execute(request: request, callback: delegate)
         }).eraseToAnyPublisher()
     }
+
+    func sendCustomerFields(fieldsValues: [mobileSDK_UI.CustomerFieldValue]) {
+        payInteractor?.sendCustomerFields(
+            fields: fieldsValues.map {
+                MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
+            }
+        )
+    }
 }
+

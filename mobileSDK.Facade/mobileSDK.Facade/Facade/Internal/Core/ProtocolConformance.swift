@@ -108,3 +108,5 @@ extension MsdkCore.Link: mobileSDK_UI.Link {
         message
     }
 }
+
+extension AdditionalField: mobileSDK_UI.AdditionalField {}

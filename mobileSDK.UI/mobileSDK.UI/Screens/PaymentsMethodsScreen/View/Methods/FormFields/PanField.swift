@@ -16,13 +16,15 @@ struct PanField: View {
 
     @Binding var cardNumber: String
 
-    @Binding var isValid: Bool {
+    @Binding var isValueValid: Bool
+
+    @State private var isFieldValid: Bool = true {
         didSet {
-            errorMessage = isValid ? "" : L.message_about_card_number.string
+            errorMessage = isFieldValid ? "" : L.message_about_card_number.string
         }
     }
 
-    @State var errorMessage: String = ""
+    @State private var errorMessage: String = ""
 
     var formatter: Formatter {
         if let cardTypeRecognizer = cardTypeRecognizer {
@@ -42,10 +44,11 @@ struct PanField: View {
                       formatter: formatter,
                       required: true,
                       hint: $errorMessage,
-                      valid: $isValid,
+                      valid: $isFieldValid,
                       disabled: .constant(false),
                       accessoryView: EmptyView()) {
-            isValid = validationService?.isPanValidatorValid(value: cardNumber) ?? false
+            isFieldValid = validationService?.isPanValidatorValid(value: cardNumber) ?? false
+            isValueValid = isFieldValid
         }
     }
 }
@@ -57,7 +60,7 @@ struct PanFieldPreview: View {
     @State var isValid: Bool = true
     @State var anotherText: String = ""
     var body: some View {
-        PanField(cardTypeRecognizer: nil, cardNumber: $cardNumber, isValid: $isValid)
+        PanField(cardTypeRecognizer: nil, cardNumber: $cardNumber, isValueValid: $isValid)
         Text("cardNumber=\(cardNumber)  isValid=\(isValid.description)")
         TextField("Another textfield", text: $anotherText)
     }

@@ -29,7 +29,7 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
         return BottomCardViewContent {
             VStack(alignment: .leading, spacing: UIScheme.dimension.middleSpacing) {
                 HStack(alignment: .center) {
-                    ScreenHeader(text: L.title_payment_methods.string)
+                    ScreenHeader(text: L.localizationDefaults[L.title_payment_methods] ?? "")
                     Spacer()
                     CloseButton {
                         viewModel.dispatch(intent: .close)

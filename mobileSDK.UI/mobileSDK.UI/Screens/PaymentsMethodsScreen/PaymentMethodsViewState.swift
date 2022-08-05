@@ -10,11 +10,9 @@ import SwiftUI
 
 protocol PaymentMethodsScreenState {
     var selectedPaymentMethod: PaymentMethodsListEntity? { get }
-    var paymentDetails: [PaymentDetailData] { get }
-    var paymentSummary: PaymentSummaryData { get }
+    var paymentOptions: PaymentOptions { get }
     var mergedList: [PaymentMethodsListEntity] { get }
-    var visibleCustomerFields: [CustomerField] { get }
-    var isContinueButton: Bool { get }
+    var cardPaymentMethod: PaymentMethod? { get }
 }
 
 struct PaymentMethodsListEntity {
