@@ -42,8 +42,18 @@ struct EmbeddedCustomerFieldsView: View {
               onValueChanged: @escaping OnBaseCustomerTextFieldValueChanged) -> some View {
         return Group {
             switch customerField.fieldServerType {
-            default:
-                BaseCustomerTextField(value: value, customerField: customerField, formatter: EmptyFormatter(), isAllowedCaracter: { _ in true }, onValueChanged: onValueChanged)
+            case .tel:
+                TelCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+            case .password:
+                PasswordCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+            case .number:
+                NumberCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+            case .email:
+                EmailCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+            case .date:
+                DateCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+            case .text, .file, .textarea, .search, .url:
+                TextCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
             }
         }
     }

@@ -29,17 +29,17 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
         case .paymentMethods:
             ViewFactory.assemblePaymentMethodsScreen(parentModel: viewModel.parentViewModel)
         case .customerFields:
-            EmptyView()
+            ViewFactory.assembleCustomerFieldsScreen(parentModel: viewModel.parentViewModel)
         case .clarificationFields:
-            EmptyView()
+            ViewFactory.assembleClarificationFieldsScreen(parentModel: viewModel.parentViewModel)
         case .acsPage:
-            EmptyView()
+            ViewFactory.assembleACSPageScreen(parentModel: viewModel.parentViewModel)
         case .loading:
-            EmptyView()
+            ViewFactory.assembleInitialLoadingScreen(parentModel: viewModel.parentViewModel)
         case .successResult:
-            EmptyView()
+            ViewFactory.assembleFinalSuccessScreen(parentModel: viewModel.parentViewModel)
         case .declineResult:
-            EmptyView()
+            ViewFactory.assembleFinalDeclineScreen(parentModel: viewModel.parentViewModel)
         }
     }
 }

@@ -14,7 +14,7 @@ struct ExpiryField: View {
     @Binding var expiryString: String
     @Binding var isValueValid: Bool
 
-    let formatter = ExpiryFormatter()
+    let formatter = InputMaskFormatter(with: "##/##")
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
     @State private var isFieldValid: Bool = true {

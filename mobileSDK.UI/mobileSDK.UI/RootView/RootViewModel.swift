@@ -128,6 +128,9 @@ class RootViewModel: RootViewModelProtocol {
             }, receiveValue: { [weak self] payEvent in
                 guard let self = self else { return }
                 switch payEvent {
+                case .onCustomerFields(customerFields: let customerFields):
+                    self.state.customerFields = customerFields
+                    self.state.currentScreen = .customerFields
                 default:
                     // TODO: Implement later
                     self.state.error = CoreError(code: .unknown,

@@ -84,6 +84,22 @@
 		84A0F1682874663E005F81DE /* LibraryBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507AC285B0194002BBFE0 /* LibraryBundle.swift */; };
 		84A0F16E2875A6CC005F81DE /* InfoCardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F16D2875A6CC005F81DE /* InfoCardBackground.swift */; };
 		84A0F16F2875A95C005F81DE /* InfoCardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F16D2875A6CC005F81DE /* InfoCardBackground.swift */; };
+		84A15A8028A1161A0035A986 /* ClarificationFieldsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A7F28A1161A0035A986 /* ClarificationFieldsScreen.swift */; };
+		84A15A8128A116860035A986 /* ClarificationFieldsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A7F28A1161A0035A986 /* ClarificationFieldsScreen.swift */; };
+		84A15A8328A117880035A986 /* DateCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8228A117880035A986 /* DateCustomerTextField.swift */; };
+		84A15A8428A117880035A986 /* DateCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8228A117880035A986 /* DateCustomerTextField.swift */; };
+		84A15A8628A117990035A986 /* EmailCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8528A117990035A986 /* EmailCustomerTextField.swift */; };
+		84A15A8728A117990035A986 /* EmailCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8528A117990035A986 /* EmailCustomerTextField.swift */; };
+		84A15A8928A1182B0035A986 /* NumberCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8828A1182B0035A986 /* NumberCustomerTextField.swift */; };
+		84A15A8A28A1182B0035A986 /* NumberCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8828A1182B0035A986 /* NumberCustomerTextField.swift */; };
+		84A15A8C28A118380035A986 /* PasswordCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8B28A118380035A986 /* PasswordCustomerTextField.swift */; };
+		84A15A8D28A118380035A986 /* PasswordCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8B28A118380035A986 /* PasswordCustomerTextField.swift */; };
+		84A15A8F28A1186B0035A986 /* TelCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8E28A1186B0035A986 /* TelCustomerTextField.swift */; };
+		84A15A9028A1186B0035A986 /* TelCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A8E28A1186B0035A986 /* TelCustomerTextField.swift */; };
+		84A15A9228A118770035A986 /* TextCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A9128A118770035A986 /* TextCustomerTextField.swift */; };
+		84A15A9328A118770035A986 /* TextCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A9128A118770035A986 /* TextCustomerTextField.swift */; };
+		84A15A9528A118F10035A986 /* InputMaskFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A9428A118F10035A986 /* InputMaskFormatter.swift */; };
+		84A15A9628A118F10035A986 /* InputMaskFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A15A9428A118F10035A986 /* InputMaskFormatter.swift */; };
 		84A35C32289158280037A604 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C31289158280037A604 /* RootView.swift */; };
 		84A35C33289158280037A604 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C31289158280037A604 /* RootView.swift */; };
 		84A35C3B289297270037A604 /* CustomerFieldsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C3A289297270037A604 /* CustomerFieldsScreenViewModel.swift */; };
@@ -155,10 +171,8 @@
 		84B241CA288E589E00259A50 /* EmptyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241C9288E589E00259A50 /* EmptyFormatter.swift */; };
 		84B241CB288E59E400259A50 /* EmptyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241C9288E589E00259A50 /* EmptyFormatter.swift */; };
 		84B241CD288E5A0700259A50 /* UIKitTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 84B241CC288E5A0700259A50 /* UIKitTextField */; };
-		84B241CF288E5CB000259A50 /* ExpiryFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241CE288E5CB000259A50 /* ExpiryFormatter.swift */; };
 		84B241D1288E5CBF00259A50 /* CardNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */; };
 		84B241D2288E5CC100259A50 /* CardNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */; };
-		84B241D3288E5CC400259A50 /* ExpiryFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241CE288E5CB000259A50 /* ExpiryFormatter.swift */; };
 		84BC13E62852088F008814EB /* mobileSDK_UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13E52852088F008814EB /* mobileSDK_UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84BEF5FF289C043100D8481D /* PaymentMethod+ComputedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEF5FE289C043100D8481D /* PaymentMethod+ComputedField.swift */; };
 		84BEF600289CEAAE00D8481D /* PaymentMethod+ComputedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEF5FE289C043100D8481D /* PaymentMethod+ComputedField.swift */; };
@@ -224,6 +238,14 @@
 		84A0F13E28746598005F81DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A0F14128746598005F81DE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84A0F16D2875A6CC005F81DE /* InfoCardBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCardBackground.swift; sourceTree = "<group>"; };
+		84A15A7F28A1161A0035A986 /* ClarificationFieldsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClarificationFieldsScreen.swift; sourceTree = "<group>"; };
+		84A15A8228A117880035A986 /* DateCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A8528A117990035A986 /* EmailCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A8828A1182B0035A986 /* NumberCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A8B28A118380035A986 /* PasswordCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A8E28A1186B0035A986 /* TelCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A9128A118770035A986 /* TextCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCustomerTextField.swift; sourceTree = "<group>"; };
+		84A15A9428A118F10035A986 /* InputMaskFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMaskFormatter.swift; sourceTree = "<group>"; };
 		84A35C31289158280037A604 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		84A35C3A289297270037A604 /* CustomerFieldsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerFieldsScreenViewModel.swift; sourceTree = "<group>"; };
 		84A35C3D289297D80037A604 /* CustomerFieldsScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerFieldsScreenState.swift; sourceTree = "<group>"; };
@@ -260,7 +282,6 @@
 		84B241AF288A733C00259A50 /* PanField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanField.swift; sourceTree = "<group>"; };
 		84B241B4288E320000259A50 /* Fabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
 		84B241C9288E589E00259A50 /* EmptyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyFormatter.swift; sourceTree = "<group>"; };
-		84B241CE288E5CB000259A50 /* ExpiryFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryFormatter.swift; sourceTree = "<group>"; };
 		84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberFormatter.swift; sourceTree = "<group>"; };
 		84BC13E22852088F008814EB /* mobileSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mobileSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BC13E52852088F008814EB /* mobileSDK_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_UI.h; sourceTree = "<group>"; };
@@ -367,6 +388,7 @@
 		8455079B2859BC91002BBFE0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				84A15A7E28A115F00035A986 /* ClarificationFieldsScreen */,
 				84A35C5F2897A55C0037A604 /* InitialLoadingScreen */,
 				84A35C34289294610037A604 /* CustomerFieldsScreen */,
 				84AD2BAB28532082004110B9 /* PaymentsMethodsScreen */,
@@ -447,6 +469,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		84A15A7E28A115F00035A986 /* ClarificationFieldsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84A15A7F28A1161A0035A986 /* ClarificationFieldsScreen.swift */,
+			);
+			path = ClarificationFieldsScreen;
+			sourceTree = "<group>";
+		};
 		84A35C30289158190037A604 /* RootView */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +512,12 @@
 			isa = PBXGroup;
 			children = (
 				84A35C472893B01E0037A604 /* BaseCustomerTextField.swift */,
+				84A15A8228A117880035A986 /* DateCustomerTextField.swift */,
+				84A15A8528A117990035A986 /* EmailCustomerTextField.swift */,
+				84A15A8828A1182B0035A986 /* NumberCustomerTextField.swift */,
+				84A15A8B28A118380035A986 /* PasswordCustomerTextField.swift */,
+				84A15A8E28A1186B0035A986 /* TelCustomerTextField.swift */,
+				84A15A9128A118770035A986 /* TextCustomerTextField.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -617,8 +653,8 @@
 			isa = PBXGroup;
 			children = (
 				84B241C9288E589E00259A50 /* EmptyFormatter.swift */,
-				84B241CE288E5CB000259A50 /* ExpiryFormatter.swift */,
 				84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */,
+				84A15A9428A118F10035A986 /* InputMaskFormatter.swift */,
 			);
 			path = Formatters;
 			sourceTree = "<group>";
@@ -832,13 +868,14 @@
 				84A35C6A2897FCED0037A604 /* NavigationComponent.swift in Sources */,
 				84A0F15F2874662F005F81DE /* UIScheme.swift in Sources */,
 				84318AB428814CC2006B7E9C /* PolicyView.swift in Sources */,
+				84A15A8128A116860035A986 /* ClarificationFieldsScreen.swift in Sources */,
+				84A15A8D28A118380035A986 /* PasswordCustomerTextField.swift in Sources */,
 				84A0F14628746613005F81DE /* PaymentOverview.swift in Sources */,
 				84A35C622897A58A0037A604 /* InitialLoadingScreen.swift in Sources */,
 				8421F8EB288FB73200B6EED2 /* PayInteractor.swift in Sources */,
 				84A0F15828746624005F81DE /* RedactedView.swift in Sources */,
 				84B241942889201200259A50 /* CardHolderField.swift in Sources */,
 				8421F8EA288EC14400B6EED2 /* PaymentMethodCardType.swift in Sources */,
-				84B241D3288E5CC400259A50 /* ExpiryFormatter.swift in Sources */,
 				84A0F15928746629005F81DE /* Conditional.swift in Sources */,
 				84A0F15228746624005F81DE /* BottomCardView.swift in Sources */,
 				84E6CA8C28855A9500F3A444 /* InfoButton.swift in Sources */,
@@ -846,8 +883,10 @@
 				84B241D2288E5CC100259A50 /* CardNumberFormatter.swift in Sources */,
 				84A0F15C2874662F005F81DE /* Fonts.swift in Sources */,
 				84A35C582897965C0037A604 /* RootState.swift in Sources */,
+				84A15A8728A117990035A986 /* EmailCustomerTextField.swift in Sources */,
 				84A0F14728746613005F81DE /* NativePaymentMethodView.swift in Sources */,
 				84B241BF288E48FD00259A50 /* ServiceLocator.swift in Sources */,
+				84A15A9328A118770035A986 /* TextCustomerTextField.swift in Sources */,
 				84A0F15D2874662F005F81DE /* Dimensions.swift in Sources */,
 				84A35C4D2893B1EA0037A604 /* FieldType.swift in Sources */,
 				84A35C7C289A6AFA0037A604 /* PaymentMethod+DisplayName.swift in Sources */,
@@ -876,6 +915,7 @@
 				84318AB828816B53006B7E9C /* LinkButton.swift in Sources */,
 				84A35C45289297F30037A604 /* CustomerFieldsScreenView.swift in Sources */,
 				84318AB528816A9E006B7E9C /* SavedCardCheckoutView.swift in Sources */,
+				84A15A9628A118F10035A986 /* InputMaskFormatter.swift in Sources */,
 				84A0F16328746634005F81DE /* Localization+Strings.swift in Sources */,
 				84A35C87289A7C700037A604 /* AsyncImage.swift in Sources */,
 				84A0F15728746624005F81DE /* RoundedCorner.swift in Sources */,
@@ -886,6 +926,7 @@
 				84E6CA81288520E900F3A444 /* NewCardCheckoutView.swift in Sources */,
 				84A35C762898FAAC0037A604 /* BackButton.swift in Sources */,
 				84E6CA8928854AA300F3A444 /* CheckBoxView.swift in Sources */,
+				84A15A9028A1186B0035A986 /* TelCustomerTextField.swift in Sources */,
 				84A0F13D28746596005F81DE /* ContentView.swift in Sources */,
 				84A0F1502874661C005F81DE /* View+Background.swift in Sources */,
 				84A0F15A28746629005F81DE /* CenterCropped.swift in Sources */,
@@ -907,10 +948,12 @@
 				84B241A6288A603C00259A50 /* PaymentMethodType.swift in Sources */,
 				84A0F14828746613005F81DE /* PaymentMethodsIntent.swift in Sources */,
 				84A0F14928746613005F81DE /* PaymentMethodsViewState.swift in Sources */,
+				84A15A8A28A1182B0035A986 /* NumberCustomerTextField.swift in Sources */,
 				84EFA15F2876D97F0043C360 /* ViewFactory.swift in Sources */,
 				84A35C552893E3AF0037A604 /* CustomerField+Validate.swift in Sources */,
 				84A0F13B28746596005F81DE /* UIPreviewApp.swift in Sources */,
 				84A0F16028746634005F81DE /* TranslationsManager.swift in Sources */,
+				84A15A8428A117880035A986 /* DateCustomerTextField.swift in Sources */,
 				84A0F1672874663E005F81DE /* ImageResourceKeys.swift in Sources */,
 				84A35C3C289297270037A604 /* CustomerFieldsScreenViewModel.swift in Sources */,
 				84A0F1512874661C005F81DE /* View+Overlay.swift in Sources */,
@@ -931,6 +974,7 @@
 				8421F8DE288EB6AB00B6EED2 /* PaymentMethodCardType.swift in Sources */,
 				84B2418C28890FB700259A50 /* PublicStructs.swift in Sources */,
 				84A35C5A289796690037A604 /* RootIntent.swift in Sources */,
+				84A15A8328A117880035A986 /* DateCustomerTextField.swift in Sources */,
 				84B241D1288E5CBF00259A50 /* CardNumberFormatter.swift in Sources */,
 				84A35C6C2897FCFC0037A604 /* NavigationComponentState.swift in Sources */,
 				84B2419728892BEA00259A50 /* ValidationService.swift in Sources */,
@@ -940,20 +984,22 @@
 				84A35C44289297F30037A604 /* CustomerFieldsScreenView.swift in Sources */,
 				8455078D2858A1BB002BBFE0 /* Colors.swift in Sources */,
 				84A35C612897A58A0037A604 /* InitialLoadingScreen.swift in Sources */,
+				84A15A8928A1182B0035A986 /* NumberCustomerTextField.swift in Sources */,
 				84B241AA288A730B00259A50 /* CvvField.swift in Sources */,
 				84318AB328814CC2006B7E9C /* PolicyView.swift in Sources */,
+				84A15A8628A117990035A986 /* EmailCustomerTextField.swift in Sources */,
 				8485C189287EA64B00A7001E /* AnimatableCustomFontModifier.swift in Sources */,
 				8455079F2859BD7A002BBFE0 /* RoundedCorner.swift in Sources */,
 				84B241BE288E48FD00259A50 /* ServiceLocator.swift in Sources */,
 				845507E3285B05DE002BBFE0 /* CenterCropped.swift in Sources */,
 				84F26E3C2869C96F002861F8 /* PaymentDetailsView.swift in Sources */,
-				84B241CF288E5CB000259A50 /* ExpiryFormatter.swift in Sources */,
 				84A35C84289A7C700037A604 /* AsyncImagePhase.swift in Sources */,
 				84611526287DAB170015A6BE /* PayButton.swift in Sources */,
 				845507892858A122002BBFE0 /* Shimmer.swift in Sources */,
 				84F26E2D2869A623002861F8 /* ScreenHeader.swift in Sources */,
 				84E6CA8828854AA300F3A444 /* CheckBoxView.swift in Sources */,
 				84A0F12828740390005F81DE /* ViewModel.swift in Sources */,
+				84A15A8028A1161A0035A986 /* ClarificationFieldsScreen.swift in Sources */,
 				845507992859B6F4002BBFE0 /* Fonts.swift in Sources */,
 				84EFA15E2876D97F0043C360 /* ViewFactory.swift in Sources */,
 				84A35C3B289297270037A604 /* CustomerFieldsScreenViewModel.swift in Sources */,
@@ -963,6 +1009,7 @@
 				84F26E322869C1DD002861F8 /* Localization+Strings.swift in Sources */,
 				84F705C9287C608C00E7CD12 /* CustomTextField.swift in Sources */,
 				84A35C5D289796740037A604 /* RootViewModel.swift in Sources */,
+				84A15A8F28A1186B0035A986 /* TelCustomerTextField.swift in Sources */,
 				8485C18D2881382D00A7001E /* LinkButton.swift in Sources */,
 				84A35C542893E3AF0037A604 /* CustomerField+Validate.swift in Sources */,
 				84A35C32289158280037A604 /* RootView.swift in Sources */,
@@ -996,7 +1043,10 @@
 				84E6CA7E288520CD00F3A444 /* ApplePayCheckoutView.swift in Sources */,
 				84A35C8B289A7F4F0037A604 /* PaymentMethod+Logo.swift in Sources */,
 				84EFA16628770B4D0043C360 /* CoreError.swift in Sources */,
+				84A15A9228A118770035A986 /* TextCustomerTextField.swift in Sources */,
 				84A35C88289A7C700037A604 /* BackportAsyncImage.swift in Sources */,
+				84A15A8C28A118380035A986 /* PasswordCustomerTextField.swift in Sources */,
+				84A15A9528A118F10035A986 /* InputMaskFormatter.swift in Sources */,
 				84B241A5288A603C00259A50 /* PaymentMethodType.swift in Sources */,
 				84A35C7B289A6AFA0037A604 /* PaymentMethod+DisplayName.swift in Sources */,
 				84333C3628731732004135AC /* PaymentMethodsViewState.swift in Sources */,

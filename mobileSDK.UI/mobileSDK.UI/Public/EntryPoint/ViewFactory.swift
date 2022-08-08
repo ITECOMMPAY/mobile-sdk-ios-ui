@@ -27,4 +27,25 @@ public struct ViewFactory {
     internal static func assembleCustomerFieldsScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
         return CustomerFieldsScreen(viewModel: CustomerFieldsScreenModel(parentViewModel: parentModel))
     }
+
+    internal static func assembleClarificationFieldsScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        return ClarificationFieldsScreen(viewModel: ClarificationFieldsScreenModel(parentViewModel: parentModel))
+    }
+
+    internal static func assembleLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        return Text("Loading screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+    }
+
+    internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        return Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+    }
+
+    internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        return Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+    }
+
+    internal static func assembleFinalDeclineScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        return Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+    }
+
 }
