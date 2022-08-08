@@ -11,4 +11,17 @@ protocol CustomerFieldsScreenModelProtocol: ViewModel
 where ViewState == CustomerFieldsScreenState, UserIntent == CustomerFieldsScreenIntent {}
 
 class CustomerFieldsScreenModel<RootVM: RootViewModelProtocol>: ChildViewModel<CustomerFieldsScreenState, CustomerFieldsScreenIntent, RootVM>, CustomerFieldsScreenModelProtocol {
+    override func mapState(from parentState: RootVM.ViewState) throws -> CustomerFieldsScreenState {
+        parentState as CustomerFieldsScreenState
+    }
+
+    override func mapIntent(from childIntent: CustomerFieldsScreenIntent) throws -> RootVM.UserIntent {
+       .customerFieldsScreenIntent(childIntent)
+    }
+}
+
+extension RootState: CustomerFieldsScreenState {
+    var visibleCustomerFields: [CustomerField] {
+        return customerFields?.filter { !$0.isHidden } ?? []
+    }
 }

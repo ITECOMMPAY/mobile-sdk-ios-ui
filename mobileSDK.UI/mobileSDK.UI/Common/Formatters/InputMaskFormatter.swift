@@ -1,16 +1,26 @@
 //
-//  ExpiryFormatter.swift
+//  InputMaskFormatter.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 25.07.2022.
+//  Created by Ivan Krapivev on 05.08.2022.
 //
 
 import Foundation
 
-class ExpiryFormatter: Formatter {
+class InputMaskFormatter: Formatter {
+    let maskCharacter: Character = "#"
+    var mask: String
+
+    init(with mask: String) {
+        self.mask = mask
+        super.init()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func addFormating(in string: String) -> String {
-        let mask = "##/##"
         var result = ""
         var index = string.startIndex
         for ch in mask where index < string.endIndex {
@@ -25,7 +35,8 @@ class ExpiryFormatter: Formatter {
     }
 
     func removeFormatting(in string: String) -> String {
-        return string.replacingOccurrences(of: "/", with: "")
+        let formatCharacters = mask.filter { $0 != maskCharacter }
+        return string.filter { !formatCharacters.contains($0) }
     }
 
     // MARK: - Overriden methods

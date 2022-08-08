@@ -15,10 +15,11 @@ struct BaseCustomerTextField: View {
     @State var value: String
 
     let customerField: CustomerField
-    let keyboardType: UIKeyboardType = .default
-    let formatter: Formatter
-    let isAllowedCaracter: (Character) -> Bool
-    let maxLength: Int? = nil
+    var keyboardType: UIKeyboardType = .default
+    var formatter: Formatter = EmptyFormatter()
+    var isAllowedCharacter: (Character) -> Bool = {_ in true }
+    var maxLength: Int? = nil
+    var isSecure: Bool = false
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
 
     @State private var hint: String = ""
@@ -33,9 +34,9 @@ struct BaseCustomerTextField: View {
                       placeholder: customerField.placeholder ?? customerField.hint ?? "",
                       keyboardType: keyboardType,
                       forceUppercased: false,
-                      secure: false,
+                      secure: isSecure,
                       maxLength: maxLength,
-                      isAllowedCharacter: isAllowedCaracter,
+                      isAllowedCharacter: isAllowedCharacter,
                       formatter: formatter,
                       required: customerField.isRequired,
                       hint: $hint,
@@ -75,10 +76,10 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
 
     static var previews: some View {
         VStack {
-            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCaracter: { _ in true }) { _, newValue, isValid in
+            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
                 print("\(newValue) is \(isValid)")
             }
-            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCaracter: { _ in true }) { _, newValue, isValid in
+            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
                 print("\(newValue) is \(isValid)")
             }
         }

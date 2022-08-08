@@ -1,13 +1,31 @@
 //
-//  CustomerFieldsScreen.swift
+//  ClarificationFieldsScreen.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 28.07.2022.
+//  Created by Ivan Krapivev on 05.08.2022.
 //
 
 import SwiftUI
 
-struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWithViewModel {
+protocol ClarificationFieldsScreenState {
+    var paymentOptions: PaymentOptions { get }
+    var visibleCustomerFields: [CustomerField] { get }
+    var isVatIncluded: Bool { get }
+}
+
+enum ClarificationFieldsScreenIntent {
+    case close
+    case back
+    case sendCustomerFields([CustomerFieldValue])
+}
+
+protocol ClarificationFieldsScreenModelProtocol: ViewModel
+where ViewState == ClarificationFieldsScreenState, UserIntent == ClarificationFieldsScreenIntent {}
+
+class ClarificationFieldsScreenModel<RootVM: RootViewModelProtocol>: ChildViewModel<ClarificationFieldsScreenState, ClarificationFieldsScreenIntent, RootVM>, ClarificationFieldsScreenModelProtocol {
+}
+
+struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
     @State var isValid: Bool = false
     @State var customerFieldValues: [CustomerFieldValue] = []
@@ -38,7 +56,6 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                 Text(L.title_payment_additional_data_disclaimer.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
-                    .padding(.top, UIScheme.dimension.middleSpacing)
                 EmbeddedCustomerFieldsView(visibleCustomerFields: viewModel.state.visibleCustomerFields,
                                            additionalFields: viewModel.state.paymentOptions.uiAdditionalFields) { customerFieldValues, isValid in
                     self.customerFieldValues = customerFieldValues
@@ -59,50 +76,11 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
     }
 }
 
-struct CustomerFieldsScreen_Previews: PreviewProvider {
-    struct PreviewOptions: PaymentOptions {
-        var summary: PaymentSummaryData = PaymentSummaryData(currency: "RUB", value: 123.23)
-
-        var details: [PaymentDetailData] = []
-
-        var uiAdditionalFields: [AdditionalField] = []
-    }
-
-    struct MockCustomerField: CustomerField {
-        var fieldServerType: FieldServerType = .text
-        var name: String
-        var isRequired: Bool = true
-        var isHidden: Bool = false
-        var isTokenize: Bool = false
-        var isVerify: Bool = false
-        var hint: String? = "mockField hint"
-        var label: String = "mockField label"
-        var placeholder: String? = "mockField placeholder"
-        var validatorName: String? = "mockField validatorName"
-        var validatonMethod: Validator<String>? = { _ in true }
-        var fieldType: FieldType = .unknown
-        var errorMessage: String? = "mockField error"
-        var errorMessageKey: String = "mockField error key"
-    }
-
-    struct PreviewState: CustomerFieldsScreenState {
-        var paymentOptions: PaymentOptions = PreviewOptions()
-
-        var visibleCustomerFields: [CustomerField] = [
-            MockCustomerField(name: "field 1"),
-            MockCustomerField(name: "field 2")
-        ]
-
-        var isVatIncluded: Bool = true
-    }
-
-    class PreviewModel: CustomerFieldsScreenModelProtocol {
-        var state: CustomerFieldsScreenState = PreviewState()
-
-        func dispatch(intent: CustomerFieldsScreenIntent) {}
-    }
+struct ClarificationFieldsScreen_Previews: PreviewProvider {
 
     static var previews: some View {
-        CustomerFieldsScreen(viewModel: PreviewModel())
+        //TODO: repare preview
+        EmptyView()
+        //ClarificationFieldsScreen(viewModel: PreviewModel())
     }
 }
