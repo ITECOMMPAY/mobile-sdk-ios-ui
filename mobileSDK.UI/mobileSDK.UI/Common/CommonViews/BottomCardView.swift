@@ -40,10 +40,13 @@ struct BottomCardView<Content: View>: View {
                 .animation(Animation.easeIn)
             VStack {
                 content
+                    .edgesIgnoringSafeArea(.bottom)
                     .frame(maxHeight: cardHeight)
                     .background(UIScheme.color.mainBackground)
                     .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
+
             }
+            .edgesIgnoringSafeArea(.bottom)
             .frame(height: UIScreen.main.bounds.height, alignment: .bottom)
             .offset(y: cardOffset)
             .animation(.default.delay(0.2), value: cardOffset)
@@ -59,6 +62,7 @@ struct BottomCardView<Content: View>: View {
 struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     let content: ScrollableContent
     let header: Header
+    @State private var keyboardHeight: CGFloat = .zero
 
     init(@ViewBuilder header: () -> Header,
          @ViewBuilder content: () -> ScrollableContent) {
@@ -67,15 +71,40 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     }
 
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             header
             List {
                 content
                     .buttonStyle(.plain)
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: -1, trailing: 0))
             }
+            keyboardSpace
         }
         .background(UIScheme.color.mainBackground)
+    }
+
+    @ViewBuilder
+    private var keyboardSpace: some View {
+        Color.clear
+            .frame(height: self.keyboardHeight)
+            .ignoresSafeArea()
+            .onAppear(perform: {
+                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
+                    .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
+                    .compactMap { notification in
+                        notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
+                    }
+                    .map { rect in
+                        rect.height
+                    }
+                    .subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
+
+                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
+                    .compactMap { _ in
+                        CGFloat.zero
+                    }
+                    .subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
+            })
     }
 }
 
@@ -100,7 +129,7 @@ struct BottomCardView_Previews: PreviewProvider {
                             }.padding()
                         }.padding()
                         RedactedView().frame(height: 100)
-                        PaymentMethodCell(methodTitle: "Test", methodImage: IR.alipay.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
+                        PaymentMethodCell(methodTitle: "Test", methodImage: IR.bankCard.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
                             expanded.toggle()
                         }
                     } content: {

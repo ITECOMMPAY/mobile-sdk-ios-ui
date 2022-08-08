@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
-    @State var customerFieldValues: [CustomerFieldValue] = []
 
     private var expandedListEntryID: String? {
         return viewModel.state.selectedPaymentMethod?.id
@@ -26,15 +25,15 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-                PaymentDetailsView(details: viewModel.state.paymentDetails)
+                PaymentDetailsView(details: viewModel.state.paymentOptions.details)
             }.padding([.trailing, .leading, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: .zero) {
-                PaymentSummaryView(isVatIncluded: viewModel.state.isVatIncluded,
-                                   priceValue: viewModel.state.paymentSummary.value,
-                                   currency: viewModel.state.paymentSummary.currency,
+                PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
+                                   priceValue: viewModel.state.paymentOptions.summary.value,
+                                   currency: viewModel.state.paymentOptions.summary.currency,
                                        backgroundTemplate: UIScheme.infoCardBackground,
-                                   logoImage: viewModel.state.paymentSummary.logo)
+                                   logoImage: viewModel.state.paymentOptions.summary.logo)
                     ApplePayButton().padding([.top, .bottom], UIScheme.dimension.middleSpacing)
                     paymentMethodsList
                     PolicyView()
@@ -80,72 +79,99 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             ForEach(viewModel.state.mergedList, id: \.id) { listEntity in
                 switch listEntity.entityType {
                 case .savedAccount(let savedAccount):
-                    PaymentMethodCell(methodTitle: savedAccount.number ?? "***",
-                                      methodImage: nil,
-                                      isSavedAccount: true,
-                                      isExpanded: expandedListEntryID == listEntity.id,
-                                      content: savedCardView(for: savedAccount)) {
-                        withAnimation {
-                            viewModel.dispatch(intent: .select(listEntity))
-                        }
+                    getPaymentMethodCell(for: savedAccount, isExpanded: expandedListEntryID == listEntity.id) {
+                        viewModel.dispatch(intent: .select(listEntity))
                     }
                 case .paymentMethod(let method):
-                    PaymentMethodCell(methodTitle: method.name ?? method.methodType.rawValue,
-                                      methodImage: nil,
-                                      isSavedAccount: false,
-                                      isExpanded: expandedListEntryID == listEntity.id,
-                                      content: expandableContent(for: method)) {
-                        withAnimation {
-                            viewModel.dispatch(intent: .select(listEntity))
-                        }
+                    getPaymentMethodCell(for: method, isExpanded: expandedListEntryID == listEntity.id) {
+                        viewModel.dispatch(intent: .select(listEntity))
                     }
                 }
             }
         }
     }
 
-    func savedCardView(for savedAccount: SavedAccount)  -> some View {
-        SavedCardCheckoutView(paymentAmount: viewModel.state.paymentSummary.value, paymentCurrency: viewModel.state.paymentSummary.currency, savedCard: savedAccount, additionalFieldsView: additionalFieldsView, payButtonLabelStyle: payButtonLabelStyle) {cvvText in
-            if !viewModel.state.isContinueButton {
-                viewModel.dispatch(intent: .paySavedAccountWith(id: savedAccount.id, cvv: cvvText))
-            } else {
-                viewModel.dispatch(intent: .continueToCustomerScreen)
+    private func getPaymentMethodCell(for method: PaymentMethod,
+                                      isExpanded: Bool,
+                                      onTap: @escaping () -> Void) -> some View {
+        return Group {
+            PaymentMethodCell(methodTitle: method.displayName ?? method.methodType.rawValue,
+                              methodImage: getLogo(for: method),
+                              isSavedAccount: false,
+                              isExpanded: isExpanded,
+                              content: expandableContent(for: method)) {
+                withAnimation {
+                    onTap()
+                }
             }
-        } deleteCardAction: {
-            viewModel.dispatch(intent: .delete(savedAccount))
         }
     }
 
-    var payButtonLabelStyle: PayButtonLabel.Style {
-        viewModel.state.isContinueButton
-        ? .Continue
-        : .Pay( viewModel.state.paymentSummary.value, currency: viewModel.state.paymentSummary.currency)
+    private func getPaymentMethodCell(for savedAccount: SavedAccount,
+                                      isExpanded: Bool,
+                                      onTap: @escaping () -> Void) -> some View {
+        return Group {
+            PaymentMethodCell(methodTitle: savedAccount.number ?? "***",
+                              methodImage: getLogo(for: savedAccount),
+                              isSavedAccount: true,
+                              isExpanded: isExpanded,
+                              content: savedCardView(for: savedAccount)) {
+                withAnimation {
+                    onTap()
+                }
+            }
+        }
+    }
+
+    private func savedCardView(for savedAccount: SavedAccount) -> SavedCardCheckoutView? {
+        guard let cardPaymentMethod = viewModel.state.cardPaymentMethod
+        else {
+            return nil
+        }
+        return SavedCardCheckoutView(paymentOptions: viewModel.state.paymentOptions,
+                              savedCard: savedAccount,
+                              methodForAccount: cardPaymentMethod) { intent in
+            viewModel.dispatch(intent: intent)
+        } deleteCardAction: {
+            viewModel.dispatch(intent: .delete(savedAccount))
+        }
     }
 
     private func expandableContent(for method: PaymentMethod) -> some View {
         return Group {
             switch method.methodType {
             case .card:
-                    NewCardCheckoutView(paymentMethod: method,
-                                        paymentAmount: viewModel.state.paymentSummary.value,
-                                        paymentCurrency: viewModel.state.paymentSummary.currency,
-                    additionalFieldsView: additionalFieldsView) {
+                    NewCardCheckoutView(paymentMethod: method) {
                         viewModel.dispatch(intent: $0)
                     }
             case .applePay:
-                ApplePayCheckoutView(additionalFieldsView: additionalFieldsView)
+                ApplePayCheckoutView()
             default:
                 Color.red.frame(height: 10)
             }
         }
     }
 
-    private var additionalFieldsView: EmbeddedFieldView? {
-        let customerFields = viewModel.state.visibleCustomerFields
-        guard customerFields.count > 0 && customerFields.count < 3 else {
-            return nil
+    private func getLogo(for method: PaymentMethod) -> some View {
+        return Group {
+            if let localImage = method.localLogo {
+                localImage
+            } else {
+                method.serverLogo
+            }
         }
-        return EmbeddedFieldView(visibleCustomerFields: customerFields, customerFieldValues: .constant([]), isValid: .constant(false))
+    }
+
+    private func getLogo(for savedAccount: SavedAccount) -> some View {
+        return Group {
+            AsyncImage(url: savedAccount.cardUrlLogo.flatMap { URL(string: $0) }) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
+        }
     }
 }
 
@@ -167,7 +193,7 @@ struct PaymentMethodsScreen_Previews: PreviewProvider {
                  paymentDetails: [
                  PaymentDetailData(title: "PaymentID", description: "123", canBeCopied: true)
                  ],
-                 paymentSummary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
+                 paymentOptions.summary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
                  currency: "RUB",
                  value: 100,
                  isVatIncluded: true),

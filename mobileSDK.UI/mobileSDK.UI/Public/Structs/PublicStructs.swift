@@ -21,7 +21,7 @@ public struct PaymentDetailData {
 }
 
 public struct PaymentSummaryData {
-    public init(logo: Image? = nil, currency: String, value: Decimal, isVatIncluded: Bool) {
+    public init(logo: Image? = nil, currency: String, value: Decimal) {
         self.logo = logo
         self.currency = currency
         self.value = value
@@ -30,4 +30,9 @@ public struct PaymentSummaryData {
     var logo: Image?
     var currency: String
     var value: Decimal
+}
+
+public struct CustomerFieldValue {
+    public var name: String
+    public var value: String
 }

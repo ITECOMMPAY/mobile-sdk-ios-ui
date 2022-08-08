@@ -5,26 +5,30 @@
 //  Created by Deniss Kaibagarovs on 03/05/2019.
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
-
-import Foundation
+import MsdkCore
 
 public class AdditionalField: NSObject {
 
     // MARK: - Variables
 
-    @objc public var type: AdditionalFieldType
+    public var type: AdditionalFieldType
     @objc public var value: String = ""
-    @objc public var serverName: String = ""
+    @objc var serverName: String = ""
 
     // MARK: - Initialisation
+    public init(type: AdditionalFieldType,
+                value: String) {
+        self.type = type
+        self.value = value
+    }
 
     @objc(initWithType:value:)
     /// - Parameters:
     ///   - type:  Type of additional field, one of AdditionalFieldType
     ///   - value: Known value of the field
-    public init(type: AdditionalFieldType,
+    public init(fieldType: MsdkCore.FieldType,
                 value: String) {
-        self.type = type
+        self.type = AdditionalFieldType.createFrom(code: fieldType)
         self.value = value
     }
 

@@ -12,7 +12,8 @@ struct ContentView: View {
         // SavedCardCheckoutView_Previews.previews
         // PaymentMethodsScreen_Previews.previews
         // PaymentMethodCell_Previews.previews
-        PanField_Previews.previews
+        // PanField_Previews.previews
+        CustomerFieldsScreen_Previews.previews
     }
 }
 

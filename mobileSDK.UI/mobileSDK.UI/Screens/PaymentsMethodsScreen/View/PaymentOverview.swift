@@ -1,5 +1,5 @@
 //
-//  PaymentSummaryView.swift
+//  PaymentOverview.swift
 //  mobileSDK.UI
 //
 //  Created by Ivan Krapivev on 27.06.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PaymentSummaryView: View {
+struct PaymentOverview: View {
     let isVatIncluded: Bool
     let priceValue: Decimal
     let currency: String
@@ -71,7 +71,7 @@ struct PaymentSummaryView: View {
 #if DEBUG
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentSummaryView(isVatIncluded: true, priceValue: Decimal(238.50), currency: "EUR", backgroundTemplate: .lines, logoImage: IR.applePayButtonLogo.image)
+        PaymentOverview(isVatIncluded: true, priceValue: Decimal(238.50), currency: "EUR", backgroundTemplate: .lines, logoImage: IR.applePayButtonLogo.image)
     }
 }
 #endif

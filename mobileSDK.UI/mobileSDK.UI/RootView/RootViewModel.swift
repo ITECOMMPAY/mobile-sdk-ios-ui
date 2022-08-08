@@ -9,40 +9,37 @@ import Combine
 
 protocol RootViewModelProtocol: ViewModel where ViewState == RootState, UserIntent == RootIntent {}
 
-enum PaymentFlowFinishedReason {
+public enum PaymentFlowFinishedReason {
     case byUser
     case withError(CoreError)
     case success
     case decline
 }
 
-typealias PaymentFlowDismisedCompletion = (_ reason: PaymentFlowFinishedReason) -> Void
+public typealias PaymentFlowDismisedCompletion = (_ reason: PaymentFlowFinishedReason) -> Void
 
 class RootViewModel: RootViewModelProtocol {
     @Injected var payInteractor: PayInteractor?
     @Injected var payRequestFactory: PayRequestFactory?
 
     let futureData: AnyPublisher<InitEvent, CoreError>
-    let staticInfo: (summary: PaymentSummaryData, details: [PaymentDetailData])
 
     var cancellables: Set<AnyCancellable> = []
     var onFlowFinished: PaymentFlowDismisedCompletion
 
-    init(staticInfo: (summary: PaymentSummaryData,
-                      details: [PaymentDetailData]),
+    init(paymentOptions: PaymentOptions,
          futureData: AnyPublisher<InitEvent, CoreError>,
          onFlowFinished: @escaping PaymentFlowDismisedCompletion) {
-        self.staticInfo = staticInfo
         self.futureData = futureData
         self.onFlowFinished = onFlowFinished
-        self.state = RootState(paymentDetails: staticInfo.details, paymentSummary: staticInfo.summary)
+        self.state = RootState(paymentOptions: paymentOptions)
         subscribeInit()
     }
 
     func subscribeInit() {
         state.isLoading = true
         self.futureData
-            .receive(on: DispatchQueue.main)
+            // .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.state.error = error
@@ -51,7 +48,7 @@ class RootViewModel: RootViewModelProtocol {
                 guard let self = self else { return }
                 switch event {
                 case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
-                    self.state.curentScreen = .paymentMethods
+                    self.state.currentScreen = .paymentMethods
                     self.state.availablePaymentMethods = methods
                     self.state.savedAccounts = accounts
                     self.state.currentMethod = self.state.mergedList.first // по умолчанию выбраем первый метод из писка
@@ -73,7 +70,7 @@ class RootViewModel: RootViewModelProtocol {
 
     func dispatch(intent: RootIntent) {
         switch intent {
-        case .paymentMethodsScreenIntent(.close), .initialLoadingScreenIntent(.close):
+        case .paymentMethodsScreenIntent(.close), .initialLoadingScreenIntent(.close), .customerFieldsScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv)):
@@ -108,7 +105,12 @@ class RootViewModel: RootViewModelProtocol {
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.withError(state.error ?? .unknown))
         case .paymentMethodsScreenIntent(.continueToCustomerScreen):
-            state.curentScreen = .customerFields
+            state.currentScreen = .customerFields
+        case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
+            // TODO: navigate to loader screen
+            payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
+        case .customerFieldsScreenIntent(.back):
+            state.currentScreen = .paymentMethods
         }
     }
 
@@ -117,7 +119,7 @@ class RootViewModel: RootViewModelProtocol {
             return
         }
         payInteractor.execute(request: request)
-            .receive(on: DispatchQueue.main)
+            // .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
                 if case let .failure(error) = completion {

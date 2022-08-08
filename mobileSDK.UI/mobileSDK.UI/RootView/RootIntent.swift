@@ -10,5 +10,7 @@ import Foundation
 enum RootIntent {
     case initialLoadingScreenIntent(InitialLoadingScreenIntent)
     case paymentMethodsScreenIntent(PaymentMethodsIntent)
+    case customerFieldsScreenIntent(CustomerFieldsScreenIntent)
+
     case closeErrorAlert
 }

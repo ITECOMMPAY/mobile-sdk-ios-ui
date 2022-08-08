@@ -13,6 +13,6 @@ public enum InfoCardBackground: String {
     case waves
 
     internal var image: Image? {
-        return UIImage.getImage(name: self.rawValue)
+        return Image.getImage(name: self.rawValue)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum FieldType {
+public enum FieldType: String, CaseIterable {
     case unknown
     case customerEmail
     case customerZip

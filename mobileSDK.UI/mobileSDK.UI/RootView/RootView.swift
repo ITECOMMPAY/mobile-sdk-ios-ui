@@ -17,6 +17,9 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
         .alert(isPresented: .constant(alert != nil)) {
             alert!
         }
+        .onTapGesture {
+            hideKeyboard()
+        }
     }
 
     private var alert: Alert? {

@@ -10,5 +10,5 @@ import Foundation
 enum CustomerFieldsScreenIntent {
     case close
     case back
-    case continueFlow
+    case sendCustomerFields([CustomerFieldValue])
 }

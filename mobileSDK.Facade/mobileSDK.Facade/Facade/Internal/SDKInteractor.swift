@@ -75,27 +75,25 @@ class SDKInteractor {
 
         let delegateProxy = InitDelegateProxy()
 
-        let paymentSummary = PaymentSummaryData(logo: paymentOptions.logoImage.map({ Image(uiImage: $0)}),
-                                                currency: paymentOptions.paymentInfo.paymentCurrency,
-                                                value: Decimal(paymentOptions.paymentInfo.paymentAmount) / 100,
-                                                isVatIncluded: false)
 
-        var paymentDetails = [
-            PaymentDetailData(title: L.title_payment_id, description: paymentOptions.paymentInfo.paymentId, canBeCopied: true)
-        ]
-        if let description = paymentOptions.paymentInfo.paymentDescription {
-            paymentDetails += [PaymentDetailData(title: L.title_payment_information_description, description: description, canBeCopied: false)]
-        }
 
-        let view = ViewFactory.assembleRootView(staticData: (summary: paymentSummary, details: paymentDetails), initPublisher: delegateProxy.createPublisher(with: { delegate in
+        let view = ViewFactory.assembleRootView(paymentOptions: paymentOptions, initPublisher: delegateProxy.createPublisher(with: { delegate in
             let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
                                            recurrentInfo: nil, // TODO: fill that parameter from paymentOptions.recurrentInfo,
                                            threeDSecureInfo: nil) // TODO: fill that parameter too
             self.msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
-        })) {
+        })) { reason in
             viewController.dismiss(animated: true) { [weak self] in
-                #warning("TODO: return proper status")
-                self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
+                switch reason {
+                case .byUser:
+                    self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
+                case .withError(_):
+                    self?.completionHandler?(PaymentResult(status: .Error, error: nil))
+                case .success:
+                    self?.completionHandler?(PaymentResult(status: .Success, error: nil))
+                case .decline:
+                    self?.completionHandler?(PaymentResult(status: .Decline, error: nil))
+                }
             }
         }
 
@@ -115,4 +113,29 @@ class SDKInteractor {
         serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
         serviceLocator.addService(instance: StringResourceManagerAdapter(manger: msdkSession.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
     }
+}
+
+
+extension PaymentOptions: mobileSDK_UI.PaymentOptions {
+    public var uiAdditionalFields: [mobileSDK_UI.AdditionalField] {
+        additionalFields ?? [] as [mobileSDK_UI.AdditionalField]
+    }
+
+    public var summary: PaymentSummaryData {
+        return PaymentSummaryData(logo: logoImage.map({ Image(uiImage: $0)}),
+                                                currency: paymentInfo.paymentCurrency,
+                                                value: Decimal(paymentInfo.paymentAmount) / 100)
+    }
+
+    public var details: [PaymentDetailData] {
+        var paymentDetails = [
+            PaymentDetailData(title: L.title_payment_id, description: self.paymentInfo.paymentId, canBeCopied: true)
+        ]
+        if let description = self.paymentInfo.paymentDescription {
+            paymentDetails += [PaymentDetailData(title: L.title_payment_information_description, description: description, canBeCopied: false)]
+        }
+        return paymentDetails
+    }
+
+    
 }

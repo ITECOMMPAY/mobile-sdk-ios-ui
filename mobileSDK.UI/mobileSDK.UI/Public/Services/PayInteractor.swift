@@ -9,6 +9,7 @@ import Combine
 
 public protocol PayInteractor {
     func execute(request: PayRequest) -> AnyPublisher<PayEvent, CoreError>
+    func sendCustomerFields(fieldsValues: [CustomerFieldValue])
 }
 
 public protocol PayRequest {}

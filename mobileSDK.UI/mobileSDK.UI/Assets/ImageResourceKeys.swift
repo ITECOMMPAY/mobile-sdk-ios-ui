@@ -10,7 +10,6 @@ import SwiftUI
 typealias IR = ImageResourceKeys
 
 enum ImageResourceKeys: String {
-
     // MARK: Common
     case poweredByLogo
     case closeButton
@@ -19,42 +18,17 @@ enum ImageResourceKeys: String {
     case infoButton
     case backButton
 
-    // MARK: Placeholders
-
     // MARK: Basic payment methods
     case bankCard
     case applePayButtonLogo
-
-    // MARK: Payment methods icons
-    case alipay
-    case eps
-    case neteller
-    case sepa
-    case weChat
     case applePay
-    case giroPay
-    case payPal
-    case skrill
-    case eWallet
-    case bancontact
-    case googlePay
-    case przelewy24
-    case sofort
-    case iDeal
-    case blik
-    case multibanco
-    case safetyPay
-    case unionPay
-
-    // MARK: Card networks
-    case visa
 
     var image: Image? {
-        return UIImage.getImage(name: self.rawValue)
+        return Image.getImage(name: self.rawValue)
     }
 }
 
-extension UIImage {
+extension Image {
     static func getImage(name: String) -> Image? {
         return Image(name, bundle: SDKBundle.get())
     }

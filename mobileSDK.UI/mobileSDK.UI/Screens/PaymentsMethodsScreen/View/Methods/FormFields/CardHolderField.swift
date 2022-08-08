@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CardHolderField: View {
     @Binding var cardHolder: String
+    @Binding var isValueValid: Bool
 
-    @Binding var isValid: Bool {
+    @State private var isFieldValid: Bool = true {
         didSet {
-            errorMessage = isValid ? "" : L.message_card_holder.string
+            errorMessage = isFieldValid ? "" : L.message_card_holder.string
         }
     }
 
@@ -25,10 +26,11 @@ struct CardHolderField: View {
                       secure: false,
                       required: true,
                       hint: $errorMessage,
-                      valid: $isValid,
+                      valid: $isFieldValid,
                       disabled: .constant(false),
                       accessoryView: EmptyView()) {
-            isValid = serviceLocator.getService(ofType: ValidationService.self)?.isCardHolderNameValid(value: cardHolder) ?? false
+            isFieldValid = serviceLocator.getService(ofType: ValidationService.self)?.isCardHolderNameValid(value: cardHolder) ?? false
+            isValueValid = isFieldValid
         }
     }
 }
@@ -36,7 +38,7 @@ struct CardHolderField: View {
 #if DEBUG
 struct CardHolderField_Previews: PreviewProvider {
     static var previews: some View {
-        CardHolderField(cardHolder: .constant(""), isValid: .constant(true))
+        CardHolderField(cardHolder: .constant(""), isValueValid: .constant(true))
     }
 }
 #endif

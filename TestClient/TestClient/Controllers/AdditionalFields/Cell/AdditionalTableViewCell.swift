@@ -15,6 +15,8 @@ import jetpayhostsSDK
 import ecommpaySDK
 #endif
 
+import MsdkCore
+
 class AdditionalTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelName: UILabel!
@@ -28,7 +30,7 @@ class AdditionalTableViewCell: UITableViewCell {
     func setup(field: AdditionalField) {
         self.additionalField = field
         self.textField.text = field.value
-        self.labelName?.text = getNameByType(type: field.type)
+        self.labelName?.text = field.type.rawValue
         self.editFieldKey.isHidden = field.type != .custom
     }
 }
@@ -40,18 +42,9 @@ extension AdditionalTableViewCell: UITextFieldDelegate {
             let updatedText = text.replacingCharacters(in: textRange,
                                                        with: string)
 
-            if textField.tag == EDIT_TEXT_KEY_TAG {
-               self.additionalField.serverName = updatedText
-            } else {
-                self.additionalField.value = updatedText
-            }
+            self.additionalField.value = updatedText
         }
         return true
     }
 }
-
-extension AdditionalTableViewCell {
-    func getNameByType(type: AdditionalFieldType) -> String {
-        return type.description
-    }
-}
+ 

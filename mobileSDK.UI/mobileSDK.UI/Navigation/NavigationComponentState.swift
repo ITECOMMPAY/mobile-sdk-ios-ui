@@ -8,7 +8,6 @@
 import Foundation
 
 enum SDKScreen {
-    case none
     case initialLoading
     case paymentMethods // aka "main"
     case customerFields

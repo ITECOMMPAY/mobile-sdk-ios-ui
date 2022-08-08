@@ -12,13 +12,14 @@ struct ExpiryField: View {
     @Injected var expiryFabric: CardExpiryFabric?
 
     @Binding var expiryString: String
+    @Binding var isValueValid: Bool
 
     let formatter = ExpiryFormatter()
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
-    @Binding var isValid: Bool {
+    @State private var isFieldValid: Bool = true {
         didSet {
-            errorMessage = isValid ? "" : L.message_about_expiry.string
+            errorMessage = isFieldValid ? "" : L.message_about_expiry.string
         }
     }
 
@@ -31,12 +32,13 @@ struct ExpiryField: View {
                       secure: false,
                       isAllowedCharacter: allowedCharacters,
                       formatter: formatter,
-                      required: true,
+                      required: false,
                       hint: $errorMessage,
-                      valid: $isValid,
+                      valid: $isFieldValid,
                       disabled: .constant(disabled),
                       accessoryView: EmptyView()) {
-            isValid = expiryFabric?.createCardExpiry(with: expiryString).isValid() ?? false
+            isFieldValid = expiryFabric?.createCardExpiry(with: expiryString).isValid() ?? false
+            isValueValid = isFieldValid
         }
     }
 }
@@ -49,10 +51,9 @@ struct ExpiryFieldPreview: View {
     @State var anotherText: String = ""
     var body: some View {
         VStack {
-            ExpiryField(disabled: false, expiryString: $value, isValid: $isValid)
+            ExpiryField(disabled: false, expiryString: $value, isValueValid: $isValid)
             Text("value=\(value)  isValid=\(isValid.description)")
             TextField("Another textfield", text: $anotherText)
-
         }
     }
 }

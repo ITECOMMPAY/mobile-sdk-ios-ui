@@ -53,16 +53,16 @@ public final class LazyServiceLocator: ServiceLocator {
     }
 
     func addService<T>(recipe: @escaping () -> T) {
+        objectWillChange.send()
         let key = typeName(some: T.self)
         registry[key] = .Recipe(recipe)
-        objectWillChange.send()
     }
 
     public func addService<T>(instance: T) {
+        objectWillChange.send()
         let key = typeName(some: T.self)
         registry[key] = .Instance(instance)
         print("Service added to Registry: \(key) / \(typeName(some: instance))")
-        objectWillChange.send()
     }
 
     func getService<T>() -> T? {
@@ -76,8 +76,8 @@ public final class LazyServiceLocator: ServiceLocator {
                 if let instance = instance {
                     addService(instance: instance)
                 }
-            case let .Instance(instanceRec):
-                addService(instance: instanceRec)
+            case .Instance:
+                break
             }
         }
         return instance
