@@ -2,7 +2,7 @@
 //  PanField.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 22.07.2022.
+//  Created by Ivan Krapivtsev on 22.07.2022.
 //
 
 import SwiftUI

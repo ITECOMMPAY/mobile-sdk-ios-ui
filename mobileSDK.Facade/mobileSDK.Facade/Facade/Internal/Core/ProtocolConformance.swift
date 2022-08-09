@@ -2,7 +2,7 @@
 //  ProtocolConformance.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 21.07.2022.
+//  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
 import MsdkCore
@@ -71,7 +71,14 @@ extension MsdkCore.CustomerField: mobileSDK_UI.CustomerField {
     }
 }
 
-extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {}
+extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {
+    public var validatonMethod: mobileSDK_UI.Validator<String>? {
+        guard let validator = self.validator else { return nil }
+        return {
+            validator.isValid(value: $0)
+        }
+    }
+}
 
 extension MsdkCore.PaymentStatus: mobileSDK_UI.PaymentStatus {}
 extension MsdkCore.Payment: mobileSDK_UI.Payment {}

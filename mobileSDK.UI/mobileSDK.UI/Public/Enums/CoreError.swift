@@ -2,7 +2,7 @@
 //  CoreErrorCode.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 07.07.2022.
+//  Created by Ivan Krapivtsev on 07.07.2022.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  ViewFactory.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 07.07.2022.
+//  Created by Ivan Krapivtsev on 07.07.2022.
 //
 
 import SwiftUI
@@ -33,19 +33,19 @@ public struct ViewFactory {
     }
 
     internal static func assembleLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Loading screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+        return Text("Loading screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
     internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+        return Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+        return Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
     internal static func assembleFinalDeclineScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3))
+        return Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
 }

@@ -2,7 +2,7 @@
 //  NavigationComponent.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 01.08.2022.
+//  Created by Ivan Krapivtsev on 01.08.2022.
 //
 
 import Foundation
@@ -35,7 +35,7 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
         case .acsPage:
             ViewFactory.assembleACSPageScreen(parentModel: viewModel.parentViewModel)
         case .loading:
-            ViewFactory.assembleInitialLoadingScreen(parentModel: viewModel.parentViewModel)
+            ViewFactory.assembleLoadingScreen(parentModel: viewModel.parentViewModel)
         case .successResult:
             ViewFactory.assembleFinalSuccessScreen(parentModel: viewModel.parentViewModel)
         case .declineResult:

@@ -2,7 +2,7 @@
 //  RecipientInfoViewController.swift
 //  TestClient
 //
-//  Created by Ivan Krapivev on 16.05.2022.
+//  Created by Ivan Krapivtsev on 16.05.2022.
 //  Copyright © 2022 Ecommpay. All rights reserved.
 //
 

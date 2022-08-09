@@ -2,7 +2,7 @@
 //  PublicStructs.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 21.07.2022.
+//  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
 import Foundation
@@ -32,7 +32,7 @@ public struct PaymentSummaryData {
     var value: Decimal
 }
 
-public struct CustomerFieldValue {
+public struct FieldValue {
     public var name: String
     public var value: String
 }

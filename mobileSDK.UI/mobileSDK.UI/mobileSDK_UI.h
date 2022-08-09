@@ -2,7 +2,7 @@
 //  mobileSDK_UI.h
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 09.06.2022.
+//  Created by Ivan Krapivtsev on 09.06.2022.
 //
 
 #import <Foundation/Foundation.h>

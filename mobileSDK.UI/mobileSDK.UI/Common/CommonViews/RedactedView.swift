@@ -2,7 +2,7 @@
 //  RedactedView.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 10.06.2022.
+//  Created by Ivan Krapivtsev on 10.06.2022.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  SDKImportHeader.h
 //  TestClient
 //
-//  Created by Ivan Krapivev on 29.03.2022.
+//  Created by Ivan Krapivtsev on 29.03.2022.
 //  Copyright © 2022 Ecommpay. All rights reserved.
 //
 

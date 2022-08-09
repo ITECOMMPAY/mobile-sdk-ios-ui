@@ -2,17 +2,20 @@
 //  InputMaskFormatter.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 05.08.2022.
+//  Created by Ivan Krapivtsev on 05.08.2022.
 //
 
 import Foundation
 
 class InputMaskFormatter: Formatter {
     let maskCharacter: Character = "#"
+
+    let unmaskingEnabled: Bool
     var mask: String
 
-    init(with mask: String) {
+    init(with mask: String, unmaskingEnabled: Bool = true) {
         self.mask = mask
+        self.unmaskingEnabled = unmaskingEnabled
         super.init()
     }
 
@@ -27,6 +30,9 @@ class InputMaskFormatter: Formatter {
             if ch == "#" {
                 result.append(string[index])
                 index = string.index(after: index)
+            } else if string[index] == ch {
+                result.append(string[index])
+                index = string.index(after: index)
             } else {
                 result.append(ch)
             }
@@ -35,6 +41,10 @@ class InputMaskFormatter: Formatter {
     }
 
     func removeFormatting(in string: String) -> String {
+        guard unmaskingEnabled
+        else {
+            return string
+        }
         let formatCharacters = mask.filter { $0 != maskCharacter }
         return string.filter { !formatCharacters.contains($0) }
     }

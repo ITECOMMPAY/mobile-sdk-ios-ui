@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  UIPreview
 //
-//  Created by Ivan Krapivev on 05.07.2022.
+//  Created by Ivan Krapivtsev on 05.07.2022.
 //
 
 import SwiftUI

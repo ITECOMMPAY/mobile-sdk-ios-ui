@@ -2,7 +2,7 @@
 //  DateCustomerTextField.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 05.08.2022.
+//  Created by Ivan Krapivtsev on 05.08.2022.
 //
 
 import SwiftUI
@@ -18,7 +18,7 @@ struct DateCustomerTextField: View {
         BaseCustomerTextField(value: value,
                               customerField: customerField,
                               keyboardType: .numberPad,
-                              formatter: InputMaskFormatter(with: "##-##-####"),
+                              formatter: InputMaskFormatter(with: "##-##-####", unmaskingEnabled: false),
                               isAllowedCharacter: { $0.isASCII && $0.isNumber },
                               maxLength: 10,
                               onValueChanged: onValueChanged)

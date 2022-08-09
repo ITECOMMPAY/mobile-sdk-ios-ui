@@ -2,7 +2,7 @@
 //  SavedCardCheckoutView.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 11.07.2022.
+//  Created by Ivan Krapivtsev on 11.07.2022.
 //
 
 import SwiftUI
@@ -19,7 +19,7 @@ struct SavedCardCheckoutView: View {
     @State private var isCvvValid: Bool = false
     @State private var isCustomerFieldsValid: Bool = true
 
-    @State private var customerFieldValues: [CustomerFieldValue] = []
+    @State private var customerFieldValues: [FieldValue] = []
 
     private var payButtonIsEnabled: Bool {
         isCvvValid && isCustomerFieldsValid

@@ -2,7 +2,7 @@
 //  CustomerFieldsScreenModel.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 28.07.2022.
+//  Created by Ivan Krapivtsev on 28.07.2022.
 //
 
 import Foundation

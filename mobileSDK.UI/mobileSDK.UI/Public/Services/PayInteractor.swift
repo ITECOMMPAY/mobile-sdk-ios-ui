@@ -2,14 +2,15 @@
 //  PayInteractor.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 25.07.2022.
+//  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
 import Combine
 
 public protocol PayInteractor {
     func execute(request: PayRequest) -> AnyPublisher<PayEvent, CoreError>
-    func sendCustomerFields(fieldsValues: [CustomerFieldValue])
+    func sendCustomerFields(fieldsValues: [FieldValue])
+    func sendClarificationFields(fieldsValues: [mobileSDK_UI.FieldValue])
 }
 
 public protocol PayRequest {}

@@ -2,33 +2,15 @@
 //  ClarificationFieldsScreen.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 05.08.2022.
+//  Created by Ivan Krapivtsev on 05.08.2022.
 //
 
 import SwiftUI
 
-protocol ClarificationFieldsScreenState {
-    var paymentOptions: PaymentOptions { get }
-    var visibleCustomerFields: [CustomerField] { get }
-    var isVatIncluded: Bool { get }
-}
-
-enum ClarificationFieldsScreenIntent {
-    case close
-    case back
-    case sendCustomerFields([CustomerFieldValue])
-}
-
-protocol ClarificationFieldsScreenModelProtocol: ViewModel
-where ViewState == ClarificationFieldsScreenState, UserIntent == ClarificationFieldsScreenIntent {}
-
-class ClarificationFieldsScreenModel<RootVM: RootViewModelProtocol>: ChildViewModel<ClarificationFieldsScreenState, ClarificationFieldsScreenIntent, RootVM>, ClarificationFieldsScreenModelProtocol {
-}
-
 struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
     @State var isValid: Bool = false
-    @State var customerFieldValues: [CustomerFieldValue] = []
+    @State var clarificationFieldsValues: [FieldValue] = []
 
     var body: some View {
         BottomCardViewContent {
@@ -56,13 +38,16 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 Text(L.title_payment_additional_data_disclaimer.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
-                EmbeddedCustomerFieldsView(visibleCustomerFields: viewModel.state.visibleCustomerFields,
-                                           additionalFields: viewModel.state.paymentOptions.uiAdditionalFields) { customerFieldValues, isValid in
-                    self.customerFieldValues = customerFieldValues
+                    .padding(.top, UIScheme.dimension.middleSpacing)
+                EmbeddedCustomerFieldsView(
+                    visibleCustomerFields: viewModel.state.clarificationFields?.map { $0.asCustomerField } ?? [],
+                    additionalFields: []
+                ) { newFieldValues, isValid in
+                    self.clarificationFieldsValues = newFieldValues
                     self.isValid = isValid
                 }.padding(.vertical, UIScheme.dimension.middleSpacing)
                 PayButton(label: PayButtonLabel(style: .Continue), disabled: !isValid) {
-                    viewModel.dispatch(intent: .sendCustomerFields(customerFieldValues))
+                    viewModel.dispatch(intent: .sendFilledFields(clarificationFieldsValues))
                 }
                 PolicyView()
                     .padding(.top, UIScheme.dimension.middleSpacing)

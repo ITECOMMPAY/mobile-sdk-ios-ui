@@ -2,7 +2,7 @@
 //  PayInteractorWrapper.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 25.07.2022.
+//  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
 import mobileSDK_UI
@@ -39,10 +39,18 @@ class PayInteractorWrapper: mobileSDK_UI.PayInteractor {
         }).eraseToAnyPublisher()
     }
 
-    func sendCustomerFields(fieldsValues: [mobileSDK_UI.CustomerFieldValue]) {
+    func sendCustomerFields(fieldsValues: [mobileSDK_UI.FieldValue]) {
         payInteractor?.sendCustomerFields(
             fields: fieldsValues.map {
                 MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
+            }
+        )
+    }
+
+    func sendClarificationFields(fieldsValues: [mobileSDK_UI.FieldValue]) {
+        payInteractor?.sendClarificationFields(
+            fields: fieldsValues.map {
+                MsdkCore.ClarificationFieldValue(name: $0.name, value: $0.value)
             }
         )
     }

@@ -2,7 +2,7 @@
 //  NewCardCheckoutView.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 18.07.2022.
+//  Created by Ivan Krapivtsev on 18.07.2022.
 //
 
 import SwiftUI
@@ -21,7 +21,7 @@ struct NewCardCheckoutView: View {
     @State var cardNumber: String = ""
     @State var cardHolder: String = ""
     @State var cardExpiry: String = ""
-    @State var customerFieldValues: [CustomerFieldValue] = []
+    @State var customerFieldValues: [FieldValue] = []
 
     @State var isCardValid: Bool = false
     @State var isCVVValid: Bool = false

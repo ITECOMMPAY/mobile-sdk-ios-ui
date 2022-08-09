@@ -2,7 +2,7 @@
 //  ScreenDisplayMode.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 02.03.2022.
+//  Created by Ivan Krapivtsev on 02.03.2022.
 //  Copyright © 2022 Ecommpay. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  View+BackgroundOverlay.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 23.06.2022.
+//  Created by Ivan Krapivtsev on 23.06.2022.
 //
 
 import SwiftUI
