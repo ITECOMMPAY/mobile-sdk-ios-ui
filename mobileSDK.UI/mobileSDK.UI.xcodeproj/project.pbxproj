@@ -26,6 +26,7 @@
 		84318AB928816B63006B7E9C /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84333C3628731732004135AC /* PaymentMethodsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333C3528731732004135AC /* PaymentMethodsViewState.swift */; };
 		8446EC5C288EB50E00A1763C /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446EC5B288EB50E00A1763C /* CardTypesManager.swift */; };
+		8454EEC728A293A900199FF3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC628A293A900199FF3 /* LoadingScreen.swift */; };
 		845507892858A122002BBFE0 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507882858A0D8002BBFE0 /* Shimmer.swift */; };
 		8455078D2858A1BB002BBFE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		845507902858A1FB002BBFE0 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078F2858A1FB002BBFE0 /* Dimensions.swift */; };
@@ -221,6 +222,7 @@
 		84318AB228814CC2006B7E9C /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
 		84333C3528731732004135AC /* PaymentMethodsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewState.swift; sourceTree = "<group>"; };
 		8446EC5B288EB50E00A1763C /* CardTypesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypesManager.swift; sourceTree = "<group>"; };
+		8454EEC628A293A900199FF3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		845507882858A0D8002BBFE0 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		8455078C2858A1BB002BBFE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8455078F2858A1FB002BBFE0 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
@@ -362,6 +364,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8454EEC528A2939300199FF3 /* LoadingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8454EEC628A293A900199FF3 /* LoadingScreen.swift */,
+			);
+			path = LoadingScreen;
+			sourceTree = "<group>";
+		};
 		8455077C28587347002BBFE0 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +409,7 @@
 		8455079B2859BC91002BBFE0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8454EEC528A2939300199FF3 /* LoadingScreen */,
 				84A15A7E28A115F00035A986 /* ClarificationFieldsScreen */,
 				84A35C5F2897A55C0037A604 /* InitialLoadingScreen */,
 				84A35C34289294610037A604 /* CustomerFieldsScreen */,
@@ -1057,6 +1068,7 @@
 				84B241CA288E589E00259A50 /* EmptyFormatter.swift in Sources */,
 				84E6CA85288526CA00F3A444 /* EmbeddedCustomerFieldsView.swift in Sources */,
 				84F26E3A2869C8B3002861F8 /* FooterView.swift in Sources */,
+				8454EEC728A293A900199FF3 /* LoadingScreen.swift in Sources */,
 				84A35C3E289297D80037A604 /* CustomerFieldsScreenState.swift in Sources */,
 				84A0F12E28740544005F81DE /* PaymentMethodsIntent.swift in Sources */,
 				845507AA285B014E002BBFE0 /* ImageResourceKeys.swift in Sources */,
