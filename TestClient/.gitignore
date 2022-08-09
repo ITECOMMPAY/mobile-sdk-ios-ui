@@ -72,8 +72,6 @@ DerivedData
 ### Library build
 Output/
 TestClient/mobilesdk_ios.framework/
-Podfile.lock
-Gemfile.lock
 TestClient.app.dSYM.zip
 TestClient.ipa
 report.xml

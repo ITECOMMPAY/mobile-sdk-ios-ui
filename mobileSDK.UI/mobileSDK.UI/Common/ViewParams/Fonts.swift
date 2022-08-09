@@ -2,7 +2,7 @@
 //  Fonts.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 15.06.2022.
+//  Created by Ivan Krapivtsev on 15.06.2022.
 //
 
 import SwiftUI

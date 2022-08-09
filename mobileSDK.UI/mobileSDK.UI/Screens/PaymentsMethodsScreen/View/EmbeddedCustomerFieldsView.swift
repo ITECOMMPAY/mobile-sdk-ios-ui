@@ -2,7 +2,7 @@
 //  EmbeddedCustomerFieldsView.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 18.07.2022.
+//  Created by Ivan Krapivtsev on 18.07.2022.
 //
 
 import SwiftUI
@@ -10,15 +10,15 @@ import SwiftUI
 struct EmbeddedCustomerFieldsView: View {
     var visibleCustomerFields: [CustomerField]
     var additionalFields: [AdditionalField]
-    @State var customerFieldValues: [CustomerFieldValue] = []
-    var onCustomerFieldsChanged: ([CustomerFieldValue], Bool) -> Void
+    @State var customerFieldValues: [FieldValue] = []
+    var onCustomerFieldsChanged: ([FieldValue], Bool) -> Void
 
     var body: some View {
         VStack(spacing: UIScheme.dimension.formSmallSpacing) {
             ForEach(visibleCustomerFields, id: \.name) { field in
                 let foundAdditionalField = additionalFields.first { $0.type == field.fieldType }
-                let foundCustomerFieldValue = customerFieldValues.first { $0.name == field.name }
-                view(for: field, value: foundCustomerFieldValue?.value ?? foundAdditionalField?.value ?? "") { customerField, newValue, isValid in
+                let foundFieldValue = customerFieldValues.first { $0.name == field.name }
+                view(for: field, value: foundFieldValue?.value ?? foundAdditionalField?.value ?? "") { customerField, newValue, isValid in
                     validateFields(
                         customerField: customerField,
                         value: newValue,
@@ -34,8 +34,8 @@ struct EmbeddedCustomerFieldsView: View {
     private var visibleRequiredCustomerFields: [CustomerField] {
         visibleCustomerFields.filter { $0.isRequired }
     }
-    @State private var changedFieldsMap: [String: CustomerFieldValue] = [:]
-    @State private var changedNonRequiredFieldsMap: [String: CustomerFieldValue] = [:]
+    @State private var changedFieldsMap: [String: FieldValue] = [:]
+    @State private var changedNonRequiredFieldsMap: [String: FieldValue] = [:]
 
     private func view(for customerField: CustomerField,
               value: String,
@@ -63,17 +63,17 @@ struct EmbeddedCustomerFieldsView: View {
         value: String,
         isValid: Bool,
         visibleRequiredFields: [CustomerField],
-        onCustomerFieldsChanged: ([CustomerFieldValue], Bool) -> Void
+        onCustomerFieldsChanged: ([FieldValue], Bool) -> Void
     ) {
         // добавляем в мапу поля, которые были изменены пользователем
         // проверка на валидность и обязательность
         if isValid && customerField.isRequired {
             changedFieldsMap[customerField.name] =
-            CustomerFieldValue(name: customerField.name, value: value)
+            FieldValue(name: customerField.name, value: value)
         } else if !customerField.isRequired {
             // добавляем в мапу измененные необязательное поля
             changedNonRequiredFieldsMap[customerField.name] =
-            CustomerFieldValue(name: customerField.name, value: value)
+            FieldValue(name: customerField.name, value: value)
         } else if customerField.isRequired {
             changedFieldsMap.removeValue(forKey: customerField.name)
         }
@@ -82,7 +82,7 @@ struct EmbeddedCustomerFieldsView: View {
         // список всех измененных обязательных полей (по имени)
         let changedRequiredCustomerFieldsList = changedFieldsMap.keys.sorted()
         let allCustomerFields = changedFieldsMap.merging(changedNonRequiredFieldsMap, uniquingKeysWith: { first, _ in first }).values.map {
-            CustomerFieldValue(name: $0.name, value: $0.value)
+            FieldValue(name: $0.name, value: $0.value)
         }
         onCustomerFieldsChanged(
             allCustomerFields,

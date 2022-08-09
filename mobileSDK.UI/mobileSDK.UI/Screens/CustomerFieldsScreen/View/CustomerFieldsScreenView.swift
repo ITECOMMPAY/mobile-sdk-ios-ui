@@ -2,7 +2,7 @@
 //  CustomerFieldsScreen.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 28.07.2022.
+//  Created by Ivan Krapivtsev on 28.07.2022.
 //
 
 import SwiftUI
@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
     @State var isValid: Bool = false
-    @State var customerFieldValues: [CustomerFieldValue] = []
+    @State var customerFieldValues: [FieldValue] = []
 
     var body: some View {
         BottomCardViewContent {

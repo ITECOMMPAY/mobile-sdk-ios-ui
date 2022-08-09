@@ -2,7 +2,7 @@
 //  PaymentMethodsScreenState.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 04.07.2022.
+//  Created by Ivan Krapivtsev on 04.07.2022.
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  TelCustomerTextField.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 05.08.2022.
+//  Created by Ivan Krapivtsev on 05.08.2022.
 //
 
 import SwiftUI

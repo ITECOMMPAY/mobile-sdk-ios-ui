@@ -2,7 +2,7 @@
 //  ColorTheme.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 28.01.2022.
+//  Created by Ivan Krapivtsev on 28.01.2022.
 //  Copyright © 2022 Ecommpay. All rights reserved.
 //
 

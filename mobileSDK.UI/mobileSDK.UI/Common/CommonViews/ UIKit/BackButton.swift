@@ -2,7 +2,7 @@
 //  BackButton.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 02.08.2022.
+//  Created by Ivan Krapivtsev on 02.08.2022.
 //
 
 import SwiftUI
@@ -18,12 +18,7 @@ struct BackButton: View {
         } label: {
             IR.backButton.image?.renderingMode(.template)
                 .foregroundColor(foregroundColor)
-        }.contentShape(
-            Rectangle()
-                .scale(x: UIScheme.dimension.minimumTapAreaSize,
-                       y: UIScheme.dimension.minimumTapAreaSize,
-                       anchor: UnitPoint.center).offset(x: -10, y: 0)
-        )
+        }
     }
 }
 

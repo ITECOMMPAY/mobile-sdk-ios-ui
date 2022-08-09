@@ -2,7 +2,7 @@
 //  ModelTypes.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 21.07.2022.
+//  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
 import Foundation
@@ -72,7 +72,15 @@ public protocol SavedAccount {
     var savedCardExpiry: CardExpiry? { get }
 }
 
-public protocol ClarificationField {}
+public protocol ClarificationField {
+    var name: String { get }
+    var validatorName: String? { get }
+    var validatonMethod: Validator<String>? { get }
+    var defaultPlaceholder: String? { get }
+    var defaultHint: String? { get }
+    var defaultLabel: String? { get }
+    var defaultErrorMessage: String? { get }
+}
 
 public protocol PaymentStatus {}
 

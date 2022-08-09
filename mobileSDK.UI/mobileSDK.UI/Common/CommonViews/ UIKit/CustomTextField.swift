@@ -2,7 +2,7 @@
 //  CustomTextField.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 11.07.2022.
+//  Created by Ivan Krapivtsev on 11.07.2022.
 //
 
 import SwiftUI

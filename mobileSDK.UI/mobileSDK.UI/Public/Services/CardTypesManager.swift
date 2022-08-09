@@ -2,7 +2,7 @@
 //  CardTypeRecognizer.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 25.07.2022.
+//  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
 import Foundation

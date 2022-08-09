@@ -2,7 +2,7 @@
 //  PayRequestFactory.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 25.07.2022.
+//  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
 import mobileSDK_UI

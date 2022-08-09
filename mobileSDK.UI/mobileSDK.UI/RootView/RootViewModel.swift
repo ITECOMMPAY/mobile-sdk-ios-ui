@@ -2,7 +2,7 @@
 //  RootViewModel.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 01.08.2022.
+//  Created by Ivan Krapivtsev on 01.08.2022.
 //
 
 import Combine
@@ -70,7 +70,10 @@ class RootViewModel: RootViewModelProtocol {
 
     func dispatch(intent: RootIntent) {
         switch intent {
-        case .paymentMethodsScreenIntent(.close), .initialLoadingScreenIntent(.close), .customerFieldsScreenIntent(.close):
+        case .paymentMethodsScreenIntent(.close),
+                .initialLoadingScreenIntent(.close),
+                .customerFieldsScreenIntent(.close),
+                .clarificationFieldsScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv)):
@@ -102,14 +105,19 @@ class RootViewModel: RootViewModelProtocol {
         case .paymentMethodsScreenIntent(.select(let item)):
             state.currentMethod = item
         case .closeErrorAlert:
-            cancellables.forEach {  $0.cancel() }
-            onFlowFinished(.withError(state.error ?? .unknown))
+            break
+            //TODO: handle by error type
+            //cancellables.forEach {  $0.cancel() }
+            //onFlowFinished(.withError(state.error ?? .unknown))
         case .paymentMethodsScreenIntent(.continueToCustomerScreen):
             state.currentScreen = .customerFields
         case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
-            // TODO: navigate to loader screen
             payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
-        case .customerFieldsScreenIntent(.back):
+            state.currentScreen = .loading
+        case .clarificationFieldsScreenIntent(.sendFilledFields(let fieldsValues)):
+            payInteractor?.sendClarificationFields(fieldsValues: fieldsValues)
+            state.currentScreen = .loading
+        case .customerFieldsScreenIntent(.back), .clarificationFieldsScreenIntent(.back):
             state.currentScreen = .paymentMethods
         }
     }
@@ -131,6 +139,10 @@ class RootViewModel: RootViewModelProtocol {
                 case .onCustomerFields(customerFields: let customerFields):
                     self.state.customerFields = customerFields
                     self.state.currentScreen = .customerFields
+                case .onClarificationFields(clarificationFields: let clarificationFields,
+                                            payment: _):
+                    self.state.clarificationFields = clarificationFields
+                    self.state.currentScreen = .clarificationFields
                 default:
                     // TODO: Implement later
                     self.state.error = CoreError(code: .unknown,

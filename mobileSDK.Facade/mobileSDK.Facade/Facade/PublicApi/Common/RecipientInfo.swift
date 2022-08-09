@@ -2,7 +2,7 @@
 //  RecipientInfo.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 13.05.2022.
+//  Created by Ivan Krapivtsev on 13.05.2022.
 //  Copyright © 2022 Ecommpay. All rights reserved.
 //
 

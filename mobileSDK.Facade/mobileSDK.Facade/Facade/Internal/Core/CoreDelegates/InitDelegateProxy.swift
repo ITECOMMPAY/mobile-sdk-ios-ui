@@ -2,7 +2,7 @@
 //  InitDelegateProxy.swift
 //  ecommpaySDK
 //
-//  Created by Ivan Krapivev on 11.07.2022.
+//  Created by Ivan Krapivtsev on 11.07.2022.
 //
 
 import MsdkCore
@@ -10,7 +10,12 @@ import Combine
 import mobileSDK_UI
 import SwiftUI
 
-class InitDelegateProxy: BaseDelegateProxy<InitDelegate, InitEvent, CoreError>, InitDelegate {
+class InitDelegateProxy: BaseFutureDelegateProxy<InitDelegate, InitEvent, CoreError> {
+    override var delegate: InitDelegate { self }
+}
+
+extension InitDelegateProxy: InitDelegate {
+    
     func onPaymentRestored(payment: MsdkCore.Payment) {
         promise?(.success(.onPaymentRestored(payment)))
     }

@@ -2,7 +2,7 @@
 //  Colors.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 14.06.2022.
+//  Created by Ivan Krapivtsev on 14.06.2022.
 //
 
 import SwiftUI

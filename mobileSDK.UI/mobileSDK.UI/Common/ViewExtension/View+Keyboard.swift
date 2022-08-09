@@ -2,7 +2,7 @@
 //  View+Keyboard.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 03.08.2022.
+//  Created by Ivan Krapivtsev on 03.08.2022.
 //
 
 import SwiftUI

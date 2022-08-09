@@ -2,7 +2,7 @@
 //  ValidationService.swift
 //  mobileSDK.UI
 //
-//  Created by Ivan Krapivev on 21.07.2022.
+//  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
 import Foundation
