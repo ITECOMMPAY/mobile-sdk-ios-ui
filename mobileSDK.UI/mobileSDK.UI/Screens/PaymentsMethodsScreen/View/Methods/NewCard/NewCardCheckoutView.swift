@@ -54,7 +54,7 @@ struct NewCardCheckoutView: View {
 
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
                 ExpiryField(disabled: false, expiryString: $cardExpiry, isValueValid: $isExpiryValid)
-                CvvField(cvvValue: $cardCVV, isValueValid: $isCVVValid)
+                CvvField(withInfoButton: true, cvvValue: $cardCVV, isValueValid: $isCVVValid)
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
@@ -121,9 +121,7 @@ struct NewCardCheckoutView: View {
 
 struct NewCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        // TODO: repare preview
-        // NewCardCheckoutView(paymentMethod: nil, paymentAmount: 100.500, paymentCurrency: "RUB", additionalFieldsView: nil)
-        EmptyView()
+        NewCardCheckoutView()
     }
 }
 

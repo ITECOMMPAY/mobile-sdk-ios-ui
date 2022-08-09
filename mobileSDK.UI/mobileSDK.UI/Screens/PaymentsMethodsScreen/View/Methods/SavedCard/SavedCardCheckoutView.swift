@@ -63,7 +63,7 @@ struct SavedCardCheckoutView: View {
     }
 
     private var cvvField: some View {
-        CvvField(cvvValue: $cvvText, isValueValid: $isCvvValid)
+        CvvField(withInfoButton: false, cvvValue: $cvvText, isValueValid: $isCvvValid)
     }
 
     private var buttonLabel: PayButtonLabel {

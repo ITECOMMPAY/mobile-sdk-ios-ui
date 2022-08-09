@@ -20,18 +20,19 @@ struct CardHolderField: View {
     @State var errorMessage: String = ""
 
     var body: some View {
-        CustomTextField($cardHolder,
-                      placeholder: L.title_holder_name.string,
-                      forceUppercased: true,
-                      secure: false,
-                      required: true,
-                      hint: $errorMessage,
-                      valid: $isFieldValid,
-                      disabled: .constant(false),
-                      accessoryView: EmptyView()) {
-            isFieldValid = serviceLocator.getService(ofType: ValidationService.self)?.isCardHolderNameValid(value: cardHolder) ?? false
-            isValueValid = isFieldValid
-        }
+        CustomTextField(
+            $cardHolder.didSet({ newValue in
+                isFieldValid = serviceLocator.getService(ofType: ValidationService.self)?.isCardHolderNameValid(value: newValue) ?? false
+                isValueValid = isFieldValid
+            }),
+            placeholder: L.title_holder_name.string,
+            forceUppercased: true,
+            secure: false,
+            required: true,
+            hint: errorMessage,
+            valid: isFieldValid,
+            disabled: false,
+            accessoryView: EmptyView())
     }
 }
 
@@ -42,3 +43,4 @@ struct CardHolderField_Previews: PreviewProvider {
     }
 }
 #endif
+

@@ -30,27 +30,28 @@ struct BaseCustomerTextField: View {
     }
 
     var body: some View {
-        CustomTextField($value,
-                      placeholder: customerField.placeholder ?? customerField.hint ?? "",
-                      keyboardType: keyboardType,
-                      forceUppercased: false,
-                      secure: isSecure,
-                      maxLength: maxLength,
-                      isAllowedCharacter: isAllowedCharacter,
-                      formatter: formatter,
-                      required: customerField.isRequired,
-                      hint: $hint,
-                      valid: $isValid,
-                      disabled: .constant(false),
-                      accessoryView: EmptyView()) {
-            if let validationError = customerField.getValidationMessage(value: value) {
-                hint = validationError
-                isValid = false
-            } else {
-                hint = ""
-                isValid = true
-            }
-        }
+        CustomTextField(
+            $value.didSet({ newValue in
+                if let validationError = customerField.getValidationMessage(value: newValue) {
+                    hint = validationError
+                    isValid = false
+                } else {
+                    hint = ""
+                    isValid = true
+                }
+            }),
+            placeholder: customerField.placeholder ?? customerField.hint ?? "",
+            keyboardType: keyboardType,
+            forceUppercased: false,
+            secure: isSecure,
+            maxLength: maxLength,
+            isAllowedCharacter: isAllowedCharacter,
+            formatter: formatter,
+            required: customerField.isRequired,
+            hint: hint,
+            valid: isValid,
+            disabled: false,
+            accessoryView: EmptyView())
     }
 }
 

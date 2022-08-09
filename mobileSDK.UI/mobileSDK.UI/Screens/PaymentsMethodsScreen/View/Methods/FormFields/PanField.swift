@@ -34,22 +34,23 @@ struct PanField: View {
     }
 
     var body: some View {
-        CustomTextField($cardNumber,
-                      placeholder: L.title_card_number.string,
-                      keyboardType: .numberPad,
-                      forceUppercased: true,
-                      secure: false,
-                      maxLength: 19,
-                      isAllowedCharacter: allowedCharacters,
-                      formatter: formatter,
-                      required: true,
-                      hint: $errorMessage,
-                      valid: $isFieldValid,
-                      disabled: .constant(false),
-                      accessoryView: EmptyView()) {
-            isFieldValid = validationService?.isPanValidatorValid(value: cardNumber) ?? false
-            isValueValid = isFieldValid
-        }
+        CustomTextField(
+            $cardNumber.didSet({ newValue in
+                isFieldValid = validationService?.isPanValidatorValid(value: newValue) ?? false
+                isValueValid = isFieldValid
+            }),
+            placeholder: L.title_card_number.string,
+            keyboardType: .numberPad,
+            forceUppercased: true,
+            secure: false,
+            maxLength: 19,
+            isAllowedCharacter: allowedCharacters,
+            formatter: formatter,
+            required: true,
+            hint: errorMessage,
+            valid: isFieldValid,
+            disabled: false,
+            accessoryView: EmptyView())
     }
 }
 
