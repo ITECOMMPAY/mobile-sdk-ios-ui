@@ -60,6 +60,8 @@ protocol DimensionScheme {
     var bigFont: CGFloat { get }
     /// **default: 28**
     var hugeFont: CGFloat { get }
+    /// **default: 24**
+    var biggerFont: CGFloat { get }
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
@@ -68,6 +70,7 @@ struct DefaultDimensionScheme: DimensionScheme {
     let middleFont: CGFloat = 16
     let bigFont: CGFloat = 22
     let hugeFont: CGFloat = 28
+    let biggerFont: CGFloat = 24
 
     let textFieldHeight: CGFloat = 55
     let payButtonPayPriceSpacing: CGFloat = 5

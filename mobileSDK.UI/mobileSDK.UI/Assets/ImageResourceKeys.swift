@@ -17,6 +17,7 @@ enum ImageResourceKeys: String {
     case chevron
     case infoButton
     case backButton
+    case loadingIcon
 
     // MARK: Basic payment methods
     case bankCard

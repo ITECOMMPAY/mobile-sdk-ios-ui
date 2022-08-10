@@ -26,20 +26,21 @@ struct ExpiryField: View {
     @State var errorMessage: String = ""
 
     var body: some View {
-        CustomTextField($expiryString,
-                      placeholder: disabled ? L.title_expiration.string : L.title_expiration_placeholder.string,
-                      keyboardType: .numberPad,
-                      secure: false,
-                      isAllowedCharacter: allowedCharacters,
-                      formatter: formatter,
-                      required: false,
-                      hint: $errorMessage,
-                      valid: $isFieldValid,
-                      disabled: .constant(disabled),
-                      accessoryView: EmptyView()) {
-            isFieldValid = expiryFabric?.createCardExpiry(with: expiryString).isValid() ?? false
-            isValueValid = isFieldValid
-        }
+        CustomTextField(
+            $expiryString.didSet({ newValue in
+                isFieldValid = expiryFabric?.createCardExpiry(with: newValue).isValid() ?? false
+                isValueValid = isFieldValid
+            }),
+            placeholder: disabled ? L.title_expiration.string : L.title_expiration_placeholder.string,
+            keyboardType: .numberPad,
+            secure: false,
+            isAllowedCharacter: allowedCharacters,
+            formatter: formatter,
+            required: false,
+            hint: errorMessage,
+            valid: isFieldValid,
+            disabled: disabled,
+            accessoryView: EmptyView())
     }
 }
 
@@ -64,3 +65,4 @@ struct ExpiryField_Previews: PreviewProvider {
     }
 }
 #endif
+

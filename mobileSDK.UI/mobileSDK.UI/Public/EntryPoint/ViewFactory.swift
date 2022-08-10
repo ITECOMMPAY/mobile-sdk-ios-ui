@@ -17,35 +17,35 @@ public struct ViewFactory {
     }
 
     internal static func assembleInitialLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return InitialLoadingScreen(viewModel: InitialLoadingScreenViewModel(parentViewModel: parentModel))
+        InitialLoadingScreen(viewModel: InitialLoadingScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assemblePaymentMethodsScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return PaymentMethodsScreen(viewModel: PaymentMethodsScreenViewModel(parentViewModel: parentModel))
+        PaymentMethodsScreen(viewModel: PaymentMethodsScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assembleCustomerFieldsScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return CustomerFieldsScreen(viewModel: CustomerFieldsScreenModel(parentViewModel: parentModel))
+        CustomerFieldsScreen(viewModel: CustomerFieldsScreenModel(parentViewModel: parentModel))
     }
 
     internal static func assembleClarificationFieldsScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return ClarificationFieldsScreen(viewModel: ClarificationFieldsScreenModel(parentViewModel: parentModel))
+        ClarificationFieldsScreen(viewModel: ClarificationFieldsScreenModel(parentViewModel: parentModel))
     }
 
     internal static func assembleLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Loading screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        LoadingScreen()
     }
 
     internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
     internal static func assembleFinalDeclineScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        return Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
     }
 
 }

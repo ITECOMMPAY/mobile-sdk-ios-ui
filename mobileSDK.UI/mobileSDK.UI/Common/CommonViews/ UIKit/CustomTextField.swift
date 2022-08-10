@@ -58,7 +58,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
             .frame(maxWidth: .infinity)
             .frame(height: UIScheme.dimension.textFieldHeight)
 
-            if !valid {
+            if !showValid {
                 Text(hint)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(valid ? .clear : UIScheme.color.textFieldErrorBorderColor)
@@ -134,8 +134,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     private var backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
     @State
     private var editing: Bool = false
-    @Binding
-    private var hint: String
+
     @State
     private var placeholderFontSize = UIScheme.dimension.middleFont
     @State
@@ -144,7 +143,12 @@ struct CustomTextField<AccessoryViewType: View>: View {
                                                              bottom: 17,
                                                              trailing: 0)
 
-    private let placeholderColor = UIScheme.color.textFieldPlaceholderColor
+    var placeholderColor: Color {
+        editing
+        ? UIScheme.color.textFieldFocusedBorderColor
+        : UIScheme.color.textFieldPlaceholderColor
+    }
+
     private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,
                                                            leading: UIScheme.dimension.middleSpacing,
                                                            bottom: 9,
@@ -152,10 +156,14 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     @Binding
     private var text: String
-    @Binding
+
     private var valid: Bool
-    @Binding
     private var disabled: Bool
+    private var hint: String
+
+    private var showValid: Bool {
+        editing ? true : valid
+    }
 
     // MARK: - Initialization
 
@@ -175,17 +183,17 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
                 formatter: Formatter = EmptyFormatter(),
                 required: Bool = false,
-                hint: Binding<String>,
-                valid: Binding<Bool>,
-                disabled: Binding<Bool> = .constant(false),
+                hint: String,
+                valid: Bool,
+                disabled: Bool = false,
                 accessoryView: AccessoryViewType,
                 onCommit: @escaping () -> Void = {}) {
         self._text = text
         self.onCommit = onCommit
         self.placeholder = placeholder
-        self._hint = hint
-        self._valid = valid
-        self._disabled = disabled
+        self.hint = hint
+        self.valid = valid
+        self.disabled = disabled
         self.accessoryView = accessoryView
         self.isRequired = required
         self.isSecure = secure
@@ -210,7 +218,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
             return
         }
 
-        if !valid {
+        if !showValid {
             borderColor = UIScheme.color.textFieldErrorBorderColor
         } else if editing {
             borderColor = UIScheme.color.textFieldFocusedBorderColor
@@ -225,8 +233,10 @@ struct CustomTextField<AccessoryViewType: View>: View {
             return
         }
 
-        if !valid {
+        if !showValid {
             backgroundColor = UIScheme.color.textFieldErrorBackgroundColor
+        } else if editing {
+            backgroundColor = UIScheme.color.brandColor.opacity(0.05)
         } else {
             backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
         }
@@ -269,34 +279,34 @@ struct CustomTextField_Previews: PreviewProvider {
         Group {
             CustomTextField(.constant(""),
                           placeholder: "placeholder text",
-                          hint: .constant("hint text"),
-                          valid: .constant(true),
+                          hint: "hint text",
+                          valid: true,
                           accessoryView: EmptyView()).previewDisplayName("Empty")
             CustomTextField(.constant(""),
                           placeholder: "placeholder text",
                           required: true,
-                          hint: .constant("hint text"),
-                          valid: .constant(true),
+                          hint: "hint text",
+                          valid: true,
                           accessoryView: EmptyView()).previewDisplayName("Requered")
             CustomTextField(.constant("some text"),
                           placeholder: "placeholder text",
-                          hint: .constant("hint text"),
-                          valid: .constant(false),
+                          hint: "hint text",
+                          valid: false,
                           accessoryView: Color.red.frame(width: 20,
                                                          height: 20)).previewDisplayName("Error hint")
             CustomTextField(.constant("some text"),
                           placeholder: "placeholder text",
-                          hint: .constant("hint text"),
-                          valid: .constant(true),
-                          disabled: .constant(true),
+                          hint: "hint text",
+                          valid: true,
+                          disabled: true,
                           accessoryView: EmptyView()).previewDisplayName("Disabled")
             CustomTextField(.constant("cvc"),
                           placeholder: "CVC",
                           secure: true,
                           required: true,
-                          hint: .constant("hint text"),
-                          valid: .constant(true),
-                          disabled: .constant(false),
+                          hint: "hint text",
+                          valid: true,
+                          disabled: false,
                           accessoryView: EmptyView()).previewDisplayName("Sequre")
 
         }

@@ -16,12 +16,7 @@ struct InfoButton: View {
             onTap()
         } label: {
             IR.infoButton.image
-        }.contentShape(
-            Rectangle()
-                .scale(x: UIScheme.dimension.minimumTapAreaSize,
-                       y: UIScheme.dimension.minimumTapAreaSize,
-                       anchor: UnitPoint.center).offset(x: -10, y: 0)
-        )
+        }.contentShape(Rectangle())
     }
 }
 
