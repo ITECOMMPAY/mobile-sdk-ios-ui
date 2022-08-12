@@ -54,7 +54,7 @@ struct PaymentDetailsView: View {
             )
 
         }
-        .background(UIScheme.color.paymentDetailsBackground)
+        .background(UIScheme.color.panelBackgroundColor)
         .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
     }
 

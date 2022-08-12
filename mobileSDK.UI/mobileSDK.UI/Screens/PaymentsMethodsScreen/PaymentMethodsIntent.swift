@@ -16,7 +16,6 @@ enum PaymentMethodsIntent {
                         month: Int32,
                         cardHolder: String,
                         saveCard: Bool)
-    case continueToCustomerScreen
     case delete(SavedAccount)
     case select(PaymentMethodsListEntity)
 }

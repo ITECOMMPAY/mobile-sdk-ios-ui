@@ -38,7 +38,7 @@ extension PayDelegateProxy: PayDelegate {
     }
 
     func onCompleteWithSuccess(payment: MsdkCore.Payment) {
-        send(.success(.onPaymentCreated))
+        send(.success(.onCompleteWithSuccess(payment: payment)))
     }
 
     func onError(code: ErrorCode, message: String) {

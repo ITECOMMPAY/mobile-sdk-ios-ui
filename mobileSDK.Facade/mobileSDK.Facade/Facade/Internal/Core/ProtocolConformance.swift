@@ -81,7 +81,19 @@ extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {
 }
 
 extension MsdkCore.PaymentStatus: mobileSDK_UI.PaymentStatus {}
-extension MsdkCore.Payment: mobileSDK_UI.Payment {}
+extension MsdkCore.Account: mobileSDK_UI.Account {}
+extension MsdkCore.CompleteField: mobileSDK_UI.CompleteField {}
+
+extension MsdkCore.Payment: mobileSDK_UI.Payment {
+    public var paymentCompleteFields: [mobileSDK_UI.CompleteField]? {
+        completeFields as [mobileSDK_UI.CompleteField]?
+    }
+
+    public var paymentAccount: mobileSDK_UI.Account? {
+        return account
+    }
+}
+
 extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {}
 
 class StringResourceManagerAdapter:  mobileSDK_UI.StringResourceManager {

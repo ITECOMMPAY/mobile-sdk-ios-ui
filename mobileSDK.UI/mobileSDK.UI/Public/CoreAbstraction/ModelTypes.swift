@@ -50,7 +50,23 @@ public protocol CustomerField {
     var errorMessageKey: String { get }
 }
 
-public protocol Payment {}
+public protocol Payment {
+    var id: String? { get }
+    var date: String? { get }
+    var paymentAccount: Account? { get }
+    var paymentCompleteFields: [CompleteField]? { get }
+}
+
+public protocol CompleteField {
+    var defaultLabel: String? { get }
+    var name: String? { get }
+    var value: String? { get }
+}
+
+public protocol Account {
+    var number: String? { get }
+    var type: String? { get }
+}
 
 public protocol PaymentMethod {
     var code: String { get }
@@ -61,6 +77,7 @@ public protocol PaymentMethod {
     var methodCardTypes: [PaymentMethodCard] { get }
     var cardTypeRecognizer: CardTypeRecognizer { get }
     var iconUrl: String? { get }
+    var translations: [String: String] { get }
 }
 
 public protocol SavedAccount {

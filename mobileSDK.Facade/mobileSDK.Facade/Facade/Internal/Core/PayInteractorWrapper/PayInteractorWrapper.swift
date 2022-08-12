@@ -9,7 +9,7 @@ import mobileSDK_UI
 import MsdkCore
 import Combine
 
-class PayInteractorWrapper: mobileSDK_UI.PayInteractor {
+class PayInteractorWrapper {
     weak var msdkSession: MSDKCoreSession?
 
     private var payInteractor: MsdkCore.PayInteractor? {
@@ -19,6 +19,9 @@ class PayInteractorWrapper: mobileSDK_UI.PayInteractor {
     init(msdkSession: MSDKCoreSession?) {
         self.msdkSession = msdkSession
     }
+}
+
+extension PayInteractorWrapper: mobileSDK_UI.PayInteractor {
 
     func execute(request: mobileSDK_UI.PayRequest) -> AnyPublisher<PayEvent, CoreError> {
         guard let interactor = payInteractor
@@ -53,6 +56,10 @@ class PayInteractorWrapper: mobileSDK_UI.PayInteractor {
                 MsdkCore.ClarificationFieldValue(name: $0.name, value: $0.value)
             }
         )
+    }
+
+    func threeDSecureHandled() {
+        payInteractor?.threeDSecureHandled()
     }
 }
 

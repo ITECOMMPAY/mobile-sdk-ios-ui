@@ -64,8 +64,8 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
 struct ClarificationFieldsScreen_Previews: PreviewProvider {
 
     static var previews: some View {
-        //TODO: repare preview
+        // TODO: repare preview
         EmptyView()
-        //ClarificationFieldsScreen(viewModel: PreviewModel())
+        // ClarificationFieldsScreen(viewModel: PreviewModel())
     }
 }

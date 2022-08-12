@@ -13,6 +13,7 @@ protocol PaymentMethodsScreenState {
     var paymentOptions: PaymentOptions { get }
     var mergedList: [PaymentMethodsListEntity] { get }
     var cardPaymentMethod: PaymentMethod? { get }
+    var isVatIncluded: Bool { get }
 }
 
 struct PaymentMethodsListEntity {
@@ -27,21 +28,18 @@ struct PaymentMethodsListEntity {
     }
 }
 
+extension PaymentMethodsListEntity {
+    var paymentMethodType: PaymentMethodType {
+        switch entityType {
+        case .paymentMethod(let method):
+            return method.methodType
+        case .savedAccount:
+            return .card
+        }
+    }
+}
+
 enum PaymentMethodsListEntityType {
     case savedAccount(SavedAccount)
     case paymentMethod(PaymentMethod)
-}
-
-extension PaymentMethodsScreenState {
-    var isVatIncluded: Bool {
-        guard let entity = selectedPaymentMethod?.entityType else {
-            return false
-        }
-        switch entity {
-        case .savedAccount:
-            return false
-        case .paymentMethod(let method):
-            return method.isVatInfo
-        }
-    }
 }
