@@ -13,4 +13,5 @@ enum RootIntent {
     case customerFieldsScreenIntent(CustomerFieldsScreenIntent)
     case clarificationFieldsScreenIntent(ClarificationFieldsScreenIntent)
     case closeErrorAlert
+    case successScreenIntent(ResultSuccessScreenIntent)
 }

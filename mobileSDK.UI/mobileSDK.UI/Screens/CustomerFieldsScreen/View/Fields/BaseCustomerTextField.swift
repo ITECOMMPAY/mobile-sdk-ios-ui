@@ -18,7 +18,7 @@ struct BaseCustomerTextField: View {
     var keyboardType: UIKeyboardType = .default
     var formatter: Formatter = EmptyFormatter()
     var isAllowedCharacter: (Character) -> Bool = {_ in true }
-    var maxLength: Int? = nil
+    var maxLength: Int?
     var isSecure: Bool = false
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
 

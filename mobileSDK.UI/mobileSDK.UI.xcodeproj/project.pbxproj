@@ -29,6 +29,12 @@
 		8454EEC728A293A900199FF3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC628A293A900199FF3 /* LoadingScreen.swift */; };
 		8454EECA28A2A56B00199FF3 /* Binding+didSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */; };
 		8454EECB28A2A56B00199FF3 /* Binding+didSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */; };
+		8454EED028A4CC6900199FF3 /* ResultTableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EECF28A4CC6900199FF3 /* ResultTableInfo.swift */; };
+		8454EED128A4CC6900199FF3 /* ResultTableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EECF28A4CC6900199FF3 /* ResultTableInfo.swift */; };
+		8454EED328A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EED228A4D5D400199FF3 /* ResultSuccessScreen.swift */; };
+		8454EED428A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EED228A4D5D400199FF3 /* ResultSuccessScreen.swift */; };
+		8454EED628A4D5E600199FF3 /* ResultDeclineScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EED528A4D5E600199FF3 /* ResultDeclineScreen.swift */; };
+		8454EED728A4D5E600199FF3 /* ResultDeclineScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EED528A4D5E600199FF3 /* ResultDeclineScreen.swift */; };
 		845507892858A122002BBFE0 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507882858A0D8002BBFE0 /* Shimmer.swift */; };
 		8455078D2858A1BB002BBFE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		845507902858A1FB002BBFE0 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078F2858A1FB002BBFE0 /* Dimensions.swift */; };
@@ -226,6 +232,9 @@
 		8446EC5B288EB50E00A1763C /* CardTypesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypesManager.swift; sourceTree = "<group>"; };
 		8454EEC628A293A900199FF3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+didSet.swift"; sourceTree = "<group>"; };
+		8454EECF28A4CC6900199FF3 /* ResultTableInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableInfo.swift; sourceTree = "<group>"; };
+		8454EED228A4D5D400199FF3 /* ResultSuccessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSuccessScreen.swift; sourceTree = "<group>"; };
+		8454EED528A4D5E600199FF3 /* ResultDeclineScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDeclineScreen.swift; sourceTree = "<group>"; };
 		845507882858A0D8002BBFE0 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		8455078C2858A1BB002BBFE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8455078F2858A1FB002BBFE0 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
@@ -376,6 +385,32 @@
 			path = LoadingScreen;
 			sourceTree = "<group>";
 		};
+		8454EECC28A4CA1C00199FF3 /* Final */ = {
+			isa = PBXGroup;
+			children = (
+				8454EECE28A4CA3A00199FF3 /* Decline */,
+				8454EECD28A4CA3400199FF3 /* Success */,
+				8454EECF28A4CC6900199FF3 /* ResultTableInfo.swift */,
+			);
+			path = Final;
+			sourceTree = "<group>";
+		};
+		8454EECD28A4CA3400199FF3 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				8454EED228A4D5D400199FF3 /* ResultSuccessScreen.swift */,
+			);
+			path = Success;
+			sourceTree = "<group>";
+		};
+		8454EECE28A4CA3A00199FF3 /* Decline */ = {
+			isa = PBXGroup;
+			children = (
+				8454EED528A4D5E600199FF3 /* ResultDeclineScreen.swift */,
+			);
+			path = Decline;
+			sourceTree = "<group>";
+		};
 		8455077C28587347002BBFE0 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +448,7 @@
 		8455079B2859BC91002BBFE0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8454EECC28A4CA1C00199FF3 /* Final */,
 				8454EEC528A2939300199FF3 /* LoadingScreen */,
 				84A15A7E28A115F00035A986 /* ClarificationFieldsScreen */,
 				84A35C5F2897A55C0037A604 /* InitialLoadingScreen */,
@@ -895,6 +931,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8454EED428A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */,
 				84A35C6A2897FCED0037A604 /* NavigationComponent.swift in Sources */,
 				84A0F15F2874662F005F81DE /* UIScheme.swift in Sources */,
 				84318AB428814CC2006B7E9C /* PolicyView.swift in Sources */,
@@ -929,6 +966,8 @@
 				84A0F14E28746617005F81DE /* ViewModel.swift in Sources */,
 				84318AB628816ABE006B7E9C /* PayButton.swift in Sources */,
 				84B241AE288A732900259A50 /* ExpiryField.swift in Sources */,
+				8454EED728A4D5E600199FF3 /* ResultDeclineScreen.swift in Sources */,
+				8454EED128A4CC6900199FF3 /* ResultTableInfo.swift in Sources */,
 				84A0F15328746624005F81DE /* FooterView.swift in Sources */,
 				84A0F15428746624005F81DE /* CloseButton.swift in Sources */,
 				84A0F14B28746613005F81DE /* PaymentDetailsView.swift in Sources */,
@@ -998,6 +1037,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8454EED328A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */,
 				84BEF5FF289C043100D8481D /* PaymentMethod+ComputedField.swift in Sources */,
 				84A35C752898FAAC0037A604 /* BackButton.swift in Sources */,
 				84B241862889078300259A50 /* ModelTypes.swift in Sources */,
@@ -1032,6 +1072,8 @@
 				84611526287DAB170015A6BE /* PayButton.swift in Sources */,
 				845507892858A122002BBFE0 /* Shimmer.swift in Sources */,
 				84F26E2D2869A623002861F8 /* ScreenHeader.swift in Sources */,
+				8454EED628A4D5E600199FF3 /* ResultDeclineScreen.swift in Sources */,
+				8454EED028A4CC6900199FF3 /* ResultTableInfo.swift in Sources */,
 				84E6CA8828854AA300F3A444 /* CheckBoxView.swift in Sources */,
 				84A0F12828740390005F81DE /* ViewModel.swift in Sources */,
 				84A15A8028A1161A0035A986 /* ClarificationFieldsScreen.swift in Sources */,

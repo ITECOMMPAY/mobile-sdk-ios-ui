@@ -16,6 +16,7 @@ enum SDKScreen {
     case loading
     case successResult
     case declineResult
+    case none
 }
 
 struct NavigationComponentState {

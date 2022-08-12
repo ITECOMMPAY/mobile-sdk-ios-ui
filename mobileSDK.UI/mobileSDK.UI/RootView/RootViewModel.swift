@@ -46,17 +46,15 @@ class RootViewModel: RootViewModelProtocol {
                 }
             }, receiveValue: { [weak self] event in
                 guard let self = self else { return }
+                self.state.isLoading = false
                 switch event {
                 case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
-                    self.state.currentScreen = .paymentMethods
                     self.state.availablePaymentMethods = methods
                     self.state.savedAccounts = accounts
                     self.state.currentMethod = self.state.mergedList.first // по умолчанию выбраем первый метод из писка
-                    self.state.isLoading = false
                     break
-                case .onPaymentRestored:
-                    // TODO: Implement restore
-                    break
+                case .onPaymentRestored(let payment):
+                    self.state.payment = payment
                 }
             })
             .store(in: &cancellables)
@@ -73,7 +71,8 @@ class RootViewModel: RootViewModelProtocol {
         case .paymentMethodsScreenIntent(.close),
                 .initialLoadingScreenIntent(.close),
                 .customerFieldsScreenIntent(.close),
-                .clarificationFieldsScreenIntent(.close):
+                .clarificationFieldsScreenIntent(.close),
+                .successScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv)):
@@ -81,6 +80,7 @@ class RootViewModel: RootViewModelProtocol {
                 return
             }
             let request = payRequestFactory.createSavedCardSaleRequest(cvv: cvv, accountId: id)
+            state.isLoading = true
             execute(payRequest: request)
         case .paymentMethodsScreenIntent(.payNewCardWith(cvv: let cvv,
                              pan: let pan,
@@ -97,28 +97,27 @@ class RootViewModel: RootViewModelProtocol {
                                                                      month: month,
                                                                      cardHolder: cardHolder,
                                                                      saveCard: saveCard)
+            state.isLoading = true
             execute(payRequest: request)
-
         case .paymentMethodsScreenIntent(.delete):
-            // TODO: Implement card delete
-            break
+            self.state.error = CoreError(code: .unknown,
+                                         message: "Card delete is unimplemented")
         case .paymentMethodsScreenIntent(.select(let item)):
             state.currentMethod = item
         case .closeErrorAlert:
-            break
-            //TODO: handle by error type
-            //cancellables.forEach {  $0.cancel() }
-            //onFlowFinished(.withError(state.error ?? .unknown))
-        case .paymentMethodsScreenIntent(.continueToCustomerScreen):
-            state.currentScreen = .customerFields
+            // TODO: handle by error type
+            self.state.error = nil
+            // cancellables.forEach {  $0.cancel() }
+            // onFlowFinished(.withError(state.error ?? .unknown))
         case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
+            state.isLoading = true
             payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
-            state.currentScreen = .loading
         case .clarificationFieldsScreenIntent(.sendFilledFields(let fieldsValues)):
+            state.isLoading = true
             payInteractor?.sendClarificationFields(fieldsValues: fieldsValues)
-            state.currentScreen = .loading
         case .customerFieldsScreenIntent(.back), .clarificationFieldsScreenIntent(.back):
-            state.currentScreen = .paymentMethods
+            state.customerFields = nil
+            state.clarificationFields = nil
         }
     }
 
@@ -137,18 +136,41 @@ class RootViewModel: RootViewModelProtocol {
                 guard let self = self else { return }
                 switch payEvent {
                 case .onCustomerFields(customerFields: let customerFields):
+                    self.state.isLoading = false
                     self.state.customerFields = customerFields
-                    self.state.currentScreen = .customerFields
                 case .onClarificationFields(clarificationFields: let clarificationFields,
-                                            payment: _):
+                                            payment: let payment):
+                    self.state.isLoading = false
+                    self.state.payment = payment
                     self.state.clarificationFields = clarificationFields
-                    self.state.currentScreen = .clarificationFields
-                default:
-                    // TODO: Implement later
-                    self.state.error = CoreError(code: .unknown,
-                                      message: "\(String(describing: payEvent)) event handling is unimplemented")
+                case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
+                    // TODO: implement real handling after ACS page screen will be implemented
+                    payInteractor.threeDSecureHandled()
+                case .onCompleteWithDecline(paymentMessage: let paymentMessage, payment: let payment):
+                    self.state.isLoading = false
+                    self.state.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
+                case .onCompleteWithFail(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
+                    self.state.payment = payment
+                    self.state.isLoading = false
+                    self.state.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
+                case .onCompleteWithSuccess(payment: let payment):
+                    self.state.payment = payment
+                    self.state.isLoading = false
+                    self.state.finalPaymentState = .Success
+                case .onPaymentCreated:
+                    debugPrint("\(type(of: self)) received onPaymentCreated")
+                case .onStatusChanged(status: let status, payment: let payment):
+                    debugPrint("\(type(of: self)) received onStatusChanged with status=\(status)")
+                    self.state.payment = payment
                 }
             })
             .store(in: &cancellables)
     }
+
+}
+
+private func debugPrint(_ object: Any...) {
+    #if DEBUG
+    print(object)
+    #endif
 }

@@ -13,7 +13,7 @@ extension ClarificationField {
     }
 }
 
-fileprivate struct ClarificationFieldAdapter {
+private struct ClarificationFieldAdapter {
     let clarificationField: ClarificationField
 
     init(with clarificationField: ClarificationField) {
@@ -24,7 +24,7 @@ fileprivate struct ClarificationFieldAdapter {
 extension ClarificationFieldAdapter: CustomerField {
     var name: String { clarificationField.name }
 
-    var isRequired: Bool { true }  //clarification fields are always true
+    var isRequired: Bool { true }  // clarification fields are always true
 
     var isHidden: Bool { false }
 

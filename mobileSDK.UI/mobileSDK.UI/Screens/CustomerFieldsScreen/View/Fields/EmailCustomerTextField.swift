@@ -12,7 +12,6 @@ struct EmailCustomerTextField: View {
     let customerField: CustomerField
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
 
-
     var body: some View {
         BaseCustomerTextField(value: value,
                               customerField: customerField,

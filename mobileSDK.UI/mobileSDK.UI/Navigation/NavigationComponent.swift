@@ -40,6 +40,8 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
             ViewFactory.assembleFinalSuccessScreen(parentModel: viewModel.parentViewModel)
         case .declineResult:
             ViewFactory.assembleFinalDeclineScreen(parentModel: viewModel.parentViewModel)
+        case .none:
+            EmptyView()
         }
     }
 }

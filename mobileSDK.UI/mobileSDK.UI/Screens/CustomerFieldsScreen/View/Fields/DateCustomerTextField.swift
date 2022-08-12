@@ -51,7 +51,7 @@ struct DateCustomerTextField_Previews: PreviewProvider {
 
         var body: some View {
             VStack {
-                DateCustomerTextField(value: value, customerField: MockCustomerField()) { customerField, newValue, isValid in
+                DateCustomerTextField(value: value, customerField: MockCustomerField()) { _, newValue, isValid in
                     value = newValue
                     self.isValid = isValid
                 }

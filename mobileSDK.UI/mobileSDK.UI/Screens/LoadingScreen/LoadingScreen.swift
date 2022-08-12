@@ -13,7 +13,7 @@ struct LoadingScreen: View {
         VStack {
             Spacer()
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                IR.loadingIcon.image.padding(.bottom, UIScheme.dimension.middleSpacing)
+                IR.loadingLogo.image.padding(.bottom, UIScheme.dimension.middleSpacing)
                 Text(L.title_loading_screen.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
                     .foregroundColor(UIScheme.color.text)

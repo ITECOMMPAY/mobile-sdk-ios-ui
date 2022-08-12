@@ -41,7 +41,7 @@ public struct ViewFactory {
     }
 
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        Text("Success screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assembleFinalDeclineScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {

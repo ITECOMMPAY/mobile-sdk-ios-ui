@@ -27,7 +27,7 @@ protocol ColorScheme {
     /// Цвет  бренда
     var brandColor: Color { get }
     /// Цвет  подложки деталей платежа
-    var paymentDetailsBackground: Color { get }
+    var panelBackgroundColor: Color { get }
     /// Цвет рамки
     var border: Color { get }
     /// Цвет заголовков внутри блока деталей платежа
@@ -88,7 +88,7 @@ struct DefaultLight: ColorScheme {
     let shimmeringAccent = Color.black.opacity(0.3)
     let dimming = Color.black.opacity(0.8)
     let brandColor = brandBlue
-    let paymentDetailsBackground = lightGray
+    let panelBackgroundColor = lightGray
     let border = grey
     let paymentDetailsInnerTitleColor = darkGray
     let paymentDetailsDescriptionColor = Color.black

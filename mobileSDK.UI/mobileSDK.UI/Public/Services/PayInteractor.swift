@@ -11,6 +11,7 @@ public protocol PayInteractor {
     func execute(request: PayRequest) -> AnyPublisher<PayEvent, CoreError>
     func sendCustomerFields(fieldsValues: [FieldValue])
     func sendClarificationFields(fieldsValues: [mobileSDK_UI.FieldValue])
+    func threeDSecureHandled()
 }
 
 public protocol PayRequest {}
