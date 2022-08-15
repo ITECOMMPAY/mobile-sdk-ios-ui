@@ -75,3 +75,13 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
         }
     }
 }
+
+#if DEBUG
+
+struct InitialLoadingScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        InitialLoadingScreen(viewModel: InitialLoadingScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
+    }
+}
+
+#endif

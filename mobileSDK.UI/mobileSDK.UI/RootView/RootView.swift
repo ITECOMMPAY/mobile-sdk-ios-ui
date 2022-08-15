@@ -32,11 +32,12 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
     }
 }
 
+#if DEBUG
+
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            // TODO: fix preview
-            EmptyView()
-        }
+       RootView(viewModel: MockRootViewModel(with: stateMock))
     }
 }
+
+#endif

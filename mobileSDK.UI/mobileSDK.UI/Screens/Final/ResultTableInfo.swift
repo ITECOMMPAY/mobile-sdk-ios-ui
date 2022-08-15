@@ -29,8 +29,11 @@ struct ResultTableInfo: View {
         .padding([.top, .horizontal], UIScheme.dimension.largeSpacing)
         .padding(.bottom, UIScheme.dimension.smallSpacing)
         .background(UIScheme.color.panelBackgroundColor)
+        .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: .allCorners)
     }
 }
+
+#if DEBUG
 
 struct ResultTableInfo_Previews: PreviewProvider {
     static var previews: some View {
@@ -39,5 +42,8 @@ struct ResultTableInfo_Previews: PreviewProvider {
             ("Label2", "Value2"),
             ("Label3", "Value3")
         ])
+        .previewLayout(.sizeThatFits)
     }
 }
+
+#endif

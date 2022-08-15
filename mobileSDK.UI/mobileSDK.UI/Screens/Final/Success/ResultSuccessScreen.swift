@@ -37,7 +37,6 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     (L.title_payment_id.rawValue, payment?.id ?? ""),
                    ( L.title_payment_date.rawValue, payment?.date ?? "")
                 ] + completeFields)
-                .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: .allCorners)
                 PolicyView()
                 FooterView()
             }
@@ -79,32 +78,16 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
     }
 }
 
-// TODO: Make preview
-/*
+#if DEBUG
+
 struct ResultSuccessScreen_Previews: PreviewProvider {
 
-    class MockRootViewModel: RootViewModelProtocol {
-        func dispatch(intent: RootIntent) {
-            <#code#>
-        }
-
-        var state: RootState = RootState(isLoading: <#T##Bool#>,
-                                         currentScreen: <#T##SDKScreen#>,
-                                         currentMethod: <#T##PaymentMethodsListEntity?#>,
-                                         payment: <#T##Payment?#>,
-                                         customerFields: <#T##[CustomerField]?#>, clarificationFields: <#T##[ClarificationField]?#>,
-                                         error: <#T##CoreError?#>, savedAccounts: <#T##[SavedAccount]?#>,
-                                         availablePaymentMethods: <#T##[PaymentMethod]?#>,
-                                         paymentOptions: <#T##PaymentOptions#>)
-    }
-
     static var previews: some View {
-
-        ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: ))
+        ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
     }
-
 }
- */
+
+#endif
 
 enum ResultSuccessScreenIntent {
     case close

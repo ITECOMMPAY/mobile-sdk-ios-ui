@@ -95,11 +95,12 @@ struct EmbeddedCustomerFieldsView: View {
 
 struct EmbeddedCustomerFieldsView_Previews: PreviewProvider {
     static var previews: some View {
-        // TODO: repare preview
-        /*
-        EmbeddedFieldView(visibleCustomerFields: [], customerFieldValues: .constant([]), isValid: .constant(false))
-         */
-        EmptyView()
+        EmbeddedCustomerFieldsView(
+            visibleCustomerFields: [MockCustomerField()],
+            additionalFields: [],
+            onCustomerFieldsChanged: { _, _ in }
+        )
+        .previewLayout(.sizeThatFits)
     }
 }
 

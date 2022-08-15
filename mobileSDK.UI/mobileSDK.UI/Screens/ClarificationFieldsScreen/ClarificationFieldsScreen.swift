@@ -61,11 +61,12 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
     }
 }
 
-struct ClarificationFieldsScreen_Previews: PreviewProvider {
+#if DEBUG
 
+struct ClarificationFieldsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        // TODO: repare preview
-        EmptyView()
-        // ClarificationFieldsScreen(viewModel: PreviewModel())
+        ClarificationFieldsScreen(viewModel: ClarificationFieldsScreenModel(parentViewModel: MockRootViewModel(with: stateMock)))
     }
 }
+
+#endif

@@ -59,50 +59,12 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
     }
 }
 
+#if DEBUG
+
 struct CustomerFieldsScreen_Previews: PreviewProvider {
-    struct PreviewOptions: PaymentOptions {
-        var summary: PaymentSummaryData = PaymentSummaryData(currency: "RUB", value: 123.23)
-
-        var details: [PaymentDetailData] = []
-
-        var uiAdditionalFields: [AdditionalField] = []
-    }
-
-    struct MockCustomerField: CustomerField {
-        var fieldServerType: FieldServerType = .text
-        var name: String
-        var isRequired: Bool = true
-        var isHidden: Bool = false
-        var isTokenize: Bool = false
-        var isVerify: Bool = false
-        var hint: String? = "mockField hint"
-        var label: String = "mockField label"
-        var placeholder: String? = "mockField placeholder"
-        var validatorName: String? = "mockField validatorName"
-        var validatonMethod: Validator<String>? = { _ in true }
-        var fieldType: FieldType = .unknown
-        var errorMessage: String? = "mockField error"
-        var errorMessageKey: String = "mockField error key"
-    }
-
-    struct PreviewState: CustomerFieldsScreenState {
-        var paymentOptions: PaymentOptions = PreviewOptions()
-
-        var visibleCustomerFields: [CustomerField] = [
-            MockCustomerField(name: "field 1"),
-            MockCustomerField(name: "field 2")
-        ]
-
-        var isVatIncluded: Bool = true
-    }
-
-    class PreviewModel: CustomerFieldsScreenModelProtocol {
-        var state: CustomerFieldsScreenState = PreviewState()
-
-        func dispatch(intent: CustomerFieldsScreenIntent) {}
-    }
-
     static var previews: some View {
-        CustomerFieldsScreen(viewModel: PreviewModel())
+        CustomerFieldsScreen(viewModel: CustomerFieldsScreenModel(parentViewModel: MockRootViewModel(with: stateMock)))
     }
 }
+
+#endif

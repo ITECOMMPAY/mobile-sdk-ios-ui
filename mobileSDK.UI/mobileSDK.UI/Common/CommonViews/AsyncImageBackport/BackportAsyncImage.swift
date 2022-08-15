@@ -90,7 +90,6 @@ private final class Provider: ObservableObject {
 
     private func image(from data: Data?, scale: CGFloat) -> Image? {
         #if os(macOS)
-        // TODO: Support scale on macOS
         return data
             .flatMap(NSImage.init(data:))
             .map(Image.init(nsImage:))
