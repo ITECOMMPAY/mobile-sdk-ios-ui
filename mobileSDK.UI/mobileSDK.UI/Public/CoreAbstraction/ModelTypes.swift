@@ -55,6 +55,7 @@ public protocol Payment {
     var date: String? { get }
     var paymentAccount: Account? { get }
     var paymentCompleteFields: [CompleteField]? { get }
+    var paymentMassage: String? { get }
 }
 
 public protocol CompleteField {

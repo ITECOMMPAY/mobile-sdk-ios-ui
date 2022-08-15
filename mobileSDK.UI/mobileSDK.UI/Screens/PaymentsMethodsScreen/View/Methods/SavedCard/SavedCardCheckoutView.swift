@@ -82,28 +82,13 @@ struct SavedCardCheckoutView: View {
 #if DEBUG
 
 struct SavedCardCheckoutView_Previews: PreviewProvider {
-    struct MockSavedAccount: SavedAccount {
-        var cardUrlLogo: String?
-        var id: Int64 = 100500
-        var number: String? = "*** 1234"
-        var token: String? = "***"
-        var type: String? = "card"
-        var savedCardExpiry: CardExpiry?
-    }
 
     static var previews: some View {
-        // TODO: repare preview
-        /*/
-        SavedCardCheckoutView(paymentAmount: 100.500,
-                              paymentCurrency: "RUB",
+        SavedCardCheckoutView(paymentOptions: MockPaymentOptions(),
                               savedCard: MockSavedAccount(),
-                              additionalFieldsView: nil,
-                              payButtonLabelStyle: .Continue,
-                              payAction: { _ in },
+                              methodForAccount: MockPaymentMethod(),
                               deleteCardAction: {})
-            .previewLayout(.sizeThatFits)
-         */
-        EmptyView()
+        .previewLayout(.sizeThatFits)
     }
 }
 

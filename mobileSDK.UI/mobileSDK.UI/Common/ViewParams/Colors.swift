@@ -66,6 +66,8 @@ protocol ColorScheme {
     var deleteCardButtonColor: Color { get }
     /// цвет невыделеного чекбокса
     var checkboxBorder: Color { get }
+    /// Цвет текста ошибки
+    var errorTextColor: Color { get }
 }
 
 struct DefaultLight: ColorScheme {
@@ -98,6 +100,7 @@ struct DefaultLight: ColorScheme {
     let minorShapesColor = semiMediumGrey
     let deleteCardButtonColor = darkGray
     let checkboxBorder = Color(hex: 0xD1D5DB).opacity(0.9)
+    var errorTextColor = red
 
     /// Colors as they marked in Figma
     private static let lightRed = Color(hex: 0xF8EAEA)

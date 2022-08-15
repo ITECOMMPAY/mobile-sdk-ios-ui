@@ -177,39 +177,9 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
 
 #if DEBUG
 
-import Combine
-
 struct PaymentMethodsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ZStack {
-                // TODO: Repair preview
-                /*
-                 PaymentMethodsScreen(viewModel: previewModel).onAppear {
-                 previewModel.state = .loading
-                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                 previewModel.state = .loaded(
-                 data: PaymentMethodsData(
-                 paymentDetails: [
-                 PaymentDetailData(title: "PaymentID", description: "123", canBeCopied: true)
-                 ],
-                 paymentOptions.summary: PaymentSummaryData(logo: IR.applePayButtonLogo.image,
-                 currency: "RUB",
-                 value: 100,
-                 isVatIncluded: true),
-                 availablePaymentMethods: [
-                 PaymentMethod(id: 1, name: "**** 3456", type: .SavedCard),
-                 PaymentMethod(id: 2, name: "**** 5555", type: .SavedCard),
-                 PaymentMethod(id: 3, name: "Bank Card", type: .NewCard),
-                 PaymentMethod(id: 4, name: "Apple Pay", type: .ApplePay),
-                 ]
-                 )
-                 )
-                 }
-                 }
-                 */
-            }.edgesIgnoringSafeArea(.vertical)
-        }
+        PaymentMethodsScreen(viewModel: PaymentMethodsScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
     }
 }
 

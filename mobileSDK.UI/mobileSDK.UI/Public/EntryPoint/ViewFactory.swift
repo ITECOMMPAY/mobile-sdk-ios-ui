@@ -45,7 +45,7 @@ public struct ViewFactory {
     }
 
     internal static func assembleFinalDeclineScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        Text("Decline screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        ResultDeclineScreen(viewModel: ResultDeclineScreenViewModel(parentViewModel: parentModel))
     }
 
 }

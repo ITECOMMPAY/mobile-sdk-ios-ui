@@ -72,7 +72,8 @@ class RootViewModel: RootViewModelProtocol {
                 .initialLoadingScreenIntent(.close),
                 .customerFieldsScreenIntent(.close),
                 .clarificationFieldsScreenIntent(.close),
-                .successScreenIntent(.close):
+                .successScreenIntent(.close),
+                .declineScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv)):
