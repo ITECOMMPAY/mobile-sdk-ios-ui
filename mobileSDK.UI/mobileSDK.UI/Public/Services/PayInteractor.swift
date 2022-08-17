@@ -17,12 +17,13 @@ public protocol PayInteractor {
 public protocol PayRequest {}
 
 public protocol PayRequestFactory {
-    func createSavedCardSaleRequest(cvv: String, accountId: Int64) -> PayRequest
+    func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> PayRequest
 
     func createNewCardSaleRequest(cvv: String,
                                   pan: String,
                                   year: Int32,
                                   month: Int32,
                                   cardHolder: String,
-                                  saveCard: Bool) -> PayRequest
+                                  saveCard: Bool,
+                                  customerFields: [FieldValue]?) -> PayRequest
 }

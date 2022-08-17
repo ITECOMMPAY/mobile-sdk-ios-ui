@@ -46,7 +46,7 @@ struct SavedCardCheckoutView: View {
             }
             PayButton(label: buttonLabel,
                       disabled: !payButtonIsEnabled) {
-                payAction(.paySavedAccountWith(id: savedCard.id, cvv: cvvText))
+                payAction(.paySavedAccountWith(id: savedCard.id, cvv: cvvText, customerFields: customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
 

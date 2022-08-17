@@ -9,13 +9,14 @@ import Foundation
 
 enum PaymentMethodsIntent {
     case close
-    case paySavedAccountWith(id: Int64, cvv: String)
+    case paySavedAccountWith(id: Int64, cvv: String, customerFields: [FieldValue])
     case payNewCardWith(cvv: String,
                         pan: String,
                         year: Int32,
                         month: Int32,
                         cardHolder: String,
-                        saveCard: Bool)
+                        saveCard: Bool,
+                        customerFields: [FieldValue])
     case delete(SavedAccount)
     case select(PaymentMethodsListEntity)
 }

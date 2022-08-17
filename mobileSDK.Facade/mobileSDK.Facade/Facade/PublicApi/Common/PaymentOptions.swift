@@ -8,6 +8,15 @@
 import Foundation
 import UIKit
 import MsdkCore
+import mobileSDK_UI
+
+
+@objc public enum MockModeType: Int {
+    case disabled
+    case success
+    case decline
+}
+
 
 public class PaymentOptions: NSObject {
     /// PaymentInfo contains this required fields:
@@ -17,7 +26,7 @@ public class PaymentOptions: NSObject {
     /// - **paymentCurrency** - Payment currency in ISO 4217 alpha-3 format
     /// - **customerId** - Unique identifier of the customer in your project
     /// and other optional params, complete reference of those presented in documentation
-    public var paymentInfo: PaymentInfo
+    @objc public var paymentInfo: PaymentInfo
 
     @objc public enum ActionType: Int {
         case Sale = 1
@@ -28,10 +37,10 @@ public class PaymentOptions: NSObject {
 
     /// Payment logo image
     public var logoImage: UIImage?
-    /// Payment description, for example, T-Shirt with print
-    public var paymentDescription: String?
-    /// Region code of a customer
-    public var regionCode: String?
+
+    /// mock Mode type
+    @objc public var mockModeType: MockModeType = .disabled
+    
     /// Action of payment, by default its Sale
     public var action: ActionType? = .Sale
     /// Object that holds recurrent info
@@ -40,14 +49,10 @@ public class PaymentOptions: NSObject {
     public var applePayMerchantID: String?
     /// Apple Pay Description
     public var applePayDescription: String?
-    /// Token of saved card
-    public var token: String?
+ 
     /// Fields that are known, if visible -> would be pre-filled
     public var additionalFields: [AdditionalField]?
-    /// Application language code
-    public var languageCode: String?
-    /// Force open payment method
-    public var forcePaymentMethod: String?
+
     /// Receipt data base64
     public var receiptData: String?
     /// The reference to an instance of Recipient Info data class should be assagned for auth actions with support FT amd F52 fundings
@@ -104,9 +109,9 @@ public class PaymentOptions: NSObject {
                                                         paymentId: paymentID,
                                                         paymentAmount: paymentAmount,
                                                         paymentCurrency: paymentCurrency)
-        self.paymentDescription = paymentDescription
+        self.paymentInfo.paymentDescription = paymentDescription
         self.paymentInfo.customerId = customerID
-        self.regionCode = regionCode
+        self.paymentInfo.regionCode = regionCode
         super.init()
     }
 
@@ -150,7 +155,7 @@ public class PaymentOptions: NSObject {
     /// - Parameter value: token
     @objc(setToken:)
     public func setToken(value: String) {
-        token = value
+        paymentInfo.token = value
     }
 
     /// Set Action of payment, by default its Sale
@@ -198,7 +203,7 @@ public class PaymentOptions: NSObject {
     /// - Parameter value: Language code, example: en (English) or ru (Russian)
     @objc(setLanguageCode:)
     public func setLanguageCode(value: String) {
-        languageCode = value
+        paymentInfo.languageCode = value
     }
 
     /// - Parameter secureInfo: Parameters for 3D secure 2.0
@@ -216,7 +221,7 @@ public class PaymentOptions: NSObject {
     /// - Parameter value: Forced opening of a payment method
     @objc(setForcePaymentMethod:)
     public func setForcePaymentMethod(value: String) {
-        forcePaymentMethod = value
+        paymentInfo.forcePaymentMethod = value
     }
 
     /// You can hide this or that screen based on the passed parameters

@@ -92,7 +92,7 @@ bool isOpen = true;
 
         // Compose Params
         PaymentOptions *paymentInfo = [MainViewControllerActions composePaymentInfoFromItems:self.items];
-
+        //[paymentInfo setMockModeType: MockModeTypeSuccess];
         [paymentInfo setAdditionalFields:[self getArrayOfNonEmptyAdditionalFieldsItems]];
         [paymentInfo setRecipientInfo:self.recipientInfo];
         ////

@@ -78,6 +78,8 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
+    var isMockModeEnabled: Bool = true
+
     var summary: PaymentSummaryData = PaymentSummaryData(currency: "RUB", value: 123.23)
 
     var details: [PaymentDetailData] = [
@@ -119,6 +121,20 @@ struct MockPaymentMethod: PaymentMethod {
     var translations: [String : String] = [:]
 }
 
+struct MockAcsPage: AcsPage {
+    var content: String?
+
+    var errorMessage: String?
+
+    var acsUrl: String? = "ecommpay.com"
+
+    var md: String?
+
+    var paReq: String?
+
+    var termUrl: String?
+}
+
 let stateMock = RootState(
     isLoading: true,
     currentMethod: .init(entityType: .savedAccount(MockSavedAccount())),
@@ -133,6 +149,8 @@ let stateMock = RootState(
         MockPaymentMethod()
     ],
     paymentOptions: MockPaymentOptions(),
-    finalPaymentState: FinalPaymentState.Success)
+    finalPaymentState: FinalPaymentState.Success,
+    acsPageState: AcsPageState(acsPage: MockAcsPage(), isCascading: false)
+)
 
 #endif

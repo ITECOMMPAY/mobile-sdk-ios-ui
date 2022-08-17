@@ -20,6 +20,7 @@ struct RootState {
     var availablePaymentMethods: [PaymentMethod]?
     var paymentOptions: PaymentOptions
     var finalPaymentState: FinalPaymentState?
+    var acsPageState: AcsPageState?
 }
 
 // MARK: - Computed properties
@@ -70,11 +71,15 @@ extension RootState {
             }
         }
 
+        if acsPageState != nil {
+            return .acsPage
+        }
+
         if clarificationFields != nil {
             return .clarificationFields
         }
 
-        if customerFields != nil {
+        if !visibleCustomerFields.isEmpty {
             return .customerFields
         }
 
@@ -90,4 +95,9 @@ extension RootState {
 enum FinalPaymentState {
     case Decline(paymentMessage: String?, isTryAgain: Bool)
     case Success
+}
+
+struct AcsPageState {
+    var acsPage: AcsPage? = nil
+    var isCascading: Bool = false
 }

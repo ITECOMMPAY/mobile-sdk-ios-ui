@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class PaymentInfo;
+@class PaymentOptions;
 @class RecurrentInfo;
 @class DataValue;
 @class UIViewController;
 
 @interface MainViewControllerActions : NSObject
 
-+ (PaymentInfo *)composePaymentInfoFromItems:(NSArray *)items;
-+ (PaymentInfo *)composeOnlyRequiredPaymentInfoFromItems:(NSArray *)items;
++ (PaymentOptions *)composePaymentInfoFromItems:(NSArray *)items;
++ (PaymentOptions *)composeOnlyRequiredPaymentInfoFromItems:(NSArray *)items;
 + (RecurrentInfo *)composeRecurrentInfoFromItems:(NSArray *)items;
 
 + (DataValue *)getDataValueWith: (NSString *)key fromItems:(NSArray *)items;

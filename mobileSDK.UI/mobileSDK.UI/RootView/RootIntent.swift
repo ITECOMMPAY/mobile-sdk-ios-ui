@@ -15,4 +15,5 @@ enum RootIntent {
     case closeErrorAlert
     case successScreenIntent(ResultSuccessScreenIntent)
     case declineScreenIntent(ResultDeclineScreenIntent)
+    case threeDSecureScreenIntent(ThreeDSecureScreenIntent)
 }

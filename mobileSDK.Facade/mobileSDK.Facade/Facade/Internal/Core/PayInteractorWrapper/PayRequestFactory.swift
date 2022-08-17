@@ -9,8 +9,12 @@ import mobileSDK_UI
 import MsdkCore
 
 class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
-    func createSavedCardSaleRequest(cvv: String, accountId: Int64) -> mobileSDK_UI.PayRequest {
-        return SavedCardSaleRequest(cvv: cvv, accountId: accountId)
+    func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+        let request = SavedCardSaleRequest(cvv: cvv, accountId: accountId)
+        request.customerFields = customerFields?.map({ value in
+            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
+        })
+        return request
     }
 
     func createNewCardSaleRequest(cvv: String,
@@ -18,8 +22,13 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
                                   year: Int32,
                                   month: Int32,
                                   cardHolder: String,
-                                  saveCard: Bool) -> mobileSDK_UI.PayRequest {
-        return NewCardSaleRequest(cvv: cvv, pan: pan, year: year, month: month, cardHolder: cardHolder, saveCard: saveCard)
+                                  saveCard: Bool,
+                                  customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+        let request = NewCardSaleRequest(cvv: cvv, pan: pan, year: year, month: month, cardHolder: cardHolder, saveCard: saveCard)
+        request.customerFields = customerFields?.map({ value in
+            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
+        })
+        return request
     }
 }
 

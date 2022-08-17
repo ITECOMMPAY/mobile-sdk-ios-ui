@@ -37,7 +37,7 @@ public struct ViewFactory {
     }
 
     internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        Text("ACS page screen").foregroundColor(.white).background(Color.red.opacity(0.3)).frame(maxWidth: .infinity)
+        ThreeDSecureScreen(viewModel: ThreeDSecureScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {

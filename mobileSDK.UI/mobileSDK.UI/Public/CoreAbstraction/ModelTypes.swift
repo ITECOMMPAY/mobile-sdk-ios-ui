@@ -102,7 +102,14 @@ public protocol ClarificationField {
 
 public protocol PaymentStatus {}
 
-public protocol AcsPage {}
+public protocol AcsPage {
+    var content: String? { get }
+    var errorMessage: String? { get }
+    var acsUrl: String? { get }
+    var md: String? { get }
+    var paReq: String? { get }
+    var termUrl: String? { get }
+}
 
 public protocol CardExpiry {
     func isValid() -> Bool
@@ -123,7 +130,9 @@ public protocol PaymentOptions {
     var summary: PaymentSummaryData { get }
     var details: [PaymentDetailData] { get }
     var uiAdditionalFields: [AdditionalField] { get }
+    var isMockModeEnabled: Bool { get }
 }
+
 
 public protocol AdditionalField {
     var type: FieldType { get }
