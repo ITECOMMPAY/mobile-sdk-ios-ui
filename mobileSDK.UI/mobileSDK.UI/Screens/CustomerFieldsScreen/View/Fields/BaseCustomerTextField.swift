@@ -40,7 +40,7 @@ struct BaseCustomerTextField: View {
                     isValid = true
                 }
             }),
-            placeholder: customerField.placeholder ?? customerField.hint ?? "",
+            placeholder: customerField.placeholder ?? (customerField.hint ?? ""),
             keyboardType: keyboardType,
             forceUppercased: false,
             secure: isSecure,

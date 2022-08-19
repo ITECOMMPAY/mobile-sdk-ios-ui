@@ -19,31 +19,36 @@ class SDKInteractor {
 
     // MARK: - Private variables
     /// session identifier
-    private var msdkSession: MSDKCoreSession
+    private var msdkSession: MSDKCoreSession {
+        didSet {
+            setupDependecy()
+        }
+    }
+
+    private var msdkConfig: MSDKCoreSessionConfig {
+        didSet {
+            msdkSession = MSDKCoreSession(config: msdkConfig)
+        }
+    }
+
     private(set) var pkPaymentRequest: PKPaymentRequest?
     /// completion that would be executed in merchant app on mSDK finish
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
     public init(callback: OnPaymentResult? = nil) {
-        let msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
+        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
                                                                  wsApiHost: NetworkConfigType().socketHost)
         msdkSession = MSDKCoreSession(config: msdkConfig)
-        setupDependecy()
     }
 
     #if DEVELOPMENT
 
     /// DEVELOPMENT initializer, should not be present in release version!
     public init(apiUrlString: String, socketUrlString: String, callback: OnPaymentResult? = nil) {
-        #if DEBUG
-        let msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
-        #else
-        let msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
+        msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
                                                                wsApiHost: socketUrlString)
-        #endif
         msdkSession = MSDKCoreSession(config: msdkConfig)
-        setupDependecy()
     }
 
     #endif
@@ -71,6 +76,15 @@ class SDKInteractor {
     public func presentPayment(at viewController: UIViewController,
                                paymentOptions: PaymentOptions,
                                completion: PaymentCompletion?) {
+
+        if paymentOptions.mockModeType == .success {
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
+        } else if paymentOptions.mockModeType == .decline {
+            msdkConfig = MSDKCoreSessionConfig.companion.mockInitReturnedDecline()
+        } else {
+            msdkSession = MSDKCoreSession(config: msdkConfig)
+        }
+
         self.completionHandler = completion
 
         let delegateProxy = InitDelegateProxy()
@@ -117,6 +131,10 @@ class SDKInteractor {
 
 
 extension PaymentOptions: mobileSDK_UI.PaymentOptions {
+    public var isMockModeEnabled: Bool {
+        mockModeType != .disabled
+    }
+
     public var uiAdditionalFields: [mobileSDK_UI.AdditionalField] {
         additionalFields ?? [] as [mobileSDK_UI.AdditionalField]
     }

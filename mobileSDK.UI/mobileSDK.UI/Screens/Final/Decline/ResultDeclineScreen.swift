@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, ViewWithViewModel {
-    var viewModel: VM
+    @ObservedObject var viewModel: VM
 
     var body: some View {
         BottomCardViewContent {
@@ -17,12 +17,11 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 ZStack {
                     IR.errorLogo.image
-                    HStack(alignment: .top) {
-                        Spacer()
+                    ZStack {
                         CloseButton {
                             viewModel.dispatch(intent: .close)
                         }
-                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                 }.frame(height: 58)
                 Text(L.title_result_error_payment.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
@@ -76,10 +75,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
     }
 
     private var completeFields: [(String?, String?)] {
-        return payment?.paymentCompleteFields?.map { completeField in
-            let translation = completeField.name != nil ? TranslationsManager.shared.stringValue(for: completeField.name!) : completeField.defaultLabel
-            return (translation ?? completeField.defaultLabel, completeField.value)
-        } ?? []
+        return payment?.paymentCompleteFields?.asTuples ?? []
     }
 }
 

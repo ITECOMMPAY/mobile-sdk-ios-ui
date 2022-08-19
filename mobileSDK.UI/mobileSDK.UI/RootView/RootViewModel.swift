@@ -51,7 +51,7 @@ class RootViewModel: RootViewModelProtocol {
                 case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
                     self.state.availablePaymentMethods = methods
                     self.state.savedAccounts = accounts
-                    self.state.currentMethod = self.state.mergedList.first // по умолчанию выбраем первый метод из писка
+                    self.state.currentMethod = self.state.mergedList.first // по умолчанию выбираем первый метод из писка
                     break
                 case .onPaymentRestored(let payment):
                     self.state.payment = payment
@@ -72,32 +72,42 @@ class RootViewModel: RootViewModelProtocol {
                 .initialLoadingScreenIntent(.close),
                 .customerFieldsScreenIntent(.close),
                 .clarificationFieldsScreenIntent(.close),
+                .threeDSecureScreenIntent(.close),
                 .successScreenIntent(.close),
                 .declineScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
-        case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv)):
+        case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv, customerFields: let fieldValues)):
             guard let payRequestFactory = payRequestFactory else {
                 return
             }
-            let request = payRequestFactory.createSavedCardSaleRequest(cvv: cvv, accountId: id)
+            let request = payRequestFactory.createSavedCardSaleRequest(
+                cvv: cvv,
+                accountId: id,
+                customerFields: self.state.customerFields?.merge(changedFields: fieldValues,
+                                                                 with: self.state.paymentOptions.uiAdditionalFields)
+            )
             state.isLoading = true
             execute(payRequest: request)
         case .paymentMethodsScreenIntent(.payNewCardWith(cvv: let cvv,
-                             pan: let pan,
-                             year: let year,
-                             month: let month,
-                             cardHolder: let cardHolder,
-                             saveCard: let saveCard)):
+                                                         pan: let pan,
+                                                         year: let year,
+                                                         month: let month,
+                                                         cardHolder: let cardHolder,
+                                                         saveCard: let saveCard, customerFields: let fieldValues)):
             guard let payRequestFactory = payRequestFactory else {
                 return
             }
-            let request = payRequestFactory.createNewCardSaleRequest(cvv: cvv,
-                                                                     pan: pan,
-                                                                     year: year,
-                                                                     month: month,
-                                                                     cardHolder: cardHolder,
-                                                                     saveCard: saveCard)
+            let request = payRequestFactory.createNewCardSaleRequest(
+                cvv: cvv,
+                pan: pan,
+                year: year,
+                month: month,
+                cardHolder: cardHolder,
+                saveCard: saveCard,
+                customerFields: self.state.customerFields?.merge(changedFields: fieldValues,
+                                                                 with: self.state.paymentOptions.uiAdditionalFields)
+            )
             state.isLoading = true
             execute(payRequest: request)
         case .paymentMethodsScreenIntent(.delete):
@@ -117,8 +127,13 @@ class RootViewModel: RootViewModelProtocol {
             state.isLoading = true
             payInteractor?.sendClarificationFields(fieldsValues: fieldsValues)
         case .customerFieldsScreenIntent(.back), .clarificationFieldsScreenIntent(.back):
-            state.customerFields = nil
-            state.clarificationFields = nil
+            self.state = modifiedCopy(of: self.state) {
+                $0.customerFields = nil
+                $0.clarificationFields = nil
+            }
+        case .threeDSecureScreenIntent(.threeDSecureHandled):
+            state.isLoading = true
+            payInteractor?.threeDSecureHandled()
         }
     }
 
@@ -137,27 +152,46 @@ class RootViewModel: RootViewModelProtocol {
                 guard let self = self else { return }
                 switch payEvent {
                 case .onCustomerFields(customerFields: let customerFields):
-                    self.state.isLoading = false
-                    self.state.customerFields = customerFields
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.customerFields = customerFields
+                    }
                 case .onClarificationFields(clarificationFields: let clarificationFields,
                                             payment: let payment):
-                    self.state.isLoading = false
-                    self.state.payment = payment
-                    self.state.clarificationFields = clarificationFields
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.payment = payment
+                        $0.clarificationFields = clarificationFields
+                    }
                 case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
-                    // TODO: implement real handling after ACS page screen will be implemented
-                    payInteractor.threeDSecureHandled()
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.payment = payment
+                        $0.acsPageState = AcsPageState(acsPage: acsPage, isCascading: isCascading)
+                    }
+                    if self.state.paymentOptions.isMockModeEnabled {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            payInteractor.threeDSecureHandled()
+                        }
+                    }
                 case .onCompleteWithDecline(paymentMessage: let paymentMessage, payment: let payment):
-                    self.state.isLoading = false
-                    self.state.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.payment = payment
+                        $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
+                    }
                 case .onCompleteWithFail(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
-                    self.state.payment = payment
-                    self.state.isLoading = false
-                    self.state.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.payment = payment
+                        $0.isLoading = false
+                        $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
+                    }
                 case .onCompleteWithSuccess(payment: let payment):
-                    self.state.payment = payment
-                    self.state.isLoading = false
-                    self.state.finalPaymentState = .Success
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.payment = payment
+                        $0.isLoading = false
+                        $0.finalPaymentState = .Success
+                    }
                 case .onPaymentCreated:
                     debugPrint("\(type(of: self)) received onPaymentCreated")
                 case .onStatusChanged(status: let status, payment: let payment):
