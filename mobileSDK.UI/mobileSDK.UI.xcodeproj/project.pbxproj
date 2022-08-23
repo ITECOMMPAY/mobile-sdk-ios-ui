@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8400A55028B392CE00C202E5 /* CardType+Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400A54F28B392CE00C202E5 /* CardType+Logo.swift */; };
+		8400A55128B392CE00C202E5 /* CardType+Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400A54F28B392CE00C202E5 /* CardType+Logo.swift */; };
 		84027840286D7B7C000970DA /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402783F286D7B7C000970DA /* PaymentMethodCell.swift */; };
 		84027842286D7C68000970DA /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84027841286D7C68000970DA /* APSIcons.xcassets */; };
 		8416E2532864753100B11F6C /* View+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416E2522864753100B11F6C /* View+Background.swift */; };
@@ -55,7 +57,6 @@
 		845507AD285B0194002BBFE0 /* LibraryBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507AC285B0194002BBFE0 /* LibraryBundle.swift */; };
 		845507B2285B03DF002BBFE0 /* CommonSDKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845507B1285B03DF002BBFE0 /* CommonSDKAssets.xcassets */; };
 		845507E3285B05DE002BBFE0 /* CenterCropped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507E2285B05DE002BBFE0 /* CenterCropped.swift */; };
-		84557C91288E7FF10094ED61 /* AttributedText in Frameworks */ = {isa = PBXBuildFile; productRef = 84557C90288E7FF10094ED61 /* AttributedText */; };
 		84611526287DAB170015A6BE /* PayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84611525287DAB160015A6BE /* PayButton.swift */; };
 		8485C189287EA64B00A7001E /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		8485C18D2881382D00A7001E /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C18C2881382D00A7001E /* LinkButton.swift */; };
@@ -164,6 +165,40 @@
 		84A35C8C289A7F4F0037A604 /* PaymentMethod+Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C8A289A7F4F0037A604 /* PaymentMethod+Logo.swift */; };
 		84A35C91289AAE6D0037A604 /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C90289AAE6D0037A604 /* View+Keyboard.swift */; };
 		84A35C92289AAE6D0037A604 /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C90289AAE6D0037A604 /* View+Keyboard.swift */; };
+		84AAF9E828AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9DE28AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift */; };
+		84AAF9E928AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9DE28AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift */; };
+		84AAF9EA28AE3FB500441224 /* UIKitTextField+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9DF28AE3FB500441224 /* UIKitTextField+Coordinator.swift */; };
+		84AAF9EB28AE3FB500441224 /* UIKitTextField+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9DF28AE3FB500441224 /* UIKitTextField+Coordinator.swift */; };
+		84AAF9EC28AE3FB500441224 /* InputViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E028AE3FB500441224 /* InputViewManager.swift */; };
+		84AAF9ED28AE3FB500441224 /* InputViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E028AE3FB500441224 /* InputViewManager.swift */; };
+		84AAF9EE28AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E128AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift */; };
+		84AAF9EF28AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E128AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift */; };
+		84AAF9F028AE3FB500441224 /* InputViewContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E228AE3FB500441224 /* InputViewContentController.swift */; };
+		84AAF9F128AE3FB500441224 /* InputViewContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E228AE3FB500441224 /* InputViewContentController.swift */; };
+		84AAF9F228AE3FB500441224 /* UITextFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E328AE3FB500441224 /* UITextFieldProtocol.swift */; };
+		84AAF9F328AE3FB500441224 /* UITextFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E328AE3FB500441224 /* UITextFieldProtocol.swift */; };
+		84AAF9F428AE3FB500441224 /* BaseUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E428AE3FB500441224 /* BaseUITextField.swift */; };
+		84AAF9F528AE3FB500441224 /* BaseUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E428AE3FB500441224 /* BaseUITextField.swift */; };
+		84AAF9F628AE3FB500441224 /* UIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E528AE3FB500441224 /* UIKitTextField.swift */; };
+		84AAF9F728AE3FB500441224 /* UIKitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E528AE3FB500441224 /* UIKitTextField.swift */; };
+		84AAF9F828AE3FB500441224 /* InputViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E628AE3FB500441224 /* InputViewContent.swift */; };
+		84AAF9F928AE3FB500441224 /* InputViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E628AE3FB500441224 /* InputViewContent.swift */; };
+		84AAF9FA28AE3FB500441224 /* UIKitTextField+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E728AE3FB500441224 /* UIKitTextField+Configuration.swift */; };
+		84AAF9FB28AE3FB500441224 /* UIKitTextField+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9E728AE3FB500441224 /* UIKitTextField+Configuration.swift */; };
+		84AAFA0428AE3FD000441224 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FD28AE3FD000441224 /* AttributedText.swift */; };
+		84AAFA0528AE3FD000441224 /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FD28AE3FD000441224 /* AttributedText.swift */; };
+		84AAFA0628AE3FD000441224 /* TextSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */; };
+		84AAFA0728AE3FD000441224 /* TextSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */; };
+		84AAFA0828AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */; };
+		84AAFA0928AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */; };
+		84AAFA0A28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */; };
+		84AAFA0B28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */; };
+		84AAFA0C28AE3FD000441224 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */; };
+		84AAFA0D28AE3FD000441224 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */; };
+		84AAFA0E28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */; };
+		84AAFA0F28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */; };
+		84AAFA1028AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */; };
+		84AAFA1128AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */; };
 		84AD2BAD285325EE004110B9 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD2BAC285325EE004110B9 /* RedactedView.swift */; };
 		84B198BB286ED25400AA40BC /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B198BA286ED25400AA40BC /* CardTypesLogo.xcassets */; };
 		84B198BF286EDD7700AA40BC /* NativePaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B198BE286EDD7700AA40BC /* NativePaymentMethodView.swift */; };
@@ -187,10 +222,8 @@
 		84B241B6288E320000259A50 /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241B4288E320000259A50 /* Fabric.swift */; };
 		84B241BE288E48FD00259A50 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419928892C1100259A50 /* ServiceLocator.swift */; };
 		84B241BF288E48FD00259A50 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419928892C1100259A50 /* ServiceLocator.swift */; };
-		84B241C2288E517F00259A50 /* UIKitTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 84B241C1288E517F00259A50 /* UIKitTextField */; };
 		84B241CA288E589E00259A50 /* EmptyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241C9288E589E00259A50 /* EmptyFormatter.swift */; };
 		84B241CB288E59E400259A50 /* EmptyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241C9288E589E00259A50 /* EmptyFormatter.swift */; };
-		84B241CD288E5A0700259A50 /* UIKitTextField in Frameworks */ = {isa = PBXBuildFile; productRef = 84B241CC288E5A0700259A50 /* UIKitTextField */; };
 		84B241D1288E5CBF00259A50 /* CardNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */; };
 		84B241D2288E5CC100259A50 /* CardNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241D0288E5CBF00259A50 /* CardNumberFormatter.swift */; };
 		84BC13E62852088F008814EB /* mobileSDK_UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13E52852088F008814EB /* mobileSDK_UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +265,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8400A54F28B392CE00C202E5 /* CardType+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardType+Logo.swift"; sourceTree = "<group>"; };
 		8402783F286D7B7C000970DA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
 		84027841286D7C68000970DA /* APSIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = APSIcons.xcassets; sourceTree = "<group>"; };
 		8416E2522864753100B11F6C /* View+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Background.swift"; sourceTree = "<group>"; };
@@ -306,6 +340,23 @@
 		84A35C83289A7C700037A604 /* BackportAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackportAsyncImage.swift; sourceTree = "<group>"; };
 		84A35C8A289A7F4F0037A604 /* PaymentMethod+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentMethod+Logo.swift"; sourceTree = "<group>"; };
 		84A35C90289AAE6D0037A604 /* View+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Keyboard.swift"; sourceTree = "<group>"; };
+		84AAF9DE28AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Configuration+UITextInputTraits.swift"; sourceTree = "<group>"; };
+		84AAF9DF28AE3FB500441224 /* UIKitTextField+Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Coordinator.swift"; sourceTree = "<group>"; };
+		84AAF9E028AE3FB500441224 /* InputViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewManager.swift; sourceTree = "<group>"; };
+		84AAF9E128AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Configuration+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		84AAF9E228AE3FB500441224 /* InputViewContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewContentController.swift; sourceTree = "<group>"; };
+		84AAF9E328AE3FB500441224 /* UITextFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldProtocol.swift; sourceTree = "<group>"; };
+		84AAF9E428AE3FB500441224 /* BaseUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseUITextField.swift; sourceTree = "<group>"; };
+		84AAF9E528AE3FB500441224 /* UIKitTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitTextField.swift; sourceTree = "<group>"; };
+		84AAF9E628AE3FB500441224 /* InputViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewContent.swift; sourceTree = "<group>"; };
+		84AAF9E728AE3FB500441224 /* UIKitTextField+Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Configuration.swift"; sourceTree = "<group>"; };
+		84AAF9FD28AE3FD000441224 /* AttributedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
+		84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewModel.swift; sourceTree = "<group>"; };
+		84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLineBreakMode+TruncationMode.swift"; sourceTree = "<group>"; };
+		84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
+		84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
+		84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+tvOS.swift"; sourceTree = "<group>"; };
+		84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
 		84AD2BAC285325EE004110B9 /* RedactedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		84B198BA286ED25400AA40BC /* CardTypesLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardTypesLogo.xcassets; sourceTree = "<group>"; };
 		84B198BE286EDD7700AA40BC /* NativePaymentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativePaymentMethodView.swift; sourceTree = "<group>"; };
@@ -353,7 +404,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B241CD288E5A0700259A50 /* UIKitTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,8 +411,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84B241C2288E517F00259A50 /* UIKitTextField in Frameworks */,
-				84557C91288E7FF10094ED61 /* AttributedText in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +552,7 @@
 		8455079D2859BCDC002BBFE0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				84AAF9CD28AE3F8300441224 /* Frameworks */,
 				8454EEF128AA230E00199FF3 /* Utils */,
 				8454EEE328A685AF00199FF3 /* PreviewMocks */,
 				84A35C522893E3970037A604 /* CoreExtentions */,
@@ -641,6 +690,7 @@
 				84BEF5FE289C043100D8481D /* PaymentMethod+ComputedField.swift */,
 				84A15A9728A150700035A986 /* ClarificationField+CustomerField.swift */,
 				84F7ABDE28AB94D700E634D9 /* CustomerFields+Utils.swift */,
+				8400A54F28B392CE00C202E5 /* CardType+Logo.swift */,
 			);
 			path = CoreExtentions;
 			sourceTree = "<group>";
@@ -671,6 +721,46 @@
 				84A35C83289A7C700037A604 /* BackportAsyncImage.swift */,
 			);
 			path = AsyncImageBackport;
+			sourceTree = "<group>";
+		};
+		84AAF9CD28AE3F8300441224 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				84AAF9FC28AE3FD000441224 /* AttributedText */,
+				84AAF9DD28AE3FB500441224 /* UIKitTextField */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		84AAF9DD28AE3FB500441224 /* UIKitTextField */ = {
+			isa = PBXGroup;
+			children = (
+				84AAF9DE28AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift */,
+				84AAF9DF28AE3FB500441224 /* UIKitTextField+Coordinator.swift */,
+				84AAF9E028AE3FB500441224 /* InputViewManager.swift */,
+				84AAF9E128AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift */,
+				84AAF9E228AE3FB500441224 /* InputViewContentController.swift */,
+				84AAF9E328AE3FB500441224 /* UITextFieldProtocol.swift */,
+				84AAF9E428AE3FB500441224 /* BaseUITextField.swift */,
+				84AAF9E528AE3FB500441224 /* UIKitTextField.swift */,
+				84AAF9E628AE3FB500441224 /* InputViewContent.swift */,
+				84AAF9E728AE3FB500441224 /* UIKitTextField+Configuration.swift */,
+			);
+			path = UIKitTextField;
+			sourceTree = "<group>";
+		};
+		84AAF9FC28AE3FD000441224 /* AttributedText */ = {
+			isa = PBXGroup;
+			children = (
+				84AAF9FD28AE3FD000441224 /* AttributedText.swift */,
+				84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */,
+				84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */,
+				84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */,
+				84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */,
+				84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */,
+				84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */,
+			);
+			path = AttributedText;
 			sourceTree = "<group>";
 		};
 		84AD2BAB28532082004110B9 /* PaymentsMethodsScreen */ = {
@@ -877,7 +967,6 @@
 			);
 			name = UIPreview;
 			packageProductDependencies = (
-				84B241CC288E5A0700259A50 /* UIKitTextField */,
 			);
 			productName = UIPreview;
 			productReference = 84A0F13828746596005F81DE /* UIPreview.app */;
@@ -898,8 +987,6 @@
 			);
 			name = mobileSDK.UI;
 			packageProductDependencies = (
-				84B241C1288E517F00259A50 /* UIKitTextField */,
-				84557C90288E7FF10094ED61 /* AttributedText */,
 			);
 			productName = mobileSDK.UI;
 			productReference = 84BC13E22852088F008814EB /* mobileSDK_UI.framework */;
@@ -934,8 +1021,6 @@
 			);
 			mainGroup = 84BC13D82852088F008814EB;
 			packageReferences = (
-				84B241C0288E517F00259A50 /* XCRemoteSwiftPackageReference "uikit-textfield" */,
-				84557C8F288E7FF10094ED61 /* XCRemoteSwiftPackageReference "AttributedText" */,
 			);
 			productRefGroup = 84BC13E32852088F008814EB /* Products */;
 			projectDirPath = "";
@@ -977,12 +1062,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AAF9F728AE3FB500441224 /* UIKitTextField.swift in Sources */,
 				8454EED428A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */,
+				84AAFA1128AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */,
 				8454EEE728A9DE8000199FF3 /* LoadingScreen.swift in Sources */,
 				84A35C6A2897FCED0037A604 /* NavigationComponent.swift in Sources */,
+				84AAFA0728AE3FD000441224 /* TextSizeViewModel.swift in Sources */,
 				84A0F15F2874662F005F81DE /* UIScheme.swift in Sources */,
 				84318AB428814CC2006B7E9C /* PolicyView.swift in Sources */,
 				84A15A8128A116860035A986 /* ClarificationFieldsScreen.swift in Sources */,
+				84AAF9FB28AE3FB500441224 /* UIKitTextField+Configuration.swift in Sources */,
 				84A15A8D28A118380035A986 /* PasswordCustomerTextField.swift in Sources */,
 				84A0F14628746613005F81DE /* PaymentOverview.swift in Sources */,
 				84A35C622897A58A0037A604 /* InitialLoadingScreen.swift in Sources */,
@@ -1006,6 +1095,8 @@
 				84A35C4D2893B1EA0037A604 /* FieldType.swift in Sources */,
 				84A35C7C289A6AFA0037A604 /* PaymentMethod+DisplayName.swift in Sources */,
 				84A0F15528746624005F81DE /* ScreenHeader.swift in Sources */,
+				84AAF9F328AE3FB500441224 /* UITextFieldProtocol.swift in Sources */,
+				84AAF9F528AE3FB500441224 /* BaseUITextField.swift in Sources */,
 				84318AB928816B63006B7E9C /* AnimatableCustomFontModifier.swift in Sources */,
 				84A0F15E2874662F005F81DE /* Colors.swift in Sources */,
 				84A35C8C289A7F4F0037A604 /* PaymentMethod+Logo.swift in Sources */,
@@ -1017,6 +1108,7 @@
 				8454EED128A4CC6900199FF3 /* ResultTableInfo.swift in Sources */,
 				84F7ABE028AB94D700E634D9 /* CustomerFields+Utils.swift in Sources */,
 				84A0F15328746624005F81DE /* FooterView.swift in Sources */,
+				84AAFA0928AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				84A0F15428746624005F81DE /* CloseButton.swift in Sources */,
 				84A0F14B28746613005F81DE /* PaymentDetailsView.swift in Sources */,
 				84EFA16728770B4D0043C360 /* CoreError.swift in Sources */,
@@ -1026,13 +1118,16 @@
 				84B2419828892BEA00259A50 /* ValidationService.swift in Sources */,
 				84A35C5B289796690037A604 /* RootIntent.swift in Sources */,
 				84BEF600289CEAAE00D8481D /* PaymentMethod+ComputedField.swift in Sources */,
+				84AAF9F928AE3FB500441224 /* InputViewContent.swift in Sources */,
 				84A35C33289158280037A604 /* RootView.swift in Sources */,
 				84A0F15B28746629005F81DE /* Shimmer.swift in Sources */,
 				8421F8EC288FB73500B6EED2 /* CardTypesManager.swift in Sources */,
 				84B241AB288A730B00259A50 /* CvvField.swift in Sources */,
 				84A35C42289297E70037A604 /* CustomerFieldsScreenIntent.swift in Sources */,
+				84AAFA0D28AE3FD000441224 /* AttributedTextImpl.swift in Sources */,
 				84318AB828816B53006B7E9C /* LinkButton.swift in Sources */,
 				84A35C45289297F30037A604 /* CustomerFieldsScreenView.swift in Sources */,
+				84AAFA0F28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */,
 				8454EEE828A9DE9200199FF3 /* ClarificationField+CustomerField.swift in Sources */,
 				8454EECB28A2A56B00199FF3 /* Binding+didSet.swift in Sources */,
 				84318AB528816A9E006B7E9C /* SavedCardCheckoutView.swift in Sources */,
@@ -1041,12 +1136,14 @@
 				84A0F16328746634005F81DE /* Localization+Strings.swift in Sources */,
 				84A35C87289A7C700037A604 /* AsyncImage.swift in Sources */,
 				84A0F15728746624005F81DE /* RoundedCorner.swift in Sources */,
+				8400A55128B392CE00C202E5 /* CardType+Logo.swift in Sources */,
 				84C0060628A262CE00887DE4 /* ClarificationFieldsScreenState.swift in Sources */,
 				84A35C89289A7C700037A604 /* BackportAsyncImage.swift in Sources */,
 				84E6CA86288526CA00F3A444 /* EmbeddedCustomerFieldsView.swift in Sources */,
 				84A0F14C28746613005F81DE /* PaymentMethodsView.swift in Sources */,
 				84E6CA82288520ED00F3A444 /* ApplePayCheckoutView.swift in Sources */,
 				84E6CA81288520E900F3A444 /* NewCardCheckoutView.swift in Sources */,
+				84AAFA0528AE3FD000441224 /* AttributedText.swift in Sources */,
 				84A35C762898FAAC0037A604 /* BackButton.swift in Sources */,
 				84E6CA8928854AA300F3A444 /* CheckBoxView.swift in Sources */,
 				84A15A9028A1186B0035A986 /* TelCustomerTextField.swift in Sources */,
@@ -1054,6 +1151,8 @@
 				84A0F1502874661C005F81DE /* View+Background.swift in Sources */,
 				8454EEF028AA1EDA00199FF3 /* WebView.swift in Sources */,
 				84A0F15A28746629005F81DE /* CenterCropped.swift in Sources */,
+				84AAF9E928AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */,
+				84AAF9EB28AE3FB500441224 /* UIKitTextField+Coordinator.swift in Sources */,
 				84B2418D28890FB700259A50 /* PublicStructs.swift in Sources */,
 				8454EEE628A6860000199FF3 /* MockModels.swift in Sources */,
 				84A0F16F2875A95C005F81DE /* InfoCardBackground.swift in Sources */,
@@ -1061,14 +1160,17 @@
 				84A0F1682874663E005F81DE /* LibraryBundle.swift in Sources */,
 				84B241872889096100259A50 /* ModelTypes.swift in Sources */,
 				84A35C3F289297D80037A604 /* CustomerFieldsScreenState.swift in Sources */,
+				84AAFA0B28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */,
 				84A35C5E289796740037A604 /* RootViewModel.swift in Sources */,
 				84B241B1288A733C00259A50 /* PanField.swift in Sources */,
 				84A35C6D2897FCFC0037A604 /* NavigationComponentState.swift in Sources */,
 				84318AB728816ACF006B7E9C /* CustomTextField.swift in Sources */,
 				84A35C85289A7C700037A604 /* AsyncImagePhase.swift in Sources */,
 				84A35C732897FD1D0037A604 /* NavigationComponentViewModel.swift in Sources */,
+				84AAF9EF28AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
 				84A0F16228746634005F81DE /* Localization+Key.swift in Sources */,
 				84B241CB288E59E400259A50 /* EmptyFormatter.swift in Sources */,
+				84AAF9F128AE3FB500441224 /* InputViewContentController.swift in Sources */,
 				84A0F16128746634005F81DE /* Localization+Defaults.swift in Sources */,
 				84B241A6288A603C00259A50 /* PaymentMethodType.swift in Sources */,
 				84A0F14828746613005F81DE /* PaymentMethodsIntent.swift in Sources */,
@@ -1079,6 +1181,7 @@
 				84A35C552893E3AF0037A604 /* CustomerField+Validate.swift in Sources */,
 				84A0F13B28746596005F81DE /* UIPreviewApp.swift in Sources */,
 				84A0F16028746634005F81DE /* TranslationsManager.swift in Sources */,
+				84AAF9ED28AE3FB500441224 /* InputViewManager.swift in Sources */,
 				84A15A8428A117880035A986 /* DateCustomerTextField.swift in Sources */,
 				84A0F1672874663E005F81DE /* ImageResourceKeys.swift in Sources */,
 				84A35C3C289297270037A604 /* CustomerFieldsScreenViewModel.swift in Sources */,
@@ -1090,7 +1193,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AAFA0A28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */,
 				8454EEEA28AA1BBC00199FF3 /* ThreeDSecureScreen.swift in Sources */,
+				84AAF9F628AE3FB500441224 /* UIKitTextField.swift in Sources */,
 				8454EED328A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */,
 				84BEF5FF289C043100D8481D /* PaymentMethod+ComputedField.swift in Sources */,
 				84A35C752898FAAC0037A604 /* BackButton.swift in Sources */,
@@ -1100,6 +1205,7 @@
 				84F26E2A2869A460002861F8 /* PaymentMethodsView.swift in Sources */,
 				84B241AD288A732900259A50 /* ExpiryField.swift in Sources */,
 				84F26E332869C1DD002861F8 /* Localization+Key.swift in Sources */,
+				84AAF9F428AE3FB500441224 /* BaseUITextField.swift in Sources */,
 				84F7ABDF28AB94D700E634D9 /* CustomerFields+Utils.swift in Sources */,
 				8421F8DE288EB6AB00B6EED2 /* PaymentMethodCardType.swift in Sources */,
 				84B2418C28890FB700259A50 /* PublicStructs.swift in Sources */,
@@ -1107,6 +1213,7 @@
 				84A15A8328A117880035A986 /* DateCustomerTextField.swift in Sources */,
 				84B241D1288E5CBF00259A50 /* CardNumberFormatter.swift in Sources */,
 				84A35C6C2897FCFC0037A604 /* NavigationComponentState.swift in Sources */,
+				84AAF9F028AE3FB500441224 /* InputViewContentController.swift in Sources */,
 				84B2419728892BEA00259A50 /* ValidationService.swift in Sources */,
 				84B241932889201200259A50 /* CardHolderField.swift in Sources */,
 				84A35C91289AAE6D0037A604 /* View+Keyboard.swift in Sources */,
@@ -1120,14 +1227,17 @@
 				84A15A8628A117990035A986 /* EmailCustomerTextField.swift in Sources */,
 				8485C189287EA64B00A7001E /* AnimatableCustomFontModifier.swift in Sources */,
 				8455079F2859BD7A002BBFE0 /* RoundedCorner.swift in Sources */,
+				84AAF9EC28AE3FB500441224 /* InputViewManager.swift in Sources */,
 				84B241BE288E48FD00259A50 /* ServiceLocator.swift in Sources */,
 				845507E3285B05DE002BBFE0 /* CenterCropped.swift in Sources */,
 				84F26E3C2869C96F002861F8 /* PaymentDetailsView.swift in Sources */,
 				84A35C84289A7C700037A604 /* AsyncImagePhase.swift in Sources */,
 				84611526287DAB170015A6BE /* PayButton.swift in Sources */,
+				84AAF9F228AE3FB500441224 /* UITextFieldProtocol.swift in Sources */,
 				8454EEEF28AA1EDA00199FF3 /* WebView.swift in Sources */,
 				845507892858A122002BBFE0 /* Shimmer.swift in Sources */,
 				84F26E2D2869A623002861F8 /* ScreenHeader.swift in Sources */,
+				84AAFA0428AE3FD000441224 /* AttributedText.swift in Sources */,
 				8454EED628A4D5E600199FF3 /* ResultDeclineScreen.swift in Sources */,
 				8454EED028A4CC6900199FF3 /* ResultTableInfo.swift in Sources */,
 				84E6CA8828854AA300F3A444 /* CheckBoxView.swift in Sources */,
@@ -1139,6 +1249,7 @@
 				845507962858B754002BBFE0 /* UIScheme.swift in Sources */,
 				842D279428649B6500F5F293 /* BottomCardView.swift in Sources */,
 				84C0060228A262B500887DE4 /* ClarificationFieldsScreenIntent.swift in Sources */,
+				84AAFA0828AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */,
 				84A0F16E2875A6CC005F81DE /* InfoCardBackground.swift in Sources */,
 				84F26E322869C1DD002861F8 /* Localization+Strings.swift in Sources */,
 				84F705C9287C608C00E7CD12 /* CustomTextField.swift in Sources */,
@@ -1146,16 +1257,23 @@
 				84A15A8F28A1186B0035A986 /* TelCustomerTextField.swift in Sources */,
 				8485C18D2881382D00A7001E /* LinkButton.swift in Sources */,
 				84A35C542893E3AF0037A604 /* CustomerField+Validate.swift in Sources */,
+				8400A55028B392CE00C202E5 /* CardType+Logo.swift in Sources */,
 				8454EECA28A2A56B00199FF3 /* Binding+didSet.swift in Sources */,
+				84AAF9FA28AE3FB500441224 /* UIKitTextField+Configuration.swift in Sources */,
 				84A35C32289158280037A604 /* RootView.swift in Sources */,
+				84AAF9EA28AE3FB500441224 /* UIKitTextField+Coordinator.swift in Sources */,
 				84A35C4C2893B1EA0037A604 /* FieldType.swift in Sources */,
 				84B241B0288A733C00259A50 /* PanField.swift in Sources */,
+				84AAF9EE28AE3FB500441224 /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
 				84A35C482893B01E0037A604 /* BaseCustomerTextField.swift in Sources */,
 				84904614287C114B0002938D /* SavedCardCheckoutView.swift in Sources */,
 				84A35C572897965C0037A604 /* RootState.swift in Sources */,
 				8446EC5C288EB50E00A1763C /* CardTypesManager.swift in Sources */,
 				8416E2552864756700B11F6C /* View+Overlay.swift in Sources */,
+				84AAFA0628AE3FD000441224 /* TextSizeViewModel.swift in Sources */,
 				84F26E342869C1DD002861F8 /* TranslationsManager.swift in Sources */,
+				84AAFA0E28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */,
+				84AAFA0C28AE3FD000441224 /* AttributedTextImpl.swift in Sources */,
 				84F26E362869C234002861F8 /* Localization+Defaults.swift in Sources */,
 				84C0060528A262CE00887DE4 /* ClarificationFieldsScreenState.swift in Sources */,
 				845507902858A1FB002BBFE0 /* Dimensions.swift in Sources */,
@@ -1165,12 +1283,14 @@
 				84A35C41289297E70037A604 /* CustomerFieldsScreenIntent.swift in Sources */,
 				84A0F12B287404F2005F81DE /* PaymentMethodsViewModel.swift in Sources */,
 				8421F8E4288EBA9B00B6EED2 /* PayInteractor.swift in Sources */,
+				84AAF9F828AE3FB500441224 /* InputViewContent.swift in Sources */,
 				845507AD285B0194002BBFE0 /* LibraryBundle.swift in Sources */,
 				8454EEE528A6860000199FF3 /* MockModels.swift in Sources */,
 				84A15A9828A150700035A986 /* ClarificationField+CustomerField.swift in Sources */,
 				84A35C86289A7C700037A604 /* AsyncImage.swift in Sources */,
 				8454EEF328AA232B00199FF3 /* StructCopy.swift in Sources */,
 				84F26E3E2869C9A1002861F8 /* PaymentOverview.swift in Sources */,
+				84AAF9E828AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */,
 				84B241CA288E589E00259A50 /* EmptyFormatter.swift in Sources */,
 				84E6CA85288526CA00F3A444 /* EmbeddedCustomerFieldsView.swift in Sources */,
 				84F26E3A2869C8B3002861F8 /* FooterView.swift in Sources */,
@@ -1188,6 +1308,7 @@
 				84A15A8C28A118380035A986 /* PasswordCustomerTextField.swift in Sources */,
 				84A15A9528A118F10035A986 /* InputMaskFormatter.swift in Sources */,
 				84B241A5288A603C00259A50 /* PaymentMethodType.swift in Sources */,
+				84AAFA1028AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */,
 				84A35C7B289A6AFA0037A604 /* PaymentMethod+DisplayName.swift in Sources */,
 				84333C3628731732004135AC /* PaymentMethodsViewState.swift in Sources */,
 				84E6CA80288520E900F3A444 /* NewCardCheckoutView.swift in Sources */,
@@ -1468,43 +1589,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		84557C8F288E7FF10094ED61 /* XCRemoteSwiftPackageReference "AttributedText" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/AttributedText";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		84B241C0288E517F00259A50 /* XCRemoteSwiftPackageReference "uikit-textfield" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vinceplusplus/uikit-textfield.git";
-			requirement = {
-				kind = exactVersion;
-				version = 2.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		84557C90288E7FF10094ED61 /* AttributedText */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84557C8F288E7FF10094ED61 /* XCRemoteSwiftPackageReference "AttributedText" */;
-			productName = AttributedText;
-		};
-		84B241C1288E517F00259A50 /* UIKitTextField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84B241C0288E517F00259A50 /* XCRemoteSwiftPackageReference "uikit-textfield" */;
-			productName = UIKitTextField;
-		};
-		84B241CC288E5A0700259A50 /* UIKitTextField */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84B241C0288E517F00259A50 /* XCRemoteSwiftPackageReference "uikit-textfield" */;
-			productName = UIKitTextField;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84BC13D92852088F008814EB /* Project object */;
 }

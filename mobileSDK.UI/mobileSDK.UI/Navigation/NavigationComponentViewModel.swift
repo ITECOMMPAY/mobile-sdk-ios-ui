@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol RootChild {
+    associatedtype ParentViewModel: RootViewModelProtocol
+    var parentViewModel: ParentViewModel { get }
+}
+
 protocol NavigationComponentViewModelProtocol: ViewModel, RootChild
 where ViewState == NavigationComponentState, UserIntent == Void {} // UserIntent == Void т.к. пользователь напрямую с навигацией не взаиможействует
 

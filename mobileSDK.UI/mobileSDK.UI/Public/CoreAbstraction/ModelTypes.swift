@@ -5,7 +5,7 @@
 //  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
-import Foundation
+import SwiftUI
 
 public enum InitEvent {
     case onPaymentRestored(Payment)
@@ -75,19 +75,20 @@ public protocol PaymentMethod {
     var isVatInfo: Bool { get }
     var methodType: PaymentMethodType { get }
     var name: String? { get }
-    var methodCardTypes: [PaymentMethodCard] { get }
+    var allSupportedCardTypes: [PaymentMethodCard] { get }
+    var connectedCardTypes: [CardType] { get }
     var cardTypeRecognizer: CardTypeRecognizer { get }
     var iconUrl: String? { get }
     var translations: [String: String] { get }
 }
 
 public protocol SavedAccount {
-    var cardUrlLogo: String? { get }
     var id: Int64 { get }
     var number: String? { get }
     var token: String? { get }
     var type: String? { get }
     var savedCardExpiry: CardExpiry? { get }
+    var savedAccountCardType: CardType { get }
 }
 
 public protocol ClarificationField {
@@ -131,6 +132,7 @@ public protocol PaymentOptions {
     var details: [PaymentDetailData] { get }
     var uiAdditionalFields: [AdditionalField] { get }
     var isMockModeEnabled: Bool { get }
+    var brandColorOverride: Color? { get }
 }
 
 

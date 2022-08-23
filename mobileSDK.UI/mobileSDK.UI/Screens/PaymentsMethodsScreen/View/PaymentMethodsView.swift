@@ -164,13 +164,9 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
 
     private func getLogo(for savedAccount: SavedAccount) -> some View {
         return Group {
-            AsyncImage(url: savedAccount.cardUrlLogo.flatMap { URL(string: $0) }) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-            }
+            savedAccount.savedAccountCardType.localLogo?
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
     }
 }
