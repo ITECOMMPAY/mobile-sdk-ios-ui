@@ -9,16 +9,20 @@ import MsdkCore
 import mobileSDK_UI
 
 extension MsdkCore.PaymentMethod: mobileSDK_UI.PaymentMethod {
-    public var cardTypeRecognizer: CardTypeRecognizer {
-        self.cardTypesManager
+    public var allSupportedCardTypes: [mobileSDK_UI.PaymentMethodCard] {
+        allCardTypes as [mobileSDK_UI.PaymentMethodCard]
     }
 
-    public var methodCardTypes: [mobileSDK_UI.PaymentMethodCard] {
-        self.cardTypes as [mobileSDK_UI.PaymentMethodCard]
+    public var connectedCardTypes: [CardType] {
+        availableCardTypes.map(CardType.createFrom(_:))
+    }
+
+    public var cardTypeRecognizer: CardTypeRecognizer {
+        cardTypesManager
     }
 
     public var methodCustomerFields: [mobileSDK_UI.CustomerField] {
-        return self.customerFields as [mobileSDK_UI.CustomerField]
+        self.customerFields as [mobileSDK_UI.CustomerField]
     }
 
     public var methodType: mobileSDK_UI.PaymentMethodType {
@@ -26,6 +30,10 @@ extension MsdkCore.PaymentMethod: mobileSDK_UI.PaymentMethod {
     }
 }
 extension MsdkCore.SavedAccount: mobileSDK_UI.SavedAccount {
+    public var savedAccountCardType: CardType {
+        CardType.createFrom(cardType)
+    }
+
     public var savedCardExpiry: CardExpiry? {
         return self.cardExpiry
     }

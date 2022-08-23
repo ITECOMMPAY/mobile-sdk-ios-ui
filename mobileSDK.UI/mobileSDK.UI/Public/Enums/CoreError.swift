@@ -13,8 +13,8 @@ public struct CoreError: Error {
         self.message = message
     }
 
-    let code: CoreErrorCode
-    let message: String
+    public let code: CoreErrorCode
+    public let message: String
 }
 
 public enum CoreErrorCode: String {

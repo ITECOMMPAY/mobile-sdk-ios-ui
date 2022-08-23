@@ -9,7 +9,7 @@ import Foundation
 
 public enum CardType: String {
     case forbrugsforeningen
-    case solo
+    case solo //TODO: добавить иконку
     case switch_
     case discover
     case belcard
@@ -19,12 +19,12 @@ public enum CardType: String {
     case maestro
     case cup
     case jcb
-    case master5
+    case master5 //TODO: добавить иконку
     case visa
     case dinersClub
-    case laser
-    case napas
-    case uzcard
-    case troy
+    case laser //TODO: добавить иконку
+    case napas //TODO: добавить иконку
+    case uzcard //TODO: добавить иконку
+    case troy //TODO: добавить иконку
     case unknown
 }

@@ -12,6 +12,9 @@ public struct ViewFactory {
     public static func assembleRootView(paymentOptions: PaymentOptions,
                                         initPublisher: AnyPublisher<InitEvent, CoreError>,
                                         onDismiss completion: @escaping PaymentFlowDismisedCompletion) -> some View {
+        if let brandColor = paymentOptions.brandColorOverride {
+            UIScheme.color = DefaultLight(brandBlue: brandColor)
+        }
         let rootViewModel = RootViewModel(paymentOptions: paymentOptions, futureData: initPublisher, onFlowFinished: completion)
         return RootView(viewModel: rootViewModel).edgesIgnoringSafeArea(.all)
     }

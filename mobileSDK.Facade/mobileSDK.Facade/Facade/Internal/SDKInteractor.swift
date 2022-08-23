@@ -15,7 +15,6 @@ import Combine
 
 class SDKInteractor {
     typealias PaymentCompletion = (_ result: PaymentResult) -> Void
-    typealias OnPaymentResult = (Payment?) -> Void
 
     // MARK: - Private variables
     /// session identifier
@@ -36,7 +35,7 @@ class SDKInteractor {
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
-    public init(callback: OnPaymentResult? = nil) {
+    init() {
         msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
                                                                  wsApiHost: NetworkConfigType().socketHost)
         msdkSession = MSDKCoreSession(config: msdkConfig)
@@ -45,7 +44,7 @@ class SDKInteractor {
     #if DEVELOPMENT
 
     /// DEVELOPMENT initializer, should not be present in release version!
-    public init(apiUrlString: String, socketUrlString: String, callback: OnPaymentResult? = nil) {
+    public init(apiUrlString: String, socketUrlString: String) {
         msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
                                                                wsApiHost: socketUrlString)
         msdkSession = MSDKCoreSession(config: msdkConfig)
@@ -53,17 +52,10 @@ class SDKInteractor {
 
     #endif
 
-    // MARK: - Public methods
-    /// Set a custom theme to payment form
-    ///
-    /// - Parameter theme: theme to use in payment form
-    public func setTheme(theme: ColorTheme) {
-    }
-
     /// Set a PKPaymentRequest
     ///
     /// - Parameter request: PKPaymentRequest to use with ApplePay
-    public func setPKPaymentRequest(request: PKPaymentRequest) {
+    func setPKPaymentRequest(request: PKPaymentRequest) {
         pkPaymentRequest = request
     }
 
@@ -73,14 +65,14 @@ class SDKInteractor {
     ///   - viewController: controller from what you would like to present payment UI
     ///   - paymentOptions: info that is needed to perform payment (merchant_id, proeject_id, etc)
     ///   - completion: result of payment flow
-    public func presentPayment(at viewController: UIViewController,
+    func presentPayment(at viewController: UIViewController,
                                paymentOptions: PaymentOptions,
                                completion: PaymentCompletion?) {
 
         if paymentOptions.mockModeType == .success {
             msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
         } else if paymentOptions.mockModeType == .decline {
-            msdkConfig = MSDKCoreSessionConfig.companion.mockInitReturnedDecline()
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow()
         } else {
             msdkSession = MSDKCoreSession(config: msdkConfig)
         }
@@ -93,8 +85,8 @@ class SDKInteractor {
 
         let view = ViewFactory.assembleRootView(paymentOptions: paymentOptions, initPublisher: delegateProxy.createPublisher(with: { delegate in
             let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                                           recurrentInfo: nil, // TODO: fill that parameter from paymentOptions.recurrentInfo,
-                                           threeDSecureInfo: nil) // TODO: fill that parameter too
+                                           recurrentInfo: paymentOptions.recurrentInfo,
+                                           threeDSecureInfo: paymentOptions.threeDSecureInfo)
             self.msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
         })) { reason in
             viewController.dismiss(animated: true) { [weak self] in
@@ -127,10 +119,35 @@ class SDKInteractor {
         serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
         serviceLocator.addService(instance: StringResourceManagerAdapter(manger: msdkSession.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
     }
+
+    internal static func getBundleVersion(for aClass: AnyClass) -> String {
+        return Bundle(for: aClass).infoDictionary?["CFBundleShortVersionString"] as! String
+    }
+
+    internal static func getBuildNumberOfBundle(for aClass: AnyClass) -> String {
+        return Bundle(for: aClass).infoDictionary?["CFBundleVersion"] as! String
+    }
 }
 
 
 extension PaymentOptions: mobileSDK_UI.PaymentOptions {
+    public var brandColorOverride: Color? {
+        get {
+            if let uiColor = brandColor {
+                return Color(uiColor)
+            } else {
+                return nil
+            }
+        }
+        set {
+            if let value = newValue {
+                brandColor = UIColor(value)
+            } else {
+                brandColor = nil
+            }
+        }
+    }
+
     public var isMockModeEnabled: Bool {
         mockModeType != .disabled
     }

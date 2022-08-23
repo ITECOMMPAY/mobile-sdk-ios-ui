@@ -5,7 +5,7 @@
 //  Created by Ivan Krapivtsev on 12.08.2022.
 //
 
-import Foundation
+import SwiftUI
 
 #if DEBUG
 
@@ -78,6 +78,8 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
+    var brandColorOverride: Color? = nil
+
     var isMockModeEnabled: Bool = true
 
     var summary: PaymentSummaryData = PaymentSummaryData(currency: "RUB", value: 123.23)
@@ -95,15 +97,17 @@ struct MockPaymentOptions: PaymentOptions {
 }
 
 struct MockSavedAccount: SavedAccount {
-    var cardUrlLogo: String?
     var id: Int64 = 100500
     var number: String? = "*** 1234"
     var token: String? = "***"
     var type: String? = "card"
     var savedCardExpiry: CardExpiry?
+    var savedAccountCardType: CardType = .visa
 }
 
 struct MockPaymentMethod: PaymentMethod {
+    var allSupportedCardTypes: [PaymentMethodCard] = []  
+    var connectedCardTypes: [CardType] = [ .visa ]
     struct MockCardTypeRecognizer: CardTypeRecognizer {
         func getCardType(for pan: String) -> PaymentMethodCard? {
             return nil
@@ -115,7 +119,6 @@ struct MockPaymentMethod: PaymentMethod {
     var isVatInfo: Bool = true
     var methodType: PaymentMethodType = .card
     var name: String? = "Bank card"
-    var methodCardTypes: [PaymentMethodCard] = []
     var cardTypeRecognizer: CardTypeRecognizer = MockCardTypeRecognizer()
     var iconUrl: String? = nil
     var translations: [String : String] = [:]

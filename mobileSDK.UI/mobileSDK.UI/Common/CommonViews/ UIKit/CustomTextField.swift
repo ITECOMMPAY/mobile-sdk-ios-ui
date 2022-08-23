@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import UIKitTextField
 
 struct CustomTextField<AccessoryViewType: View>: View {
     // MARK: - Properties
@@ -72,7 +71,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         UIKitTextField(config: .init()
             .isSecureTextEntry(isSecure)
             .keyboardType(keyboardType)
-            .autocapitalizationType(forceUppercased ? .allCharacters : .none)
+            .autocapitalizationType(forceUppercased ? .allCharacters : nil)
             .value(
                 updateViewValue: { textField in
                     if let text = formatter.string(for: $text.wrappedValue),

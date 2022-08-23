@@ -15,13 +15,9 @@ extension mobileSDK_UI.PaymentMethodType {
         else if coreEnum == MsdkCore.PaymentMethodType.qiwi { return .qiwi }
         else if coreEnum == MsdkCore.PaymentMethodType.skrillWallet { return .skrillWallet }
         else if coreEnum == MsdkCore.PaymentMethodType.doku { return .doku }
-        else if coreEnum == MsdkCore.PaymentMethodType.yandexMoney { return .yandexMoney }
         else if coreEnum == MsdkCore.PaymentMethodType.mcash { return .mcash }
         else if coreEnum == MsdkCore.PaymentMethodType.boost { return .boost }
-        else if coreEnum == MsdkCore.PaymentMethodType.malaysia { return .malaysia }
-        else if coreEnum == MsdkCore.PaymentMethodType.thailand { return .thailand }
         else if coreEnum == MsdkCore.PaymentMethodType.bigc { return .bigc }
-        else if coreEnum == MsdkCore.PaymentMethodType.bank { return .bank }
         else if coreEnum == MsdkCore.PaymentMethodType.alipay { return .alipay }
         else if coreEnum == MsdkCore.PaymentMethodType.webmoneyLight { return .webmoneyLight }
         else if coreEnum == MsdkCore.PaymentMethodType.webmoneyClassic { return .webmoneyClassic }

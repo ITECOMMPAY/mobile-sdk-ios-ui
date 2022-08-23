@@ -71,45 +71,45 @@ protocol ColorScheme {
 }
 
 struct DefaultLight: ColorScheme {
-    var textFieldPlaceholderColor = darkGray
-    let textFieldErrorBorderColor = red
-    let textFieldErrorBackgroundColor = lightRed
-    let textFieldUnfocusedBorderColor = grey
-    let textFieldNormalBackgroundColor = lightGray
-    let textFieldFocusedBorderColor = brandBlue
-    let textFieldRequirementMarkColor = red
-    let paymentInfoCardShadow = Color(hex: 0x105084).opacity(0.1)
-    let paymentMethodBackground = Color.white
-    let savedAccountBackground = lightGray
-    let screenHeader = Color.black
-    let editableFieldBackground = lightGray
-    let infoBlockBackground = lightGray
-    let mainBackground = Color.white
-    let shimmeringBackground = lightGray
-    let shimmeringBase =  Color.black
-    let shimmeringAccent = Color.black.opacity(0.3)
-    let dimming = Color.black.opacity(0.8)
-    let brandColor = brandBlue
-    let panelBackgroundColor = lightGray
-    let border = grey
-    let paymentDetailsInnerTitleColor = darkGray
-    let paymentDetailsDescriptionColor = Color.black
-    let text = Color.black
-    let paymentInfoCardForegroundColor = Color.white
-    let textFieldDisabledColor = semiMediumGrey
-    let minorShapesColor = semiMediumGrey
-    let deleteCardButtonColor = darkGray
-    let checkboxBorder = Color(hex: 0xD1D5DB).opacity(0.9)
-    var errorTextColor = red
+    var textFieldPlaceholderColor: Color { darkGray }
+    var textFieldErrorBorderColor: Color { red }
+    var textFieldErrorBackgroundColor: Color { lightRed }
+    var textFieldUnfocusedBorderColor: Color { grey }
+    var textFieldNormalBackgroundColor: Color { lightGray }
+    var textFieldFocusedBorderColor: Color { brandBlue }
+    var textFieldRequirementMarkColor: Color { red }
+    var paymentInfoCardShadow: Color { Color(hex: 0x105084).opacity(0.1) }
+    var paymentMethodBackground: Color { Color.white }
+    var savedAccountBackground: Color { lightGray }
+    var screenHeader: Color { Color.black }
+    var editableFieldBackground: Color { lightGray }
+    var infoBlockBackground: Color { lightGray }
+    var mainBackground: Color { Color.white }
+    var shimmeringBackground: Color { lightGray }
+    var shimmeringBase: Color {  Color.black }
+    var shimmeringAccent: Color { Color.black.opacity(0.3) }
+    var dimming: Color { Color.black.opacity(0.8) }
+    var brandColor: Color { brandBlue }
+    var panelBackgroundColor: Color { lightGray }
+    var border: Color { grey }
+    var paymentDetailsInnerTitleColor: Color { darkGray }
+    var paymentDetailsDescriptionColor: Color { Color.black }
+    var text: Color { Color.black }
+    var paymentInfoCardForegroundColor: Color { Color.white }
+    var textFieldDisabledColor: Color { semiMediumGrey }
+    var minorShapesColor: Color { semiMediumGrey }
+    var deleteCardButtonColor: Color { darkGray }
+    var checkboxBorder: Color { Color(hex: 0xD1D5DB).opacity(0.9) }
+    var errorTextColor: Color { red }
 
     /// Colors as they marked in Figma
-    private static let lightRed = Color(hex: 0xF8EAEA)
-    private static let red = Color(hex: 0xC03230)
-    private static let grey = Color(hex: 0xEBEBEE)
-    private static let darkGray = Color(hex: 0x666666)
-    private static let lightGray = Color(hex: 0xF6F7F9)
-    private static let brandBlue = Color(hex: 0x00579E)
-    private static let semiMediumGrey = Color(hex: 0xBCBDBE)
+    let lightRed = Color(hex: 0xF8EAEA)
+    let red = Color(hex: 0xC03230)
+    let grey = Color(hex: 0xEBEBEE)
+    let darkGray = Color(hex: 0x666666)
+    let lightGray = Color(hex: 0xF6F7F9)
+    var brandBlue = Color(hex: 0x00579E)
+    let semiMediumGrey = Color(hex: 0xBCBDBE)
 }
 /*
 struct DefaultDark: ColorScheme {

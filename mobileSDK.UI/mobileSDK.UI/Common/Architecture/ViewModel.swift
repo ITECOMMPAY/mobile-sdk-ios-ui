@@ -24,11 +24,6 @@ protocol ViewModel: ObservableObject {
     var state: ViewState { get }
 }
 
-protocol RootChild {
-    associatedtype ParentViewModel: RootViewModelProtocol
-    var parentViewModel: ParentViewModel { get }
-}
-
 class ChildViewModel<ViewState, UserIntent, ParentViewModel: ViewModel>: ObservableObject, ViewModel {
     typealias ViewState = ViewState
     typealias UserIntent = UserIntent
