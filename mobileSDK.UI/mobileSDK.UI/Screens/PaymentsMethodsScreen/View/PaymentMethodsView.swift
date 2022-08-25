@@ -26,24 +26,31 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 }
                 .frame(maxWidth: .infinity)
                 PaymentDetailsView(details: viewModel.state.paymentOptions.details)
-            }.padding([.trailing, .leading, .top], UIScheme.dimension.largeSpacing)
+            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
-            VStack(spacing: .zero) {
+            VStack(spacing: UIScheme.dimension.middleSpacing) {
                 PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                   priceValue: viewModel.state.paymentOptions.summary.value,
-                                   currency: viewModel.state.paymentOptions.summary.currency,
-                                       backgroundTemplate: UIScheme.infoCardBackground,
-                                   logoImage: viewModel.state.paymentOptions.summary.logo)
-                    ApplePayButton().padding([.top, .bottom], UIScheme.dimension.middleSpacing)
-                    paymentMethodsList
-                    PolicyView()
-                        .padding(.top, UIScheme.dimension.middleSpacing)
-                    FooterView()
-                        .padding(.bottom, UIScheme.dimension.largeSpacing)
-
+                                priceValue: viewModel.state.paymentOptions.summary.value,
+                                currency: viewModel.state.paymentOptions.summary.currency,
+                                backgroundTemplate: UIScheme.infoCardBackground,
+                                logoImage: viewModel.state.paymentOptions.summary.logo)
+                if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
+                    ApplePayButton {
+                        viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
+                    }
+                }
+                paymentMethodsList
+                PolicyView()
+                FooterView()
             }
-            .padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
+            .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
+            .padding(.bottom, UIScheme.dimension.largeSpacing)
+        }.onAppear {
+            if viewModel.state.applePayPresentationMode == .button
+            && viewModel.state.mergedList.compactMap({ $0.paymentMethod}).count == 1 {
+                viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
+            }
         }
     }
 
@@ -95,13 +102,17 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                                       isExpanded: Bool,
                                       onTap: @escaping () -> Void) -> some View {
         return Group {
-            PaymentMethodCell(methodTitle: method.displayName ?? method.methodType.rawValue,
-                              methodImage: getLogo(for: method),
-                              isSavedAccount: false,
-                              isExpanded: isExpanded,
-                              content: expandableContent(for: method)) {
-                withAnimation {
-                    onTap()
+            if method.methodType == .applePay && viewModel.state.applePayPresentationMode != .method {
+                EmptyView()
+            } else {
+                PaymentMethodCell(methodTitle: method.displayName ?? method.methodType.rawValue,
+                                  methodImage: getLogo(for: method),
+                                  isSavedAccount: false,
+                                  isExpanded: isExpanded,
+                                  content: expandableContent(for: method)) {
+                    withAnimation {
+                        onTap()
+                    }
                 }
             }
         }
@@ -129,8 +140,8 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             return nil
         }
         return SavedCardCheckoutView(paymentOptions: viewModel.state.paymentOptions,
-                              savedCard: savedAccount,
-                              methodForAccount: cardPaymentMethod) { intent in
+                                     savedCard: savedAccount,
+                                     methodForAccount: cardPaymentMethod) { intent in
             viewModel.dispatch(intent: intent)
         } deleteCardAction: {
             viewModel.dispatch(intent: .delete(savedAccount))
@@ -141,11 +152,13 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         return Group {
             switch method.methodType {
             case .card:
-                    NewCardCheckoutView(paymentMethod: method) {
-                        viewModel.dispatch(intent: $0)
-                    }
+                NewCardCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
+                    viewModel.dispatch(intent: $0)
+                }
             case .applePay:
-                ApplePayCheckoutView()
+                ApplePayCheckoutView(paymentOptions: viewModel.state.paymentOptions, method: method) {
+                    viewModel.dispatch(intent: $0)
+                }
             default:
                 Color.red.frame(height: 10)
             }

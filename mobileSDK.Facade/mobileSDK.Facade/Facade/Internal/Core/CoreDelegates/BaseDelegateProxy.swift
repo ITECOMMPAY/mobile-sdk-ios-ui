@@ -21,7 +21,7 @@ class BaseFutureDelegateProxy<DelegateType, EventsType, ErrorType: Error>: NSObj
         }.eraseToAnyPublisher()
     }
 
-    ///Should be implemented by descendants
+    /// Should be implemented by descendants
     var delegate: DelegateType {
         abort()
     }
@@ -46,7 +46,7 @@ class BasePassthroughDelegateProxy<DelegateType, EventsType, ErrorType: Error>: 
         }
     }
 
-    ///Should be implemented by descendants
+    /// Should be implemented by descendants
     var delegate: DelegateType {
         abort()
     }
@@ -61,7 +61,7 @@ extension Publishers {
             self.closure = closure
         }
 
-        public func receive<S>(subscriber: S) where S : Subscriber, Anonymous.Failure == S.Failure, Anonymous.Output == S.Input {
+        public func receive<S>(subscriber: S) where S: Subscriber, Anonymous.Failure == S.Failure, Anonymous.Output == S.Input {
             let subscription = Subscriptions.Anonymous(subscriber: subscriber)
             subscriber.receive(subscription: subscription)
             subscription.start(closure)

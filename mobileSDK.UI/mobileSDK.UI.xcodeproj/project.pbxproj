@@ -27,6 +27,7 @@
 		84318AB828816B53006B7E9C /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C18C2881382D00A7001E /* LinkButton.swift */; };
 		84318AB928816B63006B7E9C /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84333C3628731732004135AC /* PaymentMethodsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84333C3528731732004135AC /* PaymentMethodsViewState.swift */; };
+		84343B8F28B61C090031E1CD /* ApplePayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84343B8E28B61C090031E1CD /* ApplePayService.swift */; };
 		8446EC5C288EB50E00A1763C /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8446EC5B288EB50E00A1763C /* CardTypesManager.swift */; };
 		8454EEC728A293A900199FF3 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC628A293A900199FF3 /* LoadingScreen.swift */; };
 		8454EECA28A2A56B00199FF3 /* Binding+didSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */; };
@@ -275,6 +276,7 @@
 		842D279328649B6500F5F293 /* BottomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardView.swift; sourceTree = "<group>"; };
 		84318AB228814CC2006B7E9C /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
 		84333C3528731732004135AC /* PaymentMethodsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewState.swift; sourceTree = "<group>"; };
+		84343B8E28B61C090031E1CD /* ApplePayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePayService.swift; sourceTree = "<group>"; };
 		8446EC5B288EB50E00A1763C /* CardTypesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypesManager.swift; sourceTree = "<group>"; };
 		8454EEC628A293A900199FF3 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+didSet.swift"; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 		84BC13D82852088F008814EB = {
 			isa = PBXGroup;
 			children = (
+				84343B8E28B61C090031E1CD /* ApplePayService.swift */,
 				84BC13E42852088F008814EB /* mobileSDK.UI */,
 				84A0F13928746596005F81DE /* UIPreview */,
 				84BC13E32852088F008814EB /* Products */,
@@ -1284,6 +1287,7 @@
 				84A0F12B287404F2005F81DE /* PaymentMethodsViewModel.swift in Sources */,
 				8421F8E4288EBA9B00B6EED2 /* PayInteractor.swift in Sources */,
 				84AAF9F828AE3FB500441224 /* InputViewContent.swift in Sources */,
+				84343B8F28B61C090031E1CD /* ApplePayService.swift in Sources */,
 				845507AD285B0194002BBFE0 /* LibraryBundle.swift in Sources */,
 				8454EEE528A6860000199FF3 /* MockModels.swift in Sources */,
 				84A15A9828A150700035A986 /* ClarificationField+CustomerField.swift in Sources */,

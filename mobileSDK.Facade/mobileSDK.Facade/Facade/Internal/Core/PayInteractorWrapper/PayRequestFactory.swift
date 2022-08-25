@@ -30,7 +30,16 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         })
         return request
     }
+
+    func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+        let request = ApplePaySaleRequest(token: token)
+        request.customerFields = customerFields?.map({ value in
+            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
+        })
+        return request
+    }
 }
 
 extension SavedCardSaleRequest: mobileSDK_UI.PayRequest {}
 extension NewCardSaleRequest: mobileSDK_UI.PayRequest {}
+extension ApplePayRequest: mobileSDK_UI.PayRequest {}

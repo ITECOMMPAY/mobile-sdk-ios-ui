@@ -21,24 +21,24 @@ public extension UIKitTextField {
 public extension UIKitTextField {
   struct Configuration {
     var makeTextFieldHandler: () -> UITextFieldType
-    
-    var valueState: ValueState? = nil
-    
+
+    var valueState: ValueState?
+
     var placeholder: String?
     var font: UIFont?
     var textColor: Color?
     var textAlignment: NSTextAlignment?
-    
+
     var clearsOnBeginEditing: Bool?
     var clearsOnInsertion: Bool?
-    
+
     var clearButtonMode: UITextField.ViewMode?
 
-    var focusState: FocusState? = nil
-    
+    var focusState: FocusState?
+
     var stretchesHorizontally = true
     var stretchesVertically = false
-    
+
     var inputViewContent: InputViewContent<UITextFieldType> = .none
     var inputAccessoryViewContent: InputViewContent<UITextFieldType> = .none
 
@@ -51,7 +51,7 @@ public extension UIKitTextField {
     var onChangedSelectionHandler: (_ uiTextField: UITextFieldType) -> Void = { _ in }
     var shouldClearHandler: (_ uiTextField: UITextFieldType) -> Bool = { _ in true }
     var shouldReturnHandler: (_ uiTextField: UITextFieldType) -> Bool = { _ in true }
-    
+
     // UITextInputTraits
     var keyboardType: UIKeyboardType?
     var keyboardAppearance: UIKeyboardAppearance?
@@ -65,14 +65,14 @@ public extension UIKitTextField {
     var smartQuotesType: UITextSmartQuotesType?
     var smartDashesType: UITextSmartDashesType?
     var smartInsertDeleteType: UITextSmartInsertDeleteType?
-    
+
     // extra configuration
     var configureHandler: (_ uiTextField: UITextFieldType) -> Void = { _ in }
 
     public init() where UITextFieldType == BaseUITextField {
       makeTextFieldHandler = { .init() }
     }
-    
+
     public init(_ makeUITextField: @escaping () -> UITextFieldType) {
       makeTextFieldHandler = makeUITextField
     }
@@ -91,7 +91,7 @@ public extension UIKitTextField.Configuration {
     )
     return config
   }
-  
+
   func value(text: Binding<String>) -> Self {
     value(
       updateViewValue: { textField in
@@ -104,13 +104,12 @@ public extension UIKitTextField.Configuration {
       }
     )
   }
-  
+
   @available(iOS 15.0, *)
   func value<F>(value: Binding<F.FormatInput>, format: F) -> Self
   where
     F: ParseableFormatStyle,
-    F.FormatOutput == String
-  {
+    F.FormatOutput == String {
     self.value(
       value: Binding<F.FormatInput?>(
         get: {
@@ -125,13 +124,12 @@ public extension UIKitTextField.Configuration {
       format: format
     )
   }
-  
+
   @available(iOS 15.0, *)
   func value<F>(value: Binding<F.FormatInput?>, format: F) -> Self
   where
     F: ParseableFormatStyle,
-    F.FormatOutput == String
-  {
+    F.FormatOutput == String {
     self.value(
       updateViewValue: { textField in
         if !textField.isFirstResponder {
@@ -156,7 +154,7 @@ public extension UIKitTextField.Configuration {
       }
     )
   }
-  
+
   func value<V>(value: Binding<V>, formatter: Formatter) -> Self {
     self.value(
       value: Binding<V?>(
@@ -172,7 +170,7 @@ public extension UIKitTextField.Configuration {
       formatter: formatter
     )
   }
-  
+
   func value<V>(value: Binding<V?>, formatter: Formatter) -> Self {
     self.value(
       updateViewValue: { textField in
@@ -191,7 +189,7 @@ public extension UIKitTextField.Configuration {
       },
       onViewValueChanged: { textField in
         if textField.isFirstResponder {
-          var objectValue: AnyObject? = nil
+          var objectValue: AnyObject?
           if
             formatter.getObjectValue(&objectValue, for: textField.text ?? "", errorDescription: nil),
             let newValue = objectValue as? V
@@ -204,7 +202,7 @@ public extension UIKitTextField.Configuration {
       }
     )
   }
-  
+
   func placeholder(_ placeholder: String?) -> Self {
     var config = self
     config.placeholder = placeholder
@@ -216,37 +214,37 @@ public extension UIKitTextField.Configuration {
     config.font = font
     return config
   }
-  
+
   func textColor(_ color: Color?) -> Self {
     var config = self
     config.textColor = color
     return config
   }
-  
+
   func textAlignment(_ textAlignment: NSTextAlignment?) -> Self {
     var config = self
     config.textAlignment = textAlignment
     return config
   }
-  
+
   func clearsOnBeginEditing(_ clearsOnBeginEditing: Bool?) -> Self {
     var config = self
     config.clearsOnBeginEditing = clearsOnBeginEditing
     return config
   }
-  
+
   func clearsOnInsertion(_ clearsOnInsertion: Bool?) -> Self {
     var config = self
     config.clearsOnInsertion = clearsOnInsertion
     return config
   }
-  
+
   func clearButtonMode(_ clearButtonMode: UITextField.ViewMode?) -> Self {
     var config = self
     config.clearButtonMode = clearButtonMode
     return config
   }
-  
+
   func focused(_ binding: Binding<Bool>) -> Self {
     var config = self
     config.focusState = .init(
@@ -269,7 +267,7 @@ public extension UIKitTextField.Configuration {
     )
     return config
   }
-  
+
   func focused<Value>(_ binding: Binding<Value?>, equals value: Value?) -> Self where Value: Hashable {
     var config = self
     config.focusState = .init(
@@ -292,7 +290,7 @@ public extension UIKitTextField.Configuration {
     )
     return config
   }
-  
+
   func stretches(horizontal: Bool, vertical: Bool) -> Self {
     var config = self
     config.stretchesHorizontally = horizontal
@@ -305,7 +303,7 @@ public extension UIKitTextField.Configuration {
     config.inputViewContent = content
     return config
   }
-  
+
   func inputAccessoryView(content: InputViewContent<UITextFieldType>) -> Self {
     var config = self
     config.inputAccessoryViewContent = content

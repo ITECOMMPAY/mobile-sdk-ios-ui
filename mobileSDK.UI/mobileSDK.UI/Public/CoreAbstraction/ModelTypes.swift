@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PassKit
 
 public enum InitEvent {
     case onPaymentRestored(Payment)
@@ -133,8 +134,12 @@ public protocol PaymentOptions {
     var uiAdditionalFields: [AdditionalField] { get }
     var isMockModeEnabled: Bool { get }
     var brandColorOverride: Color? { get }
+    var applePayMerchantID: String? { get }
+    var appleCountryCode: String? { get }
+    var paymentID: String { get }
+    var applePayDescription: String? { get }
+    var pkPaymentRequest: PKPaymentRequest? { get }
 }
-
 
 public protocol AdditionalField {
     var type: FieldType { get }

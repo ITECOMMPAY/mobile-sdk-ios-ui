@@ -10,7 +10,7 @@ import SwiftUI
 
 typealias ModifyTransaction<T> = (_  value: inout T) -> Void
 
-func modifiedCopy<T>(of initialValue: T, by transaction: ModifyTransaction<T>) -> T  {
+func modifiedCopy<T>(of initialValue: T, by transaction: ModifyTransaction<T>) -> T {
     var copy = initialValue
     transaction(&copy)
     return copy

@@ -98,6 +98,6 @@ enum FinalPaymentState {
 }
 
 struct AcsPageState {
-    var acsPage: AcsPage? = nil
+    var acsPage: AcsPage?
     var isCascading: Bool = false
 }

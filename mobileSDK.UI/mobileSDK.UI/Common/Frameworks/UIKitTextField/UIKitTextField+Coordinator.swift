@@ -5,19 +5,19 @@ import SwiftUI
 public extension UIKitTextField {
   class Coordinator: NSObject, UITextFieldDelegate {
     var wrapper: UIKitTextField
-    
+
     let textField: UITextFieldType
-    
+
     let inputViewManager: InputViewManager<UITextFieldType>
     let inputAccessoryViewManager: InputViewManager<UITextFieldType>
-    
+
     var lastForceUpdateCounter: Int = -1
 
     init(_ wrapper: UIKitTextField) {
       self.wrapper = wrapper
-      
+
       textField = wrapper.config.makeTextFieldHandler()
-      
+
       inputViewManager = .init(with: textField, content: EmptyView())
       inputAccessoryViewManager = .init(with: textField, content: EmptyView())
 
@@ -25,7 +25,7 @@ public extension UIKitTextField {
 
       textField.delegate = self
     }
-    
+
     func updateInputView(
       with inputViewContent: InputViewContent<UITextFieldType>,
       inputViewManager: InputViewManager<UITextFieldType>,
@@ -44,7 +44,7 @@ public extension UIKitTextField {
         textField.reloadInputViews()
       }
     }
-    
+
     func updateUITextInputTraits(with config: Configuration) {
       textField.keyboardType = config.keyboardType ?? .default
       textField.keyboardAppearance = config.keyboardAppearance ?? .default
@@ -59,14 +59,14 @@ public extension UIKitTextField {
       textField.smartDashesType = config.smartDashesType ?? .default
       textField.smartInsertDeleteType = config.smartInsertDeleteType ?? .default
     }
-    
+
     func update(with wrapper: UIKitTextField) {
       lastForceUpdateCounter = wrapper.forceUpdateCounter
-      
+
       self.wrapper = wrapper
-      
+
       let config = wrapper.config
-      
+
       config.valueState?.updateViewValue(textField)
 
       textField.placeholder = config.placeholder
@@ -80,7 +80,7 @@ public extension UIKitTextField {
       textField.clearsOnBeginEditing = config.clearsOnBeginEditing ?? false
       textField.clearsOnInsertion = config.clearsOnInsertion ?? false
       textField.clearButtonMode = config.clearButtonMode ?? .never
-      
+
       // NOTE: since it would trigger additional events, and state change is not allowed inside update().
       //       it's cleaner to do outside update() to let all events be handled in a way to allow state
       //       change without the use of some `isInsideUpdate` variable
@@ -91,7 +91,7 @@ public extension UIKitTextField {
         func shouldBlur() -> Bool {
           focusControl.isUnset() && textField.isFirstResponder
         }
-        
+
         if shouldFocus() {
           DispatchQueue.main.async {
             if shouldFocus() {
@@ -129,7 +129,7 @@ public extension UIKitTextField {
 
       config.configureHandler(textField)
     }
-    
+
     // UITextFieldDelegate
     // @objc members cannot live in extension, https://stackoverflow.com/a/48403602
     public func textFieldShouldBeginEditing(_: UITextField) -> Bool {

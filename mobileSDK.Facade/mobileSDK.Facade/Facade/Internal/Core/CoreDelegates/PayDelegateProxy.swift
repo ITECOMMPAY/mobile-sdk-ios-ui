@@ -33,7 +33,7 @@ extension PayDelegateProxy: PayDelegate {
         send(.success(.onCompleteWithDecline(paymentMessage: paymentMessage, payment: payment)))
     }
 
-    func onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment)  {
+    func onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment) {
         send(.success(.onCompleteWithFail(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment)))
     }
 
@@ -53,4 +53,3 @@ extension PayDelegateProxy: PayDelegate {
         send(.success(.onThreeDSecure(acsPage: acsPage, isCascading: isCascading, payment: payment)))
     }
 }
-

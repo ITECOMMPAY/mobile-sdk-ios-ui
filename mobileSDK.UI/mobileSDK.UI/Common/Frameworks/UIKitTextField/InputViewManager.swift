@@ -9,20 +9,20 @@ internal class InputViewManager<UITextFieldType> where UITextFieldType: UITextFi
   let inputViewController: UIInputViewController
   let inputView: UIInputView
   var lastIntrinsicContentSize: CGSize?
-  
+
   init<Content>(with textField: UITextFieldType, content: Content) where Content: View {
     self.textField = textField
-    
+
     inputViewContentController = .init(rootView: .init(content))
-    
+
     inputViewContent = inputViewContentController.view
     inputViewContent.translatesAutoresizingMaskIntoConstraints = false
-    
+
     inputViewController = .init()
     inputView = inputViewController.inputView!
     inputView.translatesAutoresizingMaskIntoConstraints = false
     inputView.allowsSelfSizing = true
-    
+
     inputViewController.addChild(inputViewContentController)
     inputView.addSubview(inputViewContent)
     inputViewContent.leadingAnchor.constraint(equalTo: inputView.leadingAnchor).isActive = true
@@ -30,10 +30,10 @@ internal class InputViewManager<UITextFieldType> where UITextFieldType: UITextFi
     inputViewContent.topAnchor.constraint(equalTo: inputView.topAnchor).isActive = true
     inputViewContent.bottomAnchor.constraint(equalTo: inputView.bottomAnchor).isActive = true
     inputViewContentController.didMove(toParent: inputViewController)
-    
+
     inputViewContentController.delegate = self
   }
-  
+
   func update<Content>(with content: Content) where Content: View {
     inputViewContentController.rootView = .init(content)
   }
@@ -41,7 +41,7 @@ internal class InputViewManager<UITextFieldType> where UITextFieldType: UITextFi
 
 extension InputViewManager: InputViewContentControllerDelegate {
   func viewWillLayoutSubviews(_: InputViewContentController) {}
-  
+
   func viewDidLayoutSubviews(_: InputViewContentController) {
     inputViewContent.invalidateIntrinsicContentSize()
     if inputViewContent.intrinsicContentSize != lastIntrinsicContentSize {

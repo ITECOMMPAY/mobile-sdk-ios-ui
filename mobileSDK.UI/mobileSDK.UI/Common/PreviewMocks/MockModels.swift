@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PassKit
 
 #if DEBUG
 
@@ -63,14 +64,14 @@ struct MockAccount: Account {
 
 struct MockCompleteField: CompleteField {
     var defaultLabel: String? = "MockCompleteField_defaultLabel"
-    var name: String? = nil
+    var name: String?
     var value: String? = "MockCompleteField_value"
 }
 
 struct MockCarificationField: ClarificationField {
     var name: String = "MockCarificationField_name"
     var validatorName: String? = "MockCarificationField_validatorName"
-    var validatonMethod: Validator<String>? = nil
+    var validatonMethod: Validator<String>?
     var defaultPlaceholder: String? = "MockCarificationField_defaultPlaceholder"
     var defaultHint: String? = "MockCarificationField_defaultHint"
     var defaultLabel: String? = "MockCarificationField_defaultLabel"
@@ -78,7 +79,17 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
-    var brandColorOverride: Color? = nil
+    var pkPaymentRequest: PKPaymentRequest? = nil
+    
+    var paymentID: String = "123"
+
+    var applePayDescription: String? = nil
+
+    var appleCountryCode: String?
+
+    var applePayMerchantID: String? = nil
+
+    var brandColorOverride: Color?
 
     var isMockModeEnabled: Bool = true
 
@@ -106,7 +117,7 @@ struct MockSavedAccount: SavedAccount {
 }
 
 struct MockPaymentMethod: PaymentMethod {
-    var allSupportedCardTypes: [PaymentMethodCard] = []  
+    var allSupportedCardTypes: [PaymentMethodCard] = []
     var connectedCardTypes: [CardType] = [ .visa ]
     struct MockCardTypeRecognizer: CardTypeRecognizer {
         func getCardType(for pan: String) -> PaymentMethodCard? {
@@ -120,8 +131,8 @@ struct MockPaymentMethod: PaymentMethod {
     var methodType: PaymentMethodType = .card
     var name: String? = "Bank card"
     var cardTypeRecognizer: CardTypeRecognizer = MockCardTypeRecognizer()
-    var iconUrl: String? = nil
-    var translations: [String : String] = [:]
+    var iconUrl: String?
+    var translations: [String: String] = [:]
 }
 
 struct MockAcsPage: AcsPage {

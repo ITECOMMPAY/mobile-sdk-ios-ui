@@ -26,4 +26,6 @@ public protocol PayRequestFactory {
                                   cardHolder: String,
                                   saveCard: Bool,
                                   customerFields: [FieldValue]?) -> PayRequest
+
+    func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest 
 }

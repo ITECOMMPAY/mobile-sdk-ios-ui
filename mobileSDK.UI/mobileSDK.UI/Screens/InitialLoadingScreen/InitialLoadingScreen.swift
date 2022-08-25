@@ -37,14 +37,14 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
                 }
                 .frame(maxWidth: .infinity)
                 loadingStateHeader
-            }.padding([.trailing, .leading, .top], UIScheme.dimension.largeSpacing)
+            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: .zero) {
                 paymentMethodsPlaceholders
                 FooterView()
                     .padding(.bottom, UIScheme.dimension.largeSpacing)
             }
-            .padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
+            .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
         }
     }

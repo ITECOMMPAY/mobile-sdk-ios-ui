@@ -25,7 +25,7 @@ struct ContentView: View {
         }
     }
 
-    @State var additionalFieldsValues: [AdditionalFieldType : String] = [:]
+    @State var additionalFieldsValues: [AdditionalFieldType: String] = [:]
 
     @State var showLogo: Bool = false
 
@@ -128,6 +128,12 @@ struct ContentView: View {
                 TextField("Optional", text: $paymentData.languageCode)
                     .multilineTextAlignment(.trailing)
             }
+            HStack {
+                Text("Region code").foregroundColor(Color.secondary)
+                Spacer()
+                TextField("Mandatory for Apple", text: $paymentData.regionCode)
+                    .multilineTextAlignment(.trailing)
+            }
         }
     }
 
@@ -219,16 +225,25 @@ struct ContentView: View {
                 Form {
                     TextField("applePayMerchantID", text: $paymentData.applePayMerchantID)
 
-
                     TextField("applePayDescription", text: $paymentData.applePayDescription)
+
+                    TextField("countryCode", text: $paymentData.applePayCountryCode)
                 }
                 .toolbar {
-                    Button("Clear") {
-                        paymentData.applePayDescription = ""
-                        paymentData.applePayMerchantID = ""
+                    HStack {
+                        Button("Clear") {
+                            paymentData.applePayDescription = ""
+                            paymentData.applePayMerchantID = ""
+                            paymentData.applePayCountryCode = ""
+                        }
+                        Button("Defaults") {
+                            paymentData.applePayDescription = defaultPaymentData.applePayDescription
+                            paymentData.applePayMerchantID = defaultPaymentData.applePayMerchantID
+                            paymentData.applePayCountryCode = defaultPaymentData.applePayCountryCode
+                        }
                     }
                 }
-                .navigationTitle("TBD")
+                .navigationTitle("Apple Pay Params")
             }
         }
     }
@@ -267,11 +282,11 @@ struct ContentView: View {
             paymentCurrency: paymentData.paymentCurrency,
             paymentDescription: paymentData.paymentDescription,
             customerID: paymentData.customerId,
-            regionCode: nil
+            regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil
         )
 
         paymentOptions.additionalFields = additionalFieldsValues.map {
-            AdditionalField(type: $0.key, value:  $0.value)
+            AdditionalField(type: $0.key, value: $0.value)
         }
 
         if !paymentData.languageCode.isEmpty {
@@ -299,9 +314,10 @@ struct ContentView: View {
             paymentOptions.logoImage = UIImage(named: "Logo")
         }
 
-        paymentOptions.applePayMerchantID = paymentData.applePayMerchantID.isEmpty ? nil : paymentData.applePayMerchantID
-
-        paymentOptions.applePayDescription = paymentData.applePayDescription.isEmpty ? nil : paymentData.applePayDescription
+        if !paymentData.applePayMerchantID.isEmpty {
+            let applePayOptions = PaymentOptions.ApplePayOptions(applePayMerchantID: paymentData.applePayMerchantID, applePayDescription: paymentData.applePayDescription, countryCode: paymentData.applePayCountryCode)
+            paymentOptions.applePayOptions = applePayOptions
+        }
 
         return paymentOptions
     }
@@ -324,4 +340,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-

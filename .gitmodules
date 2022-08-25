@@ -1,4 +1,0 @@
-[submodule "mobileSDK.Core"]
-	path = mobileSDK.Core
-	url = ssh://git@stash.ecommpay.com:7999/pr2/mobile-sdk-core-kmm.git
-	branch = master

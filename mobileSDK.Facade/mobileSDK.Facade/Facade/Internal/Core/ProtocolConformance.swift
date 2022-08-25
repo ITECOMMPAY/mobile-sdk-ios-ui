@@ -120,7 +120,7 @@ extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {
     }
 }
 
-class StringResourceManagerAdapter:  mobileSDK_UI.StringResourceManager {
+class StringResourceManagerAdapter: mobileSDK_UI.StringResourceManager {
     func getLinkMessageByKey(key: String) -> TranslationWithLink {
         return manger.getLinkMessageByKey(key: key)
     }

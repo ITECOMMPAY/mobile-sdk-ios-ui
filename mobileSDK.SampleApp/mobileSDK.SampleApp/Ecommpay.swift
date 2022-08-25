@@ -29,5 +29,6 @@ let defaultPaymentData = PaymentData(
     wsApiHost: "paymentpage-3.westresscode.net",
     merchantId: "BCR2DN6TZ75OBLTH",
     merchantName: "Example Merchant",
-    mockModeType: MockModeType.disabled
+    mockModeType: MockModeType.disabled,
+    regionCode: ""
 )

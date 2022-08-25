@@ -25,6 +25,7 @@
 		8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */; };
 		8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */; };
 		8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */; };
+		84343B8B28B5D1BA0031E1CD /* MsdkCore in Frameworks */ = {isa = PBXBuildFile; productRef = 84343B8A28B5D1BA0031E1CD /* MsdkCore */; };
 		845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BC285B0463002BBFE0 /* SDKInteractor.swift */; };
 		845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BD285B0463002BBFE0 /* PaymentResult.swift */; };
 		845507D7285B0463002BBFE0 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C2285B0463002BBFE0 /* PaymentOptions.swift */; };
@@ -50,7 +51,6 @@
 		84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEE285C88770009FD38 /* RecipientInfo.swift */; };
 		84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA163287708850043C360 /* CoreErrorCode.swift */; };
 		84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
-		84FBF42728B49FBE004C8FC7 /* MsdkCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FBF42628B49FBE004C8FC7 /* MsdkCore.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +115,6 @@
 		84D87CEE285C88770009FD38 /* RecipientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientInfo.swift; sourceTree = "<group>"; };
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
-		84FBF42628B49FBE004C8FC7 /* MsdkCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MsdkCore.xcframework; path = ../../Downloads/MsdkCore.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BC4F5B285843C800CD7EA5 /* mobileSDK_UI.framework in Frameworks */,
-				84FBF42728B49FBE004C8FC7 /* MsdkCore.xcframework in Frameworks */,
+				84343B8B28B5D1BA0031E1CD /* MsdkCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +202,6 @@
 		84AFF7CF285208CD00E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84FBF42628B49FBE004C8FC7 /* MsdkCore.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,6 +326,7 @@
 			);
 			name = ecommpaySDK;
 			packageProductDependencies = (
+				84343B8A28B5D1BA0031E1CD /* MsdkCore */,
 			);
 			productName = mobileSDK.Facade;
 			productReference = 84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */;
@@ -357,6 +356,7 @@
 			);
 			mainGroup = 84BC13C42852086E008814EB;
 			packageReferences = (
+				84343B8928B5D1BA0031E1CD /* XCRemoteSwiftPackageReference "paymentpage-sdk-ios-core" */,
 			);
 			productRefGroup = 84BC13CF2852086E008814EB /* Products */;
 			projectDirPath = "";
@@ -679,6 +679,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84343B8928B5D1BA0031E1CD /* XCRemoteSwiftPackageReference "paymentpage-sdk-ios-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-core";
+			requirement = {
+				kind = exactVersion;
+				version = 0.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		84343B8A28B5D1BA0031E1CD /* MsdkCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84343B8928B5D1BA0031E1CD /* XCRemoteSwiftPackageReference "paymentpage-sdk-ios-core" */;
+			productName = MsdkCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84BC13C52852086E008814EB /* Project object */;
 }

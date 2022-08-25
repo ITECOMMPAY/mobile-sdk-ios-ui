@@ -15,7 +15,7 @@ class InitDelegateProxy: BaseFutureDelegateProxy<InitDelegate, InitEvent, CoreEr
 }
 
 extension InitDelegateProxy: InitDelegate {
-    
+
     func onPaymentRestored(payment: MsdkCore.Payment) {
         promise?(.success(.onPaymentRestored(payment)))
     }

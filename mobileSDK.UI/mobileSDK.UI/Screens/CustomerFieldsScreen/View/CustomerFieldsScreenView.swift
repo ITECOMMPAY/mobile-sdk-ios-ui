@@ -27,7 +27,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                 }
                 .frame(maxWidth: .infinity)
                 PaymentDetailsView(details: viewModel.state.paymentOptions.details)
-            }.padding([.trailing, .leading, .top], UIScheme.dimension.largeSpacing)
+            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: .zero) {
                 PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
@@ -53,7 +53,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     .padding(.bottom, UIScheme.dimension.largeSpacing)
 
             }
-            .padding([.trailing, .leading], UIScheme.dimension.largeSpacing)
+            .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
         }
     }

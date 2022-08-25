@@ -7,17 +7,15 @@
 
 import SwiftUI
 import WebKit
- 
+
 public struct WebView: UIViewRepresentable {
     public init(configuration: @escaping (WKWebView) -> Void = { _ in }) {
             self.configuration = configuration
     }
 
-
     // MARK: - Properties
 
     private let configuration: (WKWebView) -> Void
-
 
     // MARK: - Functions
 
