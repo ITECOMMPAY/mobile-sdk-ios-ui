@@ -10,8 +10,8 @@ import SwiftUI
 struct NewCardCheckoutView: View {
     @Injected var CardExpiryFabric: CardExpiryFabric?
 
-    var paymentMethod: PaymentMethod?
     var paymentOptions: PaymentOptions?
+    var paymentMethod: PaymentMethod?
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 

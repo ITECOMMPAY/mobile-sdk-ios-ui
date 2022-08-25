@@ -6,6 +6,7 @@
 //
 
 import Combine
+import PassKit
 
 protocol RootViewModelProtocol: ViewModel where ViewState == RootState, UserIntent == RootIntent {}
 
@@ -21,6 +22,7 @@ public typealias PaymentFlowDismisedCompletion = (_ reason: PaymentFlowFinishedR
 class RootViewModel: RootViewModelProtocol {
     @Injected var payInteractor: PayInteractor?
     @Injected var payRequestFactory: PayRequestFactory?
+    let applePayService = ApplePayService()
 
     let futureData: AnyPublisher<InitEvent, CoreError>
 
@@ -39,7 +41,7 @@ class RootViewModel: RootViewModelProtocol {
     func subscribeInit() {
         state.isLoading = true
         self.futureData
-            // .receive(on: DispatchQueue.main)
+        // .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.state.error = error
@@ -49,10 +51,17 @@ class RootViewModel: RootViewModelProtocol {
                 self.state.isLoading = false
                 switch event {
                 case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
-                    self.state.availablePaymentMethods = methods
-                    self.state.savedAccounts = accounts
-                    self.state.currentMethod = self.state.mergedList.first // по умолчанию выбираем первый метод из писка
-                    break
+                    let methods = self.applePayService.isAvailable ? methods : methods.filter {
+                        $0.methodType != .applePay //выкидываем applePay если он не поддерживается на устройстве
+                    }
+                    if methods.count == 0 {
+                        self.state.error = CoreError(code: .unknown, message: "Payment methods list is empty")
+                    }
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.availablePaymentMethods = methods
+                        $0.savedAccounts = accounts
+                        $0.currentMethod = self.state.mergedList.first // по умолчанию выбираем первый метод из писка
+                    }
                 case .onPaymentRestored(let payment):
                     self.state.payment = payment
                 }
@@ -134,6 +143,33 @@ class RootViewModel: RootViewModelProtocol {
         case .threeDSecureScreenIntent(.threeDSecureHandled):
             state.isLoading = true
             payInteractor?.threeDSecureHandled()
+        case .paymentMethodsScreenIntent(.payWithApplePay(customerFields: let fieldValues)):
+            if applePayService.isAvailable {
+                applePayService.onApplePayResult = { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .failToPresent:
+                        self.state.error = CoreError(code: .unknown, message: "Failed to present ApplePay")
+                    case .canceled:
+                        break //TODO: process that case later
+                    case .didAuthorizePayment(token: let token):
+                        let customerFields = self.state.customerFields?.merge(changedFields: fieldValues,
+                                                             with: self.state.paymentOptions.uiAdditionalFields)
+                        if let request = self.payRequestFactory?.createApplePaySaleRequest(token: token, customerFields: customerFields) {
+                            self.execute(payRequest: request)
+                        }
+                    }
+                }
+                if let request = self.state.paymentOptions.pkPaymentRequest {
+                    applePayService.presentPayment(with: request)
+                } else if let request = applePayService.createRequest(with: self.state.paymentOptions) {
+                    applePayService.presentPayment(with: request)
+                } else {
+                    self.state.error = CoreError(code: .unknown, message: "Failed create payment request to ApplePay")
+                }
+            } else {
+                state.error = CoreError(code: .unknown, message: "ApplePay is not supported on that device")
+            }
         }
     }
 
@@ -146,6 +182,7 @@ class RootViewModel: RootViewModelProtocol {
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
                 if case let .failure(error) = completion {
+                    self.applePayService.paymentCompletion?(PKPaymentAuthorizationResult(status: PKPaymentAuthorizationStatus.failure, errors: nil))
                     self.state.error = error
                 }
             }, receiveValue: { [weak self] payEvent in
@@ -193,7 +230,7 @@ class RootViewModel: RootViewModelProtocol {
                         $0.finalPaymentState = .Success
                     }
                 case .onPaymentCreated:
-                    debugPrint("\(type(of: self)) received onPaymentCreated")
+                    self.applePayService.paymentCompletion?(PKPaymentAuthorizationResult(status: PKPaymentAuthorizationStatus.success, errors: nil))
                 case .onStatusChanged(status: let status, payment: let payment):
                     debugPrint("\(type(of: self)) received onStatusChanged with status=\(status)")
                     self.state.payment = payment
@@ -209,3 +246,4 @@ private func debugPrint(_ object: Any...) {
     print(object)
     #endif
 }
+

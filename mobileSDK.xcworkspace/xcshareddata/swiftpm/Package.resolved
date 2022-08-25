@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "paymentpage-sdk-ios-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-core",
+      "state" : {
+        "revision" : "09dd7fbef66a80c9528a7326034cef9b60b112a7",
+        "version" : "0.4.2"
+      }
+    }
+  ],
+  "version" : 2
+}

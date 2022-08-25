@@ -27,9 +27,11 @@ struct PaymentData {
     var merchantId: String
     var merchantName: String
     var mockModeType: MockModeType
+    var regionCode: String
 
-    var applePayMerchantID: String = ""
-    var applePayDescription: String = ""
+    var applePayMerchantID: String = "merchant.ecommpayDemo.sdk"
+    var applePayDescription: String = "Apple Pay Description"
+    var applePayCountryCode: String = "US"
 }
 
 enum ForcePaymentMethods: String, CaseIterable, Identifiable {
@@ -53,7 +55,7 @@ enum ForcePaymentMethods: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-extension MockModeType: CaseIterable, Identifiable, CustomStringConvertible  {
+extension MockModeType: CaseIterable, Identifiable, CustomStringConvertible {
     public var description: String {
         switch self {
         case .disabled:

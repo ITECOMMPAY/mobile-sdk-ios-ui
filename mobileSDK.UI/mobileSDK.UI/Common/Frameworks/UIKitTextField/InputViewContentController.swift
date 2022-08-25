@@ -9,12 +9,12 @@ internal protocol InputViewContentControllerDelegate: AnyObject {
 
 internal class InputViewContentController: UIHostingController<AnyView> {
   weak var delegate: InputViewContentControllerDelegate?
-  
+
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     delegate?.viewWillLayoutSubviews(self)
   }
-  
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     delegate?.viewDidLayoutSubviews(self)

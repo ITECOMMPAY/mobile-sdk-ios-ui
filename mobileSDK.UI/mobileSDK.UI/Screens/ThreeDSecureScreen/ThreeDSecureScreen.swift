@@ -17,7 +17,7 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
     init(viewModel: VM) {
         self.viewModel = viewModel
         if let acsPage = self.viewModel.state.acsPageState?.acsPage {
-            self.delegateProxy = AcsPageWebViewDelegateProxy(acsPage:acsPage, onLoadingStateChanges: { [self] isLoading in
+            self.delegateProxy = AcsPageWebViewDelegateProxy(acsPage: acsPage, onLoadingStateChanges: { [self] isLoading in
                 self.isLoading = isLoading
             }, onThreeDSecureHandled: {
                 viewModel.dispatch(intent: .threeDSecureHandled)
@@ -89,7 +89,7 @@ class AcsPageWebViewDelegateProxy: NSObject, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if ((error as NSError).code == NSURLErrorCancelled) {
+        if (error as NSError).code == NSURLErrorCancelled {
             return
         }
         onloadingStateChanges(false)

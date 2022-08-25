@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import PassKit
 import SwiftUI
 import mobileSDK_UI
 import MsdkCore
 import Combine
+import PassKit
 
 class SDKInteractor {
     typealias PaymentCompletion = (_ result: PaymentResult) -> Void
@@ -30,7 +30,6 @@ class SDKInteractor {
         }
     }
 
-    private(set) var pkPaymentRequest: PKPaymentRequest?
     /// completion that would be executed in merchant app on mSDK finish
     internal var completionHandler: PaymentCompletion?
 
@@ -51,13 +50,6 @@ class SDKInteractor {
     }
 
     #endif
-
-    /// Set a PKPaymentRequest
-    ///
-    /// - Parameter request: PKPaymentRequest to use with ApplePay
-    func setPKPaymentRequest(request: PKPaymentRequest) {
-        pkPaymentRequest = request
-    }
 
     /// Presents UI to begin payment flow
     ///
@@ -81,8 +73,6 @@ class SDKInteractor {
 
         let delegateProxy = InitDelegateProxy()
 
-
-
         let view = ViewFactory.assembleRootView(paymentOptions: paymentOptions, initPublisher: delegateProxy.createPublisher(with: { delegate in
             let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
                                            recurrentInfo: paymentOptions.recurrentInfo,
@@ -93,7 +83,7 @@ class SDKInteractor {
                 switch reason {
                 case .byUser:
                     self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
-                case .withError(_):
+                case .withError:
                     self?.completionHandler?(PaymentResult(status: .Error, error: nil))
                 case .success:
                     self?.completionHandler?(PaymentResult(status: .Success, error: nil))
@@ -129,8 +119,23 @@ class SDKInteractor {
     }
 }
 
-
 extension PaymentOptions: mobileSDK_UI.PaymentOptions {
+    public var applePayMerchantID: String? {
+        applePayOptions?.applePayMerchantID
+    }
+
+    public var applePayDescription: String? {
+        applePayOptions?.applePayDescription
+    }
+
+    public var pkPaymentRequest: PKPaymentRequest? {
+        applePayOptions?.pkPaymentRequest
+    }
+
+    public var appleCountryCode: String? {
+        applePayOptions?.countryCode
+    }
+
     public var brandColorOverride: Color? {
         get {
             if let uiColor = brandColor {
@@ -172,5 +177,7 @@ extension PaymentOptions: mobileSDK_UI.PaymentOptions {
         return paymentDetails
     }
 
-    
+    public var paymentID: String {
+        paymentInfo.paymentId
+    }
 }

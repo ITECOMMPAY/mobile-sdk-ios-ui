@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import PassKit
 import SwiftUI
 import UIKit
 @_exported import MsdkCore
@@ -39,14 +38,6 @@ public class EcommpaySDK: NSObject {
 
     @objc(init) public override init() {
         interactor = SDKInteractor()
-    }
-
-    /// Set a PKPaymentRequest
-    ///
-    /// - Parameter request: PKPaymentRequest to use with ApplePay
-    @objc(setPKPaymentRequest:)
-    public func setPKPaymentRequest(request: PKPaymentRequest) {
-        interactor.setPKPaymentRequest(request: request)
     }
 
     /// Presents UI to begin payment flow

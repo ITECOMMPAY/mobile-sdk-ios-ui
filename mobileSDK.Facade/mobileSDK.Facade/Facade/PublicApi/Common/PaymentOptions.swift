@@ -10,7 +10,7 @@ import UIKit
 import MsdkCore
 import mobileSDK_UI
 import UIKit
-
+import PassKit
 
 @objc public enum MockModeType: Int {
     case disabled
@@ -18,8 +18,37 @@ import UIKit
     case decline
 }
 
-
 public class PaymentOptions: NSObject {
+    @objc(PaymentOptionsForApplePay)
+    public class ApplePayOptions: NSObject {
+        /// Apple Pay Merchant ID
+        /// If you want to use Apple Pay, you would need to set MerchantID from developer.apple.com
+        @objc private(set) var applePayMerchantID: String?
+        /// Apple Pay Description
+        @objc private(set) var applePayDescription: String?
+        /// Country code
+        @objc private(set) var countryCode: String?
+        /// PKPaymentRequest to use with ApplePay
+        @objc private(set) var pkPaymentRequest: PKPaymentRequest?
+
+        /// Initialise with fields:
+        /// - **applePayMerchantID** - required parameter:
+        /// - **countryCode** - The merchant's ISO country code. It is required parameter:
+        /// - **applePayDescription**  Optional. PaymentID will be used as description of payment if not provided
+        @objc
+        public init(applePayMerchantID: String, applePayDescription: String?, countryCode: String) {
+            self.applePayMerchantID = applePayMerchantID
+            self.applePayDescription = applePayDescription
+            self.countryCode = countryCode
+        }
+
+        /// Initialise with pre-filed PKPaymentRequest
+        @objc
+        public init(paymentRequest: PKPaymentRequest?) {
+            self.pkPaymentRequest = paymentRequest
+        }
+    }
+
     /// PaymentInfo contains this required fields:
     /// - **projectID** - Unique identifier of your project
     /// - **paymentID** - Unique identifier of the payment in your project
@@ -29,6 +58,8 @@ public class PaymentOptions: NSObject {
     /// and other optional params, complete reference of those presented in documentation
     @objc public var paymentInfo: PaymentInfo
 
+    @objc public var applePayOptions: ApplePayOptions?
+
     @objc public enum ActionType: Int {
         case Sale = 1
         case Auth = 2
@@ -37,14 +68,14 @@ public class PaymentOptions: NSObject {
     }
 
     /// Payment logo image
-    @objc public var logoImage: UIImage? = nil
+    @objc public var logoImage: UIImage?
 
     /// Brand color
-    @objc public var brandColor: UIColor? = nil
+    @objc public var brandColor: UIColor?
 
     /// mock Mode type
     @objc public var mockModeType: MockModeType = .disabled
-    
+
     /// Action of payment, by default its Sale
     @objc public var action: ActionType = .Sale
 
@@ -55,12 +86,8 @@ public class PaymentOptions: NSObject {
     /// 3ds2.0
     @objc public var threeDSecureInfo: ThreeDSecureInfo?
 
-    /// Apple Pay Merchant ID
-    /// If you want to use Apple Pay, you would need to set MerchantID from developer.apple.com
-    @objc public var applePayMerchantID: String?
-    /// Apple Pay Description
-    @objc public var applePayDescription: String?
- 
+
+
     /// If you know any data for fields what would be asked from a user
     /// you could set them and they would be pre-filled
     /// Fields that are known, if visible -> would be pre-filled
@@ -80,6 +107,8 @@ public class PaymentOptions: NSObject {
     public func addScreenDisplayMode(_ mode: ScreenDisplayMode) {
         screenDisplayModes = screenDisplayModes.union([mode])
     }
+
+
 
     /// Init Payment Info with some additional params
     ///

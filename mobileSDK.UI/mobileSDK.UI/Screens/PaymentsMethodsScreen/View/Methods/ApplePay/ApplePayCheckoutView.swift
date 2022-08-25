@@ -8,18 +8,35 @@
 import SwiftUI
 
 struct ApplePayCheckoutView: View {
-    // let additionalFieldsView: EmbeddedCustomerFieldsView?
+    let paymentOptions: PaymentOptions
+    let method: PaymentMethod
+
+    var payAction: (PaymentMethodsIntent) -> Void = { _ in }
+
+    @State private var isCustomerFieldsValid: Bool = true
+    @State private var customerFieldValues: [FieldValue] = []
+
+    private var payButtonIsEnabled: Bool {
+        isCustomerFieldsValid
+    }
 
     var body: some View {
-        VStack(spacing: 0) {
-            // TODO: embed additional fields
-            /*
-             additionalFieldsView
-            .padding(.top, UIScheme.dimension.formSmallSpacing)
-             */
+        VStack(spacing: UIScheme.dimension.formLargeVerticalSpacing) {
+            if let visibleCustomerFields = method.visibleCustomerFields {
+                EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
+                                           additionalFields: paymentOptions.uiAdditionalFields,
+                                           customerFieldValues: customerFieldValues) { fieldsValues, isValid in
+                    customerFieldValues = fieldsValues
+                    isCustomerFieldsValid = isValid
+                }
+
+            }
             ApplePayButton()
-                .padding(.vertical, UIScheme.dimension.formLargeVerticalSpacing)
-        }.padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
+                .disabled(!payButtonIsEnabled)
+        }
+        .padding(.top, UIScheme.dimension.formSmallSpacing)
+        .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+        .padding(.horizontal, UIScheme.dimension.middleSpacing)
     }
 }
 
@@ -27,8 +44,10 @@ struct ApplePayCheckoutView: View {
 
 struct ApplePayCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        ApplePayCheckoutView()
+        ApplePayCheckoutView(paymentOptions: MockPaymentOptions(), method: MockPaymentMethod())
     }
 }
 
 #endif
+
+
