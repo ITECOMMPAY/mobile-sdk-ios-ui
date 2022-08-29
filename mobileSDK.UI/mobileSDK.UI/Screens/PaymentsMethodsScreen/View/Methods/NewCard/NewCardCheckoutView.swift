@@ -10,8 +10,8 @@ import SwiftUI
 struct NewCardCheckoutView: View {
     @Injected var CardExpiryFabric: CardExpiryFabric?
 
-    var paymentOptions: PaymentOptions?
-    var paymentMethod: PaymentMethod?
+    var paymentOptions: PaymentOptions
+    var paymentMethod: PaymentMethod
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
@@ -46,11 +46,11 @@ struct NewCardCheckoutView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PanField(cardTypeRecognizer: paymentMethod?.cardTypeRecognizer, cardNumber: $cardNumber, isValueValid: $isCardValid)
-            .padding(.top, UIScheme.dimension.formSmallSpacing)
+            PanField(cardTypeRecognizer: paymentMethod.cardTypeRecognizer, cardNumber: $cardNumber, isValueValid: $isCardValid)
+                .padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(cardHolder: $cardHolder, isValueValid: $isCardHolderValid)
-            .padding(.top, UIScheme.dimension.formSmallSpacing)
+                .padding(.top, UIScheme.dimension.formSmallSpacing)
 
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
                 ExpiryField(disabled: false, expiryString: $cardExpiry, isValueValid: $isExpiryValid)
@@ -59,11 +59,10 @@ struct NewCardCheckoutView: View {
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
 
-            if let visibleCustomerFields = paymentMethod?.visibleCustomerFields,
-               !visibleCustomerFields.isEmpty,
-               visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
-                EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
-                                           additionalFields: paymentOptions?.uiAdditionalFields ?? [],
+            if !paymentMethod.visibleCustomerFields.isEmpty &&
+                paymentMethod.visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
+                EmbeddedCustomerFieldsView(visibleCustomerFields: paymentMethod.visibleCustomerFields,
+                                           additionalFields: paymentOptions.uiAdditionalFields,
                                            customerFieldValues: customerFieldValues) { fieldsValues, isValid in
                     customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
@@ -78,10 +77,11 @@ struct NewCardCheckoutView: View {
                     Text(L.title_saved_cards.string)
                         .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
                         .foregroundColor(UIScheme.color.text)
-                    Text(L.cof_agreements.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                        .foregroundColor(UIScheme.color.textFieldPlaceholderColor)
-
+                    if let translationWithLink = L.cof_agreements.translationWithLink {
+                        translationWithLink.attributedText
+                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
+                            .foregroundColor(UIScheme.color.secondaryText)
+                    }
                 }
                 Spacer()
             }
@@ -99,11 +99,13 @@ struct NewCardCheckoutView: View {
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
         }
-        .padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
+        .padding(.horizontal, UIScheme.dimension.middleSpacing)
     }
 
     private var buttonLabel: PayButtonLabel {
-        if !isContinueButton, let paymentAmount = paymentOptions?.summary.value, let paymentCurrency = paymentOptions?.summary.currency {
+        if !isContinueButton {
+            let paymentAmount = paymentOptions.summary.value
+            let paymentCurrency = paymentOptions.summary.currency
             return PayButtonLabel(style: .Pay(paymentAmount, currency: paymentCurrency))
         } else {
             return PayButtonLabel(style: .Continue)
@@ -111,10 +113,7 @@ struct NewCardCheckoutView: View {
     }
 
     private var isContinueButton: Bool {
-        if let visibleCustomerFields = paymentMethod?.visibleCustomerFields {
-            return visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
-        }
-        return true
+        return paymentMethod.visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }
 }
 
@@ -122,7 +121,7 @@ struct NewCardCheckoutView: View {
 
 struct NewCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardCheckoutView()
+        NewCardCheckoutView(paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
     }
 }
 

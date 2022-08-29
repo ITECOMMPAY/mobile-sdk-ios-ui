@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-core",
       "state" : {
-        "revision" : "09dd7fbef66a80c9528a7326034cef9b60b112a7",
-        "version" : "0.4.2"
+        "revision" : "7f34a319aa632110b802f86cb2e50f570d4e9e9e",
+        "version" : "0.4.3"
       }
     }
   ],

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ApplePayCheckoutView: View {
     let paymentOptions: PaymentOptions
-    let method: PaymentMethod
+    let paymentMethod: PaymentMethod
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
@@ -22,7 +22,7 @@ struct ApplePayCheckoutView: View {
 
     var body: some View {
         VStack(spacing: UIScheme.dimension.formLargeVerticalSpacing) {
-            if let visibleCustomerFields = method.visibleCustomerFields {
+            if let visibleCustomerFields = paymentMethod.visibleCustomerFields {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
                                            customerFieldValues: customerFieldValues) { fieldsValues, isValid in
@@ -44,7 +44,7 @@ struct ApplePayCheckoutView: View {
 
 struct ApplePayCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        ApplePayCheckoutView(paymentOptions: MockPaymentOptions(), method: MockPaymentMethod())
+        ApplePayCheckoutView(paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
     }
 }
 

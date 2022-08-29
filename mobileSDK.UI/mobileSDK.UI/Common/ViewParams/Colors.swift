@@ -30,10 +30,8 @@ protocol ColorScheme {
     var panelBackgroundColor: Color { get }
     /// Цвет рамки
     var border: Color { get }
-    /// Цвет заголовков внутри блока деталей платежа
-    var paymentDetailsInnerTitleColor: Color { get }
-    /// Цвет описания деталей платежа
-    var paymentDetailsDescriptionColor: Color { get }
+    /// secondary Text Color
+    var secondaryText: Color { get }
     /// Цвет текста
     var text: Color { get }
     /// paymentInfoCard foreground color
@@ -56,8 +54,6 @@ protocol ColorScheme {
     var textFieldFocusedBorderColor: Color { get }
     /// TextField requirement mark color
     var textFieldRequirementMarkColor: Color { get }
-    /// TextField placeholder text color
-    var textFieldPlaceholderColor: Color { get }
     /// disabled TextField color
     var textFieldDisabledColor: Color { get }
     /// цвет малозначимых декоративных элементов
@@ -71,7 +67,6 @@ protocol ColorScheme {
 }
 
 struct DefaultLight: ColorScheme {
-    var textFieldPlaceholderColor: Color { darkGray }
     var textFieldErrorBorderColor: Color { red }
     var textFieldErrorBackgroundColor: Color { lightRed }
     var textFieldUnfocusedBorderColor: Color { grey }
@@ -92,8 +87,7 @@ struct DefaultLight: ColorScheme {
     var brandColor: Color { brandBlue }
     var panelBackgroundColor: Color { lightGray }
     var border: Color { grey }
-    var paymentDetailsInnerTitleColor: Color { darkGray }
-    var paymentDetailsDescriptionColor: Color { Color.black }
+    var secondaryText: Color { darkGray }
     var text: Color { Color.black }
     var paymentInfoCardForegroundColor: Color { Color.white }
     var textFieldDisabledColor: Color { semiMediumGrey }

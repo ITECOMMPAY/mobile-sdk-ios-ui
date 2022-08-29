@@ -68,7 +68,7 @@ struct PaymentDetailsAttributes: View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
             HStack(spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
                 Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.paymentDetailsInnerTitleColor)
+                    .foregroundColor(UIScheme.color.secondaryText)
                 Button {
                     UIPasteboard.general.string = descriptionText
                 } label: {
@@ -80,7 +80,7 @@ struct PaymentDetailsAttributes: View {
             }
             Text(descriptionText)
                 .font(canCopy ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont) : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.paymentDetailsDescriptionColor)
+                .foregroundColor(UIScheme.color.text)
         }
     }
 

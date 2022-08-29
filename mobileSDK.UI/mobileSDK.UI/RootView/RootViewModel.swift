@@ -56,13 +56,15 @@ class RootViewModel: RootViewModelProtocol {
                     }
                     if methods.count == 0 {
                         self.state.error = CoreError(code: .unknown, message: "Payment methods list is empty")
-                    }
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.availablePaymentMethods = methods
-                        $0.savedAccounts = accounts
-                        $0.currentMethod = self.state.mergedList.first // по умолчанию выбираем первый метод из писка
+                    } else {
+                        self.state = modifiedCopy(of: self.state) {
+                            $0.availablePaymentMethods = methods
+                            $0.savedAccounts = accounts
+                        }
+                        self.state.currentMethod = self.state.mergedList.first // по умолчанию выбираем первый метод из писка
                     }
                 case .onPaymentRestored(let payment):
+                    self.state.isLoading = false
                     self.state.payment = payment
                 }
             })
@@ -83,7 +85,8 @@ class RootViewModel: RootViewModelProtocol {
                 .clarificationFieldsScreenIntent(.close),
                 .threeDSecureScreenIntent(.close),
                 .successScreenIntent(.close),
-                .declineScreenIntent(.close):
+                .declineScreenIntent(.close),
+                .apsScreenIntent(.close):
             cancellables.forEach {  $0.cancel() }
             onFlowFinished(.byUser)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv, customerFields: let fieldValues)):
@@ -169,6 +172,14 @@ class RootViewModel: RootViewModelProtocol {
                 }
             } else {
                 state.error = CoreError(code: .unknown, message: "ApplePay is not supported on that device")
+            }
+        case .paymentMethodsScreenIntent(.payAPS(let method)):
+            state.apsPaymentMethod = method
+        case .apsScreenIntent(.executePayment):
+            if let methodCode = state.apsPaymentMethod?.code,
+               let apsRequest = payRequestFactory?.createApplePaySaleRequest(methodCode: methodCode) {
+                state.isLoading = true
+                execute(payRequest: apsRequest)
             }
         }
     }

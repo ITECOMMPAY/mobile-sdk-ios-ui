@@ -18,7 +18,6 @@ public struct CoreError: Error {
 }
 
 public enum CoreErrorCode: String {
-    case interactorNotRunning
     case serverUnauthorized
     case serverMethodNotFound
     case serverApiError
@@ -27,6 +26,7 @@ public enum CoreErrorCode: String {
     case networkIsNotAvailable
     case networkTimeout
     case paymentRequestTypeNotExist
+    case paymentMethodNotAvailable
     case paymentAlreadyExist
     case paymentHasFinalStatus
     case paymentNotFound
@@ -35,6 +35,7 @@ public enum CoreErrorCode: String {
     case clarificationFieldsError
     case sessionNotInitialized
     case illegalArguments
+    case illegalState
     case unknown
 }
 

@@ -26,7 +26,7 @@ extension MsdkCore.PaymentMethod: mobileSDK_UI.PaymentMethod {
     }
 
     public var methodType: mobileSDK_UI.PaymentMethodType {
-        mobileSDK_UI.PaymentMethodType.createFrom(self.type)
+        mobileSDK_UI.PaymentMethodType.createFrom(self.paymentMethodType)
     }
 }
 extension MsdkCore.SavedAccount: mobileSDK_UI.SavedAccount {
