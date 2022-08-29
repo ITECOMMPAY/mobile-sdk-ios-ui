@@ -156,7 +156,11 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                     viewModel.dispatch(intent: $0)
                 }
             case .applePay:
-                ApplePayCheckoutView(paymentOptions: viewModel.state.paymentOptions, method: method) {
+                ApplePayCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
+                    viewModel.dispatch(intent: $0)
+                }
+            case .aps:
+                ApsCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
                     viewModel.dispatch(intent: $0)
                 }
             default:

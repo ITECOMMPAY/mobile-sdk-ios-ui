@@ -145,7 +145,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     var placeholderColor: Color {
         editing
         ? UIScheme.color.textFieldFocusedBorderColor
-        : UIScheme.color.textFieldPlaceholderColor
+        : UIScheme.color.secondaryText
     }
 
     private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,

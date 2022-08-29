@@ -34,6 +34,8 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
             ViewFactory.assembleClarificationFieldsScreen(parentModel: viewModel.parentViewModel)
         case .acsPage:
             ViewFactory.assembleACSPageScreen(parentModel: viewModel.parentViewModel)
+        case .apsPage:
+            ViewFactory.assembleAPSPageScreen(parentModel: viewModel.parentViewModel)
         case .loading:
             ViewFactory.assembleLoadingScreen(parentModel: viewModel.parentViewModel)
         case .successResult:

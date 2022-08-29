@@ -50,7 +50,7 @@ struct MockCustomerField: CustomerField {
 }
 
 struct MockPayment: Payment {
-    var id: String? = "MockPayment id"
+    var id: String = "MockPayment id"
     var date: String? = "2022-02-02 02:02"
     var paymentAccount: Account? = MockAccount()
     var paymentCompleteFields: [CompleteField]? = [ MockCompleteField(), MockCompleteField() ]
@@ -117,6 +117,7 @@ struct MockSavedAccount: SavedAccount {
 }
 
 struct MockPaymentMethod: PaymentMethod {
+    var paymentUrl: String? = "ecommpay.com"
     var allSupportedCardTypes: [PaymentMethodCard] = []
     var connectedCardTypes: [CardType] = [ .visa ]
     struct MockCardTypeRecognizer: CardTypeRecognizer {

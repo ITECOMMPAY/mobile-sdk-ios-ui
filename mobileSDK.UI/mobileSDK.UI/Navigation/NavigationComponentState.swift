@@ -13,6 +13,7 @@ enum SDKScreen {
     case customerFields
     case clarificationFields
     case acsPage
+    case apsPage
     case loading
     case successResult
     case declineResult

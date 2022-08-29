@@ -52,7 +52,7 @@ public protocol CustomerField {
 }
 
 public protocol Payment {
-    var id: String? { get }
+    var id: String { get }
     var date: String? { get }
     var paymentAccount: Account? { get }
     var paymentCompleteFields: [CompleteField]? { get }
@@ -81,6 +81,7 @@ public protocol PaymentMethod {
     var cardTypeRecognizer: CardTypeRecognizer { get }
     var iconUrl: String? { get }
     var translations: [String: String] { get }
+    var paymentUrl: String?  { get }
 }
 
 public protocol SavedAccount {

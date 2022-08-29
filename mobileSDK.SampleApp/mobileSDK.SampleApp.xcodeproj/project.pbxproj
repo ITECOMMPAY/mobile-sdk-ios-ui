@@ -17,6 +17,8 @@
 		845FC82128AE153400C71288 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC82028AE153400C71288 /* Preview Assets.xcassets */; };
 		845FC82928AE157800C71288 /* ecommpaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845FC82828AE157800C71288 /* ecommpaySDK.framework */; };
 		845FC82A28AE157800C71288 /* ecommpaySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 845FC82828AE157800C71288 /* ecommpaySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		849DCBAC28B7BF4D00C36361 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */; };
+		849DCBAD28B7BF4D00C36361 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				845FC82A28AE157800C71288 /* ecommpaySDK.framework in Embed Frameworks */,
+				849DCBAD28B7BF4D00C36361 /* mobileSDK_UI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +48,7 @@
 		845FC81D28AE153400C71288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845FC82028AE153400C71288 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		845FC82828AE157800C71288 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = mobileSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845FC82928AE157800C71288 /* ecommpaySDK.framework in Frameworks */,
+				849DCBAC28B7BF4D00C36361 /* mobileSDK_UI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +140,7 @@
 		845FC82728AE157800C71288 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */,
 				845FC82828AE157800C71288 /* ecommpaySDK.framework */,
 			);
 			name = Frameworks;

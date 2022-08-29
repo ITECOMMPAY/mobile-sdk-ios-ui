@@ -9,21 +9,7 @@ import Foundation
 
 public enum PaymentMethodType: String {
     case card
-    case netellerWallet
-    case qiwi
-    case skrillWallet
-    case doku
-    case yandexMoney
-    case mcash
-    case boost
-    case malaysia
-    case thailand
-    case bigc
-    case bank
-    case alipay
-    case webmoneyLight
-    case webmoneyClassic
+    case aps
     case googlePay
     case applePay
-    case unknown
 }

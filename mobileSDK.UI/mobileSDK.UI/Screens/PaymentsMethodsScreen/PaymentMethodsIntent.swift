@@ -17,6 +17,7 @@ enum PaymentMethodsIntent {
                         cardHolder: String,
                         saveCard: Bool,
                         customerFields: [FieldValue])
+    case payAPS(PaymentMethod)
     case delete(SavedAccount)
     case select(PaymentMethodsListEntity)
     case payWithApplePay(customerFields: [FieldValue])

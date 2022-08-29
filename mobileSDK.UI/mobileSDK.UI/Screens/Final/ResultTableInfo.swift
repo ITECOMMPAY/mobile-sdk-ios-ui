@@ -16,7 +16,7 @@ struct ResultTableInfo: View {
                     HStack(alignment: .firstTextBaseline) {
                         Text(TranslationsManager.shared.stringValue(for: key) ?? key)
                             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.textFieldPlaceholderColor)
+                            .foregroundColor(UIScheme.color.secondaryText)
                         Spacer()
                         Text(value)
                             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))

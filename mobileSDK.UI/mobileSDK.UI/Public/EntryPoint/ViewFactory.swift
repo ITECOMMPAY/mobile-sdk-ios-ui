@@ -43,6 +43,10 @@ public struct ViewFactory {
         ThreeDSecureScreen(viewModel: ThreeDSecureScreenViewModel(parentViewModel: parentModel))
     }
 
+    internal static func assembleAPSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+        ApsScreen(viewModel: ApsScreenViewModel(parentViewModel: parentModel))
+    }
+
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
         ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: parentModel))
     }

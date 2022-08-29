@@ -67,8 +67,6 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         switch paymentMethod.methodType {
         case .card:
             return "\(payment.paymentAccount?.type?.uppercased() ?? "") \(payment.paymentAccount?.number ?? "")"
-        case .unknown:
-            return payment.paymentAccount?.type ?? ""
         default:
             return paymentMethod.translations["title"] ?? ""
         }

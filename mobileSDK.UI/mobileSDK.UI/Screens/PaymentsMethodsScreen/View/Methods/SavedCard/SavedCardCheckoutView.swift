@@ -55,7 +55,7 @@ struct SavedCardCheckoutView: View {
                        foregroundColor: UIScheme.color.deleteCardButtonColor,
                        onTap: deleteCardAction)
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-        }.padding([.leading, .trailing], UIScheme.dimension.middleSpacing)
+        }.padding(.horizontal, UIScheme.dimension.middleSpacing)
     }
 
     private var dateField: some View {
