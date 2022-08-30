@@ -25,6 +25,7 @@ enum ImageResourceKeys: String {
     case bankCard
     case applePayButtonLogo
     case applePay
+    case defaultApsLogo
 
     var image: Image? {
         return Image.getImage(name: self.rawValue)
@@ -33,6 +34,10 @@ enum ImageResourceKeys: String {
 
 extension Image {
     static func getImage(name: String) -> Image? {
-        return Image(name, bundle: SDKBundle.get())
+        if let uiImage =
+            UIImage(named: name, in: SDKBundle.get(), compatibleWith: nil) {
+            return Image(uiImage: uiImage)
+        }
+        return nil
     }
 }

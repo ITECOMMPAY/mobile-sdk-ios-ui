@@ -73,7 +73,7 @@ onLadingStateChanges: @escaping (_ isLoading: Bool) -> Void,
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if (currentUrl != paymentUrl) {
+        if currentUrl != paymentUrl {
             onCompleted()
         }
     }

@@ -43,15 +43,14 @@ public struct iPaymentButton: View {
     ///   - action: The **action** to be performed when the user taps the button 🎬▶️
     public init(type: PKPaymentButtonType = .buy,
                 style: PKPaymentButtonStyle = .black,
-                action: @escaping () -> Void)
-    {
+                action: @escaping () -> Void) {
         self.type = type
         self.style = style
         self.action = action
     }
 
     public var body: some View {
-        Button(action: action, label: { EmptyView() } )
+        Button(action: action, label: { EmptyView() })
             .buttonStyle(iPaymentButtonStyle(type: type, style: style, cornerRadius: cornerRadius))
     }
 }
@@ -71,7 +70,7 @@ public extension iPaymentButton {
     }
 }
 
-fileprivate struct iPaymentButtonStyle: ButtonStyle {
+private struct iPaymentButtonStyle: ButtonStyle {
     var type: PKPaymentButtonType
     var style: PKPaymentButtonStyle
     var cornerRadius: CGFloat
@@ -80,7 +79,7 @@ fileprivate struct iPaymentButtonStyle: ButtonStyle {
     }
 }
 
-fileprivate struct iPaymentButtonHelper: View {
+private struct iPaymentButtonHelper: View {
     var type: PKPaymentButtonType
     var style: PKPaymentButtonStyle
     var cornerRadius: CGFloat
@@ -110,4 +109,3 @@ extension iPaymentButtonHelper {
         func updateUIView(_ uiView: PKPaymentButton, context: Context) { }
     }
 }
-

@@ -52,11 +52,14 @@ public protocol CustomerField {
 }
 
 public protocol Payment {
-    var id: String { get }
+    var id: String? { get }
     var date: String? { get }
     var paymentAccount: Account? { get }
     var paymentCompleteFields: [CompleteField]? { get }
     var paymentMassage: String? { get }
+    var uiPaymentMethodType: PaymentMethodType { get }
+    var paymentStatus: PaymentStatus? { get }
+    var method: String? { get }
 }
 
 public protocol CompleteField {
@@ -81,7 +84,7 @@ public protocol PaymentMethod {
     var cardTypeRecognizer: CardTypeRecognizer { get }
     var iconUrl: String? { get }
     var translations: [String: String] { get }
-    var paymentUrl: String?  { get }
+    var paymentUrl: String? { get }
 }
 
 public protocol SavedAccount {
@@ -103,7 +106,9 @@ public protocol ClarificationField {
     var defaultErrorMessage: String? { get }
 }
 
-public protocol PaymentStatus {}
+public protocol PaymentStatus {
+    var isFinal: Bool { get }
+}
 
 public protocol AcsPage {
     var content: String? { get }

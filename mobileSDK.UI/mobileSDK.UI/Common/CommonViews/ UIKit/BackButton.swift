@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: create base struct for this kind of buttons
 struct BackButton: View {
     var foregroundColor: Color = UIScheme.color.brandColor
     var onTap: () -> Void = {}

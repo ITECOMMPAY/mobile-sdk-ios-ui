@@ -32,4 +32,3 @@ extension CoreErrorCode {
         return .unknown
     }
 }
-

@@ -19,20 +19,6 @@ public protocol Link {
     var messageLink: String? { get }
 }
 
-extension TranslationWithLink {
-    var attributedString: NSAttributedString {
-        guard let message = message else { return NSAttributedString(string: "") }
-        let result = NSMutableAttributedString(string: message)
-        for linkStruct in messageLinks ?? [] {
-            if let text = linkStruct.messageLink, let link = linkStruct.url {
-                let range = result.mutableString.range(of: text)
-                result.setAttributes([.link: link], range: range)
-            }
-        }
-        return result
-    }
-}
-
 class TranslationsManager {
     @Injected var resourceManager: StringResourceManager?
 
@@ -59,6 +45,6 @@ class TranslationsManager {
 }
 
 public protocol StringResourceManager {
-    func getLinkMessageByKey(key: String) -> TranslationWithLink
-    func getStringByKey(key: String) -> String
+    func getLinkMessageByKey(key: String) -> TranslationWithLink?
+    func getStringByKey(key: String) -> String?
 }

@@ -93,12 +93,20 @@ extension MsdkCore.Account: mobileSDK_UI.Account {}
 extension MsdkCore.CompleteField: mobileSDK_UI.CompleteField {}
 
 extension MsdkCore.Payment: mobileSDK_UI.Payment {
+    public var paymentStatus: mobileSDK_UI.PaymentStatus? {
+        status as mobileSDK_UI.PaymentStatus?
+    }
+
     public var paymentCompleteFields: [mobileSDK_UI.CompleteField]? {
         completeFields as [mobileSDK_UI.CompleteField]?
     }
 
     public var paymentAccount: mobileSDK_UI.Account? {
         return account
+    }
+
+    public var uiPaymentMethodType: mobileSDK_UI.PaymentMethodType {
+        mobileSDK_UI.PaymentMethodType.createFrom(paymentMethodType)
     }
 }
 
@@ -121,11 +129,11 @@ extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {
 }
 
 class StringResourceManagerAdapter: mobileSDK_UI.StringResourceManager {
-    func getLinkMessageByKey(key: String) -> TranslationWithLink {
+    func getLinkMessageByKey(key: String) -> TranslationWithLink? {
         return manger.getLinkMessageByKey(key: key)
     }
 
-    func getStringByKey(key: String) -> String {
+    func getStringByKey(key: String) -> String? {
         manger.getStringByKey(key: key)
     }
 

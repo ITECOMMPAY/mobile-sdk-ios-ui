@@ -41,7 +41,6 @@ class RootViewModel: RootViewModelProtocol {
     func subscribeInit() {
         state.isLoading = true
         self.futureData
-        // .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.state.error = error
@@ -52,7 +51,7 @@ class RootViewModel: RootViewModelProtocol {
                 switch event {
                 case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
                     let methods = self.applePayService.isAvailable ? methods : methods.filter {
-                        $0.methodType != .applePay //выкидываем applePay если он не поддерживается на устройстве
+                        $0.methodType != .applePay // выкидываем applePay если он не поддерживается на устройстве
                     }
                     if methods.count == 0 {
                         self.state.error = CoreError(code: .unknown, message: "Payment methods list is empty")
@@ -66,6 +65,14 @@ class RootViewModel: RootViewModelProtocol {
                 case .onPaymentRestored(let payment):
                     self.state.isLoading = false
                     self.state.payment = payment
+                    if let paymentMethod = self.state.availablePaymentMethods?.first(where: { paymentMethod in
+                        payment.method == paymentMethod.code
+                    }) {
+                        self.restore(payment: payment, with: paymentMethod)
+                    } else {
+                        self.state.error = CoreError(code: .paymentMethodNotAvailable,
+                                                message: "Payment method \(String(describing: payment.method)) does not found")
+                    }
                 }
             })
             .store(in: &cancellables)
@@ -154,10 +161,10 @@ class RootViewModel: RootViewModelProtocol {
                     case .failToPresent:
                         self.state.error = CoreError(code: .unknown, message: "Failed to present ApplePay")
                     case .canceled:
-                        break //TODO: process that case later
+                        break // TODO: process that case later
                     case .didAuthorizePayment(token: let token):
                         let customerFields = self.state.customerFields?.merge(changedFields: fieldValues,
-                                                             with: self.state.paymentOptions.uiAdditionalFields)
+                                                                              with: self.state.paymentOptions.uiAdditionalFields)
                         if let request = self.payRequestFactory?.createApplePaySaleRequest(token: token, customerFields: customerFields) {
                             self.execute(payRequest: request)
                         }
@@ -176,9 +183,12 @@ class RootViewModel: RootViewModelProtocol {
         case .paymentMethodsScreenIntent(.payAPS(let method)):
             state.apsPaymentMethod = method
         case .apsScreenIntent(.executePayment):
-            if let methodCode = state.apsPaymentMethod?.code,
-               let apsRequest = payRequestFactory?.createApplePaySaleRequest(methodCode: methodCode) {
-                state.isLoading = true
+            state.isLoading = true
+            if let methodCode = state.payment?.method,
+               let apsRequest = payRequestFactory?.createPaymentRestoreRequest(methodCode: methodCode) {
+                execute(payRequest: apsRequest)
+            } else if let methodCode = state.apsPaymentMethod?.code,
+                      let apsRequest = payRequestFactory?.createApplePaySaleRequest(methodCode: methodCode) {
                 execute(payRequest: apsRequest)
             }
         }
@@ -189,7 +199,6 @@ class RootViewModel: RootViewModelProtocol {
             return
         }
         payInteractor.execute(request: request)
-            // .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
                 if case let .failure(error) = completion {
@@ -250,6 +259,23 @@ class RootViewModel: RootViewModelProtocol {
             .store(in: &cancellables)
     }
 
+    private func restore(payment: Payment, with paymentMethod: PaymentMethod) {
+        guard let payRequestFactory = self.payRequestFactory else {
+            assertionFailure("PayRequestFactory is not injected")
+            return
+        }
+
+        if payment.uiPaymentMethodType == .aps && payment.paymentStatus?.isFinal == false {
+            dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
+        } else {
+            state.isLoading = true
+            if let methodCode = payment.method {
+                let request = payRequestFactory.createPaymentRestoreRequest(methodCode: methodCode)
+                execute(payRequest: request)
+            }
+        }
+    }
+
 }
 
 private func debugPrint(_ object: Any...) {
@@ -257,4 +283,3 @@ private func debugPrint(_ object: Any...) {
     print(object)
     #endif
 }
-

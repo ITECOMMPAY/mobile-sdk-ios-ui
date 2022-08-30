@@ -79,9 +79,7 @@ struct NewCardCheckoutView: View {
                         .foregroundColor(UIScheme.color.text)
                     if let translationWithLink = L.cof_agreements.translationWithLink {
                         translationWithLink.attributedText
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                            .foregroundColor(UIScheme.color.secondaryText)
-                    }
+                     }
                 }
                 Spacer()
             }

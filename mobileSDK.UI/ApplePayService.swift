@@ -49,7 +49,7 @@ class ApplePayService: NSObject {
         }
     }
 
-    var onApplePayResult: ((ApplePayResult) -> Void)? = nil
+    var onApplePayResult: ((ApplePayResult) -> Void)?
     private(set) var paymentCompletion: ((PKPaymentAuthorizationResult) -> Void)?
 }
 
@@ -59,7 +59,7 @@ enum ApplePayResult {
     case didAuthorizePayment(token: String)
 }
 
-extension ApplePayService: PKPaymentAuthorizationControllerDelegate  {
+extension ApplePayService: PKPaymentAuthorizationControllerDelegate {
     func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         onApplePayResult?(.canceled)
     }

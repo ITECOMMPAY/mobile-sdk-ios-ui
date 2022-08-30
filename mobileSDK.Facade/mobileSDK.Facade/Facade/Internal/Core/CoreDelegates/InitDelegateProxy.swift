@@ -10,22 +10,22 @@ import Combine
 import mobileSDK_UI
 import SwiftUI
 
-class InitDelegateProxy: BaseFutureDelegateProxy<InitDelegate, InitEvent, CoreError> {
+class InitDelegateProxy: BasePassthroughDelegateProxy<InitDelegate, InitEvent, CoreError> {
     override var delegate: InitDelegate { self }
 }
 
 extension InitDelegateProxy: InitDelegate {
 
     func onPaymentRestored(payment: MsdkCore.Payment) {
-        promise?(.success(.onPaymentRestored(payment)))
+        send(.success(.onPaymentRestored(payment)))
     }
 
     func onError(code: ErrorCode, message: String) {
-        promise?(.failure(CoreError(code: CoreErrorCode.createFrom(code: code), message: message)))
+        send(.failure(CoreError(code: CoreErrorCode.createFrom(code: code), message: message)))
     }
 
     func onInitReceived(paymentMethods: [MsdkCore.PaymentMethod], savedAccounts: [MsdkCore.SavedAccount]) {
-        promise?(.success(.onInitReceived(paymentMethods: paymentMethods, savedAccounts: savedAccounts)))
+        send(.success(.onInitReceived(paymentMethods: paymentMethods, savedAccounts: savedAccounts)))
     }
 
 }
