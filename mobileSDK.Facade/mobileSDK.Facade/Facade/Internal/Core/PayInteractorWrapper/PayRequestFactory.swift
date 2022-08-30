@@ -42,9 +42,14 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createApplePaySaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
         return ApsSaleRequest(methodCode: methodCode)
     }
+
+    func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
+        return PaymentRestoreRequest(methodCode: methodCode)
+    }
 }
 
 extension SavedCardSaleRequest: mobileSDK_UI.PayRequest {}
 extension NewCardSaleRequest: mobileSDK_UI.PayRequest {}
 extension ApplePayRequest: mobileSDK_UI.PayRequest {}
 extension ApsSaleRequest: mobileSDK_UI.PayRequest {}
+extension PaymentRestoreRequest: mobileSDK_UI.PayRequest {}

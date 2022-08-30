@@ -49,5 +49,3 @@ struct ApplePayCheckoutView_Previews: PreviewProvider {
 }
 
 #endif
-
-

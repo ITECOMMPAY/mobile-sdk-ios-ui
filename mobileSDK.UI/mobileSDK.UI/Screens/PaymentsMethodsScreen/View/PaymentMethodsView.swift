@@ -173,8 +173,18 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         return Group {
             if let localImage = method.localLogo {
                 localImage
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             } else {
-                method.serverLogo
+                AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    IR.defaultApsLogo.image?
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                }
             }
         }
     }

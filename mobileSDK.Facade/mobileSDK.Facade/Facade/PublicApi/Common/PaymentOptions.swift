@@ -86,8 +86,6 @@ public class PaymentOptions: NSObject {
     /// 3ds2.0
     @objc public var threeDSecureInfo: ThreeDSecureInfo?
 
-
-
     /// If you know any data for fields what would be asked from a user
     /// you could set them and they would be pre-filled
     /// Fields that are known, if visible -> would be pre-filled
@@ -107,8 +105,6 @@ public class PaymentOptions: NSObject {
     public func addScreenDisplayMode(_ mode: ScreenDisplayMode) {
         screenDisplayModes = screenDisplayModes.union([mode])
     }
-
-
 
     /// Init Payment Info with some additional params
     ///

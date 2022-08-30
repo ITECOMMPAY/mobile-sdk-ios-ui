@@ -49,12 +49,19 @@ struct MockCustomerField: CustomerField {
     var errorMessageKey: String = "mockField error key"
 }
 
+struct MockPaymentStatus: PaymentStatus {
+    var isFinal: Bool = false
+}
+
 struct MockPayment: Payment {
-    var id: String = "MockPayment id"
+    var paymentStatus: PaymentStatus? = MockPaymentStatus()
+    var uiPaymentMethodType: PaymentMethodType = .card
+    var id: String? = "MockPayment id"
     var date: String? = "2022-02-02 02:02"
     var paymentAccount: Account? = MockAccount()
     var paymentCompleteFields: [CompleteField]? = [ MockCompleteField(), MockCompleteField() ]
     var paymentMassage: String? = "MockPayment_paymentMassage"
+    var method: String? = "card"
 }
 
 struct MockAccount: Account {
@@ -79,15 +86,15 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
-    var pkPaymentRequest: PKPaymentRequest? = nil
-    
+    var pkPaymentRequest: PKPaymentRequest?
+
     var paymentID: String = "123"
 
-    var applePayDescription: String? = nil
+    var applePayDescription: String?
 
     var appleCountryCode: String?
 
-    var applePayMerchantID: String? = nil
+    var applePayMerchantID: String?
 
     var brandColorOverride: Color?
 

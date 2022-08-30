@@ -14,6 +14,8 @@ protocol FontLibrary {
     func commonRegular(size: CGFloat) -> Font
     func commonBold(size: CGFloat) -> Font
     func commonSemiBold(size: CGFloat) -> Font
+
+    func commonRegular(size: CGFloat) -> UIFont
 }
 
 struct DefaultFontLibrary: FontLibrary {
@@ -29,5 +31,9 @@ struct DefaultFontLibrary: FontLibrary {
 
     func commonSemiBold(size: CGFloat) -> Font {
         return Font.system(size: size, weight: .semibold, design: .default)
+    }
+
+    func commonRegular(size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .regular)
     }
 }

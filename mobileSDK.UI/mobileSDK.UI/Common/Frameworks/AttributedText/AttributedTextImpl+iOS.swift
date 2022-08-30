@@ -39,6 +39,7 @@
         self.isSelectable = false
         self.isScrollEnabled = false
         self.textContainer.lineFragmentPadding = 0
+        self.linkTextAttributes = [:]
 
         self.addGestureRecognizer(
           UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))

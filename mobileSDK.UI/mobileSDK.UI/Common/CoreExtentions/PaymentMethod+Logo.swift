@@ -15,11 +15,7 @@ extension PaymentMethod {
         case .applePay:
             return IR.applePay.image
         default:
-            return IR(rawValue: self.code)?.image
+            return Image.getImage(name: self.code)
         }
-    }
-
-    var serverLogo: AsyncImage<Image> {
-        AsyncImage(url: self.iconUrl.flatMap { URL(string: $0) })
     }
 }

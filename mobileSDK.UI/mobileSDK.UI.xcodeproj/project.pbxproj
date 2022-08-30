@@ -198,12 +198,8 @@
 		84AAFA0728AE3FD000441224 /* TextSizeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */; };
 		84AAFA0828AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */; };
 		84AAFA0928AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */; };
-		84AAFA0A28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */; };
-		84AAFA0B28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */; };
 		84AAFA0C28AE3FD000441224 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */; };
 		84AAFA0D28AE3FD000441224 /* AttributedTextImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */; };
-		84AAFA0E28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */; };
-		84AAFA0F28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */; };
 		84AAFA1028AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */; };
 		84AAFA1128AE3FD000441224 /* AttributedTextImpl+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */; };
 		84AD2BAD285325EE004110B9 /* RedactedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD2BAC285325EE004110B9 /* RedactedView.swift */; };
@@ -364,9 +360,7 @@
 		84AAF9FD28AE3FD000441224 /* AttributedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
 		84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSizeViewModel.swift; sourceTree = "<group>"; };
 		84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLineBreakMode+TruncationMode.swift"; sourceTree = "<group>"; };
-		84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+macOS.swift"; sourceTree = "<group>"; };
 		84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextImpl.swift; sourceTree = "<group>"; };
-		84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+tvOS.swift"; sourceTree = "<group>"; };
 		84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AttributedTextImpl+iOS.swift"; sourceTree = "<group>"; };
 		84AD2BAC285325EE004110B9 /* RedactedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedactedView.swift; sourceTree = "<group>"; };
 		84B198BA286ED25400AA40BC /* CardTypesLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardTypesLogo.xcassets; sourceTree = "<group>"; };
@@ -784,9 +778,7 @@
 				84AAF9FD28AE3FD000441224 /* AttributedText.swift */,
 				84AAF9FE28AE3FD000441224 /* TextSizeViewModel.swift */,
 				84AAF9FF28AE3FD000441224 /* NSLineBreakMode+TruncationMode.swift */,
-				84AAFA0028AE3FD000441224 /* AttributedTextImpl+macOS.swift */,
 				84AAFA0128AE3FD000441224 /* AttributedTextImpl.swift */,
-				84AAFA0228AE3FD000441224 /* AttributedTextImpl+tvOS.swift */,
 				84AAFA0328AE3FD000441224 /* AttributedTextImpl+iOS.swift */,
 			);
 			path = AttributedText;
@@ -1161,7 +1153,6 @@
 				84AAFA0D28AE3FD000441224 /* AttributedTextImpl.swift in Sources */,
 				84318AB828816B53006B7E9C /* LinkButton.swift in Sources */,
 				84A35C45289297F30037A604 /* CustomerFieldsScreenView.swift in Sources */,
-				84AAFA0F28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */,
 				8454EEE828A9DE9200199FF3 /* ClarificationField+CustomerField.swift in Sources */,
 				8454EECB28A2A56B00199FF3 /* Binding+didSet.swift in Sources */,
 				84318AB528816A9E006B7E9C /* SavedCardCheckoutView.swift in Sources */,
@@ -1194,7 +1185,6 @@
 				84A0F1682874663E005F81DE /* LibraryBundle.swift in Sources */,
 				84B241872889096100259A50 /* ModelTypes.swift in Sources */,
 				84A35C3F289297D80037A604 /* CustomerFieldsScreenState.swift in Sources */,
-				84AAFA0B28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */,
 				84A35C5E289796740037A604 /* RootViewModel.swift in Sources */,
 				84B241B1288A733C00259A50 /* PanField.swift in Sources */,
 				84A35C6D2897FCFC0037A604 /* NavigationComponentState.swift in Sources */,
@@ -1227,7 +1217,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84AAFA0A28AE3FD000441224 /* AttributedTextImpl+macOS.swift in Sources */,
 				8454EEEA28AA1BBC00199FF3 /* ThreeDSecureScreen.swift in Sources */,
 				84AAF9F628AE3FB500441224 /* UIKitTextField.swift in Sources */,
 				8454EED328A4D5D400199FF3 /* ResultSuccessScreen.swift in Sources */,
@@ -1308,7 +1297,6 @@
 				84AAFA0628AE3FD000441224 /* TextSizeViewModel.swift in Sources */,
 				8457885B28BC92800052D0F0 /* Localization+UI.swift in Sources */,
 				84F26E342869C1DD002861F8 /* TranslationsManager.swift in Sources */,
-				84AAFA0E28AE3FD000441224 /* AttributedTextImpl+tvOS.swift in Sources */,
 				84AAFA0C28AE3FD000441224 /* AttributedTextImpl.swift in Sources */,
 				84F26E362869C234002861F8 /* Localization+Defaults.swift in Sources */,
 				84C0060528A262CE00887DE4 /* ClarificationFieldsScreenState.swift in Sources */,

@@ -30,4 +30,6 @@ public protocol PayRequestFactory {
     func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest
 
     func createApplePaySaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest
+
+    func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest
 }
