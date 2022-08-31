@@ -108,6 +108,9 @@ class SDKInteractor {
         serviceLocator.addService(instance: PayInteractorWrapper(msdkSession: self.msdkSession) as mobileSDK_UI.PayInteractor)
         serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
         serviceLocator.addService(instance: StringResourceManagerAdapter(manger: msdkSession.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
+        serviceLocator.addService(
+            instance: CardRemoveInteractorWrapper(msdkSession: self.msdkSession) as mobileSDK_UI.CardRemoveInteractor
+        )
     }
 
     internal static func getBundleVersion(for aClass: AnyClass) -> String {

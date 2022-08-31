@@ -9,7 +9,7 @@ import mobileSDK_UI
 import MsdkCore
 import Combine
 
-class PayInteractorWrapper {
+struct PayInteractorWrapper {
     weak var msdkSession: MSDKCoreSession?
 
     private var payInteractor: MsdkCore.PayInteractor? {

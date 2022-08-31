@@ -14,21 +14,30 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
 
     var body: some View {
         NavigationComponent(viewModel: NavigationComponentViewModel(parentViewModel: self.viewModel))
-        .alert(isPresented: .constant(alert != nil)) {
-            alert!
+        .alert(isPresented: .constant(viewModel.state.alertModel != nil)) {
+            alert
         }
         .onTapGesture {
             hideKeyboard()
         }
     }
 
-    private var alert: Alert? {
-        guard let error = viewModel.state.error else { return nil }
-        return Alert(title: Text(error.code.rawValue),
-                    message: Text(error.message),
-                     dismissButton: Alert.Button.default(Text("Close"), action: {
-            viewModel.dispatch(intent: .closeErrorAlert)
-        }))
+    private var alert: Alert {
+        if let model = viewModel.state.alertModel {
+            switch model {
+            case .FinalError(let coreError, let onClose), .InfoError(let coreError, let onClose):
+                return Alert(title: Text(coreError.code.rawValue),
+                      message: Text(coreError.message),
+                      dismissButton: Alert.Button.default(Text("Close"), action: {
+                    viewModel.dispatch(intent: .alertClosed)
+                    onClose?()
+                }))
+            }
+        } else {
+            let failure = "Alert model is nil"
+            assertionFailure(failure)
+            return Alert(title: Text(failure))
+        }
     }
 }
 

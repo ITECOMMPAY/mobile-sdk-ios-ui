@@ -40,7 +40,13 @@ public enum CoreErrorCode: String {
 }
 
 extension CoreError {
-    static var unknown: CoreError {
-        CoreError(code: .unknown, message: "unknown")
+    static let unknown = CoreError(code: .unknown, message: "unknown")
+    static let methodsListEmpty = CoreError(code: .unknown, message: "Payment methods list is empty")
+    static let failedToPresentApplePay  = CoreError(code: .unknown, message: "Failed to present ApplePay")
+    static let failedApplePayRequestCreation = CoreError(code: .unknown, message: "Failed to create payment request to ApplePay")
+    static let applePayUnsupported = CoreError(code: .unknown, message: "ApplePay is not supported on that device")
+    static func unavailableMethod(for payment: Payment) -> CoreError {
+        CoreError(code: .paymentMethodNotAvailable,
+                  message: "Payment method \(String(describing: payment.method)) does not found")
     }
 }

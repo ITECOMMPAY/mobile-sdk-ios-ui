@@ -15,7 +15,7 @@ struct RootState {
     var payment: Payment?
     var customerFields: [CustomerField]?
     var clarificationFields: [ClarificationField]?
-    var error: CoreError?
+    var alertModel: AlertModel?
     var savedAccounts: [SavedAccount]?
     var availablePaymentMethods: [PaymentMethod]?
     var paymentOptions: PaymentOptions
@@ -23,6 +23,18 @@ struct RootState {
     var acsPageState: AcsPageState?
     var apsPaymentMethod: PaymentMethod?
 }
+
+enum AlertModel {
+    typealias Action = ()->Void
+
+    /// Уведомление об ошибке после которой продолжение сценария оплаты невозможно
+    case FinalError(CoreError, onClose: Action?)
+    /// Уведомление о не критичной ошибке
+    case InfoError(CoreError, onClose: Action?)
+}
+
+
+
 
 // MARK: - Computed properties
 extension RootState {

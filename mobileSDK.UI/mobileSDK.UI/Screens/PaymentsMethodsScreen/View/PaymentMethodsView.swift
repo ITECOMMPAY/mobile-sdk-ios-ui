@@ -143,8 +143,6 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                                      savedCard: savedAccount,
                                      methodForAccount: cardPaymentMethod) { intent in
             viewModel.dispatch(intent: intent)
-        } deleteCardAction: {
-            viewModel.dispatch(intent: .delete(savedAccount))
         }
     }
 

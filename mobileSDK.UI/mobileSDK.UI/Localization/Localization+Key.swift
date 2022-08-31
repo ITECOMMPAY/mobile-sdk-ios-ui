@@ -68,4 +68,6 @@ public enum L: String {
     case title_about_cvv
     case message_about_cvv
     case button_ok
+    case message_delete_card_single
+    case button_cancel
 }

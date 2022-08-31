@@ -22,6 +22,8 @@ public typealias PaymentFlowDismisedCompletion = (_ reason: PaymentFlowFinishedR
 class RootViewModel: RootViewModelProtocol {
     @Injected var payInteractor: PayInteractor?
     @Injected var payRequestFactory: PayRequestFactory?
+    @Injected var cardRemoveInteractor: CardRemoveInteractor?
+
     let applePayService = ApplePayService()
 
     let futureData: AnyPublisher<InitEvent, CoreError>
@@ -43,7 +45,7 @@ class RootViewModel: RootViewModelProtocol {
         self.futureData
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
-                    self?.state.error = error
+                    self?.state.alertModel = .FinalError(error, onClose: { self?.onFlowFinished(.withError(error)) })
                 }
             }, receiveValue: { [weak self] event in
                 guard let self = self else { return }
@@ -54,7 +56,9 @@ class RootViewModel: RootViewModelProtocol {
                         $0.methodType != .applePay // выкидываем applePay если он не поддерживается на устройстве
                     }
                     if methods.count == 0 {
-                        self.state.error = CoreError(code: .unknown, message: "Payment methods list is empty")
+                        self.state.alertModel = .FinalError(.methodsListEmpty, onClose: {
+                            [weak self] in self?.onFlowFinished(.withError(.methodsListEmpty))
+                        })
                     } else {
                         self.state = modifiedCopy(of: self.state) {
                             $0.availablePaymentMethods = methods
@@ -70,8 +74,9 @@ class RootViewModel: RootViewModelProtocol {
                     }) {
                         self.restore(payment: payment, with: paymentMethod)
                     } else {
-                        self.state.error = CoreError(code: .paymentMethodNotAvailable,
-                                                message: "Payment method \(String(describing: payment.method)) does not found")
+                        self.state.alertModel = .FinalError(.unavailableMethod(for: payment), onClose: {
+                            [weak self] in self?.onFlowFinished(.withError(.unavailableMethod(for: payment)))
+                        })
                     }
                 }
             })
@@ -129,16 +134,12 @@ class RootViewModel: RootViewModelProtocol {
             )
             state.isLoading = true
             execute(payRequest: request)
-        case .paymentMethodsScreenIntent(.delete):
-            self.state.error = CoreError(code: .unknown,
-                                         message: "Card delete is unimplemented")
+        case .paymentMethodsScreenIntent(.delete(let card)):
+            executeDelete(for: card)
         case .paymentMethodsScreenIntent(.select(let item)):
             state.currentMethod = item
-        case .closeErrorAlert:
-            // TODO: handle by error type
-            self.state.error = nil
-            // cancellables.forEach {  $0.cancel() }
-            // onFlowFinished(.withError(state.error ?? .unknown))
+        case .alertClosed:
+            state.alertModel = nil
         case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
             state.isLoading = true
             payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
@@ -146,7 +147,7 @@ class RootViewModel: RootViewModelProtocol {
             state.isLoading = true
             payInteractor?.sendClarificationFields(fieldsValues: fieldsValues)
         case .customerFieldsScreenIntent(.back), .clarificationFieldsScreenIntent(.back):
-            self.state = modifiedCopy(of: self.state) {
+            state = modifiedCopy(of: state) {
                 $0.customerFields = nil
                 $0.clarificationFields = nil
             }
@@ -159,7 +160,7 @@ class RootViewModel: RootViewModelProtocol {
                     guard let self = self else { return }
                     switch result {
                     case .failToPresent:
-                        self.state.error = CoreError(code: .unknown, message: "Failed to present ApplePay")
+                        self.state.alertModel = .InfoError(.failedToPresentApplePay, onClose: nil)
                     case .canceled:
                         break // TODO: process that case later
                     case .didAuthorizePayment(token: let token):
@@ -175,10 +176,10 @@ class RootViewModel: RootViewModelProtocol {
                 } else if let request = applePayService.createRequest(with: self.state.paymentOptions) {
                     applePayService.presentPayment(with: request)
                 } else {
-                    self.state.error = CoreError(code: .unknown, message: "Failed create payment request to ApplePay")
+                    self.state.alertModel = .InfoError(.failedApplePayRequestCreation, onClose: nil)
                 }
             } else {
-                state.error = CoreError(code: .unknown, message: "ApplePay is not supported on that device")
+                state.alertModel = .InfoError(.applePayUnsupported, onClose: nil)
             }
         case .paymentMethodsScreenIntent(.payAPS(let method)):
             state.apsPaymentMethod = method
@@ -203,7 +204,7 @@ class RootViewModel: RootViewModelProtocol {
                 guard let self = self else { return }
                 if case let .failure(error) = completion {
                     self.applePayService.paymentCompletion?(PKPaymentAuthorizationResult(status: PKPaymentAuthorizationStatus.failure, errors: nil))
-                    self.state.error = error
+                    self.state.alertModel = .InfoError(error, onClose: nil)
                 }
             }, receiveValue: { [weak self] payEvent in
                 guard let self = self else { return }
@@ -276,6 +277,21 @@ class RootViewModel: RootViewModelProtocol {
         }
     }
 
+    func executeDelete(for card: SavedAccount) {
+        cardRemoveInteractor?.remove(card: card)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                if case let .failure(error) = completion {
+                    self.state.alertModel = .InfoError(error, onClose: nil)
+                }
+            }, receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                self.state.savedAccounts = self.state.savedAccounts?.filter({ savedAccount in
+                    savedAccount.id != card.id
+                })
+            })
+            .store(in: &cancellables)
+    }
 }
 
 private func debugPrint(_ object: Any...) {
