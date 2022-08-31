@@ -12,7 +12,7 @@ enum RootIntent {
     case paymentMethodsScreenIntent(PaymentMethodsIntent)
     case customerFieldsScreenIntent(CustomerFieldsScreenIntent)
     case clarificationFieldsScreenIntent(ClarificationFieldsScreenIntent)
-    case closeErrorAlert
+    case alertClosed
     case successScreenIntent(ResultSuccessScreenIntent)
     case declineScreenIntent(ResultDeclineScreenIntent)
     case threeDSecureScreenIntent(ThreeDSecureScreenIntent)

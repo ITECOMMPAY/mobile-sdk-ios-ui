@@ -163,7 +163,7 @@ let stateMock = RootState(
     payment: MockPayment(),
     customerFields: [MockCustomerField(), MockCustomerField()],
     clarificationFields: [MockCarificationField(), MockCarificationField()],
-    error: CoreError(code: .unknown, message: "Mock"),
+    alertModel: nil,
     savedAccounts: [
         MockSavedAccount()
     ],

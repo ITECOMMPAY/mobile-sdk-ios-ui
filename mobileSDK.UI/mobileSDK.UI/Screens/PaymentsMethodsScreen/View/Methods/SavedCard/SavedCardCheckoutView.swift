@@ -12,14 +12,15 @@ struct SavedCardCheckoutView: View {
     let savedCard: SavedAccount
     let methodForAccount: PaymentMethod
 
-    var payAction: (PaymentMethodsIntent) -> Void = { _ in }
-    var deleteCardAction: () -> Void
+    var onIntent: (PaymentMethodsIntent) -> Void = { _ in }
 
     @State private var cvvText: String = ""
     @State private var isCvvValid: Bool = false
     @State private var isCustomerFieldsValid: Bool = true
 
     @State private var customerFieldValues: [FieldValue] = []
+
+    @State private var isCardDeleteAlertPresented: Bool = false
 
     private var payButtonIsEnabled: Bool {
         isCvvValid && isCustomerFieldsValid
@@ -46,16 +47,27 @@ struct SavedCardCheckoutView: View {
             }
             PayButton(label: buttonLabel,
                       disabled: !payButtonIsEnabled) {
-                payAction(.paySavedAccountWith(id: savedCard.id, cvv: cvvText, customerFields: customerFieldValues))
+                onIntent(.paySavedAccountWith(id: savedCard.id, cvv: cvvText, customerFields: customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
 
             LinkButton(text: L.button_delete.string,
                        fontSize: UIScheme.dimension.smallFont,
                        foregroundColor: UIScheme.color.deleteCardButtonColor,
-                       onTap: deleteCardAction)
+                       onTap: onCardDeleteTap)
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-        }.padding(.horizontal, UIScheme.dimension.middleSpacing)
+        }
+        .padding(.horizontal, UIScheme.dimension.middleSpacing)
+        .alert(isPresented: $isCardDeleteAlertPresented) {
+            Alert(
+                title: Text(L.message_delete_card_single.string),
+                message: nil,
+                primaryButton: .destructive(Text(L.button_delete.string), action: {
+                    onIntent(.delete(savedCard))
+                }),
+                secondaryButton: .cancel(Text(L.button_cancel.string))
+            )
+        }
     }
 
     private var dateField: some View {
@@ -77,6 +89,10 @@ struct SavedCardCheckoutView: View {
     private var isContinueButton: Bool {
         methodForAccount.visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }
+
+    private func onCardDeleteTap() {
+        isCardDeleteAlertPresented = true
+    }
 }
 
 #if DEBUG
@@ -86,8 +102,7 @@ struct SavedCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
         SavedCardCheckoutView(paymentOptions: MockPaymentOptions(),
                               savedCard: MockSavedAccount(),
-                              methodForAccount: MockPaymentMethod(),
-                              deleteCardAction: {})
+                              methodForAccount: MockPaymentMethod())
         .previewLayout(.sizeThatFits)
     }
 }

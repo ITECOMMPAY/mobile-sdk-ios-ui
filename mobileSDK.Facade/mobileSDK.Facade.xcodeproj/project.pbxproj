@@ -46,6 +46,7 @@
 		84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */; };
 		84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */; };
 		84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEE285C88770009FD38 /* RecipientInfo.swift */; };
+		84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */; };
 		84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA163287708850043C360 /* CoreErrorCode.swift */; };
 		84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +115,7 @@
 		84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalField.swift; sourceTree = "<group>"; };
 		84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalFieldEnums.swift; sourceTree = "<group>"; };
 		84D87CEE285C88770009FD38 /* RecipientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientInfo.swift; sourceTree = "<group>"; };
+		84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRemoveWrapper.swift; sourceTree = "<group>"; };
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +221,7 @@
 		84B241A2288A5AD900259A50 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */,
 				8421F8ED288FC1FF00B6EED2 /* CardTypesManagerAdapter */,
 				8421F8E5288EBF8700B6EED2 /* PayInteractorWrapper */,
 				84B2419E2889653500259A50 /* ProtocolConformance.swift */,
@@ -432,6 +435,7 @@
 				84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */,
 				845507D7285B0463002BBFE0 /* PaymentOptions.swift in Sources */,
 				84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */,
+				84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */,
 				84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */,
 				845507D8285B0463002BBFE0 /* Payment.swift in Sources */,
 				84B241A8288A61B700259A50 /* PaymentMethodType.swift in Sources */,
