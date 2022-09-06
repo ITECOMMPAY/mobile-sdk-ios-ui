@@ -1,6 +1,6 @@
 owner_name = "Ecommpay-1"
 destinations_group = "Collaborators"
-app_names = {"ecmp" => "ECP-SDK2"}
+app_names = {"ecmp" => "ECP-SDK2-iOS"}
 targets = {"ecmp" => "EcommpaySample"}
 lib_targets = {"ecmp" => "ecommpaySDK"}
 app_identifiers = ['com.ecommpay.sdk.testclient']
@@ -31,7 +31,7 @@ platform :ios do
         last_appcenter_version = appcenter_fetch_version_number(
           api_token: ENV["APPCENTER_TOKEN"],
           owner_name: owner_name,
-          app_name: app_names[brand] + "-iOS"
+          app_name: app_names[brand]
         )
   
         build_version = last_appcenter_version["build_number"].to_i + 1
@@ -47,23 +47,23 @@ platform :ios do
         skip_info_plist: true,
         xcodeproj: "./mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj" 
       )
-      #increment_version_number_in_plist(
-      #  version_number: version_name,
-      #  target: targets[brand],
-      #  xcodeproj: "./mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj"
-      #)
+      increment_version_number_in_xcodeproj(
+        version_number: version_name,
+        target: targets[brand],
+        xcodeproj: "./mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj"
+      )
       increment_build_number(
         build_number: build_version,
         skip_info_plist: true,
         xcodeproj: "./mobileSDK.Facade/mobileSDK.Facade.xcodeproj" 
       )
-      #increment_version_number_in_plist(
-      #  version_number: version_name,
-      #  target: "#{lib_targets[brand]}-Dev",
-      #  xcodeproj: "./mobileSDK.Facade/mobileSDK.Facade.xcodeproj" 
-      #)
+      increment_version_number_in_xcodeproj(
+        version_number: version_name,
+        target: "#{lib_targets[brand]}-Dev",
+        xcodeproj: "./mobileSDK.Facade/mobileSDK.Facade.xcodeproj" 
+      )
 
-      #cocoapods(clean_install: false)
+      cocoapods(clean_install: false)
       #spm(command: "resolve")
 
       build_ios_app(

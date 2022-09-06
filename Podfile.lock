@@ -1,0 +1,27 @@
+PODS:
+  - AppCenter (4.4.3):
+    - AppCenter/Analytics (= 4.4.3)
+    - AppCenter/Crashes (= 4.4.3)
+  - AppCenter/Analytics (4.4.3):
+    - AppCenter/Core
+  - AppCenter/Core (4.4.3)
+  - AppCenter/Crashes (4.4.3):
+    - AppCenter/Core
+  - MsdkCore (0.4.4)
+
+DEPENDENCIES:
+  - AppCenter
+  - MsdkCore (= 0.4.4)
+
+SPEC REPOS:
+  trunk:
+    - AppCenter
+    - MsdkCore
+
+SPEC CHECKSUMS:
+  AppCenter: 3fd04aa1b166e16fdb03ec81dabe488aece83fbd
+  MsdkCore: 8959a6596d6c8f7356dd5575519db04b9f50976b
+
+PODFILE CHECKSUM: ad645eb33d0df1dc7c98135850fd03350c66a7b6
+
+COCOAPODS: 1.11.3

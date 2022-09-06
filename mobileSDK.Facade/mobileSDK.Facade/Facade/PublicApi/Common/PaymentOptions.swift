@@ -7,8 +7,8 @@
 
 import Foundation
 import UIKit
-import MsdkCore
-import mobileSDK_UI
+@_exported import MsdkCore
+@_exported import mobileSDK_UI
 import UIKit
 import PassKit
 

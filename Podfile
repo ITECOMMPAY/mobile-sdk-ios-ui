@@ -5,14 +5,12 @@ workspace 'mobileSDK.xcworkspace'
 
 #TestClient
 
-TestClientTargets = ["SampleApp"]
+TestClientTargets = ["EcommpaySample"]
 
 for targetName in TestClientTargets
   target targetName do
     project './mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj'
-    pod 'EFColorPicker'
     pod 'AppCenter'
-    pod 'Reachability'
   end
 end
 
@@ -24,6 +22,6 @@ mSDKTargets += mSDKTargetsDev
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
-    pod 'MsdkCore'
+    pod 'MsdkCore', '0.4.4'
   end
 end
