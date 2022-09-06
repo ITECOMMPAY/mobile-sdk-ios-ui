@@ -21,6 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		117DD54429652DFFBFCCFF39 /* libPods-ecommpaySDK-Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392689734B09620B5E2EE120 /* libPods-ecommpaySDK-Dev.a */; };
+		52E8D714350D65989B729E90 /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC11FD991DC24C20174896D /* libPods-ecommpaySDK.a */; };
 		8403057128B7B9A400DE38D3 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; };
 		8403057228B7B9A400DE38D3 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */; };
@@ -75,8 +77,6 @@
 		84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */; };
 		84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA163287708850043C360 /* CoreErrorCode.swift */; };
 		84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
-		D48EA2B47252DA35F70A47B4 /* libPods-ecommpaySDK-Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0621E5648EB694D553C887 /* libPods-ecommpaySDK-Dev.a */; };
-		D8FD5A5DF48624BB3FCBBFE7 /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EFEEA4E74CCD1AAEB60FDBD /* libPods-ecommpaySDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,8 +137,8 @@
 
 /* Begin PBXFileReference section */
 		119C15A21DAE55532E011759 /* Pods-ecommpaySDK-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.release.xcconfig"; sourceTree = "<group>"; };
+		392689734B09620B5E2EE120 /* libPods-ecommpaySDK-Dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK-Dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		408C395B26A4DF37C8BBB1D3 /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
-		6EFEEA4E74CCD1AAEB60FDBD /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
 		8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInteractorWrapper.swift; sourceTree = "<group>"; };
 		8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRequestFactory.swift; sourceTree = "<group>"; };
@@ -168,9 +168,9 @@
 		84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRemoveWrapper.swift; sourceTree = "<group>"; };
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
+		AFC11FD991DC24C20174896D /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45AAD86544872143E266B62 /* Pods-ecommpaySDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.debug.xcconfig"; sourceTree = "<group>"; };
 		F58530AA83313593FD256B22 /* Pods-ecommpaySDK-Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.debug.xcconfig"; sourceTree = "<group>"; };
-		FC0621E5648EB694D553C887 /* libPods-ecommpaySDK-Dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK-Dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849C535128BF62C800C1CF71 /* mobileSDK_UI.framework in Frameworks */,
-				D8FD5A5DF48624BB3FCBBFE7 /* libPods-ecommpaySDK.a in Frameworks */,
+				52E8D714350D65989B729E90 /* libPods-ecommpaySDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8403057128B7B9A400DE38D3 /* mobileSDK_UI.framework in Frameworks */,
-				D48EA2B47252DA35F70A47B4 /* libPods-ecommpaySDK-Dev.a in Frameworks */,
+				117DD54429652DFFBFCCFF39 /* libPods-ecommpaySDK-Dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +266,8 @@
 		84AFF7CF285208CD00E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6EFEEA4E74CCD1AAEB60FDBD /* libPods-ecommpaySDK.a */,
-				FC0621E5648EB694D553C887 /* libPods-ecommpaySDK-Dev.a */,
+				AFC11FD991DC24C20174896D /* libPods-ecommpaySDK.a */,
+				392689734B09620B5E2EE120 /* libPods-ecommpaySDK-Dev.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

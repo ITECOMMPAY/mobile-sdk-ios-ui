@@ -66,7 +66,7 @@ public class PaymentOptions: NSObject {
         case Tokenize = 3
         case Verify = 4
     }
-
+ 
     /// Payment logo image
     @objc public var logoImage: UIImage?
 
@@ -82,10 +82,7 @@ public class PaymentOptions: NSObject {
     /// Object that holds recurrent info
     /// If set, would treat payment as recurrent
     @objc public var recurrentInfo: RecurrentInfo?
-
-    /// 3ds2.0
-    @objc public var threeDSecureInfo: ThreeDSecureInfo?
-
+ 
     /// If you know any data for fields what would be asked from a user
     /// you could set them and they would be pre-filled
     /// Fields that are known, if visible -> would be pre-filled
