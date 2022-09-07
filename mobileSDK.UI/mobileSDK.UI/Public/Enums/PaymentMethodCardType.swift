@@ -28,3 +28,5 @@ public enum CardType: String {
     case troy // TODO: добавить иконку
     case unknown
 }
+
+extension CardType: CaseIterable {}

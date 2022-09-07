@@ -17,7 +17,7 @@ protocol DimensionScheme {
     /// Расстояние между элементами в списке либо связанными логически элементами. **default: 10**
     var smallSpacing: CGFloat { get }
     /// Расстояние между названием атрибута в блоке деталей платежа и его описанием. **default: 6**
-    var paymentDetailsAttributeSpacing: CGFloat { get }
+    var tinySpacing: CGFloat { get }
     /// Высота кнопки ApplePay. **default: 48**
     var applePayButtonHeight: CGFloat { get }
     /// Высота кнопки платёжного метода. **default: 50**
@@ -81,7 +81,7 @@ struct DefaultDimensionScheme: DimensionScheme {
     let backgroundSheetCornerRadius: CGFloat = 12
     let paymentMethodButtonHeight: CGFloat = 50
     let applePayButtonHeight: CGFloat = 48
-    let paymentDetailsAttributeSpacing: CGFloat = 6
+    let tinySpacing: CGFloat = 6
     let smallSpacing: CGFloat = 10
     let paymentDetailsSpacing: CGFloat = 20
     let largeSpacing: CGFloat = 26

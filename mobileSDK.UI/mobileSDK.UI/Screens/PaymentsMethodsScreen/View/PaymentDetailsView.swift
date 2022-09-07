@@ -65,8 +65,8 @@ struct PaymentDetailsAttributes: View {
     var descriptionText: String
     var canCopy: Bool = false
     var body: some View {
-        VStack(alignment: .leading, spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
-            HStack(spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
+        VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
+            HStack(spacing: UIScheme.dimension.tinySpacing) {
                 Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.secondaryText)
                 Button {
