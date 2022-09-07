@@ -1,0 +1,90 @@
+//
+//  BaseCustomerTextField.swift
+//  mobileSDK.UI
+//
+//  Created by Ivan Krapivtsev on 28.07.2022.
+//
+
+import SwiftUI
+
+typealias OnBaseCustomerTextFieldValueChanged = (_ customerField: CustomerField,
+                                                 _ newValue: String,
+                                                 _ isValid: Bool) -> Void
+
+struct BaseCustomerTextField: View {
+    @State var value: String
+
+    let customerField: CustomerField
+    var keyboardType: UIKeyboardType = .default
+    var formatter: Formatter = EmptyFormatter()
+    var isAllowedCharacter: (Character) -> Bool = {_ in true }
+    var maxLength: Int?
+    var isSecure: Bool = false
+    let onValueChanged: OnBaseCustomerTextFieldValueChanged
+
+    @State private var hint: String = ""
+    @State private var isValid: Bool = true {
+        didSet {
+            onValueChanged(customerField, value, isValid)
+        }
+    }
+
+    var body: some View {
+        CustomTextField(
+            $value.didSet({ newValue in
+                if let validationError = customerField.getValidationMessage(value: newValue) {
+                    hint = validationError
+                    isValid = false
+                } else {
+                    hint = ""
+                    isValid = true
+                }
+            }),
+            placeholder: customerField.placeholder ?? (customerField.hint ?? ""),
+            keyboardType: keyboardType,
+            forceUppercased: false,
+            secure: isSecure,
+            maxLength: maxLength,
+            isAllowedCharacter: isAllowedCharacter,
+            formatter: formatter,
+            required: customerField.isRequired,
+            hint: hint,
+            valid: isValid,
+            disabled: false,
+            accessoryView: EmptyView())
+    }
+}
+
+#if DEBUG
+
+struct BaseCustomerTextField_Previews: PreviewProvider {
+    struct MockCustomerField: CustomerField {
+        var fieldServerType: FieldServerType = .text
+        var name: String = "mockField name"
+        var isRequired: Bool = true
+        var isHidden: Bool = false
+        var isTokenize: Bool = false
+        var isVerify: Bool = false
+        var hint: String? = "mockField hint"
+        var label: String = "mockField label"
+        var placeholder: String? = "mockField placeholder"
+        var validatorName: String? = "mockField validatorName"
+        var validatonMethod: Validator<String>? = { _ in false }
+        var fieldType: FieldType = .unknown
+        var errorMessage: String? = "mockField error"
+        var errorMessageKey: String = "mockField error key"
+    }
+
+    static var previews: some View {
+        VStack {
+            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
+                print("\(newValue) is \(isValid)")
+            }
+            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
+                print("\(newValue) is \(isValid)")
+            }
+        }
+    }
+}
+
+#endif
