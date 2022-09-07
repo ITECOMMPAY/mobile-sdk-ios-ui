@@ -46,7 +46,7 @@ struct NewCardCheckoutView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PanField(cardTypeRecognizer: paymentMethod.cardTypeRecognizer, cardNumber: $cardNumber, isValueValid: $isCardValid)
+            PanField(paymentMethod: paymentMethod, cardNumber: $cardNumber, isValueValid: $isCardValid)
                 .padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(cardHolder: $cardHolder, isValueValid: $isCardHolderValid)
@@ -73,7 +73,7 @@ struct NewCardCheckoutView: View {
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
                 CheckBoxView(checked: $isCOFAgreementChecked)
 
-                VStack(alignment: .leading, spacing: UIScheme.dimension.paymentDetailsAttributeSpacing) {
+                VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
                     Text(L.title_saved_cards.string)
                         .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
                         .foregroundColor(UIScheme.color.text)

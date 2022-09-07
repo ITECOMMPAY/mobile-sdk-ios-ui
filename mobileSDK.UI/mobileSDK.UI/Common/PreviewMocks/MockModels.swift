@@ -126,7 +126,7 @@ struct MockSavedAccount: SavedAccount {
 struct MockPaymentMethod: PaymentMethod {
     var paymentUrl: String? = "ecommpay.com"
     var allSupportedCardTypes: [PaymentMethodCard] = []
-    var connectedCardTypes: [CardType] = [ .visa ]
+    var connectedCardTypes: [CardType] = CardType.allCases.dropLast()
     struct MockCardTypeRecognizer: CardTypeRecognizer {
         func getCardType(for pan: String) -> PaymentMethodCard? {
             return nil
