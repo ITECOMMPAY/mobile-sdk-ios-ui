@@ -6,6 +6,6 @@
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
 
-import mobileSDK_UI
+@_exported import mobileSDK_UI
 
 public typealias AdditionalFieldType = mobileSDK_UI.FieldType

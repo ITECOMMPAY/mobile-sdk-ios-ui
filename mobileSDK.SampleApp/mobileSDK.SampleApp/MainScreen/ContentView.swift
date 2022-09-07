@@ -29,6 +29,8 @@ struct ContentView: View {
 
     @State var showLogo: Bool = false
 
+    @State var showVersion: Bool = false
+
     var body: some View {
         mainPage
             .overlay(paymentPage)
@@ -50,11 +52,23 @@ struct ContentView: View {
                 applePayParams
                 mockModeSetting
             }
-            .navigationTitle("\(getBrandName()) SDK")
+            .navigationBarTitle(Text("\(getBrandName()) \(getAppVersionString())"), displayMode: .inline)
             .toolbar {
-                Button("Sale") {
-                    sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                    isPaymentPagePresented = true
+                HStack {
+                    Button("Info") {
+                        showVersion.toggle()
+                    }
+                    .alert(isPresented: $showVersion) {
+                        Alert(title: Text(
+                            "SDK Version: \(getSDKVersionString())"
+                            + "\nCore Version: \(getCoreVersionString())"
+                        ))
+                    }
+                    Button("Sale") {
+                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+                        isPaymentPagePresented = true
+                    }
+
                 }
             }
         }
@@ -166,8 +180,8 @@ struct ContentView: View {
             Picker("Force payment method", selection: $paymentData.forcePaymentMethod) {
                 ForEach(ForcePaymentMethods.allCases) { method in
                     Text(method.rawValue)
-                }
-            }
+                }.navigationTitle("Force payment methods")
+            }.navigationTitle("Back")
         }
     }
 
@@ -253,8 +267,8 @@ struct ContentView: View {
             Picker("Mock Mode Setting", selection: $paymentData.mockModeType) {
                 ForEach(MockModeType.allCases) { type in
                     Text(String(describing: type))
-                }
-            }
+                }.navigationTitle("Mock Mode Setting Options")
+            }.navigationTitle("Back")
         }
     }
 
@@ -335,8 +349,26 @@ struct ContentView: View {
     }
 }
 
+fileprivate func getAppVersionString() -> String {
+    return "\(Bundle.main.releaseVersionNumber)(\(Bundle.main.buildVersionNumber))"
+}
+
+extension Bundle {
+    var releaseVersionNumber: String {
+        return (infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
+    }
+    var buildVersionNumber: String {
+        return (infoDictionary?["CFBundleVersion"] as? String) ?? ""
+    }
+}
+
+
+#if DEBUG
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+#endif

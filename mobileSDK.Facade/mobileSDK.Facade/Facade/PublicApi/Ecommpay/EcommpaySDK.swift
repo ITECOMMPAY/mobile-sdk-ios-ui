@@ -19,6 +19,7 @@ public class EcommpaySDK: NSObject {
     /// Version of currently installed Ecommpay SDK
     @objc public static let buildNumber: String = SDKInteractor.getBuildNumberOfBundle(for: EcommpaySDK.self)
     @objc public static let sdkVersion: String = SDKInteractor.getBundleVersion(for: EcommpaySDK.self)
+    @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
 
     #if DEVELOPMENT
 

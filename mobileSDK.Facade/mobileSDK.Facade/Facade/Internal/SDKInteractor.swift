@@ -75,8 +75,7 @@ class SDKInteractor {
 
         let view = ViewFactory.assembleRootView(paymentOptions: paymentOptions, initPublisher: delegateProxy.createPublisher(with: { delegate in
             let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                                           recurrentInfo: paymentOptions.recurrentInfo,
-                                           threeDSecureInfo: paymentOptions.threeDSecureInfo)
+                                           recurrentInfo: paymentOptions.recurrentInfo)
             self.msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
         })) { reason in
             viewController.dismiss(animated: true) { [weak self] in
@@ -119,6 +118,10 @@ class SDKInteractor {
 
     internal static func getBuildNumberOfBundle(for aClass: AnyClass) -> String {
         return Bundle(for: aClass).infoDictionary?["CFBundleVersion"] as! String
+    }
+
+    internal static func getCoreVersion() -> String {
+        return MSDKCoreSession.companion.metadata.version
     }
 }
 
