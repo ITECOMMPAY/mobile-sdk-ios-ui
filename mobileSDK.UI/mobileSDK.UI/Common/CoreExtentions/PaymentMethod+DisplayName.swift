@@ -11,9 +11,9 @@ extension PaymentMethod {
     var displayName: String? {
         switch self.methodType {
         case .card:
-            return L.button_add_new_card.string
+            return L.button_pay_with_card.string
         default:
-            return TranslationsManager.shared.stringValue(for: "\(code)_title") ?? name
+            return name ?? TranslationsManager.shared.stringValue(for: "\(code)_title")
         }
     }
 }

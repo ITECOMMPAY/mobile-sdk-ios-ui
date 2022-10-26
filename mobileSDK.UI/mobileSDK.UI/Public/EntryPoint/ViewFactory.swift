@@ -11,12 +11,14 @@ import Combine
 public struct ViewFactory {
     public static func assembleRootView(paymentOptions: PaymentOptions,
                                         initPublisher: AnyPublisher<InitEvent, CoreError>,
-                                        onDismiss completion: @escaping PaymentFlowDismisedCompletion) -> some View {
+                                        onDismiss completion: @escaping PaymentFlowCompletion) -> some View {
+        serviceLocator.addService(instance: TranslationsManager())
+
         if let brandColor = paymentOptions.brandColorOverride {
             UIScheme.color = DefaultLight(brandBlue: brandColor)
         }
         let rootViewModel = RootViewModel(paymentOptions: paymentOptions, futureData: initPublisher, onFlowFinished: completion)
-        return RootView(viewModel: rootViewModel).edgesIgnoringSafeArea(.all)
+        return RootView(viewModel: rootViewModel).ignoresSafeArea(.all, edges: .all)
     }
 
     internal static func assembleInitialLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
@@ -36,7 +38,7 @@ public struct ViewFactory {
     }
 
     internal static func assembleLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        LoadingScreen()
+        LoadingScreen(viewModel:  LoadingScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {

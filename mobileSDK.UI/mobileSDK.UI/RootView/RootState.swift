@@ -22,6 +22,16 @@ struct RootState {
     var finalPaymentState: FinalPaymentState?
     var acsPageState: AcsPageState?
     var apsPaymentMethod: PaymentMethod?
+    var savedValues: [PaymentMethodsListEntity: FormData]
+}
+
+struct FormData {
+    var cardCVV: String = ""
+    var cardNumber: String = ""
+    var cardHolder: String = ""
+    var cardExpiry: String = ""
+    var isCOFAgreementChecked: Bool = false
+    var customerFieldValues: [FieldValue] = []
 }
 
 enum AlertModel {
@@ -31,6 +41,8 @@ enum AlertModel {
     case FinalError(CoreError, onClose: Action?)
     /// Уведомление о не критичной ошибке
     case InfoError(CoreError, onClose: Action?)
+    /// Предупреждение о закрытии страницы оплаты
+    case CloseWarning(confirmClose: Action?)
 }
 
 
@@ -67,14 +79,6 @@ extension RootState {
     }
 
     var currentScreen: SDKScreen {
-
-        if isLoading {
-            if availablePaymentMethods == nil {
-                return .initialLoading
-            }
-            return .loading
-        }
-
         if let finalPaymentState = finalPaymentState {
             switch finalPaymentState {
             case .Success:
@@ -82,6 +86,13 @@ extension RootState {
             case .Decline(paymentMessage: _, isTryAgain: _):
                 return .declineResult
             }
+        }
+
+        if isLoading {
+            if availablePaymentMethods == nil {
+                return .initialLoading
+            }
+            return .loading
         }
 
         if acsPageState != nil {

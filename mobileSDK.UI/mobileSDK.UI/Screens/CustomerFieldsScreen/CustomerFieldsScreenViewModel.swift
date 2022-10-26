@@ -21,6 +21,10 @@ class CustomerFieldsScreenModel<RootVM: RootViewModelProtocol>: ChildViewModel<C
 }
 
 extension RootState: CustomerFieldsScreenState {
+    var customerFieldsValues: [FieldValue] {
+        selectedMethodValues?.customerFieldValues ?? []
+    }
+
     var visibleCustomerFields: [CustomerField] {
         return customerFields?.filter { !$0.isHidden } ?? []
     }

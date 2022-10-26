@@ -22,30 +22,24 @@ struct PanField: View {
 
     @Binding var isValueValid: Bool
 
-    @State private var isFieldValid: Bool = true {
-        didSet {
-            errorMessage = isFieldValid ? "" : L.message_about_card_number.string
-        }
-    }
+    @Binding var recognizedCardType: CardType?
+
+    @State private var isFieldValid: Bool = true
 
     @State private var errorMessage: String = ""
-    @State private var recognizedCardType: CardType?
 
-    var formatter: Formatter {
+
+    var transformation: CustomFormatterTransformation {
         if let cardTypeRecognizer = cardTypeRecognizer {
-            return CardNumberFormatter(cardTypeRecognizer: cardTypeRecognizer)
+            return CardNumberTransformation(cardTypeRecognizer: cardTypeRecognizer)
         }
-        return EmptyFormatter()
+        return EmptyTransformation()
     }
 
     var body: some View {
         CustomTextField(
             $cardNumber.didSet({ newValue in
-                isFieldValid = validationService?.isPanValidatorValid(value: newValue) ?? false
-                isValueValid = isFieldValid
-                recognizedCardType = cardTypeRecognizer?
-                    .getCardType(for: newValue)?
-                    .cardType ?? (newValue.isEmpty ? nil : .unknown )
+                validate(newValue)
             }),
             placeholder: L.title_card_number.string,
             keyboardType: .numberPad,
@@ -53,7 +47,7 @@ struct PanField: View {
             secure: false,
             maxLength: 19,
             isAllowedCharacter: allowedCharacters,
-            formatter: formatter,
+            transformation: transformation,
             required: true,
             hint: errorMessage,
             valid: isFieldValid,
@@ -62,9 +56,43 @@ struct PanField: View {
                 connectedCardTypes: paymentMethod.connectedCardTypes,
                 recognizedType: $recognizedCardType
             )
-        )
+        ) {
+            validate(cardNumber)
+        }.onAppear {
+            validate(cardNumber, ignoreEmpty: true)
+        }
     }
 
+    private func validate(_ value: String, ignoreEmpty: Bool = false) {
+        recognizeCardType(value)
+        if value.isEmpty {
+            errorMessage = L.message_required_field.string
+            isValueValid = false
+            isFieldValid = ignoreEmpty
+        } else {
+            if validationService?.isPanValidatorValid(value: value) ?? false {
+                if paymentMethod.connectedCardTypes.contains(recognizedCardType ?? .unknown) {
+                    isValueValid = true
+                    isFieldValid = true
+                } else {
+                    let cardTypeName = (recognizedCardType ?? .unknown).rawValue
+                    errorMessage = L.message_wrong_card_type.stringByReplacingPlaceholder(with: cardTypeName)
+                    isValueValid = false
+                    isFieldValid = false
+                }
+            } else {
+                errorMessage = L.message_about_card_number.string
+                isValueValid = false
+                isFieldValid = false
+            }
+        }
+    }
+
+    func recognizeCardType(_ value: String) {
+        recognizedCardType = cardTypeRecognizer?
+            .getCardType(for: value)?
+            .cardType ?? (value.isEmpty ? nil : .unknown )
+    }
 }
 
 fileprivate struct CardTypeView: View {
@@ -134,7 +162,7 @@ fileprivate struct CardTypeView: View {
 
     private func onTimerTick() {
         switch visibleCardTypes.count {
-        case 0..<2:
+        case 0...2:
             thirdCardIndex = nil
         case 3:
             thirdCardIndex = 2
@@ -157,7 +185,7 @@ struct PanFieldPreview: View {
     @State var isValid: Bool = true
     @State var anotherText: String = ""
     var body: some View {
-        PanField(paymentMethod: MockPaymentMethod(), cardNumber: $cardNumber, isValueValid: $isValid)
+        PanField(paymentMethod: MockPaymentMethod(), cardNumber: $cardNumber, isValueValid: $isValid, recognizedCardType: .constant(nil))
         Text("cardNumber=\(cardNumber)  isValid=\(isValid.description)")
         TextField("Another textfield", text: $anotherText)
     }

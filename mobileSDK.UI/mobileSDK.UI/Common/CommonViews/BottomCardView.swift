@@ -13,9 +13,7 @@ struct BottomCardView<Content: View>: View {
     var cardShown: Bool
     let screenProportion: CGFloat
 
-    @State private var fixedAreaHeight: CGFloat = 40
-    @State private var scrollableAreaHeight: CGFloat = 40
-    @State private var allHeight: CGFloat = 40
+    @State private var allHeight: CGFloat = UIScreen.main.bounds.height
 
     init(cardShown: Bool = false,
          screenProportion: CGFloat = 0.9,
@@ -25,8 +23,8 @@ struct BottomCardView<Content: View>: View {
         self.content = content()
     }
 
-    private var cardHeight: CGFloat {
-        return allHeight * screenProportion
+    private var spacerHeight: CGFloat {
+        return allHeight * (1.0 - screenProportion)
     }
 
     var body: some View {
@@ -34,35 +32,30 @@ struct BottomCardView<Content: View>: View {
             GeometryReader { reader in
                 Spacer().onAppear {
                     allHeight = reader.size.height
-                }
+                }.ignoresSafeArea()
             }.background(UIScheme.color.dimming)
                 .opacity(cardShown ? 1 : 0)
                 .animation(Animation.easeIn)
-            VStack {
+                .ignoresSafeArea()
+            VStack(spacing: .zero) {
+                Spacer().frame(height: spacerHeight + cardOffset)
                 content
-                    .edgesIgnoringSafeArea(.bottom)
-                    .frame(maxHeight: cardHeight)
                     .background(UIScheme.color.mainBackground)
                     .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
-
+                    .frame(maxHeight: cardShown ? .infinity : 0)
             }
-            .edgesIgnoringSafeArea(.bottom)
-            .frame(height: UIScreen.main.bounds.height, alignment: .bottom)
-            .offset(y: cardOffset)
-            .animation(.default.delay(0.2), value: cardOffset)
-        }
-        .edgesIgnoringSafeArea(.all)
+            .animation(.default, value: cardOffset)
+        }.ignoresSafeArea()
     }
 
     var cardOffset: CGFloat {
-        cardShown ? 0 : cardHeight
+        cardShown ? 0 : allHeight
     }
 }
 
 struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     let content: ScrollableContent
     let header: Header
-    @State private var keyboardHeight: CGFloat = .zero
 
     init(@ViewBuilder header: () -> Header,
          @ViewBuilder content: () -> ScrollableContent) {
@@ -73,38 +66,53 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     var body: some View {
         VStack(spacing: .zero) {
             header
-            List {
-                content
-                    .buttonStyle(.plain)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: -1, trailing: 0))
+            if #available(iOS 15.0, *) {
+                List {
+                    content
+                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .listRowSeparator(.hidden)
+                        .buttonStyle(.plain)
+                }
+            } else {
+                List {
+                    content
+                        .buttonStyle(.plain)
+                        .listRowInsets(EdgeInsets(top: -1, leading: 0, bottom: -1, trailing: 0))
+                        .background(UIScheme.color.mainBackground)
+                }
             }
-            keyboardSpace
         }
-        .background(UIScheme.color.mainBackground)
+        .keyboardAwarePadding()
+        .listStyle(.plain)
+        .background(UIScheme.color.mainBackground) 
+    }
+}
+
+struct KeyboardAwareModifier: ViewModifier {
+    @State private var keyboardHeight: CGFloat = 0
+
+    private var keyboardHeightPublisher: AnyPublisher<CGFloat, Never> {
+        Publishers.Merge(
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardWillShowNotification)
+                .compactMap { $0.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue }
+                .map { $0.cgRectValue.height },
+            NotificationCenter.default
+                .publisher(for: UIResponder.keyboardWillHideNotification)
+                .map { _ in CGFloat(0) }
+        ).eraseToAnyPublisher()
     }
 
-    @ViewBuilder
-    private var keyboardSpace: some View {
-        Color.clear
-            .frame(height: self.keyboardHeight)
-            .ignoresSafeArea()
-            .onAppear(perform: {
-                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
-                    .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
-                    .compactMap { notification in
-                        notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
-                    }
-                    .map { rect in
-                        rect.height
-                    }
-                    .subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
+    func body(content: Content) -> some View {
+        content
+            .padding(.bottom, keyboardHeight)
+            .onReceive(keyboardHeightPublisher) { self.keyboardHeight = $0 }
+    }
+}
 
-                NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillHideNotification)
-                    .compactMap { _ in
-                        CGFloat.zero
-                    }
-                    .subscribe(Subscribers.Assign(object: self, keyPath: \.keyboardHeight))
-            })
+extension View {
+    func keyboardAwarePadding() -> some View {
+        ModifiedContent(content: self, modifier: KeyboardAwareModifier())
     }
 }
 
@@ -146,7 +154,7 @@ struct BottomCardView_Previews: PreviewProvider {
 
     static var previews: some View {
         BottomCardViewExample()
-            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea()
             .previewDisplayName("Fixed")
     }
 }

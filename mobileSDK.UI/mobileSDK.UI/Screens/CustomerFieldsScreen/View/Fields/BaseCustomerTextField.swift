@@ -11,34 +11,30 @@ typealias OnBaseCustomerTextFieldValueChanged = (_ customerField: CustomerField,
                                                  _ newValue: String,
                                                  _ isValid: Bool) -> Void
 
+let ValidationTriggerNotification = "ValidationTriggerNotification"
+
 struct BaseCustomerTextField: View {
+    let validationPublisher = NotificationCenter.default
+        .publisher(for: NSNotification.Name(ValidationTriggerNotification))
     @State var value: String
 
     let customerField: CustomerField
     var keyboardType: UIKeyboardType = .default
-    var formatter: Formatter = EmptyFormatter()
+    var transformation: CustomFormatterTransformation = EmptyTransformation()
     var isAllowedCharacter: (Character) -> Bool = {_ in true }
     var maxLength: Int?
     var isSecure: Bool = false
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
 
     @State private var hint: String = ""
-    @State private var isValid: Bool = true {
-        didSet {
-            onValueChanged(customerField, value, isValid)
-        }
-    }
+
+    @State private var isFieldValid: Bool = true
+    @State private var isValid: Bool = false
 
     var body: some View {
         CustomTextField(
             $value.didSet({ newValue in
-                if let validationError = customerField.getValidationMessage(value: newValue) {
-                    hint = validationError
-                    isValid = false
-                } else {
-                    hint = ""
-                    isValid = true
-                }
+                validate(newValue)
             }),
             placeholder: customerField.placeholder ?? (customerField.hint ?? ""),
             keyboardType: keyboardType,
@@ -46,12 +42,39 @@ struct BaseCustomerTextField: View {
             secure: isSecure,
             maxLength: maxLength,
             isAllowedCharacter: isAllowedCharacter,
-            formatter: formatter,
+            transformation: transformation,
             required: customerField.isRequired,
             hint: hint,
-            valid: isValid,
+            valid: isFieldValid,
             disabled: false,
-            accessoryView: EmptyView())
+            accessoryView: EmptyView()
+        ) {
+            validate(value)
+        }
+        .onAppear {
+            validate(value, ignoreEmpty: true)
+        }
+        .onReceive(validationPublisher) { _ in
+            validate(value)
+        }
+    }
+
+    private func validate(_ value: String, ignoreEmpty: Bool = false) {
+        if value.isEmpty {
+            hint = L.message_required_field.string
+            isValid = !customerField.isRequired
+            isFieldValid = ignoreEmpty || !customerField.isRequired
+        } else {
+            if let validationError = customerField.getValidationMessage(value: value) {
+                hint = validationError
+                isValid = false
+                isFieldValid = false
+            } else {
+                isValid = true
+                isFieldValid = true
+            }
+        }
+        onValueChanged(customerField, value, isValid)
     }
 }
 
@@ -70,17 +93,13 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
         var placeholder: String? = "mockField placeholder"
         var validatorName: String? = "mockField validatorName"
         var validatonMethod: Validator<String>? = { _ in false }
-        var fieldType: FieldType = .unknown
         var errorMessage: String? = "mockField error"
         var errorMessageKey: String = "mockField error key"
     }
 
     static var previews: some View {
         VStack {
-            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
-                print("\(newValue) is \(isValid)")
-            }
-            BaseCustomerTextField(value: "", customerField: MockCustomerField(), formatter: EmptyFormatter(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
+            BaseCustomerTextField(value: "", customerField: MockCustomerField(), transformation: EmptyTransformation(), isAllowedCharacter: { _ in true }) { _, newValue, isValid in
                 print("\(newValue) is \(isValid)")
             }
         }

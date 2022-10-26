@@ -14,33 +14,51 @@ struct ExpiryField: View {
     @Binding var expiryString: String
     @Binding var isValueValid: Bool
 
-    let formatter = InputMaskFormatter(with: "##/##")
+    let transformation = InputMaskTransformation(with: "##/##")
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
-    @State private var isFieldValid: Bool = true {
-        didSet {
-            errorMessage = isFieldValid ? "" : L.message_about_expiry.string
-        }
-    }
+    @State private var isFieldValid: Bool = true
 
     @State var errorMessage: String = ""
 
     var body: some View {
         CustomTextField(
             $expiryString.didSet({ newValue in
-                isFieldValid = expiryFabric?.createCardExpiry(with: newValue).isValid() ?? false
-                isValueValid = isFieldValid
+                validate(newValue)
             }),
             placeholder: disabled ? L.title_expiration.string : L.title_expiration_placeholder.string,
             keyboardType: .numberPad,
             secure: false,
             isAllowedCharacter: allowedCharacters,
-            formatter: formatter,
-            required: false,
+            transformation: transformation,
+            required: !disabled,
             hint: errorMessage,
             valid: isFieldValid,
             disabled: disabled,
-            accessoryView: EmptyView())
+            accessoryView: EmptyView()
+        ) {
+            validate(expiryString)
+        }
+        .onAppear {
+            validate(expiryString, ignoreEmpty: true)
+        }
+    }
+
+    private func validate(_ value: String, ignoreEmpty: Bool = false) {
+        if value.isEmpty {
+            errorMessage = L.message_required_field.string
+            isValueValid = false
+            isFieldValid = ignoreEmpty
+        } else {
+            if expiryFabric?.createCardExpiry(with: value).isValid() ?? false {
+                isValueValid = true
+                isFieldValid = true
+            } else {
+                errorMessage = L.message_about_expiry.string
+                isValueValid = false
+                isFieldValid = false
+            }
+        }
     }
 }
 

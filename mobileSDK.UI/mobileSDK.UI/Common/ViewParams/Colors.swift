@@ -75,7 +75,7 @@ struct DefaultLight: ColorScheme {
     var textFieldRequirementMarkColor: Color { red }
     var paymentInfoCardShadow: Color { Color(hex: 0x105084).opacity(0.1) }
     var paymentMethodBackground: Color { Color.white }
-    var savedAccountBackground: Color { lightGray }
+    var savedAccountBackground: Color { paymentMethodBackground }
     var screenHeader: Color { Color.black }
     var editableFieldBackground: Color { lightGray }
     var infoBlockBackground: Color { lightGray }

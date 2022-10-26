@@ -11,7 +11,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
     @ObservedObject var viewModel: VM
 
     private var expandedListEntryID: String? {
-        return viewModel.state.selectedPaymentMethod?.id
+        return viewModel.state.selectedMethodsListEntity?.id
     }
 
     public var body: some View {
@@ -139,22 +139,41 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         else {
             return nil
         }
-        return SavedCardCheckoutView(paymentOptions: viewModel.state.paymentOptions,
-                                     savedCard: savedAccount,
-                                     methodForAccount: cardPaymentMethod) { intent in
+        let formValuesBinding = Binding(get: {
+            viewModel.state.selectedMethodValues ?? .init()
+        }, set: {
+            viewModel.dispatch(intent: .store($0))
+        })
+        return SavedCardCheckoutView(
+            formValues: formValuesBinding,
+            paymentOptions: viewModel.state.paymentOptions,
+            savedCard: savedAccount,
+            methodForAccount: cardPaymentMethod
+        ) { intent in
             viewModel.dispatch(intent: intent)
         }
     }
 
     private func expandableContent(for method: PaymentMethod) -> some View {
+        let formValuesBinding = Binding(get: {
+            viewModel.state.selectedMethodValues ?? .init()
+        }, set: {
+            viewModel.dispatch(intent: .store($0))
+        })
         return Group {
             switch method.methodType {
             case .card:
-                NewCardCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
+                NewCardCheckoutView(
+                    formValues: formValuesBinding,
+                    paymentOptions: viewModel.state.paymentOptions,
+                    paymentMethod: method) {
                     viewModel.dispatch(intent: $0)
                 }
             case .applePay:
-                ApplePayCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
+                ApplePayCheckoutView(
+                    formValues: formValuesBinding,
+                    paymentOptions: viewModel.state.paymentOptions,
+                    paymentMethod: method) {
                     viewModel.dispatch(intent: $0)
                 }
             case .aps:
@@ -173,23 +192,26 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 localImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .foregroundColor(UIScheme.color.brandColor)
             } else {
                 AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
                     image
                         .resizable()
+                        .renderingMode(.original)
                         .aspectRatio(contentMode: .fit)
                 } placeholder: {
                     IR.defaultApsLogo.image?
+                        .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }
+                }.foregroundColor(UIScheme.color.brandColor)
             }
         }
     }
 
     private func getLogo(for savedAccount: SavedAccount) -> some View {
         return Group {
-            savedAccount.savedAccountCardType.localLogo?
+            savedAccount.savedAccountCardType.localSavedCardLogo?
                 .resizable()
                 .aspectRatio(contentMode: .fit)
         }

@@ -29,8 +29,9 @@ struct PaymentDetailsView: View {
                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                 .frame(alignment: .leading)
                 .opacity(expanded ? 0.3 : 1.0)
+                .contentShape(Rectangle())
         }
-        .contentShape(Rectangle())
+        .disabled(expanded)
     }
 
     private var paymentDetailCard: some View {
@@ -83,7 +84,6 @@ struct PaymentDetailsAttributes: View {
                 .foregroundColor(UIScheme.color.text)
         }
     }
-
 }
 
 #if DEBUG
@@ -101,7 +101,6 @@ struct PaymentDetailsView_Previews: PreviewProvider {
                                   canBeCopied: false)
 
             ])
-
         }
     }
 }

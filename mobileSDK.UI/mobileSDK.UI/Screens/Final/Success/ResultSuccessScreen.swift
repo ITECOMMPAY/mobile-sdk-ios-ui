@@ -34,7 +34,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                 ResultTableInfo(resultInfoKeyValuePairs: [
                     (L.title_card_wallet.rawValue, valueTitleCardWallet),
                     (L.title_payment_id.rawValue, payment?.id ?? ""),
-                   ( L.title_payment_date.rawValue, payment?.date ?? "")
+                    (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
                 ] + completeFields)
                 PolicyView()
                 FooterView()

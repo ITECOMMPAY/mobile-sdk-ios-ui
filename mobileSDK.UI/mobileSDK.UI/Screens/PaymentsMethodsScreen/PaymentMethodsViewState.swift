@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 protocol PaymentMethodsScreenState {
-    var selectedPaymentMethod: PaymentMethodsListEntity? { get }
+    var selectedMethodsListEntity: PaymentMethodsListEntity? { get }
+    var selectedMethodValues: FormData? { get }
     var paymentOptions: PaymentOptions { get }
     var mergedList: [PaymentMethodsListEntity] { get }
     var cardPaymentMethod: PaymentMethod? { get }
@@ -19,7 +20,7 @@ protocol PaymentMethodsScreenState {
 extension PaymentMethodsScreenState {
     var applePayPresentationMode: ApplePayPresentationMode? {
         guard let applePayMethod = applePayMethod else { return nil }
-        return applePayMethod.methodCustomerFields.count > 0 ? .method : .button
+        return applePayMethod.visibleCustomerFields.count > 0 ? .method : .button
     }
 
     var applePayMethod: PaymentMethod? {
@@ -56,6 +57,18 @@ extension PaymentMethodsListEntity {
         case .savedAccount:
             return .card
         }
+    }
+}
+
+extension PaymentMethodsListEntity: Equatable {
+    static func == (lhs: PaymentMethodsListEntity, rhs: PaymentMethodsListEntity) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+extension PaymentMethodsListEntity: Hashable {
+    var hashValue: Int {
+        id.hashValue
     }
 }
 

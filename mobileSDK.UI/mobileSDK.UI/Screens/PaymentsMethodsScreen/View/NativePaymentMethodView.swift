@@ -85,8 +85,7 @@ private struct iPaymentButtonHelper: View {
     var cornerRadius: CGFloat
     var body: some View {
         iPaymentButtonRepresentable(type: type, style: style, cornerRadius: cornerRadius)
-            .frame(minWidth: 100, maxWidth: 400)
-            .frame(height: 60)
+            .frame(height: UIScheme.dimension.applePayButtonHeight)
             .frame(maxWidth: .infinity)
     }
 }

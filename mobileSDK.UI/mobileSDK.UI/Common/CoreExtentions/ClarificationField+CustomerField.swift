@@ -42,8 +42,6 @@ extension ClarificationFieldAdapter: CustomerField {
 
     var validatonMethod: Validator<String>? { clarificationField.validatonMethod }
 
-    var fieldType: FieldType { .unknown } // not needed for clarification fields
-
     var fieldServerType: FieldServerType { .text }
 
     var errorMessage: String? { clarificationField.defaultErrorMessage }

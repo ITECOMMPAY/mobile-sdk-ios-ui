@@ -18,9 +18,6 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 HStack(alignment: .center) {
                     ScreenHeader(text: L.title_payment_additional_data.string)
                     Spacer()
-                    BackButton {
-                        viewModel.dispatch(intent: .back)
-                    }.padding(.trailing)
                     CloseButton {
                         viewModel.dispatch(intent: .close)
                     }
@@ -39,14 +36,20 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
                     .padding(.top, UIScheme.dimension.middleSpacing)
+                    .fixedSize(horizontal: false, vertical: true)
                 EmbeddedCustomerFieldsView(
                     visibleCustomerFields: viewModel.state.clarificationFields?.map { $0.asCustomerField } ?? [],
-                    additionalFields: []
+                    additionalFields: [],
+                    customerFieldValues: []
                 ) { newFieldValues, isValid in
                     self.clarificationFieldsValues = newFieldValues
                     self.isValid = isValid
                 }.padding(.vertical, UIScheme.dimension.middleSpacing)
-                PayButton(label: PayButtonLabel(style: .Continue), disabled: !isValid) {
+                PayButton(
+                    label: PayButtonLabel(style: .Pay(viewModel.state.paymentOptions.summary.value,
+                                                      currency: viewModel.state.paymentOptions.summary.currency)),
+                    disabled: !isValid
+                ) {
                     viewModel.dispatch(intent: .sendFilledFields(clarificationFieldsValues))
                 }
                 PolicyView()

@@ -16,19 +16,13 @@ public class AdditionalField: NSObject {
     @objc var serverName: String = ""
 
     // MARK: - Initialisation
-    public init(type: AdditionalFieldType,
-                value: String) {
-        self.type = type
-        self.value = value
-    }
-
-    @objc(initWithType:value:)
     /// - Parameters:
     ///   - type:  Type of additional field, one of AdditionalFieldType
     ///   - value: Known value of the field
-    public init(fieldType: MsdkCore.FieldType,
+    @objc(initWithType:value:)
+    public init(type: AdditionalFieldType,
                 value: String) {
-        self.type = AdditionalFieldType.createFrom(code: fieldType)
+        self.type = type
         self.value = value
     }
 

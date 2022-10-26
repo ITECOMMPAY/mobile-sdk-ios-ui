@@ -10,24 +10,9 @@ import WebKit
 
 struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
-    var delegateProxy: ApsPageWebViewDelegateProxy?
 
     @State var isLoading = false
-
-    init(viewModel: VM) {
-        self.viewModel = viewModel
-        if let paymentUrl = self.viewModel.state.apsPaymentMethod?.paymentUrl {
-            self.delegateProxy = ApsPageWebViewDelegateProxy(
-                paymentUrl: paymentUrl,
-                onLadingStateChanges: { [self] isLoading in
-                    self.isLoading = isLoading
-                },
-                onCompleted: {
-                    viewModel.dispatch(intent: .executePayment)
-                }
-            )
-        }
-    }
+    @State var isStartedStatusCheck = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -37,14 +22,20 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                 CloseButton {
                     viewModel.dispatch(intent: .close)
                 }
-                .padding(UIScheme.dimension.largeSpacing)
-            }.padding(.horizontal, UIScheme.dimension.largeSpacing)
+            }.padding(UIScheme.dimension.largeSpacing)
             WebView { webView in
-                webView.navigationDelegate = delegateProxy
                 if let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                    let url = URL(string: paymentUrlString) {
-                    isLoading = true
                     webView.load(URLRequest(url: url))
+                    isLoading = true
+                }
+            }  didFinish: { currentUrl in
+                isLoading = false
+                if let currentUrl = currentUrl,
+                   let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
+                   !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck  {
+                    isStartedStatusCheck = true
+                    viewModel.dispatch(intent: .executePayment)
                 }
             }
             .opacity(isLoading ? 0 : 1)
@@ -54,50 +45,17 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                     .opacity(isLoading ? 1 : 0)
             )
             .frame(maxWidth: .infinity)
+
         }
     }
 }
-
-class ApsPageWebViewDelegateProxy: NSObject, WKNavigationDelegate {
-    let onLadingStateChanges: (_ isLoading: Bool) -> Void
-    let onCompleted: () -> Void
-    let paymentUrl: String
-    private var currentUrl: String?
-
-    init(paymentUrl: String,
-onLadingStateChanges: @escaping (_ isLoading: Bool) -> Void,
-     onCompleted: @escaping () -> Void) {
-        self.paymentUrl = paymentUrl
-        self.onLadingStateChanges = onLadingStateChanges
-        self.onCompleted = onCompleted
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        if currentUrl != paymentUrl {
-            onCompleted()
-        }
-    }
-
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
-        let request = navigationAction.request
-        currentUrl = request.url?.absoluteString
-
-        decisionHandler(.allow)
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if (error as NSError).code == NSURLErrorCancelled {
-            return
-        }
-    }
-}
-
 #if DEBUG
 
 struct ApsScreen_Previews: PreviewProvider {
 
     static var previews: some View {
         ApsScreen(viewModel: ApsScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
+            .previewLayout(.sizeThatFits)
     }
 }
 
@@ -127,3 +85,4 @@ class ApsScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<ApsScree
 }
 
 extension RootState: ApsScreenState {}
+

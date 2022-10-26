@@ -8,23 +8,17 @@
 
 import Foundation
 import mobileSDK_UI
-@_exported import struct mobileSDK_UI.CoreError
+import MsdkCore
 
 @objcMembers public class PaymentResult: NSObject {
     public let status: PaymentStatus
-    public let error: CoreError?
-    public let token: String?
+    public let error: mobileSDK_UI.CoreError?
+    public let payment: MsdkCore.Payment?
 
-    public init(status: PaymentStatus, error: CoreError?, token: String?) {
+    init(status: PaymentStatus, error: CoreError? = nil, payment: MsdkCore.Payment? = nil) {
         self.status = status
         self.error = error
-        self.token = token
-    }
-
-    public init(status: PaymentStatus, error: CoreError?) {
-        self.status = status
-        self.error = error
-        self.token = nil
+        self.payment = payment
     }
 }
 

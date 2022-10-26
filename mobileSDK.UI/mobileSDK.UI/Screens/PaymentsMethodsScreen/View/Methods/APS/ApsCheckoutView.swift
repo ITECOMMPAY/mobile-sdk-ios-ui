@@ -24,10 +24,10 @@ struct ApsCheckoutView: View {
                 payAction(.payAPS(paymentMethod))
             }
             .padding(.top, UIScheme.dimension.formLargeVerticalSpacing)
-            .padding(.bottom, UIScheme.dimension.middleSpacing)
+            /*.padding(.bottom, UIScheme.dimension.middleSpacing)
             Text(L.aps_vat_disclaimer.string)
                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                .foregroundColor(UIScheme.color.text)
+                .foregroundColor(UIScheme.color.text)*/
         }
         .padding(.top, UIScheme.dimension.formSmallSpacing)
         .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)

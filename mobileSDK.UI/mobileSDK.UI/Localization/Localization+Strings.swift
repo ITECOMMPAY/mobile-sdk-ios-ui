@@ -12,6 +12,14 @@ extension L {
     var string: String {
         self.rawValue.localized()
     }
+
+    func stringByReplacingPlaceholder(with string: String) -> String {
+        let localizedString = self.rawValue.localized()
+        let placeholderPattern = "\\[\\[.+]]"
+        let regex = try! NSRegularExpression(pattern: placeholderPattern, options: .caseInsensitive)
+        let range = NSRange(location: 0, length: localizedString.count)
+        return regex.stringByReplacingMatches(in: localizedString, options: [], range: range, withTemplate: string)
+    }
 }
 
 extension L {

@@ -9,18 +9,19 @@ import SwiftUI
 
 struct CvvField: View {
     let withInfoButton: Bool
-    var length: Int = 3
+    var cardType: CardType = .unknown
+
+    var length: Int {
+        return cardType == .amex ? 4 : 3
+    }
+
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
     @Binding var cvvValue: String
 
     @Binding var isValueValid: Bool
 
-    @State private var isFieldValid: Bool = true {
-        didSet {
-            errorMessage = isFieldValid ? "" : L.message_invalid_cvv.string
-        }
-    }
+    @State private var isFieldValid: Bool = true
 
     @State private var showAbout: Bool = false
 
@@ -29,8 +30,7 @@ struct CvvField: View {
     var body: some View {
         CustomTextField(
             $cvvValue.didSet({ newValue in
-                isFieldValid = newValue.count == length
-                isValueValid = isFieldValid
+                validate(newValue)
             }),
             placeholder: L.title_cvv.string,
             keyboardType: .numberPad,
@@ -41,9 +41,32 @@ struct CvvField: View {
             hint: errorMessage,
             valid: isFieldValid,
             disabled: false,
-            accessoryView: aboutButton)
+            accessoryView: aboutButton
+        ) {
+            validate(cvvValue)
+        }
         .alert(isPresented: $showAbout) {
             aboutCVVAlert
+        }
+        .onAppear {
+            validate(cvvValue, ignoreEmpty: true)
+        }
+    }
+
+    private func validate(_ value: String, ignoreEmpty: Bool = false) {
+        if value.isEmpty {
+            errorMessage = L.message_required_field.string
+            isValueValid = false
+            isFieldValid = ignoreEmpty
+        } else {
+            if value.count == length {
+                isValueValid = true
+                isFieldValid = true
+            } else {
+                errorMessage = L.message_invalid_cvv.string
+                isValueValid = false
+                isFieldValid = false
+            }
         }
     }
 

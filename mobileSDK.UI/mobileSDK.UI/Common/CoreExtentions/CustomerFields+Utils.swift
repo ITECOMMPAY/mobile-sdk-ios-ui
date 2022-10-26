@@ -7,35 +7,27 @@
 
 import Foundation
 
+extension Array where Element == FieldValue {
+    func skipEmpty() -> [FieldValue] {
+        self.compactMap { $0.value.isEmpty ? nil : $0 }
+    }
+}
+
 extension Array where Element == CustomerField {
-
-    func merge(changedFields: [FieldValue]?, with additionalFields: [AdditionalField]) -> [FieldValue] {
-        if self.isAllCustomerFieldsHidden {// if only hidden fields
-            return self.map { field in
-                let foundAdditionalFieldValue = additionalFields.first {
-                    field.fieldType == $0.type && !$0.value.isEmpty
-                }?.value
-                return FieldValue(name: field.name, value: foundAdditionalFieldValue ?? "")
+    func fill(from additionalFields: [AdditionalField], where isIncluded: (CustomerField) -> Bool = { _ in true }) -> [FieldValue] {
+        self
+            .filter(isIncluded)
+            .compactMap { field in
+                additionalFields
+                    .first(where: { $0.name == field.name && !$0.value.isEmpty })
+                    .map { additionalField in
+                        return FieldValue.init(name: field.name, value: additionalField.value)
+                    }
             }
-        }
-
-        var result = changedFields ?? []
-        self.forEach { field in
-            if !result.contains(where: { $0.name == field.name }) {
-                let foundAdditionalFieldValue = additionalFields.first {
-                    field.fieldType == $0.type && !$0.value.isEmpty
-                }?.value
-                if let foundAdditionalFieldValue =  foundAdditionalFieldValue {
-                    result += [FieldValue(name: field.name, value: foundAdditionalFieldValue)]
-                }
-            }
-        }
-
-        return result
     }
 
-    var isAllCustomerFieldsHidden: Bool {
-        self.allSatisfy { customerField in
+    var hiddenFields: [CustomerField] {
+        self.filter { customerField in
             customerField.isHidden
         }
     }

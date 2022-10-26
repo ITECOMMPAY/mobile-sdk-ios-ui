@@ -10,7 +10,10 @@ import SwiftUI
 struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
     @State var isValid: Bool = false
-    @State var customerFieldValues: [FieldValue] = []
+
+    var customerFieldValues: [FieldValue] {
+        viewModel.state.customerFieldsValues
+    }
 
     var body: some View {
         BottomCardViewContent {
@@ -39,12 +42,20 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
                     .padding(.top, UIScheme.dimension.middleSpacing)
-                EmbeddedCustomerFieldsView(visibleCustomerFields: viewModel.state.visibleCustomerFields,
-                                           additionalFields: viewModel.state.paymentOptions.uiAdditionalFields) { customerFieldValues, isValid in
-                    self.customerFieldValues = customerFieldValues
+                    .fixedSize(horizontal: false, vertical: true)
+                EmbeddedCustomerFieldsView(
+                    visibleCustomerFields: viewModel.state.visibleCustomerFields,
+                    additionalFields: viewModel.state.paymentOptions.uiAdditionalFields,
+                    customerFieldValues: customerFieldValues
+                ) { customerFieldValues, isValid in
+                    viewModel.dispatch(intent: .store(customerFieldValues))
                     self.isValid = isValid
                 }.padding(.vertical, UIScheme.dimension.middleSpacing)
-                PayButton(label: PayButtonLabel(style: .Continue), disabled: !isValid) {
+                PayButton(
+                    label: PayButtonLabel(style: .Pay(viewModel.state.paymentOptions.summary.value,
+                                                      currency: viewModel.state.paymentOptions.summary.currency)),
+                    disabled: !isValid
+                ) {
                     viewModel.dispatch(intent: .sendCustomerFields(customerFieldValues))
                 }
                 PolicyView()

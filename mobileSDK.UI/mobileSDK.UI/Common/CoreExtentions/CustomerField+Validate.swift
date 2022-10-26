@@ -9,14 +9,14 @@ import Foundation
 
 extension CustomerField {
     func getValidationMessage( value: String, onTransformValueBeforeValidate: ((String) -> String)? = nil) -> String? {
+        if self.isRequired && value.isEmpty {
+            return L.message_required_field.string
+        }
         guard let validator = self.validatonMethod else {
             return nil
         }
-        if self.isRequired && value.isEmpty {
-            return L.message_required_field.string
-        } else {
-            let isValid = validator(onTransformValueBeforeValidate?(value) ?? value)
-            return !isValid ? (self.errorMessage ?? self.errorMessageKey) : nil
-        }
+
+        let isValid = validator(onTransformValueBeforeValidate?(value) ?? value)
+        return !isValid ? (self.errorMessage ?? self.errorMessageKey) : nil
     }
 }

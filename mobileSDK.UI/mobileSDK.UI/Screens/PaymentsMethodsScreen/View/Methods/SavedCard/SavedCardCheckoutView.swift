@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct SavedCardCheckoutView: View {
+    @Binding var formValues: FormData
+
     let paymentOptions: PaymentOptions
     let savedCard: SavedAccount
     let methodForAccount: PaymentMethod
 
     var onIntent: (PaymentMethodsIntent) -> Void = { _ in }
 
-    @State private var cvvText: String = ""
     @State private var isCvvValid: Bool = false
-    @State private var isCustomerFieldsValid: Bool = true
-
-    @State private var customerFieldValues: [FieldValue] = []
-
+    @State private var isCustomerFieldsValid: Bool = false
     @State private var isCardDeleteAlertPresented: Bool = false
 
     private var payButtonIsEnabled: Bool {
-        isCvvValid && isCustomerFieldsValid
+        isCvvValid
+        && (!isContinueButton ? (isCustomerFieldsValid || methodForAccount.visibleCustomerFields.isEmpty) : true)
     }
 
     var body: some View {
@@ -39,15 +38,15 @@ struct SavedCardCheckoutView: View {
                visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: customerFieldValues) { fieldsValues, isValid in
-                    customerFieldValues = fieldsValues
+                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
+                    formValues.customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
                 }
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
             PayButton(label: buttonLabel,
                       disabled: !payButtonIsEnabled) {
-                onIntent(.paySavedAccountWith(id: savedCard.id, cvv: cvvText, customerFields: customerFieldValues))
+                onIntent(.paySavedAccountWith(id: savedCard.id, cvv: formValues.cardCVV, customerFields: formValues.customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
 
@@ -75,7 +74,10 @@ struct SavedCardCheckoutView: View {
     }
 
     private var cvvField: some View {
-        CvvField(withInfoButton: false, cvvValue: $cvvText, isValueValid: $isCvvValid)
+        CvvField(withInfoButton: false,
+                 cardType: savedCard.savedAccountCardType,
+                 cvvValue: $formValues.cardCVV,
+                 isValueValid: $isCvvValid)
     }
 
     private var buttonLabel: PayButtonLabel {
@@ -100,7 +102,8 @@ struct SavedCardCheckoutView: View {
 struct SavedCardCheckoutView_Previews: PreviewProvider {
 
     static var previews: some View {
-        SavedCardCheckoutView(paymentOptions: MockPaymentOptions(),
+        SavedCardCheckoutView(formValues: .constant(FormData()),
+                              paymentOptions: MockPaymentOptions(),
                               savedCard: MockSavedAccount(),
                               methodForAccount: MockPaymentMethod())
         .previewLayout(.sizeThatFits)

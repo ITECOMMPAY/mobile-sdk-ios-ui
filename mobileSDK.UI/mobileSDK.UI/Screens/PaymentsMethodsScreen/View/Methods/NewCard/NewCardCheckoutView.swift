@@ -10,18 +10,12 @@ import SwiftUI
 struct NewCardCheckoutView: View {
     @Injected var CardExpiryFabric: CardExpiryFabric?
 
+    @Binding var formValues: FormData
+
     var paymentOptions: PaymentOptions
     var paymentMethod: PaymentMethod
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
-
-    @State var isCOFAgreementChecked: Bool = false
-
-    @State var cardCVV: String = ""
-    @State var cardNumber: String = ""
-    @State var cardHolder: String = ""
-    @State var cardExpiry: String = ""
-    @State var customerFieldValues: [FieldValue] = []
 
     @State var isCardValid: Bool = false
     @State var isCVVValid: Bool = false
@@ -30,31 +24,39 @@ struct NewCardCheckoutView: View {
 
     @State var isCustomerFieldsValid: Bool = false
 
-    var isFormValid: Bool {
+    private var isFormValid: Bool {
         [
             isCardValid,
             isCVVValid,
             isCardHolderValid,
-            isExpiryValid,
-            isCustomerFieldsValid
+            isExpiryValid
         ].allSatisfy { $0 }
+        && (!isContinueButton ? (isCustomerFieldsValid || paymentMethod.visibleCustomerFields.isEmpty): true)
     }
 
+    @State private var cardType: CardType?
+
     var expiry: CardExpiry {
-        return CardExpiryFabric!.createCardExpiry(with: cardExpiry)
+        return CardExpiryFabric!.createCardExpiry(with: formValues.cardExpiry)
     }
 
     var body: some View {
         VStack(spacing: 0) {
-            PanField(paymentMethod: paymentMethod, cardNumber: $cardNumber, isValueValid: $isCardValid)
-                .padding(.top, UIScheme.dimension.formSmallSpacing)
+            PanField(
+                paymentMethod: paymentMethod,
+                cardNumber: $formValues.cardNumber,
+                isValueValid: $isCardValid,
+                recognizedCardType: $cardType
+            ).padding(.top, UIScheme.dimension.formSmallSpacing)
 
-            CardHolderField(cardHolder: $cardHolder, isValueValid: $isCardHolderValid)
-                .padding(.top, UIScheme.dimension.formSmallSpacing)
+            CardHolderField(
+                cardHolder: $formValues.cardHolder,
+                isValueValid: $isCardHolderValid
+            ).padding(.top, UIScheme.dimension.formSmallSpacing)
 
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                ExpiryField(disabled: false, expiryString: $cardExpiry, isValueValid: $isExpiryValid)
-                CvvField(withInfoButton: true, cvvValue: $cardCVV, isValueValid: $isCVVValid)
+                ExpiryField(disabled: false, expiryString: $formValues.cardExpiry, isValueValid: $isExpiryValid)
+                CvvField(withInfoButton: true, cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
@@ -63,15 +65,15 @@ struct NewCardCheckoutView: View {
                 paymentMethod.visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: paymentMethod.visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: customerFieldValues) { fieldsValues, isValid in
-                    customerFieldValues = fieldsValues
+                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
+                    formValues.customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
                 }
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
 
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                CheckBoxView(checked: $isCOFAgreementChecked)
+                CheckBoxView(checked: $formValues.isCOFAgreementChecked)
 
                 VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
                     Text(L.title_saved_cards.string)
@@ -85,14 +87,14 @@ struct NewCardCheckoutView: View {
             }
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
 
-            PayButton(label: buttonLabel, disabled: isFormValid) {
-                payAction(.payNewCardWith(cvv: cardCVV,
-                                          pan: cardNumber,
+            PayButton(label: buttonLabel, disabled: !isFormValid) {
+                payAction(.payNewCardWith(cvv: formValues.cardCVV,
+                                          pan: formValues.cardNumber,
                                           year: expiry.expiryYear!,
                                           month: expiry.expiryMonth!,
-                                          cardHolder: cardHolder,
-                                          saveCard: isCOFAgreementChecked,
-                                          customerFields: customerFieldValues))
+                                          cardHolder: formValues.cardHolder,
+                                          saveCard: formValues.isCOFAgreementChecked,
+                                          customerFields: formValues.customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
@@ -119,7 +121,7 @@ struct NewCardCheckoutView: View {
 
 struct NewCardCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        NewCardCheckoutView(paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
+        NewCardCheckoutView(formValues: .constant(FormData()), paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
     }
 }
 

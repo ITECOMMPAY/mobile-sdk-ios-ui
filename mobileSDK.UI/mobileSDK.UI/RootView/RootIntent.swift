@@ -9,6 +9,7 @@ import Foundation
 
 enum RootIntent {
     case initialLoadingScreenIntent(InitialLoadingScreenIntent)
+    case loadingScreenIntent(LoadingScreenIntent)
     case paymentMethodsScreenIntent(PaymentMethodsIntent)
     case customerFieldsScreenIntent(CustomerFieldsScreenIntent)
     case clarificationFieldsScreenIntent(ClarificationFieldsScreenIntent)

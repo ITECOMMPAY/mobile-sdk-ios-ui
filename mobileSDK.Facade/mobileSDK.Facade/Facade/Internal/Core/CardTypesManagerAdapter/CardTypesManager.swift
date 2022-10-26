@@ -23,6 +23,6 @@ extension MsdkCore.PaymentMethodCard: mobileSDK_UI.PaymentMethodCard {
     }
 
     public var cardType: CardType {
-        return CardType.createFrom(self.type)
+        return CardType.createFrom(self.code)
     }
 }

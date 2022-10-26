@@ -11,4 +11,5 @@ protocol CustomerFieldsScreenState {
     var paymentOptions: PaymentOptions { get }
     var visibleCustomerFields: [CustomerField] { get }
     var isVatIncluded: Bool { get }
+    var customerFieldsValues: [FieldValue] { get }
 }

@@ -13,6 +13,7 @@ struct PaymentOverview: View {
     let currency: String
     let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
+    var isDimBackground: Bool = false
 
     private let numberFormatter = { () -> NumberFormatter in
         let formatter = NumberFormatter()
@@ -23,6 +24,7 @@ struct PaymentOverview: View {
 
     var body: some View {
         cardBackground
+            .opacity(isDimBackground ? 0.4 : 1)
             .overlay(alignment: .topLeading) {
                 logo
             }
@@ -62,16 +64,24 @@ struct PaymentOverview: View {
     }
 
     var vat: some View {
-        Text("Total Price ").font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont)) +
-        Text(isVatIncluded ? "(VAT included)" : "").font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-
+        Text(L.title_total_price.string + " ")
+            .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
+        + Text(isVatIncluded ? L.vat_included.string : "")
+            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
     }
 }
 
 #if DEBUG
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentOverview(isVatIncluded: true, priceValue: Decimal(238.50), currency: "EUR", backgroundTemplate: .lines, logoImage: IR.applePayButtonLogo.image)
+        PaymentOverview(
+            isVatIncluded: true,
+            priceValue: Decimal(238.50),
+            currency: "EUR",
+            backgroundTemplate: .lines,
+            logoImage: IR.applePayButtonLogo.image,
+            isDimBackground: true
+        ).padding().previewLayout(.sizeThatFits)
     }
 }
 #endif

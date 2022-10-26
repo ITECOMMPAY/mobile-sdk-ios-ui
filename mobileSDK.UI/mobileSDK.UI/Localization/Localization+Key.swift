@@ -61,9 +61,10 @@ public enum L: String {
     case message_invalid_cvv
     case message_about_expiry
     case message_about_card_number
+    case message_wrong_card_type
     case alert_message_payment_being_processed
     case message_required_field
-    case button_add_new_card
+    case button_pay_with_card
     case message_general_invalid
     case title_about_cvv
     case message_about_cvv
