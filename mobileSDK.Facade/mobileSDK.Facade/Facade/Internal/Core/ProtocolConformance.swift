@@ -111,14 +111,6 @@ extension MsdkCore.AcsPage: mobileSDK_UI.AcsPage {
         acs?.acsUrl
     }
 
-    public var md: String? {
-        acs?.md
-    }
-
-    public var paReq: String? {
-        acs?.paReq
-    }
-
     public var termUrl: String? {
         acs?.termUrl
     }

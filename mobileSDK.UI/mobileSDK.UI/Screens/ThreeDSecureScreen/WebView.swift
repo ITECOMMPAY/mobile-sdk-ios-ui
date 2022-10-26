@@ -8,37 +8,64 @@
 import SwiftUI
 import WebKit
 
-final class WebView: NSObject, UIViewRepresentable {
+enum WebViewTask: Equatable {
+    case request(URLRequest)
+    case loadHTMLString(html: String, baseURL: URL)
+}
 
-    internal init(configuration: @escaping (WKWebView) -> Void,
-                  didFinish: @escaping (String?) -> Void) {
-        self.didFinish = didFinish
-        self.configuration = configuration
+struct WebView: UIViewRepresentable, Equatable {
+    static func == (lhs: WebView, rhs: WebView) -> Bool {
+        lhs.task == rhs.task
     }
-
 
     // MARK: - Properties
 
+    let task: WebViewTask
     let didFinish: (_ url: String?) -> Void
-    let configuration: (WKWebView) -> Void
-
-    private var currentUrl: String?
 
     // MARK: - Functions
 
+    func makeCoordinator() -> WebViewCoordinator {
+        WebViewCoordinator(task: task, didFinish: didFinish)
+    }
+
     public func makeUIView(context: Context) -> WKWebView {
-        let view = WKWebView()
-        view.navigationDelegate = self
-        configuration(view)
-        return view
+        let uiView = WKWebView()
+        return uiView
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.navigationDelegate = self
+        context.coordinator.didFinish = didFinish
+        context.coordinator.task = task
+        context.coordinator.executeTask(uiView)
     }
+
+
 }
 
-extension WebView: WKNavigationDelegate {
+class WebViewCoordinator: NSObject, WKNavigationDelegate {
+    internal init(task: WebViewTask, didFinish: @escaping (String?) -> Void, currentUrl: String? = nil) {
+        self.task = task
+        self.didFinish = didFinish
+        self.currentUrl = currentUrl
+    }
+
+    var task: WebViewTask
+    var didFinish: (_ url: String?) -> Void
+
+    private var currentUrl: String?
+
+    func executeTask(_ webView: WKWebView) {
+        webView.navigationDelegate = self
+        webView.loadHTMLString("", baseURL: nil)
+        switch task {
+        case .request(let uRLRequest):
+            webView.load(uRLRequest)
+        case .loadHTMLString(let html, let baseURL):
+            webView.loadHTMLString(html, baseURL: baseURL)
+        }
+    }
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         didFinish(self.currentUrl)
     }

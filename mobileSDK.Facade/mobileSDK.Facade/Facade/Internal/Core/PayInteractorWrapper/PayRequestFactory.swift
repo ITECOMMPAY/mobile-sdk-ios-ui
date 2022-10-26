@@ -24,7 +24,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
                                   cardHolder: String,
                                   saveCard: Bool,
                                   customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
-        let request = NewCardSaleRequest(cvv: cvv, pan: pan, year: year, month: month, cardHolder: cardHolder, saveCard: saveCard)
+        let request = NewCardSaleRequest(cvv: cvv, pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder, saveCard: saveCard)
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })

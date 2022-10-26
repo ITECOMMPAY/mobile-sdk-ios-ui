@@ -7,10 +7,15 @@
 
 import SwiftUI
 import PassKit
+import Combine
 
 #if DEBUG
 
 class MockRootViewModel: RootViewModelProtocol {
+    var statePublisher: AnyPublisher<RootState, Never> {
+        Just(state).eraseToAnyPublisher()
+    }
+
     func dispatch(intent: RootIntent) {
         print("Intent \(String(describing: intent)) triggered")
     }

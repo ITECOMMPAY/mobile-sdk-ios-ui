@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
+		844D6D1929094B8700B4BBEC /* ecommpaySDK_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */; };
+		844D6D1A29094B8700B4BBEC /* ecommpaySDK_Dev.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D428B33DFA001C2A24 /* MainScreenState.swift */; };
 		845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D828B340A3001C2A24 /* PaymentID.swift */; };
 		845BB1DE28B35592001C2A24 /* Ecommpay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DD28B35592001C2A24 /* Ecommpay.swift */; };
@@ -15,8 +17,6 @@
 		845FC81C28AE153300C71288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* ContentView.swift */; };
 		845FC81E28AE153400C71288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC81D28AE153400C71288 /* Assets.xcassets */; };
 		845FC82128AE153400C71288 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC82028AE153400C71288 /* Preview Assets.xcassets */; };
-		848461FD28F560C600716A73 /* ecommpaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK.framework */; };
-		848461FE28F560C600716A73 /* ecommpaySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
 /* End PBXBuildFile section */
 
@@ -35,16 +35,23 @@
 			remoteGlobalIDString = 849C535828BF62C800C1CF71;
 			remoteInfo = ecommpaySDK;
 		};
+		844D6D1029094A7800B4BBEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 84BC4F56285843C800CD7EA5;
+			remoteInfo = ecommpaySDKDev;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		848461FF28F560C600716A73 /* Embed Frameworks */ = {
+		844D6D1B29094B8700B4BBEC /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				848461FE28F560C600716A73 /* ecommpaySDK.framework in Embed Frameworks */,
+				844D6D1A29094B8700B4BBEC /* ecommpaySDK_Dev.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				848461FD28F560C600716A73 /* ecommpaySDK.framework in Frameworks */,
+				844D6D1929094B8700B4BBEC /* ecommpaySDK_Dev.framework in Frameworks */,
 				CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,7 +129,7 @@
 		843B503828F5607E00A4F779 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				843B503E28F5607E00A4F779 /* ecommpaySDK.framework */,
+				843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */,
 				843B504028F5607E00A4F779 /* ecommpaySDK.framework */,
 			);
 			name = Products;
@@ -198,11 +205,12 @@
 				845FC81228AE153300C71288 /* Sources */,
 				845FC81328AE153300C71288 /* Frameworks */,
 				845FC81428AE153300C71288 /* Resources */,
-				848461FF28F560C600716A73 /* Embed Frameworks */,
+				844D6D1B29094B8700B4BBEC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				844D6D1129094A7800B4BBEC /* PBXTargetDependency */,
 			);
 			name = EcommpaySample;
 			productName = mobileSDK.SampleApp;
@@ -249,10 +257,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		843B503E28F5607E00A4F779 /* ecommpaySDK.framework */ = {
+		843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = ecommpaySDK.framework;
+			path = ecommpaySDK_Dev.framework;
 			remoteRef = 843B503D28F5607E00A4F779 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -317,6 +325,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		844D6D1129094A7800B4BBEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ecommpaySDKDev;
+			targetProxy = 844D6D1029094A7800B4BBEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		845FC82228AE153400C71288 /* Debug */ = {

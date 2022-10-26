@@ -7,11 +7,11 @@ PODS:
   - AppCenter/Core (4.4.3)
   - AppCenter/Crashes (4.4.3):
     - AppCenter/Core
-  - MsdkCore (0.4.6)
+  - MsdkCore (0.5.2)
 
 DEPENDENCIES:
   - AppCenter
-  - MsdkCore (= 0.4.6)
+  - MsdkCore (= 0.5.2)
 
 SPEC REPOS:
   trunk:
@@ -20,8 +20,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppCenter: 3fd04aa1b166e16fdb03ec81dabe488aece83fbd
-  MsdkCore: a384b18b06f9636037b61fd599f6db420bfde00d
+  MsdkCore: bcec2fbcc4288b4d97846f390f0606f3c3cd4102
 
-PODFILE CHECKSUM: dd719c96fbe39c2f39b17d0cba4ed8a69acd2662
+PODFILE CHECKSUM: 11d9b9bfd1c58cd386878b7c1352e6c3f3124f4d
 
 COCOAPODS: 1.11.3
