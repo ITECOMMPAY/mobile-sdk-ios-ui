@@ -8,12 +8,45 @@
 import Foundation
 import SwiftUI
 
-struct LoadingScreen: View {
+
+enum LoadingScreenIntent {
+    case close
+}
+
+protocol LoadingScreenViewModelProtocol: ViewModel
+where UserIntent == LoadingScreenIntent, ViewState == Void {} // ViewState == Void т.к. этот экран всегда в одном состоянии, его представление неизменно
+
+class LoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<Void, LoadingScreenIntent, rootVM>, LoadingScreenViewModelProtocol {
+    override func mapIntent(from childIntent: LoadingScreenIntent) throws -> rootVM.UserIntent {
+        return .loadingScreenIntent(childIntent)
+    }
+}
+
+fileprivate struct DotsAnimationParams {
+    static let dotSize: CGFloat = 12
+    static var dotSpacing: CGFloat { dotSize }
+    static var amplitude: CGFloat { dotSize * 2 }
+    static var jumpDuration: Double = 0.3
+    static var delayDuration: Double = 0.3
+}
+
+struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewModel {
+    @ObservedObject var viewModel: VM
+
     public var body: some View {
         VStack {
+            HStack(spacing: 0) {
+                Spacer()
+                CloseButton {
+                    viewModel.dispatch(intent: .close)
+                }
+                .padding(UIScheme.dimension.largeSpacing)
+            }
             Spacer()
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                AnimatedDots().padding(.bottom, UIScheme.dimension.middleSpacing)
+                DotsAnimationViewController()
+                    .frame(height: DotsAnimationParams.amplitude, alignment: .center)
+                    .padding(.bottom, UIScheme.dimension.middleSpacing)
                 Text(L.title_loading_screen.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
                     .foregroundColor(UIScheme.color.text)
@@ -25,51 +58,80 @@ struct LoadingScreen: View {
             FooterView().padding(.bottom, UIScheme.dimension.largeSpacing)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, UIScheme.dimension.largeSpacing)
     }
 }
 
-struct AnimatedDots: View {
-    let dotSize: CGFloat = 12
-    var dotInterval: CGFloat { dotSize}
-    let numberOfDots = 3
-    var amplitude: CGFloat { -dotSize * 1.5 }
+final class DotsAnimationViewController: UIViewController {
 
+    private let stackView: UIStackView = {
+        $0.distribution = .fill
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.spacing = DotsAnimationParams.dotSpacing
+        return $0
+    }(UIStackView())
 
-    let delay: TimeInterval = 0.15
-    let timerDuration: TimeInterval = 0.75
-    let animationDuration: TimeInterval = 0.55
+    private let circleA = UIView()
+    private let circleB = UIView()
+    private let circleC = UIView()
+    private lazy var circles = [circleA, circleB, circleC]
 
-    @State var isAnimation = false
-    @State var timer: Timer?
+    func animate() {
+        let jumpDuration: Double = DotsAnimationParams.jumpDuration
+        let delayDuration: Double = DotsAnimationParams.delayDuration
+        let totalDuration: Double = delayDuration + jumpDuration*2
 
-    var body: some View {
-        HStack(alignment: .center, spacing: dotInterval){
-            ForEach(0 ..< numberOfDots, id:\.self) { i in
-                dot
-                    .offset(y: isAnimation ? amplitude : 0)
-                    .animation(animation.delay(Double(i) * delay), value: isAnimation)
-            }
-        }.onAppear {
-            timer = Timer.scheduledTimer(withTimeInterval: timerDuration, repeats: true) { timer in
-                isAnimation.toggle()
-            }
+        let jumpRelativeDuration: Double = jumpDuration / totalDuration
+        let jumpRelativeTime: Double = delayDuration / totalDuration
+        let fallRelativeTime: Double = (delayDuration + jumpDuration) / totalDuration
+
+        for (index, circle) in circles.enumerated() {
+            let delay = jumpDuration*2 * TimeInterval(index) / TimeInterval(circles.count)
+            UIView.animateKeyframes(withDuration: totalDuration, delay: delay, options: [.repeat, .calculationModeLinear], animations: {
+                UIView.addKeyframe(withRelativeStartTime: jumpRelativeTime, relativeDuration: jumpRelativeDuration) {
+                    circle.frame.origin.y -= DotsAnimationParams.amplitude / 2
+                }
+                UIView.addKeyframe(withRelativeStartTime: fallRelativeTime, relativeDuration: jumpRelativeDuration) {
+                    circle.frame.origin.y += DotsAnimationParams.amplitude / 2
+                }
+            })
         }
     }
 
-    var animation: Animation {
-        animation(withDuration: animationDuration)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .clear
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        circles.forEach {
+            $0.layer.cornerRadius =  DotsAnimationParams.dotSize/2
+            $0.layer.masksToBounds = true
+            $0.backgroundColor = {
+                if let cgColor = UIScheme.color.brandColor.cgColor {
+                    return UIColor(cgColor: cgColor)
+                }
+                return .white
+            }()
+            stackView.addArrangedSubview($0)
+            $0.widthAnchor.constraint(equalToConstant: DotsAnimationParams.dotSize).isActive = true
+            $0.heightAnchor.constraint(equalTo: $0.widthAnchor).isActive = true
+        }
     }
 
-    func animation(withDuration duration: CGFloat) -> Animation {
-        Animation.timingCurve(0.3, 0.3, 0.3, 1, duration: duration)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animate()
+    }
+}
+
+extension DotsAnimationViewController: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> DotsAnimationViewController {
+        DotsAnimationViewController()
     }
 
-    var dot: some View  {
-        Circle()
-            .fill(UIScheme.color.brandColor)
-            .frame(width: dotSize, height: dotSize, alignment: .center)
-    }
+    func updateUIViewController(_ uiViewController: DotsAnimationViewController, context: Context) {}
 }
 
 #if DEBUG
@@ -77,7 +139,7 @@ struct AnimatedDots: View {
 struct LoadingScreen_Previews: PreviewProvider {
 
     static var previews: some View {
-        LoadingScreen()
+        LoadingScreen(viewModel: LoadingScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
     }
 }
 

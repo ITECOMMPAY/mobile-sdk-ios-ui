@@ -21,4 +21,5 @@ enum PaymentMethodsIntent {
     case delete(SavedAccount)
     case select(PaymentMethodsListEntity)
     case payWithApplePay(customerFields: [FieldValue])
+    case store(FormData)
 }

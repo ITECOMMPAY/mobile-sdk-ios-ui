@@ -22,10 +22,13 @@ public protocol Link {
 class TranslationsManager {
     @Injected var resourceManager: StringResourceManager?
 
-    static let shared = TranslationsManager()
-
-    private init() {}
-
+    static var shared: TranslationsManager {
+        guard let translationsManager = serviceLocator.getService(ofType: self) else {
+            return TranslationsManager()
+        }
+        return translationsManager
+    }
+  
     func stringValue(for key: String) -> String? {
         if let string = resourceManager?.getStringByKey(key: key) {
             return string

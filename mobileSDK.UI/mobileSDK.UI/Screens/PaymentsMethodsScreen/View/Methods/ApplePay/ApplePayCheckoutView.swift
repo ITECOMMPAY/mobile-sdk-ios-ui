@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+
 struct ApplePayCheckoutView: View {
+    @Binding var formValues: FormData
     let paymentOptions: PaymentOptions
     let paymentMethod: PaymentMethod
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
     @State private var isCustomerFieldsValid: Bool = true
-    @State private var customerFieldValues: [FieldValue] = []
 
     private var payButtonIsEnabled: Bool {
         isCustomerFieldsValid
@@ -25,18 +26,26 @@ struct ApplePayCheckoutView: View {
             if let visibleCustomerFields = paymentMethod.visibleCustomerFields {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: customerFieldValues) { fieldsValues, isValid in
-                    customerFieldValues = fieldsValues
+                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
+                    formValues.customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
                 }
-
             }
-            ApplePayButton()
-                .disabled(!payButtonIsEnabled)
+            ApplePayButton {
+                if payButtonIsEnabled {
+                    payAction(.payWithApplePay(customerFields: formValues.customerFieldValues))
+                } else {
+                    triggerValidation()
+                }
+            } 
         }
         .padding(.top, UIScheme.dimension.formSmallSpacing)
         .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
         .padding(.horizontal, UIScheme.dimension.middleSpacing)
+    }
+
+    private func triggerValidation() {
+        NotificationCenter.default.post(name: NSNotification.Name( ValidationTriggerNotification) , object: nil)
     }
 }
 
@@ -44,7 +53,7 @@ struct ApplePayCheckoutView: View {
 
 struct ApplePayCheckoutView_Previews: PreviewProvider {
     static var previews: some View {
-        ApplePayCheckoutView(paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
+        ApplePayCheckoutView(formValues: .constant(FormData()), paymentOptions: MockPaymentOptions(), paymentMethod: MockPaymentMethod())
     }
 }
 

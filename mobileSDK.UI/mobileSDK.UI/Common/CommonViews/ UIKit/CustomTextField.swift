@@ -16,7 +16,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     let onCommit: () -> Void
     let keyboardType: UIKeyboardType
     let forceUppercased: Bool
-    let formatter: Formatter
+    let formatter: CustomFormatter
     let maxLength: Int?
     let isAllowedCharacter: (Character) -> Bool
 
@@ -39,6 +39,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
                         Spacer()
                     }
                     .padding(placeholderPaddings)
+                }.onTapGesture {
+                    isFocused = true
                 }
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
             }
@@ -61,14 +63,15 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 Text(hint)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(valid ? .clear : UIScheme.color.textFieldErrorBorderColor)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
-
     }
 
     @ViewBuilder
     var textField: some View {
         UIKitTextField(config: .init()
+            .focused($isFocused)
             .isSecureTextEntry(isSecure)
             .keyboardType(keyboardType)
             .autocapitalizationType(forceUppercased ? .allCharacters : nil)
@@ -104,6 +107,10 @@ struct CustomTextField<AccessoryViewType: View>: View {
     }
 
     private func shouldChangeCharacters(uiTextField: BaseUITextField, range: NSRange, replacementString: String) -> Bool {
+        if replacementString.isEmpty {
+            return true
+        }
+
         guard replacementString.filter(isAllowedCharacter) == replacementString
         else {
             return false
@@ -115,9 +122,9 @@ struct CustomTextField<AccessoryViewType: View>: View {
               let rangeOfTextToReplace = Range(range, in: textFieldText) else {
             return false
         }
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + replacementString.count
-        return count <= maxLength
+        let previewString = textFieldText.replacingCharacters(in: rangeOfTextToReplace,
+                                                              with: replacementString)
+        return formatter.transformation.rawString(from: previewString).count <= maxLength
     }
 
     // MARK: Private properties
@@ -127,6 +134,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
     }
 
     private let placeholder: String
+    @State
+    private var isFocused = false
     @State
     private var borderColor = UIScheme.color.textFieldUnfocusedBorderColor
     @State
@@ -180,7 +189,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 secure: Bool = false,
                 maxLength: Int? = nil,
                 isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
-                formatter: Formatter = EmptyFormatter(),
+                transformation: CustomFormatterTransformation = EmptyTransformation(),
                 required: Bool = false,
                 hint: String,
                 valid: Bool,
@@ -198,7 +207,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.isSecure = secure
         self.keyboardType = keyboardType
         self.forceUppercased = forceUppercased
-        self.formatter = formatter
+        self.formatter = CustomFormatter(transformation: transformation)
         self.maxLength = maxLength
         self.isAllowedCharacter = isAllowedCharacter
     }

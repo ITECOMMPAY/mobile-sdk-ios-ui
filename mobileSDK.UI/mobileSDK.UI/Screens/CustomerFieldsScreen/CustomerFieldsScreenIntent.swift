@@ -11,4 +11,5 @@ enum CustomerFieldsScreenIntent {
     case close
     case back
     case sendCustomerFields([FieldValue])
+    case store([FieldValue])
 }

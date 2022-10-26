@@ -32,19 +32,23 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     }
 
     func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+        #if targetEnvironment(simulator) && DEBUG
+        let request = ApplePaySaleRequest(token: "qqweqweqweqweqwe")
+        #else
         let request = ApplePaySaleRequest(token: token)
+        #endif
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
         return request
     }
 
-    func createApplePaySaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
+    func createAPSSaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
         return ApsSaleRequest(methodCode: methodCode)
     }
 
     func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
-        return PaymentRestoreRequest(methodCode: methodCode)
+        return PaymentRestoreRequest()
     }
 }
 

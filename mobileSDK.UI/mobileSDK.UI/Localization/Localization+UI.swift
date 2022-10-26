@@ -15,7 +15,7 @@ extension TranslationWithLink {
             for linkStruct in messageLinks ?? [] {
                 if let text = linkStruct.messageLink, let link = linkStruct.url {
                     let range = result.mutableString.range(of: text)
-                    result.setAttributes([.link: link] + linksAttributes, range: range)
+                    result.setAttributes(merge([.link: link], linksAttributes), range: range)
                 }
             }
             return result
@@ -46,9 +46,8 @@ extension TranslationWithLink {
     }
 }
 
-infix operator +
-func +(first: [NSAttributedString.Key: Any], Second: [NSAttributedString.Key: Any]) -> [NSAttributedString.Key: Any] {
-    return first.merging(Second) { _, secondValue in
+private func merge(_ first: [NSAttributedString.Key: Any], _ second: [NSAttributedString.Key: Any]) -> [NSAttributedString.Key: Any] {
+    return first.merging(second) { _, secondValue in
         return secondValue
     }
 }

@@ -54,6 +54,9 @@ extension L {
         .complete_field_payment_vat_operation_residency: "VAT Residency",
         // MARK: - Footer
         .privacy_policy: "Privacy policy",
-        .cookie_policy: "Cookie policy"
+        .cookie_policy: "Cookie policy",
+        // MARK: - Dialog
+        .button_ok: "OK",
+        .button_cancel: "Cancel",
     ]
 }

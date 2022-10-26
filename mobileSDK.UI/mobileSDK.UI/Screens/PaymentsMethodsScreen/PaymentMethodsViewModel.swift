@@ -22,7 +22,14 @@ class PaymentMethodsScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewMod
 }
 
 extension RootState: PaymentMethodsScreenState {
-    var selectedPaymentMethod: PaymentMethodsListEntity? {
+    var selectedMethodValues: FormData? {
+        guard let selectedMethodsListEntity = selectedMethodsListEntity else {
+            return nil
+        }
+        return savedValues[selectedMethodsListEntity]
+    }
+
+    var selectedMethodsListEntity: PaymentMethodsListEntity? {
         currentMethod
     }
 
@@ -30,8 +37,17 @@ extension RootState: PaymentMethodsScreenState {
         guard let savedAccounts = savedAccounts, let availablePaymentMethods = availablePaymentMethods else {
             return []
         }
-        return savedAccounts.map {  PaymentMethodsListEntity(entityType: .savedAccount($0))  }
-        + availablePaymentMethods.map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
+        if let applePay = availablePaymentMethods.first(where: { $0.methodType == .applePay }) {
+            return [PaymentMethodsListEntity(entityType: .paymentMethod(applePay))]
+            + savedAccounts
+                .map { PaymentMethodsListEntity(entityType: .savedAccount($0)) }
+            + availablePaymentMethods
+                .filter({ $0.methodType != .applePay })
+                .map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
+        } else {
+            return savedAccounts.map { PaymentMethodsListEntity(entityType: .savedAccount($0)) }
+            + availablePaymentMethods.map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
+        }
     }
 
     var cardPaymentMethod: PaymentMethod? {

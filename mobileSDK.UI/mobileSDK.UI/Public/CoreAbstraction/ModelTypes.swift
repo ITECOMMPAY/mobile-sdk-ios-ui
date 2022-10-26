@@ -45,7 +45,6 @@ public protocol CustomerField {
     var placeholder: String? { get }
     var validatorName: String? { get }
     var validatonMethod: Validator<String>? { get }
-    var fieldType: FieldType { get }
     var fieldServerType: FieldServerType { get }
     var errorMessage: String? { get }
     var errorMessageKey: String { get }
@@ -148,6 +147,6 @@ public protocol PaymentOptions {
 }
 
 public protocol AdditionalField {
-    var type: FieldType { get }
+    var name: String { get }
     var value: String { get }
 }

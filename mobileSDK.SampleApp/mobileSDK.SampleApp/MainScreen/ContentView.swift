@@ -72,6 +72,7 @@ struct ContentView: View {
                 }
             }
         }
+        .navigationViewStyle(.stack)
     }
 
     var savedWalletsVisibility: some View {
@@ -87,10 +88,9 @@ struct ContentView: View {
             HStack {
                 Text("Project ID").foregroundColor(Color.secondary)
                 Spacer()
-                TextField(
-                    "Required",
-                    value: $paymentData.projectId,
-                    formatter: NumberFormatter()
+                IntField(
+                    label: "Required",
+                    integer: $paymentData.projectId
                 ).multilineTextAlignment(.trailing)
             }
             HStack {
@@ -113,10 +113,9 @@ struct ContentView: View {
             HStack {
                 Text("Payment Amount").foregroundColor(Color.secondary)
                 Spacer()
-                TextField(
-                    "Required",
-                    value: $paymentData.paymentAmount,
-                    formatter: NumberFormatter()
+                IntField(
+                    label: "Required",
+                    integer: $paymentData.paymentAmount
                 ).multilineTextAlignment(.trailing)
             }
             HStack {
@@ -157,14 +156,14 @@ struct ContentView: View {
                 Form {
                     ForEach(AdditionalFieldType.allCases) { fieldType in
                         HStack {
-                            Text(fieldType.rawValue).foregroundColor(Color.secondary)
+                            Text(fieldType.description).foregroundColor(Color.secondary)
                             Spacer()
                             TextField(
                                 "value",
                                 text: Binding<String>(get: {
                                     additionalFieldsValues[fieldType] ?? ""
                                 }, set: { string in
-                                    additionalFieldsValues[fieldType] = string
+                                    additionalFieldsValues[fieldType] = string.isEmpty ? nil : string
                                 })
                             ).multilineTextAlignment(.trailing)
                         }
@@ -180,8 +179,16 @@ struct ContentView: View {
             Picker("Force payment method", selection: $paymentData.forcePaymentMethod) {
                 ForEach(ForcePaymentMethods.allCases) { method in
                     Text(method.rawValue)
-                }.navigationTitle("Force payment methods")
-            }.navigationTitle("Back")
+                }
+            }
+            if paymentData.forcePaymentMethod == .customValue {
+                HStack {
+                    Text("Custom Value").foregroundColor(Color.secondary)
+                    Spacer()
+                    TextField("Enter here", text: $paymentData.forcePaymentMethodCustomValue)
+                        .multilineTextAlignment(.trailing)
+                }
+            }
         }
     }
 
@@ -267,8 +274,8 @@ struct ContentView: View {
             Picker("Mock Mode Setting", selection: $paymentData.mockModeType) {
                 ForEach(MockModeType.allCases) { type in
                     Text(String(describing: type))
-                }.navigationTitle("Mock Mode Setting Options")
-            }.navigationTitle("Back")
+                }
+            }
         }
     }
 
@@ -285,14 +292,10 @@ struct ContentView: View {
     }
 
     var paymentOptions: PaymentOptions? {
-        guard let projectId = paymentData.projectId
-        else {
-            return nil
-        }
         let paymentOptions = PaymentOptions(
-            projectID: projectId,
+            projectID: Int32(paymentData.projectId),
             paymentID: paymentData.paymentId,
-            paymentAmount: paymentData.paymentAmount,
+            paymentAmount: Int64(paymentData.paymentAmount),
             paymentCurrency: paymentData.paymentCurrency,
             paymentDescription: paymentData.paymentDescription,
             customerID: paymentData.customerId,
@@ -315,7 +318,12 @@ struct ContentView: View {
             paymentOptions.brandColorOverride = brandColorOverride
         }
 
-        if paymentData.forcePaymentMethod != .none {
+        switch paymentData.forcePaymentMethod {
+        case .none:
+            paymentOptions.paymentInfo.forcePaymentMethod = nil
+        case .customValue:
+            paymentOptions.paymentInfo.forcePaymentMethod = paymentData.forcePaymentMethodCustomValue
+        default:
             paymentOptions.paymentInfo.forcePaymentMethod = paymentData.forcePaymentMethod.rawValue
         }
 
@@ -362,6 +370,23 @@ extension Bundle {
     }
 }
 
+struct IntField: View {
+    let label: String
+    @Binding var integer: Int
+
+    var body: some View {
+        let numberProxy = Binding<String>(
+            get: { "\(integer)" },
+            set: {
+                if let value = Int($0) {
+                    self.integer = value
+                }
+            }
+        )
+
+        return TextField(label, text: numberProxy)
+    }
+}
 
 #if DEBUG
 

@@ -44,7 +44,6 @@ struct MockCustomerField: CustomerField {
     var placeholder: String? = "mockField placeholder"
     var validatorName: String? = "mockField validatorName"
     var validatonMethod: Validator<String>? = { _ in true }
-    var fieldType: FieldType = .unknown
     var errorMessage: String? = "mockField error"
     var errorMessageKey: String = "mockField error key"
 }
@@ -172,7 +171,8 @@ let stateMock = RootState(
     ],
     paymentOptions: MockPaymentOptions(),
     finalPaymentState: FinalPaymentState.Success,
-    acsPageState: AcsPageState(acsPage: MockAcsPage(), isCascading: false)
+    acsPageState: AcsPageState(acsPage: MockAcsPage(), isCascading: false),
+    savedValues: [:]
 )
 
 #endif

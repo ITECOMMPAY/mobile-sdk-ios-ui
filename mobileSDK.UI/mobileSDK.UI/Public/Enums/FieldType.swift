@@ -7,48 +7,6 @@
 
 import Foundation
 
-public enum FieldType: String, CaseIterable {
-    case unknown
-    case customerEmail
-    case customerZip
-    case customerPostCode
-    case customerAddress
-    case customerStreetAddress
-    case customerCountry
-    case customerFirstName
-    case customerMiddleName
-    case customerLastName
-    case customerPhone
-    case customerState
-    case customerCity
-    case customerDayOfBirth
-    case customerBirthPlace
-    case customerSsn
-    case customerDomain
-    case customerMir
-    case customerAccountId
-    case customerLanguage
-    case customerScreenRes
-    case customerSave
-    case billingPostal
-    case billingCountry
-    case billingRegion
-    case billingCity
-    case billingAddress
-    case identifyDocNumber
-    case identifyDocType
-    case identifyDocIssueDate
-    case identifyDocIssueBy
-    case custom
-    case dokuCustomerEmail
-    case dokuCustomerFirstName
-    case qiwiAccountNumber
-    case netellerAccountNumber
-    case netellerSecurityCode
-    case webmoneyAccountType
-    case webmoneyAccountNumber
-}
-
 public enum FieldServerType {
     case tel
     case password

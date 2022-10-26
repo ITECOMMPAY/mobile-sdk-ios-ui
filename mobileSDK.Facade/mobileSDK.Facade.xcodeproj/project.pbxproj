@@ -23,8 +23,10 @@
 /* Begin PBXBuildFile section */
 		117DD54429652DFFBFCCFF39 /* libPods-ecommpaySDK-Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 392689734B09620B5E2EE120 /* libPods-ecommpaySDK-Dev.a */; };
 		52E8D714350D65989B729E90 /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC11FD991DC24C20174896D /* libPods-ecommpaySDK.a */; };
-		8403057128B7B9A400DE38D3 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; };
-		8403057228B7B9A400DE38D3 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8403057128B7B9A400DE38D3 /* libmobileSDK.UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; };
+		8403057228B7B9A400DE38D3 /* libmobileSDK.UI.a in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		840704C928D8850600DBD249 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704C828D8850600DBD249 /* ContainerViewController.swift */; };
+		840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704C828D8850600DBD249 /* ContainerViewController.swift */; };
 		8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */; };
 		8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */; };
 		8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */; };
@@ -61,8 +63,8 @@
 		849C534C28BF62C800C1CF71 /* SDKInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BC285B0463002BBFE0 /* SDKInteractor.swift */; };
 		849C534D28BF62C800C1CF71 /* EcommpaySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C5285B0463002BBFE0 /* EcommpaySDK.swift */; };
 		849C534E28BF62C800C1CF71 /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */; };
-		849C535128BF62C800C1CF71 /* mobileSDK_UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; };
-		849C535428BF62C800C1CF71 /* mobileSDK_UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* mobileSDK_UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; };
+		849C535428BF62C800C1CF71 /* libmobileSDK.UI.a in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		84A35C4F2893B2A20037A604 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C4E2893B2A20037A604 /* FieldType.swift */; };
 		84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241672887D83C00259A50 /* ECMPConfigDev.swift */; };
 		84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
@@ -71,6 +73,12 @@
 		84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
 		84B241A8288A61B700259A50 /* PaymentMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A7288A61B700259A50 /* PaymentMethodType.swift */; };
 		84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13D12852086E008814EB /* mobileSDK_Facade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84C87CFB28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */; };
+		84C87CFC28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */; };
+		84C87CFF28CF1BFD00B684DE /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */; };
+		84C87D0028CF1BFD00B684DE /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */; };
+		84C87D0128CF1BFD00B684DE /* CommonSDKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF828CF1BFD00B684DE /* CommonSDKAssets.xcassets */; };
+		84C87D0228CF1BFD00B684DE /* CommonSDKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF828CF1BFD00B684DE /* CommonSDKAssets.xcassets */; };
 		84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */; };
 		84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */; };
 		84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEE285C88770009FD38 /* RecipientInfo.swift */; };
@@ -84,14 +92,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 84BC13E12852088F008814EB;
+			remoteGlobalIDString = 84C87C4B28CB45B900B684DE;
 			remoteInfo = mobileSDK.UI;
 		};
 		849C533128BF62C800C1CF71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 84BC13E12852088F008814EB;
+			remoteGlobalIDString = 84C87C4B28CB45B900B684DE;
 			remoteInfo = mobileSDK.UI;
 		};
 		84A0F16B28748493005F81DE /* PBXContainerItemProxy */ = {
@@ -117,7 +125,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 11;
 			files = (
-				8403057228B7B9A400DE38D3 /* mobileSDK_UI.framework in Embed Frameworks */,
+				8403057228B7B9A400DE38D3 /* libmobileSDK.UI.a in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,7 +136,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 11;
 			files = (
-				849C535428BF62C800C1CF71 /* mobileSDK_UI.framework in Embed Frameworks */,
+				849C535428BF62C800C1CF71 /* libmobileSDK.UI.a in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +147,7 @@
 		119C15A21DAE55532E011759 /* Pods-ecommpaySDK-Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK-Dev.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK-Dev/Pods-ecommpaySDK-Dev.release.xcconfig"; sourceTree = "<group>"; };
 		392689734B09620B5E2EE120 /* libPods-ecommpaySDK-Dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK-Dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		408C395B26A4DF37C8BBB1D3 /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
+		840704C828D8850600DBD249 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
 		8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInteractorWrapper.swift; sourceTree = "<group>"; };
 		8421F8E8288EBFF300B6EED2 /* PayRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayRequestFactory.swift; sourceTree = "<group>"; };
@@ -162,6 +171,9 @@
 		84BC13D12852086E008814EB /* mobileSDK_Facade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_Facade.h; sourceTree = "<group>"; };
 		84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.UI.xcodeproj; path = ../mobileSDK.UI/mobileSDK.UI.xcodeproj; sourceTree = "<group>"; };
 		84BC4F63285843C800CD7EA5 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardTypesLogo.xcassets; sourceTree = "<group>"; };
+		84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = APSIcons.xcassets; sourceTree = "<group>"; };
+		84C87CF828CF1BFD00B684DE /* CommonSDKAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CommonSDKAssets.xcassets; sourceTree = "<group>"; };
 		84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalField.swift; sourceTree = "<group>"; };
 		84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdditionalFieldEnums.swift; sourceTree = "<group>"; };
 		84D87CEE285C88770009FD38 /* RecipientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientInfo.swift; sourceTree = "<group>"; };
@@ -178,7 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849C535128BF62C800C1CF71 /* mobileSDK_UI.framework in Frameworks */,
+				849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */,
 				52E8D714350D65989B729E90 /* libPods-ecommpaySDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,7 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8403057128B7B9A400DE38D3 /* mobileSDK_UI.framework in Frameworks */,
+				8403057128B7B9A400DE38D3 /* libmobileSDK.UI.a in Frameworks */,
 				117DD54429652DFFBFCCFF39 /* libPods-ecommpaySDK-Dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +240,7 @@
 				84B241652887D83C00259A50 /* Config */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
+				840704C828D8850600DBD249 /* ContainerViewController.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -318,6 +331,7 @@
 		84BC13D02852086E008814EB /* mobileSDK.Facade */ = {
 			isa = PBXGroup;
 			children = (
+				84C87CF428CF1BFD00B684DE /* Assets */,
 				845507B6285B0463002BBFE0 /* Facade */,
 				84BC13D12852086E008814EB /* mobileSDK_Facade.h */,
 			);
@@ -327,10 +341,28 @@
 		84BC13ED285208A3008814EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84BC13F1285208A3008814EB /* mobileSDK_UI.framework */,
-				84A0F16C28748493005F81DE /* UIPreview.app */,
+				84A0F16C28748493005F81DE /* mobileSDK.UI.app */,
+				84BC13F1285208A3008814EB /* libmobileSDK.UI.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		84C87CF428CF1BFD00B684DE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				84C87D1028CF1BFD00B684DE /* Ecommpay */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		84C87D1028CF1BFD00B684DE /* Ecommpay */ = {
+			isa = PBXGroup;
+			children = (
+				84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */,
+				84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */,
+				84C87CF828CF1BFD00B684DE /* CommonSDKAssets.xcassets */,
+			);
+			path = Ecommpay;
 			sourceTree = "<group>";
 		};
 		84EFA1602877086C0043C360 /* CoreAdaptersAndConverters */ = {
@@ -473,17 +505,17 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		84A0F16C28748493005F81DE /* UIPreview.app */ = {
+		84A0F16C28748493005F81DE /* mobileSDK.UI.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = UIPreview.app;
+			path = mobileSDK.UI.app;
 			remoteRef = 84A0F16B28748493005F81DE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		84BC13F1285208A3008814EB /* mobileSDK_UI.framework */ = {
+		84BC13F1285208A3008814EB /* libmobileSDK.UI.a */ = {
 			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = mobileSDK_UI.framework;
+			fileType = archive.ar;
+			path = libmobileSDK.UI.a;
 			remoteRef = 84BC13F0285208A3008814EB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -494,6 +526,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C87D0228CF1BFD00B684DE /* CommonSDKAssets.xcassets in Resources */,
+				84C87CFC28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */,
+				84C87D0028CF1BFD00B684DE /* APSIcons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +536,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C87D0128CF1BFD00B684DE /* CommonSDKAssets.xcassets in Resources */,
+				84C87CFB28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */,
+				84C87CFF28CF1BFD00B684DE /* APSIcons.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +604,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#remove existed release build folder or archive\nrm -rf ecommpaySDK.xcframework\nrm -rf ecommpaySDK.xcframework.zip\n\nfunction CheckODT {\n    resultOfGrep=$(grep -r \"ODT\\|1D3\" --ignore-case)\n    if [ ! -z \"$resultOfGrep\" ]\n    then\n      echo \"Found referenses to 1D3 $(pwd) directory:\\n$resultOfGrep\"\n      exit 1\n    fi\n}\n\nxcodebuild archive -scheme ecommpaySDK -destination=\"iOS\" -archivePath /tmp/xcf/ios.xcarchive -derivedDataPath /tmp/iphoneos -sdk iphoneos SKIP_INSTALL=NO \n\ncd /tmp/xcf/ios.xcarchive/Products/Library/Frameworks/ecommpaySDK.xcframework\nCheckEcompay\ncd -\n\nxcodebuild archive -scheme ecommpaySDK -destination=\"iOS Simulator\" -archivePath /tmp/xcf/iossimulator.xcarchive -derivedDataPath /tmp/iphoneos -sdk iphonesimulator SKIP_INSTALL=NO EXCLUDED_ACRCH=arm64 \n\ncd /tmp/xcf/ios.xcarchive/Products/Library/Frameworks/ecommpaySDK.xcframework\nCheckEcompay\ncd -\n\nxcodebuild -create-xcframework -framework /tmp/xcf/ios.xcarchive/Products/Library/Frameworks/ecommpaySDK.framework -framework /tmp/xcf/iossimulator.xcarchive/Products/Library/Frameworks/ecommpaySDK.framework -output ecommpaySDK.xcframework\n\ncd ecommpaySDK.xcframework\nCheckEcompay\ncd -\n\nzip -r ecommpaySDK.xcframework.zip ecommpaySDK.xcframework\n";
+			shellScript = "./buildSDK.sh ecommpaySDK\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -585,6 +623,7 @@
 				849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */,
 				849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */,
 				849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */,
+				840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */,
 				849C534328BF62C800C1CF71 /* AdditionalFieldEnums.swift in Sources */,
 				849C534428BF62C800C1CF71 /* InitDelegateProxy.swift in Sources */,
@@ -615,6 +654,7 @@
 				8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */,
 				84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */,
 				84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */,
+				840704C928D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */,
 				84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */,
 				84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */,

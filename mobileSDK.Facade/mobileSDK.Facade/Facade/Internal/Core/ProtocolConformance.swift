@@ -73,10 +73,6 @@ extension MsdkCore.CustomerField: mobileSDK_UI.CustomerField {
             validator.isValid(value: $0)
         }
     }
-
-    public var fieldType: mobileSDK_UI.FieldType {
-        return .createFrom(code: self.type)
-    }
 }
 
 extension MsdkCore.ClarificationField: mobileSDK_UI.ClarificationField {
@@ -160,4 +156,13 @@ extension MsdkCore.Link: mobileSDK_UI.Link {
     }
 }
 
-extension AdditionalField: mobileSDK_UI.AdditionalField {}
+extension AdditionalField: mobileSDK_UI.AdditionalField { 
+    public var name: String {
+        switch self.type {
+        case .custom:
+            return serverName
+        default:
+            return self.type.description
+        }
+    }
+}

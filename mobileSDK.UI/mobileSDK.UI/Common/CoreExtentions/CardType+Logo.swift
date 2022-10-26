@@ -11,4 +11,8 @@ extension CardType {
     var localLogo: Image? {
         Image.getImage(name: "card_\(rawValue)")
     }
+
+    var localSavedCardLogo: Image? {
+        Image.getImage(name: "card_\(rawValue)_saved") ?? localLogo
+    }
 }

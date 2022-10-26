@@ -16,7 +16,8 @@ struct InfoButton: View {
             onTap()
         } label: {
             IR.infoButton.image
-        }.contentShape(Rectangle())
+                .contentShape(Rectangle())
+        }
     }
 }
 

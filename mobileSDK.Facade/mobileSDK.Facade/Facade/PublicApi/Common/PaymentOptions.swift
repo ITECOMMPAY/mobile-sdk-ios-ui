@@ -125,7 +125,7 @@ public class PaymentOptions: NSObject {
                                                         paymentId: paymentID,
                                                         paymentAmount: paymentAmount,
                                                         paymentCurrency: paymentCurrency)
-        self.paymentInfo.paymentDescription = paymentDescription
+        self.paymentInfo.paymentDescription = (paymentDescription?.isEmpty ?? true) ? nil : paymentDescription
         self.paymentInfo.customerId = customerID
         self.paymentInfo.regionCode = regionCode
         super.init()

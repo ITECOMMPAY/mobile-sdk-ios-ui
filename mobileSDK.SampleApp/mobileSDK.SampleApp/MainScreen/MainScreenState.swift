@@ -12,14 +12,15 @@ import SwiftUI
 struct PaymentData {
     var brandColor: Color?
     var image: UIImage?
-    var projectId: Int32?
+    var projectId: Int
     var paymentId: String
-    var paymentAmount: Int64
+    var paymentAmount: Int
     var paymentCurrency: String
     var customerId: String
     var paymentDescription: String
     var languageCode: String
     var forcePaymentMethod: ForcePaymentMethods
+    var forcePaymentMethodCustomValue: String = ""
     var hideSavedWallets: Bool
     var secretKey: String
     var apiHost: String
@@ -35,23 +36,24 @@ struct PaymentData {
 }
 
 enum ForcePaymentMethods: String, CaseIterable, Identifiable {
-    case none = "none"
-    case CARD = "card"
-    case NETELLER_WALLET = "neteller-wallet"
-    case QIWI = "qiwi"
-    case SKRILL_WALLET = "skrill"
-    case DOKU = "doku"
-    case MCASH = "mcash"
-    case BOOST = "boost"
-    case BIGC = "bigccash"
-    case ALIPAY = "alipay"
-    case QIWI_KZ = "qiwi-kz"
-    case ATF24 = "atf24"
-    case WEBMONEY_LIGHT = "webmoney-light"
-    case WEBMONEY_CLASSIC = "webmoney"
-    case GOOGLE_PAY = "google_pay_host"
-    case APPLE_PAY = "apple_pay_core"
-    case PAY_PALL = " paypal-wallet"
+    case customValue
+    case none
+    case card
+    case neteller_wallet = "neteller-wallet"
+    case qiwi
+    case skrill
+    case doku
+    case mcash
+    case boost
+    case bigccash
+    case alipay
+    case qiwi_kz = "qiwi-kz"
+    case atf24
+    case webmoney_light = "webmoney-light"
+    case webmoney
+    case google_pay_host
+    case apple_pay_core
+    case paypal_wallet = "paypal-wallet"
     var id: Self { self }
 }
 

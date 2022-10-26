@@ -18,9 +18,9 @@ struct DateCustomerTextField: View {
         BaseCustomerTextField(value: value,
                               customerField: customerField,
                               keyboardType: .numberPad,
-                              formatter: InputMaskFormatter(with: "##-##-####", unmaskingEnabled: false),
+                              transformation: InputMaskTransformation(with: "##-##-####", unmaskingEnabled: false),
                               isAllowedCharacter: { $0.isASCII && $0.isNumber },
-                              maxLength: 10,
+                              maxLength: 8,
                               onValueChanged: onValueChanged)
     }
 }
@@ -40,7 +40,6 @@ struct DateCustomerTextField_Previews: PreviewProvider {
         var placeholder: String? = "mockField placeholder"
         var validatorName: String? = "mockField validatorName"
         var validatonMethod: Validator<String>? = { _ in false }
-        var fieldType: FieldType = .unknown
         var errorMessage: String? = "mockField error"
         var errorMessageKey: String = "mockField error key"
     }

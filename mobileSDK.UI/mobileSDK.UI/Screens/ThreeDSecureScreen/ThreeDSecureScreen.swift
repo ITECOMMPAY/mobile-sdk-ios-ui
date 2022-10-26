@@ -10,20 +10,8 @@ import WebKit
 
 struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
-    var delegateProxy: AcsPageWebViewDelegateProxy?
 
     @State var isLoading = false
-
-    init(viewModel: VM) {
-        self.viewModel = viewModel
-        if let acsPage = self.viewModel.state.acsPageState?.acsPage {
-            self.delegateProxy = AcsPageWebViewDelegateProxy(acsPage: acsPage, onLoadingStateChanges: { [self] isLoading in
-                self.isLoading = isLoading
-            }, onThreeDSecureHandled: {
-                viewModel.dispatch(intent: .threeDSecureHandled)
-            })
-        }
-    }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -32,24 +20,31 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
                 CloseButton {
                     viewModel.dispatch(intent: .close)
                 }
-                .padding(UIScheme.dimension.largeSpacing)
-            }
-            WebView { webView in
-                webView.navigationDelegate = delegateProxy
-                if let acsPage = viewModel.state.acsPageState?.acsPage,
-                   let html = acsPage.content,
-                   let acsUrl = acsPage.acsUrl {
-                    isLoading = true
-                    webView.loadHTMLString(html, baseURL: URL(string: acsUrl))
+            }.padding(UIScheme.dimension.largeSpacing)
+            if let acsPage = self.viewModel.state.acsPageState?.acsPage {
+                WebView { webView in
+                    if let acsPage = viewModel.state.acsPageState?.acsPage,
+                       let html = acsPage.content,
+                       let acsUrl = acsPage.acsUrl {
+                        webView.loadHTMLString(html, baseURL: URL(string: acsUrl))
+                    }
+                } didFinish: { finalUrl in
+                    if let finalUrl = finalUrl,
+                       let termUrl = acsPage.termUrl,
+                       finalUrl == termUrl {
+                        viewModel.dispatch(intent: .threeDSecureHandled)
+                    }
                 }
+                .opacity(isLoading ? 0 : 1)
+                .overlay(
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
+                        .opacity(isLoading ? 1 : 0)
+                )
+                .frame(maxWidth: .infinity)
+            } else {
+                Spacer()
             }
-            .opacity(isLoading ? 0 : 1)
-            .overlay(
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
-                    .opacity(isLoading ? 1 : 0)
-            )
-            .frame(maxWidth: .infinity)
         }
     }
 
@@ -58,41 +53,6 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
             return nil
         }
         return URL(string: urlString)
-    }
-}
-
-class AcsPageWebViewDelegateProxy: NSObject, WKNavigationDelegate {
-    let onloadingStateChanges: (_ isLoading: Bool) -> Void
-    let acsPage: AcsPage
-    let onThreeDSecureHandled: () -> Void
-
-    init(acsPage: AcsPage,
-         onLoadingStateChanges: @escaping (_ isLoading: Bool) -> Void,
-         onThreeDSecureHandled: @escaping () -> Void) {
-        self.onloadingStateChanges = onLoadingStateChanges
-        self.acsPage = acsPage
-        self.onThreeDSecureHandled = onThreeDSecureHandled
-    }
-
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        onloadingStateChanges(false)
-    }
-
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
-        if let url = navigationAction.request.url {
-            if url.absoluteString == acsPage.termUrl {
-                onThreeDSecureHandled()
-            }
-        }
-
-        decisionHandler(.allow)
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if (error as NSError).code == NSURLErrorCancelled {
-            return
-        }
-        onloadingStateChanges(false)
     }
 }
 
@@ -131,3 +91,4 @@ class ThreeDSecureScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel
 }
 
 extension RootState: ThreeDSecureScreenState {}
+
