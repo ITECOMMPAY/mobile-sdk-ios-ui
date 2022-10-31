@@ -45,9 +45,6 @@ enum AlertModel {
     case CloseWarning(confirmClose: Action?)
 }
 
-
-
-
 // MARK: - Computed properties
 extension RootState {
     var isVatIncluded: Bool {
@@ -125,9 +122,12 @@ enum FinalPaymentState {
     case Success
 }
 
-struct AcsPageState {
+struct AcsPageState: Equatable {
     var acsPage: AcsPage?
     var isCascading: Bool = false
+    static func == (lhs: AcsPageState, rhs: AcsPageState) -> Bool {
+        return lhs.isCascading == rhs.isCascading && lhs.acsPage?.acsUrl == rhs.acsPage?.acsUrl
+    }
 }
 
 struct ApsPageState {

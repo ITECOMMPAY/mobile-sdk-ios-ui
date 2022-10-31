@@ -5,6 +5,7 @@
 //  Created by Deniss Kaibagarovs on 02/08/2019.
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
+import Foundation
 
 @objc public enum AdditionalFieldType: Int, CaseIterable, CustomStringConvertible {
     @objc(customer_first_name)       case customer_first_name

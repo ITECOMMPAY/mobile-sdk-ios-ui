@@ -23,19 +23,20 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                     viewModel.dispatch(intent: .close)
                 }
             }.padding(UIScheme.dimension.largeSpacing)
-            WebView { webView in
+            Group {
                 if let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                    let url = URL(string: paymentUrlString) {
-                    webView.load(URLRequest(url: url))
-                    isLoading = true
-                }
-            }  didFinish: { currentUrl in
-                isLoading = false
-                if let currentUrl = currentUrl,
-                   let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
-                   !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck  {
-                    isStartedStatusCheck = true
-                    viewModel.dispatch(intent: .executePayment)
+                    WebView(task: .request(URLRequest(url: url))) { url in
+                        isLoading = false
+                        if let currentUrl = url,
+                           let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
+                           !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck  {
+                            isStartedStatusCheck = true
+                            viewModel.dispatch(intent: .executePayment)
+                        }
+                    }.equatable()
+                } else {
+                    Spacer()
                 }
             }
             .opacity(isLoading ? 0 : 1)

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ecommpaySDK
+import ecommpaySDK_Dev
 
 func getBrandName() -> String {
     return String(#file.split(separator: "/").last?.split(separator: ".").first ?? "")
@@ -25,7 +25,7 @@ let defaultPaymentData = PaymentData(
     image: nil,
     projectId: 185541,
     paymentId: getUniquePaymentID(),
-    paymentAmount: 123,
+    paymentAmount: 11001,
     paymentCurrency: "USD",
     customerId: "12",
     paymentDescription: "Test payment",

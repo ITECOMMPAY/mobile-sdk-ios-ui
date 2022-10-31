@@ -42,6 +42,15 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
                 }
                 .padding(UIScheme.dimension.largeSpacing)
             }
+            LoadingView()
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
+struct LoadingView: View {
+    public var body: some View {
+        VStack {
             Spacer()
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 DotsAnimationViewController()
@@ -61,7 +70,7 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
     }
 }
 
-final class DotsAnimationViewController: UIViewController {
+fileprivate final class DotsAnimationViewController: UIViewController {
 
     private let stackView: UIStackView = {
         $0.distribution = .fill

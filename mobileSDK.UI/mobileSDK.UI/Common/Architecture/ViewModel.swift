@@ -22,6 +22,8 @@ protocol ViewModel: ObservableObject {
     func dispatch(intent: UserIntent)
     /// property holds state
     var state: ViewState { get }
+    ///  state change publisher
+    var statePublisher: AnyPublisher<ViewState, Never> { get }
 }
 
 class ChildViewModel<ViewState, UserIntent, ParentViewModel: ViewModel>: ObservableObject, ViewModel {
@@ -36,6 +38,12 @@ class ChildViewModel<ViewState, UserIntent, ParentViewModel: ViewModel>: Observa
             assertionFailure("state mapping not implemented")
             abort()
         }
+    }
+
+    var statePublisher: AnyPublisher<ViewState, Never> {
+        return parentViewModel.statePublisher.map { parentState in
+            try! self.mapState(from: parentState)
+        }.eraseToAnyPublisher()
     }
 
     // MARK: private

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ecommpaySDK
+import ecommpaySDK_Dev
 
 struct ContentView: View {
     @State var result: PaymentResult?

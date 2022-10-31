@@ -93,6 +93,15 @@ class RootViewModel: RootViewModelProtocol {
         willSet {
             objectWillChange.send()
         }
+        didSet {
+            statePublisherSubject.send(state)
+        }
+    }
+
+    var statePublisherSubject = PassthroughSubject<RootState, Never>()
+
+    var statePublisher: AnyPublisher<RootState, Never> {
+        statePublisherSubject.eraseToAnyPublisher()
     }
 
     func dispatch(intent: RootIntent) {
@@ -255,7 +264,7 @@ class RootViewModel: RootViewModelProtocol {
                         $0.clarificationFields = clarificationFields
                     }
                 case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
-                    debugPrint("\(type(of: self)) received onThreeDSecure")
+                    debugPrint("\(type(of: self)) received onThreeDSecure isCascading: \(isCascading)")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment

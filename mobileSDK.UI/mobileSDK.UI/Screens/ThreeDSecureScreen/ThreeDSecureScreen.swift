@@ -7,11 +7,13 @@
 
 import SwiftUI
 import WebKit
+import Combine
 
 struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
 
     @State var isLoading = false
+    @State var handledACS: AcsPageState?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,29 +23,44 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
                     viewModel.dispatch(intent: .close)
                 }
             }.padding(UIScheme.dimension.largeSpacing)
-            if let acsPage = self.viewModel.state.acsPageState?.acsPage {
-                WebView { webView in
-                    if let acsPage = viewModel.state.acsPageState?.acsPage,
-                       let html = acsPage.content,
-                       let acsUrl = acsPage.acsUrl {
-                        webView.loadHTMLString(html, baseURL: URL(string: acsUrl))
-                    }
-                } didFinish: { finalUrl in
-                    if let finalUrl = finalUrl,
-                       let termUrl = acsPage.termUrl,
-                       finalUrl == termUrl {
-                        viewModel.dispatch(intent: .threeDSecureHandled)
-                    }
+            webView
+            .opacity(isLoading ? 0 : 1)
+            .overlay(loader)
+            .frame(maxWidth: .infinity)
+        }
+        .onReceive(viewModel.statePublisher.map(\.acsPageState).removeDuplicates()) { newAcs in
+            if handledACS != newAcs {
+                isLoading = false
+            }
+        }
+    }
+
+    @ViewBuilder
+    var webView: some View {
+        if let acsPage = self.viewModel.state.acsPageState?.acsPage,
+           let html = acsPage.content,
+           let acsUrl = acsPage.acsUrl,
+           let baseURL = URL(string: acsUrl){
+            WebView(task: .loadHTMLString(html: html, baseURL: baseURL)) { url in
+                if let finalUrl = url,
+                   let termUrl = acsPage.termUrl,
+                   finalUrl == termUrl {
+                    isLoading = true
+                    handledACS = self.viewModel.state.acsPageState
+                    viewModel.dispatch(intent: .threeDSecureHandled)
                 }
-                .opacity(isLoading ? 0 : 1)
-                .overlay(
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
-                        .opacity(isLoading ? 1 : 0)
-                )
-                .frame(maxWidth: .infinity)
+            }.equatable()
+        } else {
+            Spacer()
+        }
+    }
+
+    var loader: some View {
+        Group {
+            if isLoading {
+                LoadingView()
             } else {
-                Spacer()
+                EmptyView()
             }
         }
     }
