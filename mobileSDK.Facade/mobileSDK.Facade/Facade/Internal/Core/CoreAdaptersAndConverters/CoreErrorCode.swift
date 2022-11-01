@@ -5,8 +5,8 @@
 //  Created by Ivan Krapivtsev on 07.07.2022.
 //
 
-import MsdkCore
-import mobileSDK_UI
+@_implementationOnly import MsdkCore
+@_implementationOnly import mobileSDK_UI
 
 extension CoreErrorCode {
     static func createFrom(code: MsdkCore.ErrorCode) -> CoreErrorCode {

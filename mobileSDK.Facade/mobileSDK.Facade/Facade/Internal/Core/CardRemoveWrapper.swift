@@ -5,8 +5,8 @@
 //  Created by Ivan Krapivtsev on 30.08.2022.
 //
 
-import mobileSDK_UI
-import MsdkCore
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
 import Combine
 
 struct CardRemoveInteractorWrapper {
@@ -39,7 +39,7 @@ extension CardRemoveInteractorWrapper: mobileSDK_UI.CardRemoveInteractor {
     }
 }
 
-fileprivate class CardRemoveDelegateProxy: BaseFutureDelegateProxy<CardRemoveDelegate, Bool, CoreError> {
+private class CardRemoveDelegateProxy: BaseFutureDelegateProxy<CardRemoveDelegate, Bool, CoreError> {
     override var delegate: CardRemoveDelegate { self }
 }
 

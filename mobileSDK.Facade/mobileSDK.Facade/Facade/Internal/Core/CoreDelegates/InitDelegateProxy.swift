@@ -5,9 +5,9 @@
 //  Created by Ivan Krapivtsev on 11.07.2022.
 //
 
-import MsdkCore
+@_implementationOnly import MsdkCore
 import Combine
-import mobileSDK_UI
+@_implementationOnly import mobileSDK_UI
 import SwiftUI
 
 class InitDelegateProxy: BasePassthroughDelegateProxy<InitDelegate, InitEvent, CoreError> {
@@ -17,7 +17,7 @@ class InitDelegateProxy: BasePassthroughDelegateProxy<InitDelegate, InitEvent, C
 extension InitDelegateProxy: InitDelegate {
 
     func onPaymentRestored(payment: MsdkCore.Payment) {
-        send(.success(.onPaymentRestored(payment)))
+        send(.success(.onPaymentRestored(payment.wrapper)))
     }
 
     func onError(code: ErrorCode, message: String) {
@@ -25,7 +25,7 @@ extension InitDelegateProxy: InitDelegate {
     }
 
     func onInitReceived(paymentMethods: [MsdkCore.PaymentMethod], savedAccounts: [MsdkCore.SavedAccount]) {
-        send(.success(.onInitReceived(paymentMethods: paymentMethods, savedAccounts: savedAccounts)))
+        send(.success(.onInitReceived(paymentMethods: paymentMethods.map(\.wrapper), savedAccounts: savedAccounts.map(\.wrapper))))
     }
 
 }

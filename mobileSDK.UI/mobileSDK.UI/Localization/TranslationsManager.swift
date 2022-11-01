@@ -28,7 +28,7 @@ class TranslationsManager {
         }
         return translationsManager
     }
-  
+
     func stringValue(for key: String) -> String? {
         if let string = resourceManager?.getStringByKey(key: key) {
             return string

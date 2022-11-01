@@ -5,8 +5,8 @@
 //  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
-import mobileSDK_UI
-import MsdkCore
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
 
 class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
@@ -14,7 +14,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
-        return request
+        return PayRequestWrapper(coreRequest: request)
     }
 
     func createNewCardSaleRequest(cvv: String,
@@ -28,7 +28,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
-        return request
+        return PayRequestWrapper(coreRequest: request)
     }
 
     func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
@@ -40,20 +40,18 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
-        return request
+        return PayRequestWrapper(coreRequest: request)
     }
 
     func createAPSSaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
-        return ApsSaleRequest(methodCode: methodCode)
+        PayRequestWrapper(coreRequest: ApsSaleRequest(methodCode: methodCode))
     }
 
     func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
-        return PaymentRestoreRequest()
+        PayRequestWrapper(coreRequest: PaymentRestoreRequest())
     }
 }
 
-extension SavedCardSaleRequest: mobileSDK_UI.PayRequest {}
-extension NewCardSaleRequest: mobileSDK_UI.PayRequest {}
-extension ApplePayRequest: mobileSDK_UI.PayRequest {}
-extension ApsSaleRequest: mobileSDK_UI.PayRequest {}
-extension PaymentRestoreRequest: mobileSDK_UI.PayRequest {}
+internal struct PayRequestWrapper: mobileSDK_UI.PayRequest {
+    let coreRequest: MsdkCore.PayRequest
+}

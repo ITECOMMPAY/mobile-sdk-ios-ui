@@ -5,8 +5,8 @@
 //  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
-import MsdkCore
-import mobileSDK_UI
+@_implementationOnly import MsdkCore
+@_implementationOnly import mobileSDK_UI
 import SwiftUI
 
 class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, CoreError> {
@@ -18,7 +18,7 @@ class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, Core
 extension PayDelegateProxy: PayDelegate {
 
     func onCustomerFields(customerFields: [MsdkCore.CustomerField]) {
-        send(.success(.onCustomerFields(customerFields: customerFields)))
+        send(.success(.onCustomerFields(customerFields: customerFields.map(\.wrapper))))
     }
 
     func onPaymentCreated() {
@@ -26,19 +26,19 @@ extension PayDelegateProxy: PayDelegate {
     }
 
     func onClarificationFields(clarificationFields: [MsdkCore.ClarificationField], payment: MsdkCore.Payment) {
-        send(.success(.onClarificationFields(clarificationFields: clarificationFields, payment: payment)))
+        send(.success(.onClarificationFields(clarificationFields: clarificationFields.map(\.wrapper), payment: payment.wrapper)))
     }
 
     func onCompleteWithDecline(paymentMessage: String?, payment: MsdkCore.Payment) {
-        send(.success(.onCompleteWithDecline(paymentMessage: paymentMessage, payment: payment)))
+        send(.success(.onCompleteWithDecline(paymentMessage: paymentMessage, payment: payment.wrapper)))
     }
 
     func onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment) {
-        send(.success(.onCompleteWithFail(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment)))
+        send(.success(.onCompleteWithFail(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment.wrapper)))
     }
 
     func onCompleteWithSuccess(payment: MsdkCore.Payment) {
-        send(.success(.onCompleteWithSuccess(payment: payment)))
+        send(.success(.onCompleteWithSuccess(payment: payment.wrapper)))
     }
 
     func onError(code: ErrorCode, message: String) {
@@ -46,10 +46,10 @@ extension PayDelegateProxy: PayDelegate {
     }
 
     func onStatusChanged(status: MsdkCore.PaymentStatus, payment: MsdkCore.Payment) {
-        send(.success(.onStatusChanged(status: status, payment: payment)))
+        send(.success(.onStatusChanged(status: status.wrapper, payment: payment.wrapper)))
     }
 
     func onThreeDSecure(acsPage: MsdkCore.AcsPage, isCascading: Bool, payment: MsdkCore.Payment) {
-        send(.success(.onThreeDSecure(acsPage: acsPage, isCascading: isCascading, payment: payment)))
+        send(.success(.onThreeDSecure(acsPage: acsPage.wrapper, isCascading: isCascading, payment: payment.wrapper)))
     }
 }

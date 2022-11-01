@@ -15,7 +15,7 @@ protocol CustomFormatterTransformation {
 class CustomFormatter: Formatter {
 
     let transformation: CustomFormatterTransformation
-    
+
     init(transformation: CustomFormatterTransformation) {
         self.transformation = transformation
         super.init()

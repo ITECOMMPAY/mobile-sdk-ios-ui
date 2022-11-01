@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 import UIKit
-import MsdkCore
 
 public typealias PaymentCompletion = (_ result: PaymentResult) -> Void
 

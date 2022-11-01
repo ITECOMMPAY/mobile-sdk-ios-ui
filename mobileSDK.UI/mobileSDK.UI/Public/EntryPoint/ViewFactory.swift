@@ -38,7 +38,7 @@ public struct ViewFactory {
     }
 
     internal static func assembleLoadingScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
-        LoadingScreen(viewModel:  LoadingScreenViewModel(parentViewModel: parentModel))
+        LoadingScreen(viewModel: LoadingScreenViewModel(parentViewModel: parentModel))
     }
 
     internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {

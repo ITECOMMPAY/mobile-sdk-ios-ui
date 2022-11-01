@@ -5,7 +5,8 @@
 //  Created by Deniss Kaibagarovs on 03/05/2019.
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
-import MsdkCore
+@_implementationOnly import MsdkCore
+import Foundation
 
 public class AdditionalField: NSObject {
 

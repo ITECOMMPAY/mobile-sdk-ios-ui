@@ -47,8 +47,7 @@ struct MockCustomerField: CustomerField {
     var hint: String? = "mockField hint"
     var label: String = "mockField label"
     var placeholder: String? = "mockField placeholder"
-    var validatorName: String? = "mockField validatorName"
-    var validatonMethod: Validator<String>? = { _ in true }
+    var validationMethod: Validator<String>? = { _ in true }
     var errorMessage: String? = "mockField error"
     var errorMessageKey: String = "mockField error key"
 }
@@ -82,7 +81,7 @@ struct MockCompleteField: CompleteField {
 struct MockCarificationField: ClarificationField {
     var name: String = "MockCarificationField_name"
     var validatorName: String? = "MockCarificationField_validatorName"
-    var validatonMethod: Validator<String>?
+    var validationMethod: Validator<String>?
     var defaultPlaceholder: String? = "MockCarificationField_defaultPlaceholder"
     var defaultHint: String? = "MockCarificationField_defaultHint"
     var defaultLabel: String? = "MockCarificationField_defaultLabel"

@@ -17,6 +17,9 @@
 		845FC81C28AE153300C71288 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* ContentView.swift */; };
 		845FC81E28AE153400C71288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC81D28AE153400C71288 /* Assets.xcassets */; };
 		845FC82128AE153400C71288 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC82028AE153400C71288 /* Preview Assets.xcassets */; };
+		84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */; };
+		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
+		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
 		CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +76,9 @@
 		845FC82028AE153400C71288 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		845FC82828AE157800C71288 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = mobileSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureJsonModels.swift; sourceTree = "<group>"; };
+		84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureScreen.swift; sourceTree = "<group>"; };
+		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
 		BC8D8D4AFD738D6BE7D0B85D /* Pods-EcommpaySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.debug.xcconfig"; sourceTree = "<group>"; };
 		EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -166,6 +172,7 @@
 		845FC81828AE153300C71288 /* mobileSDK.SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				84CDC3DC2910DA3300E3EB04 /* ThreeDSecureScreen */,
 				845BB1DC28B3557E001C2A24 /* Brands */,
 				8434FB4A28B337A800814D93 /* MainScreen */,
 				8434FB4928B3378E00814D93 /* Common */,
@@ -192,6 +199,16 @@
 				EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84CDC3DC2910DA3300E3EB04 /* ThreeDSecureScreen */ = {
+			isa = PBXGroup;
+			children = (
+				84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */,
+				84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */,
+				84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */,
+			);
+			name = ThreeDSecureScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +338,9 @@
 				845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */,
 				845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */,
 				845BB1DE28B35592001C2A24 /* Ecommpay.swift in Sources */,
+				84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */,
+				84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */,
+				84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,18 @@
+framework module ecommpaySDK {
+    umbrella header "EcommpaySDK.h"
+
+    export *
+    module * { export * }
+
+    explicit module MsdkCore {
+        header "MsdkCore.h"
+        link "MsdkCore"
+        export *
+    }
+
+    explicit module mobileSDK_UI {
+        header "mobileSDK_UI.h"
+        link "mobileSDK_UI"
+        export *
+    }
+}

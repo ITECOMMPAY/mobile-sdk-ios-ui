@@ -44,6 +44,7 @@ struct ContentView: View {
             Form {
                 basicSettings
                 additionalFields
+                threeDSecure
                 savedWalletsVisibility
                 brandColor
                 merchantLogo
@@ -170,6 +171,19 @@ struct ContentView: View {
                     }
                 }
                 .navigationTitle("Additional Fields")
+            }
+        }
+    }
+
+    var threeDSecure: some View {
+        Section {
+            Toggle(isOn: $paymentData.sendThreeDSecParams, label: {
+                Text("Enable 3d secure params")
+            })
+            NavigationLink("Edit JSON") {
+                ThreeDSecureScreen(threeDSecureInfo: paymentData.threeDSecParams, onSave: {
+                    paymentData.threeDSecParams = $0
+                })
             }
         }
     }
@@ -307,28 +321,32 @@ struct ContentView: View {
         }
 
         if !paymentData.languageCode.isEmpty {
-            paymentOptions.paymentInfo.languageCode = paymentData.languageCode
+            paymentOptions.languageCode = paymentData.languageCode
         }
 
-        paymentOptions.paymentInfo.hideSavedWallets = paymentData.hideSavedWallets
+        paymentOptions.hideSavedWallets = paymentData.hideSavedWallets
+
+        if paymentData.sendThreeDSecParams {
+            paymentOptions.setThreeDSecureInfo(paymentData.threeDSecParams.sdkThreeDSecureInfo)
+        }
 
         paymentOptions.mockModeType = paymentData.mockModeType
 
         if colorOverrideEnabled {
-            paymentOptions.brandColorOverride = brandColorOverride
+            paymentOptions.brandColor = UIColor(brandColorOverride)
         }
 
         switch paymentData.forcePaymentMethod {
         case .none:
-            paymentOptions.paymentInfo.forcePaymentMethod = nil
+            paymentOptions.forcePaymentMethod = nil
         case .customValue:
-            paymentOptions.paymentInfo.forcePaymentMethod = paymentData.forcePaymentMethodCustomValue
+            paymentOptions.forcePaymentMethod = paymentData.forcePaymentMethodCustomValue
         default:
-            paymentOptions.paymentInfo.forcePaymentMethod = paymentData.forcePaymentMethod.rawValue
+            paymentOptions.forcePaymentMethod = paymentData.forcePaymentMethod.rawValue
         }
 
-        paymentOptions.paymentInfo.signature = signature(
-            paramsToSign: paymentOptions.paymentInfo.getParamsForSignature(),
+        paymentOptions.signature = signature(
+            paramsToSign: paymentOptions.paramsForSignature,
             secret: paymentData.secretKey
         )
 
@@ -346,8 +364,10 @@ struct ContentView: View {
 
     var alert: Alert? {
         if let result = result {
+            let statusCode = String(result.status.rawValue)
+            let errorCodeString = result.error?.codeString ?? ""
             return Alert(
-                title: Text(String(describing: result.status.rawValue) + " " + (result.error?.code.rawValue ?? "")),
+                title: Text("\(statusCode) \(errorCodeString)"),
                 message: Text(result.error?.message ?? ""),
                 dismissButton: .default(Text("OK"), action: {
                     self.result = nil
@@ -357,7 +377,7 @@ struct ContentView: View {
     }
 }
 
-fileprivate func getAppVersionString() -> String {
+private func getAppVersionString() -> String {
     return "\(Bundle.main.releaseVersionNumber)(\(Bundle.main.buildVersionNumber))"
 }
 

@@ -43,8 +43,7 @@ public protocol CustomerField {
     var hint: String? { get }
     var label: String { get }
     var placeholder: String? { get }
-    var validatorName: String? { get }
-    var validatonMethod: Validator<String>? { get }
+    var validationMethod: Validator<String>? { get }
     var fieldServerType: FieldServerType { get }
     var errorMessage: String? { get }
     var errorMessageKey: String { get }
@@ -97,8 +96,7 @@ public protocol SavedAccount {
 
 public protocol ClarificationField {
     var name: String { get }
-    var validatorName: String? { get }
-    var validatonMethod: Validator<String>? { get }
+    var validationMethod: Validator<String>? { get }
     var defaultPlaceholder: String? { get }
     var defaultHint: String? { get }
     var defaultLabel: String? { get }
@@ -114,7 +112,7 @@ public protocol AcsPage {
     var acsUrl: String? { get }
     var termUrl: String? { get }
 }
- 
+
 public protocol CardExpiry {
     func isValid() -> Bool
     var expiryMonth: Int32? { get }
