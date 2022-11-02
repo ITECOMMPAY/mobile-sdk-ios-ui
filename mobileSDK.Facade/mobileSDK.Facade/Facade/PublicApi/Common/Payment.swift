@@ -7,7 +7,11 @@
 //
 
 import Foundation
+#if !DEVELOPMENT
 @_implementationOnly import MsdkCore
+#else
+import MsdkCore
+#endif
 
 @objcMembers public class Payment: NSObject, Codable {
     public var status: String?

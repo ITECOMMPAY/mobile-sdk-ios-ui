@@ -8,7 +8,7 @@
 import SwiftUI
 import ecommpaySDK_Dev
 
-struct ContentView: View {
+struct MainScreen: View {
     @State var result: PaymentResult?
     @State var isPaymentPagePresented: Bool = false
     @State var paymentData: PaymentData = defaultPaymentData
@@ -180,10 +180,14 @@ struct ContentView: View {
             Toggle(isOn: $paymentData.sendThreeDSecParams, label: {
                 Text("Enable 3d secure params")
             })
-            NavigationLink("Edit JSON") {
+            NavigationLink("Edit 3ds params JSON") {
                 ThreeDSecureScreen(threeDSecureInfo: paymentData.threeDSecParams, onSave: {
                     paymentData.threeDSecParams = $0
                 })
+            }
+            NavigationLink("Recurrent Data") {
+                RecurrentSettingsScreen(shouldSend: $paymentData.sendRecurrentData,
+                                        recurrentData: $paymentData.recurrentData)
             }
         }
     }
@@ -330,6 +334,23 @@ struct ContentView: View {
             paymentOptions.setThreeDSecureInfo(paymentData.threeDSecParams.sdkThreeDSecureInfo)
         }
 
+        if paymentData.sendRecurrentData {
+            let info = RecurrentInfo(
+                type: RecurrentType(rawValue: paymentData.recurrentData.type ?? "") ?? RecurrentType.Regular,
+                          expiryDay: paymentData.recurrentData.expiryDay ?? "",
+                          expiryMonth: paymentData.recurrentData.expiryMonth ?? "",
+                          expiryYear: paymentData.recurrentData.expiryYear ?? "",
+                          period: RecurrentPeriod(rawValue: paymentData.recurrentData.period ?? "") ?? .Month,
+                          time: paymentData.recurrentData.time ?? "",
+                          startDate: paymentData.recurrentData.startDate ?? "",
+                          scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID ?? ""
+            )
+            info.schedule = paymentData.recurrentData.schedule.map({ item in
+                RecurrentInfoSchedule(date: item.date ?? "", amount: item.amount ?? 0)
+            })
+            paymentOptions.recurrentInfo = info
+        }
+
         paymentOptions.mockModeType = paymentData.mockModeType
 
         if colorOverrideEnabled {
@@ -412,7 +433,7 @@ struct IntField: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainScreen()
     }
 }
 

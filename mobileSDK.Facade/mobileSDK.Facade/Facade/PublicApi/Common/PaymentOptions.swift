@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
-@_implementationOnly import MsdkCore
+#if !DEVELOPMENT
 @_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
+#else
+import mobileSDK_UI
+import MsdkCore
+#endif
 import UIKit
 import PassKit
 
@@ -81,7 +86,7 @@ public class PaymentOptions: NSObject {
 
     /// Object that holds recurrent info
     /// If set, would treat payment as recurrent
-    internal var recurrentInfo: RecurrentInfo?
+    @objc public var recurrentInfo: RecurrentInfo?
 
     /// If you know any data for fields what would be asked from a user
     /// you could set them and they would be pre-filled
@@ -102,8 +107,7 @@ public class PaymentOptions: NSObject {
         get { paymentInfo.languageCode }
         set { paymentInfo.languageCode = newValue }
     }
-
-    /// language code
+ 
     @objc public func setThreeDSecureInfo(_ threeDSecureInfo: ThreeDSecureInfo?) {
         paymentInfo.threeDSecureInfo = threeDSecureInfo?.coreType
     }

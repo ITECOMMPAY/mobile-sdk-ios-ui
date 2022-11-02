@@ -5,8 +5,14 @@
 //  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
+
+#if !DEVELOPMENT
 @_implementationOnly import mobileSDK_UI
 @_implementationOnly import MsdkCore
+#else
+import mobileSDK_UI
+import MsdkCore
+#endif
 
 class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {

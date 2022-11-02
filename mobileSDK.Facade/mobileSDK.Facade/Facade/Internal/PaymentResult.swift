@@ -7,8 +7,14 @@
 //
 
 import Foundation
+
+#if !DEVELOPMENT
 @_implementationOnly import mobileSDK_UI
 @_implementationOnly import MsdkCore
+#else
+import mobileSDK_UI
+import MsdkCore
+#endif
 
 @objcMembers public class PaymentResult: NSObject {
     public let status: PaymentStatus

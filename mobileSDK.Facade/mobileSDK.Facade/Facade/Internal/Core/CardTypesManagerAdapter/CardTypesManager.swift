@@ -5,8 +5,14 @@
 //  Created by Ivan Krapivtsev on 26.07.2022.
 //
 
+
+#if !DEVELOPMENT
 @_implementationOnly import mobileSDK_UI
 @_implementationOnly import MsdkCore
+#else
+import mobileSDK_UI
+import MsdkCore
+#endif
 
 internal extension MsdkCore.CardTypesManager {
     var wrapper: some mobileSDK_UI.CardTypeRecognizer {

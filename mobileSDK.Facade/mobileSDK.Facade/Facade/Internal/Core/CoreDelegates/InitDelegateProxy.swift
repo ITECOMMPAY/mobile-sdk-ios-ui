@@ -4,10 +4,15 @@
 //
 //  Created by Ivan Krapivtsev on 11.07.2022.
 //
-
-@_implementationOnly import MsdkCore
+ 
 import Combine
+#if !DEVELOPMENT
+@_implementationOnly import MsdkCore
 @_implementationOnly import mobileSDK_UI
+#else
+import MsdkCore
+import mobileSDK_UI
+#endif
 import SwiftUI
 
 class InitDelegateProxy: BasePassthroughDelegateProxy<InitDelegate, InitEvent, CoreError> {

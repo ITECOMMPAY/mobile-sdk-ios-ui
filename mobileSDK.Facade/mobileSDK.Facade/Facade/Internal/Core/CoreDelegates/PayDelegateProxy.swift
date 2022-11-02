@@ -5,8 +5,14 @@
 //  Created by Ivan Krapivtsev on 21.07.2022.
 //
 
+
+#if !DEVELOPMENT
 @_implementationOnly import MsdkCore
 @_implementationOnly import mobileSDK_UI
+#else
+import MsdkCore
+import mobileSDK_UI
+#endif
 import SwiftUI
 
 class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, CoreError> {

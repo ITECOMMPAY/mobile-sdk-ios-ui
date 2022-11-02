@@ -6,7 +6,11 @@
 //  Copyright © 2020 Ecommpay. All rights reserved.
 //
 import Foundation
+#if !DEVELOPMENT
 @_implementationOnly import MsdkCore
+#else
+import MsdkCore
+#endif
 
 public class ThreeDSecureInfo: NSObject {
     public init(threeDSecurePaymentInfo: ThreeDSecurePaymentInfo? = nil, threeDSecureCustomerInfo: ThreeDSecureCustomerInfo? = nil) {
