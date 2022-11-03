@@ -65,8 +65,12 @@ class RootViewModel: RootViewModelProtocol {
                             $0.savedAccounts = $0.cardPaymentMethod != nil ? accounts : []
                         }
                         self.state.currentMethod = {
-                            if self.state.cardPaymentMethod != nil && !accounts.isEmpty {
-                                return PaymentMethodsListEntity(entityType: .savedAccount(accounts.first!))
+                            if let cardPaymentMethod = self.state.cardPaymentMethod {
+                                if !accounts.isEmpty {
+                                    return PaymentMethodsListEntity(entityType: .savedAccount(accounts.first!))
+                                } else {
+                                    return PaymentMethodsListEntity(entityType: .paymentMethod(cardPaymentMethod))
+                                }
                             } else {
                                 return self.state.mergedList.first
                             }
