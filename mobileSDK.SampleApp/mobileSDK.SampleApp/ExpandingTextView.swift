@@ -13,7 +13,7 @@ struct ExpandingTextView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             Form {
-                ExpandingTextView(text: .mutable("sdasda asdasd"))
+                ExpandingTextView(text: .mutable("some text"))
             }
         }
     }

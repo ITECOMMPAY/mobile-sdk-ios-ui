@@ -536,7 +536,7 @@ internal extension ThreeDSecureInfo {
                             additional: threeDSecureAccountInfo.additional,
                             ageIndicator: threeDSecureAccountInfo.ageIndicator,
                             date: threeDSecureAccountInfo.date,
-                            changeIndicator: threeDSecureAccountInfo.changeDate,
+                            changeIndicator: threeDSecureAccountInfo.changeIndicator,
                             changeDate: threeDSecureAccountInfo.changeDate,
                             passChangeIndicator: threeDSecureAccountInfo.passChangeIndicator,
                             passChangeDate: threeDSecureAccountInfo.passChangeDate,

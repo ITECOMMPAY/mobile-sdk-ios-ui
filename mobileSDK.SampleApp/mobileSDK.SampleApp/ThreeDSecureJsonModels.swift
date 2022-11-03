@@ -68,13 +68,19 @@ struct Account: Codable {
 }
 
 struct Customer: Codable {
+    var addressMatch: String?
+    var homePhone: String?
+    var workPhone: String?
     var account: Account?
     var shipping: Shipping?
     var mpiResult: MpiResult?
-
+    
     enum CodingKeys: String, CodingKey {
         case account, shipping
         case mpiResult = "mpi_result"
+        case addressMatch = "address_match"
+        case homePhone = "home_phone"
+        case workPhone = "work_phone"
     }
 }
 
@@ -82,6 +88,9 @@ struct CustomerAccountInfo: Codable {
     var customer: Customer?
     static let `default` = CustomerAccountInfo(
         customer: Customer(
+            addressMatch: "Y",
+            homePhone: "79105211111",
+            workPhone: "74955211111",
             account: Account.default
         )
     )
@@ -211,9 +220,6 @@ struct PaymentMerchantRisk: Codable {
 }
 
 struct ThreeDSecureInfo: Codable {
-    var addressMatch: String?
-    var homePhone: String?
-    var workPhone: String?
     var billingRegionCode: String?
     var customerAccountInfo: CustomerAccountInfo?
     var customerShipping: CustomerShipping?
@@ -221,9 +227,6 @@ struct ThreeDSecureInfo: Codable {
     var paymentMerchantRisk: PaymentMerchantRisk?
 
     enum CodingKeys: String, CodingKey {
-        case addressMatch = "address_match"
-        case homePhone = "home_phone"
-        case workPhone = "work_phone"
         case billingRegionCode = "billing_region_code"
         case customerAccountInfo = "customer_account_info"
         case customerShipping = "customer_shipping"
@@ -232,9 +235,6 @@ struct ThreeDSecureInfo: Codable {
     }
 
     static let `default` = ThreeDSecureInfo(
-        addressMatch: "Y",
-        homePhone: "79105211111",
-        workPhone: "74955211111",
         billingRegionCode: "CRS",
         customerAccountInfo: CustomerAccountInfo.default,
         customerShipping: CustomerShipping.default,
@@ -261,11 +261,11 @@ struct ThreeDSecureInfo: Codable {
                 )
             }),
             threeDSecureCustomerInfo: ecommpaySDK_Dev.ThreeDSecureCustomerInfo(
-                addressMatch: addressMatch,
-                homePhone: homePhone,
-                workPhone: workPhone,
+                addressMatch: customerAccountInfo?.customer?.addressMatch,
+                homePhone: customerAccountInfo?.customer?.homePhone,
+                workPhone: customerAccountInfo?.customer?.workPhone,
                 billingRegionCode: billingRegionCode,
-                accountInfo: customerMpiResult?.customer?.account.map({ account in
+                accountInfo: customerAccountInfo?.customer?.account.map({ account in
                     ecommpaySDK_Dev.ThreeDSecureAccountInfo(
                         additional: account.additional,
                         ageIndicator: account.ageIndicator,
@@ -285,7 +285,7 @@ struct ThreeDSecureInfo: Codable {
                         authTime: account.authTime,
                         authData: account.authData)
                 }),
-                shippingInfo: customerMpiResult?.customer?.shipping.map({ shipping in
+                shippingInfo: customerShipping?.customer?.shipping.map({ shipping in
                     ecommpaySDK_Dev.ThreeDSecureShippingInfo(
                         type: shipping.type,
                         deliveryTime: shipping.deliveryTime,
