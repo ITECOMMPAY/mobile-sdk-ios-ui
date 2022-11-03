@@ -278,7 +278,7 @@ public class RecurrentInfo: NSObject, Codable {
     case Quarter
     case Year
 
-    public typealias RawValue = String
+    public typealias RawValue = String?
 
     public var rawValue: RawValue {
         switch self {
@@ -308,7 +308,7 @@ public class RecurrentInfo: NSObject, Codable {
         case "Y":
             self = .Year
         default:
-            self = .Month
+            return nil
         }
     }
 }

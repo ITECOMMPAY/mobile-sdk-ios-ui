@@ -340,12 +340,13 @@ struct MainScreen: View {
                 expiryDay: paymentData.recurrentData.expiryDay,
                 expiryMonth: paymentData.recurrentData.expiryMonth,
                 expiryYear: paymentData.recurrentData.expiryYear,
-                period: RecurrentPeriod(rawValue: paymentData.recurrentData.period ?? ""),
+                period: RecurrentPeriod(rawValue: paymentData.recurrentData.period),
                 time: paymentData.recurrentData.time,
                 startDate: paymentData.recurrentData.startDate,
                 scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID
             )
-            info.schedule = paymentData.recurrentData.schedule.map({ item in
+            let schedule = paymentData.recurrentData.schedule
+            info.schedule = schedule.count == 0 ? nil : schedule.map({ item in
                 RecurrentInfoSchedule(date: item.date ?? "", amount: item.amount ?? 0)
             })
             paymentOptions.recurrentInfo = info
