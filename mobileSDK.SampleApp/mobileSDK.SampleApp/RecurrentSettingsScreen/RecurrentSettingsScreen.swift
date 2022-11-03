@@ -145,7 +145,7 @@ extension Binding where Value == String? {
     func flatten(defaultValue: String = "") -> Binding<String> {
         Binding<String>(
             get: { wrappedValue ?? defaultValue },
-            set: { wrappedValue = $0 }
+            set: { wrappedValue = $0.isEmpty ? nil : $0 }
         )
     }
 }

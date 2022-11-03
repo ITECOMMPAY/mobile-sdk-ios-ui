@@ -337,13 +337,13 @@ struct MainScreen: View {
         if paymentData.sendRecurrentData {
             let info = RecurrentInfo(
                 type: RecurrentType(rawValue: paymentData.recurrentData.type ?? "") ?? RecurrentType.Regular,
-                          expiryDay: paymentData.recurrentData.expiryDay ?? "",
-                          expiryMonth: paymentData.recurrentData.expiryMonth ?? "",
-                          expiryYear: paymentData.recurrentData.expiryYear ?? "",
-                          period: RecurrentPeriod(rawValue: paymentData.recurrentData.period ?? "") ?? .Month,
-                          time: paymentData.recurrentData.time ?? "",
-                          startDate: paymentData.recurrentData.startDate ?? "",
-                          scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID ?? ""
+                expiryDay: paymentData.recurrentData.expiryDay,
+                expiryMonth: paymentData.recurrentData.expiryMonth,
+                expiryYear: paymentData.recurrentData.expiryYear,
+                period: RecurrentPeriod(rawValue: paymentData.recurrentData.period ?? ""),
+                time: paymentData.recurrentData.time,
+                startDate: paymentData.recurrentData.startDate,
+                scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID
             )
             info.schedule = paymentData.recurrentData.schedule.map({ item in
                 RecurrentInfoSchedule(date: item.date ?? "", amount: item.amount ?? 0)

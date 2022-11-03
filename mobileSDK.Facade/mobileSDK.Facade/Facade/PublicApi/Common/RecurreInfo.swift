@@ -32,6 +32,31 @@ public class RecurrentInfoSchedule: NSObject {
 
 public class RecurrentInfo: NSObject, Codable {
 
+    /// Init Recurrent Info with all params
+    ///
+    /// - Parameters:
+    ///   - type: Type of recurrent - R/C/U/I
+    ///   - expiryDay: Day of recurrent expiration, must be string(2) month in DD format
+    ///   - expiryMonth: Month of recurrent expiration, must be string(2) month in MM format
+    ///   - expiryYear: Year of recurrent expiration, must be string(4) month in YYYY format.
+    ///   - period: Period of payment - Day/Week/Month/Quarter/Year
+    ///   - time: Time of recurrent payment to charge
+    ///   - startDate: Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
+    ///   - scheduledPaymentID: Recurring payment ID
+    public init(type: RecurrentType, expiryDay: String?, expiryMonth: String?, expiryYear: String?, period: RecurrentPeriod?, time: String?, startDate: String?, scheduledPaymentID: String?, amount: Int? = nil, schedule: [RecurrentInfoSchedule]? = nil) {
+        self.type = type
+        self.expiryDay = expiryDay
+        self.expiryMonth = expiryMonth
+        self.expiryYear = expiryYear
+        self.period = period
+        self.time = time
+        self.startDate = startDate
+        self.scheduledPaymentID = scheduledPaymentID
+        self.amount = amount
+        self.schedule = schedule
+    }
+
+
     /// indicate if needed to be registered for recurrent
     private let register: Bool = true
     /// Type of recurrent - R/C/U/I
