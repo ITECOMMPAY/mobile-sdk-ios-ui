@@ -110,7 +110,7 @@ struct RecurrentSettingsScreen: View {
                             TextField("Integer value", text: item.amount.flattenAsString())
                         }
                         Button("Delete") {
-                            recurrentData.schedule = recurrentData.schedule.filter({ $0.id == item.wrappedValue.id })
+                            recurrentData.schedule = recurrentData.schedule.filter({ $0.id != item.wrappedValue.id })
                         }
                     }
                 }
