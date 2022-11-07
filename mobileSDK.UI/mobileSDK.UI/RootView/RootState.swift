@@ -35,7 +35,7 @@ struct FormData {
 }
 
 enum AlertModel {
-    typealias Action = ()->Void
+    typealias Action = () -> Void
 
     /// Уведомление об ошибке после которой продолжение сценария оплаты невозможно
     case FinalError(CoreError, onClose: Action?)

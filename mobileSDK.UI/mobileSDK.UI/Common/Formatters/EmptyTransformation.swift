@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Formatter that doing nothing
 struct EmptyTransformation: CustomFormatterTransformation {
     func formattedString(from rawString: String) -> String {

@@ -34,7 +34,7 @@ struct InputMaskTransformation: CustomFormatterTransformation {
             }
         }
         return result
-    } 
+    }
 
     func rawString(from string: String) -> String {
         guard unmaskingEnabled
@@ -45,5 +45,4 @@ struct InputMaskTransformation: CustomFormatterTransformation {
         return string.filter { !formatCharacters.contains($0) }
     }
 
-   
 }

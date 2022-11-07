@@ -29,7 +29,7 @@
 		84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA15D2876D97F0043C360 /* ViewFactory.swift */; };
 		84C87C7B28CB470E00B684DE /* PublicStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2418B28890FB700259A50 /* PublicStructs.swift */; };
 		84C87C7C28CB471100B684DE /* ModelTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241852889078300259A50 /* ModelTypes.swift */; };
-		84C87C7D28CB471100B684DE /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241B4288E320000259A50 /* Fabric.swift */; };
+		84C87C7D28CB471100B684DE /* CardExpiryFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241B4288E320000259A50 /* CardExpiryFabric.swift */; };
 		84C87C7E28CB471700B684DE /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C5C289796740037A604 /* RootViewModel.swift */; };
 		84C87C7F28CB471700B684DE /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C31289158280037A604 /* RootView.swift */; };
 		84C87C8028CB471700B684DE /* RootState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C562897965C0037A604 /* RootState.swift */; };
@@ -155,7 +155,7 @@
 		84C87D2028CF45B100B684DE /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA15D2876D97F0043C360 /* ViewFactory.swift */; };
 		84C87D2128CF45B300B684DE /* PublicStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2418B28890FB700259A50 /* PublicStructs.swift */; };
 		84C87D2228CF45B600B684DE /* ModelTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241852889078300259A50 /* ModelTypes.swift */; };
-		84C87D2328CF45B600B684DE /* Fabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241B4288E320000259A50 /* Fabric.swift */; };
+		84C87D2328CF45B600B684DE /* CardExpiryFabric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241B4288E320000259A50 /* CardExpiryFabric.swift */; };
 		84C87D2428CF45BA00B684DE /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C5C289796740037A604 /* RootViewModel.swift */; };
 		84C87D2528CF45BA00B684DE /* RootIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C59289796690037A604 /* RootIntent.swift */; };
 		84C87D2628CF45BA00B684DE /* RootState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C562897965C0037A604 /* RootState.swift */; };
@@ -386,7 +386,7 @@
 		84B241A9288A730B00259A50 /* CvvField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CvvField.swift; sourceTree = "<group>"; };
 		84B241AC288A732900259A50 /* ExpiryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiryField.swift; sourceTree = "<group>"; };
 		84B241AF288A733C00259A50 /* PanField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanField.swift; sourceTree = "<group>"; };
-		84B241B4288E320000259A50 /* Fabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fabric.swift; sourceTree = "<group>"; };
+		84B241B4288E320000259A50 /* CardExpiryFabric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardExpiryFabric.swift; sourceTree = "<group>"; };
 		84B241C9288E589E00259A50 /* EmptyTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTransformation.swift; sourceTree = "<group>"; };
 		84B241D0288E5CBF00259A50 /* CardNumberTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNumberTransformation.swift; sourceTree = "<group>"; };
 		84BC13E52852088F008814EB /* mobileSDK_UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_UI.h; sourceTree = "<group>"; };
@@ -834,7 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				84B241852889078300259A50 /* ModelTypes.swift */,
-				84B241B4288E320000259A50 /* Fabric.swift */,
+				84B241B4288E320000259A50 /* CardExpiryFabric.swift */,
 			);
 			path = CoreAbstraction;
 			sourceTree = "<group>";
@@ -1127,7 +1127,7 @@
 				84C87D5528CF45F900B684DE /* AttributedTextImpl.swift in Sources */,
 				84C87D2B28CF45C100B684DE /* APSScreen.swift in Sources */,
 				84C87D6028CF45FF00B684DE /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
-				84C87D2328CF45B600B684DE /* Fabric.swift in Sources */,
+				84C87D2328CF45B600B684DE /* CardExpiryFabric.swift in Sources */,
 				84C87D6D28CF460900B684DE /* InputMaskTransformation.swift in Sources */,
 				84C87D4B28CF45EA00B684DE /* ClarificationFieldsScreenState.swift in Sources */,
 				84C87D5028CF45F000B684DE /* WebView.swift in Sources */,
@@ -1336,7 +1336,7 @@
 				84C87CC028CB476200B684DE /* ClarificationField+CustomerField.swift in Sources */,
 				84C87C7E28CB471700B684DE /* RootViewModel.swift in Sources */,
 				84C87CA328CB474100B684DE /* PasswordCustomerTextField.swift in Sources */,
-				84C87C7D28CB471100B684DE /* Fabric.swift in Sources */,
+				84C87C7D28CB471100B684DE /* CardExpiryFabric.swift in Sources */,
 				84C87C7B28CB470E00B684DE /* PublicStructs.swift in Sources */,
 				84C87C9D28CB474100B684DE /* TextCustomerTextField.swift in Sources */,
 				84C87C9B28CB473C00B684DE /* CustomerFieldsScreenViewModel.swift in Sources */,

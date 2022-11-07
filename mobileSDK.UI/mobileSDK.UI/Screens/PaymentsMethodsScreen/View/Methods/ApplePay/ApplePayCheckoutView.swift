@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ApplePayCheckoutView: View {
     @Binding var formValues: FormData
     let paymentOptions: PaymentOptions
@@ -37,7 +36,7 @@ struct ApplePayCheckoutView: View {
                 } else {
                     triggerValidation()
                 }
-            } 
+            }
         }
         .padding(.top, UIScheme.dimension.formSmallSpacing)
         .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
@@ -45,7 +44,7 @@ struct ApplePayCheckoutView: View {
     }
 
     private func triggerValidation() {
-        NotificationCenter.default.post(name: NSNotification.Name( ValidationTriggerNotification) , object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name( ValidationTriggerNotification), object: nil)
     }
 }
 

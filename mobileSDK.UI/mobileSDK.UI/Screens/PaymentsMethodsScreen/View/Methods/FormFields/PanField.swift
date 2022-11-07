@@ -28,7 +28,6 @@ struct PanField: View {
 
     @State private var errorMessage: String = ""
 
-
     var transformation: CustomFormatterTransformation {
         if let cardTypeRecognizer = cardTypeRecognizer {
             return CardNumberTransformation(cardTypeRecognizer: cardTypeRecognizer)
@@ -95,14 +94,14 @@ struct PanField: View {
     }
 }
 
-fileprivate struct CardTypeView: View {
+private struct CardTypeView: View {
     let connectedCardTypes: [CardType]
     @Binding var recognizedType: CardType?
 
     @State private var timer: Timer?
     @State private var thirdCardIndex: Int?
 
-    private var visibleCardTypes:  [CardType] {
+    private var visibleCardTypes: [CardType] {
         connectedCardTypes.filter { cardType in
             cardType.localLogo != nil
         }
@@ -125,7 +124,7 @@ fileprivate struct CardTypeView: View {
                 }
             } else {
                 view(for: nil)
-            } 
+            }
         }.onAppear(perform: initTimer)
     }
 

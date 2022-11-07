@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 enum LoadingScreenIntent {
     case close
 }
@@ -22,7 +21,7 @@ class LoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<Void
     }
 }
 
-fileprivate struct DotsAnimationParams {
+private struct DotsAnimationParams {
     static let dotSize: CGFloat = 12
     static var dotSpacing: CGFloat { dotSize }
     static var amplitude: CGFloat { dotSize * 2 }

@@ -39,7 +39,7 @@ struct DateCustomerTextField_Previews: PreviewProvider {
         var label: String = "mockField label"
         var placeholder: String? = "mockField placeholder"
         var validatorName: String? = "mockField validatorName"
-        var validatonMethod: Validator<String>? = { _ in false }
+        var validationMethod: Validator<String>? = { _ in false }
         var errorMessage: String? = "mockField error"
         var errorMessageKey: String = "mockField error key"
     }

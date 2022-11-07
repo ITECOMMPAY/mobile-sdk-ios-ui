@@ -40,7 +40,6 @@ struct WebView: UIViewRepresentable, Equatable {
         context.coordinator.executeTask(uiView)
     }
 
-
 }
 
 class WebViewCoordinator: NSObject, WKNavigationDelegate {

@@ -5,8 +5,14 @@
 //  Created by Ivan Krapivtsev on 07.07.2022.
 //
 
+
+#if !DEVELOPMENT
+@_implementationOnly import MsdkCore
+@_implementationOnly import mobileSDK_UI
+#else
 import MsdkCore
 import mobileSDK_UI
+#endif
 
 extension CoreErrorCode {
     static func createFrom(code: MsdkCore.ErrorCode) -> CoreErrorCode {

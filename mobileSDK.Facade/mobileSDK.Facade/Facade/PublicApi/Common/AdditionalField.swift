@@ -5,7 +5,12 @@
 //  Created by Deniss Kaibagarovs on 03/05/2019.
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
+#if !DEVELOPMENT
+@_implementationOnly import MsdkCore
+#else
 import MsdkCore
+#endif
+import Foundation
 
 public class AdditionalField: NSObject {
 

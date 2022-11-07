@@ -17,7 +17,6 @@ class ApplePayService: NSObject {
     private var controller: PKPaymentAuthorizationController?
     private var wasAuthorizedPayment: Bool = false
 
-
     static let supportedPaymentNetworks = [
         PKPaymentNetwork.visa,
         PKPaymentNetwork.masterCard,
@@ -48,7 +47,7 @@ class ApplePayService: NSObject {
             ]
         } else {
             request.paymentSummaryItems = [
-                PKPaymentSummaryItem(label:  options.paymentID ,
+                PKPaymentSummaryItem(label: options.paymentID ,
                                      amount: options.summary.value as NSDecimalNumber)
             ]
         }
@@ -94,5 +93,4 @@ extension ApplePayService: PKPaymentAuthorizationControllerDelegate {
         onApplePayResult?(.didAuthorizePayment(token: token))
     }
 
-    
 }

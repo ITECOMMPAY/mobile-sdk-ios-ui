@@ -40,7 +40,7 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
         if let acsPage = self.viewModel.state.acsPageState?.acsPage,
            let html = acsPage.content,
            let acsUrl = acsPage.acsUrl,
-           let baseURL = URL(string: acsUrl){
+           let baseURL = URL(string: acsUrl) {
             WebView(task: .loadHTMLString(html: html, baseURL: baseURL)) { url in
                 if let finalUrl = url,
                    let termUrl = acsPage.termUrl,
@@ -108,4 +108,3 @@ class ThreeDSecureScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel
 }
 
 extension RootState: ThreeDSecureScreenState {}
-

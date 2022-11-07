@@ -38,4 +38,3 @@ extension Payment {
         return Date.fromCoreDate(string: dateStr)?.toUIDateString
     }
 }
-

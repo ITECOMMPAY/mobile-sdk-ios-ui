@@ -8,8 +8,14 @@
 
 import UIKit
 import SwiftUI
+
+#if !DEVELOPMENT
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
+#else
 import mobileSDK_UI
 import MsdkCore
+#endif
 import Combine
 import PassKit
 
@@ -62,11 +68,14 @@ class SDKInteractor {
 
         let delegateProxy = InitDelegateProxy()
 
-        let view = ViewFactory.assembleRootView(paymentOptions: paymentOptions, initPublisher: delegateProxy.createPublisher(with: { delegate in
-            let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                                           recurrentInfo: paymentOptions.recurrentInfo)
-            msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
-        })) { reason in
+        let view = ViewFactory.assembleRootView(
+            paymentOptions: paymentOptions.uiPaymentOptions,
+            initPublisher: delegateProxy.createPublisher(with: { delegate in
+                let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
+                                               recurrentInfo: paymentOptions.recurrentInfo?.coreRecurrentInfo)
+                msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
+            })
+        ) { reason in
             viewController.dismiss(animated: true) { [weak self] in
                 switch reason {
                 case .byUser:
@@ -87,15 +96,14 @@ class SDKInteractor {
         vc.modalPresentationStyle = .overFullScreen
 
         viewController.present(vc, animated: true)
-
     }
 
     private func setupDependency(with session: MSDKCoreSession) {
         serviceLocator.addService(instance: CoreValidationService() as ValidationService)
-        serviceLocator.addService(instance: SdkExpiry.init(text: "") as CardExpiryFabric)
+        serviceLocator.addService(instance: CardExpiryFabric() as mobileSDK_UI.CardExpiryFabric)
         serviceLocator.addService(instance: PayInteractorWrapper(msdkSession: session) as mobileSDK_UI.PayInteractor)
         serviceLocator.addService(instance: PayRequestFactory() as mobileSDK_UI.PayRequestFactory)
-        serviceLocator.addService(instance: StringResourceManagerAdapter(manger: session.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
+        serviceLocator.addService(instance: StringResourceManagerAdapter(manager: session.getStringResourceManager()) as mobileSDK_UI.StringResourceManager)
         serviceLocator.addService(
             instance: CardRemoveInteractorWrapper(msdkSession: session) as mobileSDK_UI.CardRemoveInteractor
         )
@@ -114,65 +122,64 @@ class SDKInteractor {
     }
 }
 
-extension PaymentOptions: mobileSDK_UI.PaymentOptions {
-    public var applePayMerchantID: String? {
-        applePayOptions?.applePayMerchantID
+fileprivate extension PaymentOptions {
+    var uiPaymentOptions: some mobileSDK_UI.PaymentOptions {
+        PaymentOptionsWrapper(publicType: self)
+    }
+}
+
+private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
+    let publicType: PaymentOptions
+
+    var applePayMerchantID: String? {
+        publicType.applePayOptions?.applePayMerchantID
     }
 
-    public var applePayDescription: String? {
-        applePayOptions?.applePayDescription
+    var applePayDescription: String? {
+        publicType.applePayOptions?.applePayDescription
     }
 
-    public var pkPaymentRequest: PKPaymentRequest? {
-        applePayOptions?.pkPaymentRequest
+    var pkPaymentRequest: PKPaymentRequest? {
+        publicType.applePayOptions?.pkPaymentRequest
     }
 
-    public var appleCountryCode: String? {
-        applePayOptions?.countryCode
+    var appleCountryCode: String? {
+        publicType.applePayOptions?.countryCode
     }
 
-    public var brandColorOverride: Color? {
-        get {
-            if let uiColor = brandColor {
-                return Color(uiColor)
-            } else {
-                return nil
-            }
+    var brandColorOverride: Color? {
+        if let uiColor = publicType.brandColor {
+            return Color(uiColor)
+        } else {
+            return nil
         }
-        set {
-            if let value = newValue {
-                brandColor = UIColor(value)
-            } else {
-                brandColor = nil
-            }
-        }
     }
 
-    public var isMockModeEnabled: Bool {
-        mockModeType != .disabled
+    var isMockModeEnabled: Bool {
+        publicType.mockModeType != .disabled
     }
 
-    public var uiAdditionalFields: [mobileSDK_UI.AdditionalField] {
-        additionalFields ?? [] as [mobileSDK_UI.AdditionalField]
+    var uiAdditionalFields: [mobileSDK_UI.AdditionalField] {
+        publicType.additionalFields?.map { $0.wrapper } ?? [] as [mobileSDK_UI.AdditionalField]
     }
 
-    public var summary: PaymentSummaryData {
-        return PaymentSummaryData(logo: logoImage.map({ Image(uiImage: $0)}),
-                                                currency: paymentInfo.paymentCurrency,
-                                                value: Decimal(paymentInfo.paymentAmount) / 100)
+    var summary: PaymentSummaryData {
+        return PaymentSummaryData(logo: publicType.logoImage.map({ Image(uiImage: $0)}),
+                                  currency: publicType.paymentInfo.paymentCurrency,
+                                  value: Decimal(publicType.paymentInfo.paymentAmount) / 100)
     }
 
-    public var details: [PaymentDetailData] {
+    var details: [PaymentDetailData] {
         var paymentDetails = [
-            PaymentDetailData(title: L.title_payment_id, description: self.paymentInfo.paymentId, canBeCopied: true)
+            PaymentDetailData(title: L.title_payment_id, description: publicType.paymentInfo.paymentId, canBeCopied: true)
         ]
-        if let description = self.paymentInfo.paymentDescription {
+        if let description = publicType.paymentInfo.paymentDescription {
             paymentDetails += [PaymentDetailData(title: L.title_payment_information_description, description: description, canBeCopied: false)]
         }
         return paymentDetails
     }
 
-    public var paymentID: String {
-        paymentInfo.paymentId
+    var paymentID: String {
+        publicType.paymentInfo.paymentId
     }
 }
