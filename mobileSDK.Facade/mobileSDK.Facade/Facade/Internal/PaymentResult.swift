@@ -39,7 +39,6 @@ import MsdkCore
     case Decline = 100
     case Cancelled = 200
     case Error = 500
-    case Failed = 300
 }
 
 @objc public class PaymentError: NSObject {
@@ -54,7 +53,7 @@ import MsdkCore
         coreError.code.rawValue
     }
 
-    public var code: PaymentErrorCode {
+    @objc public var code: PaymentErrorCode {
         switch coreError.code {
         case .serverUnauthorized: return .serverUnauthorized
         case .serverMethodNotFound: return .serverMethodNotFound
@@ -83,7 +82,7 @@ import MsdkCore
     }
 }
 
-public enum PaymentErrorCode: String {
+@objc public enum PaymentErrorCode: Int {
     case serverUnauthorized
     case serverMethodNotFound
     case serverApiError

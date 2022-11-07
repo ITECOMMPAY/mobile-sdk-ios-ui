@@ -65,12 +65,7 @@ public class PaymentOptions: NSObject {
 
     @objc public var applePayOptions: ApplePayOptions?
 
-    @objc public enum ActionType: Int {
-        case Sale = 1
-        case Auth = 2
-        case Tokenize = 3
-        case Verify = 4
-    }
+
 
     /// Payment logo image
     @objc public var logoImage: UIImage?
@@ -81,8 +76,17 @@ public class PaymentOptions: NSObject {
     /// mock Mode type
     @objc public var mockModeType: MockModeType = .disabled
 
+    /* TODO: add auth, tokenize, verify support
+    @objc public enum ActionType: Int {
+        case Sale = 1
+        case Auth = 2
+        case Tokenize = 3
+        case Verify = 4
+    }
+
     /// Action of payment, by default its Sale
     @objc public var action: ActionType = .Sale
+    */
 
     /// Object that holds recurrent info
     /// If set, would treat payment as recurrent

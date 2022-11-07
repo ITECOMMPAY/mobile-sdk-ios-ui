@@ -21,12 +21,11 @@
 		845507D7285B0463002BBFE0 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C2285B0463002BBFE0 /* PaymentOptions.swift */; };
 		845507D8285B0463002BBFE0 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C3285B0463002BBFE0 /* Payment.swift */; };
 		845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C5285B0463002BBFE0 /* EcommpaySDK.swift */; };
-		845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; };
+		845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		845507DD285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C9285B0463002BBFE0 /* ScreenDisplayMode.swift */; };
 		847EBAE8290BEC5F0080F99E /* RecurreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847EBAE7290BEC5F0080F99E /* RecurreInfo.swift */; };
 		847EBAE9290BEC5F0080F99E /* RecurreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847EBAE7290BEC5F0080F99E /* RecurreInfo.swift */; };
-		849C533528BF62C800C1CF71 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; };
-		849C533628BF62C800C1CF71 /* mobileSDK_Facade.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13D12852086E008814EB /* mobileSDK_Facade.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		849C533528BF62C800C1CF71 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		849C533828BF62C800C1CF71 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
 		849C533928BF62C800C1CF71 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C4E2893B2A20037A604 /* FieldType.swift */; };
 		849C533A28BF62C800C1CF71 /* RecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CEE285C88770009FD38 /* RecipientInfo.swift */; };
@@ -58,7 +57,6 @@
 		84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419E2889653500259A50 /* ProtocolConformance.swift */; };
 		84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
 		84B241A8288A61B700259A50 /* PaymentMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A7288A61B700259A50 /* PaymentMethodType.swift */; };
-		84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */ = {isa = PBXBuildFile; fileRef = 84BC13D12852086E008814EB /* mobileSDK_Facade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		84C87CFB28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */; };
 		84C87CFC28CF1BFD00B684DE /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */; };
 		84C87CFF28CF1BFD00B684DE /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */; };
@@ -155,7 +153,6 @@
 		84B2419E2889653500259A50 /* ProtocolConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConformance.swift; sourceTree = "<group>"; };
 		84B241A028896AB200259A50 /* BaseDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateProxy.swift; sourceTree = "<group>"; };
 		84B241A7288A61B700259A50 /* PaymentMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodType.swift; sourceTree = "<group>"; };
-		84BC13D12852086E008814EB /* mobileSDK_Facade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mobileSDK_Facade.h; sourceTree = "<group>"; };
 		84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.UI.xcodeproj; path = ../mobileSDK.UI/mobileSDK.UI.xcodeproj; sourceTree = "<group>"; };
 		84BC4F63285843C800CD7EA5 /* ecommpaySDK_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardTypesLogo.xcassets; sourceTree = "<group>"; };
@@ -323,7 +320,6 @@
 			children = (
 				84C87CF428CF1BFD00B684DE /* Assets */,
 				845507B6285B0463002BBFE0 /* Facade */,
-				84BC13D12852086E008814EB /* mobileSDK_Facade.h */,
 			);
 			path = mobileSDK.Facade;
 			sourceTree = "<group>";
@@ -396,7 +392,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				849C533528BF62C800C1CF71 /* EcommpaySDK.h in Headers */,
-				849C533628BF62C800C1CF71 /* mobileSDK_Facade.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				845507DC285B0463002BBFE0 /* EcommpaySDK.h in Headers */,
-				84BC4F58285843C800CD7EA5 /* mobileSDK_Facade.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

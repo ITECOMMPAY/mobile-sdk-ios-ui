@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Stored properties
-/// Корневое состояние на основе которого строится предствление всех экранов
+/// Корневое состояние на основе которого строится представление всех экранов
 struct RootState {
     var isLoading: Bool = false
     var currentMethod: PaymentMethodsListEntity?

@@ -13,6 +13,10 @@ import MsdkCore
 #endif
 
 public class ThreeDSecureInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(threeDSecurePaymentInfo: ThreeDSecurePaymentInfo? = nil, threeDSecureCustomerInfo: ThreeDSecureCustomerInfo? = nil) {
         self.threeDSecurePaymentInfo = threeDSecurePaymentInfo
         self.threeDSecureCustomerInfo = threeDSecureCustomerInfo
@@ -35,6 +39,10 @@ public class ThreeDSecureInfo: NSObject {
 }
 
 public class ThreeDSecurePaymentInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(reorder: String? = nil,
                   preorderPurchase: String? = nil,
                   preorderDate: String? = nil,
@@ -105,6 +113,10 @@ public class ThreeDSecurePaymentInfo: NSObject {
 }
 
 public class ThreeDSecureGiftCardInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(amount: Int? = nil, currency: String? = nil, count: Int? = nil) {
         self.amount = amount
         self.currency = currency
@@ -138,6 +150,10 @@ public class ThreeDSecureGiftCardInfo: NSObject {
 }
 
 public class ThreeDSecureCustomerInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(addressMatch: String? = nil,
                   homePhone: String? = nil,
                   workPhone: String? = nil,
@@ -210,6 +226,10 @@ public class ThreeDSecureCustomerInfo: NSObject {
 }
 
 public class ThreeDSecureAccountInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(additional: String? = nil,
                   ageIndicator: String? = nil,
                   date: String? = nil,
@@ -385,6 +405,10 @@ public class ThreeDSecureAccountInfo: NSObject {
 }
 
 public class ThreeDSecureShippingInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+
     public init(type: String? = nil, deliveryTime: String? = nil, deliveryEmail: String? = nil, addressUsageIndicator: String? = nil, addressUsage: String? = nil, city: String? = nil, country: String? = nil, address: String? = nil, postal: String? = nil, regionCode: String? = nil, nameIndicator: String? = nil) {
         self.type = type
         self.deliveryTime = deliveryTime
@@ -490,6 +514,10 @@ public class ThreeDSecureShippingInfo: NSObject {
 }
 
 public class ThreeDSecureMpiResultInfo: NSObject {
+    @objc public override init() {
+        super.init()
+    }
+    
     public init(acsOperationId: String? = nil, authenticationFlow: String? = nil, authenticationTimestamp: String? = nil) {
         self.acsOperationId = acsOperationId
         self.authenticationFlow = authenticationFlow
