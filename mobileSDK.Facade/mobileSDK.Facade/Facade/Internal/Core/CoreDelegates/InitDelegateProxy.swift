@@ -4,7 +4,7 @@
 //
 //  Created by Ivan Krapivtsev on 11.07.2022.
 //
- 
+
 import Combine
 #if !DEVELOPMENT
 @_implementationOnly import MsdkCore

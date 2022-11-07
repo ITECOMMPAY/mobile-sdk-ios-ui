@@ -8,7 +8,10 @@
 
 import Foundation
 
+//TODO: Use in later versions
+/*
 @objc public enum ScreenDisplayMode: Int {
     case hideSuccessFinalPage
     case hideDeclineFinalPage
 }
+*/

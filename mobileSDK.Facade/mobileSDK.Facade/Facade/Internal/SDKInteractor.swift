@@ -32,7 +32,7 @@ class SDKInteractor {
     // MARK: - Init
     init() {
         msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
-                                                                 wsApiHost: NetworkConfigType().socketHost)
+                                                           wsApiHost: NetworkConfigType().socketHost)
     }
 
     #if DEVELOPMENT
@@ -60,6 +60,13 @@ class SDKInteractor {
         } else if paymentOptions.mockModeType == .decline {
             msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow()
         }
+
+        msdkConfig.userAgentData = UserAgentData(
+            screenInfo: .init(width: Int32(UIScreen.main.bounds.width),
+                              height: Int32(UIScreen.main.bounds.height)),
+            applicationInfo: .init(version: EcommpaySDK.sdkVersion,
+                                   bundleId: Bundle.main.bundleIdentifier,
+                                   appName: Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String))
 
         let msdkSession = MSDKCoreSession(config: msdkConfig)
         setupDependency(with: msdkSession)

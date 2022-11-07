@@ -5,7 +5,6 @@
 //  Created by Ivan Krapivtsev on 22.07.2022.
 //
 
-
 #if !DEVELOPMENT
 @_implementationOnly import MsdkCore
 @_implementationOnly import mobileSDK_UI
