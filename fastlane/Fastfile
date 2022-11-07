@@ -223,7 +223,7 @@ def get_current_branch_info()
     contains_command_result = sh(command: "git tag --points-at")
 
     if contains_command_result.empty?
-      UI.user_error!("Please set build tag like v1.1.1(1)")
+      UI.user_error!("Please set build tag like v1.1.1_(1)")
     end
 
     #parse tags to array
@@ -239,8 +239,8 @@ def get_current_branch_info()
     end
 
     #get version name and build number from tag
-    tag_version_name = current_tag.split('(').first.delete! 'v'
-    tag_version_build = current_tag.split('(').last.delete! ')'
+    tag_version_name = current_tag.split('_(').first.delete! 'v'
+    tag_version_build = current_tag.split('_(').last.delete! ')'
     UI.success("TAG version name is #{tag_version_name}")
     if tag_version_build.nil?
       UI.user_error!("Can not parse TAG build value from #{current_tag}")
