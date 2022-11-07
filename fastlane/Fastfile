@@ -239,8 +239,8 @@ def get_current_branch_info()
     end
 
     #get version name and build number from tag
-    tag_version_name = current_tag.split('_(').first.delete! 'v'
-    tag_version_build = current_tag.split('_(').last.delete! ')'
+    tag_version_name = current_tag.split('_').first.delete! 'v'
+    tag_version_build = current_tag.split('_').last
     UI.success("TAG version name is #{tag_version_name}")
     if tag_version_build.nil?
       UI.user_error!("Can not parse TAG build value from #{current_tag}")
