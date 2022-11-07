@@ -107,11 +107,12 @@ public class PaymentOptions: NSObject {
         get { paymentInfo.languageCode }
         set { paymentInfo.languageCode = newValue }
     }
- 
+
     @objc public func setThreeDSecureInfo(_ threeDSecureInfo: ThreeDSecureInfo?) {
         paymentInfo.threeDSecureInfo = threeDSecureInfo?.coreType
     }
 
+    /* TODO: Add in later versions
     /// Display mode
     public var screenDisplayModes: Set<ScreenDisplayMode> = []
 
@@ -119,6 +120,7 @@ public class PaymentOptions: NSObject {
     public func addScreenDisplayMode(_ mode: ScreenDisplayMode) {
         screenDisplayModes = screenDisplayModes.union([mode])
     }
+    */
 
     /// Init Payment Info with some additional params
     ///

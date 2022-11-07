@@ -62,7 +62,7 @@ public final class LazyServiceLocator: ServiceLocator {
         objectWillChange.send()
         let key = typeName(some: T.self)
         registry[key] = .Instance(instance)
-        print("Service added to Registry: \(key) / \(typeName(some: instance))")
+        debugPrint("Service added to Registry: \(key) / \(typeName(some: instance))")
     }
 
     func getService<T>() -> T? {

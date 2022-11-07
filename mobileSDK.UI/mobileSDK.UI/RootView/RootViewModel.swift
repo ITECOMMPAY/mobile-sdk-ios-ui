@@ -361,7 +361,7 @@ class RootViewModel: RootViewModelProtocol {
     }
 }
 
-private func debugPrint(_ object: Any...) {
+internal func debugPrint(_ object: Any...) {
     #if DEBUG
     print(object)
     #endif

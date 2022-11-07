@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias NetworkConfigType = ECMPConfigDev
+typealias NetworkConfigType = ECMPConfig
 
-struct ECMPConfigDev: NetworkConfig {
+struct ECMPConfig: NetworkConfig {
     var apiHost: String {
         "sdk.ecommpay.com"
     }

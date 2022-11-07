@@ -74,7 +74,7 @@ struct Customer: Codable {
     var account: Account?
     var shipping: Shipping?
     var mpiResult: MpiResult?
-    
+
     enum CodingKeys: String, CodingKey {
         case account, shipping
         case mpiResult = "mpi_result"

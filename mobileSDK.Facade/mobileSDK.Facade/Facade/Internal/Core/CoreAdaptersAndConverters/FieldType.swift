@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 #if !DEVELOPMENT
 @_implementationOnly import MsdkCore
 @_implementationOnly import mobileSDK_UI
