@@ -59,7 +59,7 @@ platform :ios do
       )
       increment_version_number_in_xcodeproj(
         version_number: version_name,
-        target: "#{lib_targets[brand]}-Dev",
+        target: "#{lib_targets[brand]}_Dev",
         xcodeproj: "./mobileSDK.Facade/mobileSDK.Facade.xcodeproj" 
       )
 
