@@ -33,6 +33,12 @@ struct PaymentData {
     var applePayMerchantID: String = "merchant.ecommpayDemo.sdk"
     var applePayDescription: String = "Apple Pay Description"
     var applePayCountryCode: String = "US"
+
+    var sendThreeDSecParams: Bool = false
+    var threeDSecParams = ThreeDSecureInfo.default
+
+    var sendRecurrentData: Bool = false
+    var recurrentData = RecurrentData()
 }
 
 enum ForcePaymentMethods: String, CaseIterable, Identifiable {

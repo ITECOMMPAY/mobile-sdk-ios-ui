@@ -12,7 +12,7 @@ extension CustomerField {
         if self.isRequired && value.isEmpty {
             return L.message_required_field.string
         }
-        guard let validator = self.validatonMethod else {
+        guard let validator = self.validationMethod else {
             return nil
         }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Stored properties
-/// Корневое состояние на основе которого строится предствление всех экранов
+/// Корневое состояние на основе которого строится представление всех экранов
 struct RootState {
     var isLoading: Bool = false
     var currentMethod: PaymentMethodsListEntity?
@@ -35,7 +35,7 @@ struct FormData {
 }
 
 enum AlertModel {
-    typealias Action = ()->Void
+    typealias Action = () -> Void
 
     /// Уведомление об ошибке после которой продолжение сценария оплаты невозможно
     case FinalError(CoreError, onClose: Action?)

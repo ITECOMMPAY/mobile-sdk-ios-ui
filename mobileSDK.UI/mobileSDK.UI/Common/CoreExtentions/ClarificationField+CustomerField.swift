@@ -38,9 +38,7 @@ extension ClarificationFieldAdapter: CustomerField {
 
     var placeholder: String? { clarificationField.defaultPlaceholder }
 
-    var validatorName: String? { clarificationField.validatorName }
-
-    var validatonMethod: Validator<String>? { clarificationField.validatonMethod }
+    var validationMethod: Validator<String>? { clarificationField.validationMethod }
 
     var fieldServerType: FieldServerType { .text }
 

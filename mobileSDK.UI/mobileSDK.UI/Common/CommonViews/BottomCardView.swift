@@ -84,7 +84,7 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
         }
         .keyboardAwarePadding()
         .listStyle(.plain)
-        .background(UIScheme.color.mainBackground) 
+        .background(UIScheme.color.mainBackground)
     }
 }
 

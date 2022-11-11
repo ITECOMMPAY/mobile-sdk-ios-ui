@@ -30,7 +30,7 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                         isLoading = false
                         if let currentUrl = url,
                            let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
-                           !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck  {
+                           !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck {
                             isStartedStatusCheck = true
                             viewModel.dispatch(intent: .executePayment)
                         }
@@ -86,4 +86,3 @@ class ApsScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<ApsScree
 }
 
 extension RootState: ApsScreenState {}
-

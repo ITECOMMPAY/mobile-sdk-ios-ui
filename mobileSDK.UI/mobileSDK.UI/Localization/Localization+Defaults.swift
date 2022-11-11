@@ -57,6 +57,6 @@ extension L {
         .cookie_policy: "Cookie policy",
         // MARK: - Dialog
         .button_ok: "OK",
-        .button_cancel: "Cancel",
+        .button_cancel: "Cancel"
     ]
 }

@@ -65,8 +65,12 @@ class RootViewModel: RootViewModelProtocol {
                             $0.savedAccounts = $0.cardPaymentMethod != nil ? accounts : []
                         }
                         self.state.currentMethod = {
-                            if self.state.cardPaymentMethod != nil && !accounts.isEmpty {
-                                return PaymentMethodsListEntity(entityType: .savedAccount(accounts.first!))
+                            if let cardPaymentMethod = self.state.cardPaymentMethod {
+                                if !accounts.isEmpty {
+                                    return PaymentMethodsListEntity(entityType: .savedAccount(accounts.first!))
+                                } else {
+                                    return PaymentMethodsListEntity(entityType: .paymentMethod(cardPaymentMethod))
+                                }
                             } else {
                                 return self.state.mergedList.first
                             }
@@ -213,11 +217,11 @@ class RootViewModel: RootViewModelProtocol {
                 execute(payRequest: apsRequest)
             }
         case .paymentMethodsScreenIntent(.store(let newValues)):
-            if let currentMethod = state.currentMethod  {
+            if let currentMethod = state.currentMethod {
                 state.savedValues[currentMethod] = newValues
             }
         case .customerFieldsScreenIntent(.store(let customerFieldValues)):
-            if let currentMethod = state.currentMethod  {
+            if let currentMethod = state.currentMethod {
                 if var savedValues = state.savedValues[currentMethod] {
                     savedValues.customerFieldValues = customerFieldValues
                     state.savedValues[currentMethod] = savedValues
@@ -319,7 +323,7 @@ class RootViewModel: RootViewModelProtocol {
         }
     }
 
-    private var currentMethodHiddenFieldsValues: [FieldValue]  {
+    private var currentMethodHiddenFieldsValues: [FieldValue] {
         (state.currentPaymentMethod?.methodCustomerFields.fill(from: state.paymentOptions.uiAdditionalFields, where: { $0.isHidden }) ?? [])
     }
 
@@ -347,7 +351,7 @@ class RootViewModel: RootViewModelProtocol {
                 if case let .failure(error) = completion {
                     self.state.alertModel = .InfoError(error, onClose: nil)
                 }
-            }, receiveValue: { [weak self] result in
+            }, receiveValue: { [weak self] _ in
                 guard let self = self else { return }
                 self.state.savedAccounts = self.state.savedAccounts?.filter({ savedAccount in
                     savedAccount.id != card.id
@@ -357,7 +361,7 @@ class RootViewModel: RootViewModelProtocol {
     }
 }
 
-private func debugPrint(_ object: Any...) {
+internal func debugPrint(_ object: Any...) {
     #if DEBUG
     print(object)
     #endif

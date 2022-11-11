@@ -5,8 +5,13 @@
 //  Created by Ivan Krapivtsev on 25.07.2022.
 //
 
+#if !DEVELOPMENT
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
+#else
 import mobileSDK_UI
 import MsdkCore
+#endif
 import Combine
 
 struct PayInteractorWrapper {
@@ -30,15 +35,15 @@ extension PayInteractorWrapper: mobileSDK_UI.PayInteractor {
                 .eraseToAnyPublisher()
         }
 
-        guard let request = request as? MsdkCore.PayRequest
+        guard let requestWrapper = request as? PayRequestWrapper
         else {
-            return Fail(error: CoreError(code: .unknown, message: "request is not MsdkCore.PayRequest"))
+            return Fail(error: CoreError(code: .unknown, message: "request is not PayRequestWrapper"))
                 .eraseToAnyPublisher()
         }
         let delegateProxy = PayDelegateProxy()
 
         return delegateProxy.createPublisher(with: { delegate in
-            interactor.execute(request: request, callback: delegate)
+            interactor.execute(request: requestWrapper.coreRequest, callback: delegate)
         }).eraseToAnyPublisher()
     }
 

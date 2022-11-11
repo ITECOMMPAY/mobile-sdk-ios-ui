@@ -7,8 +7,13 @@
 
 import Foundation
 import UIKit
-import MsdkCore
+#if !DEVELOPMENT
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
+#else
 import mobileSDK_UI
+import MsdkCore
+#endif
 import UIKit
 import PassKit
 
@@ -56,17 +61,12 @@ public class PaymentOptions: NSObject {
     /// - **paymentCurrency** - Payment currency in ISO 4217 alpha-3 format
     /// - **customerId** - Unique identifier of the customer in your project
     /// and other optional params, complete reference of those presented in documentation
-    @objc public var paymentInfo: PaymentInfo
+    internal var paymentInfo: PaymentInfo
 
     @objc public var applePayOptions: ApplePayOptions?
 
-    @objc public enum ActionType: Int {
-        case Sale = 1
-        case Auth = 2
-        case Tokenize = 3
-        case Verify = 4
-    }
- 
+
+
     /// Payment logo image
     @objc public var logoImage: UIImage?
 
@@ -76,13 +76,22 @@ public class PaymentOptions: NSObject {
     /// mock Mode type
     @objc public var mockModeType: MockModeType = .disabled
 
+    /* TODO: add auth, tokenize, verify support
+    @objc public enum ActionType: Int {
+        case Sale = 1
+        case Auth = 2
+        case Tokenize = 3
+        case Verify = 4
+    }
+
     /// Action of payment, by default its Sale
     @objc public var action: ActionType = .Sale
+    */
 
     /// Object that holds recurrent info
     /// If set, would treat payment as recurrent
     @objc public var recurrentInfo: RecurrentInfo?
- 
+
     /// If you know any data for fields what would be asked from a user
     /// you could set them and they would be pre-filled
     /// Fields that are known, if visible -> would be pre-filled
@@ -93,8 +102,21 @@ public class PaymentOptions: NSObject {
     /// The reference to an instance of Recipient Info data class should be assagned for auth actions with support FT amd F52 fundings
     @objc public var recipientInfo: RecipientInfo?
     /// Hide saved wallets
-    @objc public var hideSavedWallets: Bool = false
+    @objc public var hideSavedWallets: Bool {
+        get { paymentInfo.hideSavedWallets }
+        set { paymentInfo.hideSavedWallets = newValue }
+    }
+    /// language code
+    @objc public var languageCode: String? {
+        get { paymentInfo.languageCode }
+        set { paymentInfo.languageCode = newValue }
+    }
 
+    @objc public func setThreeDSecureInfo(_ threeDSecureInfo: ThreeDSecureInfo?) {
+        paymentInfo.threeDSecureInfo = threeDSecureInfo?.coreType
+    }
+
+    /* TODO: Add in later versions
     /// Display mode
     public var screenDisplayModes: Set<ScreenDisplayMode> = []
 
@@ -102,6 +124,7 @@ public class PaymentOptions: NSObject {
     public func addScreenDisplayMode(_ mode: ScreenDisplayMode) {
         screenDisplayModes = screenDisplayModes.union([mode])
     }
+    */
 
     /// Init Payment Info with some additional params
     ///
@@ -150,4 +173,17 @@ public class PaymentOptions: NSObject {
         super.init()
     }
 
+    @objc public var signature: String? {
+        get { paymentInfo.signature }
+        set { paymentInfo.signature = newValue }
+    }
+
+    @objc public var forcePaymentMethod: String? {
+        get { paymentInfo.forcePaymentMethod }
+        set { paymentInfo.forcePaymentMethod = newValue }
+    }
+
+    @objc public var paramsForSignature: String {
+        paymentInfo.getParamsForSignature()
+    }
 }

@@ -7,8 +7,13 @@
 
 import Foundation
 
+#if !DEVELOPMENT
+@_implementationOnly import MsdkCore
+@_implementationOnly import mobileSDK_UI
+#else
 import MsdkCore
 import mobileSDK_UI
+#endif
 
 extension mobileSDK_UI.FieldServerType {
     static func createFrom(code: MsdkCore.FieldServerType) -> mobileSDK_UI.FieldServerType {
