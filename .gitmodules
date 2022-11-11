@@ -1,3 +1,0 @@
-[submodule "kmm_core"]
-	path = kmm_core
-url=ssh://git@stash.ecommpay.com:7999/pr2/mobile-sdk-core-kmm.git

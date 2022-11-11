@@ -1,0 +1,87 @@
+//
+//  PaymentOverview.swift
+//  mobileSDK.UI
+//
+//  Created by Ivan Krapivtsev on 27.06.2022.
+//
+
+import SwiftUI
+
+struct PaymentOverview: View {
+    let isVatIncluded: Bool
+    let priceValue: Decimal
+    let currency: String
+    let backgroundTemplate: InfoCardBackground
+    let logoImage: Image?
+    var isDimBackground: Bool = false
+
+    private let numberFormatter = { () -> NumberFormatter in
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
+
+    var body: some View {
+        cardBackground
+            .opacity(isDimBackground ? 0.4 : 1)
+            .overlay(alignment: .topLeading) {
+                logo
+            }
+            .overlay(alignment: .bottomLeading) {
+                price
+            }
+            .frame(height:
+                    logoImage != nil ? UIScheme.dimension.infoCardHeight : UIScheme.dimension.infoCardShortenedHeight
+            )
+            .shadow(color: UIScheme.color.paymentInfoCardShadow,
+                    radius: 9, x: 0, y: 4)
+    }
+
+    var cardBackground: some View {
+        backgroundTemplate.image?.resizable()
+            .colorMultiply(UIScheme.color.brandColor)
+            .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
+                          corners: .allCorners)
+    }
+
+    var logo: some View {
+        logoImage?
+            .padding(UIScheme.dimension.middleSpacing)
+    }
+
+    var price: some View {
+        VStack(alignment: .leading, spacing: UIScheme.dimension.smallSpacing) {
+            HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
+                Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
+                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
+                Text(currency).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
+            }
+            vat
+        }
+        .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)
+        .padding([.bottom, .leading], UIScheme.dimension.paymentDetailsSpacing)
+    }
+
+    var vat: some View {
+        Text(L.title_total_price.string + " ")
+            .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
+        + Text(isVatIncluded ? L.vat_included.string : "")
+            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+    }
+}
+
+#if DEBUG
+struct PaymentSummaryView_Previews: PreviewProvider {
+    static var previews: some View {
+        PaymentOverview(
+            isVatIncluded: true,
+            priceValue: Decimal(238.50),
+            currency: "EUR",
+            backgroundTemplate: .lines,
+            logoImage: IR.applePayButtonLogo.image,
+            isDimBackground: true
+        ).padding().previewLayout(.sizeThatFits)
+    }
+}
+#endif
