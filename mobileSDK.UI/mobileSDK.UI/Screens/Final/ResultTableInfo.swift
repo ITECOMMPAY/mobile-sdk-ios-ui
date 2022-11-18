@@ -26,8 +26,7 @@ struct ResultTableInfo: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding([.top, .horizontal], UIScheme.dimension.largeSpacing)
-        .padding(.bottom, UIScheme.dimension.smallSpacing)
+        .padding(UIScheme.dimension.largeSpacing)
         .background(UIScheme.color.panelBackgroundColor)
         .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: .allCorners)
     }

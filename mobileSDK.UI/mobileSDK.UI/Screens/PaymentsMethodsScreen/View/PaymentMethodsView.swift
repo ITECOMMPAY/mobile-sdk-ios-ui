@@ -25,13 +25,13 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-                PaymentDetailsView(details: viewModel.state.paymentOptions.details)
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
                                 priceValue: viewModel.state.paymentOptions.summary.value,
                                 currency: viewModel.state.paymentOptions.summary.currency,
+                                paymentDetails: viewModel.state.paymentOptions.details,
                                 backgroundTemplate: UIScheme.infoCardBackground,
                                 logoImage: viewModel.state.paymentOptions.summary.logo)
                 if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {

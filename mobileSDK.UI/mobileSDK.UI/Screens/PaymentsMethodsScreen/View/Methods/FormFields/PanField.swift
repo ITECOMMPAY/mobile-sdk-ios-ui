@@ -99,7 +99,7 @@ private struct CardTypeView: View {
     @Binding var recognizedType: CardType?
 
     @State private var timer: Timer?
-    @State private var thirdCardIndex: Int?
+    @State private var visibleCardTypeIndex: Int = 0
 
     private var visibleCardTypes: [CardType] {
         connectedCardTypes.filter { cardType in
@@ -112,15 +112,8 @@ private struct CardTypeView: View {
             if let recognizedType = recognizedType {
                 view(for: recognizedType)
             } else if !visibleCardTypes.isEmpty {
-                if let first = visibleCardTypes.first {
-                    view(for: first)
-                }
-                if visibleCardTypes.count > 1, let second = visibleCardTypes[1] {
-                    view(for: second)
-                }
-                if visibleCardTypes.count > 2 {
-                    let index = thirdCardIndex ?? 2
-                    view(for: visibleCardTypes[index])
+                if visibleCardTypeIndex < visibleCardTypes.count, let type = visibleCardTypes[visibleCardTypeIndex] {
+                   view(for: type)
                 }
             } else {
                 view(for: nil)
@@ -160,20 +153,7 @@ private struct CardTypeView: View {
     }
 
     private func onTimerTick() {
-        switch visibleCardTypes.count {
-        case 0...2:
-            thirdCardIndex = nil
-        case 3:
-            thirdCardIndex = 2
-        default:
-            if let thirdCardIndex = thirdCardIndex {
-                let tailCount = visibleCardTypes.count - 2
-                let tailIndex = thirdCardIndex - 2
-                self.thirdCardIndex = 2 + (tailIndex + 1) % tailCount
-            } else {
-                thirdCardIndex = 2
-            }
-        }
+        visibleCardTypeIndex = (visibleCardTypeIndex + 1) % visibleCardTypes.count
     }
 }
 

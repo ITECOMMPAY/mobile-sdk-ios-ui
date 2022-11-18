@@ -26,7 +26,7 @@ struct ExpiryField: View {
             $expiryString.didSet({ newValue in
                 validate(newValue)
             }),
-            placeholder: disabled ? L.title_expiration.string : L.title_expiration_placeholder.string,
+            placeholder: L.title_expiry.string,
             keyboardType: .numberPad,
             secure: false,
             isAllowedCharacter: allowedCharacters,

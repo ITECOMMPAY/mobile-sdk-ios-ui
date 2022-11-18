@@ -42,7 +42,7 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
             VStack(spacing: .zero) {
                 paymentMethodsPlaceholders
                 FooterView()
-                    .padding(.bottom, UIScheme.dimension.largeSpacing)
+                    .padding([.top, .bottom], UIScheme.dimension.largeSpacing)
             }
             .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
@@ -51,9 +51,6 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
 
     @ViewBuilder
     private var loadingStateHeader: some View {
-        RedactedView()
-            .cornerRadius(UIScheme.dimension.smallestCornerRadius)
-            .frame(width: 125, height: 20, alignment: .leading)
         RedactedView()
             .frame(height: 150)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)

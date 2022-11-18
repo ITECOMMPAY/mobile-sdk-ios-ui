@@ -11,15 +11,18 @@ import Combine
 struct BottomCardView<Content: View>: View {
     let content: Content
     var cardShown: Bool
+    let dissmissClosure: () -> Void
     let screenProportion: CGFloat
 
     @State private var allHeight: CGFloat = UIScreen.main.bounds.height
 
     init(cardShown: Bool = false,
          screenProportion: CGFloat = 0.9,
+         dissmissClosure: @escaping () -> Void = {},
          @ViewBuilder content: () -> Content) {
         self.cardShown = cardShown
         self.screenProportion = screenProportion
+        self.dissmissClosure = dissmissClosure
         self.content = content()
     }
 
@@ -37,6 +40,9 @@ struct BottomCardView<Content: View>: View {
                 .opacity(cardShown ? 1 : 0)
                 .animation(Animation.easeIn)
                 .ignoresSafeArea()
+                .onTapGesture {
+                    dissmissClosure()
+                }
             VStack(spacing: .zero) {
                 Spacer().frame(height: spacerHeight + cardOffset)
                 content

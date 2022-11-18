@@ -13,7 +13,11 @@ protocol DimensionScheme {
     /// Типичное расстояние от границ логического блока до элемента внутри. **default: 16**
     var middleSpacing: CGFloat { get }
     /// Расстояние от границ блока деталей платежа до элементов внутри. **default: 20**
+    var paymentOverviewSpacing: CGFloat { get }
+    /// Расстояние между элементами в блоке детальной информации о платеже. **default: 18**
     var paymentDetailsSpacing: CGFloat { get }
+    /// Высота кнопки payment details**default 33**
+    var paymentDetailsButtonHeight: CGFloat { get }
     /// Расстояние между элементами в списке либо связанными логически элементами. **default: 10**
     var smallSpacing: CGFloat { get }
     /// Расстояние между названием атрибута в блоке деталей платежа и его описанием. **default: 6**
@@ -48,6 +52,10 @@ protocol DimensionScheme {
     var payButtonPayPriceSpacing: CGFloat { get }
     /// Высота полей ввода**default: 55**
     var textFieldHeight: CGFloat { get }
+    /// Расстояние между подзаголовком экрана загрузки и кнопкой отмены. **default: 34**
+    var cancelButtonLoadingSubtitleSpacing: CGFloat { get }
+    /// Высота разделителя **default: 1**
+    var dividerHeight: CGFloat { get }
 
     // MARK: Fot sizes
     /// **default: 12**
@@ -83,7 +91,9 @@ struct DefaultDimensionScheme: DimensionScheme {
     let applePayButtonHeight: CGFloat = 48
     let tinySpacing: CGFloat = 6
     let smallSpacing: CGFloat = 10
-    let paymentDetailsSpacing: CGFloat = 20
+    let paymentDetailsSpacing: CGFloat = 18
+    let paymentOverviewSpacing: CGFloat = 20
+    let paymentDetailsButtonHeight: CGFloat = 33
     let largeSpacing: CGFloat = 26
     let middleSpacing: CGFloat = 16
     let buttonCornerRadius: CGFloat = 6
@@ -92,4 +102,6 @@ struct DefaultDimensionScheme: DimensionScheme {
     let borderWidth: CGFloat = 1
     let infoCardHeight: CGFloat = 150
     let valueToCurrencySpacing: CGFloat = 8
+    let cancelButtonLoadingSubtitleSpacing: CGFloat = 34
+    let dividerHeight: CGFloat = 1
 }

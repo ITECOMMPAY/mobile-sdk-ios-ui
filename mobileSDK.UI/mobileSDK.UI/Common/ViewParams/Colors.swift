@@ -60,10 +60,20 @@ protocol ColorScheme {
     var minorShapesColor: Color { get }
     /// цвет кнопки delete card
     var deleteCardButtonColor: Color { get }
+    /// цвет кнопки cancel payment
+    var cancelPaymentButtonColor: Color { get }
     /// цвет невыделеного чекбокса
     var checkboxBorder: Color { get }
+    /// Цвет текста успеха
+    var successTextColor: Color { get }
     /// Цвет текста ошибки
     var errorTextColor: Color { get }
+    /// Основной цвет в детальной информации о платеже
+    var paymentDetailsForegroundColor: Color { get }
+    /// Фон элементов в детальной информации о платеже(divider, кнопка)
+    var paymentDetailsBackgroundColor: Color { get }
+    /// Цвет заголовков в детальной информации о платеже
+    var paymentDetailsTitleColor: Color { get }
 }
 
 struct DefaultLight: ColorScheme {
@@ -93,8 +103,13 @@ struct DefaultLight: ColorScheme {
     var textFieldDisabledColor: Color { semiMediumGrey }
     var minorShapesColor: Color { semiMediumGrey }
     var deleteCardButtonColor: Color { darkGray }
+    var cancelPaymentButtonColor: Color { semiMediumGrey }
     var checkboxBorder: Color { Color(hex: 0xD1D5DB).opacity(0.9) }
+    var successTextColor: Color { brandGreen }
     var errorTextColor: Color { red }
+    var paymentDetailsForegroundColor: Color { Color.white }
+    var paymentDetailsBackgroundColor: Color { Color.white.opacity(0.1) }
+    var paymentDetailsTitleColor: Color { Color.white.opacity(0.6) }
 
     /// Colors as they marked in Figma
     let lightRed = Color(hex: 0xF8EAEA)
@@ -104,6 +119,7 @@ struct DefaultLight: ColorScheme {
     let lightGray = Color(hex: 0xF6F7F9)
     var brandBlue = Color(hex: 0x00579E)
     let semiMediumGrey = Color(hex: 0xBCBDBE)
+    let brandGreen = Color(hex: 0x00CC24)
 }
 /*
 struct DefaultDark: ColorScheme {

@@ -116,7 +116,8 @@ class RootViewModel: RootViewModelProtocol {
                 .clarificationFieldsScreenIntent(.close),
                 .threeDSecureScreenIntent(.close),
                 .apsScreenIntent(.close),
-                .loadingScreenIntent(.close):
+                .loadingScreenIntent(.close),
+                .navigationIntent(.close):
             state.alertModel = .CloseWarning(confirmClose: { [weak self] in
                 self?.cancellables.forEach {  $0.cancel() }
                 self?.onFlowFinished(.byUser)

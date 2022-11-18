@@ -14,7 +14,12 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
     @State var cardShown: Bool = false
 
     var body: some View {
-        BottomCardView(cardShown: cardShown) {
+        BottomCardView(
+            cardShown: cardShown,
+            dissmissClosure: {
+                viewModel.dispatch(intent: .close)
+            }
+        ) {
             currentScreen
         }.onAppear {
             cardShown = true

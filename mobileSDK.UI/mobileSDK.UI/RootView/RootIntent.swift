@@ -18,4 +18,5 @@ enum RootIntent {
     case declineScreenIntent(ResultDeclineScreenIntent)
     case threeDSecureScreenIntent(ThreeDSecureScreenIntent)
     case apsScreenIntent(ApsScreenIntent)
+    case navigationIntent(NavigationComponentIntent)
 }
