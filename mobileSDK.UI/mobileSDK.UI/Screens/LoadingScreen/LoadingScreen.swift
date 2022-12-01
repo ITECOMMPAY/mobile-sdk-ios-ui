@@ -52,7 +52,7 @@ struct LoadingView: View {
         VStack {
             Spacer()
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                DotsAnimationViewController()
+                DotsAnimationViewControllerRepresentable()
                     .frame(height: DotsAnimationParams.amplitude, alignment: .center)
                     .padding(.bottom, UIScheme.dimension.middleSpacing)
                 Text(L.title_loading_screen.string)
@@ -134,7 +134,7 @@ fileprivate final class DotsAnimationViewController: UIViewController {
     }
 }
 
-extension DotsAnimationViewController: UIViewControllerRepresentable {
+fileprivate struct DotsAnimationViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> DotsAnimationViewController {
         DotsAnimationViewController()
     }
