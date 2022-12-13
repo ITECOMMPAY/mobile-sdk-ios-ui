@@ -11,6 +11,7 @@ struct PaymentOverview: View {
     let isVatIncluded: Bool
     let priceValue: Decimal
     let currency: String
+    let paymentDetails: [PaymentDetailData]
     let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
     var isDimBackground: Bool = false
@@ -23,19 +24,16 @@ struct PaymentOverview: View {
     }()
 
     var body: some View {
-        cardBackground
-            .opacity(isDimBackground ? 0.4 : 1)
-            .overlay(alignment: .topLeading) {
-                logo
-            }
-            .overlay(alignment: .bottomLeading) {
-                price
-            }
-            .frame(height:
-                    logoImage != nil ? UIScheme.dimension.infoCardHeight : UIScheme.dimension.infoCardShortenedHeight
-            )
-            .shadow(color: UIScheme.color.paymentInfoCardShadow,
-                    radius: 9, x: 0, y: 4)
+        VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
+            logo
+            price
+            if !paymentDetails.isEmpty { details }
+        }.frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding(UIScheme.dimension.paymentOverviewSpacing)
+        .background() {
+            cardBackground.opacity(isDimBackground ? 0.4 : 1)
+        }
+        .shadow(color: UIScheme.color.paymentInfoCardShadow, radius: 9, x: 0, y: 4)
     }
 
     var cardBackground: some View {
@@ -46,12 +44,11 @@ struct PaymentOverview: View {
     }
 
     var logo: some View {
-        logoImage?
-            .padding(UIScheme.dimension.middleSpacing)
+        logoImage
     }
 
     var price: some View {
-        VStack(alignment: .leading, spacing: UIScheme.dimension.smallSpacing) {
+        VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
             HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
                 Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
                     .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
@@ -60,7 +57,6 @@ struct PaymentOverview: View {
             vat
         }
         .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)
-        .padding([.bottom, .leading], UIScheme.dimension.paymentDetailsSpacing)
     }
 
     var vat: some View {
@@ -68,6 +64,10 @@ struct PaymentOverview: View {
             .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
         + Text(isVatIncluded ? L.vat_included.string : "")
             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+    }
+    
+    var details: some View {
+        PaymentDetailsView(details: paymentDetails)
     }
 }
 
@@ -78,6 +78,14 @@ struct PaymentSummaryView_Previews: PreviewProvider {
             isVatIncluded: true,
             priceValue: Decimal(238.50),
             currency: "EUR",
+            paymentDetails: [
+                PaymentDetailData(title: L.title_payment_id,
+                                  description: "EP2e11-f018-RQR12-26VL-0412CS",
+                                  canBeCopied: true),
+                PaymentDetailData(title: L.title_payment_information_description,
+                                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                                  canBeCopied: false)
+            ],
             backgroundTemplate: .lines,
             logoImage: IR.applePayButtonLogo.image,
             isDimBackground: true

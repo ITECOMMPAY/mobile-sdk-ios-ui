@@ -29,6 +29,8 @@ struct PayButtonLabel: View {
         case Pay(Decimal, currency: String)
         case Continue
         case TryAgain
+        case Done
+        case Close
     }
 
     let style: Style
@@ -50,6 +52,10 @@ struct PayButtonLabel: View {
             Text(L.button_confirmation.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
         case .TryAgain:
             Text(L.button_try_again.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+        case .Done:
+            Text(L.button_done.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+        case .Close:
+            Text(L.button_close.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
         }
     }
 }

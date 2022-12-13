@@ -23,19 +23,18 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-                PaymentDetailsView(details: viewModel.state.paymentOptions.details)
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
-            VStack(spacing: .zero) {
+            VStack(spacing: UIScheme.dimension.middleSpacing) {
                 PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
                                 priceValue: viewModel.state.paymentOptions.summary.value,
                                 currency: viewModel.state.paymentOptions.summary.currency,
+                                paymentDetails: viewModel.state.paymentOptions.details,
                                 backgroundTemplate: UIScheme.infoCardBackground,
                                 logoImage: viewModel.state.paymentOptions.summary.logo)
                 Text(L.title_payment_additional_data_disclaimer.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
-                    .padding(.top, UIScheme.dimension.middleSpacing)
                     .fixedSize(horizontal: false, vertical: true)
                 EmbeddedCustomerFieldsView(
                     visibleCustomerFields: viewModel.state.clarificationFields?.map { $0.asCustomerField } ?? [],
@@ -44,7 +43,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 ) { newFieldValues, isValid in
                     self.clarificationFieldsValues = newFieldValues
                     self.isValid = isValid
-                }.padding(.vertical, UIScheme.dimension.middleSpacing)
+                }
                 PayButton(
                     label: PayButtonLabel(style: .Pay(viewModel.state.paymentOptions.summary.value,
                                                       currency: viewModel.state.paymentOptions.summary.currency)),
@@ -53,13 +52,10 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     viewModel.dispatch(intent: .sendFilledFields(clarificationFieldsValues))
                 }
                 PolicyView()
-                    .padding(.top, UIScheme.dimension.middleSpacing)
                 FooterView()
-                    .padding(.bottom, UIScheme.dimension.largeSpacing)
-
             }
-            .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
+            .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
         }
     }
 }
