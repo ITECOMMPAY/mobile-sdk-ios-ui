@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1340"
+   LastUpgradeVersion = "1420"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "849C532F28BF62C800C1CF71"
-               BuildableName = "ecommpaySDK.framework"
-               BlueprintName = "ecommpaySDK"
-               ReferencedContainer = "container:mobileSDK.Facade/mobileSDK.Facade.xcodeproj">
+               BlueprintIdentifier = "DCC5E7EB294DEB03004E8864"
+               BuildableName = "EcommpaySampleNL3.app"
+               BlueprintName = "EcommpaySampleNL3"
+               ReferencedContainer = "container:mobileSDK.SampleApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,6 +40,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DCC5E7EB294DEB03004E8864"
+            BuildableName = "EcommpaySampleNL3.app"
+            BlueprintName = "EcommpaySampleNL3"
+            ReferencedContainer = "container:mobileSDK.SampleApp.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -47,15 +57,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "849C532F28BF62C800C1CF71"
-            BuildableName = "ecommpaySDK.framework"
-            BlueprintName = "ecommpaySDK"
-            ReferencedContainer = "container:mobileSDK.Facade/mobileSDK.Facade.xcodeproj">
+            BlueprintIdentifier = "DCC5E7EB294DEB03004E8864"
+            BuildableName = "EcommpaySampleNL3.app"
+            BlueprintName = "EcommpaySampleNL3"
+            ReferencedContainer = "container:mobileSDK.SampleApp.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -15,45 +15,21 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
+### ios validate
+
+```sh
+[bundle exec] fastlane ios validate
+```
+
+Validate build
+
 ### ios appcenter
 
 ```sh
 [bundle exec] fastlane ios appcenter
 ```
 
-Upload Test application to Appcenter
-
-### ios check_flow
-
-```sh
-[bundle exec] fastlane ios check_flow
-```
-
-Check msdk flow constraints
-
-### ios generate_new_certificates
-
-```sh
-[bundle exec] fastlane ios generate_new_certificates
-```
-
-Generate new certificates
-
-### ios certificates
-
-```sh
-[bundle exec] fastlane ios certificates
-```
-
-Get certificates
-
-### ios register_new_device
-
-```sh
-[bundle exec] fastlane ios register_new_device
-```
-
-Register new devices
+Upload Test application to Appсenter
 
 ----
 
