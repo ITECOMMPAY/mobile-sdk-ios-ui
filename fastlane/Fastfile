@@ -162,8 +162,8 @@ platform :ios do
     device_hash = {}
     device_hash[device_name] = device_udid
     register_devices(devices: device_hash)
-    refresh_profiles
-    match(force: true)
+    match(type: "development", force_for_new_devices: true)
+    match(type: "adhoc", force_for_new_devices: true)
   end
 
 end

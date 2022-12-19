@@ -21,8 +21,19 @@ struct SavedCardCheckoutView: View {
     @State private var isCardDeleteAlertPresented: Bool = false
 
     private var payButtonIsEnabled: Bool {
-        isCvvValid
-        && (!isContinueButton ? (isCustomerFieldsValid || methodForAccount.visibleCustomerFields.isEmpty) : true)
+        isCvvValid && (visibleCustomerFields.shouldBeDisplayed ? isCustomerFieldsValid : true)
+    }
+    
+    private var isContinueButton: Bool {
+        !visibleCustomerFields.shouldBeDisplayed
+    }
+    
+    private var isTokenSale: Bool {
+        paymentOptions.action == .Sale && paymentOptions.token != nil
+    }
+
+    private var visibleCustomerFields: [CustomerField] {
+        methodForAccount.visibleCustomerFields
     }
 
     var body: some View {
@@ -33,9 +44,7 @@ struct SavedCardCheckoutView: View {
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-            if let visibleCustomerFields = methodForAccount.visibleCustomerFields,
-               !visibleCustomerFields.isEmpty,
-               visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
+            if visibleCustomerFields.shouldBeDisplayed {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
                                            customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
@@ -45,16 +54,34 @@ struct SavedCardCheckoutView: View {
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
             PayButton(label: buttonLabel,
-                      disabled: !payButtonIsEnabled) {
-                onIntent(.paySavedAccountWith(id: savedCard.id, cvv: formValues.cardCVV, customerFields: formValues.customerFieldValues))
+                      disabled: !payButtonIsEnabled
+            ) {
+                if isTokenSale {
+                    onIntent(
+                        .tokenizeSale(
+                            cvv: formValues.cardCVV,
+                            customerFields: formValues.customerFieldValues
+                        )
+                    )
+                } else {
+                    onIntent(
+                        .paySavedAccountWith(
+                            id: savedCard.id,
+                            cvv: formValues.cardCVV,
+                            customerFields: formValues.customerFieldValues
+                        )
+                    )
+                }
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
 
-            LinkButton(text: L.button_delete.string,
-                       fontSize: UIScheme.dimension.smallFont,
-                       foregroundColor: UIScheme.color.deleteCardButtonColor,
-                       onTap: onCardDeleteTap)
-            .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+            if !isTokenSale {
+                LinkButton(text: L.button_delete.string,
+                           fontSize: UIScheme.dimension.smallFont,
+                           foregroundColor: UIScheme.color.deleteCardButtonColor,
+                           onTap: onCardDeleteTap)
+                .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+            }
         }
         .padding(.horizontal, UIScheme.dimension.middleSpacing)
         .alert(isPresented: $isCardDeleteAlertPresented) {
@@ -81,15 +108,11 @@ struct SavedCardCheckoutView: View {
     }
 
     private var buttonLabel: PayButtonLabel {
-        if !isContinueButton {
-            return PayButtonLabel(style: .Pay(paymentOptions.summary.value, currency: paymentOptions.summary.currency))
-        } else {
+        if isContinueButton {
             return PayButtonLabel(style: .Continue)
+        } else {
+            return PayButtonLabel(style: .Pay(paymentOptions.summary.value, currency: paymentOptions.summary.currency))
         }
-    }
-
-    private var isContinueButton: Bool {
-        methodForAccount.visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }
 
     private func onCardDeleteTap() {

@@ -26,16 +26,16 @@ private struct MsdkCorePaymentMethodWrapper: mobileSDK_UI.PaymentMethod {
 
     let coreType: MsdkCore.PaymentMethod
 
-    var allSupportedCardTypes: [mobileSDK_UI.PaymentMethodCard] {
-        coreType.allCardTypes.map { $0.wrapper } as [mobileSDK_UI.PaymentMethodCard]
-    }
+//    var allSupportedCardTypes: [mobileSDK_UI.PaymentMethodCard] {
+//        coreType.allCardTypes.map { $0.wrapper } as [mobileSDK_UI.PaymentMethodCard]
+//    }
 
     var connectedCardTypes: [CardType] {
         coreType.availableCardTypes.map(CardType.createFrom(_:))
     }
 
-    var cardTypeRecognizer: CardTypeRecognizer {
-        coreType.cardTypesManager.wrapper
+    var cardTypeRecognizer: CardTypeRecognizer? {
+        coreType.cardTypesManager?.wrapper
     }
 
     var methodCustomerFields: [mobileSDK_UI.CustomerField] {
@@ -263,7 +263,7 @@ internal extension MsdkCore.Payment {
     }
 }
 
-private struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
+internal struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
     fileprivate init(coreType: MsdkCore.Payment) {
         self.coreType = coreType
     }
@@ -293,6 +293,8 @@ private struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
     var paymentMassage: String? { coreType.paymentMassage }
 
     var method: String? { coreType.method }
+    
+    var token: String? { coreType.token }
 }
 
 internal extension MsdkCore.AcsPage {

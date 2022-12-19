@@ -32,16 +32,18 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                priceValue: viewModel.state.paymentOptions.summary.value,
-                                currency: viewModel.state.paymentOptions.summary.currency,
-                                paymentDetails: viewModel.state.paymentOptions.details,
-                                backgroundTemplate: UIScheme.infoCardBackground,
-                                logoImage: viewModel.state.paymentOptions.summary.logo)
-                Text(L.title_payment_additional_data_disclaimer.string)
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.text)
-                    .fixedSize(horizontal: false, vertical: true)
+                if viewModel.state.paymentOptions.action != .Tokenize {
+                    PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
+                                    priceValue: viewModel.state.paymentOptions.summary.value,
+                                    currency: viewModel.state.paymentOptions.summary.currency,
+                                    paymentDetails: viewModel.state.paymentOptions.details,
+                                    backgroundTemplate: UIScheme.infoCardBackground,
+                                    logoImage: viewModel.state.paymentOptions.summary.logo)
+                    Text(L.title_payment_additional_data_disclaimer.string)
+                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+                        .foregroundColor(UIScheme.color.text)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
                 EmbeddedCustomerFieldsView(
                     visibleCustomerFields: viewModel.state.visibleCustomerFields,
                     additionalFields: viewModel.state.paymentOptions.uiAdditionalFields,
@@ -51,8 +53,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     self.isValid = isValid
                 }
                 PayButton(
-                    label: PayButtonLabel(style: .Pay(viewModel.state.paymentOptions.summary.value,
-                                                      currency: viewModel.state.paymentOptions.summary.currency)),
+                    label: buttonLabel,
                     disabled: !isValid
                 ) {
                     viewModel.dispatch(intent: .sendCustomerFields(customerFieldValues))
@@ -62,6 +63,19 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
             }
             .padding(.top, UIScheme.dimension.middleSpacing)
             .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
+        }
+    }
+    
+    private var buttonLabel: some View {
+        if viewModel.state.paymentOptions.action == .Tokenize {
+            return PayButtonLabel(style: .Proceed)
+        } else {
+            return PayButtonLabel(
+                style: .Pay(
+                    viewModel.state.paymentOptions.summary.value,
+                    currency: viewModel.state.paymentOptions.summary.currency
+                )
+            )
         }
     }
 }

@@ -23,6 +23,11 @@ extension L {
         .button_close: "Close",
         // MARK: - Dialog
         .button_ok: "OK",
-        .button_cancel: "Cancel"
+        .button_cancel: "Cancel",
+        // MARK: - Tokenize
+        .button_tokenize: "Save Card",
+        .button_proceed: "Continue",
+        .title_result_succes_tokenize: "Successfully saved card",
+        .title_result_error_tokenize: "Failed to save card"
     ]
 }

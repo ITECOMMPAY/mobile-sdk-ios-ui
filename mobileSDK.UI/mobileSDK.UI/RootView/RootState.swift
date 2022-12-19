@@ -43,6 +43,8 @@ enum AlertModel {
     case InfoError(CoreError, onClose: Action?)
     /// Предупреждение о закрытии страницы оплаты
     case CloseWarning(confirmClose: Action?)
+    /// Уведомление о завершении токенизации
+    case TokenizeResult(message: String, onClose: Action?)
 }
 
 // MARK: - Computed properties
@@ -76,6 +78,17 @@ extension RootState {
     }
 
     var currentScreen: SDKScreen {
+        switch paymentOptions.action {
+        case .Sale:
+            return saleCurrentScreen
+        case .Tokenize:
+            return tokenizeCurrentScreen
+        default:
+            return SDKScreen.none
+        }
+    }
+    
+    private var saleCurrentScreen: SDKScreen {
         if let finalPaymentState = finalPaymentState {
             switch finalPaymentState {
             case .Success:
@@ -113,6 +126,33 @@ extension RootState {
         }
 
         return .none
+    }
+    
+    private var tokenizeCurrentScreen: SDKScreen {
+        if finalPaymentState != nil {
+            return .none
+        }
+        
+        if isLoading {
+            if availablePaymentMethods == nil {
+                return .initialLoading
+            }
+            return .loading
+        }
+        
+        if let customerFields = customerFields, !customerFields.isEmpty {
+            return .customerFields
+        }
+
+        if availablePaymentMethods != nil {
+            return .paymentMethods
+        }
+
+        return .none
+    }
+    
+    var isTokenSale: Bool {
+        paymentOptions.action == .Sale && paymentOptions.token != nil
     }
 }
 

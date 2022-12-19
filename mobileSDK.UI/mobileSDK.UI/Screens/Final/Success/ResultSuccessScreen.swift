@@ -107,7 +107,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
         case .card:
             return "\(payment.paymentAccount?.type?.uppercased() ?? "") \(payment.paymentAccount?.number ?? "")"
         default:
-            return paymentMethod.translations["title"] ?? ""
+            return paymentMethod.name ?? paymentMethod.translations["title"] ?? ""
         }
     }
 

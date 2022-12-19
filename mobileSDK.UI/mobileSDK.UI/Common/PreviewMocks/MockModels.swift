@@ -65,6 +65,7 @@ struct MockPayment: Payment {
     var paymentCompleteFields: [CompleteField]? = [ MockCompleteField(), MockCompleteField() ]
     var paymentMassage: String? = "MockPayment_paymentMassage"
     var method: String? = "card"
+    var token: String? = "MockPayment token"
 }
 
 struct MockAccount: Account {
@@ -89,6 +90,8 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
+    var action: ActionType = .Sale
+    
     var pkPaymentRequest: PKPaymentRequest?
 
     var paymentID: String = "123"
@@ -115,6 +118,8 @@ struct MockPaymentOptions: PaymentOptions {
     ]
 
     var uiAdditionalFields: [AdditionalField] = []
+    
+    var token: String? = nil
 }
 
 struct MockSavedAccount: SavedAccount {
@@ -128,7 +133,7 @@ struct MockSavedAccount: SavedAccount {
 
 struct MockPaymentMethod: PaymentMethod {
     var paymentUrl: String? = "ecommpay.com"
-    var allSupportedCardTypes: [PaymentMethodCard] = []
+//    var allSupportedCardTypes: [PaymentMethodCard] = []
     var connectedCardTypes: [CardType] = CardType.allCases.dropLast()
     struct MockCardTypeRecognizer: CardTypeRecognizer {
         func getCardType(for pan: String) -> PaymentMethodCard? {
@@ -141,7 +146,7 @@ struct MockPaymentMethod: PaymentMethod {
     var isVatInfo: Bool = true
     var methodType: PaymentMethodType = .card
     var name: String? = "Bank card"
-    var cardTypeRecognizer: CardTypeRecognizer = MockCardTypeRecognizer()
+    var cardTypeRecognizer: CardTypeRecognizer? = MockCardTypeRecognizer()
     var iconUrl: String?
     var translations: [String: String] = [:]
 }

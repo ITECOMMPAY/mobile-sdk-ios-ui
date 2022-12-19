@@ -67,8 +67,8 @@ extension PaymentMethodsListEntity: Equatable {
 }
 
 extension PaymentMethodsListEntity: Hashable {
-    var hashValue: Int {
-        id.hashValue
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

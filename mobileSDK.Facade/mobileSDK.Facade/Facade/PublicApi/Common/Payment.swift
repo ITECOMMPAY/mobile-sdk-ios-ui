@@ -21,6 +21,7 @@ import MsdkCore
     public var method: String?
     public var sum: Int64
     public var currency: String?
+    public var token: String?
 
     internal init(from corePayment: MsdkCore.Payment) {
         status = corePayment.status.map { $0.name }
@@ -30,6 +31,7 @@ import MsdkCore
         method = corePayment.method
         sum = corePayment.sum
         currency = corePayment.currency
+        token = corePayment.token
         super.init()
     }
 }

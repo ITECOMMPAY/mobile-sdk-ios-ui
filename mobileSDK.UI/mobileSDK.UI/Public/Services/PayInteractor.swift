@@ -32,4 +32,14 @@ public protocol PayRequestFactory {
     func createAPSSaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest
 
     func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest
+    
+    func createTokenizeRequest(
+        pan: String,
+        month: Int32,
+        year: Int32,
+        cardHolder: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest
+
+    func createTokenizeSaleRequest(cvv: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest
 }

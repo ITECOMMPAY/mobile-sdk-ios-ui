@@ -43,6 +43,14 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
                         confirmClose?()
                     })
                 )
+            case .TokenizeResult(let message, let onClose):
+                return Alert(
+                    title: Text(message),
+                    dismissButton: Alert.Button.default(Text(L.button_ok.string)) {
+                        viewModel.dispatch(intent: .alertClosed)
+                        onClose?()
+                    }
+                )
             }
         } else {
             let failure = "Alert model is nil"

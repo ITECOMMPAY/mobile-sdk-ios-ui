@@ -479,6 +479,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 4287668275;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4287668275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -494,6 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ecommpay.sdk.testclient";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.ecommpay.sdk.testclient";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

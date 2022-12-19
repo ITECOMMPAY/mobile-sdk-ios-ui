@@ -90,9 +90,19 @@ class SDKInteractor {
                 case .withError(let coreError):
                     self?.completionHandler?(PaymentResult(status: .Error, error: coreError))
                 case .success(let payment):
-                    self?.completionHandler?(PaymentResult(status: .Success, payment: payment as? MsdkCore.Payment))
+                    self?.completionHandler?(
+                        PaymentResult(
+                            status: .Success,
+                            payment: (payment as? MsdkCorePaymentWrapper)?.coreType
+                        )
+                    )
                 case .decline(let payment):
-                    self?.completionHandler?(PaymentResult(status: .Decline, payment: payment as? MsdkCore.Payment))
+                    self?.completionHandler?(
+                        PaymentResult(
+                            status: .Decline,
+                            payment: (payment as? MsdkCorePaymentWrapper)?.coreType
+                        )
+                    )
                 }
             }
         }
@@ -137,6 +147,10 @@ fileprivate extension PaymentOptions {
 
 private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     let publicType: PaymentOptions
+    
+    var action: ActionType {
+        ActionType.init(rawValue: publicType.action.rawValue) ?? .Sale
+    }
 
     var applePayMerchantID: String? {
         publicType.applePayOptions?.applePayMerchantID
@@ -188,5 +202,9 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
 
     var paymentID: String {
         publicType.paymentInfo.paymentId
+    }
+    
+    var token: String? {
+        publicType.paymentInfo.token
     }
 }
