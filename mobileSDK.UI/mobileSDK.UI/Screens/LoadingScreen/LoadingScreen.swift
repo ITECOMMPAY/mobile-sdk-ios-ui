@@ -65,7 +65,7 @@ struct LoadingView: View {
                     .padding(.bottom, UIScheme.dimension.middleSpacing)
                     .opacity(animationState.showDots ? 1 : 0)
                 Text(L.title_loading_screen.string)
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
+                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                     .foregroundColor(UIScheme.color.text)
                     .offset(x: .zero, y: animationState.titleOffset)
                     .opacity(animationState.showTitle ? 1 : 0)

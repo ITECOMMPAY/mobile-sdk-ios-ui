@@ -221,11 +221,6 @@ struct CustomTextField<AccessoryViewType: View>: View {
     }
 
     private func updateBorderColor() {
-        guard !disabled else {
-            borderColor = UIScheme.color.textFieldDisabledColor
-            return
-        }
-
         if !showValid {
             borderColor = UIScheme.color.textFieldErrorBorderColor
         } else if editing {
