@@ -28,9 +28,23 @@ struct PayButtonLabel: View {
     enum Style {
         case Pay(Decimal, currency: String)
         case Continue
+        case Tokenize
+        case Proceed
         case TryAgain
         case Done
         case Close
+        
+        var title: String {
+            switch self {
+            case .Pay: return "Pay"
+            case .Continue: return L.button_confirmation.string
+            case .Tokenize: return L.button_tokenize.string
+            case .Proceed: return L.button_proceed.string
+            case .TryAgain: return L.button_try_again.string
+            case .Done: return L.button_done.string
+            case .Close: return L.button_close.string
+            }
+        }
     }
 
     let style: Style
@@ -45,18 +59,15 @@ struct PayButtonLabel: View {
                 return formatter
             }()
             HStack(spacing: UIScheme.dimension.payButtonPayPriceSpacing) {
-                Text("Pay").font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+                plainText
                 Text("\(amount as NSDecimalNumber, formatter: numberFormatter) \(currency)").font(UIScheme.font.commonBold(size: UIScheme.dimension.smallFont))
             }
-        case .Continue:
-            Text(L.button_confirmation.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-        case .TryAgain:
-            Text(L.button_try_again.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-        case .Done:
-            Text(L.button_done.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-        case .Close:
-            Text(L.button_close.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+        default: plainText
         }
+    }
+    
+    var plainText: some View {
+        Text(style.title).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
     }
 }
 

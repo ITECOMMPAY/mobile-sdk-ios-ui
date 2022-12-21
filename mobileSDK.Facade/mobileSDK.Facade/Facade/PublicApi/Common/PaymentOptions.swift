@@ -76,7 +76,7 @@ public class PaymentOptions: NSObject {
     /// mock Mode type
     @objc public var mockModeType: MockModeType = .disabled
 
-    /* TODO: add auth, tokenize, verify support
+    /* TODO: add auth, verify support */
     @objc public enum ActionType: Int {
         case Sale = 1
         case Auth = 2
@@ -86,7 +86,6 @@ public class PaymentOptions: NSObject {
 
     /// Action of payment, by default its Sale
     @objc public var action: ActionType = .Sale
-    */
 
     /// Object that holds recurrent info
     /// If set, would treat payment as recurrent
@@ -136,14 +135,16 @@ public class PaymentOptions: NSObject {
     ///   - paymentDescription: Payment description, for example, T-Shirt with print
     ///   - customerID: Unique identifier of the customer in your project
     ///   - regionCode: Region code of a customer
-    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:paymentDescription:customerID:regionCode:)
+    ///   - token: Saved card token
+    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:paymentDescription:customerID:regionCode:token:)
     public init(projectID: Int32,
                 paymentID: String,
                 paymentAmount: Int64,
                 paymentCurrency: String,
                 paymentDescription: String?,
                 customerID: String?,
-                regionCode: String?) {
+                regionCode: String?,
+                token: String? = nil) {
         self.paymentInfo = PaymentInfo.companion.create(projectId: projectID,
                                                         paymentId: paymentID,
                                                         paymentAmount: paymentAmount,
@@ -151,6 +152,7 @@ public class PaymentOptions: NSObject {
         self.paymentInfo.paymentDescription = (paymentDescription?.isEmpty ?? true) ? nil : paymentDescription
         self.paymentInfo.customerId = customerID
         self.paymentInfo.regionCode = regionCode
+        self.paymentInfo.token = token
         super.init()
     }
 

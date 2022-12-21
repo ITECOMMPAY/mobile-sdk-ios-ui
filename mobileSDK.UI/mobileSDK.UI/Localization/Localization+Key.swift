@@ -60,6 +60,11 @@ public enum L: String {
     // MARK: - Footer
     case privacy_policy
     case cookie_policy
+    // MARK: - Tokenize
+    case button_tokenize
+    case button_proceed
+    case title_result_succes_tokenize
+    case title_result_error_tokenize
 
     // MARK: - OTHERS
     case message_card_holder

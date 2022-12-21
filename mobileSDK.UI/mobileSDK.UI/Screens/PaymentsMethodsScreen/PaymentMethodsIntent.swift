@@ -22,4 +22,6 @@ enum PaymentMethodsIntent {
     case select(PaymentMethodsListEntity)
     case payWithApplePay(customerFields: [FieldValue])
     case store(FormData)
+    case tokenize
+    case tokenizeSale(cvv: String, customerFields: [FieldValue])
 }

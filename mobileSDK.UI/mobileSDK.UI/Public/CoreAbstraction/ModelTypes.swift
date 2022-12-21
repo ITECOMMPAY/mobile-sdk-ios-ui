@@ -32,6 +32,13 @@ public enum PayEvent {
     case onThreeDSecure(acsPage: AcsPage, isCascading: Bool, payment: Payment)
 }
 
+public enum ActionType: Int {
+    case Sale = 1
+    case Auth = 2
+    case Tokenize = 3
+    case Verify = 4
+}
+
 public typealias Validator<Type> = (_ isValid: Type) -> Bool
 
 public protocol CustomerField {
@@ -58,6 +65,7 @@ public protocol Payment {
     var uiPaymentMethodType: PaymentMethodType { get }
     var paymentStatus: PaymentStatus? { get }
     var method: String? { get }
+    var token: String? { get }
 }
 
 public protocol CompleteField {
@@ -77,9 +85,9 @@ public protocol PaymentMethod {
     var isVatInfo: Bool { get }
     var methodType: PaymentMethodType { get }
     var name: String? { get }
-    var allSupportedCardTypes: [PaymentMethodCard] { get }
+//    var allSupportedCardTypes: [PaymentMethodCard] { get }
     var connectedCardTypes: [CardType] { get }
-    var cardTypeRecognizer: CardTypeRecognizer { get }
+    var cardTypeRecognizer: CardTypeRecognizer? { get }
     var iconUrl: String? { get }
     var translations: [String: String] { get }
     var paymentUrl: String? { get }
@@ -129,6 +137,7 @@ public protocol PaymentMethodCard {
 }
 
 public protocol PaymentOptions {
+    var action: ActionType { get }
     var summary: PaymentSummaryData { get }
     var details: [PaymentDetailData] { get }
     var uiAdditionalFields: [AdditionalField] { get }
@@ -139,6 +148,7 @@ public protocol PaymentOptions {
     var paymentID: String { get }
     var applePayDescription: String? { get }
     var pkPaymentRequest: PKPaymentRequest? { get }
+    var token: String? { get }
 }
 
 public protocol AdditionalField {
