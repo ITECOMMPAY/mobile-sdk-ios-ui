@@ -12,12 +12,20 @@ protocol RootChild {
     var parentViewModel: ParentViewModel { get }
 }
 
+enum NavigationComponentIntent {
+    case close
+}
+
 protocol NavigationComponentViewModelProtocol: ViewModel, RootChild
-where ViewState == NavigationComponentState, UserIntent == Void {} // UserIntent == Void т.к. пользователь напрямую с навигацией не взаиможействует
+where ViewState == NavigationComponentState, UserIntent == NavigationComponentIntent {}
 
 /// Модель компонента навигации. В маппингах с помощью рутового состояния определяется то какой экран сейчас нужно отображать
-class NavigationComponentViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<NavigationComponentState, Void, rootVM>, NavigationComponentViewModelProtocol {
+class NavigationComponentViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<NavigationComponentState, NavigationComponentIntent, rootVM>, NavigationComponentViewModelProtocol {
     override func mapState(from parentState: rootVM.ViewState) throws -> NavigationComponentState {
         return NavigationComponentState(currentScreen: parentState.currentScreen)
+    }
+    
+    override func mapIntent(from childIntent: NavigationComponentIntent) throws -> rootVM.UserIntent {
+        .navigationIntent(.close)
     }
 }

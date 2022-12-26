@@ -13,30 +13,41 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
     private var expandedListEntryID: String? {
         return viewModel.state.selectedMethodsListEntity?.id
     }
+    
+    private var screenTitle: String {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            return L.button_tokenize.string
+        default:
+            return L.title_payment_methods.string
+        }
+    }
 
     public var body: some View {
         return BottomCardViewContent {
             VStack(alignment: .leading, spacing: UIScheme.dimension.middleSpacing) {
                 HStack(alignment: .center) {
-                    ScreenHeader(text: L.title_payment_methods.string)
+                    ScreenHeader(text: screenTitle)
                     Spacer()
                     CloseButton {
                         viewModel.dispatch(intent: .close)
                     }
                 }
                 .frame(maxWidth: .infinity)
-                PaymentDetailsView(details: viewModel.state.paymentOptions.details)
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                priceValue: viewModel.state.paymentOptions.summary.value,
-                                currency: viewModel.state.paymentOptions.summary.currency,
-                                backgroundTemplate: UIScheme.infoCardBackground,
-                                logoImage: viewModel.state.paymentOptions.summary.logo)
-                if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
-                    ApplePayButton {
-                        viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
+                if viewModel.state.paymentOptions.action != .Tokenize {
+                    PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
+                                    priceValue: viewModel.state.paymentOptions.summary.value,
+                                    currency: viewModel.state.paymentOptions.summary.currency,
+                                    paymentDetails: viewModel.state.paymentOptions.details,
+                                    backgroundTemplate: UIScheme.infoCardBackground,
+                                    logoImage: viewModel.state.paymentOptions.summary.logo)
+                    if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
+                        ApplePayButton {
+                            viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
+                        }
                     }
                 }
                 paymentMethodsList
@@ -86,11 +97,19 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             ForEach(viewModel.state.mergedList, id: \.id) { listEntity in
                 switch listEntity.entityType {
                 case .savedAccount(let savedAccount):
-                    getPaymentMethodCell(for: savedAccount, isExpanded: expandedListEntryID == listEntity.id) {
+                    getPaymentMethodCell(
+                        for: savedAccount,
+                        isExpanded: expandedListEntryID == listEntity.id,
+                        isCollapsible: viewModel.state.mergedList.count > 1
+                    ) {
                         viewModel.dispatch(intent: .select(listEntity))
                     }
                 case .paymentMethod(let method):
-                    getPaymentMethodCell(for: method, isExpanded: expandedListEntryID == listEntity.id) {
+                    getPaymentMethodCell(
+                        for: method,
+                        isExpanded: expandedListEntryID == listEntity.id,
+                        isCollapsible: viewModel.state.mergedList.count > 1
+                    ) {
                         viewModel.dispatch(intent: .select(listEntity))
                     }
                 }
@@ -100,16 +119,21 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
 
     private func getPaymentMethodCell(for method: PaymentMethod,
                                       isExpanded: Bool,
+                                      isCollapsible: Bool,
                                       onTap: @escaping () -> Void) -> some View {
         return Group {
             if method.methodType == .applePay && viewModel.state.applePayPresentationMode != .method {
                 EmptyView()
             } else {
-                PaymentMethodCell(methodTitle: method.displayName ?? method.methodType.rawValue,
-                                  methodImage: getLogo(for: method),
-                                  isSavedAccount: false,
-                                  isExpanded: isExpanded,
-                                  content: expandableContent(for: method)) {
+                PaymentMethodCell(
+                    methodTitle: method.displayName ?? method.methodType.rawValue,
+                    methodImage: getLogo(for: method),
+                    isSavedAccount: false,
+                    isExpanded: isExpanded,
+                    isCollapsible: isCollapsible,
+                    hasHeader: viewModel.state.paymentOptions.action != .Tokenize,
+                    content: expandableContent(for: method)
+                ) {
                     withAnimation {
                         onTap()
                     }
@@ -120,12 +144,14 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
 
     private func getPaymentMethodCell(for savedAccount: SavedAccount,
                                       isExpanded: Bool,
+                                      isCollapsible: Bool,
                                       onTap: @escaping () -> Void) -> some View {
         return Group {
             PaymentMethodCell(methodTitle: savedAccount.number ?? "***",
                               methodImage: getLogo(for: savedAccount),
                               isSavedAccount: true,
                               isExpanded: isExpanded,
+                              isCollapsible: isCollapsible,
                               content: savedCardView(for: savedAccount)) {
                 withAnimation {
                     onTap()
@@ -163,11 +189,22 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         return Group {
             switch method.methodType {
             case .card:
-                NewCardCheckoutView(
-                    formValues: formValuesBinding,
-                    paymentOptions: viewModel.state.paymentOptions,
-                    paymentMethod: method) {
-                    viewModel.dispatch(intent: $0)
+                if viewModel.state.paymentOptions.action == .Tokenize {
+                    TokenizeCardView(
+                        formValues: formValuesBinding,
+                        paymentOptions: viewModel.state.paymentOptions,
+                        paymentMethod: method
+                    ) {
+                        viewModel.dispatch(intent: $0)
+                    }
+                } else {
+                    NewCardCheckoutView(
+                        formValues: formValuesBinding,
+                        paymentOptions: viewModel.state.paymentOptions,
+                        paymentMethod: method
+                    ) {
+                        viewModel.dispatch(intent: $0)
+                    }
                 }
             case .applePay:
                 ApplePayCheckoutView(

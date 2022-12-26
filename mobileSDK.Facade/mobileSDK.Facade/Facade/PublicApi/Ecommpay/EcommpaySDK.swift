@@ -65,10 +65,9 @@ public class EcommpaySDK: NSObject {
     ///   - completion: result of payment flow
     public func getPaymentView(with paymentOptions: PaymentOptions,
                                completion: ((_ result: PaymentResult) -> Void)?) -> some View {
-        final class WrapperCotroller: UIViewController, UIViewControllerRepresentable {
-
-            typealias OnViewDidAppear = (_ controlledBy: UIViewController) -> Void
-
+        typealias OnViewDidAppear = (_ controlledBy: UIViewController) -> Void
+        
+        final class WrapperViewController: UIViewController {
             var onViewDidAppear: OnViewDidAppear = { _ in }
 
             init(onViewDidAppear: @escaping OnViewDidAppear) {
@@ -79,22 +78,26 @@ public class EcommpaySDK: NSObject {
             required init?(coder: NSCoder) {
                 fatalError("init(coder:) has not been implemented")
             }
-
-            typealias UIViewControllerType = WrapperCotroller
-
+            
             override func viewDidAppear(_ animated: Bool) {
                 super.viewDidAppear(animated)
                 onViewDidAppear(self)
             }
+        }
+        
+        struct WrapperController: UIViewControllerRepresentable {
+            var onViewDidAppear: OnViewDidAppear = { _ in }
+            
+            typealias UIViewControllerType = WrapperViewController
 
-            func makeUIViewController(context: Context) -> WrapperCotroller {
-                return WrapperCotroller(onViewDidAppear: onViewDidAppear)
+            func makeUIViewController(context: Context) -> WrapperViewController {
+                return WrapperViewController(onViewDidAppear: onViewDidAppear)
             }
 
-            func updateUIViewController(_ uiViewController: WrapperCotroller, context: Context) {}
+            func updateUIViewController(_ uiViewController: WrapperViewController, context: Context) {}
         }
 
-        let wrapper = WrapperCotroller { [weak self] vc in
+        let wrapper = WrapperController { [weak self] vc in
             self?.presentPayment(at: vc, paymentOptions: paymentOptions, completion: completion)
         }
         return wrapper

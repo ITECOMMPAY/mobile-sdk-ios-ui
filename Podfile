@@ -23,6 +23,6 @@ mSDKTargets += mSDKTargetsDev
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
-    pod 'MsdkCore', '0.5.3'
+    pod 'MsdkCore', '0.5.4'
   end
 end

@@ -13,12 +13,22 @@ enum InitialLoadingScreenIntent {
     case close
 }
 
-protocol InitialLoadingScreenViewModelProtocol: ViewModel
-where UserIntent == InitialLoadingScreenIntent, ViewState == Void {} // ViewState == Void т.к. этот экран всегда в одном состоянии, его представление неизменно
+protocol InitialLoadingScreenState {
+    var paymentOptions: PaymentOptions { get }
+}
 
-class InitialLoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<Void, InitialLoadingScreenIntent, rootVM>, InitialLoadingScreenViewModelProtocol {
+extension RootState: InitialLoadingScreenState { }
+
+protocol InitialLoadingScreenViewModelProtocol: ViewModel
+where UserIntent == InitialLoadingScreenIntent, ViewState == InitialLoadingScreenState {}
+
+class InitialLoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<InitialLoadingScreenState, InitialLoadingScreenIntent, rootVM>, InitialLoadingScreenViewModelProtocol {
     override func mapIntent(from childIntent: InitialLoadingScreenIntent) throws -> rootVM.UserIntent {
         return .initialLoadingScreenIntent(childIntent)
+    }
+    
+    override func mapState(from parentState: rootVM.ViewState) throws -> InitialLoadingScreenState {
+        return parentState as InitialLoadingScreenState
     }
 }
 
@@ -29,7 +39,7 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
         return BottomCardViewContent {
             VStack(alignment: .leading, spacing: UIScheme.dimension.middleSpacing) {
                 HStack(alignment: .center) {
-                    ScreenHeader(text: L.localizationDefaults[L.title_payment_methods] ?? "")
+                    ScreenHeader(text: screenTitle)
                     Spacer()
                     CloseButton {
                         viewModel.dispatch(intent: .close)
@@ -42,18 +52,24 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
             VStack(spacing: .zero) {
                 paymentMethodsPlaceholders
                 FooterView()
-                    .padding(.bottom, UIScheme.dimension.largeSpacing)
+                    .padding([.top, .bottom], UIScheme.dimension.largeSpacing)
             }
             .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
         }
     }
+    
+    private var screenTitle: String {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            return L.localizationDefaults[L.button_tokenize] ?? ""
+        default:
+            return L.localizationDefaults[L.title_payment_methods] ?? ""
+        }
+    }
 
     @ViewBuilder
     private var loadingStateHeader: some View {
-        RedactedView()
-            .cornerRadius(UIScheme.dimension.smallestCornerRadius)
-            .frame(width: 125, height: 20, alignment: .leading)
         RedactedView()
             .frame(height: 150)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)

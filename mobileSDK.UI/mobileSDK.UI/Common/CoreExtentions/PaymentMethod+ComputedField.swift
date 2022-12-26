@@ -11,4 +11,8 @@ extension PaymentMethod {
     var visibleCustomerFields: [CustomerField] {
         methodCustomerFields.filter { !$0.isHidden }
     }
+    
+    var tokenizeCustomerFields: [CustomerField] {
+        methodCustomerFields.filter { !$0.isTokenize }
+    }
 }

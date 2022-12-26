@@ -11,7 +11,6 @@ import Foundation
 public enum L: String {
     // MARK: - Payment Methods Page
     case title_payment_methods
-    case title_payment_information_screen
     // MARK: - Payment overview (синяя карточка)
     case title_total_price
     case vat_included
@@ -19,10 +18,13 @@ public enum L: String {
     case title_payment_id
     case title_payment_information_description
     case merchant_address
+    case title_payment_information_screen
+    case button_hide_details
     // MARK: - APS
     case aps_payment_disclaimer
     case aps_vat_disclaimer
     // MARK: - Saved card method
+    case title_expiry
     case title_expiration
     case title_cvv
     case button_delete
@@ -41,6 +43,9 @@ public enum L: String {
     // MARK: - Loading screen
     case title_loading_screen
     case sub_title_loading_screen
+    case title_cancel_payment
+    case button_done
+    case button_close
     // MARK: - Success / Error screen
     case title_result_succes_payment
     case title_result_error_payment
@@ -55,6 +60,11 @@ public enum L: String {
     // MARK: - Footer
     case privacy_policy
     case cookie_policy
+    // MARK: - Tokenize
+    case button_tokenize
+    case button_proceed
+    case title_result_succes_tokenize
+    case title_result_error_tokenize
 
     // MARK: - OTHERS
     case message_card_holder

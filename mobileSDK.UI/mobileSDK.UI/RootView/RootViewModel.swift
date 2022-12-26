@@ -23,6 +23,7 @@ class RootViewModel: RootViewModelProtocol {
     @Injected var payInteractor: PayInteractor?
     @Injected var payRequestFactory: PayRequestFactory?
     @Injected var cardRemoveInteractor: CardRemoveInteractor?
+    @Injected var cardExpiryFabric: CardExpiryFabric?
 
     let applePayService = ApplePayService.shared
 
@@ -51,11 +52,20 @@ class RootViewModel: RootViewModelProtocol {
                 guard let self = self else { return }
                 self.state.isLoading = false
                 switch event {
-                case .onInitReceived(paymentMethods: let methods, savedAccounts: let accounts):
-                    let methods = self.applePayService.isAvailable ? methods : methods.filter {
-                        $0.methodType != .applePay // выкидываем applePay если он не поддерживается на устройстве
+                case .onInitReceived(paymentMethods: let paymentMethods, savedAccounts: let accounts):
+                    let accounts = self.state.paymentOptions.action == .Tokenize ? [] : accounts
+                    
+                    let methods: [PaymentMethod]
+                    if self.state.paymentOptions.action == .Tokenize || self.state.isTokenSale {
+                        methods = paymentMethods.filter { $0.methodType == .card }
+                    } else if self.applePayService.isAvailable {
+                        methods = paymentMethods
+                    } else {
+                        // выкидываем applePay если он не поддерживается на устройстве
+                        methods = paymentMethods.filter { $0.methodType != .applePay }
                     }
-                    if methods.count == 0 {
+                    
+                    if methods.isEmpty && accounts.isEmpty {
                         self.state.alertModel = .FinalError(.methodsListEmpty, onClose: {
                             [weak self] in self?.onFlowFinished(.withError(.methodsListEmpty))
                         })
@@ -116,7 +126,8 @@ class RootViewModel: RootViewModelProtocol {
                 .clarificationFieldsScreenIntent(.close),
                 .threeDSecureScreenIntent(.close),
                 .apsScreenIntent(.close),
-                .loadingScreenIntent(.close):
+                .loadingScreenIntent(.close),
+                .navigationIntent(.close):
             state.alertModel = .CloseWarning(confirmClose: { [weak self] in
                 self?.cancellables.forEach {  $0.cancel() }
                 self?.onFlowFinished(.byUser)
@@ -125,6 +136,18 @@ class RootViewModel: RootViewModelProtocol {
             self.onFlowFinished(.decline(state.payment))
         case .successScreenIntent(.close):
             self.onFlowFinished(.success(state.payment))
+        case .paymentMethodsScreenIntent(.tokenizeSale(let cvv, let customerFields)):
+            guard let payRequestFactory = payRequestFactory else {
+                return
+            }
+            
+            let request = payRequestFactory.createTokenizeSaleRequest(
+                cvv: cvv,
+                customerFields: composeFieldValuesForCardSale(from: customerFields)
+            )
+            
+            state.isLoading = true
+            execute(payRequest: request)
         case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv, customerFields: let formVlues)):
             guard let payRequestFactory = payRequestFactory else {
                 return
@@ -170,8 +193,12 @@ class RootViewModel: RootViewModelProtocol {
         case .alertClosed:
             state.alertModel = nil
         case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
-            state.isLoading = true
-            payInteractor?.sendCustomerFields(fieldsValues: fieldsValues + currentMethodHiddenFieldsValues)
+            if state.paymentOptions.action == .Tokenize {
+                tokenizeCard()
+            } else {
+                state.isLoading = true
+                payInteractor?.sendCustomerFields(fieldsValues: fieldsValues + currentMethodHiddenFieldsValues)
+            }
         case .clarificationFieldsScreenIntent(.sendFilledFields(let fieldsValues)):
             state.isLoading = true
             payInteractor?.sendClarificationFields(fieldsValues: fieldsValues)
@@ -229,7 +256,39 @@ class RootViewModel: RootViewModelProtocol {
                     state.savedValues[currentMethod] = FormData(customerFieldValues: customerFieldValues.skipEmpty())
                 }
             }
+        case .paymentMethodsScreenIntent(.tokenize):
+            let customerFields = state.currentPaymentMethod?.methodCustomerFields.filter {
+                $0.isTokenize && !$0.isHidden
+            } ?? []
+            
+            if customerFields.count > UIScheme.countOfVisibleCustomerFields {
+                state = modifiedCopy(of: state) {
+                    $0.customerFields = customerFields
+                }
+            } else {
+                tokenizeCard()
+            }
         }
+    }
+    
+    private func tokenizeCard() {
+        guard let payRequestFactory = payRequestFactory,
+              let currentMethod = state.currentMethod,
+              let formData = state.savedValues[currentMethod],
+              let cardExpiry = cardExpiryFabric?.createCardExpiry(with: formData.cardExpiry),
+              let month = cardExpiry.expiryMonth, let year = cardExpiry.expiryYear
+        else { return }
+        
+        let tokenizeRequest = payRequestFactory.createTokenizeRequest(
+            pan: formData.cardNumber,
+            month: month,
+            year: year + 2000,
+            cardHolder: formData.cardHolder,
+            customerFields: composeTokenizeFieldValues(from: formData.customerFieldValues)
+        )
+        
+        state.isLoading = true
+        execute(payRequest: tokenizeRequest)
     }
 
     private func execute(payRequest request: PayRequest) {
@@ -286,6 +345,15 @@ class RootViewModel: RootViewModelProtocol {
                         $0.payment = payment
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
                     }
+                    
+                    if self.state.paymentOptions.action == .Tokenize {
+                        self.state.alertModel = .TokenizeResult(
+                            message: L.title_result_error_tokenize.string,
+                            onClose: { [weak self] in
+                                self?.onFlowFinished(.decline(payment))
+                            }
+                        )
+                    }
                 case .onCompleteWithFail(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithFail")
                     self.state = modifiedCopy(of: self.state) {
@@ -293,12 +361,30 @@ class RootViewModel: RootViewModelProtocol {
                         $0.isLoading = false
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
                     }
+                    
+                    if self.state.paymentOptions.action == .Tokenize {
+                        self.state.alertModel = .TokenizeResult(
+                            message: L.title_result_error_tokenize.string,
+                            onClose: { [weak self] in
+                                self?.onFlowFinished(.decline(payment))
+                            }
+                        )
+                    }
                 case .onCompleteWithSuccess(payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithSuccess")
                     self.state = modifiedCopy(of: self.state) {
                         $0.payment = payment
                         $0.isLoading = false
                         $0.finalPaymentState = .Success
+                    }
+                    
+                    if self.state.paymentOptions.action == .Tokenize {
+                        self.state.alertModel = .TokenizeResult(
+                            message: L.title_result_succes_tokenize.string,
+                            onClose: { [weak self] in
+                                self?.onFlowFinished(.success(payment))
+                            }
+                        )
                     }
                 case .onPaymentCreated:
                     self.applePayService.paymentCompletion?(PKPaymentAuthorizationResult(status: PKPaymentAuthorizationStatus.success, errors: nil))
@@ -325,6 +411,17 @@ class RootViewModel: RootViewModelProtocol {
 
     private var currentMethodHiddenFieldsValues: [FieldValue] {
         (state.currentPaymentMethod?.methodCustomerFields.fill(from: state.paymentOptions.uiAdditionalFields, where: { $0.isHidden }) ?? [])
+    }
+    
+    private func composeTokenizeFieldValues(from filledValues: [FieldValue]) -> [FieldValue] {
+        filledValues + tokenizeHiddenFieldsValues
+    }
+    
+    private var tokenizeHiddenFieldsValues: [FieldValue] {
+        state.currentPaymentMethod?.methodCustomerFields.fill(
+            from: state.paymentOptions.uiAdditionalFields,
+            where: { $0.isTokenize && $0.isHidden }
+        ) ?? []
     }
 
     private func restore(payment: Payment, with paymentMethod: PaymentMethod) {

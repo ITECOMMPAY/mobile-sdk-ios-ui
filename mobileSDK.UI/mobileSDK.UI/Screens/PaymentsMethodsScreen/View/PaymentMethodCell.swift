@@ -12,26 +12,15 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     let methodImage: Logo
     var isSavedAccount: Bool = false
     var isExpanded: Bool
+    var isCollapsible: Bool = true
+    var hasHeader: Bool = true
 
     let content: Content
     let onTap: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
-            Button(action: onTap) {
-                HStack {
-                    iconView
-                    Spacer()
-                    titleView
-                    chevron
-                }
-            }.padding(.horizontal, UIScheme.dimension.middleSpacing)
-                .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
-                .background {
-                    isSavedAccount && !isExpanded
-                    ? UIScheme.color.savedAccountBackground
-                    : UIScheme.color.paymentMethodBackground
-            }
+            header
             VStack {
                 if isExpanded {
                     content.transition(.move(edge: .top).combined(with: .opacity))
@@ -43,6 +32,33 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
             RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius)
                 .stroke(UIScheme.color.border, lineWidth: UIScheme.dimension.borderWidth)
         )
+    }
+    
+    @ViewBuilder
+    private var header: some View {
+        if hasHeader {
+            Button(action: {
+                guard isCollapsible else { return }
+                onTap()
+            }) {
+                HStack {
+                    iconView
+                    Spacer()
+                    titleView
+                    if isCollapsible {
+                        chevron
+                    }
+                }
+            }.padding(.horizontal, UIScheme.dimension.middleSpacing)
+                .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
+                .background {
+                    isSavedAccount && !isExpanded
+                    ? UIScheme.color.savedAccountBackground
+                    : UIScheme.color.paymentMethodBackground
+                }
+        } else {
+            EmptyView()
+        }
     }
 
     var iconView: some View {

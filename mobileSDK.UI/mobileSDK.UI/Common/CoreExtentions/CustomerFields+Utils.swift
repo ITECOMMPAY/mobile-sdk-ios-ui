@@ -49,4 +49,8 @@ extension Array where Element == CustomerField {
             !customerField.isHidden
         }
     }
+
+    var shouldBeDisplayed: Bool {
+        !isEmpty && count <= UIScheme.countOfVisibleCustomerFields
+    }
 }

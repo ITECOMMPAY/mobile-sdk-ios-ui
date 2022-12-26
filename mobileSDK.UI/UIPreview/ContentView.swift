@@ -13,7 +13,9 @@ struct ContentView: View {
         // PaymentMethodsScreen_Previews.previews
         // PaymentMethodCell_Previews.previews
         // PanField_Previews.previews
-        LoadingScreen_Previews.previews
+        // LoadingScreen_Previews.previews
+         ResultSuccessScreen_Previews.previews
+//        ResultDeclineScreen_Previews.previews
     }
 }
 

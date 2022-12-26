@@ -13,50 +13,36 @@ struct PaymentDetailsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.middleSpacing) {
-            togglePaymentDetailsButton
             if expanded {
-                paymentDetailCard
+                paymentDetailCard.transition(.opacity)
             }
+            togglePaymentDetailsButton
         }
     }
 
     private var togglePaymentDetailsButton: some View {
-        Button {
-            expanded.toggle()
-        } label: {
-            Text(L.title_payment_information_screen.string)
-                .foregroundColor(UIScheme.color.brandColor)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .frame(alignment: .leading)
-                .opacity(expanded ? 0.3 : 1.0)
-                .contentShape(Rectangle())
+        PaymentDetailsButton(
+            text: expanded ? L.button_hide_details.string : L.title_payment_information_screen.string
+        ) {
+            withAnimation {
+                expanded.toggle()
+            }
         }
-        .disabled(expanded)
     }
 
     private var paymentDetailCard: some View {
-        ZStack(alignment: .topTrailing) {
-            CloseButton(foregroundColor: .black) {
-                expanded.toggle()
-            }.padding(UIScheme.dimension.paymentDetailsSpacing)
-
-            VStack(alignment: .leading, spacing: UIScheme.dimension.largeSpacing) {
-                ForEach(details, id: \.title) { detail in
-                    PaymentDetailsAttributes(labelText: detail.title.string,
-                                             descriptionText: detail.description,
-                                             canCopy: detail.canBeCopied)
-                }
+        VStack(alignment: .leading, spacing: UIScheme.dimension.paymentDetailsSpacing) {
+            Divider()
+                .frame(maxWidth: .infinity)
+                .frame(height: UIScheme.dimension.dividerHeight)
+                .overlay(UIScheme.color.paymentDetailsBackgroundColor)
+            ForEach(details, id: \.title) { detail in
+                PaymentDetailsAttributes(labelText: detail.title.string,
+                                         descriptionText: detail.description,
+                                         canCopy: detail.canBeCopied)
             }
-            .padding(UIScheme.dimension.paymentDetailsSpacing)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .overlay(
-                RoundedRectangle(cornerRadius: UIScheme.dimension.backgroundSheetCornerRadius)
-                    .stroke(UIScheme.color.border, lineWidth: UIScheme.dimension.borderWidth)
-            )
-
         }
-        .background(UIScheme.color.panelBackgroundColor)
-        .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
 }
@@ -68,12 +54,14 @@ struct PaymentDetailsAttributes: View {
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
             HStack(spacing: UIScheme.dimension.tinySpacing) {
-                Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.secondaryText)
+                Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
+                    .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
                 Button {
                     UIPasteboard.general.string = descriptionText
                 } label: {
-                    IR.copyButton.image?.frame(width: 16, height: 16, alignment: .center)
+                    IR.copyButton.image?.renderingMode(.template)
+                        .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                        .frame(width: 16, height: 16, alignment: .center)
                 }
                 .applyIf(!canCopy) {
                     $0.hidden()
@@ -81,7 +69,7 @@ struct PaymentDetailsAttributes: View {
             }
             Text(descriptionText)
                 .font(canCopy ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont) : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.text)
+                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
         }
     }
 }

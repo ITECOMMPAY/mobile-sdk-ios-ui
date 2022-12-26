@@ -10,8 +10,7 @@ import SwiftUI
 struct FooterView: View {
     var body: some View {
         IR.poweredByLogo.image?
-            .frame(height: UIScheme.dimension.paymentDetailsSpacing)
-            .padding(.top, UIScheme.dimension.smallSpacing)
+            .frame(height: UIScheme.dimension.paymentOverviewSpacing)
         }
 }
 

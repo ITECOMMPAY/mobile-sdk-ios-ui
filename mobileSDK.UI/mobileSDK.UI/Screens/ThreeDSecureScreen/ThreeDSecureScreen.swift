@@ -17,12 +17,16 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Spacer()
-                CloseButton {
-                    viewModel.dispatch(intent: .close)
-                }
-            }.padding(UIScheme.dimension.largeSpacing)
+            if isLoading {
+                EmptyView()
+            } else {
+                HStack(spacing: 0) {
+                    Spacer()
+                    CloseButton {
+                        viewModel.dispatch(intent: .close)
+                    }
+                }.padding(UIScheme.dimension.largeSpacing)
+            }
             webView
             .opacity(isLoading ? 0 : 1)
             .overlay(loader)
@@ -58,7 +62,9 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
     var loader: some View {
         Group {
             if isLoading {
-                LoadingView()
+                LoadingView() {
+                    viewModel.dispatch(intent: .close)
+                }
             } else {
                 EmptyView()
             }

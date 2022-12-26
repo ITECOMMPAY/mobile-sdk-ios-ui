@@ -60,9 +60,7 @@ struct NewCardCheckoutView: View {
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)
-
-            if !paymentMethod.visibleCustomerFields.isEmpty &&
-                paymentMethod.visibleCustomerFields.count <= UIScheme.countOfVisibleCustomerFields {
+            if paymentMethod.visibleCustomerFields.shouldBeDisplayed {
                 EmbeddedCustomerFieldsView(visibleCustomerFields: paymentMethod.visibleCustomerFields,
                                            additionalFields: paymentOptions.uiAdditionalFields,
                                            customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in

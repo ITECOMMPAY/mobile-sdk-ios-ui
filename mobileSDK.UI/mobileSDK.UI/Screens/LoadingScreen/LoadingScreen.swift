@@ -24,48 +24,96 @@ class LoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<Void
 private struct DotsAnimationParams {
     static let dotSize: CGFloat = 12
     static var dotSpacing: CGFloat { dotSize }
-    static var amplitude: CGFloat { dotSize * 2 }
-    static var jumpDuration: Double = 0.3
-    static var delayDuration: Double = 0.3
+    static var amplitude: CGFloat { dotSize * 2.2 }
+    static var jumpDuration: Double = 0.325
+    static var delayDuration: Double = jumpDuration * 2
+}
+
+private struct LoadingScreenAnimationState {
+    var showDots = false
+    
+    var titleOffset: CGFloat = 40
+    var showTitle = false
+    
+    var subtitleOffset: CGFloat = 12
+    var showSubtitle = false
+    
+    var showButton = false
 }
 
 struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
 
     public var body: some View {
-        VStack {
-            HStack(spacing: 0) {
-                Spacer()
-                CloseButton {
-                    viewModel.dispatch(intent: .close)
-                }
-                .padding(UIScheme.dimension.largeSpacing)
-            }
-            LoadingView()
+        LoadingView() {
+            viewModel.dispatch(intent: .close)
         }
-        .frame(maxWidth: .infinity)
     }
 }
 
 struct LoadingView: View {
+    var cancelAction: () -> Void = {}
+    @State private var animationState = LoadingScreenAnimationState()
+    
     public var body: some View {
         VStack {
             Spacer()
+                .frame(height: UIScreen.main.bounds.height*0.3)
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                DotsAnimationViewController()
+                DotsAnimationViewControllerRepresentable()
                     .frame(height: DotsAnimationParams.amplitude, alignment: .center)
                     .padding(.bottom, UIScheme.dimension.middleSpacing)
+                    .opacity(animationState.showDots ? 1 : 0)
                 Text(L.title_loading_screen.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
                     .foregroundColor(UIScheme.color.text)
+                    .offset(x: .zero, y: animationState.titleOffset)
+                    .opacity(animationState.showTitle ? 1 : 0)
                 Text(L.sub_title_loading_screen.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
+                    .offset(x: .zero, y: animationState.subtitleOffset)
+                    .opacity(animationState.showSubtitle ? 1 : 0)
             }
+            LinkButton(
+                text: L.title_cancel_payment.string,
+                fontSize: UIScheme.dimension.smallFont,
+                foregroundColor: UIScheme.color.cancelPaymentButtonColor
+            ) {
+                cancelAction()
+            }.padding(.top, UIScheme.dimension.cancelButtonLoadingSubtitleSpacing)
+                .opacity(animationState.showButton ? 1 : 0)
             Spacer()
             FooterView().padding(.bottom, UIScheme.dimension.largeSpacing)
         }
         .frame(maxWidth: .infinity)
+        .onAppear {
+            animateViews()
+        }
+    }
+
+    private func animateViews() {
+        withAnimation(fastInSlowOutEasing()) {
+            animationState.showDots.toggle()
+        }
+        
+        withAnimation(fastInSlowOutEasing().delay(0.5)) {
+            animationState.titleOffset = .zero
+            animationState.showTitle.toggle()
+        }
+
+        withAnimation(fastInSlowOutEasing().delay(0.8)) {
+            animationState.subtitleOffset = .zero
+            animationState.showSubtitle.toggle()
+        }
+
+        withAnimation(fastInSlowOutEasing().delay(1.3)) {
+            animationState.showButton.toggle()
+        }
+    }
+    
+    private func fastInSlowOutEasing(duration: CGFloat = 0.5) -> Animation {
+        Animation.timingCurve(0.4, 0, 0.2, 1, duration: duration)
     }
 }
 
@@ -87,15 +135,15 @@ fileprivate final class DotsAnimationViewController: UIViewController {
     func animate() {
         let jumpDuration: Double = DotsAnimationParams.jumpDuration
         let delayDuration: Double = DotsAnimationParams.delayDuration
-        let totalDuration: Double = delayDuration + jumpDuration*2
+        let totalDuration: Double = jumpDuration*4
 
         let jumpRelativeDuration: Double = jumpDuration / totalDuration
-        let jumpRelativeTime: Double = delayDuration / totalDuration
-        let fallRelativeTime: Double = (delayDuration + jumpDuration) / totalDuration
+        let jumpRelativeTime: Double = 0
+        let fallRelativeTime: Double = jumpDuration*3 / totalDuration
 
         for (index, circle) in circles.enumerated() {
-            let delay = jumpDuration*2 * TimeInterval(index) / TimeInterval(circles.count)
-            UIView.animateKeyframes(withDuration: totalDuration, delay: delay, options: [.repeat, .calculationModeLinear], animations: {
+            let delay = delayDuration * TimeInterval(index) / TimeInterval(circles.count)
+            UIView.animateKeyframes(withDuration: totalDuration, delay: delay, options: [.repeat, .calculationModeCubic], animations: {
                 UIView.addKeyframe(withRelativeStartTime: jumpRelativeTime, relativeDuration: jumpRelativeDuration) {
                     circle.frame.origin.y -= DotsAnimationParams.amplitude / 2
                 }
@@ -134,7 +182,7 @@ fileprivate final class DotsAnimationViewController: UIViewController {
     }
 }
 
-extension DotsAnimationViewController: UIViewControllerRepresentable {
+fileprivate struct DotsAnimationViewControllerRepresentable: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> DotsAnimationViewController {
         DotsAnimationViewController()
     }

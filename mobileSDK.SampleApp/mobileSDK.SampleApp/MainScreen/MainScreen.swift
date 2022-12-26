@@ -12,7 +12,9 @@ struct MainScreen: View {
     @State var result: PaymentResult?
     @State var isPaymentPagePresented: Bool = false
     @State var paymentData: PaymentData = defaultPaymentData
+    @State var token: String = ""
 
+    @State var action: PaymentOptions.ActionType = .Sale
     @State var sdk = EcommpaySDK()
 
     @State var brandColorOverride: Color = .red
@@ -66,6 +68,12 @@ struct MainScreen: View {
                         ))
                     }
                     Button("Sale") {
+                        action = .Sale
+                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+                        isPaymentPagePresented = true
+                    }
+                    Button("Tokenize") {
+                        action = .Tokenize
                         sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
                         isPaymentPagePresented = true
                     }
@@ -134,6 +142,12 @@ struct MainScreen: View {
                 Text("Customer ID").foregroundColor(Color.secondary)
                 Spacer()
                 TextField("Required", text: $paymentData.customerId)
+                    .multilineTextAlignment(.trailing)
+            }
+            HStack {
+                Text("Token").foregroundColor(Color.secondary)
+                Spacer()
+                TextField("Card token", text: $token)
                     .multilineTextAlignment(.trailing)
             }
             HStack {
@@ -299,14 +313,21 @@ struct MainScreen: View {
 
     @ViewBuilder
     var paymentPage: some View {
-        if isPaymentPagePresented, let paymentOptions = paymentOptions {
+        if isPaymentPagePresented, let paymentOptions = getPaymentOptions(action: action) {
             sdk.getPaymentView(with: paymentOptions, completion: {
                 result = $0
+                token = result?.payment?.token ?? ""
                 isPaymentPagePresented = false
             })
         } else {
             EmptyView()
         }
+    }
+    
+    func getPaymentOptions(action: PaymentOptions.ActionType) -> PaymentOptions? {
+        let paymentOptions = self.paymentOptions
+        paymentOptions?.action = action
+        return paymentOptions
     }
 
     var paymentOptions: PaymentOptions? {
@@ -317,7 +338,8 @@ struct MainScreen: View {
             paymentCurrency: paymentData.paymentCurrency,
             paymentDescription: paymentData.paymentDescription,
             customerID: paymentData.customerId,
-            regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil
+            regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil,
+            token: token.isEmpty ? nil : token
         )
 
         paymentOptions.additionalFields = additionalFieldsValues.map {

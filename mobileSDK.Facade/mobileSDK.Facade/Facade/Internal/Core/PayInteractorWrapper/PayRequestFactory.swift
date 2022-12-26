@@ -55,6 +55,28 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest {
         PayRequestWrapper(coreRequest: PaymentRestoreRequest())
     }
+    
+    func createTokenizeRequest(
+        pan: String,
+        month: Int32,
+        year: Int32,
+        cardHolder: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest {
+        let request = CardTokenizeRequest(pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder)
+        request.customerFields = customerFields?.map({ value in
+            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
+        })
+        return PayRequestWrapper(coreRequest: request)
+    }
+    
+    func createTokenizeSaleRequest(cvv: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+        let request = CardSaleTokenizeRequest(cvv: cvv)
+        request.customerFields = customerFields?.map({ value in
+            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
+        })
+        return PayRequestWrapper(coreRequest: request)
+    }
 }
 
 internal struct PayRequestWrapper: mobileSDK_UI.PayRequest {
