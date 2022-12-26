@@ -41,7 +41,7 @@ public class PaymentOptions: NSObject {
         /// - **countryCode** - The merchant's ISO country code. It is required parameter:
         /// - **applePayDescription**  Optional. PaymentID will be used as description of payment if not provided
         @objc
-        public init(applePayMerchantID: String, applePayDescription: String?, countryCode: String) {
+        public init(applePayMerchantID: String?, applePayDescription: String?, countryCode: String?) {
             self.applePayMerchantID = applePayMerchantID
             self.applePayDescription = applePayDescription
             self.countryCode = countryCode
@@ -50,6 +50,19 @@ public class PaymentOptions: NSObject {
         /// Initialise with pre-filed PKPaymentRequest
         @objc
         public init(paymentRequest: PKPaymentRequest?) {
+            self.pkPaymentRequest = paymentRequest
+        }
+        
+        /// Initialise with fields:
+        /// - **applePayMerchantID** - required parameter:
+        /// - **countryCode** - The merchant's ISO country code. It is required parameter:
+        /// - **applePayDescription**  Optional. PaymentID will be used as description of payment if not provided
+        /// - **paymentRequest**  Optional.  pre-filed PKPaymentRequest
+        @objc
+        public init(applePayMerchantID: String?, applePayDescription: String?, countryCode: String?, paymentRequest: PKPaymentRequest?) {
+            self.applePayMerchantID = applePayMerchantID
+            self.applePayDescription = applePayDescription
+            self.countryCode = countryCode
             self.pkPaymentRequest = paymentRequest
         }
     }

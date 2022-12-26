@@ -21,7 +21,23 @@
 		84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */; };
 		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
 		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
+		9A60DBEE5D8BBACF792DDFC8 /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
 		CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
+		D472324B27A8DFF1706A1BA0 /* libPods-EcommpaySampleNL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */; };
+		DCC5E7EE294DEB03004E8864 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* MainScreen.swift */; };
+		DCC5E7EF294DEB03004E8864 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
+		DCC5E7F0294DEB03004E8864 /* mobileSDK_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81928AE153300C71288 /* mobileSDK_SampleApp.swift */; };
+		DCC5E7F1294DEB03004E8864 /* PaymentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D828B340A3001C2A24 /* PaymentID.swift */; };
+		DCC5E7F2294DEB03004E8864 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D428B33DFA001C2A24 /* MainScreenState.swift */; };
+		DCC5E7F3294DEB03004E8864 /* Ecommpay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DD28B35592001C2A24 /* Ecommpay.swift */; };
+		DCC5E7F4294DEB03004E8864 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
+		DCC5E7F5294DEB03004E8864 /* RecurrentSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCB9692912189B00FAB064 /* RecurrentSettingsScreen.swift */; };
+		DCC5E7F6294DEB03004E8864 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
+		DCC5E7F7294DEB03004E8864 /* ThreeDSecureJsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */; };
+		DCC5E7F9294DEB03004E8864 /* ecommpaySDK_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */; };
+		DCC5E7FC294DEB03004E8864 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC82028AE153400C71288 /* Preview Assets.xcassets */; };
+		DCC5E7FD294DEB03004E8864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC81D28AE153400C71288 /* Assets.xcassets */; };
+		DCC5E7FF294DEB03004E8864 /* ecommpaySDK_Dev.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +69,21 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCC5E7FE294DEB03004E8864 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DCC5E7FF294DEB03004E8864 /* ecommpaySDK_Dev.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		77244E20DEC2301F6467C193 /* Pods-EcommpaySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.release.xcconfig"; sourceTree = "<group>"; };
+		1A22FB13FFD6A3E1B565FBB9 /* Pods-EcommpaySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.release.xcconfig"; sourceTree = "<group>"; };
 		840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcommpaySample.entitlements; sourceTree = "<group>"; };
 		8434FB4F28B338DB00814D93 /* SignatureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureUtils.swift; sourceTree = "<group>"; };
 		843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.Facade.xcodeproj; path = ../mobileSDK.Facade/mobileSDK.Facade.xcodeproj; sourceTree = "<group>"; };
@@ -75,8 +102,12 @@
 		84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureJsonModels.swift; sourceTree = "<group>"; };
 		84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureScreen.swift; sourceTree = "<group>"; };
 		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
-		BC8D8D4AFD738D6BE7D0B85D /* Pods-EcommpaySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.debug.xcconfig"; sourceTree = "<group>"; };
+		8D1CAF7D7DABDC4446272652 /* Pods-EcommpaySampleNL3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySampleNL3.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3.debug.xcconfig"; sourceTree = "<group>"; };
+		B200B4D837ADFB88C0AF14BE /* Pods-EcommpaySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.debug.xcconfig"; sourceTree = "<group>"; };
+		CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySampleNL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCC5E803294DEB03004E8864 /* EcommpaySampleNL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcommpaySampleNL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2F27BCB494D2826A1C32252 /* Pods-EcommpaySampleNL3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySampleNL3.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +117,16 @@
 			files = (
 				84B67BAE29127AD500DF7550 /* ecommpaySDK_Dev.framework in Frameworks */,
 				CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */,
+				9A60DBEE5D8BBACF792DDFC8 /* libPods-EcommpaySample.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCC5E7F8294DEB03004E8864 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCC5E7F9294DEB03004E8864 /* ecommpaySDK_Dev.framework in Frameworks */,
+				D472324B27A8DFF1706A1BA0 /* libPods-EcommpaySampleNL3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +136,10 @@
 		282458DC041CAAFE17DE2812 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BC8D8D4AFD738D6BE7D0B85D /* Pods-EcommpaySample.debug.xcconfig */,
-				77244E20DEC2301F6467C193 /* Pods-EcommpaySample.release.xcconfig */,
+				B200B4D837ADFB88C0AF14BE /* Pods-EcommpaySample.debug.xcconfig */,
+				1A22FB13FFD6A3E1B565FBB9 /* Pods-EcommpaySample.release.xcconfig */,
+				8D1CAF7D7DABDC4446272652 /* Pods-EcommpaySampleNL3.debug.xcconfig */,
+				F2F27BCB494D2826A1C32252 /* Pods-EcommpaySampleNL3.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -161,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				845FC81628AE153300C71288 /* EcommpaySample.app */,
+				DCC5E803294DEB03004E8864 /* EcommpaySampleNL3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +239,7 @@
 				849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */,
 				845FC82828AE157800C71288 /* ecommpaySDK.framework */,
 				EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */,
+				CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +284,25 @@
 			productReference = 845FC81628AE153300C71288 /* EcommpaySample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DCC5E7EB294DEB03004E8864 /* EcommpaySampleNL3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCC5E800294DEB03004E8864 /* Build configuration list for PBXNativeTarget "EcommpaySampleNL3" */;
+			buildPhases = (
+				4E5ACB610168E903317FE4E3 /* [CP] Check Pods Manifest.lock */,
+				DCC5E7ED294DEB03004E8864 /* Sources */,
+				DCC5E7F8294DEB03004E8864 /* Frameworks */,
+				DCC5E7FB294DEB03004E8864 /* Resources */,
+				DCC5E7FE294DEB03004E8864 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EcommpaySampleNL3;
+			productName = mobileSDK.SampleApp;
+			productReference = DCC5E803294DEB03004E8864 /* EcommpaySampleNL3.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,6 +337,7 @@
 			);
 			projectRoot = "";
 			targets = (
+				DCC5E7EB294DEB03004E8864 /* EcommpaySampleNL3 */,
 				845FC81528AE153300C71288 /* EcommpaySample */,
 			);
 		};
@@ -305,6 +370,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DCC5E7FB294DEB03004E8864 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCC5E7FC294DEB03004E8864 /* Preview Assets.xcassets in Resources */,
+				DCC5E7FD294DEB03004E8864 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -330,6 +404,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4E5ACB610168E903317FE4E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EcommpaySampleNL3-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -347,6 +443,23 @@
 				84BCB96A2912189B00FAB064 /* RecurrentSettingsScreen.swift in Sources */,
 				84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */,
 				84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCC5E7ED294DEB03004E8864 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DCC5E7EE294DEB03004E8864 /* MainScreen.swift in Sources */,
+				DCC5E7EF294DEB03004E8864 /* SignatureUtils.swift in Sources */,
+				DCC5E7F0294DEB03004E8864 /* mobileSDK_SampleApp.swift in Sources */,
+				DCC5E7F1294DEB03004E8864 /* PaymentID.swift in Sources */,
+				DCC5E7F2294DEB03004E8864 /* MainScreenState.swift in Sources */,
+				DCC5E7F3294DEB03004E8864 /* Ecommpay.swift in Sources */,
+				DCC5E7F4294DEB03004E8864 /* ExpandingTextView.swift in Sources */,
+				DCC5E7F5294DEB03004E8864 /* RecurrentSettingsScreen.swift in Sources */,
+				DCC5E7F6294DEB03004E8864 /* ThreeDSecureScreen.swift in Sources */,
+				DCC5E7F7294DEB03004E8864 /* ThreeDSecureJsonModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +582,7 @@
 		};
 		845FC82528AE153400C71288 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC8D8D4AFD738D6BE7D0B85D /* Pods-EcommpaySample.debug.xcconfig */;
+			baseConfigurationReference = B200B4D837ADFB88C0AF14BE /* Pods-EcommpaySample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -492,6 +605,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = DEBUG;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ecommpay.sdk.testclient";
@@ -504,7 +618,7 @@
 		};
 		845FC82628AE153400C71288 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77244E20DEC2301F6467C193 /* Pods-EcommpaySample.release.xcconfig */;
+			baseConfigurationReference = 1A22FB13FFD6A3E1B565FBB9 /* Pods-EcommpaySample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -526,6 +640,75 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = DEBUG;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ecommpay.sdk.testclient";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DCC5E801294DEB03004E8864 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D1CAF7D7DABDC4446272652 /* Pods-EcommpaySampleNL3.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 4287668275;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = DEBUG;
+				OTHER_SWIFT_FLAGS = "-D NL3";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ecommpay.sdk.testclient";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DCC5E802294DEB03004E8864 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F27BCB494D2826A1C32252 /* Pods-EcommpaySampleNL3.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 4287668275;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = DEBUG;
+				OTHER_SWIFT_FLAGS = "-D NL3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ecommpay.sdk.testclient";
@@ -552,6 +735,15 @@
 			buildConfigurations = (
 				845FC82528AE153400C71288 /* Debug */,
 				845FC82628AE153400C71288 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DCC5E800294DEB03004E8864 /* Build configuration list for PBXNativeTarget "EcommpaySampleNL3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DCC5E801294DEB03004E8864 /* Debug */,
+				DCC5E802294DEB03004E8864 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

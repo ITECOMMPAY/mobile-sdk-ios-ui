@@ -35,15 +35,15 @@ class SDKInteractor {
                                                            wsApiHost: NetworkConfigType().socketHost)
     }
 
-    #if DEVELOPMENT
-
-    /// DEVELOPMENT initializer, should not be present in release version!
     public init(apiUrlString: String, socketUrlString: String) {
+#if DEVELOPMENT
         msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
-                                                               wsApiHost: socketUrlString)
+                                                           wsApiHost: socketUrlString)
+#else
+        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: apiUrlString,
+                                                             wsApiHost: socketUrlString)
+#endif
     }
-
-    #endif
 
     /// Presents UI to begin payment flow
     ///
