@@ -20,8 +20,6 @@ public class EcommpaySDK: NSObject {
     @objc public static let sdkVersion: String = SDKInteractor.getBundleVersion(for: EcommpaySDK.self)
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
 
-    #if DEVELOPMENT
-
     /// Debug initializer, should not be present in release version!
     ///
     /// - Parameters:
@@ -31,8 +29,6 @@ public class EcommpaySDK: NSObject {
     public init(apiUrlString: String, socketUrlString: String) {
         interactor = SDKInteractor(apiUrlString: apiUrlString, socketUrlString: socketUrlString)
     }
-
-    #endif
 
     private let interactor: SDKInteractor
 

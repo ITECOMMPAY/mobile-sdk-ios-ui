@@ -6,20 +6,17 @@ workspace 'mobileSDK.xcworkspace'
 
 #TestClient
 
-TestClientTargets = ["EcommpaySample"]
+TestClientTargets = ["EcommpaySample","EcommpaySampleNL3"]
 
 for targetName in TestClientTargets
   target targetName do
     project './mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj'
-    pod 'AppCenter'
   end
 end
 
 #mSDK iOS
 
-mSDKTargets = ["ecommpaySDK"]
-mSDKTargetsDev = mSDKTargets.collect { |x| x + "_Dev" }
-mSDKTargets += mSDKTargetsDev
+mSDKTargets = ["ecommpaySDK", "ecommpaySDK_Dev", "mSDK_UI"]
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'

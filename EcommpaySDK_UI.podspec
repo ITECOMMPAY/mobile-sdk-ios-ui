@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios
   spec.ios.deployment_target = "14"
 
-  spec.source       = { :http => "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-ui/releases/download/#{spec.version}/ecommpaySDK.xcframework.zip" }
+  spec.source       = { :http => "https://github.com/ITECOMMPAY/mobile-sdk-ios-ui/releases/download/#{spec.version}/ecommpaySDK.xcframework.zip" }
 
   spec.ios.vendored_frameworks = 'ecommpaySDK.xcframework'
 
