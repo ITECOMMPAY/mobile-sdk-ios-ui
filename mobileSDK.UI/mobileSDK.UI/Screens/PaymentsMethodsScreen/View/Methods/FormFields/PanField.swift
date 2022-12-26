@@ -153,6 +153,8 @@ private struct CardTypeView: View {
     }
 
     private func onTimerTick() {
+        guard !visibleCardTypes.isEmpty else { return }
+
         visibleCardTypeIndex = (visibleCardTypeIndex + 1) % visibleCardTypes.count
     }
 }
