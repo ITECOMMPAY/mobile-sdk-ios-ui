@@ -127,13 +127,50 @@ class RootViewModel: RootViewModelProtocol {
                 .threeDSecureScreenIntent(.close),
                 .apsScreenIntent(.close),
                 .loadingScreenIntent(.close),
-                .navigationIntent(.close):
+                .navigationIntent(.close),
+                .declineScreenIntent(.closeTryAgain):
             state.alertModel = .CloseWarning(confirmClose: { [weak self] in
-                self?.cancellables.forEach {  $0.cancel() }
-                self?.onFlowFinished(.byUser)
+                guard let self = self else { return }
+                
+                self.cancellables.forEach {  $0.cancel() }
+                
+                switch self.state.finalPaymentState {
+                case .Success: self.onFlowFinished(.success(self.state.payment))
+                case .Decline: self.onFlowFinished(.decline(self.state.payment))
+                case .none: self.onFlowFinished(.byUser)
+                }
             })
         case .declineScreenIntent(.close):
             self.onFlowFinished(.decline(state.payment))
+        case .declineScreenIntent(.tryAgain):
+            let methods = state.availablePaymentMethods?.filter {
+                $0.code == state.currentPaymentMethod?.code
+            } ?? []
+
+            state = modifiedCopy(of: state) {
+                $0.isLoading = false
+                $0.savedAccounts = $0.currentPaymentMethod?.methodType == .card ? $0.savedAccounts : []
+                $0.availablePaymentMethods = methods
+                $0.payment = nil
+                $0.customerFields = nil
+                $0.clarificationFields = nil
+                $0.alertModel = nil
+                $0.finalPaymentState = nil
+                $0.threeDSecurePageState = nil
+                $0.savedValues = [:]
+            }
+
+            state.currentMethod = {
+                if let cardPaymentMethod = self.state.cardPaymentMethod {
+                    if let account = state.savedAccounts?.first {
+                        return PaymentMethodsListEntity(entityType: .savedAccount(account))
+                    } else {
+                        return PaymentMethodsListEntity(entityType: .paymentMethod(cardPaymentMethod))
+                    }
+                } else {
+                    return state.mergedList.first
+                }
+            }()
         case .successScreenIntent(.close):
             self.onFlowFinished(.success(state.payment))
         case .paymentMethodsScreenIntent(.tokenizeSale(let cvv, let customerFields)):
@@ -207,8 +244,8 @@ class RootViewModel: RootViewModelProtocol {
                 $0.customerFields = nil
                 $0.clarificationFields = nil
             }
-        case .threeDSecureScreenIntent(.threeDSecureHandled):
-            payInteractor?.threeDSecureHandled()
+        case .threeDSecureScreenIntent(.threeDSecure(let url)):
+            payInteractor?.threeDSecureRedirectHandle(url: url)
         case .paymentMethodsScreenIntent(.payWithApplePay(customerFields: let fieldValues)):
             if applePayService.isAvailable {
                 applePayService.onApplePayResult = { [weak self] result in
@@ -326,39 +363,21 @@ class RootViewModel: RootViewModelProtocol {
                         $0.payment = payment
                         $0.clarificationFields = clarificationFields
                     }
-                case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
+                case .onThreeDSecure(page: let threeDSecurePage, isCascading: let isCascading, payment: let payment):
                     debugPrint("\(type(of: self)) received onThreeDSecure isCascading: \(isCascading)")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
-                        $0.acsPageState = AcsPageState(acsPage: acsPage, isCascading: isCascading)
+                        $0.threeDSecurePageState = ThreeDSecurePageState(
+                            threeDSecurePage: threeDSecurePage,
+                            isCascading: isCascading
+                        )
                     }
-                    if self.state.paymentOptions.isMockModeEnabled {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            payInteractor.threeDSecureHandled()
-                        }
-                    }
-                case .onCompleteWithDecline(paymentMessage: let paymentMessage, payment: let payment):
+                case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
-                        $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
-                    }
-                    
-                    if self.state.paymentOptions.action == .Tokenize {
-                        self.state.alertModel = .TokenizeResult(
-                            message: L.title_result_error_tokenize.string,
-                            onClose: { [weak self] in
-                                self?.onFlowFinished(.decline(payment))
-                            }
-                        )
-                    }
-                case .onCompleteWithFail(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
-                    debugPrint("\(type(of: self)) received onCompleteWithFail")
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.payment = payment
-                        $0.isLoading = false
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
                     }
                     

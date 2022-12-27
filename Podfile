@@ -20,6 +20,6 @@ mSDKTargets = ["ecommpaySDK", "ecommpaySDK_Dev", "mSDK_UI"]
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
-    pod 'MsdkCore', '0.5.4'
+    pod 'MsdkCore', '0.6.1'
   end
 end

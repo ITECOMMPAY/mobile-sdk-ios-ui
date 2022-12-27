@@ -151,18 +151,14 @@ struct MockPaymentMethod: PaymentMethod {
     var translations: [String: String] = [:]
 }
 
-struct MockAcsPage: AcsPage {
+struct MockThreeDSecurePage: ThreeDSecurePage {
     var content: String?
-
-    var errorMessage: String?
-
-    var acsUrl: String? = "ecommpay.com"
-
-    var md: String?
-
-    var paReq: String?
-
-    var termUrl: String?
+    
+    var loadUrl: String? = "ecommpay.com"
+    
+    var returnUrl: String?
+    
+    var type: ThreeDSecurePageType? = .THREE_DS_1
 }
 
 let stateMock = RootState(
@@ -180,7 +176,7 @@ let stateMock = RootState(
     ],
     paymentOptions: MockPaymentOptions(),
     finalPaymentState: FinalPaymentState.Success,
-    acsPageState: AcsPageState(acsPage: MockAcsPage(), isCascading: false),
+    threeDSecurePageState: ThreeDSecurePageState(threeDSecurePage: MockThreeDSecurePage(), isCascading: false),
     savedValues: [:]
 )
 

@@ -72,6 +72,9 @@
 		84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */; };
 		84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA163287708850043C360 /* CoreErrorCode.swift */; };
 		84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
+		B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
 		DC1ECA318DAFF9B37E5ADDD8 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		DCC5E8B9294E023E004E8864 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCC5E8BB294E023E004E8864 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
@@ -221,6 +224,7 @@
 		84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRemoveWrapper.swift; sourceTree = "<group>"; };
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
+		B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecurePageType.swift; sourceTree = "<group>"; };
 		DCC5E8E2294E023E004E8864 /* mSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE98D5D8EA71C79BC4BD42CD /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
 		FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -428,6 +432,7 @@
 				84B241A7288A61B700259A50 /* PaymentMethodType.swift */,
 				8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */,
 				84A35C4E2893B2A20037A604 /* FieldType.swift */,
+				B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */,
 			);
 			path = CoreAdaptersAndConverters;
 			sourceTree = "<group>";
@@ -713,6 +718,7 @@
 				849C533A28BF62C800C1CF71 /* RecipientInfo.swift in Sources */,
 				849C533B28BF62C800C1CF71 /* PayRequestFactory.swift in Sources */,
 				849C533C28BF62C800C1CF71 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				849C533D28BF62C800C1CF71 /* PaymentResult.swift in Sources */,
 				849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */,
 				849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */,
@@ -746,6 +752,7 @@
 				84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */,
 				8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */,
 				845507DD285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */,
 				8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */,
 				8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */,
@@ -779,6 +786,7 @@
 				DCC5E8BD294E023E004E8864 /* RecipientInfo.swift in Sources */,
 				DCC5E8BE294E023E004E8864 /* PayRequestFactory.swift in Sources */,
 				DCC5E8BF294E023E004E8864 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				DCC5E8C0294E023E004E8864 /* PaymentResult.swift in Sources */,
 				DCC5E8C1294E023E004E8864 /* PayInteractorWrapper.swift in Sources */,
 				DCC5E8C2294E023E004E8864 /* CardTypesManager.swift in Sources */,

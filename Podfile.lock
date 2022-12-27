@@ -1,0 +1,16 @@
+PODS:
+  - MsdkCore (0.6.1)
+
+DEPENDENCIES:
+  - MsdkCore (= 0.6.1)
+
+SPEC REPOS:
+  trunk:
+    - MsdkCore
+
+SPEC CHECKSUMS:
+  MsdkCore: 40e764466a33054e35c525eee448f16e53a5279f
+
+PODFILE CHECKSUM: 283397a0f68abade949f122bb824950a6049be57
+
+COCOAPODS: 1.11.3
