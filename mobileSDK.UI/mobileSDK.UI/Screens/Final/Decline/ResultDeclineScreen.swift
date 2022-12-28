@@ -46,12 +46,13 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                         .opacity(animationState.showLogo ? 1 : 0)
                     VStack(spacing: UIScheme.dimension.tinySpacing) {
                         Text(L.title_result_error_payment.string)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
+                            .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                             .foregroundColor(UIScheme.color.text)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
                             Text(paymentMessage)
                                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                                 .foregroundColor(UIScheme.color.errorTextColor)
+                                .multilineTextAlignment(.center)
                         }
                     }
                     .offset(x: .zero, y: animationState.titleOffset)

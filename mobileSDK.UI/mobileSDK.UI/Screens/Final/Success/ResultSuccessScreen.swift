@@ -45,7 +45,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                         .frame(height: 58)
                         .opacity(animationState.showLogo ? 1 : 0)
                     Text(L.title_result_succes_payment.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
+                        .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                         .foregroundColor(UIScheme.color.text)
                         .offset(x: .zero, y: animationState.titleOffset)
                         .opacity(animationState.showTitle ? 1 : 0)
