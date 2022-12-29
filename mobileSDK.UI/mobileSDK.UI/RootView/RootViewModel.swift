@@ -448,6 +448,8 @@ class RootViewModel: RootViewModelProtocol {
             assertionFailure("PayRequestFactory is not injected")
             return
         }
+        
+        state.currentMethod = PaymentMethodsListEntity(entityType: .paymentMethod(paymentMethod))
 
         if payment.uiPaymentMethodType == .aps && payment.paymentStatus?.isFinal == false {
             dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
