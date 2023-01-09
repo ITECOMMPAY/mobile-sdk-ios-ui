@@ -34,12 +34,8 @@ extension PayDelegateProxy: PayDelegate {
         send(.success(.onClarificationFields(clarificationFields: clarificationFields.map(\.wrapper), payment: payment.wrapper)))
     }
 
-    func onCompleteWithDecline(paymentMessage: String?, payment: MsdkCore.Payment) {
-        send(.success(.onCompleteWithDecline(paymentMessage: paymentMessage, payment: payment.wrapper)))
-    }
-
-    func onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment) {
-        send(.success(.onCompleteWithFail(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment.wrapper)))
+    func onCompleteWithDecline(isTryAgain: Bool, paymentMessage: String?, payment: MsdkCore.Payment) {
+        send(.success(.onCompleteWithDecline(isTryAgain: isTryAgain, paymentMessage: paymentMessage, payment: payment.wrapper)))
     }
 
     func onCompleteWithSuccess(payment: MsdkCore.Payment) {
@@ -54,7 +50,7 @@ extension PayDelegateProxy: PayDelegate {
         send(.success(.onStatusChanged(status: status.wrapper, payment: payment.wrapper)))
     }
 
-    func onThreeDSecure(acsPage: MsdkCore.AcsPage, isCascading: Bool, payment: MsdkCore.Payment) {
-        send(.success(.onThreeDSecure(acsPage: acsPage.wrapper, isCascading: isCascading, payment: payment.wrapper)))
+    func onThreeDSecure(threeDSecurePage: MsdkCore.ThreeDSecurePage, isCascading: Bool, payment: MsdkCore.Payment) {
+        send(.success(.onThreeDSecure(page: threeDSecurePage.wrapper, isCascading: isCascading, payment: payment.wrapper)))
     }
 }

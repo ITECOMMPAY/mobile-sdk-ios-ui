@@ -11,7 +11,7 @@ public protocol PayInteractor {
     func execute(request: PayRequest) -> AnyPublisher<PayEvent, CoreError>
     func sendCustomerFields(fieldsValues: [FieldValue])
     func sendClarificationFields(fieldsValues: [FieldValue])
-    func threeDSecureHandled()
+    func threeDSecureRedirectHandle(url: String)
 }
 
 public protocol PayRequest {}

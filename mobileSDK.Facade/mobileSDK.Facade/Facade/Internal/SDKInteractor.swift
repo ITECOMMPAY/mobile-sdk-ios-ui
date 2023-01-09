@@ -56,9 +56,13 @@ class SDKInteractor {
                                completion: PaymentCompletion?) {
 
         if paymentOptions.mockModeType == .success {
-            msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow(
+                duration: .companion.seconds(seconds: 2)
+            )
         } else if paymentOptions.mockModeType == .decline {
-            msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow()
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow(
+                duration: .companion.seconds(seconds: 2)
+            )
         }
 
         msdkConfig.userAgentData = UserAgentData(

@@ -297,22 +297,26 @@ internal struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
     var token: String? { coreType.token }
 }
 
-internal extension MsdkCore.AcsPage {
-    var wrapper: some mobileSDK_UI.AcsPage {
-        MsdkCoreAcsPageWrapper(coreType: self)
+internal extension MsdkCore.ThreeDSecurePage {
+    var wrapper: some mobileSDK_UI.ThreeDSecurePage {
+        MsdkCoreThreeDSecurePageWrapper(coreType: self)
     }
 }
 
-private struct MsdkCoreAcsPageWrapper: mobileSDK_UI.AcsPage {
-    fileprivate init(coreType: MsdkCore.AcsPage) {
+private struct MsdkCoreThreeDSecurePageWrapper: mobileSDK_UI.ThreeDSecurePage {
+    fileprivate init(coreType: MsdkCore.ThreeDSecurePage) {
         self.coreType = coreType
     }
-
-    let coreType: MsdkCore.AcsPage
-
-    var acsUrl: String? { coreType.acs?.acsUrl }
-
-    var termUrl: String? { coreType.acs?.termUrl }
+    
+    let coreType: MsdkCore.ThreeDSecurePage
+    
+    var loadUrl: String? { coreType.loadUrl }
+    
+    var returnUrl: String? { coreType.returnUrl }
+    
+    var type: mobileSDK_UI.ThreeDSecurePageType? {
+        mobileSDK_UI.ThreeDSecurePageType.createFrom(coreType.type)
+    }
 
     var content: String? { coreType.content }
 }

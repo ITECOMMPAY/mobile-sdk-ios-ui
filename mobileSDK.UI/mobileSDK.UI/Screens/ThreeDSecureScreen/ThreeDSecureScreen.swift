@@ -11,47 +11,34 @@ import Combine
 
 struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
-
     @State var isLoading = false
-    @State var handledACS: AcsPageState?
 
     var body: some View {
         VStack(spacing: 0) {
-            if isLoading {
-                EmptyView()
-            } else {
-                HStack(spacing: 0) {
-                    Spacer()
-                    CloseButton {
-                        viewModel.dispatch(intent: .close)
-                    }
-                }.padding(UIScheme.dimension.largeSpacing)
-            }
+            HStack(spacing: 0) {
+                Spacer()
+                CloseButton {
+                    viewModel.dispatch(intent: .close)
+                }
+            }.padding(UIScheme.dimension.largeSpacing)
             webView
             .opacity(isLoading ? 0 : 1)
             .overlay(loader)
             .frame(maxWidth: .infinity)
         }
-        .onReceive(viewModel.statePublisher.map(\.acsPageState).removeDuplicates()) { newAcs in
-            if handledACS != newAcs {
-                isLoading = false
-            }
-        }
     }
 
     @ViewBuilder
     var webView: some View {
-        if let acsPage = self.viewModel.state.acsPageState?.acsPage,
-           let html = acsPage.content,
-           let acsUrl = acsPage.acsUrl,
-           let baseURL = URL(string: acsUrl) {
-            WebView(task: .loadHTMLString(html: html, baseURL: baseURL)) { url in
-                if let finalUrl = url,
-                   let termUrl = acsPage.termUrl,
-                   finalUrl == termUrl {
-                    isLoading = true
-                    handledACS = self.viewModel.state.acsPageState
-                    viewModel.dispatch(intent: .threeDSecureHandled)
+        if let threeDSecurePage = self.viewModel.state.threeDSecurePageState?.threeDSecurePage,
+           let content = threeDSecurePage.content,
+           let loadUrl = threeDSecurePage.loadUrl,
+           let baseURL = URL(string: loadUrl) {
+            WebView(task: .loadHTMLString(html: content, baseURL: baseURL)) { url in
+                isLoading = threeDSecurePage.type == .THREE_DS_2_FRICTIONLESS
+                
+                if let url = url {
+                    viewModel.dispatch(intent: .threeDSecure(url))
                 }
             }.equatable()
         } else {
@@ -62,20 +49,13 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
     var loader: some View {
         Group {
             if isLoading {
-                LoadingView() {
-                    viewModel.dispatch(intent: .close)
-                }
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
+                    .scaleEffect(x: 2, y: 2, anchor: .center)
             } else {
                 EmptyView()
             }
         }
-    }
-
-    var acsURL: URL? {
-        guard let urlString = viewModel.state.acsPageState?.acsPage?.acsUrl else {
-            return nil
-        }
-        return URL(string: urlString)
     }
 }
 
@@ -84,7 +64,11 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
 struct ThreeDSecureScreen_Previews: PreviewProvider {
 
     static var previews: some View {
-        ThreeDSecureScreen(viewModel: ThreeDSecureScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
+        ThreeDSecureScreen(
+            viewModel: ThreeDSecureScreenViewModel(
+                parentViewModel: MockRootViewModel(with: stateMock)
+            )
+        )
     }
 }
 
@@ -92,11 +76,11 @@ struct ThreeDSecureScreen_Previews: PreviewProvider {
 
 enum ThreeDSecureScreenIntent {
     case close
-    case threeDSecureHandled
+    case threeDSecure(String)
 }
 
 protocol ThreeDSecureScreenState {
-    var acsPageState: AcsPageState? { get }
+    var threeDSecurePageState: ThreeDSecurePageState? { get }
 }
 
 protocol ThreeDSecureScreenViewModelProtocol: ViewModel

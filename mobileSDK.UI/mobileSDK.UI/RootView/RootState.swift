@@ -20,7 +20,7 @@ struct RootState {
     var availablePaymentMethods: [PaymentMethod]?
     var paymentOptions: PaymentOptions
     var finalPaymentState: FinalPaymentState?
-    var acsPageState: AcsPageState?
+    var threeDSecurePageState: ThreeDSecurePageState?
     var apsPaymentMethod: PaymentMethod?
     var savedValues: [PaymentMethodsListEntity: FormData]
 }
@@ -105,8 +105,8 @@ extension RootState {
             return .loading
         }
 
-        if acsPageState != nil {
-            return .acsPage
+        if threeDSecurePageState != nil {
+            return .threeDSecurePage
         }
 
         if clarificationFields != nil {
@@ -162,11 +162,13 @@ enum FinalPaymentState {
     case Success
 }
 
-struct AcsPageState: Equatable {
-    var acsPage: AcsPage?
+struct ThreeDSecurePageState: Equatable {
+    var threeDSecurePage: ThreeDSecurePage?
     var isCascading: Bool = false
-    static func == (lhs: AcsPageState, rhs: AcsPageState) -> Bool {
-        return lhs.isCascading == rhs.isCascading && lhs.acsPage?.acsUrl == rhs.acsPage?.acsUrl
+
+    static func == (lhs: ThreeDSecurePageState, rhs: ThreeDSecurePageState) -> Bool {
+        return lhs.isCascading == rhs.isCascading &&
+        lhs.threeDSecurePage?.loadUrl == rhs.threeDSecurePage?.loadUrl
     }
 }
 

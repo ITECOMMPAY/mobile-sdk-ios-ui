@@ -46,6 +46,10 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                                     logoImage: viewModel.state.paymentOptions.summary.logo)
                     if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
                         ApplePayButton {
+                            if let method = viewModel.state.applePayMethod {
+                                let methodEntity = PaymentMethodsListEntity(entityType: .paymentMethod(method))
+                                viewModel.dispatch(intent: .select(methodEntity))
+                            }
                             viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
                         }
                     }

@@ -19,9 +19,7 @@ public enum PayEvent {
     // received clarification fields, which need to fill and send
     case onClarificationFields(clarificationFields: [ClarificationField], payment: Payment)
 
-    case onCompleteWithDecline(paymentMessage: String?, payment: Payment)
-
-    case onCompleteWithFail(isTryAgain: Bool, paymentMessage: String?, payment: Payment)
+    case onCompleteWithDecline(isTryAgain: Bool, paymentMessage: String?, payment: Payment)
 
     case onCompleteWithSuccess(payment: Payment)
 
@@ -29,7 +27,7 @@ public enum PayEvent {
 
     case onStatusChanged(status: PaymentStatus, payment: Payment)
     // received 3ds page and need open it in WebView
-    case onThreeDSecure(acsPage: AcsPage, isCascading: Bool, payment: Payment)
+    case onThreeDSecure(page: ThreeDSecurePage, isCascading: Bool, payment: Payment)
 }
 
 public enum ActionType: Int {
@@ -37,6 +35,12 @@ public enum ActionType: Int {
     case Auth = 2
     case Tokenize = 3
     case Verify = 4
+}
+
+public enum ThreeDSecurePageType: Int {
+    case THREE_DS_1 = 1
+    case THREE_DS_2_FRICTIONLESS = 2
+    case THREE_DS_2_CHALLENGE = 3
 }
 
 public typealias Validator<Type> = (_ isValid: Type) -> Bool
@@ -85,7 +89,6 @@ public protocol PaymentMethod {
     var isVatInfo: Bool { get }
     var methodType: PaymentMethodType { get }
     var name: String? { get }
-//    var allSupportedCardTypes: [PaymentMethodCard] { get }
     var connectedCardTypes: [CardType] { get }
     var cardTypeRecognizer: CardTypeRecognizer? { get }
     var iconUrl: String? { get }
@@ -115,10 +118,11 @@ public protocol PaymentStatus {
     var isFinal: Bool { get }
 }
 
-public protocol AcsPage {
+public protocol ThreeDSecurePage {
     var content: String? { get }
-    var acsUrl: String? { get }
-    var termUrl: String? { get }
+    var loadUrl: String? { get }
+    var returnUrl: String? { get }
+    var type: ThreeDSecurePageType? { get }
 }
 
 public protocol CardExpiry {
