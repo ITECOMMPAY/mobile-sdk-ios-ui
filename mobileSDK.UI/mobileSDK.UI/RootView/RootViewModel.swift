@@ -180,7 +180,8 @@ class RootViewModel: RootViewModelProtocol {
             
             let request = payRequestFactory.createTokenizeSaleRequest(
                 cvv: cvv,
-                customerFields: composeFieldValuesForCardSale(from: customerFields)
+                customerFields: composeFieldValuesForCardSale(from: customerFields),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             
             state.isLoading = true
@@ -193,7 +194,8 @@ class RootViewModel: RootViewModelProtocol {
             let request = payRequestFactory.createSavedCardSaleRequest(
                 cvv: cvv,
                 accountId: id,
-                customerFields: composeFieldValuesForCardSale(from: formVlues)
+                customerFields: composeFieldValuesForCardSale(from: formVlues),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             state.isLoading = true
             execute(payRequest: request)
@@ -215,7 +217,8 @@ class RootViewModel: RootViewModelProtocol {
                 month: month,
                 cardHolder: cardHolder,
                 saveCard: saveCard,
-                customerFields: composeFieldValuesForCardSale(from: formVlues)
+                customerFields: composeFieldValuesForCardSale(from: formVlues),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             state.isLoading = true
             execute(payRequest: request)
@@ -258,7 +261,8 @@ class RootViewModel: RootViewModelProtocol {
                     case .didAuthorizePayment(token: let token):
                         if let request = self.payRequestFactory?.createApplePaySaleRequest(
                             token: token,
-                            customerFields: fieldValues
+                            customerFields: fieldValues,
+                            recipientInfo: self.state.paymentOptions.recipientInfo
                         ) {
                             self.state.isLoading = true
                             self.execute(payRequest: request)

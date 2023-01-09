@@ -28,6 +28,8 @@ struct MainScreen: View {
     }
 
     @State var additionalFieldsValues: [AdditionalFieldType: String] = [:]
+    
+    @State var recipientData = RecipientData()
 
     @State var showLogo: Bool = false
 
@@ -46,8 +48,12 @@ struct MainScreen: View {
     var mainPage: some View {
         NavigationView {
             Form {
+                actions
                 basicSettings
-                additionalFields
+                Group {
+                    additionalFields
+                    recipientInfoFields
+                }
                 threeDSecure
                 savedWalletsVisibility
                 Group {
@@ -57,8 +63,10 @@ struct MainScreen: View {
                 forcePaymentMethods
                 apiUrls
                 applePayParams
-                mockModeSetting
-                simulateCrashToggle
+                Group {
+                    mockModeSetting
+                    simulateCrashToggle
+                }
             }
             .navigationBarTitle(Text("\(getBrandName()) \(getAppVersionString())"), displayMode: .inline)
             .toolbar {
@@ -72,13 +80,6 @@ struct MainScreen: View {
                             + "\nCore Version: \(getCoreVersionString())"
                         ))
                     }
-                    Button("Sale") {
-                        presentPaymentPage(action: .Sale)
-                    }
-                    Button("Tokenize") {
-                        presentPaymentPage(action: .Tokenize)
-                    }
-
                 }
             }
         }
@@ -89,6 +90,21 @@ struct MainScreen: View {
         Section {
             HStack {
                 Toggle("Hide saved wallets", isOn: $paymentData.hideSavedWallets)
+            }
+        }
+    }
+    
+    var actions: some View {
+        Section(header: Text("Actions")) {
+            Button("Sale") {
+                action = .Sale
+                sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+                isPaymentPagePresented = true
+            }
+            Button("Tokenize") {
+                action = .Tokenize
+                sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+                isPaymentPagePresented = true
             }
         }
     }
@@ -186,6 +202,14 @@ struct MainScreen: View {
                     }
                 }
                 .navigationTitle("Additional Fields")
+            }
+        }
+    }
+
+    var recipientInfoFields: some View {
+        Section {
+            NavigationLink("Recipient Info") {
+                RecipientInfoScreen(recipientInfo: $recipientData)
             }
         }
     }
@@ -360,6 +384,17 @@ struct MainScreen: View {
         paymentOptions.additionalFields = additionalFieldsValues.map {
             AdditionalField(type: $0.key, value: $0.value)
         }
+        
+        paymentOptions.recipientInfo = RecipientInfo(
+            walletId: recipientData.walletId,
+            walletOwner: recipientData.walletOwner,
+            pan: recipientData.pan,
+            cardHolder: recipientData.cardHolder,
+            country: recipientData.country,
+            stateCode: recipientData.stateCode,
+            city: recipientData.city,
+            address: recipientData.address
+        )
 
         if !paymentData.languageCode.isEmpty {
             paymentOptions.languageCode = paymentData.languageCode

@@ -75,6 +75,9 @@
 		B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
 		B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
 		B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
 		B3491658296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
 		B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
 		B349165A296EFB6500D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
@@ -240,6 +243,7 @@
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
 		B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecurePageType.swift; sourceTree = "<group>"; };
+		B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRecipientInfo.swift; sourceTree = "<group>"; };
 		B3491657296EFB5800D9844B /* CrashReportSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportSender.swift; sourceTree = "<group>"; };
 		B349166E2970121B00D9844B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B34916702970124000D9844B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
@@ -470,6 +474,7 @@
 				8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */,
 				84A35C4E2893B2A20037A604 /* FieldType.swift */,
 				B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */,
+				B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */,
 			);
 			path = CoreAdaptersAndConverters;
 			sourceTree = "<group>";
@@ -778,6 +783,7 @@
 				849C534C28BF62C800C1CF71 /* SDKInteractor.swift in Sources */,
 				849C534D28BF62C800C1CF71 /* EcommpaySDK.swift in Sources */,
 				849C534E28BF62C800C1CF71 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +819,7 @@
 				845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */,
 				845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */,
 				8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -848,6 +855,7 @@
 				DCC5E8D2294E023E004E8864 /* SDKInteractor.swift in Sources */,
 				DCC5E8D3294E023E004E8864 /* EcommpaySDK.swift in Sources */,
 				DCC5E8D4294E023E004E8864 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

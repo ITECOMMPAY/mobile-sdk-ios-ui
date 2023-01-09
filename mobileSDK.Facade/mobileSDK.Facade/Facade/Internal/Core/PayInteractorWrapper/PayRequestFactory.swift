@@ -14,37 +14,67 @@ import MsdkCore
 #endif
 
 class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
-    func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+    func createSavedCardSaleRequest(
+        cvv: String,
+        accountId: Int64,
+        customerFields: [FieldValue]?,
+        recipientInfo: mobileSDK_UI.RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest {
+        
         let request = SavedCardSaleRequest(cvv: cvv, accountId: accountId)
+        
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
+        request.recipientInfo = recipientInfo?.coreRecipientInfo
+        
         return PayRequestWrapper(coreRequest: request)
     }
 
-    func createNewCardSaleRequest(cvv: String,
-                                  pan: String,
-                                  year: Int32,
-                                  month: Int32,
-                                  cardHolder: String,
-                                  saveCard: Bool,
-                                  customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
-        let request = NewCardSaleRequest(cvv: cvv, pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder, saveCard: saveCard)
+    func createNewCardSaleRequest(
+        cvv: String,
+        pan: String,
+        year: Int32,
+        month: Int32,
+        cardHolder: String,
+        saveCard: Bool,
+        customerFields: [FieldValue]?,
+        recipientInfo: mobileSDK_UI.RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest {
+        
+        let request = NewCardSaleRequest(
+            cvv: cvv,
+            pan: pan,
+            expiryDate: CardDate(month: month, year: year),
+            cardHolder: cardHolder,
+            saveCard: saveCard
+        )
+        
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
+        request.recipientInfo = recipientInfo?.coreRecipientInfo
+        
         return PayRequestWrapper(coreRequest: request)
     }
 
-    func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+    func createApplePaySaleRequest(
+        token: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: mobileSDK_UI.RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest {
+        
         #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
         let request = ApplePaySaleRequest(token: debugToken)
         #else
         let request = ApplePaySaleRequest(token: token)
         #endif
+        
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
+        request.recipientInfo = recipientInfo?.coreRecipientInfo
+        
         return PayRequestWrapper(coreRequest: request)
     }
 
@@ -63,18 +93,29 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         cardHolder: String,
         customerFields: [FieldValue]?
     ) -> mobileSDK_UI.PayRequest {
+        
         let request = CardTokenizeRequest(pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder)
+        
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
+        
         return PayRequestWrapper(coreRequest: request)
     }
     
-    func createTokenizeSaleRequest(cvv: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest {
+    func createTokenizeSaleRequest(
+        cvv: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: mobileSDK_UI.RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest {
+        
         let request = CardSaleTokenizeRequest(cvv: cvv)
+        
         request.customerFields = customerFields?.map({ value in
             return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
         })
+        request.recipientInfo = recipientInfo?.coreRecipientInfo
+        
         return PayRequestWrapper(coreRequest: request)
     }
 }

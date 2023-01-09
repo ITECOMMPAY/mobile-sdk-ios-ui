@@ -17,17 +17,29 @@ public protocol PayInteractor {
 public protocol PayRequest {}
 
 public protocol PayRequestFactory {
-    func createSavedCardSaleRequest(cvv: String, accountId: Int64, customerFields: [FieldValue]?) -> PayRequest
+    func createSavedCardSaleRequest(
+        cvv: String,
+        accountId: Int64,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
 
-    func createNewCardSaleRequest(cvv: String,
-                                  pan: String,
-                                  year: Int32,
-                                  month: Int32,
-                                  cardHolder: String,
-                                  saveCard: Bool,
-                                  customerFields: [FieldValue]?) -> PayRequest
+    func createNewCardSaleRequest(
+        cvv: String,
+        pan: String,
+        year: Int32,
+        month: Int32,
+        cardHolder: String,
+        saveCard: Bool,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
 
-    func createApplePaySaleRequest(token: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest
+    func createApplePaySaleRequest(
+        token: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest
 
     func createAPSSaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest
 
@@ -41,5 +53,9 @@ public protocol PayRequestFactory {
         customerFields: [FieldValue]?
     ) -> mobileSDK_UI.PayRequest
 
-    func createTokenizeSaleRequest(cvv: String, customerFields: [FieldValue]?) -> mobileSDK_UI.PayRequest
+    func createTokenizeSaleRequest(
+        cvv: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> mobileSDK_UI.PayRequest
 }
