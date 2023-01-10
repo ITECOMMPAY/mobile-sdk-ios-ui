@@ -25,7 +25,7 @@ struct SavedCardCheckoutView: View {
     }
     
     private var isContinueButton: Bool {
-        !visibleCustomerFields.shouldBeDisplayed
+        visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }
     
     private var isTokenSale: Bool {
