@@ -43,7 +43,16 @@ public class RecurrentInfo: NSObject, Codable {
     ///   - time: Time of recurrent payment to charge
     ///   - startDate: Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
     ///   - scheduledPaymentID: Recurring payment ID
-    public init(type: RecurrentType, expiryDay: String?, expiryMonth: String?, expiryYear: String?, period: RecurrentPeriod?, time: String?, startDate: String?, scheduledPaymentID: String?, amount: Int? = nil, schedule: [RecurrentInfoSchedule]? = nil) {
+    public init(type: RecurrentType?,
+                expiryDay: String?,
+                expiryMonth: String?,
+                expiryYear: String?,
+                period: RecurrentPeriod?,
+                time: String?,
+                startDate: String?,
+                scheduledPaymentID: String?,
+                amount: Int? = nil,
+                schedule: [RecurrentInfoSchedule]? = nil) {
         self.type = type
         self.expiryDay = expiryDay
         self.expiryMonth = expiryMonth
@@ -59,7 +68,7 @@ public class RecurrentInfo: NSObject, Codable {
     /// indicate if needed to be registered for recurrent
     private let register: Bool = true
     /// Type of recurrent - R/C/U/I
-    public let type: RecurrentType
+    public let type: RecurrentType?
     /// Day of recurrent expiration, must be string(2) dat in DD format
     public let expiryDay: String?
     /// Month of recurrent expiration, must be string(2) month in MM format
@@ -184,9 +193,12 @@ public class RecurrentInfo: NSObject, Codable {
     var json: [String: Any] {
         get {
             var dict = [
-                "register": register,
-                "type": type.rawValue
+                "register": register
             ] as [String: Any]
+            
+            if let type = type {
+                dict["type"] = type.rawValue
+            }
 
             if let expiryDay = expiryDay {
                 dict["expiry_day"] = expiryDay
@@ -264,7 +276,7 @@ public class RecurrentInfo: NSObject, Codable {
         case "U":
             self = .Autopayment
         default:
-            self = .Regular
+            return nil
         }
     }
 }
@@ -316,7 +328,7 @@ internal extension RecurrentInfo {
     var coreRecurrentInfo: MsdkCore.RecurrentInfo {
         MsdkCore.RecurrentInfo(
             register: register,
-            type: type.rawValue,
+            type: type?.rawValue,
             expiryDay: expiryDay,
             expiryMonth: expiryMonth,
             expiryYear: expiryYear,

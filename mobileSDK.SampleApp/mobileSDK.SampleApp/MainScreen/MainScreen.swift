@@ -358,7 +358,7 @@ struct MainScreen: View {
 
         if paymentData.sendRecurrentData {
             let info = RecurrentInfo(
-                type: RecurrentType(rawValue: paymentData.recurrentData.type ?? "") ?? RecurrentType.Regular,
+                type: RecurrentType(rawValue: paymentData.recurrentData.type ?? ""),
                 expiryDay: paymentData.recurrentData.expiryDay,
                 expiryMonth: paymentData.recurrentData.expiryMonth,
                 expiryYear: paymentData.recurrentData.expiryYear,
