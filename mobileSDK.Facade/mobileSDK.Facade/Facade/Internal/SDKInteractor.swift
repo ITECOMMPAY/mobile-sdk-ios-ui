@@ -77,6 +77,14 @@ class SDKInteractor {
 
         self.completionHandler = completion
 
+        CrashReportSender.shared.start(
+            projectId: Int(paymentOptions.paymentInfo.projectId),
+            paymentId: paymentOptions.paymentInfo.paymentId,
+            customerId: paymentOptions.paymentInfo.customerId,
+            signature: paymentOptions.signature,
+            errorInteractor: msdkSession.getErrorEventInteractor()
+        )
+
         let delegateProxy = InitDelegateProxy()
 
         let view = ViewFactory.assembleRootView(
@@ -88,6 +96,8 @@ class SDKInteractor {
             })
         ) { reason in
             viewController.dismiss(animated: true) { [weak self] in
+                CrashReportSender.shared.stop()
+                
                 switch reason {
                 case .byUser:
                     self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))

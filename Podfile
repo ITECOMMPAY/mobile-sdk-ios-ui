@@ -21,5 +21,6 @@ for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
     pod 'MsdkCore', '0.6.1'
+    pod 'KSCrash', :git => 'https://github.com/ECOMMPAY/KSCrash.git'
   end
 end

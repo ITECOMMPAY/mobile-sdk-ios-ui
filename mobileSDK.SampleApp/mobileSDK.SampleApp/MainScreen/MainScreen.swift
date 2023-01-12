@@ -32,6 +32,8 @@ struct MainScreen: View {
     @State var showLogo: Bool = false
 
     @State var showVersion: Bool = false
+    
+    @State var simulateCrash: Bool = false
 
     var body: some View {
         mainPage
@@ -48,12 +50,15 @@ struct MainScreen: View {
                 additionalFields
                 threeDSecure
                 savedWalletsVisibility
-                brandColor
-                merchantLogo
+                Group {
+                    brandColor
+                    merchantLogo
+                }
                 forcePaymentMethods
                 apiUrls
                 applePayParams
                 mockModeSetting
+                simulateCrashToggle
             }
             .navigationBarTitle(Text("\(getBrandName()) \(getAppVersionString())"), displayMode: .inline)
             .toolbar {
@@ -68,14 +73,10 @@ struct MainScreen: View {
                         ))
                     }
                     Button("Sale") {
-                        action = .Sale
-                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                        isPaymentPagePresented = true
+                        presentPaymentPage(action: .Sale)
                     }
                     Button("Tokenize") {
-                        action = .Tokenize
-                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                        isPaymentPagePresented = true
+                        presentPaymentPage(action: .Tokenize)
                     }
 
                 }
@@ -310,10 +311,16 @@ struct MainScreen: View {
             }
         }
     }
+    
+    var simulateCrashToggle: some View {
+        Section {
+            Toggle("Simulate crash on PP", isOn: $simulateCrash)
+        }
+    }
 
     @ViewBuilder
     var paymentPage: some View {
-        if isPaymentPagePresented, let paymentOptions = getPaymentOptions(action: action) {
+        if isPaymentPagePresented, let paymentOptions = paymentOptions {
             sdk.getPaymentView(with: paymentOptions, completion: {
                 result = $0
                 token = result?.payment?.token ?? ""
@@ -324,10 +331,16 @@ struct MainScreen: View {
         }
     }
     
-    func getPaymentOptions(action: PaymentOptions.ActionType) -> PaymentOptions? {
-        let paymentOptions = self.paymentOptions
-        paymentOptions?.action = action
-        return paymentOptions
+    func presentPaymentPage(action: PaymentOptions.ActionType) {
+        self.action = action
+        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+        isPaymentPagePresented = true
+        
+        if simulateCrash {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                Array()[666]
+            }
+        }
     }
 
     var paymentOptions: PaymentOptions? {
@@ -341,6 +354,8 @@ struct MainScreen: View {
             regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil,
             token: token.isEmpty ? nil : token
         )
+        
+        paymentOptions.action = action
 
         paymentOptions.additionalFields = additionalFieldsValues.map {
             AdditionalField(type: $0.key, value: $0.value)
