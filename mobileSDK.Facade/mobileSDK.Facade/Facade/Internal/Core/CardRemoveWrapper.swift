@@ -49,6 +49,8 @@ private class CardRemoveDelegateProxy: BaseFutureDelegateProxy<CardRemoveDelegat
 }
 
 extension CardRemoveDelegateProxy: CardRemoveDelegate {
+    func onStartingRemove() { }
+    
     func onError(code: ErrorCode, message: String) {
         promise?(.failure(CoreError(code: CoreErrorCode.createFrom(code: code), message: message)))
     }
