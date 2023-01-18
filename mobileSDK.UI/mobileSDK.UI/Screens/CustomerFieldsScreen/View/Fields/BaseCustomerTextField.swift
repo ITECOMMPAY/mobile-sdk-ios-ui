@@ -60,6 +60,8 @@ struct BaseCustomerTextField: View {
     }
 
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
+        let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+
         if value.isEmpty {
             hint = L.message_required_field.string
             isValid = !customerField.isRequired
