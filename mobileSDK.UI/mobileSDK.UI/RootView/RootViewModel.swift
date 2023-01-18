@@ -353,9 +353,13 @@ class RootViewModel: RootViewModelProtocol {
                 switch payEvent {
                 case .onCustomerFields(customerFields: let customerFields):
                     debugPrint("\(type(of: self)) received onCustomerFields")
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.isLoading = false
-                        $0.customerFields = customerFields
+                    if customerFields.visibleCustomerFields.isEmpty {
+                        payInteractor.sendCustomerFields(fieldsValues: [])
+                    } else {
+                        self.state = modifiedCopy(of: self.state) {
+                            $0.isLoading = false
+                            $0.customerFields = customerFields
+                        }
                     }
                 case .onClarificationFields(clarificationFields: let clarificationFields, payment: let payment):
                     debugPrint("\(type(of: self)) received onClarificationFields")
