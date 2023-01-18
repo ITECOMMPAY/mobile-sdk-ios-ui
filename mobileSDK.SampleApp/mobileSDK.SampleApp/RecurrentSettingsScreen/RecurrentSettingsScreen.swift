@@ -101,16 +101,16 @@ struct RecurrentSettingsScreen: View {
                     recurrentData.schedule = recurrentData.schedule + [RecurrentDataSchedule.random]
                 }
             }) {
-                ForEach($recurrentData.schedule) { item in
+                ForEach(recurrentData.schedule.indices, id: \.self) { index in
                     VStack {
                         FieldWithLabel(label: "Date") {
-                            TextField("DD-MM-YYYY", text: item.date.flatten())
+                            TextField("DD-MM-YYYY", text: $recurrentData.schedule[index].date.flatten())
                         }
                         FieldWithLabel(label: "Amount") {
-                            TextField("Integer value", text: item.amount.flattenAsString())
+                            TextField("Integer value", text: $recurrentData.schedule[index].amount.flattenAsString())
                         }
                         Button("Delete") {
-                            recurrentData.schedule = recurrentData.schedule.filter({ $0.id != item.wrappedValue.id })
+                            recurrentData.schedule.remove(at: index)
                         }
                     }
                 }
