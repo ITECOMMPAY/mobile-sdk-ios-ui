@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         // Create payment info with product information
         let paymentOptions = getPaymentOptionsAllParams() // getPaymentOptionsOnlyRequiredParams
 
+        // Set action type if needed
+        paymentOptions.action = .Sale
+        
         //enable test environment
         paymentOptions.mockModeType = .success // built in mocks will be used instead of making real server requests to server
 
@@ -34,7 +37,7 @@ class ViewController: UIViewController {
         ecompaySDK.presentPayment(at: self, paymentOptions: paymentOptions) { result in
             print("ecommpaySDK finished with status \(result.status.rawValue)")
             switch  result.status {
-            case .Success, .Decline, .Failed:
+            case .Success, .Decline:
                 print("payment: \(String(describing: result.payment))")
             case .Cancelled:
                 print("payment is cancelled")
@@ -51,18 +54,19 @@ class ViewController: UIViewController {
     func getPaymentOptionsOnlyRequiredParams() -> PaymentOptions {
         return PaymentOptions(projectID: project_id, // project ID that is assigned to you
                               paymentID: "internal_payment_id_\(UUID().uuidString)", // payment ID to identify payment in your system
-                           paymentAmount: 1999, // 19.99
-                           paymentCurrency: "USD")
+                              paymentAmount: 1999, // 19.99
+                              paymentCurrency: "USD")
     }
 
     func getPaymentOptionsAllParams() -> PaymentOptions {
         return PaymentOptions(projectID: project_id,
                               paymentID: "internal_payment_id_\(UUID().uuidString)",
-                           paymentAmount: 1999,
-                           paymentCurrency: "USD",
-                           paymentDescription: "T-shirt with dog print",
-                           customerID: "10", // unique ID assigned to your customer
-                           regionCode: "")
+                              paymentAmount: 1999,
+                              paymentCurrency: "USD",
+                              paymentDescription: "T-shirt with dog print",
+                              customerID: "10", // unique ID assigned to your customer
+                              regionCode: "",
+                              token: nil) // saved card token for tokenized actions
     }
 
     // MARK: - Signature
