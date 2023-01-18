@@ -378,3 +378,33 @@ private struct AdditionalFieldWrapper: mobileSDK_UI.AdditionalField {
     let name: String
     let value: String
 }
+
+internal extension RecipientInfo {
+    var wrapper: some mobileSDK_UI.RecipientInfo {
+        RecipientInfoWrapper(publicType: self)
+    }
+}
+
+private struct RecipientInfoWrapper: mobileSDK_UI.RecipientInfo {
+    init(publicType: RecipientInfo) {
+        self.publicType = publicType
+    }
+    
+    let publicType: RecipientInfo
+
+    var walletId: String? { publicType.walletId }
+    
+    var walletOwner: String? { publicType.walletOwner }
+    
+    var pan: String? { publicType.pan }
+    
+    var cardHolder: String? { publicType.cardHolder }
+    
+    var country: String? { publicType.country }
+    
+    var stateCode: String? { publicType.stateCode }
+    
+    var city: String? { publicType.city }
+    
+    var address: String? { publicType.address }
+}

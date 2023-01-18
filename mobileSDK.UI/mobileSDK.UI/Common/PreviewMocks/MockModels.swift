@@ -120,6 +120,8 @@ struct MockPaymentOptions: PaymentOptions {
     var uiAdditionalFields: [AdditionalField] = []
     
     var token: String? = nil
+    
+    var recipientInfo: RecipientInfo? = nil
 }
 
 struct MockSavedAccount: SavedAccount {

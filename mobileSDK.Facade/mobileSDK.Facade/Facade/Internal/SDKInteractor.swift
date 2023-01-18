@@ -226,4 +226,8 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var token: String? {
         publicType.paymentInfo.token
     }
+
+    var recipientInfo: mobileSDK_UI.RecipientInfo? {
+        publicType.recipientInfo?.wrapper
+    }
 }

@@ -153,9 +153,21 @@ public protocol PaymentOptions {
     var applePayDescription: String? { get }
     var pkPaymentRequest: PKPaymentRequest? { get }
     var token: String? { get }
+    var recipientInfo: RecipientInfo? { get }
 }
 
 public protocol AdditionalField {
     var name: String { get }
     var value: String { get }
+}
+
+public protocol RecipientInfo {
+    var walletId: String? { get }
+    var walletOwner: String?  { get }
+    var pan: String? { get }
+    var cardHolder: String? { get }
+    var country: String? { get }
+    var stateCode: String? { get }
+    var city: String? { get }
+    var address: String? { get }
 }
