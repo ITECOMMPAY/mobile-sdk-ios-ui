@@ -286,10 +286,8 @@ class RootViewModel: RootViewModelProtocol {
                       let apsRequest = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
                 execute(payRequest: apsRequest)
             }
-        case .paymentMethodsScreenIntent(.store(let newValues)):
-            if let currentMethod = state.currentMethod {
-                state.savedValues[currentMethod] = newValues
-            }
+        case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
+            state.savedValues[entity] = newValues
         case .customerFieldsScreenIntent(.store(let customerFieldValues)):
             if let currentMethod = state.currentMethod {
                 if var savedValues = state.savedValues[currentMethod] {

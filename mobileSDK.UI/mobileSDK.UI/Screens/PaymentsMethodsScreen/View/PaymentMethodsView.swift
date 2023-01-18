@@ -165,15 +165,15 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
     }
 
     private func savedCardView(for savedAccount: SavedAccount) -> SavedCardCheckoutView? {
-        guard let cardPaymentMethod = viewModel.state.cardPaymentMethod
-        else {
-            return nil
-        }
+        guard let cardPaymentMethod = viewModel.state.cardPaymentMethod else { return nil }
+
+        let entity = PaymentMethodsListEntity(entityType: .savedAccount(savedAccount))
         let formValuesBinding = Binding(get: {
             viewModel.state.selectedMethodValues ?? .init()
         }, set: {
-            viewModel.dispatch(intent: .store($0))
+            viewModel.dispatch(intent: .store(data: $0, entity: entity))
         })
+
         return SavedCardCheckoutView(
             formValues: formValuesBinding,
             paymentOptions: viewModel.state.paymentOptions,
@@ -185,11 +185,13 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
     }
 
     private func expandableContent(for method: PaymentMethod) -> some View {
+        let entity = PaymentMethodsListEntity(entityType: .paymentMethod(method))
         let formValuesBinding = Binding(get: {
             viewModel.state.selectedMethodValues ?? .init()
         }, set: {
-            viewModel.dispatch(intent: .store($0))
+            viewModel.dispatch(intent: .store(data: $0, entity: entity))
         })
+
         return Group {
             switch method.methodType {
             case .card:
