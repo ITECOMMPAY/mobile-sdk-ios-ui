@@ -156,8 +156,6 @@ struct MsdkCoreCustomerFieldWrapper: mobileSDK_UI.CustomerField {
 
     var isTokenize: Bool { coreType.isTokenize }
 
-    var isVerify: Bool { coreType.isVerify }
-
     var hint: String? { coreType.hint }
 
     var label: String { coreType.label }

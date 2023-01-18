@@ -28,8 +28,8 @@ struct SavedCardCheckoutView: View {
         visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }
     
-    private var isTokenSale: Bool {
-        paymentOptions.action == .Sale && paymentOptions.token != nil
+    private var isTokenizedAction: Bool {
+        (paymentOptions.action == .Sale || paymentOptions.action == .Auth) && paymentOptions.token != nil
     }
 
     private var visibleCustomerFields: [CustomerField] {
@@ -56,9 +56,9 @@ struct SavedCardCheckoutView: View {
             PayButton(label: buttonLabel,
                       disabled: !payButtonIsEnabled
             ) {
-                if isTokenSale {
+                if isTokenizedAction {
                     onIntent(
-                        .tokenizeSale(
+                        .payToken(
                             cvv: formValues.cardCVV,
                             customerFields: formValues.customerFieldValues
                         )
@@ -75,7 +75,7 @@ struct SavedCardCheckoutView: View {
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
 
-            if !isTokenSale {
+            if !isTokenizedAction {
                 LinkButton(text: L.button_delete.string,
                            fontSize: UIScheme.dimension.smallFont,
                            foregroundColor: UIScheme.color.deleteCardButtonColor,

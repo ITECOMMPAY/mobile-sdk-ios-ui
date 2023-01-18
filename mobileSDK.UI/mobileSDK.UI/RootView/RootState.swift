@@ -79,12 +79,12 @@ extension RootState {
 
     var currentScreen: SDKScreen {
         switch paymentOptions.action {
-        case .Sale:
+        case .Sale, .Auth:
             return saleCurrentScreen
         case .Tokenize:
             return tokenizeCurrentScreen
         default:
-            return SDKScreen.none
+            return saleCurrentScreen
         }
     }
     
@@ -151,8 +151,8 @@ extension RootState {
         return .none
     }
     
-    var isTokenSale: Bool {
-        paymentOptions.action == .Sale && paymentOptions.token != nil
+    var isTokenizedAction: Bool {
+        (paymentOptions.action == .Sale || paymentOptions.action == .Auth) && paymentOptions.token != nil
     }
 }
 
