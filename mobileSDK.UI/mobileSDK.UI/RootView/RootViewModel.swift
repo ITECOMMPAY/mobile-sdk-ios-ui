@@ -234,7 +234,7 @@ class RootViewModel: RootViewModelProtocol {
                 tokenizeCard()
             } else {
                 state.isLoading = true
-                payInteractor?.sendCustomerFields(fieldsValues: fieldsValues + currentMethodHiddenFieldsValues)
+                payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
             }
         case .clarificationFieldsScreenIntent(.sendFilledFields(let fieldsValues)):
             state.isLoading = true
@@ -256,8 +256,10 @@ class RootViewModel: RootViewModelProtocol {
                     case .canceled:
                         break
                     case .didAuthorizePayment(token: let token):
-                        let customerFields = fieldValues + self.currentMethodHiddenFieldsValues
-                        if let request = self.payRequestFactory?.createApplePaySaleRequest(token: token, customerFields: customerFields) {
+                        if let request = self.payRequestFactory?.createApplePaySaleRequest(
+                            token: token,
+                            customerFields: fieldValues
+                        ) {
                             self.state.isLoading = true
                             self.execute(payRequest: request)
                         }
@@ -321,7 +323,7 @@ class RootViewModel: RootViewModelProtocol {
             month: month,
             year: year + 2000,
             cardHolder: formData.cardHolder,
-            customerFields: composeTokenizeFieldValues(from: formData.customerFieldValues)
+            customerFields: formData.customerFieldValues
         )
         
         state.isLoading = true
@@ -347,16 +349,11 @@ class RootViewModel: RootViewModelProtocol {
                 switch payEvent {
                 case .onCustomerFields(customerFields: let customerFields):
                     debugPrint("\(type(of: self)) received onCustomerFields")
-                    if customerFields.visibleCustomerFields.isEmpty {
-                        payInteractor.sendCustomerFields(fieldsValues: self.currentMethodHiddenFieldsValues)
-                    } else {
-                        self.state = modifiedCopy(of: self.state) {
-                            $0.isLoading = false
-                            $0.customerFields = customerFields
-                        }
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.customerFields = customerFields
                     }
-                case .onClarificationFields(clarificationFields: let clarificationFields,
-                                            payment: let payment):
+                case .onClarificationFields(clarificationFields: let clarificationFields, payment: let payment):
                     debugPrint("\(type(of: self)) received onClarificationFields")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
@@ -424,23 +421,8 @@ class RootViewModel: RootViewModelProtocol {
            visibleCustomerField > UIScheme.countOfVisibleCustomerFields {
             return []
         } else {
-            return filledValues + currentMethodHiddenFieldsValues
+            return filledValues
         }
-    }
-
-    private var currentMethodHiddenFieldsValues: [FieldValue] {
-        (state.currentPaymentMethod?.methodCustomerFields.fill(from: state.paymentOptions.uiAdditionalFields, where: { $0.isHidden }) ?? [])
-    }
-    
-    private func composeTokenizeFieldValues(from filledValues: [FieldValue]) -> [FieldValue] {
-        filledValues + tokenizeHiddenFieldsValues
-    }
-    
-    private var tokenizeHiddenFieldsValues: [FieldValue] {
-        state.currentPaymentMethod?.methodCustomerFields.fill(
-            from: state.paymentOptions.uiAdditionalFields,
-            where: { $0.isTokenize && $0.isHidden }
-        ) ?? []
     }
 
     private func restore(payment: Payment, with paymentMethod: PaymentMethod) {

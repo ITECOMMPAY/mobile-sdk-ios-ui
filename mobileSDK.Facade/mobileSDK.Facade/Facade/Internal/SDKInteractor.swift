@@ -90,8 +90,13 @@ class SDKInteractor {
         let view = ViewFactory.assembleRootView(
             paymentOptions: paymentOptions.uiPaymentOptions,
             initPublisher: delegateProxy.createPublisher(with: { delegate in
-                let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                                               recurrentInfo: paymentOptions.recurrentInfo?.coreRecurrentInfo)
+                let initRequest =  InitRequest(
+                    paymentInfo: paymentOptions.paymentInfo,
+                    recurrentInfo: paymentOptions.recurrentInfo?.coreRecurrentInfo,
+                    additionalFields: paymentOptions.additionalFields?.map {
+                        CustomerFieldValue(name: $0.wrapper.name, value: $0.wrapper.value)
+                    } ?? []
+                )
                 msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
             })
         ) { reason in
