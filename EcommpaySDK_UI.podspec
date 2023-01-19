@@ -15,7 +15,8 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-ui"
   spec.license      = "MIT"
  
-  spec.author       = { "Alexey Khrameev"  =>  "a.khrameev@it.ecommpay.com" }
+  spec.authors      = { "Alexey Khrameev"  =>  "a.khrameev@it.ecommpay.com",
+                        "Artem Serebrennikov"  =>  "a.serebrennikov@it.ecommpay.com" }
 
   spec.platform     = :ios
   spec.ios.deployment_target = "14"
