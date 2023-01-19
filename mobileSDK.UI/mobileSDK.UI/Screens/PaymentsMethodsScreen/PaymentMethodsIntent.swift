@@ -21,7 +21,7 @@ enum PaymentMethodsIntent {
     case delete(SavedAccount)
     case select(PaymentMethodsListEntity)
     case payWithApplePay(customerFields: [FieldValue])
-    case store(FormData)
+    case store(data: FormData, entity: PaymentMethodsListEntity)
     case tokenize
     case tokenizeSale(cvv: String, customerFields: [FieldValue])
 }
