@@ -44,15 +44,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                                     paymentDetails: viewModel.state.paymentOptions.details,
                                     backgroundTemplate: UIScheme.infoCardBackground,
                                     logoImage: viewModel.state.paymentOptions.summary.logo)
-                    if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
-                        ApplePayButton {
-                            if let method = viewModel.state.applePayMethod {
-                                let methodEntity = PaymentMethodsListEntity(entityType: .paymentMethod(method))
-                                viewModel.dispatch(intent: .select(methodEntity))
-                            }
-                            viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
-                        }
-                    }
+                    applePayButton
                 }
                 paymentMethodsList
                 PolicyView()
@@ -91,6 +83,22 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 RedactedView()
                     .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
                     .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var applePayButton: some View {
+        if let presentationMode = viewModel.state.applePayPresentationMode, presentationMode == .button {
+            ApplePayButton {
+                if let method = viewModel.state.applePayMethod {
+                    let methodEntity = PaymentMethodsListEntity(entityType: .paymentMethod(method))
+                    
+                    if viewModel.state.selectedMethodsListEntity != methodEntity {
+                        viewModel.dispatch(intent: .select(methodEntity))
+                    }
+                }
+                viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
             }
         }
     }
