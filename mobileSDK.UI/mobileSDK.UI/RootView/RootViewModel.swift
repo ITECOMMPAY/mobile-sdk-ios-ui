@@ -439,7 +439,7 @@ class RootViewModel: RootViewModelProtocol {
         
         state.currentMethod = PaymentMethodsListEntity(entityType: .paymentMethod(paymentMethod))
 
-        if payment.uiPaymentMethodType == .aps && payment.paymentStatus?.isFinal == false {
+        if payment.uiPaymentMethodType == .aps {
             dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
         } else {
             state.isLoading = true
