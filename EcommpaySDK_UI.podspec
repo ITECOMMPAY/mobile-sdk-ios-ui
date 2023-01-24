@@ -8,14 +8,15 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "EcommpaySDK_UI"
-  spec.version      = "2.1.0"
+  spec.version      = "2.2.0"
   spec.summary      = "Ecommpay SDK with UI for iOS"
 
   spec.description  = "SDK for iOS is a software development kit for fast integration of the ECommPay payment solutions right in your mobile app for iOS."
   spec.homepage     = "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-ui"
   spec.license      = "MIT"
  
-  spec.author       = { "Alexey Khrameev"  =>  "a.khrameev@it.ecommpay.com" }
+  spec.authors      = { "Alexey Khrameev"  =>  "a.khrameev@it.ecommpay.com",
+                        "Artem Serebrennikov"  =>  "a.serebrennikov@it.ecommpay.com" }
 
   spec.platform     = :ios
   spec.ios.deployment_target = "14"

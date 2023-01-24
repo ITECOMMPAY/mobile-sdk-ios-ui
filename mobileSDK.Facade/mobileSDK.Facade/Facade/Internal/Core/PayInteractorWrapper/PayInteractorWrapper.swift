@@ -63,7 +63,7 @@ extension PayInteractorWrapper: mobileSDK_UI.PayInteractor {
         )
     }
 
-    func threeDSecureHandled() {
-        payInteractor?.threeDSecureHandled()
+    func threeDSecureRedirectHandle(url: String) {
+        payInteractor?.threeDSecureRedirectHandle(url: url)
     }
 }

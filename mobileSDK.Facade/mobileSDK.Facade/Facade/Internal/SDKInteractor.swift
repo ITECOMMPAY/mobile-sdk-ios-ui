@@ -56,9 +56,13 @@ class SDKInteractor {
                                completion: PaymentCompletion?) {
 
         if paymentOptions.mockModeType == .success {
-            msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow()
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullSuccessFlow(
+                duration: .companion.seconds(seconds: 2)
+            )
         } else if paymentOptions.mockModeType == .decline {
-            msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow()
+            msdkConfig = MSDKCoreSessionConfig.companion.mockFullDeclineFlow(
+                duration: .companion.seconds(seconds: 2)
+            )
         }
 
         msdkConfig.userAgentData = UserAgentData(
@@ -73,17 +77,32 @@ class SDKInteractor {
 
         self.completionHandler = completion
 
+        CrashReportSender.shared.start(
+            projectId: Int(paymentOptions.paymentInfo.projectId),
+            paymentId: paymentOptions.paymentInfo.paymentId,
+            customerId: paymentOptions.paymentInfo.customerId,
+            signature: paymentOptions.signature,
+            errorInteractor: msdkSession.getErrorEventInteractor()
+        )
+
         let delegateProxy = InitDelegateProxy()
 
         let view = ViewFactory.assembleRootView(
             paymentOptions: paymentOptions.uiPaymentOptions,
             initPublisher: delegateProxy.createPublisher(with: { delegate in
-                let initRequest =  InitRequest(paymentInfo: paymentOptions.paymentInfo,
-                                               recurrentInfo: paymentOptions.recurrentInfo?.coreRecurrentInfo)
+                let initRequest =  InitRequest(
+                    paymentInfo: paymentOptions.paymentInfo,
+                    recurrentInfo: paymentOptions.recurrentInfo?.coreRecurrentInfo,
+                    additionalFields: paymentOptions.additionalFields?.map {
+                        CustomerFieldValue(name: $0.wrapper.name, value: $0.wrapper.value)
+                    } ?? []
+                )
                 msdkSession.getInitInteractor().execute(request: initRequest, callback: delegate)
             })
         ) { reason in
             viewController.dismiss(animated: true) { [weak self] in
+                CrashReportSender.shared.stop()
+                
                 switch reason {
                 case .byUser:
                     self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
@@ -206,5 +225,9 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     
     var token: String? {
         publicType.paymentInfo.token
+    }
+
+    var recipientInfo: mobileSDK_UI.RecipientInfo? {
+        publicType.recipientInfo?.wrapper
     }
 }

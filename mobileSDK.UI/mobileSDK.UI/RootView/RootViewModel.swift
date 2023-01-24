@@ -127,13 +127,50 @@ class RootViewModel: RootViewModelProtocol {
                 .threeDSecureScreenIntent(.close),
                 .apsScreenIntent(.close),
                 .loadingScreenIntent(.close),
-                .navigationIntent(.close):
+                .navigationIntent(.close),
+                .declineScreenIntent(.closeTryAgain):
             state.alertModel = .CloseWarning(confirmClose: { [weak self] in
-                self?.cancellables.forEach {  $0.cancel() }
-                self?.onFlowFinished(.byUser)
+                guard let self = self else { return }
+                
+                self.cancellables.forEach {  $0.cancel() }
+                
+                switch self.state.finalPaymentState {
+                case .Success: self.onFlowFinished(.success(self.state.payment))
+                case .Decline: self.onFlowFinished(.decline(self.state.payment))
+                case .none: self.onFlowFinished(.byUser)
+                }
             })
         case .declineScreenIntent(.close):
             self.onFlowFinished(.decline(state.payment))
+        case .declineScreenIntent(.tryAgain):
+            let methods = state.availablePaymentMethods?.filter {
+                $0.code == state.currentPaymentMethod?.code
+            } ?? []
+
+            state = modifiedCopy(of: state) {
+                $0.isLoading = false
+                $0.savedAccounts = $0.currentPaymentMethod?.methodType == .card ? $0.savedAccounts : []
+                $0.availablePaymentMethods = methods
+                $0.payment = nil
+                $0.customerFields = nil
+                $0.clarificationFields = nil
+                $0.alertModel = nil
+                $0.finalPaymentState = nil
+                $0.threeDSecurePageState = nil
+                $0.savedValues = [:]
+            }
+
+            state.currentMethod = {
+                if let cardPaymentMethod = self.state.cardPaymentMethod {
+                    if let account = state.savedAccounts?.first {
+                        return PaymentMethodsListEntity(entityType: .savedAccount(account))
+                    } else {
+                        return PaymentMethodsListEntity(entityType: .paymentMethod(cardPaymentMethod))
+                    }
+                } else {
+                    return state.mergedList.first
+                }
+            }()
         case .successScreenIntent(.close):
             self.onFlowFinished(.success(state.payment))
         case .paymentMethodsScreenIntent(.tokenizeSale(let cvv, let customerFields)):
@@ -143,7 +180,8 @@ class RootViewModel: RootViewModelProtocol {
             
             let request = payRequestFactory.createTokenizeSaleRequest(
                 cvv: cvv,
-                customerFields: composeFieldValuesForCardSale(from: customerFields)
+                customerFields: composeFieldValuesForCardSale(from: customerFields),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             
             state.isLoading = true
@@ -156,7 +194,8 @@ class RootViewModel: RootViewModelProtocol {
             let request = payRequestFactory.createSavedCardSaleRequest(
                 cvv: cvv,
                 accountId: id,
-                customerFields: composeFieldValuesForCardSale(from: formVlues)
+                customerFields: composeFieldValuesForCardSale(from: formVlues),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             state.isLoading = true
             execute(payRequest: request)
@@ -178,7 +217,8 @@ class RootViewModel: RootViewModelProtocol {
                 month: month,
                 cardHolder: cardHolder,
                 saveCard: saveCard,
-                customerFields: composeFieldValuesForCardSale(from: formVlues)
+                customerFields: composeFieldValuesForCardSale(from: formVlues),
+                recipientInfo: state.paymentOptions.recipientInfo
             )
             state.isLoading = true
             execute(payRequest: request)
@@ -197,7 +237,7 @@ class RootViewModel: RootViewModelProtocol {
                 tokenizeCard()
             } else {
                 state.isLoading = true
-                payInteractor?.sendCustomerFields(fieldsValues: fieldsValues + currentMethodHiddenFieldsValues)
+                payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
             }
         case .clarificationFieldsScreenIntent(.sendFilledFields(let fieldsValues)):
             state.isLoading = true
@@ -207,8 +247,8 @@ class RootViewModel: RootViewModelProtocol {
                 $0.customerFields = nil
                 $0.clarificationFields = nil
             }
-        case .threeDSecureScreenIntent(.threeDSecureHandled):
-            payInteractor?.threeDSecureHandled()
+        case .threeDSecureScreenIntent(.threeDSecure(let url)):
+            payInteractor?.threeDSecureRedirectHandle(url: url)
         case .paymentMethodsScreenIntent(.payWithApplePay(customerFields: let fieldValues)):
             if applePayService.isAvailable {
                 applePayService.onApplePayResult = { [weak self] result in
@@ -219,8 +259,11 @@ class RootViewModel: RootViewModelProtocol {
                     case .canceled:
                         break
                     case .didAuthorizePayment(token: let token):
-                        let customerFields = fieldValues + self.currentMethodHiddenFieldsValues
-                        if let request = self.payRequestFactory?.createApplePaySaleRequest(token: token, customerFields: customerFields) {
+                        if let request = self.payRequestFactory?.createApplePaySaleRequest(
+                            token: token,
+                            customerFields: fieldValues,
+                            recipientInfo: self.state.paymentOptions.recipientInfo
+                        ) {
                             self.state.isLoading = true
                             self.execute(payRequest: request)
                         }
@@ -243,10 +286,8 @@ class RootViewModel: RootViewModelProtocol {
                       let apsRequest = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
                 execute(payRequest: apsRequest)
             }
-        case .paymentMethodsScreenIntent(.store(let newValues)):
-            if let currentMethod = state.currentMethod {
-                state.savedValues[currentMethod] = newValues
-            }
+        case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
+            state.savedValues[entity] = newValues
         case .customerFieldsScreenIntent(.store(let customerFieldValues)):
             if let currentMethod = state.currentMethod {
                 if var savedValues = state.savedValues[currentMethod] {
@@ -284,7 +325,7 @@ class RootViewModel: RootViewModelProtocol {
             month: month,
             year: year + 2000,
             cardHolder: formData.cardHolder,
-            customerFields: composeTokenizeFieldValues(from: formData.customerFieldValues)
+            customerFields: formData.customerFieldValues
         )
         
         state.isLoading = true
@@ -311,54 +352,35 @@ class RootViewModel: RootViewModelProtocol {
                 case .onCustomerFields(customerFields: let customerFields):
                     debugPrint("\(type(of: self)) received onCustomerFields")
                     if customerFields.visibleCustomerFields.isEmpty {
-                        payInteractor.sendCustomerFields(fieldsValues: self.currentMethodHiddenFieldsValues)
+                        payInteractor.sendCustomerFields(fieldsValues: [])
                     } else {
                         self.state = modifiedCopy(of: self.state) {
                             $0.isLoading = false
                             $0.customerFields = customerFields
                         }
                     }
-                case .onClarificationFields(clarificationFields: let clarificationFields,
-                                            payment: let payment):
+                case .onClarificationFields(clarificationFields: let clarificationFields, payment: let payment):
                     debugPrint("\(type(of: self)) received onClarificationFields")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
                         $0.clarificationFields = clarificationFields
                     }
-                case .onThreeDSecure(acsPage: let acsPage, isCascading: let isCascading, payment: let payment):
+                case .onThreeDSecure(page: let threeDSecurePage, isCascading: let isCascading, payment: let payment):
                     debugPrint("\(type(of: self)) received onThreeDSecure isCascading: \(isCascading)")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
-                        $0.acsPageState = AcsPageState(acsPage: acsPage, isCascading: isCascading)
+                        $0.threeDSecurePageState = ThreeDSecurePageState(
+                            threeDSecurePage: threeDSecurePage,
+                            isCascading: isCascading
+                        )
                     }
-                    if self.state.paymentOptions.isMockModeEnabled {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            payInteractor.threeDSecureHandled()
-                        }
-                    }
-                case .onCompleteWithDecline(paymentMessage: let paymentMessage, payment: let payment):
+                case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
-                        $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: false)
-                    }
-                    
-                    if self.state.paymentOptions.action == .Tokenize {
-                        self.state.alertModel = .TokenizeResult(
-                            message: L.title_result_error_tokenize.string,
-                            onClose: { [weak self] in
-                                self?.onFlowFinished(.decline(payment))
-                            }
-                        )
-                    }
-                case .onCompleteWithFail(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
-                    debugPrint("\(type(of: self)) received onCompleteWithFail")
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.payment = payment
-                        $0.isLoading = false
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
                     }
                     
@@ -405,23 +427,8 @@ class RootViewModel: RootViewModelProtocol {
            visibleCustomerField > UIScheme.countOfVisibleCustomerFields {
             return []
         } else {
-            return filledValues + currentMethodHiddenFieldsValues
+            return filledValues
         }
-    }
-
-    private var currentMethodHiddenFieldsValues: [FieldValue] {
-        (state.currentPaymentMethod?.methodCustomerFields.fill(from: state.paymentOptions.uiAdditionalFields, where: { $0.isHidden }) ?? [])
-    }
-    
-    private func composeTokenizeFieldValues(from filledValues: [FieldValue]) -> [FieldValue] {
-        filledValues + tokenizeHiddenFieldsValues
-    }
-    
-    private var tokenizeHiddenFieldsValues: [FieldValue] {
-        state.currentPaymentMethod?.methodCustomerFields.fill(
-            from: state.paymentOptions.uiAdditionalFields,
-            where: { $0.isTokenize && $0.isHidden }
-        ) ?? []
     }
 
     private func restore(payment: Payment, with paymentMethod: PaymentMethod) {
@@ -429,8 +436,10 @@ class RootViewModel: RootViewModelProtocol {
             assertionFailure("PayRequestFactory is not injected")
             return
         }
+        
+        state.currentMethod = PaymentMethodsListEntity(entityType: .paymentMethod(paymentMethod))
 
-        if payment.uiPaymentMethodType == .aps && payment.paymentStatus?.isFinal == false {
+        if payment.uiPaymentMethodType == .aps {
             dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
         } else {
             state.isLoading = true

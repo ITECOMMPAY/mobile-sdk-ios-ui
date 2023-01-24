@@ -72,6 +72,27 @@
 		84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */; };
 		84EFA164287708850043C360 /* CoreErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA163287708850043C360 /* CoreErrorCode.swift */; };
 		84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
+		B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
+		B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3491658296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
+		B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
+		B349165A296EFB6500D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
+		B349166F2970122B00D9844B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B349166E2970121B00D9844B /* libc++.tbd */; };
+		B34916712970124600D9844B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916702970124000D9844B /* libz.tbd */; };
+		B34916732970126800D9844B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916722970126700D9844B /* MessageUI.framework */; };
+		B34916752970127300D9844B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916742970127200D9844B /* SystemConfiguration.framework */; };
+		B34916762970128300D9844B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B349166E2970121B00D9844B /* libc++.tbd */; };
+		B34916772970128700D9844B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916702970124000D9844B /* libz.tbd */; };
+		B34916782970128C00D9844B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916722970126700D9844B /* MessageUI.framework */; };
+		B34916792970129900D9844B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916742970127200D9844B /* SystemConfiguration.framework */; };
+		B349167A297012A000D9844B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B349166E2970121B00D9844B /* libc++.tbd */; };
+		B349167B297012A400D9844B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916702970124000D9844B /* libz.tbd */; };
+		B349167C297012A800D9844B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916722970126700D9844B /* MessageUI.framework */; };
+		B349167D297012AD00D9844B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916742970127200D9844B /* SystemConfiguration.framework */; };
 		DC1ECA318DAFF9B37E5ADDD8 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		DCC5E8B9294E023E004E8864 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCC5E8BB294E023E004E8864 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
@@ -221,6 +242,13 @@
 		84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRemoveWrapper.swift; sourceTree = "<group>"; };
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
+		B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecurePageType.swift; sourceTree = "<group>"; };
+		B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRecipientInfo.swift; sourceTree = "<group>"; };
+		B3491657296EFB5800D9844B /* CrashReportSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportSender.swift; sourceTree = "<group>"; };
+		B349166E2970121B00D9844B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		B34916702970124000D9844B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		B34916722970126700D9844B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		B34916742970127200D9844B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		DCC5E8E2294E023E004E8864 /* mSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE98D5D8EA71C79BC4BD42CD /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
 		FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,11 +259,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34916772970128700D9844B /* libz.tbd in Frameworks */,
+				B34916762970128300D9844B /* libc++.tbd in Frameworks */,
 				849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */,
 				52E8D714350D65989B729E90 /* (null) in Frameworks */,
 				F61BD6DDA275FFC25B444EA2 /* (null) in Frameworks */,
+				B34916792970129900D9844B /* SystemConfiguration.framework in Frameworks */,
 				DC1ECA318DAFF9B37E5ADDD8 /* (null) in Frameworks */,
 				E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */,
+				B34916782970128C00D9844B /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +275,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34916752970127300D9844B /* SystemConfiguration.framework in Frameworks */,
 				8403057128B7B9A400DE38D3 /* libmobileSDK.UI.a in Frameworks */,
+				B34916732970126800D9844B /* MessageUI.framework in Frameworks */,
+				B349166F2970122B00D9844B /* libc++.tbd in Frameworks */,
 				0731D22D5B81A886EC15457D /* libPods-ecommpaySDK_Dev.a in Frameworks */,
+				B34916712970124600D9844B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,8 +288,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B349167D297012AD00D9844B /* SystemConfiguration.framework in Frameworks */,
 				DCC5E8D6294E023E004E8864 /* libmobileSDK.UI.a in Frameworks */,
+				B349167C297012A800D9844B /* MessageUI.framework in Frameworks */,
+				B349167A297012A000D9844B /* libc++.tbd in Frameworks */,
 				3D20EB373CAFF8AB0B6DE787 /* libPods-mSDK_UI.a in Frameworks */,
+				B349167B297012A400D9844B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +332,7 @@
 				84B241A2288A5AD900259A50 /* Core */,
 				84B241652887D83C00259A50 /* Config */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
+				B3491657296EFB5800D9844B /* CrashReportSender.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
 				840704C828D8850600DBD249 /* ContainerViewController.swift */,
 			);
@@ -334,6 +375,10 @@
 		84AFF7CF285208CD00E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B34916742970127200D9844B /* SystemConfiguration.framework */,
+				B34916722970126700D9844B /* MessageUI.framework */,
+				B34916702970124000D9844B /* libz.tbd */,
+				B349166E2970121B00D9844B /* libc++.tbd */,
 				28F83C3D87DC6714B7B340BA /* libPods-ecommpaySDK_Dev.a */,
 				0D82F38FA24A4B0F4D5F6A47 /* libPods-mSDK_UI.a */,
 				FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */,
@@ -428,6 +473,8 @@
 				84B241A7288A61B700259A50 /* PaymentMethodType.swift */,
 				8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */,
 				84A35C4E2893B2A20037A604 /* FieldType.swift */,
+				B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */,
+				B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */,
 			);
 			path = CoreAdaptersAndConverters;
 			sourceTree = "<group>";
@@ -713,12 +760,14 @@
 				849C533A28BF62C800C1CF71 /* RecipientInfo.swift in Sources */,
 				849C533B28BF62C800C1CF71 /* PayRequestFactory.swift in Sources */,
 				849C533C28BF62C800C1CF71 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				849C533D28BF62C800C1CF71 /* PaymentResult.swift in Sources */,
 				849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */,
 				849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */,
 				84CDC3E72911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
 				849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */,
 				849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */,
+				B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */,
 				840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */,
 				849C534328BF62C800C1CF71 /* AdditionalFieldEnums.swift in Sources */,
@@ -734,6 +783,7 @@
 				849C534C28BF62C800C1CF71 /* SDKInteractor.swift in Sources */,
 				849C534D28BF62C800C1CF71 /* EcommpaySDK.swift in Sources */,
 				849C534E28BF62C800C1CF71 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,12 +796,14 @@
 				84D87CEF285C88770009FD38 /* RecipientInfo.swift in Sources */,
 				8421F8E9288EBFF300B6EED2 /* PayRequestFactory.swift in Sources */,
 				845507DD285B0463002BBFE0 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				845507D4285B0463002BBFE0 /* PaymentResult.swift in Sources */,
 				8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */,
 				8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */,
 				84CDC3E62911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
 				84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */,
 				84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */,
+				B3491658296EFB5800D9844B /* CrashReportSender.swift in Sources */,
 				840704C928D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				84D87CE4285C7F8D0009FD38 /* AdditionalField.swift in Sources */,
 				84D87CE6285C7FC50009FD38 /* AdditionalFieldEnums.swift in Sources */,
@@ -767,6 +819,7 @@
 				845507D3285B0463002BBFE0 /* SDKInteractor.swift in Sources */,
 				845507D9285B0463002BBFE0 /* EcommpaySDK.swift in Sources */,
 				8421F8E0288EB9BA00B6EED2 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,12 +832,14 @@
 				DCC5E8BD294E023E004E8864 /* RecipientInfo.swift in Sources */,
 				DCC5E8BE294E023E004E8864 /* PayRequestFactory.swift in Sources */,
 				DCC5E8BF294E023E004E8864 /* ScreenDisplayMode.swift in Sources */,
+				B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				DCC5E8C0294E023E004E8864 /* PaymentResult.swift in Sources */,
 				DCC5E8C1294E023E004E8864 /* PayInteractorWrapper.swift in Sources */,
 				DCC5E8C2294E023E004E8864 /* CardTypesManager.swift in Sources */,
 				DCC5E8C3294E023E004E8864 /* ThreeDSecureInfo.swift in Sources */,
 				DCC5E8C4294E023E004E8864 /* NetworkConfig.swift in Sources */,
 				DCC5E8C5294E023E004E8864 /* PayDelegateProxy.swift in Sources */,
+				B349165A296EFB6500D9844B /* CrashReportSender.swift in Sources */,
 				DCC5E8C6294E023E004E8864 /* ContainerViewController.swift in Sources */,
 				DCC5E8C7294E023E004E8864 /* AdditionalField.swift in Sources */,
 				DCC5E8C8294E023E004E8864 /* AdditionalFieldEnums.swift in Sources */,
@@ -800,6 +855,7 @@
 				DCC5E8D2294E023E004E8864 /* SDKInteractor.swift in Sources */,
 				DCC5E8D3294E023E004E8864 /* EcommpaySDK.swift in Sources */,
 				DCC5E8D4294E023E004E8864 /* PaymentMethodCardType.swift in Sources */,
+				B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

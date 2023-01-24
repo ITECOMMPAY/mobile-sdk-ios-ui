@@ -22,6 +22,8 @@
 		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
 		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
 		9A60DBEE5D8BBACF792DDFC8 /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
+		B3AB4769296BFF9700B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
+		B3AB476A296BFF9F00B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
 		CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
 		D472324B27A8DFF1706A1BA0 /* libPods-EcommpaySampleNL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */; };
 		DCC5E7EE294DEB03004E8864 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* MainScreen.swift */; };
@@ -54,6 +56,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 849C535828BF62C800C1CF71;
 			remoteInfo = ecommpaySDK;
+		};
+		B3AB4766296BFF8200B2EED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DCC5E8E2294E023E004E8864;
+			remoteInfo = mSDK_UI;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -104,6 +113,7 @@
 		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
 		8D1CAF7D7DABDC4446272652 /* Pods-EcommpaySampleNL3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySampleNL3.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3.debug.xcconfig"; sourceTree = "<group>"; };
 		B200B4D837ADFB88C0AF14BE /* Pods-EcommpaySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.debug.xcconfig"; sourceTree = "<group>"; };
+		B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientInfoScreen.swift; sourceTree = "<group>"; };
 		CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySampleNL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC5E803294DEB03004E8864 /* EcommpaySampleNL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcommpaySampleNL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +186,7 @@
 			children = (
 				843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */,
 				843B504028F5607E00A4F779 /* ecommpaySDK.framework */,
+				B3AB4767296BFF8200B2EED5 /* mSDK_UI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 		845FC81828AE153300C71288 /* mobileSDK.SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				B3AB4762296BFF8200B2EED5 /* RecipientInfoScreen */,
 				84BCB9672912185200FAB064 /* RecurrentSettingsScreen */,
 				84CDC3DC2910DA3300E3EB04 /* ThreeDSecureScreen */,
 				845BB1DC28B3557E001C2A24 /* Brands */,
@@ -260,6 +272,14 @@
 				84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */,
 			);
 			name = ThreeDSecureScreen;
+			sourceTree = "<group>";
+		};
+		B3AB4762296BFF8200B2EED5 /* RecipientInfoScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */,
+			);
+			path = RecipientInfoScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +378,13 @@
 			remoteRef = 843B503F28F5607E00A4F779 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		B3AB4767296BFF8200B2EED5 /* mSDK_UI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = mSDK_UI.framework;
+			remoteRef = B3AB4766296BFF8200B2EED5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -443,6 +470,7 @@
 				84BCB96A2912189B00FAB064 /* RecurrentSettingsScreen.swift in Sources */,
 				84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */,
 				84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */,
+				B3AB476A296BFF9F00B2EED5 /* RecipientInfoScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +488,7 @@
 				DCC5E7F5294DEB03004E8864 /* RecurrentSettingsScreen.swift in Sources */,
 				DCC5E7F6294DEB03004E8864 /* ThreeDSecureScreen.swift in Sources */,
 				DCC5E7F7294DEB03004E8864 /* ThreeDSecureJsonModels.swift in Sources */,
+				B3AB4769296BFF9700B2EED5 /* RecipientInfoScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -297,22 +297,26 @@ internal struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
     var token: String? { coreType.token }
 }
 
-internal extension MsdkCore.AcsPage {
-    var wrapper: some mobileSDK_UI.AcsPage {
-        MsdkCoreAcsPageWrapper(coreType: self)
+internal extension MsdkCore.ThreeDSecurePage {
+    var wrapper: some mobileSDK_UI.ThreeDSecurePage {
+        MsdkCoreThreeDSecurePageWrapper(coreType: self)
     }
 }
 
-private struct MsdkCoreAcsPageWrapper: mobileSDK_UI.AcsPage {
-    fileprivate init(coreType: MsdkCore.AcsPage) {
+private struct MsdkCoreThreeDSecurePageWrapper: mobileSDK_UI.ThreeDSecurePage {
+    fileprivate init(coreType: MsdkCore.ThreeDSecurePage) {
         self.coreType = coreType
     }
-
-    let coreType: MsdkCore.AcsPage
-
-    var acsUrl: String? { coreType.acs?.acsUrl }
-
-    var termUrl: String? { coreType.acs?.termUrl }
+    
+    let coreType: MsdkCore.ThreeDSecurePage
+    
+    var loadUrl: String? { coreType.loadUrl }
+    
+    var returnUrl: String? { coreType.returnUrl }
+    
+    var type: mobileSDK_UI.ThreeDSecurePageType? {
+        mobileSDK_UI.ThreeDSecurePageType.createFrom(coreType.type)
+    }
 
     var content: String? { coreType.content }
 }
@@ -373,4 +377,34 @@ private struct AdditionalFieldWrapper: mobileSDK_UI.AdditionalField {
 
     let name: String
     let value: String
+}
+
+internal extension RecipientInfo {
+    var wrapper: some mobileSDK_UI.RecipientInfo {
+        RecipientInfoWrapper(publicType: self)
+    }
+}
+
+private struct RecipientInfoWrapper: mobileSDK_UI.RecipientInfo {
+    init(publicType: RecipientInfo) {
+        self.publicType = publicType
+    }
+    
+    let publicType: RecipientInfo
+
+    var walletId: String? { publicType.walletId }
+    
+    var walletOwner: String? { publicType.walletOwner }
+    
+    var pan: String? { publicType.pan }
+    
+    var cardHolder: String? { publicType.cardHolder }
+    
+    var country: String? { publicType.country }
+    
+    var stateCode: String? { publicType.stateCode }
+    
+    var city: String? { publicType.city }
+    
+    var address: String? { publicType.address }
 }

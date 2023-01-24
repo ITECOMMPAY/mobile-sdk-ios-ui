@@ -11,6 +11,7 @@ private struct ResultDeclineAnimationState {
     var headerOffset: CGFloat = UIScreen.main.bounds.height*0.25
     
     var showLogo = false
+    var showCloseButton = false
     
     var titleOffset: CGFloat = 20
     var showTitle = false
@@ -34,6 +35,13 @@ private struct ResultDeclineAnimationState {
 struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: VM
     @State private var animationState = ResultDeclineAnimationState()
+    
+    private var isTryAgain: Bool {
+        switch viewModel.state.finalPaymentState {
+        case .Decline(_, let isTryAgain): return isTryAgain
+        default: return false
+        }
+    }
 
     var body: some View {
         BottomCardViewContent {
@@ -41,17 +49,23 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 VStack(spacing: UIScheme.dimension.middleSpacing) {
-                    IR.errorLogo.image
-                        .frame(height: 58)
-                        .opacity(animationState.showLogo ? 1 : 0)
+                    ZStack {
+                        IR.errorLogo.image.opacity(animationState.showLogo ? 1 : 0)
+                        ZStack {
+                            CloseButton {
+                                viewModel.dispatch(intent: isTryAgain ? .closeTryAgain : .close)
+                            }.opacity(animationState.showCloseButton ? 1 : 0)
+                        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    }.frame(height: 58)
                     VStack(spacing: UIScheme.dimension.tinySpacing) {
                         Text(L.title_result_error_payment.string)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.biggerFont))
+                            .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                             .foregroundColor(UIScheme.color.text)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
                             Text(paymentMessage)
                                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                                 .foregroundColor(UIScheme.color.errorTextColor)
+                                .multilineTextAlignment(.center)
                         }
                     }
                     .offset(x: .zero, y: animationState.titleOffset)
@@ -74,10 +88,11 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     .offset(x: .zero, y: animationState.infoOffset)
                     .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
-                    label: PayButtonLabel(style: .Close),
-                    disabled: false) {
-                        viewModel.dispatch(intent: .close)
-                    }
+                    label: PayButtonLabel(style: isTryAgain ? .TryAgain : .Close),
+                    disabled: false
+                ) {
+                    viewModel.dispatch(intent: isTryAgain ? .tryAgain : .close)
+                }
                     .offset(x: .zero, y: animationState.buttonOffset)
                     .opacity(animationState.showButton ? 1 : 0)
                 PolicyView()
@@ -101,12 +116,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
     }
 
     private var valueTitleCardWallet: String {
-        guard let payment = viewModel.state.payment else {
-            assertionFailure("Not found payment in State")
-            return ""
-        }
-        guard let paymentMethod = viewModel.state.currentPaymentMethod else {
-            assertionFailure("Not method selected")
+        guard let payment = viewModel.state.payment, let paymentMethod = viewModel.state.currentPaymentMethod else {
             return ""
         }
 
@@ -169,6 +179,12 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         animate(delay: 1.75) {
             animationState.showFooter.toggle()
         }
+        
+        if isTryAgain {
+            animate(delay: 1.8) {
+                animationState.showCloseButton.toggle()
+            }
+        }
     }
     
     private func animate(delay: Double = 0.0, animation: @escaping (() -> Void)) {
@@ -192,6 +208,8 @@ struct ResultDeclineScreen_Previews: PreviewProvider {
 
 enum ResultDeclineScreenIntent {
     case close
+    case closeTryAgain
+    case tryAgain
 }
 
 protocol ResultDeclineScreenState {

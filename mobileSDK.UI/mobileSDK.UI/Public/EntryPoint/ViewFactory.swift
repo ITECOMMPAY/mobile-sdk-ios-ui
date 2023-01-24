@@ -41,7 +41,7 @@ public struct ViewFactory {
         LoadingScreen(viewModel: LoadingScreenViewModel(parentViewModel: parentModel))
     }
 
-    internal static func assembleACSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
+    internal static func assembleThreeDSPageScreen<Model: RootViewModelProtocol>(parentModel: Model) -> some View {
         ThreeDSecureScreen(viewModel: ThreeDSecureScreenViewModel(parentViewModel: parentModel))
     }
 

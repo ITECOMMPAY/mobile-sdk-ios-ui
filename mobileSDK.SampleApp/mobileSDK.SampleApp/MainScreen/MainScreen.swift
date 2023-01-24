@@ -28,10 +28,14 @@ struct MainScreen: View {
     }
 
     @State var additionalFieldsValues: [AdditionalFieldType: String] = [:]
+    
+    @State var recipientData = RecipientData()
 
     @State var showLogo: Bool = false
 
     @State var showVersion: Bool = false
+    
+    @State var simulateCrash: Bool = false
 
     var body: some View {
         mainPage
@@ -44,16 +48,25 @@ struct MainScreen: View {
     var mainPage: some View {
         NavigationView {
             Form {
+                actions
                 basicSettings
-                additionalFields
+                Group {
+                    additionalFields
+                    recipientInfoFields
+                }
                 threeDSecure
                 savedWalletsVisibility
-                brandColor
-                merchantLogo
+                Group {
+                    brandColor
+                    merchantLogo
+                }
                 forcePaymentMethods
                 apiUrls
                 applePayParams
-                mockModeSetting
+                Group {
+                    mockModeSetting
+                    simulateCrashToggle
+                }
             }
             .navigationBarTitle(Text("\(getBrandName()) \(getAppVersionString())"), displayMode: .inline)
             .toolbar {
@@ -67,17 +80,6 @@ struct MainScreen: View {
                             + "\nCore Version: \(getCoreVersionString())"
                         ))
                     }
-                    Button("Sale") {
-                        action = .Sale
-                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                        isPaymentPagePresented = true
-                    }
-                    Button("Tokenize") {
-                        action = .Tokenize
-                        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                        isPaymentPagePresented = true
-                    }
-
                 }
             }
         }
@@ -88,6 +90,17 @@ struct MainScreen: View {
         Section {
             HStack {
                 Toggle("Hide saved wallets", isOn: $paymentData.hideSavedWallets)
+            }
+        }
+    }
+    
+    var actions: some View {
+        Section(header: Text("Actions")) {
+            Button("Sale") {
+                presentPaymentPage(action: .Sale)
+            }
+            Button("Tokenize") {
+                presentPaymentPage(action: .Tokenize)
             }
         }
     }
@@ -185,6 +198,14 @@ struct MainScreen: View {
                     }
                 }
                 .navigationTitle("Additional Fields")
+            }
+        }
+    }
+
+    var recipientInfoFields: some View {
+        Section {
+            NavigationLink("Recipient Info") {
+                RecipientInfoScreen(recipientInfo: $recipientData)
             }
         }
     }
@@ -310,10 +331,16 @@ struct MainScreen: View {
             }
         }
     }
+    
+    var simulateCrashToggle: some View {
+        Section {
+            Toggle("Simulate crash on PP", isOn: $simulateCrash)
+        }
+    }
 
     @ViewBuilder
     var paymentPage: some View {
-        if isPaymentPagePresented, let paymentOptions = getPaymentOptions(action: action) {
+        if isPaymentPagePresented, let paymentOptions = paymentOptions {
             sdk.getPaymentView(with: paymentOptions, completion: {
                 result = $0
                 token = result?.payment?.token ?? ""
@@ -324,10 +351,16 @@ struct MainScreen: View {
         }
     }
     
-    func getPaymentOptions(action: PaymentOptions.ActionType) -> PaymentOptions? {
-        let paymentOptions = self.paymentOptions
-        paymentOptions?.action = action
-        return paymentOptions
+    func presentPaymentPage(action: PaymentOptions.ActionType) {
+        self.action = action
+        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+        isPaymentPagePresented = true
+        
+        if simulateCrash {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                Array()[666]
+            }
+        }
     }
 
     var paymentOptions: PaymentOptions? {
@@ -341,10 +374,23 @@ struct MainScreen: View {
             regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil,
             token: token.isEmpty ? nil : token
         )
+        
+        paymentOptions.action = action
 
         paymentOptions.additionalFields = additionalFieldsValues.map {
             AdditionalField(type: $0.key, value: $0.value)
         }
+        
+        paymentOptions.recipientInfo = RecipientInfo(
+            walletId: recipientData.walletId,
+            walletOwner: recipientData.walletOwner,
+            pan: recipientData.pan,
+            cardHolder: recipientData.cardHolder,
+            country: recipientData.country,
+            stateCode: recipientData.stateCode,
+            city: recipientData.city,
+            address: recipientData.address
+        )
 
         if !paymentData.languageCode.isEmpty {
             paymentOptions.languageCode = paymentData.languageCode
@@ -358,7 +404,7 @@ struct MainScreen: View {
 
         if paymentData.sendRecurrentData {
             let info = RecurrentInfo(
-                type: RecurrentType(rawValue: paymentData.recurrentData.type ?? "") ?? RecurrentType.Regular,
+                type: RecurrentType(rawValue: paymentData.recurrentData.type ?? ""),
                 expiryDay: paymentData.recurrentData.expiryDay,
                 expiryMonth: paymentData.recurrentData.expiryMonth,
                 expiryYear: paymentData.recurrentData.expiryYear,

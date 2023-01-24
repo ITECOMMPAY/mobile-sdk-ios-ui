@@ -12,7 +12,7 @@ enum SDKScreen {
     case paymentMethods // aka "main"
     case customerFields
     case clarificationFields
-    case acsPage
+    case threeDSecurePage
     case apsPage
     case loading
     case successResult

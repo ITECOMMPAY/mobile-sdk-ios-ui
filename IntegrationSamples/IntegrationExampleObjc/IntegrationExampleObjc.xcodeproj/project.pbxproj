@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8CDAAD61C609B196D5ADBE7 /* Pods_IntegrationExampleObjc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F11BFD3BA8A797DA420BEF9 /* Pods_IntegrationExampleObjc.framework */; };
 		CB9B3A3E220C716400B9A300 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9B3A3D220C716400B9A300 /* AppDelegate.m */; };
 		CB9B3A41220C716400B9A300 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9B3A40220C716400B9A300 /* ViewController.m */; };
 		CB9B3A44220C716400B9A300 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9B3A42220C716400B9A300 /* Main.storyboard */; };
 		CB9B3A46220C716500B9A300 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB9B3A45220C716500B9A300 /* Assets.xcassets */; };
 		CB9B3A49220C716500B9A300 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB9B3A47220C716500B9A300 /* LaunchScreen.storyboard */; };
 		CB9B3A4C220C716500B9A300 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9B3A4B220C716500B9A300 /* main.m */; };
-		CB9B3A53220C719A00B9A300 /* ecommpaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB9B3A52220C719A00B9A300 /* ecommpaySDK.framework */; };
-		CB9B3A54220C719A00B9A300 /* ecommpaySDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB9B3A52220C719A00B9A300 /* ecommpaySDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CB9B3A59220C73A700B9A300 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B3A57220C73A700B9A300 /* Utils.swift */; };
 		CB9B3A5A220C73A700B9A300 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9B3A58220C73A700B9A300 /* String+Additions.swift */; };
 /* End PBXBuildFile section */
@@ -26,7 +25,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CB9B3A54220C719A00B9A300 /* ecommpaySDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,6 +32,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4F11BFD3BA8A797DA420BEF9 /* Pods_IntegrationExampleObjc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IntegrationExampleObjc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFEA5757C4730C3D9182FF6D /* Pods-IntegrationExampleObjc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntegrationExampleObjc.release.xcconfig"; path = "Target Support Files/Pods-IntegrationExampleObjc/Pods-IntegrationExampleObjc.release.xcconfig"; sourceTree = "<group>"; };
 		CB9B3A39220C716400B9A300 /* IntegrationExampleObjc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IntegrationExampleObjc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB9B3A3C220C716400B9A300 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CB9B3A3D220C716400B9A300 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -44,10 +44,10 @@
 		CB9B3A48220C716500B9A300 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB9B3A4A220C716500B9A300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB9B3A4B220C716500B9A300 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CB9B3A52220C719A00B9A300 /* ecommpaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ecommpaySDK.framework; path = IntegrationExampleObjc/ecommpaySDK.framework; sourceTree = "<group>"; };
 		CB9B3A56220C73A600B9A300 /* IntegrationExampleObjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IntegrationExampleObjc-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB9B3A57220C73A700B9A300 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		CB9B3A58220C73A700B9A300 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		FD6FE1E1F619D2B0AF68A348 /* Pods-IntegrationExampleObjc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IntegrationExampleObjc.debug.xcconfig"; path = "Target Support Files/Pods-IntegrationExampleObjc/Pods-IntegrationExampleObjc.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,19 +55,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB9B3A53220C719A00B9A300 /* ecommpaySDK.framework in Frameworks */,
+				C8CDAAD61C609B196D5ADBE7 /* Pods_IntegrationExampleObjc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		374D45194C017CAAC3CD59BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD6FE1E1F619D2B0AF68A348 /* Pods-IntegrationExampleObjc.debug.xcconfig */,
+				AFEA5757C4730C3D9182FF6D /* Pods-IntegrationExampleObjc.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		698AE60A830A2C6D7B0687E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F11BFD3BA8A797DA420BEF9 /* Pods_IntegrationExampleObjc.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CB9B3A30220C716400B9A300 = {
 			isa = PBXGroup;
 			children = (
-				CB9B3A52220C719A00B9A300 /* ecommpaySDK.framework */,
 				CB9B3A3B220C716400B9A300 /* IntegrationExampleObjc */,
 				CB9B3A3A220C716400B9A300 /* Products */,
+				374D45194C017CAAC3CD59BE /* Pods */,
+				698AE60A830A2C6D7B0687E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,10 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB9B3A4F220C716500B9A300 /* Build configuration list for PBXNativeTarget "IntegrationExampleObjc" */;
 			buildPhases = (
+				A86394AA36D6C5A521E3BBD7 /* [CP] Check Pods Manifest.lock */,
 				CB9B3A35220C716400B9A300 /* Sources */,
 				CB9B3A36220C716400B9A300 /* Frameworks */,
 				CB9B3A37220C716400B9A300 /* Resources */,
 				CB9B3A55220C719B00B9A300 /* Embed Frameworks */,
+				EE6D0C5D20F057F870134629 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +193,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A86394AA36D6C5A521E3BBD7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IntegrationExampleObjc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE6D0C5D20F057F870134629 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationExampleObjc/Pods-IntegrationExampleObjc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IntegrationExampleObjc/Pods-IntegrationExampleObjc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IntegrationExampleObjc/Pods-IntegrationExampleObjc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CB9B3A35220C716400B9A300 /* Sources */ = {
@@ -322,6 +385,7 @@
 		};
 		CB9B3A50220C716500B9A300 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD6FE1E1F619D2B0AF68A348 /* Pods-IntegrationExampleObjc.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -348,6 +412,7 @@
 		};
 		CB9B3A51220C716500B9A300 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFEA5757C4730C3D9182FF6D /* Pods-IntegrationExampleObjc.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

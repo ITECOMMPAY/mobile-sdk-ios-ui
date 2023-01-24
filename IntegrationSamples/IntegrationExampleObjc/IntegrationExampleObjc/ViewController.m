@@ -29,6 +29,9 @@
     // Create payment info with product information
     PaymentOptions *paymentOptions = [self getPaymentOptionsAllParams];
     
+    // Set action type if needed
+    [paymentOptions setAction: ActionTypeSale];
+    
     #warning("Signature should be generated on your server and delivered to your app")
     NSString *signature = [self getSignature:paymentOptions.paramsForSignature];
 
@@ -76,7 +79,8 @@
                                   paymentCurrency:@"USD"
                                paymentDescription:@"T-shirt with dog print"
                                        customerID:@"10" // unique ID assigned to your customer
-                                       regionCode:@""];
+                                       regionCode:@""
+                                            token:nil]; // saved card token for tokenized actions
 }
 
 #pragma mark - Signature
