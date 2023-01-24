@@ -97,14 +97,10 @@ struct MainScreen: View {
     var actions: some View {
         Section(header: Text("Actions")) {
             Button("Sale") {
-                action = .Sale
-                sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                isPaymentPagePresented = true
+                presentPaymentPage(action: .Sale)
             }
             Button("Tokenize") {
-                action = .Tokenize
-                sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
-                isPaymentPagePresented = true
+                presentPaymentPage(action: .Tokenize)
             }
         }
     }

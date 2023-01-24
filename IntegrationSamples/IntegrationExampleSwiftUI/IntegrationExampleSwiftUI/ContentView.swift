@@ -20,6 +20,9 @@ struct ContentView: View {
         // Create payment info with product information
         let paymentOptions = getPaymentOptionsAllParams() // getPaymentOptionsOnlyRequiredParams
 
+        // Set action type if needed
+        paymentOptions.action = .Sale
+        
         #warning("Signature should be generated on your server and delivered to your app")
         let signature = Utils.signature(paramsToSign: paymentOptions.paramsForSignature, secret: secret)
         // Sign payment info
@@ -32,13 +35,16 @@ struct ContentView: View {
     }
 
     func getPaymentOptionsAllParams() -> PaymentOptions {
-        return PaymentOptions(projectID: project_id,
-                              paymentID: "internal_payment_id_\(UUID().uuidString)",
-                              paymentAmount: 1999,
-                              paymentCurrency: "USD",
-                              paymentDescription: "T-shirt with dog print",
-                              customerID: "10", // unique ID assigned to your customer
-                              regionCode: "")
+        return PaymentOptions(
+            projectID: project_id,
+            paymentID: "internal_payment_id_\(UUID().uuidString)",
+            paymentAmount: 1999,
+            paymentCurrency: "USD",
+            paymentDescription: "T-shirt with dog print",
+            customerID: "10", // unique ID assigned to your customer
+            regionCode: "",
+            token: nil // saved card token for tokenized actions
+        )
     }
 
     var body: some View {

@@ -286,10 +286,8 @@ class RootViewModel: RootViewModelProtocol {
                       let apsRequest = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
                 execute(payRequest: apsRequest)
             }
-        case .paymentMethodsScreenIntent(.store(let newValues)):
-            if let currentMethod = state.currentMethod {
-                state.savedValues[currentMethod] = newValues
-            }
+        case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
+            state.savedValues[entity] = newValues
         case .customerFieldsScreenIntent(.store(let customerFieldValues)):
             if let currentMethod = state.currentMethod {
                 if var savedValues = state.savedValues[currentMethod] {
@@ -353,9 +351,13 @@ class RootViewModel: RootViewModelProtocol {
                 switch payEvent {
                 case .onCustomerFields(customerFields: let customerFields):
                     debugPrint("\(type(of: self)) received onCustomerFields")
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.isLoading = false
-                        $0.customerFields = customerFields
+                    if customerFields.visibleCustomerFields.isEmpty {
+                        payInteractor.sendCustomerFields(fieldsValues: [])
+                    } else {
+                        self.state = modifiedCopy(of: self.state) {
+                            $0.isLoading = false
+                            $0.customerFields = customerFields
+                        }
                     }
                 case .onClarificationFields(clarificationFields: let clarificationFields, payment: let payment):
                     debugPrint("\(type(of: self)) received onClarificationFields")
@@ -437,7 +439,7 @@ class RootViewModel: RootViewModelProtocol {
         
         state.currentMethod = PaymentMethodsListEntity(entityType: .paymentMethod(paymentMethod))
 
-        if payment.uiPaymentMethodType == .aps && payment.paymentStatus?.isFinal == false {
+        if payment.uiPaymentMethodType == .aps {
             dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
         } else {
             state.isLoading = true
