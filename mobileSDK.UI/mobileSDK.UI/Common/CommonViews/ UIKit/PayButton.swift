@@ -29,6 +29,7 @@ struct PayButtonLabel: View {
         case Pay(Decimal, currency: String)
         case Continue
         case Tokenize
+        case Verify
         case Proceed
         case TryAgain
         case Done
@@ -39,6 +40,7 @@ struct PayButtonLabel: View {
             case .Pay: return "Pay"
             case .Continue: return L.button_confirmation.string
             case .Tokenize: return L.button_tokenize.string
+            case .Verify: return L.button_authorize.string
             case .Proceed: return L.button_proceed.string
             case .TryAgain: return L.button_try_again.string
             case .Done: return L.button_done.string

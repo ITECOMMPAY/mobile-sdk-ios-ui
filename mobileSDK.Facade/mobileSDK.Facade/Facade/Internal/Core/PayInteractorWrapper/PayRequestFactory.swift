@@ -198,6 +198,47 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         
         return PayRequestWrapper(coreRequest: request)
     }
+
+    func createVerifyCardRequest(
+        cvv: String,
+        pan: String,
+        year: Int32,
+        month: Int32,
+        cardHolder: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest {
+
+        let request = CardVerifyRequest(
+            cvv: cvv,
+            pan: pan,
+            expiryDate: CardDate(month: month, year: year),
+            cardHolder: cardHolder
+        )
+
+        request.customerFields = customerFields?.map {
+            MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
+        }
+
+        return PayRequestWrapper(coreRequest: request)
+    }
+
+    func createVerifyApplePayRequest(
+        token: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest {
+
+        #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
+        let request = ApplePayVerifyRequest(token: debugToken)
+        #else
+        let request = ApplePayVerifyRequest(token: token)
+        #endif
+
+        request.customerFields = customerFields?.map {
+            MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
+        }
+
+        return PayRequestWrapper(coreRequest: request)
+    }
 }
 
 internal struct PayRequestWrapper: mobileSDK_UI.PayRequest {

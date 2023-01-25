@@ -44,19 +44,14 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     IR.successLogo.image
                         .frame(height: 58)
                         .opacity(animationState.showLogo ? 1 : 0)
-                    Text(L.title_result_succes_payment.string)
+                    Text(title)
                         .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                         .foregroundColor(UIScheme.color.text)
                         .offset(x: .zero, y: animationState.titleOffset)
                         .opacity(animationState.showTitle ? 1 : 0)
                 }
                 .offset(x: .zero, y: animationState.headerOffset)
-                PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                priceValue: viewModel.state.paymentOptions.summary.value,
-                                currency: viewModel.state.paymentOptions.summary.currency,
-                                paymentDetails: [],
-                                backgroundTemplate: UIScheme.infoCardBackground,
-                                logoImage: viewModel.state.paymentOptions.summary.logo)
+                overviewView
                     .offset(x: .zero, y: animationState.overviewOffset)
                     .opacity(animationState.showOverview ? 1 : 0)
                 ResultTableInfo(resultInfoKeyValuePairs: [
@@ -88,9 +83,44 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             }
         }
     }
+    
+    @ViewBuilder
+    private var overviewView: some View {
+        switch viewModel.state.paymentOptions.action {
+        case .Verify:
+            if let logo = viewModel.state.paymentOptions.summary.logo {
+                VerifyOverview(
+                    paymentID: nil,
+                    paymentDescription: nil,
+                    backgroundTemplate: UIScheme.infoCardBackground,
+                    logoImage: logo
+                )
+            } else {
+                EmptyView()
+            }
+        default:
+            PaymentOverview(
+                isVatIncluded: viewModel.state.isVatIncluded,
+                priceValue: viewModel.state.paymentOptions.summary.value,
+                currency: viewModel.state.paymentOptions.summary.currency,
+                paymentDetails: [],
+                backgroundTemplate: UIScheme.infoCardBackground,
+                logoImage: viewModel.state.paymentOptions.summary.logo
+            )
+        }
+    }
 
     private var payment: Payment? {
         viewModel.state.payment ?? nil
+    }
+    
+    private var title: String {
+        switch viewModel.state.paymentOptions.action {
+        case .Verify:
+            return L.title_result_succes_verification.string
+        default:
+            return L.title_result_succes_payment.string
+        }
     }
 
     private var valueTitleCardWallet: String {

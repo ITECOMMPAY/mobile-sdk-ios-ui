@@ -88,4 +88,18 @@ public protocol PayRequestFactory {
         cardHolder: String,
         customerFields: [FieldValue]?
     ) -> PayRequest
+
+    func createVerifyCardRequest(
+        cvv: String,
+        pan: String,
+        year: Int32,
+        month: Int32,
+        cardHolder: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest
+
+    func createVerifyApplePayRequest(
+        token: String,
+        customerFields: [FieldValue]?
+    ) -> mobileSDK_UI.PayRequest
 }

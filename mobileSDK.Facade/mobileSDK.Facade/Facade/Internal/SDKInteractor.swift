@@ -222,6 +222,10 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var paymentID: String {
         publicType.paymentInfo.paymentId
     }
+
+    var paymentDescription: String? {
+        publicType.paymentInfo.paymentDescription
+    }
     
     var token: String? {
         publicType.paymentInfo.token

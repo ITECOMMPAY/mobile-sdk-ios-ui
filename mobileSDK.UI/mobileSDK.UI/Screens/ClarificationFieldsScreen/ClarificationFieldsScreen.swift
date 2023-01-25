@@ -26,12 +26,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                priceValue: viewModel.state.paymentOptions.summary.value,
-                                currency: viewModel.state.paymentOptions.summary.currency,
-                                paymentDetails: viewModel.state.paymentOptions.details,
-                                backgroundTemplate: UIScheme.infoCardBackground,
-                                logoImage: viewModel.state.paymentOptions.summary.logo)
+                overviewView
                 Text(L.title_payment_additional_data_disclaimer.string)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                     .foregroundColor(UIScheme.color.text)
@@ -45,8 +40,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     self.isValid = isValid
                 }
                 PayButton(
-                    label: PayButtonLabel(style: .Pay(viewModel.state.paymentOptions.summary.value,
-                                                      currency: viewModel.state.paymentOptions.summary.currency)),
+                    label: buttonLabel,
                     disabled: !isValid
                 ) {
                     viewModel.dispatch(intent: .sendFilledFields(clarificationFieldsValues))
@@ -56,6 +50,46 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             }
             .padding(.top, UIScheme.dimension.middleSpacing)
             .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
+        }
+    }
+
+    @ViewBuilder
+    private var overviewView: some View {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            EmptyView()
+        case .Verify:
+            VerifyOverview(
+                paymentID: viewModel.state.paymentOptions.paymentID,
+                paymentDescription: viewModel.state.paymentOptions.paymentDescription,
+                backgroundTemplate: UIScheme.infoCardBackground,
+                logoImage: viewModel.state.paymentOptions.summary.logo
+            )
+        default:
+            PaymentOverview(
+                isVatIncluded: viewModel.state.isVatIncluded,
+                priceValue: viewModel.state.paymentOptions.summary.value,
+                currency: viewModel.state.paymentOptions.summary.currency,
+                paymentDetails: viewModel.state.paymentOptions.details,
+                backgroundTemplate: UIScheme.infoCardBackground,
+                logoImage: viewModel.state.paymentOptions.summary.logo
+            )
+        }
+    }
+
+    private var buttonLabel: some View {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            return PayButtonLabel(style: .Proceed)
+        case .Verify:
+            return PayButtonLabel(style: .Verify)
+        default:
+            return PayButtonLabel(
+                style: .Pay(
+                    viewModel.state.paymentOptions.summary.value,
+                    currency: viewModel.state.paymentOptions.summary.currency
+                )
+            )
         }
     }
 }

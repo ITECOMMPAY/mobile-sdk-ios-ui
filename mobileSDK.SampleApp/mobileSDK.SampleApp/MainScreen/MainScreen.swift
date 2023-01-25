@@ -102,6 +102,9 @@ struct MainScreen: View {
             Button("Auth") {
                 presentPaymentPage(action: .Auth)
             }
+            Button("Verify") {
+                presentPaymentPage(action: .Verify)
+            }
             Button("Tokenize") {
                 presentPaymentPage(action: .Tokenize)
             }
