@@ -89,7 +89,6 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
         var isRequired: Bool = true
         var isHidden: Bool = false
         var isTokenize: Bool = false
-        var isVerify: Bool = false
         var hint: String? = "mockField hint"
         var label: String = "mockField label"
         var placeholder: String? = "mockField placeholder"

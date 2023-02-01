@@ -99,6 +99,9 @@ struct MainScreen: View {
             Button("Sale") {
                 presentPaymentPage(action: .Sale)
             }
+            Button("Auth") {
+                presentPaymentPage(action: .Auth)
+            }
             Button("Tokenize") {
                 presentPaymentPage(action: .Tokenize)
             }

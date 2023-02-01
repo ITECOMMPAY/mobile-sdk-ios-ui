@@ -24,6 +24,13 @@ public protocol PayRequestFactory {
         recipientInfo: RecipientInfo?
     ) -> PayRequest
 
+    func createSavedCardAuthRequest(
+        cvv: String,
+        accountId: Int64,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
+
     func createNewCardSaleRequest(
         cvv: String,
         pan: String,
@@ -35,15 +42,44 @@ public protocol PayRequestFactory {
         recipientInfo: RecipientInfo?
     ) -> PayRequest
 
+    func createNewCardAuthRequest(
+        cvv: String,
+        pan: String,
+        year: Int32,
+        month: Int32,
+        cardHolder: String,
+        saveCard: Bool,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
+
+    func createTokenizeSaleRequest(
+        cvv: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
+
+    func createTokenizeAuthRequest(
+        cvv: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
+
     func createApplePaySaleRequest(
         token: String,
         customerFields: [FieldValue]?,
         recipientInfo: RecipientInfo?
-    ) -> mobileSDK_UI.PayRequest
+    ) -> PayRequest
 
-    func createAPSSaleRequest(methodCode: String) -> mobileSDK_UI.PayRequest
+    func createApplePayAuthRequest(
+        token: String,
+        customerFields: [FieldValue]?,
+        recipientInfo: RecipientInfo?
+    ) -> PayRequest
 
-    func createPaymentRestoreRequest(methodCode: String) -> mobileSDK_UI.PayRequest
+    func createAPSSaleRequest(methodCode: String) -> PayRequest
+
+    func createPaymentRestoreRequest(methodCode: String) -> PayRequest
     
     func createTokenizeRequest(
         pan: String,
@@ -51,11 +87,5 @@ public protocol PayRequestFactory {
         year: Int32,
         cardHolder: String,
         customerFields: [FieldValue]?
-    ) -> mobileSDK_UI.PayRequest
-
-    func createTokenizeSaleRequest(
-        cvv: String,
-        customerFields: [FieldValue]?,
-        recipientInfo: RecipientInfo?
-    ) -> mobileSDK_UI.PayRequest
+    ) -> PayRequest
 }

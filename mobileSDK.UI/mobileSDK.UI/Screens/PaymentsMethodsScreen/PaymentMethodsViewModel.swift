@@ -44,7 +44,7 @@ extension RootState: PaymentMethodsScreenState {
             + availablePaymentMethods
                 .filter({ $0.methodType != .applePay })
                 .map { PaymentMethodsListEntity(entityType: .paymentMethod($0)) }
-        } else if isTokenSale {
+        } else if isTokenizedAction {
             return savedAccounts.map { PaymentMethodsListEntity(entityType: .savedAccount($0)) }
         } else {
             return savedAccounts.map { PaymentMethodsListEntity(entityType: .savedAccount($0)) }

@@ -50,7 +50,6 @@ public protocol CustomerField {
     var isRequired: Bool { get }
     var isHidden: Bool { get }
     var isTokenize: Bool { get }
-    var isVerify: Bool { get }
     var hint: String? { get }
     var label: String { get }
     var placeholder: String? { get }

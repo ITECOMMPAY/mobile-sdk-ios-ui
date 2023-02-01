@@ -30,8 +30,6 @@ extension ClarificationFieldAdapter: CustomerField {
 
     var isTokenize: Bool { false }
 
-    var isVerify: Bool { false }
-
     var hint: String? { clarificationField.defaultHint }
 
     var label: String { clarificationField.defaultLabel ?? "" }
