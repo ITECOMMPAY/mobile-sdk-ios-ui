@@ -65,6 +65,10 @@ public enum L: String {
     case button_proceed
     case title_result_succes_tokenize
     case title_result_error_tokenize
+    // MARK: - Verify
+    case button_authorize
+    case title_result_succes_verification
+    case title_result_error_verification
 
     // MARK: - OTHERS
     case message_card_holder

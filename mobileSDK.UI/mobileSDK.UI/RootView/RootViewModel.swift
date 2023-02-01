@@ -53,11 +53,16 @@ class RootViewModel: RootViewModelProtocol {
                 self.state.isLoading = false
                 switch event {
                 case .onInitReceived(paymentMethods: let paymentMethods, savedAccounts: let accounts):
-                    let accounts = self.state.paymentOptions.action == .Tokenize ? [] : accounts
+                    let action = self.state.paymentOptions.action
+                    let accounts = action == .Tokenize || action == .Verify ? [] : accounts
                     
                     let methods: [PaymentMethod]
-                    if self.state.paymentOptions.action == .Tokenize || self.state.isTokenizedAction {
+                    if action == .Tokenize || self.state.isTokenizedAction {
                         methods = paymentMethods.filter { $0.methodType == .card }
+                    } else if action == .Verify {
+                        methods = paymentMethods.filter {
+                            $0.methodType == .card || (self.applePayService.isAvailable && $0.methodType == .applePay)
+                        }
                     } else if self.applePayService.isAvailable {
                         methods = paymentMethods
                     } else {
@@ -245,6 +250,15 @@ class RootViewModel: RootViewModelProtocol {
                     customerFields: composeFieldValuesForCardSale(from: formVlues),
                     recipientInfo: state.paymentOptions.recipientInfo
                 )
+            } else if state.paymentOptions.action == .Verify {
+                request = payRequestFactory?.createVerifyCardRequest(
+                    cvv: cvv,
+                    pan: pan,
+                    year: year + 2000,
+                    month: month,
+                    cardHolder: cardHolder,
+                    customerFields: composeFieldValuesForCardSale(from: formVlues)
+                )
             }
 
             guard let request = request else { return }
@@ -300,6 +314,11 @@ class RootViewModel: RootViewModelProtocol {
                                 token: token,
                                 customerFields: fieldValues,
                                 recipientInfo: self.state.paymentOptions.recipientInfo
+                            )
+                        } else if self.state.paymentOptions.action == .Verify {
+                            request = self.payRequestFactory?.createVerifyApplePayRequest(
+                                token: token,
+                                customerFields: fieldValues
                             )
                         }
                         

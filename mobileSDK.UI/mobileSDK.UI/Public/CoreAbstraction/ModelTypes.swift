@@ -149,6 +149,7 @@ public protocol PaymentOptions {
     var applePayMerchantID: String? { get }
     var appleCountryCode: String? { get }
     var paymentID: String { get }
+    var paymentDescription: String? { get }
     var applePayDescription: String? { get }
     var pkPaymentRequest: PKPaymentRequest? { get }
     var token: String? { get }

@@ -78,18 +78,11 @@ extension RootState {
     }
 
     var currentScreen: SDKScreen {
-        switch paymentOptions.action {
-        case .Sale, .Auth:
-            return saleCurrentScreen
-        case .Tokenize:
-            return tokenizeCurrentScreen
-        default:
-            return saleCurrentScreen
-        }
-    }
-    
-    private var saleCurrentScreen: SDKScreen {
         if let finalPaymentState = finalPaymentState {
+            guard paymentOptions.action != .Tokenize else {
+                return .none
+            }
+
             switch finalPaymentState {
             case .Success:
                 return .successResult
@@ -119,29 +112,6 @@ extension RootState {
 
         if apsPaymentMethod != nil {
             return .apsPage
-        }
-
-        if availablePaymentMethods != nil {
-            return .paymentMethods
-        }
-
-        return .none
-    }
-    
-    private var tokenizeCurrentScreen: SDKScreen {
-        if finalPaymentState != nil {
-            return .none
-        }
-        
-        if isLoading {
-            if availablePaymentMethods == nil {
-                return .initialLoading
-            }
-            return .loading
-        }
-        
-        if let customerFields = customerFields, !customerFields.isEmpty {
-            return .customerFields
         }
 
         if availablePaymentMethods != nil {

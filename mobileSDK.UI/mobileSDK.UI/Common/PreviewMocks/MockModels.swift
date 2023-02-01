@@ -95,6 +95,8 @@ struct MockPaymentOptions: PaymentOptions {
 
     var paymentID: String = "123"
 
+    var paymentDescription: String? = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+
     var applePayDescription: String?
 
     var appleCountryCode: String?
