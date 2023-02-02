@@ -17,15 +17,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createSavedCardSaleRequest(
         cvv: String,
         accountId: Int64,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
         let request = SavedCardSaleRequest(cvv: cvv, accountId: accountId)
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -34,15 +30,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createSavedCardAuthRequest(
         cvv: String,
         accountId: Int64,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
         let request = SavedCardAuthRequest(cvv: cvv, accountId: accountId)
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -55,7 +47,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
@@ -67,9 +58,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
             saveCard: saveCard
         )
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -82,7 +70,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
@@ -94,25 +81,18 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
             saveCard: saveCard
         )
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
     }
 
     func createTokenizeSaleRequest(
-        cvv: String, 
-        customerFields: [FieldValue]?,
+        cvv: String,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
         let request = CardSaleTokenizeRequest(cvv: cvv)
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -120,15 +100,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
 
     func createTokenizeAuthRequest(
         cvv: String,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
         let request = CardAuthTokenizeRequest(cvv: cvv)
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -136,7 +112,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
 
     func createApplePaySaleRequest(
         token: String,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
         
@@ -145,10 +120,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         #else
         let request = ApplePaySaleRequest(token: token)
         #endif
-        
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
+
         request.recipientInfo = recipientInfo?.coreRecipientInfo
         
         return PayRequestWrapper(coreRequest: request)
@@ -156,7 +128,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
 
     func createApplePayAuthRequest(
         token: String,
-        customerFields: [FieldValue]?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
@@ -166,9 +137,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         let request = ApplePayAuthRequest(token: token)
         #endif
 
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
         request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
@@ -186,16 +154,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         pan: String,
         month: Int32,
         year: Int32,
-        cardHolder: String,
-        customerFields: [FieldValue]?
+        cardHolder: String
     ) -> mobileSDK_UI.PayRequest {
         
         let request = CardTokenizeRequest(pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder)
-        
-        request.customerFields = customerFields?.map({ value in
-            return MsdkCore.CustomerFieldValue(name: value.name, value: value.value)
-        })
-        
+
         return PayRequestWrapper(coreRequest: request)
     }
 
@@ -204,8 +167,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         pan: String,
         year: Int32,
         month: Int32,
-        cardHolder: String,
-        customerFields: [FieldValue]?
+        cardHolder: String
     ) -> mobileSDK_UI.PayRequest {
 
         let request = CardVerifyRequest(
@@ -215,16 +177,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
             cardHolder: cardHolder
         )
 
-        request.customerFields = customerFields?.map {
-            MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
-        }
-
         return PayRequestWrapper(coreRequest: request)
     }
 
     func createVerifyApplePayRequest(
-        token: String,
-        customerFields: [FieldValue]?
+        token: String
     ) -> mobileSDK_UI.PayRequest {
 
         #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
@@ -233,16 +190,18 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         let request = ApplePayVerifyRequest(token: token)
         #endif
 
-        request.customerFields = customerFields?.map {
-            MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
-        }
-
         return PayRequestWrapper(coreRequest: request)
     }
 }
 
 internal struct PayRequestWrapper: mobileSDK_UI.PayRequest {
     let coreRequest: MsdkCore.PayRequest
+
+    func fillCustomerFields(customerFields: [FieldValue]) {
+        coreRequest.customerFields = customerFields.map {
+            MsdkCore.CustomerFieldValue(name: $0.name, value: $0.value)
+        }
+    }
 }
 
 #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
