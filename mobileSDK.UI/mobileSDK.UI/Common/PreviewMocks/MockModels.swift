@@ -66,6 +66,7 @@ struct MockPayment: Payment {
     var paymentMassage: String? = "MockPayment_paymentMassage"
     var method: String? = "card"
     var token: String? = "MockPayment token"
+    var recurringId: Int? = 12345678
 }
 
 struct MockAccount: Account {
@@ -126,6 +127,17 @@ struct MockPaymentOptions: PaymentOptions {
     var recipientInfo: RecipientInfo? = nil
 
     var screenDisplayModes: Set<ScreenDisplayMode> = []
+
+    var recurringRegister: Bool = true
+
+    var recurringDetails: [RecurringDetailsData] = [
+        RecurringDetailsData(
+            title: L.recurring_start_date,
+            description: .value("November 19, 2023")
+        )
+    ]
+
+    var recurringDisclaimer: L? = L.recurring_type_regular
 
     var isDarkThemeOn: Bool = false
 

@@ -20,6 +20,20 @@ public enum L: String {
     case merchant_address
     case title_payment_information_screen
     case button_hide_details
+    // MARK: - Recurring details
+    case recurring_start_date
+    case recurring_type_expiry_date
+    case recurring_period_label
+    case recurring_period_daily
+    case recurring_period_weekly
+    case recurring_period_monthly
+    case recurring_period_quarterly
+    case recurring_period_annually
+    case recurring_amount
+    case recurring_fail
+    case recurring_type_express
+    case recurring_type_regular
+    case recurring_charged_right_now
     // MARK: - APS
     case aps_payment_disclaimer
     case aps_vat_disclaimer

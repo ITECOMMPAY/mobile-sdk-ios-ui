@@ -40,7 +40,7 @@ struct PaymentData {
     var threeDSecParams = ThreeDSecureInfo.default
 
     var sendRecurrentData: Bool = false
-    var recurrentData = RecurrentData()
+    var recurrentData = RecurrentData(register: true)
 }
 
 enum ForcePaymentMethods: String, CaseIterable, Identifiable {

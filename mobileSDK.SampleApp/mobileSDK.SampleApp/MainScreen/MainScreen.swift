@@ -430,14 +430,17 @@ struct MainScreen: View {
 
         if paymentData.sendRecurrentData {
             let info = RecurrentInfo(
+                register: paymentData.recurrentData.register,
                 type: RecurrentType(rawValue: paymentData.recurrentData.type ?? ""),
                 expiryDay: paymentData.recurrentData.expiryDay,
                 expiryMonth: paymentData.recurrentData.expiryMonth,
                 expiryYear: paymentData.recurrentData.expiryYear,
                 period: RecurrentPeriod(rawValue: paymentData.recurrentData.period),
+                interval: paymentData.recurrentData.interval,
                 time: paymentData.recurrentData.time,
                 startDate: paymentData.recurrentData.startDate,
-                scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID
+                scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID,
+                amount: paymentData.recurrentData.amount
             )
             let schedule = paymentData.recurrentData.schedule
             info.schedule = schedule.count == 0 ? nil : schedule.map({ item in

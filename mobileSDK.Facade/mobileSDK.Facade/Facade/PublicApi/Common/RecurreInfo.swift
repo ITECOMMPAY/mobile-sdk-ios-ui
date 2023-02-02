@@ -35,29 +35,35 @@ public class RecurrentInfo: NSObject, Codable {
     /// Init Recurrent Info with all params
     ///
     /// - Parameters:
+    ///   - register: Indicate if needed to be registered for recurrent
     ///   - type: Type of recurrent - R/C/U/I
     ///   - expiryDay: Day of recurrent expiration, must be string(2) month in DD format
     ///   - expiryMonth: Month of recurrent expiration, must be string(2) month in MM format
     ///   - expiryYear: Year of recurrent expiration, must be string(4) month in YYYY format.
     ///   - period: Period of payment - Day/Week/Month/Quarter/Year
+    ///   - interval: Number of periods in an interval between payments - Int(1-100)
     ///   - time: Time of recurrent payment to charge
     ///   - startDate: Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
     ///   - scheduledPaymentID: Recurring payment ID
-    public init(type: RecurrentType?,
+    public init(register: Bool,
+                type: RecurrentType?,
                 expiryDay: String?,
                 expiryMonth: String?,
                 expiryYear: String?,
                 period: RecurrentPeriod?,
+                interval: Int?,
                 time: String?,
                 startDate: String?,
                 scheduledPaymentID: String?,
                 amount: Int? = nil,
                 schedule: [RecurrentInfoSchedule]? = nil) {
+        self.register = register
         self.type = type
         self.expiryDay = expiryDay
         self.expiryMonth = expiryMonth
         self.expiryYear = expiryYear
         self.period = period
+        self.interval = interval
         self.time = time
         self.startDate = startDate
         self.scheduledPaymentID = scheduledPaymentID
@@ -66,7 +72,7 @@ public class RecurrentInfo: NSObject, Codable {
     }
 
     /// indicate if needed to be registered for recurrent
-    private let register: Bool = true
+    public let register: Bool
     /// Type of recurrent - R/C/U/I
     public let type: RecurrentType?
     /// Day of recurrent expiration, must be string(2) dat in DD format
@@ -77,6 +83,9 @@ public class RecurrentInfo: NSObject, Codable {
     public let expiryYear: String?
     /// Period of payment - Day/Week/Month/Quarter/Year
     public let period: RecurrentPeriod?
+    /// Number of periods in an interval between payments, 1-100
+    /// i.e. period == W and interval == 3 means that payment is charged every 3 weeks
+    public var interval: Int?
     /// Time of recurrent payment to charge
     public let time: String?
     /// Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
@@ -91,28 +100,34 @@ public class RecurrentInfo: NSObject, Codable {
     /// Init Recurrent Info with all params
     ///
     /// - Parameters:
+    ///   - register: Indicate if needed to be registered for recurrent
     ///   - type: Type of recurrent - R/C/U/I
     ///   - expiryDay: Day of recurrent expiration, must be string(2) month in DD format
     ///   - expiryMonth: Month of recurrent expiration, must be string(2) month in MM format
     ///   - expiryYear: Year of recurrent expiration, must be string(4) month in YYYY format.
     ///   - period: Period of payment - Day/Week/Month/Quarter/Year
+    ///   - interval: Number of periods in an interval between payments - Int(1-100)
     ///   - time: Time of recurrent payment to charge
     ///   - startDate: Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
     ///   - scheduledPaymentID: Recurring payment ID
-    @objc(initWithRecurrentType:expiryDay:expiryMonth:expiryYear:period:time:startDate:scheduledPaymentID:)
-    public init(type: RecurrentType,
+    @objc(initWithRecurrentType:register:expiryDay:expiryMonth:expiryYear:period:interval:time:startDate:scheduledPaymentID:)
+    public init(register: Bool,
+                type: RecurrentType,
                 expiryDay: String,
                 expiryMonth: String,
                 expiryYear: String,
                 period: RecurrentPeriod,
+                interval: Int,
                 time: String,
                 startDate: String,
                 scheduledPaymentID: String) {
+        self.register = register
         self.type = type
         self.expiryDay = expiryDay
         self.expiryMonth = expiryMonth
         self.expiryYear = expiryYear
         self.period = period
+        self.interval = interval
         self.scheduledPaymentID = scheduledPaymentID
 
         let date = Date()
@@ -137,11 +152,13 @@ public class RecurrentInfo: NSObject, Codable {
 
     @objc(initWithRecurrentType:)
     public init(type: RecurrentType) {
+        register = true
         self.type = type
         expiryDay = nil
         expiryMonth = nil
         expiryYear = nil
         period = nil
+        interval = nil
         scheduledPaymentID = nil
         time = nil
         startDate = nil
@@ -184,6 +201,7 @@ public class RecurrentInfo: NSObject, Codable {
         case expiryMonth = "expiry_month"
         case expiryYear = "expiry_year"
         case period = "period"
+        case interval = "interval"
         case time = "time"
         case startDate = "start_date"
         case scheduledPaymentID = "scheduled_payment_id"
@@ -214,6 +232,10 @@ public class RecurrentInfo: NSObject, Codable {
 
             if let period = period {
                 dict["period"] = period.rawValue
+            }
+
+            if let interval = interval {
+                dict["interval"] = interval
             }
 
             if let time = time {
@@ -325,6 +347,14 @@ public class RecurrentInfo: NSObject, Codable {
 }
 
 internal extension RecurrentInfo {
+    var kotlinInterval: KotlinInt? {
+        guard let interval = interval else {
+            return nil
+        }
+
+        return KotlinInt(integerLiteral: interval)
+    }
+
     var coreRecurrentInfo: MsdkCore.RecurrentInfo {
         MsdkCore.RecurrentInfo(
             register: register,
@@ -333,6 +363,7 @@ internal extension RecurrentInfo {
             expiryMonth: expiryMonth,
             expiryYear: expiryYear,
             period: period?.rawValue,
+            interval: kotlinInterval,
             time: time,
             startDate: startDate,
             scheduledPaymentID: scheduledPaymentID,

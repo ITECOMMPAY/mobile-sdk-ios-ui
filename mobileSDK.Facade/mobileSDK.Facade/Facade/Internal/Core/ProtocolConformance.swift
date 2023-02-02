@@ -295,6 +295,12 @@ internal struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
     var method: String? { coreType.method }
     
     var token: String? { coreType.token }
+
+    var recurringId: Int? {
+        guard let value = coreType.recurringId else { return nil }
+
+        return Int(truncating: value)
+    }
 }
 
 internal extension MsdkCore.ThreeDSecurePage {

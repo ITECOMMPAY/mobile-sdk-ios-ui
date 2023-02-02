@@ -65,6 +65,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                         Text(title)
                             .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                             .foregroundColor(UIScheme.color.text)
+                            .multilineTextAlignment(.center)
                             .accessibilityAddTraits(.isHeader)
                             .accessibilitySortPriority(999)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
@@ -82,11 +83,15 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                 overviewView
                     .offset(x: .zero, y: animationState.overviewOffset)
                     .opacity(animationState.showOverview ? 1 : 0)
-                ResultTableInfo(resultInfoKeyValuePairs: [
-                    (L.title_card_wallet.rawValue, valueTitleCardWallet),
-                    (L.title_payment_id.rawValue, payment?.id ?? ""),
-                    (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
-                ] + completeFields)
+                ResultTableInfo(
+                    recurringDetails: viewModel.state.paymentOptions.recurringDetails,
+                    showRecurringError: showRecurringError,
+                    resultInfoKeyValuePairs: [
+                        (L.title_card_wallet.rawValue, valueTitleCardWallet),
+                        (L.title_payment_id.rawValue, payment?.id ?? ""),
+                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
+                    ] + completeFields
+                )
                     .offset(x: .zero, y: animationState.infoOffset)
                     .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
@@ -123,6 +128,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                 VerifyOverview(
                     paymentID: nil,
                     paymentDescription: nil,
+                    recurringData: [],
                     backgroundTemplate: UIScheme.infoCardBackground,
                     logoImage: logo
                 )
@@ -134,6 +140,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                 isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                recurringData: [],
                 paymentDetails: [],
                 backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
@@ -152,6 +159,10 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         default:
             return L.title_result_error_payment.string
         }
+    }
+
+    private var showRecurringError: Bool {
+        viewModel.state.paymentOptions.recurringRegister && payment?.recurringId == nil
     }
 
     private var valueTitleCardWallet: String {
