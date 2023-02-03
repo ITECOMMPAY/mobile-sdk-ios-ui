@@ -43,7 +43,6 @@ struct MockCustomerField: CustomerField {
     var isRequired: Bool = true
     var isHidden: Bool = false
     var isTokenize: Bool = false
-    var isVerify: Bool = false
     var hint: String? = "mockField hint"
     var label: String = "mockField label"
     var placeholder: String? = "mockField placeholder"
@@ -95,6 +94,8 @@ struct MockPaymentOptions: PaymentOptions {
     var pkPaymentRequest: PKPaymentRequest?
 
     var paymentID: String = "123"
+
+    var paymentDescription: String? = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 
     var applePayDescription: String?
 

@@ -50,7 +50,6 @@ public protocol CustomerField {
     var isRequired: Bool { get }
     var isHidden: Bool { get }
     var isTokenize: Bool { get }
-    var isVerify: Bool { get }
     var hint: String? { get }
     var label: String { get }
     var placeholder: String? { get }
@@ -150,6 +149,7 @@ public protocol PaymentOptions {
     var applePayMerchantID: String? { get }
     var appleCountryCode: String? { get }
     var paymentID: String { get }
+    var paymentDescription: String? { get }
     var applePayDescription: String? { get }
     var pkPaymentRequest: PKPaymentRequest? { get }
     var token: String? { get }

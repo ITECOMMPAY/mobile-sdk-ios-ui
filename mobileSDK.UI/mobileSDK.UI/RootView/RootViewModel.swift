@@ -53,11 +53,16 @@ class RootViewModel: RootViewModelProtocol {
                 self.state.isLoading = false
                 switch event {
                 case .onInitReceived(paymentMethods: let paymentMethods, savedAccounts: let accounts):
-                    let accounts = self.state.paymentOptions.action == .Tokenize ? [] : accounts
+                    let action = self.state.paymentOptions.action
+                    let accounts = action == .Tokenize || action == .Verify ? [] : accounts
                     
                     let methods: [PaymentMethod]
-                    if self.state.paymentOptions.action == .Tokenize || self.state.isTokenSale {
+                    if action == .Tokenize || self.state.isTokenizedAction {
                         methods = paymentMethods.filter { $0.methodType == .card }
+                    } else if action == .Verify {
+                        methods = paymentMethods.filter {
+                            $0.methodType == .card || (self.applePayService.isAvailable && $0.methodType == .applePay)
+                        }
                     } else if self.applePayService.isAvailable {
                         methods = paymentMethods
                     } else {
@@ -173,32 +178,42 @@ class RootViewModel: RootViewModelProtocol {
             }()
         case .successScreenIntent(.close):
             self.onFlowFinished(.success(state.payment))
-        case .paymentMethodsScreenIntent(.tokenizeSale(let cvv, let customerFields)):
-            guard let payRequestFactory = payRequestFactory else {
-                return
-            }
-            
-            let request = payRequestFactory.createTokenizeSaleRequest(
-                cvv: cvv,
-                customerFields: composeFieldValuesForCardSale(from: customerFields),
-                recipientInfo: state.paymentOptions.recipientInfo
-            )
-            
-            state.isLoading = true
-            execute(payRequest: request)
-        case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv, customerFields: let formVlues)):
-            guard let payRequestFactory = payRequestFactory else {
-                return
+        case .paymentMethodsScreenIntent(.payToken(let cvv, let customerFields)):
+            var request: PayRequest?
+            if state.paymentOptions.action == .Sale {
+                request = payRequestFactory?.createTokenizeSaleRequest(
+                    cvv: cvv,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
+            } else if state.paymentOptions.action == .Auth {
+                request = payRequestFactory?.createTokenizeAuthRequest(
+                    cvv: cvv,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
             }
 
-            let request = payRequestFactory.createSavedCardSaleRequest(
-                cvv: cvv,
-                accountId: id,
-                customerFields: composeFieldValuesForCardSale(from: formVlues),
-                recipientInfo: state.paymentOptions.recipientInfo
-            )
-            state.isLoading = true
-            execute(payRequest: request)
+            guard let request = request else { return }
+
+            handleRequestWithFieldValues(request: request, customerFields: customerFields)
+        case .paymentMethodsScreenIntent(.paySavedAccountWith(id: let id, cvv: let cvv, customerFields: let formVlues)):
+            var request: PayRequest?
+            if state.paymentOptions.action == .Sale {
+                request = payRequestFactory?.createSavedCardSaleRequest(
+                    cvv: cvv,
+                    accountId: id,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
+            } else if state.paymentOptions.action == .Auth {
+                request = payRequestFactory?.createSavedCardAuthRequest(
+                    cvv: cvv,
+                    accountId: id,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
+            }
+            
+            guard let request = request else { return }
+
+            handleRequestWithFieldValues(request: request, customerFields: formVlues)
         case .paymentMethodsScreenIntent(.payNewCardWith(cvv: let cvv,
                                                          pan: let pan,
                                                          year: let year,
@@ -206,22 +221,48 @@ class RootViewModel: RootViewModelProtocol {
                                                          cardHolder: let cardHolder,
                                                          saveCard: let saveCard,
                                                          customerFields: let formVlues)):
-            guard let payRequestFactory = payRequestFactory else {
-                return
+            guard let payRequestFactory = payRequestFactory else { return }
+
+            var request: PayRequest
+            switch state.paymentOptions.action {
+            case .Sale:
+                request = payRequestFactory.createNewCardSaleRequest(
+                    cvv: cvv,
+                    pan: pan,
+                    year: year + 2000,
+                    month: month,
+                    cardHolder: cardHolder,
+                    saveCard: saveCard,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
+            case .Auth:
+                request = payRequestFactory.createNewCardAuthRequest(
+                    cvv: cvv,
+                    pan: pan,
+                    year: year + 2000,
+                    month: month,
+                    cardHolder: cardHolder,
+                    saveCard: saveCard,
+                    recipientInfo: state.paymentOptions.recipientInfo
+                )
+            case .Tokenize:
+                request = payRequestFactory.createTokenizeRequest(
+                    pan: pan,
+                    month: month,
+                    year: year + 2000,
+                    cardHolder: cardHolder
+                )
+            case .Verify:
+                request = payRequestFactory.createVerifyCardRequest(
+                    cvv: cvv,
+                    pan: pan,
+                    year: year + 2000,
+                    month: month,
+                    cardHolder: cardHolder
+                )
             }
 
-            let request = payRequestFactory.createNewCardSaleRequest(
-                cvv: cvv,
-                pan: pan,
-                year: year + 2000,
-                month: month,
-                cardHolder: cardHolder,
-                saveCard: saveCard,
-                customerFields: composeFieldValuesForCardSale(from: formVlues),
-                recipientInfo: state.paymentOptions.recipientInfo
-            )
-            state.isLoading = true
-            execute(payRequest: request)
+            handleRequestWithFieldValues(request: request, customerFields: formVlues)
         case .paymentMethodsScreenIntent(.delete(let card)):
             executeDelete(for: card)
         case .paymentMethodsScreenIntent(.select(let item)):
@@ -233,8 +274,8 @@ class RootViewModel: RootViewModelProtocol {
         case .alertClosed:
             state.alertModel = nil
         case .customerFieldsScreenIntent(.sendCustomerFields(let fieldsValues)):
-            if state.paymentOptions.action == .Tokenize {
-                tokenizeCard()
+            if let request = state.request {
+                execute(payRequest: request, customerFields: fieldsValues)
             } else {
                 state.isLoading = true
                 payInteractor?.sendCustomerFields(fieldsValues: fieldsValues)
@@ -259,14 +300,24 @@ class RootViewModel: RootViewModelProtocol {
                     case .canceled:
                         break
                     case .didAuthorizePayment(token: let token):
-                        if let request = self.payRequestFactory?.createApplePaySaleRequest(
-                            token: token,
-                            customerFields: fieldValues,
-                            recipientInfo: self.state.paymentOptions.recipientInfo
-                        ) {
-                            self.state.isLoading = true
-                            self.execute(payRequest: request)
+                        var request: PayRequest?
+                        if self.state.paymentOptions.action == .Sale {
+                            request = self.payRequestFactory?.createApplePaySaleRequest(
+                                token: token,
+                                recipientInfo: self.state.paymentOptions.recipientInfo
+                            )
+                        } else if self.state.paymentOptions.action == .Auth {
+                            request = self.payRequestFactory?.createApplePayAuthRequest(
+                                token: token,
+                                recipientInfo: self.state.paymentOptions.recipientInfo
+                            )
+                        } else if self.state.paymentOptions.action == .Verify {
+                            request = self.payRequestFactory?.createVerifyApplePayRequest(token: token)
                         }
+                        
+                        guard let request = request else { return }
+
+                        self.execute(payRequest: request, customerFields: fieldValues)
                     }
                 }
                 if let request = self.state.paymentOptions.pkPaymentRequest {
@@ -283,8 +334,8 @@ class RootViewModel: RootViewModelProtocol {
             state.apsPaymentMethod = method
         case .apsScreenIntent(.executePayment):
             if let methodCode = state.apsPaymentMethod?.code,
-                      let apsRequest = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
-                execute(payRequest: apsRequest)
+                let request = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
+                execute(payRequest: request, customerFields: [])
             }
         case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
             state.savedValues[entity] = newValues
@@ -297,45 +348,37 @@ class RootViewModel: RootViewModelProtocol {
                     state.savedValues[currentMethod] = FormData(customerFieldValues: customerFieldValues.skipEmpty())
                 }
             }
-        case .paymentMethodsScreenIntent(.tokenize):
-            let customerFields = state.currentPaymentMethod?.methodCustomerFields.filter {
-                $0.isTokenize && !$0.isHidden
-            } ?? []
-            
-            if customerFields.count > UIScheme.countOfVisibleCustomerFields {
-                state = modifiedCopy(of: state) {
-                    $0.customerFields = customerFields
-                }
-            } else {
-                tokenizeCard()
-            }
         }
     }
-    
-    private func tokenizeCard() {
-        guard let payRequestFactory = payRequestFactory,
-              let currentMethod = state.currentMethod,
-              let formData = state.savedValues[currentMethod],
-              let cardExpiry = cardExpiryFabric?.createCardExpiry(with: formData.cardExpiry),
-              let month = cardExpiry.expiryMonth, let year = cardExpiry.expiryYear
-        else { return }
-        
-        let tokenizeRequest = payRequestFactory.createTokenizeRequest(
-            pan: formData.cardNumber,
-            month: month,
-            year: year + 2000,
-            cardHolder: formData.cardHolder,
-            customerFields: formData.customerFieldValues
-        )
-        
-        state.isLoading = true
-        execute(payRequest: tokenizeRequest)
+
+    private func handleRequestWithFieldValues(request: PayRequest, customerFields: [FieldValue]) {
+        let visibleFields = state.currentPaymentMethod?.visibleCustomerFields.filter {
+            if state.paymentOptions.action == .Tokenize {
+                return $0.isTokenize
+            }
+
+            return true
+        } ?? []
+
+        if visibleFields.count > UIScheme.countOfVisibleCustomerFields {
+            state = modifiedCopy(of: state) {
+                $0.customerFields = visibleFields
+                $0.request = request
+            }
+        } else {
+            execute(payRequest: request, customerFields: customerFields)
+        }
     }
 
-    private func execute(payRequest request: PayRequest) {
+    private func execute(payRequest request: PayRequest, customerFields: [FieldValue]) {
         guard let payInteractor = payInteractor else {
             return
         }
+
+        state.isLoading = true
+        
+        request.fillCustomerFields(customerFields: customerFields)
+
         payInteractor.execute(request: request)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
@@ -364,6 +407,7 @@ class RootViewModel: RootViewModelProtocol {
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
+                        $0.request = nil
                         $0.clarificationFields = clarificationFields
                     }
                 case .onThreeDSecure(page: let threeDSecurePage, isCascading: let isCascading, payment: let payment):
@@ -371,6 +415,7 @@ class RootViewModel: RootViewModelProtocol {
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
+                        $0.request = nil
                         $0.threeDSecurePageState = ThreeDSecurePageState(
                             threeDSecurePage: threeDSecurePage,
                             isCascading: isCascading
@@ -381,6 +426,7 @@ class RootViewModel: RootViewModelProtocol {
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
+                        $0.request = nil
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
                     }
                     
@@ -397,6 +443,7 @@ class RootViewModel: RootViewModelProtocol {
                     self.state = modifiedCopy(of: self.state) {
                         $0.payment = payment
                         $0.isLoading = false
+                        $0.request = nil
                         $0.finalPaymentState = .Success
                     }
                     
@@ -415,20 +462,12 @@ class RootViewModel: RootViewModelProtocol {
                     self.state = modifiedCopy(of: self.state) {
                         $0.payment = payment
                         $0.customerFields = nil
+                        $0.request = nil
                         $0.clarificationFields = nil
                     }
                 }
             })
             .store(in: &cancellables)
-    }
-
-    private func composeFieldValuesForCardSale(from filledValues: [FieldValue]) -> [FieldValue] {
-        if let visibleCustomerField = state.currentPaymentMethod?.visibleCustomerFields.count,
-           visibleCustomerField > UIScheme.countOfVisibleCustomerFields {
-            return []
-        } else {
-            return filledValues
-        }
     }
 
     private func restore(payment: Payment, with paymentMethod: PaymentMethod) {
@@ -446,7 +485,7 @@ class RootViewModel: RootViewModelProtocol {
         }
         if let methodCode = payment.method {
             let request = payRequestFactory.createPaymentRestoreRequest(methodCode: methodCode)
-            execute(payRequest: request)
+            execute(payRequest: request, customerFields: [])
         }
     }
 

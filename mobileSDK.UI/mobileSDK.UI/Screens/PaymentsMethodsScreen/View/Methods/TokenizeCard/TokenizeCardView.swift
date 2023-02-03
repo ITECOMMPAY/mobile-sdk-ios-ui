@@ -77,7 +77,13 @@ struct TokenizeCardView: View {
             }
 
             PayButton(label: buttonLabel, disabled: !isFormValid) {
-                payAction(.tokenize)
+                payAction(.payNewCardWith(cvv: formValues.cardCVV,
+                                          pan: formValues.cardNumber,
+                                          year: expiry.expiryYear!,
+                                          month: expiry.expiryMonth!,
+                                          cardHolder: formValues.cardHolder,
+                                          saveCard: formValues.isCOFAgreementChecked,
+                                          customerFields: formValues.customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 

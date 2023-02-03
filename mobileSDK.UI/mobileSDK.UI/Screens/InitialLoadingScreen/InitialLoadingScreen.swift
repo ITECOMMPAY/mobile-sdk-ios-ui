@@ -63,6 +63,8 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
             return L.localizationDefaults[L.button_tokenize] ?? ""
+        case .Verify:
+            return L.localizationDefaults[L.button_authorize] ?? ""
         default:
             return L.localizationDefaults[L.title_payment_methods] ?? ""
         }

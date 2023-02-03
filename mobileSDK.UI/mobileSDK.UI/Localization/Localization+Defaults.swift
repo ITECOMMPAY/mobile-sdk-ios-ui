@@ -28,6 +28,8 @@ extension L {
         .button_tokenize: "Save Card",
         .button_proceed: "Continue",
         .title_result_succes_tokenize: "Successfully saved card",
-        .title_result_error_tokenize: "Failed to save card"
+        .title_result_error_tokenize: "Failed to save card",
+        // MARK: - Verify
+        .button_authorize: "Authorize Card"
     ]
 }

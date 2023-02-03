@@ -18,6 +18,8 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
             return L.button_tokenize.string
+        case .Verify:
+            return L.button_authorize.string
         default:
             return L.title_payment_methods.string
         }
@@ -37,13 +39,8 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
+                overviewView
                 if viewModel.state.paymentOptions.action != .Tokenize {
-                    PaymentOverview(isVatIncluded: viewModel.state.isVatIncluded,
-                                    priceValue: viewModel.state.paymentOptions.summary.value,
-                                    currency: viewModel.state.paymentOptions.summary.currency,
-                                    paymentDetails: viewModel.state.paymentOptions.details,
-                                    backgroundTemplate: UIScheme.infoCardBackground,
-                                    logoImage: viewModel.state.paymentOptions.summary.logo)
                     applePayButton
                 }
                 paymentMethodsList
@@ -77,6 +74,30 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         }.frame(height: UIScheme.dimension.applePayButtonHeight)
     }
 
+    @ViewBuilder
+    private var overviewView: some View {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            EmptyView()
+        case .Verify:
+            VerifyOverview(
+                paymentID: viewModel.state.paymentOptions.paymentID,
+                paymentDescription: viewModel.state.paymentOptions.paymentDescription,
+                backgroundTemplate: UIScheme.infoCardBackground,
+                logoImage: viewModel.state.paymentOptions.summary.logo
+            )
+        default:
+            PaymentOverview(
+                isVatIncluded: viewModel.state.isVatIncluded,
+                priceValue: viewModel.state.paymentOptions.summary.value,
+                currency: viewModel.state.paymentOptions.summary.currency,
+                paymentDetails: viewModel.state.paymentOptions.details,
+                backgroundTemplate: UIScheme.infoCardBackground,
+                logoImage: viewModel.state.paymentOptions.summary.logo
+            )
+        }
+    }
+    
     private var paymentMethodsPlaceholders: some View {
         VStack(spacing: UIScheme.dimension.smallSpacing) {
             ForEach((0..<6), id: \.self) {_ in
@@ -203,23 +224,10 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         return Group {
             switch method.methodType {
             case .card:
-                if viewModel.state.paymentOptions.action == .Tokenize {
-                    TokenizeCardView(
-                        formValues: formValuesBinding,
-                        paymentOptions: viewModel.state.paymentOptions,
-                        paymentMethod: method
-                    ) {
-                        viewModel.dispatch(intent: $0)
-                    }
-                } else {
-                    NewCardCheckoutView(
-                        formValues: formValuesBinding,
-                        paymentOptions: viewModel.state.paymentOptions,
-                        paymentMethod: method
-                    ) {
-                        viewModel.dispatch(intent: $0)
-                    }
-                }
+                getCardMethodView(
+                    method: method,
+                    formBinding: formValuesBinding
+                )
             case .applePay:
                 ApplePayCheckoutView(
                     formValues: formValuesBinding,
@@ -233,6 +241,31 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 }
             default:
                 Color.red.frame(height: 10)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func getCardMethodView(
+        method: PaymentMethod,
+        formBinding: Binding<FormData>
+    ) -> some View {
+        switch viewModel.state.paymentOptions.action {
+        case .Tokenize:
+            TokenizeCardView(
+                formValues: formBinding,
+                paymentOptions: viewModel.state.paymentOptions,
+                paymentMethod: method
+            ) {
+                viewModel.dispatch(intent: $0)
+            }
+        default:
+            NewCardCheckoutView(
+                formValues: formBinding,
+                paymentOptions: viewModel.state.paymentOptions,
+                paymentMethod: method
+            ) {
+                viewModel.dispatch(intent: $0)
             }
         }
     }

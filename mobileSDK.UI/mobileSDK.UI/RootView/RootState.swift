@@ -23,6 +23,7 @@ struct RootState {
     var threeDSecurePageState: ThreeDSecurePageState?
     var apsPaymentMethod: PaymentMethod?
     var savedValues: [PaymentMethodsListEntity: FormData]
+    var request: PayRequest? = nil
 }
 
 struct FormData {
@@ -78,18 +79,11 @@ extension RootState {
     }
 
     var currentScreen: SDKScreen {
-        switch paymentOptions.action {
-        case .Sale:
-            return saleCurrentScreen
-        case .Tokenize:
-            return tokenizeCurrentScreen
-        default:
-            return SDKScreen.none
-        }
-    }
-    
-    private var saleCurrentScreen: SDKScreen {
         if let finalPaymentState = finalPaymentState {
+            guard paymentOptions.action != .Tokenize else {
+                return .none
+            }
+
             switch finalPaymentState {
             case .Success:
                 return .successResult
@@ -128,31 +122,8 @@ extension RootState {
         return .none
     }
     
-    private var tokenizeCurrentScreen: SDKScreen {
-        if finalPaymentState != nil {
-            return .none
-        }
-        
-        if isLoading {
-            if availablePaymentMethods == nil {
-                return .initialLoading
-            }
-            return .loading
-        }
-        
-        if let customerFields = customerFields, !customerFields.isEmpty {
-            return .customerFields
-        }
-
-        if availablePaymentMethods != nil {
-            return .paymentMethods
-        }
-
-        return .none
-    }
-    
-    var isTokenSale: Bool {
-        paymentOptions.action == .Sale && paymentOptions.token != nil
+    var isTokenizedAction: Bool {
+        (paymentOptions.action == .Sale || paymentOptions.action == .Auth) && paymentOptions.token != nil
     }
 }
 

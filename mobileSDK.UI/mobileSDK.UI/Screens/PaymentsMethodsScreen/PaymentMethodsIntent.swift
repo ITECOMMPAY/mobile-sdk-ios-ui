@@ -10,6 +10,7 @@ import Foundation
 enum PaymentMethodsIntent {
     case close
     case paySavedAccountWith(id: Int64, cvv: String, customerFields: [FieldValue])
+    case payToken(cvv: String, customerFields: [FieldValue])
     case payNewCardWith(cvv: String,
                         pan: String,
                         year: Int32,
@@ -22,6 +23,4 @@ enum PaymentMethodsIntent {
     case select(PaymentMethodsListEntity)
     case payWithApplePay(customerFields: [FieldValue])
     case store(data: FormData, entity: PaymentMethodsListEntity)
-    case tokenize
-    case tokenizeSale(cvv: String, customerFields: [FieldValue])
 }

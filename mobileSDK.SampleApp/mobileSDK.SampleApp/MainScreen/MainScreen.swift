@@ -74,13 +74,13 @@ struct MainScreen: View {
                     Button("Info") {
                         showVersion.toggle()
                     }
-                    .alert(isPresented: $showVersion) {
-                        Alert(title: Text(
-                            "SDK Version: \(getSDKVersionString())"
-                            + "\nCore Version: \(getCoreVersionString())"
-                        ))
-                    }
                 }
+            }
+            .alert(isPresented: $showVersion) {
+                Alert(title: Text(
+                    "SDK Version: \(getSDKVersionString())"
+                    + "\nCore Version: \(getCoreVersionString())"
+                ))
             }
         }
         .navigationViewStyle(.stack)
@@ -98,6 +98,12 @@ struct MainScreen: View {
         Section(header: Text("Actions")) {
             Button("Sale") {
                 presentPaymentPage(action: .Sale)
+            }
+            Button("Auth") {
+                presentPaymentPage(action: .Auth)
+            }
+            Button("Verify") {
+                presentPaymentPage(action: .Verify)
             }
             Button("Tokenize") {
                 presentPaymentPage(action: .Tokenize)
