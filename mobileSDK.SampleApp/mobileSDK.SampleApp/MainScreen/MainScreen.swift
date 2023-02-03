@@ -74,13 +74,13 @@ struct MainScreen: View {
                     Button("Info") {
                         showVersion.toggle()
                     }
-                    .alert(isPresented: $showVersion) {
-                        Alert(title: Text(
-                            "SDK Version: \(getSDKVersionString())"
-                            + "\nCore Version: \(getCoreVersionString())"
-                        ))
-                    }
                 }
+            }
+            .alert(isPresented: $showVersion) {
+                Alert(title: Text(
+                    "SDK Version: \(getSDKVersionString())"
+                    + "\nCore Version: \(getCoreVersionString())"
+                ))
             }
         }
         .navigationViewStyle(.stack)
