@@ -23,6 +23,7 @@ struct RootState {
     var threeDSecurePageState: ThreeDSecurePageState?
     var apsPaymentMethod: PaymentMethod?
     var savedValues: [PaymentMethodsListEntity: FormData]
+    var request: PayRequest? = nil
 }
 
 struct FormData {
