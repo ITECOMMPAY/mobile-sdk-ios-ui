@@ -234,4 +234,14 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var recipientInfo: mobileSDK_UI.RecipientInfo? {
         publicType.recipientInfo?.wrapper
     }
+
+    var screenDisplayModes: Set<mobileSDK_UI.ScreenDisplayMode> {
+        return Set<mobileSDK_UI.ScreenDisplayMode>(
+            publicType.screenDisplayModes.compactMap({
+                guard let mode = mobileSDK_UI.ScreenDisplayMode(rawValue: $0.rawValue) else { return nil }
+                
+                return mode
+            })
+        )
+    }
 }

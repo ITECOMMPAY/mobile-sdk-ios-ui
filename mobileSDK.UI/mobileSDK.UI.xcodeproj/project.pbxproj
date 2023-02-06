@@ -272,6 +272,8 @@
 		B396B8B7294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
 		B3B266802980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
+		B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
+		B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
 		B3FC0027292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
 /* End PBXBuildFile section */
@@ -428,6 +430,7 @@
 		84F7ABDE28AB94D700E634D9 /* CustomerFields+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomerFields+Utils.swift"; sourceTree = "<group>"; };
 		B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardView.swift; sourceTree = "<group>"; };
 		B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOverview.swift; sourceTree = "<group>"; };
+		B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
 		B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -909,6 +912,7 @@
 				84B241A4288A603C00259A50 /* PaymentMethodType.swift */,
 				8421F8DD288EB6AB00B6EED2 /* PaymentMethodCardType.swift */,
 				84A35C4B2893B1EA0037A604 /* FieldType.swift */,
+				B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1166,6 +1170,7 @@
 				84C87D3128CF45CF00B684DE /* PanField.swift in Sources */,
 				84C87D2128CF45B300B684DE /* PublicStructs.swift in Sources */,
 				84C87D6E28CF460900B684DE /* EmptyTransformation.swift in Sources */,
+				B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */,
 				84C87D6928CF460600B684DE /* PaymentMethod+ComputedField.swift in Sources */,
 				84C87D1628CF45A900B684DE /* PaymentMethodType.swift in Sources */,
 				84C87D7B28CF461700B684DE /* CheckBoxView.swift in Sources */,
@@ -1335,6 +1340,7 @@
 				84C87CB328CB475900B684DE /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
 				84C87CC928CB476A00B684DE /* ViewModel.swift in Sources */,
 				84C87CAE28CB475500B684DE /* AttributedText.swift in Sources */,
+				B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */,
 				84C87C9328CB473900B684DE /* NativePaymentMethodView.swift in Sources */,
 				84C87CBA28CB475900B684DE /* UIKitTextField+Configuration.swift in Sources */,
 				84C87CD728CB477500B684DE /* PayButton.swift in Sources */,
