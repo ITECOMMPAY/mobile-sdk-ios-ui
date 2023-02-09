@@ -26,10 +26,6 @@ private struct MsdkCorePaymentMethodWrapper: mobileSDK_UI.PaymentMethod {
 
     let coreType: MsdkCore.PaymentMethod
 
-//    var allSupportedCardTypes: [mobileSDK_UI.PaymentMethodCard] {
-//        coreType.allCardTypes.map { $0.wrapper } as [mobileSDK_UI.PaymentMethodCard]
-//    }
-
     var connectedCardTypes: [CardType] {
         coreType.availableCardTypes.map(CardType.createFrom(_:))
     }
@@ -57,6 +53,8 @@ private struct MsdkCorePaymentMethodWrapper: mobileSDK_UI.PaymentMethod {
     var translations: [String: String] { coreType.translations }
 
     var paymentUrl: String? { coreType.paymentUrl }
+
+    var walletModeAsk: Bool { coreType.walletModeAsk }
 }
 
 internal extension MsdkCore.SavedAccount {

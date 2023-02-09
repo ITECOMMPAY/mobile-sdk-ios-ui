@@ -62,11 +62,11 @@ PODS:
     - KSCrash/Reporting/Tools
   - KSCrash/Reporting/Tools (1.15.25):
     - KSCrash/Recording
-  - MsdkCore (0.8.2)
+  - MsdkCore (0.8.3)
 
 DEPENDENCIES:
   - KSCrash (from `https://github.com/ECOMMPAY/KSCrash.git`)
-  - MsdkCore (= 0.8.2)
+  - MsdkCore (= 0.8.3)
 
 SPEC REPOS:
   trunk:
@@ -83,8 +83,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   KSCrash: 6689ba5c43800f831b68928ccdbcc8b201d4dd86
-  MsdkCore: 5523f1153cea28480ae6947082037a45d6082c40
+  MsdkCore: 649f2d06da7028254fec5c09d0902e4c4f36867b
 
-PODFILE CHECKSUM: ee4272d3757aa6cf42a6737bacb7a5018ebc6ee4
+PODFILE CHECKSUM: dbbd666614cef17f41e846cb876e539b2e8b7051
 
 COCOAPODS: 1.11.3

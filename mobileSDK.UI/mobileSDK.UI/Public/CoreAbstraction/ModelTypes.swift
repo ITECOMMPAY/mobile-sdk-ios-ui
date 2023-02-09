@@ -93,6 +93,7 @@ public protocol PaymentMethod {
     var iconUrl: String? { get }
     var translations: [String: String] { get }
     var paymentUrl: String? { get }
+    var walletModeAsk: Bool { get }
 }
 
 public protocol SavedAccount {
