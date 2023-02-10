@@ -154,6 +154,7 @@ public protocol PaymentOptions {
     var pkPaymentRequest: PKPaymentRequest? { get }
     var token: String? { get }
     var recipientInfo: RecipientInfo? { get }
+    var screenDisplayModes: Set<ScreenDisplayMode> { get }
 }
 
 public protocol AdditionalField {

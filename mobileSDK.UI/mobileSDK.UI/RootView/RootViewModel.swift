@@ -423,6 +423,14 @@ class RootViewModel: RootViewModelProtocol {
                     }
                 case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")
+
+                    guard !self.state.hideDeclineScreen || isTryAgain else {
+                        self.cancellables.forEach {  $0.cancel() }
+                        self.onFlowFinished(.decline(payment))
+
+                        return
+                    }
+
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
@@ -440,6 +448,14 @@ class RootViewModel: RootViewModelProtocol {
                     }
                 case .onCompleteWithSuccess(payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithSuccess")
+
+                    guard !self.state.hideSuccessScreen else {
+                        self.cancellables.forEach {  $0.cancel() }
+                        self.onFlowFinished(.success(payment))
+
+                        return
+                    }
+
                     self.state = modifiedCopy(of: self.state) {
                         $0.payment = payment
                         $0.isLoading = false

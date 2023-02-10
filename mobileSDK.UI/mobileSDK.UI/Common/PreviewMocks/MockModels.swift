@@ -123,6 +123,8 @@ struct MockPaymentOptions: PaymentOptions {
     var token: String? = nil
     
     var recipientInfo: RecipientInfo? = nil
+
+    var screenDisplayModes: Set<ScreenDisplayMode> = []
 }
 
 struct MockSavedAccount: SavedAccount {

@@ -125,6 +125,14 @@ extension RootState {
     var isTokenizedAction: Bool {
         (paymentOptions.action == .Sale || paymentOptions.action == .Auth) && paymentOptions.token != nil
     }
+
+    var hideSuccessScreen: Bool {
+        paymentOptions.screenDisplayModes.contains(.hideSuccessFinalPage)
+    }
+
+    var hideDeclineScreen: Bool {
+        paymentOptions.screenDisplayModes.contains(.hideDeclineFinalPage)
+    }
 }
 
 // MARK: - State structs

@@ -22,6 +22,8 @@ struct PaymentData {
     var forcePaymentMethod: ForcePaymentMethods
     var forcePaymentMethodCustomValue: String = ""
     var hideSavedWallets: Bool
+    var hideSuccessFinalPage: Bool
+    var hideDeclineFinalPage: Bool
     var secretKey: String
     var apiHost: String
     var wsApiHost: String

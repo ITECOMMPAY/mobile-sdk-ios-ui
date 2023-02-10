@@ -34,6 +34,8 @@ func getCoreVersionString() -> String {
         languageCode: "",
         forcePaymentMethod: .none,
         hideSavedWallets: false,
+        hideSuccessFinalPage: false,
+        hideDeclineFinalPage: false,
         secretKey: "123",
         apiHost: "pp-sdk.westresscode.net",
         wsApiHost: "paymentpage.westresscode.net",
