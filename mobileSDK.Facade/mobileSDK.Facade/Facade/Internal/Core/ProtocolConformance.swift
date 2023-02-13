@@ -215,6 +215,8 @@ private struct MsdkCorePaymentStatusWrapper: mobileSDK_UI.PaymentStatus {
     let coreType: MsdkCore.PaymentStatus
 
     var isFinal: Bool { coreType.isFinal }
+
+    var isTryAgain: Bool { coreType == MsdkCore.PaymentStatus.awaitingCustomer }
 }
 
 internal extension MsdkCore.Account {
