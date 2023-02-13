@@ -53,6 +53,7 @@ struct MockCustomerField: CustomerField {
 
 struct MockPaymentStatus: PaymentStatus {
     var isFinal: Bool = false
+    var isTryAgain: Bool = false
 }
 
 struct MockPayment: Payment {

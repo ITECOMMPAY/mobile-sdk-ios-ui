@@ -27,6 +27,10 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                 if let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                    let url = URL(string: paymentUrlString) {
                     WebView(task: .request(URLRequest(url: url))) { url in
+                        if viewModel.state.isTryAgain {
+                            isStartedStatusCheck = false
+                        }
+                        
                         isLoading = false
                         if let currentUrl = url,
                            let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
@@ -69,6 +73,7 @@ enum ApsScreenIntent {
 
 protocol ApsScreenState {
     var apsPaymentMethod: PaymentMethod? { get }
+    var isTryAgain: Bool { get }
 }
 
 protocol ApsScreenViewModelProtocol: ViewModel

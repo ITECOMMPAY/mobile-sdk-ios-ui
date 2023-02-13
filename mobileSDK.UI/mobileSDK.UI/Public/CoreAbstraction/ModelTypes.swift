@@ -115,6 +115,7 @@ public protocol ClarificationField {
 
 public protocol PaymentStatus {
     var isFinal: Bool { get }
+    var isTryAgain: Bool { get }
 }
 
 public protocol ThreeDSecurePage {

@@ -480,6 +480,7 @@ class RootViewModel: RootViewModelProtocol {
                         $0.customerFields = nil
                         $0.request = nil
                         $0.clarificationFields = nil
+                        $0.isTryAgain = status.isTryAgain
                     }
                 }
             })

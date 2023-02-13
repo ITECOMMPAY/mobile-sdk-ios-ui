@@ -11,6 +11,7 @@ import Foundation
 /// Корневое состояние на основе которого строится представление всех экранов
 struct RootState {
     var isLoading: Bool = false
+    var isTryAgain: Bool = false
     var currentMethod: PaymentMethodsListEntity?
     var payment: Payment?
     var customerFields: [CustomerField]?
