@@ -55,7 +55,7 @@ struct MainScreen: View {
                     recipientInfoFields
                 }
                 threeDSecure
-                savedWalletsVisibility
+                visibilitySettings
                 Group {
                     brandColor
                     merchantLogo
@@ -86,10 +86,16 @@ struct MainScreen: View {
         .navigationViewStyle(.stack)
     }
 
-    var savedWalletsVisibility: some View {
+    var visibilitySettings: some View {
         Section {
             HStack {
                 Toggle("Hide saved wallets", isOn: $paymentData.hideSavedWallets)
+            }
+            HStack {
+                Toggle("Hide success final page", isOn: $paymentData.hideSuccessFinalPage)
+            }
+            HStack {
+                Toggle("Hide decline final page", isOn: $paymentData.hideDeclineFinalPage)
             }
         }
     }
@@ -403,6 +409,14 @@ struct MainScreen: View {
         }
 
         paymentOptions.hideSavedWallets = paymentData.hideSavedWallets
+
+        if paymentData.hideSuccessFinalPage {
+            paymentOptions.addScreenDisplayMode(.hideSuccessFinalPage)
+        }
+
+        if paymentData.hideDeclineFinalPage {
+            paymentOptions.addScreenDisplayMode(.hideDeclineFinalPage)
+        }
 
         if paymentData.sendThreeDSecParams {
             paymentOptions.setThreeDSecureInfo(paymentData.threeDSecParams.sdkThreeDSecureInfo)

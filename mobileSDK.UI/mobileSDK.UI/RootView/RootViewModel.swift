@@ -335,7 +335,7 @@ class RootViewModel: RootViewModelProtocol {
         case .apsScreenIntent(.executePayment):
             if let methodCode = state.apsPaymentMethod?.code,
                 let request = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
-                execute(payRequest: request, customerFields: [])
+                execute(payRequest: request, customerFields: [], isLoading: false)
             }
         case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
             state.savedValues[entity] = newValues
@@ -370,12 +370,12 @@ class RootViewModel: RootViewModelProtocol {
         }
     }
 
-    private func execute(payRequest request: PayRequest, customerFields: [FieldValue]) {
+    private func execute(payRequest request: PayRequest, customerFields: [FieldValue], isLoading: Bool = true) {
         guard let payInteractor = payInteractor else {
             return
         }
 
-        state.isLoading = true
+        state.isLoading = isLoading
         
         request.fillCustomerFields(customerFields: customerFields)
 
@@ -423,6 +423,14 @@ class RootViewModel: RootViewModelProtocol {
                     }
                 case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")
+
+                    guard !self.state.hideDeclineScreen || isTryAgain else {
+                        self.cancellables.forEach {  $0.cancel() }
+                        self.onFlowFinished(.decline(payment))
+
+                        return
+                    }
+
                     self.state = modifiedCopy(of: self.state) {
                         $0.isLoading = false
                         $0.payment = payment
@@ -440,6 +448,14 @@ class RootViewModel: RootViewModelProtocol {
                     }
                 case .onCompleteWithSuccess(payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithSuccess")
+
+                    guard !self.state.hideSuccessScreen else {
+                        self.cancellables.forEach {  $0.cancel() }
+                        self.onFlowFinished(.success(payment))
+
+                        return
+                    }
+
                     self.state = modifiedCopy(of: self.state) {
                         $0.payment = payment
                         $0.isLoading = false
@@ -464,6 +480,7 @@ class RootViewModel: RootViewModelProtocol {
                         $0.customerFields = nil
                         $0.request = nil
                         $0.clarificationFields = nil
+                        $0.isTryAgain = status.isTryAgain
                     }
                 }
             })

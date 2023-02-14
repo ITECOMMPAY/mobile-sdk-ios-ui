@@ -11,6 +11,7 @@ import Foundation
 /// Корневое состояние на основе которого строится представление всех экранов
 struct RootState {
     var isLoading: Bool = false
+    var isTryAgain: Bool = false
     var currentMethod: PaymentMethodsListEntity?
     var payment: Payment?
     var customerFields: [CustomerField]?
@@ -124,6 +125,14 @@ extension RootState {
     
     var isTokenizedAction: Bool {
         (paymentOptions.action == .Sale || paymentOptions.action == .Auth) && paymentOptions.token != nil
+    }
+
+    var hideSuccessScreen: Bool {
+        paymentOptions.screenDisplayModes.contains(.hideSuccessFinalPage)
+    }
+
+    var hideDeclineScreen: Bool {
+        paymentOptions.screenDisplayModes.contains(.hideDeclineFinalPage)
     }
 }
 

@@ -93,6 +93,7 @@ public protocol PaymentMethod {
     var iconUrl: String? { get }
     var translations: [String: String] { get }
     var paymentUrl: String? { get }
+    var walletModeAsk: Bool { get }
 }
 
 public protocol SavedAccount {
@@ -115,6 +116,7 @@ public protocol ClarificationField {
 
 public protocol PaymentStatus {
     var isFinal: Bool { get }
+    var isTryAgain: Bool { get }
 }
 
 public protocol ThreeDSecurePage {
@@ -154,6 +156,7 @@ public protocol PaymentOptions {
     var pkPaymentRequest: PKPaymentRequest? { get }
     var token: String? { get }
     var recipientInfo: RecipientInfo? { get }
+    var screenDisplayModes: Set<ScreenDisplayMode> { get }
 }
 
 public protocol AdditionalField {

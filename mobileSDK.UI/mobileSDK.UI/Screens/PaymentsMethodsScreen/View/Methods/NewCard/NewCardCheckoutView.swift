@@ -34,6 +34,10 @@ struct NewCardCheckoutView: View {
         && (!isContinueButton ? (isCustomerFieldsValid || paymentMethod.visibleCustomerFields.isEmpty): true)
     }
 
+    private var canSaveCard: Bool {
+        paymentOptions.action != .Verify && paymentMethod.walletModeAsk
+    }
+
     @State private var cardType: CardType?
 
     var expiry: CardExpiry {
@@ -70,20 +74,7 @@ struct NewCardCheckoutView: View {
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
 
-            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                CheckBoxView(checked: $formValues.isCOFAgreementChecked)
-
-                VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-                    Text(L.title_saved_cards.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-                        .foregroundColor(UIScheme.color.text)
-                    if let translationWithLink = L.cof_agreements.translationWithLink {
-                        translationWithLink.attributedText
-                     }
-                }
-                Spacer()
-            }
-            .padding(.bottom, UIScheme.dimension.formSmallSpacing)
+            saveCardCheckbox.padding(.bottom, UIScheme.dimension.formSmallSpacing)
 
             PayButton(label: buttonLabel, disabled: !isFormValid) {
                 payAction(.payNewCardWith(cvv: formValues.cardCVV,
@@ -98,6 +89,27 @@ struct NewCardCheckoutView: View {
 
         }
         .padding(.horizontal, UIScheme.dimension.middleSpacing)
+    }
+    
+    @ViewBuilder
+    private var saveCardCheckbox: some View {
+        if canSaveCard {
+            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
+                CheckBoxView(checked: $formValues.isCOFAgreementChecked)
+
+                VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
+                    Text(L.title_saved_cards.string)
+                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
+                        .foregroundColor(UIScheme.color.text)
+                    if let translationWithLink = L.cof_agreements.translationWithLink {
+                        translationWithLink.attributedText
+                     }
+                }
+                Spacer()
+            }
+        } else {
+            EmptyView()
+        }
     }
 
     private var buttonLabel: PayButtonLabel {
