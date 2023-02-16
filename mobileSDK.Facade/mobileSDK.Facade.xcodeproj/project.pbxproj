@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0731D22D5B81A886EC15457D /* libPods-ecommpaySDK_Dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F83C3D87DC6714B7B340BA /* libPods-ecommpaySDK_Dev.a */; };
 		3D20EB373CAFF8AB0B6DE787 /* libPods-mSDK_UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D82F38FA24A4B0F4D5F6A47 /* libPods-mSDK_UI.a */; };
-		52E8D714350D65989B729E90 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		8403057128B7B9A400DE38D3 /* libmobileSDK.UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; };
 		840704C928D8850600DBD249 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704C828D8850600DBD249 /* ContainerViewController.swift */; };
 		840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704C828D8850600DBD249 /* ContainerViewController.swift */; };
@@ -75,9 +74,6 @@
 		B3330B5A295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
 		B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
 		B3330B5C295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
-		B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
-		B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
-		B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
 		B3491658296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
 		B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
 		B349165A296EFB6500D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
@@ -93,7 +89,24 @@
 		B349167B297012A400D9844B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916702970124000D9844B /* libz.tbd */; };
 		B349167C297012A800D9844B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916722970126700D9844B /* MessageUI.framework */; };
 		B349167D297012AD00D9844B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916742970127200D9844B /* SystemConfiguration.framework */; };
-		DC1ECA318DAFF9B37E5ADDD8 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		B3AB475629641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475729641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3AB475829641B0800B2EED5 /* CoreRecipientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */; };
+		B3D4E40E299CC03B007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
+		B3D4E410299CC043007A1E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
+		B3D4E412299CC04C007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
+		B3D4E414299CC05F007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
+		B3D4E416299CC06C007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		B3D4E417299CC0B2007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
+		B3D4E418299CC0BA007A1E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
+		B3D4E419299CC0C3007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
+		B3D4E41A299CC0C8007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
+		B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		B3D4E41C299CC0D3007A1E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
+		B3D4E41D299CC0D9007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
+		B3D4E41E299CC0E0007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
+		B3D4E41F299CC0E7007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
+		B3D4E420299CC0EC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
 		DCC5E8B9294E023E004E8864 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCC5E8BB294E023E004E8864 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
 		DCC5E8BC294E023E004E8864 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C4E2893B2A20037A604 /* FieldType.swift */; };
@@ -126,7 +139,6 @@
 		DCC5E8DC294E023E004E8864 /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF528CF1BFD00B684DE /* CardTypesLogo.xcassets */; };
 		DCC5E8DD294E023E004E8864 /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C87CF728CF1BFD00B684DE /* APSIcons.xcassets */; };
 		E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */; };
-		F61BD6DDA275FFC25B444EA2 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,12 +255,17 @@
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
 		B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecurePageType.swift; sourceTree = "<group>"; };
-		B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRecipientInfo.swift; sourceTree = "<group>"; };
 		B3491657296EFB5800D9844B /* CrashReportSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportSender.swift; sourceTree = "<group>"; };
 		B349166E2970121B00D9844B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B34916702970124000D9844B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		B34916722970126700D9844B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
 		B34916742970127200D9844B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		B3AB475529641B0800B2EED5 /* CoreRecipientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreRecipientInfo.swift; sourceTree = "<group>"; };
+		B3D4E40C299CC03A007A1E2F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		B3D4E40F299CC043007A1E2F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		B3D4E413299CC05F007A1E2F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		DCC5E8E2294E023E004E8864 /* mSDK_UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = mSDK_UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE98D5D8EA71C79BC4BD42CD /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
 		FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,14 +277,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B34916772970128700D9844B /* libz.tbd in Frameworks */,
+				B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */,
 				B34916762970128300D9844B /* libc++.tbd in Frameworks */,
+				B3D4E418299CC0BA007A1E2F /* AVFoundation.framework in Frameworks */,
 				849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */,
-				52E8D714350D65989B729E90 /* (null) in Frameworks */,
-				F61BD6DDA275FFC25B444EA2 /* (null) in Frameworks */,
 				B34916792970129900D9844B /* SystemConfiguration.framework in Frameworks */,
-				DC1ECA318DAFF9B37E5ADDD8 /* (null) in Frameworks */,
+				B3D4E417299CC0B2007A1E2F /* Accelerate.framework in Frameworks */,
+				B3D4E41A299CC0C8007A1E2F /* CoreMedia.framework in Frameworks */,
 				E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */,
 				B34916782970128C00D9844B /* MessageUI.framework in Frameworks */,
+				B3D4E419299CC0C3007A1E2F /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,8 +297,13 @@
 				B34916752970127300D9844B /* SystemConfiguration.framework in Frameworks */,
 				8403057128B7B9A400DE38D3 /* libmobileSDK.UI.a in Frameworks */,
 				B34916732970126800D9844B /* MessageUI.framework in Frameworks */,
+				B3D4E41D299CC0D9007A1E2F /* AudioToolbox.framework in Frameworks */,
+				B3D4E41F299CC0E7007A1E2F /* CoreMedia.framework in Frameworks */,
 				B349166F2970122B00D9844B /* libc++.tbd in Frameworks */,
 				0731D22D5B81A886EC15457D /* libPods-ecommpaySDK_Dev.a in Frameworks */,
+				B3D4E41E299CC0E0007A1E2F /* Accelerate.framework in Frameworks */,
+				B3D4E41C299CC0D3007A1E2F /* AVFoundation.framework in Frameworks */,
+				B3D4E420299CC0EC007A1E2F /* MobileCoreServices.framework in Frameworks */,
 				B34916712970124600D9844B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,11 +312,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D4E410299CC043007A1E2F /* AVFoundation.framework in Frameworks */,
 				B349167D297012AD00D9844B /* SystemConfiguration.framework in Frameworks */,
+				B3D4E40E299CC03B007A1E2F /* Accelerate.framework in Frameworks */,
 				DCC5E8D6294E023E004E8864 /* libmobileSDK.UI.a in Frameworks */,
+				B3D4E414299CC05F007A1E2F /* CoreMedia.framework in Frameworks */,
 				B349167C297012A800D9844B /* MessageUI.framework in Frameworks */,
+				B3D4E412299CC04C007A1E2F /* AudioToolbox.framework in Frameworks */,
 				B349167A297012A000D9844B /* libc++.tbd in Frameworks */,
 				3D20EB373CAFF8AB0B6DE787 /* libPods-mSDK_UI.a in Frameworks */,
+				B3D4E416299CC06C007A1E2F /* MobileCoreServices.framework in Frameworks */,
 				B349167B297012A400D9844B /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +404,11 @@
 		84AFF7CF285208CD00E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */,
+				B3D4E413299CC05F007A1E2F /* CoreMedia.framework */,
+				B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */,
+				B3D4E40F299CC043007A1E2F /* AVFoundation.framework */,
+				B3D4E40C299CC03A007A1E2F /* Accelerate.framework */,
 				B34916742970127200D9844B /* SystemConfiguration.framework */,
 				B34916722970126700D9844B /* MessageUI.framework */,
 				B34916702970124000D9844B /* libz.tbd */,
@@ -890,6 +924,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -919,6 +954,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1068,6 +1104,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1097,6 +1134,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1126,6 +1164,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1155,6 +1194,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

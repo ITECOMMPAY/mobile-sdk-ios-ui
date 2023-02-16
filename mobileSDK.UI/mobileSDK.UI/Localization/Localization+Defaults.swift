@@ -30,6 +30,9 @@ extension L {
         .title_result_succes_tokenize: "Successfully saved card",
         .title_result_error_tokenize: "Failed to save card",
         // MARK: - Verify
-        .button_authorize: "Authorize Card"
+        .button_authorize: "Authorize Card",
+        // MARK: - Others
+        .title_camera_permission: "Camera lets you scan your bank card. To enable this, click App Settings",
+        .button_camera_permission: "App Settings"
     ]
 }

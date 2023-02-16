@@ -272,6 +272,16 @@
 		B396B8B7294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
 		B3B266802980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
+		B3D4E404299CBADC007A1E2F /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
+		B3D4E405299CBADC007A1E2F /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
+		B3D4E406299CBADC007A1E2F /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
+		B3D4E407299CBADC007A1E2F /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
+		B3D4E408299CBADC007A1E2F /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */; };
+		B3D4E409299CBADC007A1E2F /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */; };
+		B3D4E40A299CBADC007A1E2F /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E401299CBADB007A1E2F /* libopencv_core.a */; };
+		B3D4E40B299CBADC007A1E2F /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E401299CBADB007A1E2F /* libopencv_core.a */; };
+		B3D4E42A299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
+		B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
 		B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
@@ -430,6 +440,21 @@
 		84F7ABDE28AB94D700E634D9 /* CustomerFields+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomerFields+Utils.swift"; sourceTree = "<group>"; };
 		B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardView.swift; sourceTree = "<group>"; };
 		B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOverview.swift; sourceTree = "<group>"; };
+		B3D4E3F6299CBAD7007A1E2F /* UIPreview-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPreview-Bridging-Header.h"; sourceTree = "<group>"; };
+		B3D4E3F7299CBAD7007A1E2F /* mobileSDK.UI-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileSDK.UI-Bridging-Header.h"; sourceTree = "<group>"; };
+		B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		B3D4E3F9299CBAD7007A1E2F /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
+		B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		B3D4E3FB299CBAD8007A1E2F /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
+		B3D4E400299CBADA007A1E2F /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		B3D4E401299CBADB007A1E2F /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
+		B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCardButton.swift; sourceTree = "<group>"; };
 		B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
 		B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -439,6 +464,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D4E408299CBADC007A1E2F /* libopencv_imgproc.a in Frameworks */,
+				B3D4E406299CBADC007A1E2F /* libCardIO.a in Frameworks */,
+				B3D4E40A299CBADC007A1E2F /* libopencv_core.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +474,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D4E409299CBADC007A1E2F /* libopencv_imgproc.a in Frameworks */,
+				B3D4E407299CBADC007A1E2F /* libCardIO.a in Frameworks */,
+				B3D4E40B299CBADC007A1E2F /* libopencv_core.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +919,7 @@
 				84B241A9288A730B00259A50 /* CvvField.swift */,
 				84B241AC288A732900259A50 /* ExpiryField.swift */,
 				84B241AF288A733C00259A50 /* PanField.swift */,
+				B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */,
 			);
 			path = FormFields;
 			sourceTree = "<group>";
@@ -950,6 +982,7 @@
 		84BC13E42852088F008814EB /* mobileSDK.UI */ = {
 			isa = PBXGroup;
 			children = (
+				B3D4E3F5299CBAB4007A1E2F /* CardIO */,
 				84B2418828890DF700259A50 /* Public */,
 				84A35C30289158190037A604 /* RootView */,
 				84A35C672897FCA30037A604 /* Navigation */,
@@ -1016,6 +1049,27 @@
 			path = TokenizeCard;
 			sourceTree = "<group>";
 		};
+		B3D4E3F5299CBAB4007A1E2F /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				B3D4E3FB299CBAD8007A1E2F /* CardIO.h */,
+				B3D4E3F9299CBAD7007A1E2F /* CardIO.m */,
+				B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */,
+				B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */,
+				B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */,
+				B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */,
+				B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */,
+				B3D4E400299CBADA007A1E2F /* CardIOView.h */,
+				B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */,
+				B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */,
+				B3D4E401299CBADB007A1E2F /* libopencv_core.a */,
+				B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */,
+				B3D4E3F6299CBAD7007A1E2F /* UIPreview-Bridging-Header.h */,
+				B3D4E3F7299CBAD7007A1E2F /* mobileSDK.UI-Bridging-Header.h */,
+			);
+			path = CardIO;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1067,9 +1121,11 @@
 				TargetAttributes = {
 					84A0F13728746596005F81DE = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1410;
 					};
 					84C87C4B28CB45B900B684DE = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -1141,6 +1197,7 @@
 				84C87D2628CF45BA00B684DE /* RootState.swift in Sources */,
 				84C87D4428CF45E500B684DE /* EmailCustomerTextField.swift in Sources */,
 				84C87D5228CF45F500B684DE /* ResultSuccessScreen.swift in Sources */,
+				B3D4E404299CBADC007A1E2F /* CardIO.m in Sources */,
 				84C87D2428CF45BA00B684DE /* RootViewModel.swift in Sources */,
 				84C87D2A28CF45BE00B684DE /* NavigationComponentViewModel.swift in Sources */,
 				B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */,
@@ -1209,6 +1266,7 @@
 				84C87D1F28CF45AE00B684DE /* PayInteractor.swift in Sources */,
 				84C87D6C28CF460900B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87D5B28CF45FF00B684DE /* InputViewManager.swift in Sources */,
+				B3D4E42A299CCFF9007A1E2F /* ScanCardButton.swift in Sources */,
 				84C87D4028CF45E100B684DE /* CustomerFieldsScreenState.swift in Sources */,
 				84C87D3C28CF45DB00B684DE /* NativePaymentMethodView.swift in Sources */,
 				84C87D2928CF45BE00B684DE /* NavigationComponent.swift in Sources */,
@@ -1295,6 +1353,7 @@
 				84C87CB428CB475900B684DE /* UIKitTextField.swift in Sources */,
 				84C87C8228CB471A00B684DE /* NavigationComponentState.swift in Sources */,
 				84C87CA928CB474A00B684DE /* ThreeDSecureScreen.swift in Sources */,
+				B3D4E405299CBADC007A1E2F /* CardIO.m in Sources */,
 				84C87CB128CB475500B684DE /* AttributedTextImpl.swift in Sources */,
 				84C87CDF28CB478400B684DE /* TranslationsManager.swift in Sources */,
 				84C87C8C28CB472A00B684DE /* CvvField.swift in Sources */,
@@ -1361,6 +1420,7 @@
 				84C87CC728CB476600B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */,
 				84C87CEC28CB478400B684DE /* Localization+UI.swift in Sources */,
+				B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */,
 				84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */,
 				84C87CBC28CB475900B684DE /* UIKitTextField+Coordinator.swift in Sources */,
 				84C87C8B28CB472A00B684DE /* ExpiryField.swift in Sources */,
@@ -1396,10 +1456,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UIPreview/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1411,10 +1473,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileSDK.UI/CardIO/UIPreview-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1425,10 +1493,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UIPreview/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1440,10 +1510,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileSDK.UI/CardIO/UIPreview-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1486,6 +1561,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1549,6 +1625,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1572,12 +1649,27 @@
 		84C87C5128CB45B900B684DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "-ObjC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileSDK.UI/CardIO/mobileSDK.UI-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1586,12 +1678,26 @@
 		84C87C5228CB45B900B684DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "-ObjC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "mobileSDK.UI/CardIO/mobileSDK.UI-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -20,8 +20,8 @@ struct TokenizeCardView: View {
     @State var isCardValid: Bool = false
     @State var isCardHolderValid: Bool = false
     @State var isExpiryValid: Bool = false
-
     @State var isCustomerFieldsValid: Bool = false
+    @State var scannedCardInfo: ScannedCardInfo? = nil
 
     private var isFormValid: Bool {
         [
@@ -44,12 +44,27 @@ struct TokenizeCardView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PanField(
-                paymentMethod: paymentMethod,
-                cardNumber: $formValues.cardNumber,
-                isValueValid: $isCardValid,
-                recognizedCardType: $cardType
-            ).padding(.top, UIScheme.dimension.formSmallSpacing)
+            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
+                PanField(
+                    paymentMethod: paymentMethod,
+                    cardNumber: $formValues.cardNumber,
+                    scannedCardInfo: $scannedCardInfo,
+                    isValueValid: $isCardValid,
+                    recognizedCardType: $cardType
+                )
+
+                ScanCardButton() { info in
+                    if let cardNumber = info.cardNumber {
+                        formValues.cardNumber = cardNumber
+                    }
+                    
+                    if let cardExpiry = info.cardExpiry {
+                        formValues.cardExpiry = cardExpiry
+                    }
+
+                    scannedCardInfo = info
+                }
+            }.padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(
                 cardHolder: $formValues.cardHolder,
@@ -59,6 +74,7 @@ struct TokenizeCardView: View {
             ExpiryField(
                 disabled: false,
                 expiryString: $formValues.cardExpiry,
+                scannedCardInfo: $scannedCardInfo,
                 isValueValid: $isExpiryValid
             )
             .padding(.top, UIScheme.dimension.formSmallSpacing)

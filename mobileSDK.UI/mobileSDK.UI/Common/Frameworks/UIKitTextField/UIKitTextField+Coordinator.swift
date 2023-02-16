@@ -77,6 +77,8 @@ public extension UIKitTextField {
         textField.textColor = nil
       }
       textField.textAlignment = config.textAlignment ?? .left
+      textField.adjustsFontSizeToFitWidth = config.adjustsFontSizeToFitWidth ?? false
+      textField.minimumFontSize = config.minimumFontSize ?? 0.0
       textField.clearsOnBeginEditing = config.clearsOnBeginEditing ?? false
       textField.clearsOnInsertion = config.clearsOnInsertion ?? false
       textField.clearButtonMode = config.clearButtonMode ?? .never

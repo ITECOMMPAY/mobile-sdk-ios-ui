@@ -21,8 +21,8 @@ struct NewCardCheckoutView: View {
     @State var isCVVValid: Bool = false
     @State var isCardHolderValid: Bool = false
     @State var isExpiryValid: Bool = false
-
     @State var isCustomerFieldsValid: Bool = false
+    @State var scannedCardInfo: ScannedCardInfo? = nil
 
     private var isFormValid: Bool {
         [
@@ -46,12 +46,28 @@ struct NewCardCheckoutView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            PanField(
-                paymentMethod: paymentMethod,
-                cardNumber: $formValues.cardNumber,
-                isValueValid: $isCardValid,
-                recognizedCardType: $cardType
-            ).padding(.top, UIScheme.dimension.formSmallSpacing)
+            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
+                
+                PanField(
+                    paymentMethod: paymentMethod,
+                    cardNumber: $formValues.cardNumber,
+                    scannedCardInfo: $scannedCardInfo,
+                    isValueValid: $isCardValid,
+                    recognizedCardType: $cardType
+                )
+
+                ScanCardButton() { info in
+                    if let cardNumber = info.cardNumber {
+                        formValues.cardNumber = cardNumber
+                    }
+                    
+                    if let cardExpiry = info.cardExpiry {
+                        formValues.cardExpiry = cardExpiry
+                    }
+
+                    scannedCardInfo = info
+                }
+            }.padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(
                 cardHolder: $formValues.cardHolder,
@@ -59,7 +75,12 @@ struct NewCardCheckoutView: View {
             ).padding(.top, UIScheme.dimension.formSmallSpacing)
 
             HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                ExpiryField(disabled: false, expiryString: $formValues.cardExpiry, isValueValid: $isExpiryValid)
+                ExpiryField(
+                    disabled: false,
+                    expiryString: $formValues.cardExpiry,
+                    scannedCardInfo: $scannedCardInfo,
+                    isValueValid: $isExpiryValid
+                )
                 CvvField(withInfoButton: true, cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
