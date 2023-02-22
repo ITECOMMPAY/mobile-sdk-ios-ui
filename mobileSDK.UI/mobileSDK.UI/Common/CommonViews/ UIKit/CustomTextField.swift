@@ -18,6 +18,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
     let forceUppercased: Bool
     let formatter: CustomFormatter
     let maxLength: Int?
+    let adjustsFontSizeToFitWidth: Bool
+    let minimumFontSize: CGFloat
     let isAllowedCharacter: (Character) -> Bool
 
     // MARK: View protocol properties
@@ -75,6 +77,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
             .isSecureTextEntry(isSecure)
             .keyboardType(keyboardType)
             .autocapitalizationType(forceUppercased ? .allCharacters : nil)
+            .adjustsFontSizeToFitWidth(adjustsFontSizeToFitWidth)
+            .minimumFontSize(minimumFontSize)
             .value(
                 updateViewValue: { textField in
                     if let text = formatter.string(for: $text.wrappedValue),
@@ -188,6 +192,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 forceUppercased: Bool = false,
                 secure: Bool = false,
                 maxLength: Int? = nil,
+                adjustsFontSizeToFitWidth: Bool = false,
+                minimumFontSize: CGFloat = 0.0,
                 isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
                 transformation: CustomFormatterTransformation = EmptyTransformation(),
                 required: Bool = false,
@@ -210,6 +216,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.formatter = CustomFormatter(transformation: transformation)
         self.maxLength = maxLength
         self.isAllowedCharacter = isAllowedCharacter
+        self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+        self.minimumFontSize = minimumFontSize
     }
 
     // MARK: - Methods

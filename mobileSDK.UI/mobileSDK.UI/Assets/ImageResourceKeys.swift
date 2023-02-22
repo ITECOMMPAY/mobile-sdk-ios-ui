@@ -16,6 +16,7 @@ enum ImageResourceKeys: String {
     case copyButton
     case chevron
     case infoButton
+    case scanButton
     case backButton
     case loadingLogo
     case successLogo
@@ -29,6 +30,10 @@ enum ImageResourceKeys: String {
 
     var image: Image? {
         return Image.getImage(name: self.rawValue)
+    }
+
+    var uiImage: UIImage? {
+        UIImage(named: self.rawValue, in: SDKBundle.get(), compatibleWith: nil)
     }
 }
 

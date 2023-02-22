@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct PanField: View {
     @Injected private var validationService: ValidationService?
@@ -19,6 +20,8 @@ struct PanField: View {
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
 
     @Binding var cardNumber: String
+
+    @Binding var scannedCardInfo: ScannedCardInfo?
 
     @Binding var isValueValid: Bool
 
@@ -45,6 +48,8 @@ struct PanField: View {
             forceUppercased: true,
             secure: false,
             maxLength: 19,
+            adjustsFontSizeToFitWidth: true,
+            minimumFontSize: 10.0,
             isAllowedCharacter: allowedCharacters,
             transformation: transformation,
             required: true,
@@ -59,6 +64,10 @@ struct PanField: View {
             validate(cardNumber)
         }.onAppear {
             validate(cardNumber, ignoreEmpty: true)
+        }.onReceive(Just(scannedCardInfo)) { info in
+            guard info?.cardNumber != nil else { return }
+
+            validate(cardNumber)
         }
     }
 
@@ -166,7 +175,13 @@ struct PanFieldPreview: View {
     @State var isValid: Bool = true
     @State var anotherText: String = ""
     var body: some View {
-        PanField(paymentMethod: MockPaymentMethod(), cardNumber: $cardNumber, isValueValid: $isValid, recognizedCardType: .constant(nil))
+        PanField(
+            paymentMethod: MockPaymentMethod(),
+            cardNumber: $cardNumber,
+            scannedCardInfo: .constant(nil),
+            isValueValid: $isValid,
+            recognizedCardType: .constant(nil)
+        )
         Text("cardNumber=\(cardNumber)  isValid=\(isValid.description)")
         TextField("Another textfield", text: $anotherText)
     }

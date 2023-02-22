@@ -85,4 +85,6 @@ public enum L: String {
     case button_ok
     case message_delete_card_single
     case button_cancel
+    case title_camera_permission
+    case button_camera_permission
 }
