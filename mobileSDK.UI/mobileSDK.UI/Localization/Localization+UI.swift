@@ -29,7 +29,7 @@ extension TranslationWithLink {
         paragraphStyle.lineHeightMultiple = 1.09
         return [
             .font: UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont) as UIFont,
-            .foregroundColor: UIColor(UIScheme.color.brandColor),
+            .foregroundColor: UIColor(UIScheme.color.linkButtonColor),
             .underlineStyle: UIScheme.underlinedLinks ? NSUnderlineStyle.single.rawValue : 0,
             .paragraphStyle: paragraphStyle
         ]
@@ -40,7 +40,7 @@ extension TranslationWithLink {
         paragraphStyle.lineHeightMultiple = 1.09
         return [
             .font: UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont) as UIFont,
-            .foregroundColor: UIColor(UIScheme.color.secondaryText),
+            .foregroundColor: UIColor(UIScheme.color.secondaryTextColor),
             .paragraphStyle: paragraphStyle
         ]
     }

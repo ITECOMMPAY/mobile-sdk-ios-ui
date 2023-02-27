@@ -13,7 +13,7 @@ struct ApplePayButton: View {
     var onTap: () -> Void = {}
 
     var body: some View {
-        iPaymentButton(type: .plain, style: .black) {
+        iPaymentButton(type: .plain, style: UIScheme.color.applePayButtonStyle) {
             onTap()
         }.cornerRadius(UIScheme.dimension.buttonCornerRadius)
     }

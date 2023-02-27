@@ -86,6 +86,9 @@ public class PaymentOptions: NSObject {
     /// Brand color
     @objc public var brandColor: UIColor?
 
+    /// Dark theme mode
+    @objc public var isDarkThemeOn: Bool = false
+
     /// mock Mode type
     @objc public var mockModeType: MockModeType = .disabled
 

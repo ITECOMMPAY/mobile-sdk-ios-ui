@@ -164,12 +164,7 @@ fileprivate final class DotsAnimationViewController: UIViewController {
         circles.forEach {
             $0.layer.cornerRadius =  DotsAnimationParams.dotSize/2
             $0.layer.masksToBounds = true
-            $0.backgroundColor = {
-                if let cgColor = UIScheme.color.brandColor.cgColor {
-                    return UIColor(cgColor: cgColor)
-                }
-                return .white
-            }()
+            $0.backgroundColor = UIColor(UIScheme.color.loadingDotsColor)
             stackView.addArrangedSubview($0)
             $0.widthAnchor.constraint(equalToConstant: DotsAnimationParams.dotSize).isActive = true
             $0.heightAnchor.constraint(equalTo: $0.widthAnchor).isActive = true

@@ -19,6 +19,7 @@ struct MainScreen: View {
 
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
+    @State var isDarkThemeOn: Bool = false
     @State var overrideApiHosts: Bool = false {
         didSet {
             if !overrideApiHosts {
@@ -57,7 +58,7 @@ struct MainScreen: View {
                 threeDSecure
                 visibilitySettings
                 Group {
-                    brandColor
+                    themeSettings
                     merchantLogo
                 }
                 forcePaymentMethods
@@ -258,12 +259,13 @@ struct MainScreen: View {
     }
 
     @ViewBuilder
-    var brandColor: some View {
-        Section(header: Text("Brand color")) {
+    var themeSettings: some View {
+        Section(header: Text("Theme settings")) {
             Toggle("Override default", isOn: $colorOverrideEnabled)
             if colorOverrideEnabled {
                 ColorPicker("Custom color", selection: $brandColorOverride)
             }
+            Toggle("Dark theme", isOn: $isDarkThemeOn)
         }
     }
 
@@ -445,6 +447,8 @@ struct MainScreen: View {
         if colorOverrideEnabled {
             paymentOptions.brandColor = UIColor(brandColorOverride)
         }
+
+        paymentOptions.isDarkThemeOn = isDarkThemeOn
 
         switch paymentData.forcePaymentMethod {
         case .none:

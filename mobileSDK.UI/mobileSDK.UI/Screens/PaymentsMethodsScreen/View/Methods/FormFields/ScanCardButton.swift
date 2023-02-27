@@ -24,10 +24,11 @@ struct ScanCardButton: View {
                     style: .continuous
                 )
                 .stroke(
-                    UIScheme.color.textFieldUnfocusedBorderColor,
+                    UIScheme.color.textFieldNormalBorderColor,
                     lineWidth: UIScheme.dimension.borderWidth
                 )
             ))
+            .cornerRadius(UIScheme.dimension.buttonCornerRadius)
     }
 }
 
@@ -42,8 +43,13 @@ final class CardIOVC: UIViewController {
     }
 
     private func setupScanButton() {
+        let cameraImage = IR.scanButton.uiImage?.withTintColor(
+            UIColor(UIScheme.color.scanCardIconColor),
+            renderingMode: .alwaysOriginal
+        )
+        
         let button = UIButton(frame: .init(x: 0, y: 0, width: 20, height: 20))
-        button.setImage(IR.scanButton.uiImage, for: .normal)
+        button.setImage(cameraImage, for: .normal)
         button.isUserInteractionEnabled = false
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(showCardIO))

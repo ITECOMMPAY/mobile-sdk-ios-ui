@@ -56,6 +56,7 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
             }
             .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)
+            .background(UIScheme.color.mainBackground)
         }
     }
     

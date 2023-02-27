@@ -36,6 +36,10 @@ protocol DimensionScheme {
     var minimumTapAreaSize: CGFloat { get }
     /// Размер обводки элементов **default: 1**
     var borderWidth: CGFloat { get }
+    /// Размер обводки полей ввода **default: 1**
+    var inputBorderWidth: CGFloat { get }
+    /// Размер обводки выделеных полей ввода **default: 1**
+    var inputAccentedBorderWidth: CGFloat { get }
     /// Высона карточки с информацией **default: 150**
     var infoCardHeight: CGFloat { get }
     /// Высона карточки с информацией без логотипа**default: 92**
@@ -96,10 +100,12 @@ struct DefaultDimensionScheme: DimensionScheme {
     let paymentDetailsButtonHeight: CGFloat = 33
     let largeSpacing: CGFloat = 26
     let middleSpacing: CGFloat = 16
-    let buttonCornerRadius: CGFloat = 6
+    let buttonCornerRadius: CGFloat = 8
     let smallestCornerRadius: CGFloat = 4
     let minimumTapAreaSize: CGFloat = 44
     let borderWidth: CGFloat = 1
+    let inputBorderWidth: CGFloat = 1
+    let inputAccentedBorderWidth: CGFloat = 2
     let infoCardHeight: CGFloat = 150
     let valueToCurrencySpacing: CGFloat = 8
     let cancelButtonLoadingSubtitleSpacing: CGFloat = 34

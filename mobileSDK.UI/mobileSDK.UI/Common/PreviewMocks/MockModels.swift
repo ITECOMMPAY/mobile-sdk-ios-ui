@@ -126,6 +126,8 @@ struct MockPaymentOptions: PaymentOptions {
     var recipientInfo: RecipientInfo? = nil
 
     var screenDisplayModes: Set<ScreenDisplayMode> = []
+
+    var isDarkThemeOn: Bool = false
 }
 
 struct MockSavedAccount: SavedAccount {

@@ -16,7 +16,7 @@ struct ResultTableInfo: View {
                     HStack(alignment: .firstTextBaseline) {
                         Text(TranslationsManager.shared.stringValue(for: key) ?? key)
                             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.secondaryText)
+                            .foregroundColor(UIScheme.color.secondaryTextColor)
                         Spacer()
                         Text(value)
                             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
@@ -27,7 +27,7 @@ struct ResultTableInfo: View {
         }
         .frame(maxWidth: .infinity)
         .padding(UIScheme.dimension.largeSpacing)
-        .background(UIScheme.color.panelBackgroundColor)
+        .background(UIScheme.color.resultInfoBackgroundColor)
         .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: .allCorners)
     }
 }

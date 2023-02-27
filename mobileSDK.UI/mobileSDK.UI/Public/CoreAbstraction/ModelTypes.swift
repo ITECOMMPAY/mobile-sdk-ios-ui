@@ -157,6 +157,7 @@ public protocol PaymentOptions {
     var token: String? { get }
     var recipientInfo: RecipientInfo? { get }
     var screenDisplayModes: Set<ScreenDisplayMode> { get }
+    var isDarkThemeOn: Bool { get }
 }
 
 public protocol AdditionalField {
