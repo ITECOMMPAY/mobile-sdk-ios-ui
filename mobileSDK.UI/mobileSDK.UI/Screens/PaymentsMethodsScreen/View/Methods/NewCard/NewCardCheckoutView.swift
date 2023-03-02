@@ -117,18 +117,15 @@ struct NewCardCheckoutView: View {
     @ViewBuilder
     private var saveCardCheckbox: some View {
         if canSaveCard {
-            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                CheckBoxView(checked: $formValues.isCOFAgreementChecked)
-
-                VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-                    Text(L.title_saved_cards.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-                        .foregroundColor(UIScheme.color.text)
-                    if let translationWithLink = L.cof_agreements.translationWithLink {
-                        translationWithLink.attributedText
-                     }
+            VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
+                HStack() {
+                    Toggle(L.title_saved_cards.string, isOn: $formValues.isCOFAgreementChecked)
+                        .toggleStyle(CheckBoxStyle())
+                    Spacer()
                 }
-                Spacer()
+                if let translationWithLink = L.cof_agreements.translationWithLink {
+                    translationWithLink.attributedText
+                }
             }
         } else {
             EmptyView()

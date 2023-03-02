@@ -30,6 +30,7 @@ struct ScanCardButton: View {
                 )
             ))
             .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+            .accessibilityHidden(true)
     }
 }
 
@@ -51,17 +52,19 @@ final class CardIOVC: UIViewController {
         
         let button = UIButton(frame: .init(x: 0, y: 0, width: 20, height: 20))
         button.setImage(cameraImage, for: .normal)
-        button.isUserInteractionEnabled = false
+        button.addTarget(nil, action: #selector(showCardIO), for: .touchUpInside)
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(showCardIO))
-        view.addGestureRecognizer(tap)
+        button.addGestureRecognizer(tap)
 
         view.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        button.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
     @objc func showCardIO() {

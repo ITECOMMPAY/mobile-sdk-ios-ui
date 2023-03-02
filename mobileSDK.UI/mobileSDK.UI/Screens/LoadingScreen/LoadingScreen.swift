@@ -47,6 +47,8 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
     public var body: some View {
         LoadingView() {
             viewModel.dispatch(intent: .close)
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 }

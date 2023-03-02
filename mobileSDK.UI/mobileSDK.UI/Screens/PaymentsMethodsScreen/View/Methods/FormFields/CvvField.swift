@@ -51,6 +51,9 @@ struct CvvField: View {
         .onAppear {
             validate(cvvValue, ignoreEmpty: true)
         }
+        .accessibilityAction(named: L.title_about_cvv.string, {
+            showAbout = true
+        })
     }
 
     private func validate(_ value: String, ignoreEmpty: Bool = false) {

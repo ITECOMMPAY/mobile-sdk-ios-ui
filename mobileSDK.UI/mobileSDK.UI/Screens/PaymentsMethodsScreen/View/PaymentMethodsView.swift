@@ -55,6 +55,8 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             && viewModel.state.mergedList.compactMap({ $0.paymentMethod}).count == 1 {
                 viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
             }
+
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 

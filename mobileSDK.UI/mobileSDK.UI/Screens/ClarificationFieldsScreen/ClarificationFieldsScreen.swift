@@ -50,6 +50,8 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             }
             .padding(.top, UIScheme.dimension.middleSpacing)
             .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 

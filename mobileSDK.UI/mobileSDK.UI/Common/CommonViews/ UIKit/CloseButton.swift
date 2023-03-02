@@ -18,6 +18,7 @@ struct CloseButton: View {
             IR.closeButton.image?.renderingMode(.template)
                 .foregroundColor(foregroundColor)
         }
+        .accessibilityLabel(Text("Close"))
     }
 }
 

@@ -31,6 +31,7 @@ struct VerifyOverview: View {
             .colorMultiply(UIScheme.color.brandColor)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
                           corners: .allCorners)
+            .accessibilityHidden(true)
     }
 
     private var logo: some View {
