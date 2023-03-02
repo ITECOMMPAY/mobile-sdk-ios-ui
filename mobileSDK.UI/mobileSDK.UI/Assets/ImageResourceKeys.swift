@@ -39,6 +39,10 @@ enum ImageResourceKeys: String {
 
 extension Image {
     static func getImage(name: String) -> Image? {
+        if UIScheme.color.isDarkTheme, let uiImage = UIImage(named: name + "Dark", in: SDKBundle.get(), compatibleWith: nil) {
+            return Image(uiImage: uiImage)
+        }
+        
         if let uiImage =
             UIImage(named: name, in: SDKBundle.get(), compatibleWith: nil) {
             return Image(uiImage: uiImage)

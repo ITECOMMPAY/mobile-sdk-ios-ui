@@ -14,10 +14,20 @@ struct CheckBoxView: View {
         Button {
             self.checked.toggle()
         } label: {
-            Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .foregroundColor(checked ? UIScheme.color.brandColor : UIScheme.color.checkboxBorder)
+            ZStack {
+                Image(systemName: checked ? "square.fill" : "square")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(checked ? UIScheme.color.checkboxSelectedBackground : UIScheme.color.checkboxUnselectedForeground)
+                    .background(checked ? .clear : UIScheme.color.checkboxUnselectedBackground)
+                    .cornerRadius(2.7)
+                if checked {
+                    Image(systemName: "checkmark")
+                        .resizable()
+                        .frame(width: 10, height: 8)
+                        .foregroundColor(UIScheme.color.checkboxSelectedForeground)
+                }
+            }
         }
     }
 }

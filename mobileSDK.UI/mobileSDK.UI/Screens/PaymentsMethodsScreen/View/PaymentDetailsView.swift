@@ -56,16 +56,16 @@ struct PaymentDetailsAttributes: View {
             HStack(spacing: UIScheme.dimension.tinySpacing) {
                 Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
                     .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
-                Button {
-                    UIPasteboard.general.string = descriptionText
-                } label: {
-                    IR.copyButton.image?.renderingMode(.template)
-                        .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
-                        .frame(width: 16, height: 16, alignment: .center)
-                }
-                .applyIf(!canCopy) {
-                    $0.hidden()
-                }
+//                Button {
+//                    UIPasteboard.general.string = descriptionText
+//                } label: {
+//                    IR.copyButton.image?.renderingMode(.template)
+//                        .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+//                        .frame(width: 16, height: 16, alignment: .center)
+//                }
+//                .applyIf(!canCopy) {
+//                    $0.hidden()
+//                }
             }
             Text(descriptionText)
                 .font(canCopy ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont) : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))

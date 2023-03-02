@@ -10,7 +10,7 @@ import SwiftUI
 struct LinkButton: View {
     let text: String
     var fontSize: CGFloat = UIScheme.dimension.tinyFont
-    var foregroundColor: Color = UIScheme.color.brandColor
+    var foregroundColor: Color = UIScheme.color.linkButtonColor
     var onTap: () -> Void = {}
 
     var body: some View {

@@ -27,10 +27,11 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
                 }
             }.clipped()
         }
+        .background(UIScheme.color.paymentMethodBackground)
         .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)
         .overlay(
             RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius)
-                .stroke(UIScheme.color.border, lineWidth: UIScheme.dimension.borderWidth)
+                .stroke(UIScheme.color.paymentMethodBorder, lineWidth: UIScheme.dimension.borderWidth)
         )
     }
     
@@ -72,7 +73,10 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     }
 
     var chevron: some View {
-        IR.chevron.image.rotationEffect(isExpanded ? .degrees(180) : .zero)
+        IR.chevron.image?
+            .renderingMode(.template)
+            .foregroundColor(UIScheme.color.text)
+            .rotationEffect(isExpanded ? .degrees(180) : .zero)
     }
 
 }

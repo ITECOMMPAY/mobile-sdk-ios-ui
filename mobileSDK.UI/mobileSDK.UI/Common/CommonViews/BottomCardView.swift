@@ -75,22 +75,22 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
             if #available(iOS 15.0, *) {
                 List {
                     content
+                        .buttonStyle(.plain)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         .listRowSeparator(.hidden)
-                        .buttonStyle(.plain)
+                        .listRowBackground(UIScheme.color.mainBackground)
                 }
             } else {
                 List {
                     content
                         .buttonStyle(.plain)
                         .listRowInsets(EdgeInsets(top: -1, leading: 0, bottom: -1, trailing: 0))
-                        .background(UIScheme.color.mainBackground)
+                        .listRowBackground(UIScheme.color.mainBackground)
                 }
             }
         }
         .keyboardAwarePadding()
         .listStyle(.plain)
-        .background(UIScheme.color.mainBackground)
     }
 }
 

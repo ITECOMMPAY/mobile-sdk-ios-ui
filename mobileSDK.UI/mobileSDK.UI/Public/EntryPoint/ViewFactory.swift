@@ -14,9 +14,12 @@ public struct ViewFactory {
                                         onDismiss completion: @escaping PaymentFlowCompletion) -> some View {
         serviceLocator.addService(instance: TranslationsManager())
 
-        if let brandColor = paymentOptions.brandColorOverride {
-            UIScheme.color = DefaultLight(brandBlue: brandColor)
+        if paymentOptions.isDarkThemeOn {
+            UIScheme.color = DefaultDark(brandColor: paymentOptions.brandColorOverride)
+        } else {
+            UIScheme.color = DefaultLight(brandColor: paymentOptions.brandColorOverride)
         }
+
         let rootViewModel = RootViewModel(paymentOptions: paymentOptions, futureData: initPublisher, onFlowFinished: completion)
         return RootView(viewModel: rootViewModel).ignoresSafeArea(.all, edges: .all)
     }

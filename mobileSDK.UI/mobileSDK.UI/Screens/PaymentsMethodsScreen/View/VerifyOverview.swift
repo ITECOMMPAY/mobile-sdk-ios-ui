@@ -24,7 +24,6 @@ struct VerifyOverview: View {
         .background() {
             cardBackground.opacity(isDimBackground ? 0.4 : 1)
         }
-        .shadow(color: UIScheme.color.paymentInfoCardShadow, radius: 9, x: 0, y: 4)
     }
 
     var cardBackground: some View {

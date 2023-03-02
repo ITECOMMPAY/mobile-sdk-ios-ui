@@ -132,7 +132,6 @@
 		84C87CE328CB478400B684DE /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455079E2859BD7A002BBFE0 /* RoundedCorner.swift */; };
 		84C87CE428CB478400B684DE /* Localization+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E302869C1DD002861F8 /* Localization+Key.swift */; };
 		84C87CE528CB478400B684DE /* Localization+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E352869C234002861F8 /* Localization+Defaults.swift */; };
-		84C87CE628CB478400B684DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		84C87CE728CB478400B684DE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507982859B6F4002BBFE0 /* Fonts.swift */; };
 		84C87CE928CB478400B684DE /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84C87CEA28CB478400B684DE /* BottomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D279328649B6500F5F293 /* BottomCardView.swift */; };
@@ -255,7 +254,6 @@
 		84C87D8628CF461D00B684DE /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84C87D8728CF461D00B684DE /* Conditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CEF4F286C2D0900C0B7C2 /* Conditional.swift */; };
 		84C87D8828CF462100B684DE /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078F2858A1FB002BBFE0 /* Dimensions.swift */; };
-		84C87D8928CF462100B684DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		84C87D8A28CF462100B684DE /* UIScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507952858B754002BBFE0 /* UIScheme.swift */; };
 		84C87D8B28CF462100B684DE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507982859B6F4002BBFE0 /* Fonts.swift */; };
 		84C87D8C28CF462700B684DE /* Localization+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E2F2869C1DD002861F8 /* Localization+Strings.swift */; };
@@ -272,7 +270,6 @@
 		B396B8B7294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
 		B3B266802980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
-		B3D4E404299CBADC007A1E2F /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
 		B3D4E405299CBADC007A1E2F /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
 		B3D4E406299CBADC007A1E2F /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
 		B3D4E407299CBADC007A1E2F /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
@@ -282,6 +279,28 @@
 		B3D4E40B299CBADC007A1E2F /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E401299CBADB007A1E2F /* libopencv_core.a */; };
 		B3D4E42A299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
 		B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
+		B3E7BD8829A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
+		B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
+		B3E7BD8B29A6018C003E0971 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */; };
+		B3E7BD8C29A6018C003E0971 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */; };
+		B3E7BD8E29A601AD003E0971 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */; };
+		B3E7BD8F29A601AD003E0971 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */; };
+		B3E7BD9629A6035B003E0971 /* LightPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9529A6035B003E0971 /* LightPalette.swift */; };
+		B3E7BD9729A6035B003E0971 /* LightPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9529A6035B003E0971 /* LightPalette.swift */; };
+		B3E7BD9929A60363003E0971 /* DarkPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9829A60363003E0971 /* DarkPalette.swift */; };
+		B3E7BD9A29A60363003E0971 /* DarkPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9829A60363003E0971 /* DarkPalette.swift */; };
+		B3E7BD9C29A6084A003E0971 /* DefaultLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */; };
+		B3E7BD9D29A6084A003E0971 /* DefaultLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */; };
+		B3E7BD9F29A608A8003E0971 /* DefaultDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */; };
+		B3E7BDA029A608A8003E0971 /* DefaultDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */; };
+		B3E7BDA429A63FA9003E0971 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
+		B3E7BDA629A6400A003E0971 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA529A6400A003E0971 /* Accelerate.framework */; };
+		B3E7BDA829A6400F003E0971 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */; };
+		B3E7BDAA29A64014003E0971 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA929A64014003E0971 /* AVFoundation.framework */; };
+		B3E7BDAC29A6401A003E0971 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDAB29A64019003E0971 /* CoreMedia.framework */; };
+		B3E7BDAE29A64022003E0971 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */; };
+		B3E7BDB029A64397003E0971 /* ColorScheme+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */; };
+		B3E7BDB129A64397003E0971 /* ColorScheme+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */; };
 		B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
@@ -326,7 +345,6 @@
 		8454EEEE28AA1EDA00199FF3 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8454EEF228AA232B00199FF3 /* StructCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructCopy.swift; sourceTree = "<group>"; };
 		845507882858A0D8002BBFE0 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
-		8455078C2858A1BB002BBFE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8455078F2858A1FB002BBFE0 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		845507952858B754002BBFE0 /* UIScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScheme.swift; sourceTree = "<group>"; };
 		845507982859B6F4002BBFE0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -455,6 +473,19 @@
 		B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
 		B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
 		B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCardButton.swift; sourceTree = "<group>"; };
+		B3E7BD8729A6014F003E0971 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9529A6035B003E0971 /* LightPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9829A60363003E0971 /* DarkPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLight.swift; sourceTree = "<group>"; };
+		B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDark.swift; sourceTree = "<group>"; };
+		B3E7BDA529A6400A003E0971 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B3E7BDA929A64014003E0971 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B3E7BDAB29A64019003E0971 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+Common.swift"; sourceTree = "<group>"; };
 		B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
 		B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -465,8 +496,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D4E408299CBADC007A1E2F /* libopencv_imgproc.a in Frameworks */,
+				B3E7BDA629A6400A003E0971 /* Accelerate.framework in Frameworks */,
+				B3E7BDAA29A64014003E0971 /* AVFoundation.framework in Frameworks */,
+				B3E7BDA829A6400F003E0971 /* AudioToolbox.framework in Frameworks */,
 				B3D4E406299CBADC007A1E2F /* libCardIO.a in Frameworks */,
+				B3E7BDAE29A64022003E0971 /* MobileCoreServices.framework in Frameworks */,
 				B3D4E40A299CBADC007A1E2F /* libopencv_core.a in Frameworks */,
+				B3E7BDAC29A6401A003E0971 /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,7 +650,7 @@
 		8455078B2858A1AC002BBFE0 /* ViewParams */ = {
 			isa = PBXGroup;
 			children = (
-				8455078C2858A1BB002BBFE0 /* Colors.swift */,
+				B3E7BD8629A6012B003E0971 /* ColorScheme */,
 				8455078F2858A1FB002BBFE0 /* Dimensions.swift */,
 				845507982859B6F4002BBFE0 /* Fonts.swift */,
 				845507952858B754002BBFE0 /* UIScheme.swift */,
@@ -871,6 +907,11 @@
 		84AFF7D4285210B600E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */,
+				B3E7BDAB29A64019003E0971 /* CoreMedia.framework */,
+				B3E7BDA929A64014003E0971 /* AVFoundation.framework */,
+				B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */,
+				B3E7BDA529A6400A003E0971 /* Accelerate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1070,6 +1111,29 @@
 			path = CardIO;
 			sourceTree = "<group>";
 		};
+		B3E7BD8629A6012B003E0971 /* ColorScheme */ = {
+			isa = PBXGroup;
+			children = (
+				B3E7BD9029A60325003E0971 /* ColorPalette */,
+				B3E7BD8729A6014F003E0971 /* ColorScheme.swift */,
+				B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */,
+				B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */,
+				B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */,
+				B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */,
+			);
+			path = ColorScheme;
+			sourceTree = "<group>";
+		};
+		B3E7BD9029A60325003E0971 /* ColorPalette */ = {
+			isa = PBXGroup;
+			children = (
+				B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */,
+				B3E7BD9529A6035B003E0971 /* LightPalette.swift */,
+				B3E7BD9829A60363003E0971 /* DarkPalette.swift */,
+			);
+			path = ColorPalette;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1186,6 +1250,7 @@
 				84C87D8428CF461D00B684DE /* CenterCropped.swift in Sources */,
 				84C87D4A28CF45EA00B684DE /* ClarificationFieldsScreenIntent.swift in Sources */,
 				84C87D3628CF45D500B684DE /* NewCardCheckoutView.swift in Sources */,
+				B3E7BD8829A6014F003E0971 /* ColorScheme.swift in Sources */,
 				84C87D7C28CF461700B684DE /* PolicyView.swift in Sources */,
 				84C87D2828CF45BE00B684DE /* NavigationComponentState.swift in Sources */,
 				84C87D7228CF460E00B684DE /* View+Keyboard.swift in Sources */,
@@ -1197,7 +1262,6 @@
 				84C87D2628CF45BA00B684DE /* RootState.swift in Sources */,
 				84C87D4428CF45E500B684DE /* EmailCustomerTextField.swift in Sources */,
 				84C87D5228CF45F500B684DE /* ResultSuccessScreen.swift in Sources */,
-				B3D4E404299CBADC007A1E2F /* CardIO.m in Sources */,
 				84C87D2428CF45BA00B684DE /* RootViewModel.swift in Sources */,
 				84C87D2A28CF45BE00B684DE /* NavigationComponentViewModel.swift in Sources */,
 				B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */,
@@ -1213,8 +1277,10 @@
 				B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */,
 				84C87D6D28CF460900B684DE /* InputMaskTransformation.swift in Sources */,
 				84C87D4B28CF45EA00B684DE /* ClarificationFieldsScreenState.swift in Sources */,
+				B3E7BDB029A64397003E0971 /* ColorScheme+Common.swift in Sources */,
 				84C87D5028CF45F000B684DE /* WebView.swift in Sources */,
 				84C87D1D28CF45AE00B684DE /* CardRemoveInteractor.swift in Sources */,
+				B3E7BD8B29A6018C003E0971 /* Color+Utils.swift in Sources */,
 				84C87D7528CF461100B684DE /* AsyncImagePhase.swift in Sources */,
 				84C87D4F28CF45F000B684DE /* ThreeDSecureScreen.swift in Sources */,
 				84C87D9228CF462D00B684DE /* ImageResourceKeys.swift in Sources */,
@@ -1255,13 +1321,13 @@
 				84C87D4C28CF45EA00B684DE /* ClarificationFieldsScreen.swift in Sources */,
 				84C87D3B28CF45DB00B684DE /* PaymentOverview.swift in Sources */,
 				84C87D7E28CF461700B684DE /* PayButton.swift in Sources */,
-				84C87D8928CF462100B684DE /* Colors.swift in Sources */,
 				84C87D8328CF461A00B684DE /* BottomCardView.swift in Sources */,
 				84C87D8028CF461700B684DE /* LinkButton.swift in Sources */,
 				84C87D8E28CF462700B684DE /* TranslationsManager.swift in Sources */,
 				84C87D7028CF460E00B684DE /* Binding+didSet.swift in Sources */,
 				84C87D4928CF45E500B684DE /* TextCustomerTextField.swift in Sources */,
 				84C87D5D28CF45FF00B684DE /* UIKitTextField+Configuration.swift in Sources */,
+				B3E7BDA429A63FA9003E0971 /* CardIO.m in Sources */,
 				84C87D2028CF45B100B684DE /* ViewFactory.swift in Sources */,
 				84C87D1F28CF45AE00B684DE /* PayInteractor.swift in Sources */,
 				84C87D6C28CF460900B684DE /* CardNumberTransformation.swift in Sources */,
@@ -1293,18 +1359,23 @@
 				84C87D1E28CF45AE00B684DE /* ValidationService.swift in Sources */,
 				84C87D1828CF45A900B684DE /* FieldType.swift in Sources */,
 				84C87D2528CF45BA00B684DE /* RootIntent.swift in Sources */,
+				B3E7BD9C29A6084A003E0971 /* DefaultLight.swift in Sources */,
 				84C87D4728CF45E500B684DE /* NumberCustomerTextField.swift in Sources */,
 				84C87D6428CF460300B684DE /* MockModels.swift in Sources */,
 				84C87D1728CF45A900B684DE /* PaymentMethodCardType.swift in Sources */,
+				B3E7BD9F29A608A8003E0971 /* DefaultDark.swift in Sources */,
+				B3E7BD9629A6035B003E0971 /* LightPalette.swift in Sources */,
 				84C87D5728CF45F900B684DE /* AttributedTextImpl+iOS.swift in Sources */,
 				84C87D7A28CF461700B684DE /* InfoButton.swift in Sources */,
 				84C87D6B28CF460600B684DE /* ClarificationField+CustomerField.swift in Sources */,
 				84C87D1B28CF45AE00B684DE /* CardTypesManager.swift in Sources */,
+				B3E7BD9929A60363003E0971 /* DarkPalette.swift in Sources */,
 				84C87D5428CF45F900B684DE /* TextSizeViewModel.swift in Sources */,
 				84C87D8128CF461A00B684DE /* RedactedView.swift in Sources */,
 				84C87D6128CF45FF00B684DE /* InputViewContentController.swift in Sources */,
 				84C87D6828CF460600B684DE /* PaymentMethod+Logo.swift in Sources */,
 				84C87D4528CF45E500B684DE /* PasswordCustomerTextField.swift in Sources */,
+				B3E7BD8E29A601AD003E0971 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,6 +1409,7 @@
 				84C87CA128CB474100B684DE /* NumberCustomerTextField.swift in Sources */,
 				84C87C9428CB473900B684DE /* PaymentMethodsView.swift in Sources */,
 				84C87CE228CB478400B684DE /* CenterCropped.swift in Sources */,
+				B3E7BD8C29A6018C003E0971 /* Color+Utils.swift in Sources */,
 				84C87C7628CB470800B684DE /* ValidationService.swift in Sources */,
 				84C87C9928CB473C00B684DE /* CustomerFieldsScreenState.swift in Sources */,
 				84C87CDD28CB478400B684DE /* Shimmer.swift in Sources */,
@@ -1352,6 +1424,7 @@
 				84C87CC628CB476600B684DE /* EmptyTransformation.swift in Sources */,
 				84C87CB428CB475900B684DE /* UIKitTextField.swift in Sources */,
 				84C87C8228CB471A00B684DE /* NavigationComponentState.swift in Sources */,
+				B3E7BD9A29A60363003E0971 /* DarkPalette.swift in Sources */,
 				84C87CA928CB474A00B684DE /* ThreeDSecureScreen.swift in Sources */,
 				B3D4E405299CBADC007A1E2F /* CardIO.m in Sources */,
 				84C87CB128CB475500B684DE /* AttributedTextImpl.swift in Sources */,
@@ -1361,7 +1434,9 @@
 				84C87CEA28CB478400B684DE /* BottomCardView.swift in Sources */,
 				84C87CD928CB477500B684DE /* InfoButton.swift in Sources */,
 				84C87C9E28CB474100B684DE /* EmailCustomerTextField.swift in Sources */,
+				B3E7BDB129A64397003E0971 /* ColorScheme+Common.swift in Sources */,
 				84C87CE928CB478400B684DE /* AnimatableCustomFontModifier.swift in Sources */,
+				B3E7BD8F29A601AD003E0971 /* ColorPalette.swift in Sources */,
 				84C87D0F28CF1BFD00B684DE /* ImageResourceKeys.swift in Sources */,
 				84C87CD128CB477500B684DE /* CustomTextField.swift in Sources */,
 				84C87CEB28CB478400B684DE /* Conditional.swift in Sources */,
@@ -1370,6 +1445,7 @@
 				84C87CD528CB477500B684DE /* CloseButton.swift in Sources */,
 				84C87CB228CB475500B684DE /* AttributedTextImpl+iOS.swift in Sources */,
 				84C87CA728CB474400B684DE /* ClarificationFieldsScreenState.swift in Sources */,
+				B3E7BD9D29A6084A003E0971 /* DefaultLight.swift in Sources */,
 				84C87CC228CB476200B684DE /* CustomerField+Validate.swift in Sources */,
 				84C87CB928CB475900B684DE /* InputViewContent.swift in Sources */,
 				84C87C6A28CB470300B684DE /* CoreError.swift in Sources */,
@@ -1399,6 +1475,7 @@
 				84C87CB328CB475900B684DE /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
 				84C87CC928CB476A00B684DE /* ViewModel.swift in Sources */,
 				84C87CAE28CB475500B684DE /* AttributedText.swift in Sources */,
+				B3E7BDA029A608A8003E0971 /* DefaultDark.swift in Sources */,
 				B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */,
 				84C87C9328CB473900B684DE /* NativePaymentMethodView.swift in Sources */,
 				84C87CBA28CB475900B684DE /* UIKitTextField+Configuration.swift in Sources */,
@@ -1411,15 +1488,16 @@
 				84C87CDE28CB478400B684DE /* Localization+Strings.swift in Sources */,
 				84C87CA828CB474700B684DE /* LoadingScreen.swift in Sources */,
 				84C87C8328CB471A00B684DE /* NavigationComponentViewModel.swift in Sources */,
-				84C87CE628CB478400B684DE /* Colors.swift in Sources */,
 				84C87CD628CB477500B684DE /* BackButton.swift in Sources */,
 				84C87CCC28CB476D00B684DE /* View+Background.swift in Sources */,
 				84C87C9A28CB473C00B684DE /* CustomerFieldsScreenIntent.swift in Sources */,
 				84C87CBB28CB475900B684DE /* InputViewContentController.swift in Sources */,
+				B3E7BD9729A6035B003E0971 /* LightPalette.swift in Sources */,
 				84C87CCE28CB477100B684DE /* AsyncImage.swift in Sources */,
 				84C87CC728CB476600B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */,
 				84C87CEC28CB478400B684DE /* Localization+UI.swift in Sources */,
+				B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */,
 				B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */,
 				84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */,
 				84C87CBC28CB475900B684DE /* UIKitTextField+Coordinator.swift in Sources */,
@@ -1478,6 +1556,10 @@
 					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1515,6 +1597,10 @@
 					"$(PROJECT_DIR)/mobileSDK.UI/CardIO",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;

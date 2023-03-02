@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct InfoButton: View {
-    var foregroundColor: Color = UIScheme.color.brandColor
+    var foregroundColor: Color = UIScheme.color.infoIconColor
     var onTap: () -> Void = {}
 
     var body: some View {
         Button {
             onTap()
         } label: {
-            IR.infoButton.image
+            IR.infoButton.image?
+                .renderingMode(.template)
+                .foregroundColor(foregroundColor)
                 .contentShape(Rectangle())
         }
     }
