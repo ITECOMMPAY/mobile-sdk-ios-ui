@@ -6,5 +6,5 @@ target 'IntegrationExampleSwift' do
   use_frameworks!
 
   # Pods for IntegrationExampleSwift
-  pod 'EcommpaySDK_UI', '2.1.0'
+  pod 'EcommpaySDK_UI', '3.0.0'
 end
