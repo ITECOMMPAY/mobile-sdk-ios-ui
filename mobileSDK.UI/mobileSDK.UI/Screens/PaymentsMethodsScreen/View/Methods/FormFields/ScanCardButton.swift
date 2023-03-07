@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import AVFoundation
+import CardIO
 
 typealias ScannedCardInfo = (cardNumber: String?, cardExpiry: String?)
 typealias ScanCardCompletion = (ScannedCardInfo) -> Void
