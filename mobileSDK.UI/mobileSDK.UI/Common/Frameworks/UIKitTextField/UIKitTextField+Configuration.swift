@@ -29,6 +29,9 @@ public extension UIKitTextField {
     var textColor: Color?
     var textAlignment: NSTextAlignment?
 
+    var adjustsFontSizeToFitWidth: Bool?
+    var minimumFontSize: CGFloat?
+
     var clearsOnBeginEditing: Bool?
     var clearsOnInsertion: Bool?
 
@@ -224,6 +227,18 @@ public extension UIKitTextField.Configuration {
   func textAlignment(_ textAlignment: NSTextAlignment?) -> Self {
     var config = self
     config.textAlignment = textAlignment
+    return config
+  }
+
+  func adjustsFontSizeToFitWidth(_ adjustsFontSizeToFitWidth: Bool?) -> Self {
+    var config = self
+    config.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+    return config
+  }
+
+  func minimumFontSize(_ minimumFontSize: CGFloat?) -> Self {
+    var config = self
+    config.minimumFontSize = minimumFontSize
     return config
   }
 

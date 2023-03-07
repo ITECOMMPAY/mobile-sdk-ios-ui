@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CloseButton: View {
-    var foregroundColor: Color = UIScheme.color.brandColor
+    var foregroundColor: Color = UIScheme.color.navigationButtonColor
     var onTap: () -> Void = {}
 
     var body: some View {

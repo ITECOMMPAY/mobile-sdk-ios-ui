@@ -132,7 +132,6 @@
 		84C87CE328CB478400B684DE /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455079E2859BD7A002BBFE0 /* RoundedCorner.swift */; };
 		84C87CE428CB478400B684DE /* Localization+Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E302869C1DD002861F8 /* Localization+Key.swift */; };
 		84C87CE528CB478400B684DE /* Localization+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E352869C234002861F8 /* Localization+Defaults.swift */; };
-		84C87CE628CB478400B684DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		84C87CE728CB478400B684DE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507982859B6F4002BBFE0 /* Fonts.swift */; };
 		84C87CE928CB478400B684DE /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84C87CEA28CB478400B684DE /* BottomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D279328649B6500F5F293 /* BottomCardView.swift */; };
@@ -169,15 +168,12 @@
 		84C87D2E28CF45C800B684DE /* PaymentMethodsIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F12D28740544005F81DE /* PaymentMethodsIntent.swift */; };
 		84C87D2F28CF45C800B684DE /* PaymentMethodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F12A287404F2005F81DE /* PaymentMethodsViewModel.swift */; };
 		84C87D3028CF45CB00B684DE /* ApsCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457885728BC76F50052D0F0 /* ApsCheckoutView.swift */; };
-		84C87D3128CF45CF00B684DE /* PanField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AF288A733C00259A50 /* PanField.swift */; };
 		84C87D3228CF45CF00B684DE /* CardHolderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241922889201200259A50 /* CardHolderField.swift */; };
 		84C87D3328CF45CF00B684DE /* CvvField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A9288A730B00259A50 /* CvvField.swift */; };
-		84C87D3428CF45CF00B684DE /* ExpiryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AC288A732900259A50 /* ExpiryField.swift */; };
 		84C87D3528CF45D100B684DE /* ApplePayCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6CA7D288520CD00F3A444 /* ApplePayCheckoutView.swift */; };
 		84C87D3628CF45D500B684DE /* NewCardCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E6CA7F288520E900F3A444 /* NewCardCheckoutView.swift */; };
 		84C87D3728CF45D700B684DE /* SavedCardCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84904613287C114B0002938D /* SavedCardCheckoutView.swift */; };
 		84C87D3828CF45DB00B684DE /* PaymentMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8402783F286D7B7C000970DA /* PaymentMethodCell.swift */; };
-		84C87D3928CF45DB00B684DE /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E292869A460002861F8 /* PaymentMethodsView.swift */; };
 		84C87D3A28CF45DB00B684DE /* PaymentDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E3B2869C96F002861F8 /* PaymentDetailsView.swift */; };
 		84C87D3B28CF45DB00B684DE /* PaymentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E3D2869C9A1002861F8 /* PaymentOverview.swift */; };
 		84C87D3C28CF45DB00B684DE /* NativePaymentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B198BE286EDD7700AA40BC /* NativePaymentMethodView.swift */; };
@@ -255,7 +251,6 @@
 		84C87D8628CF461D00B684DE /* AnimatableCustomFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8485C188287EA64B00A7001E /* AnimatableCustomFontModifier.swift */; };
 		84C87D8728CF461D00B684DE /* Conditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CEF4F286C2D0900C0B7C2 /* Conditional.swift */; };
 		84C87D8828CF462100B684DE /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078F2858A1FB002BBFE0 /* Dimensions.swift */; };
-		84C87D8928CF462100B684DE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8455078C2858A1BB002BBFE0 /* Colors.swift */; };
 		84C87D8A28CF462100B684DE /* UIScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507952858B754002BBFE0 /* UIScheme.swift */; };
 		84C87D8B28CF462100B684DE /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507982859B6F4002BBFE0 /* Fonts.swift */; };
 		84C87D8C28CF462700B684DE /* Localization+Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E2F2869C1DD002861F8 /* Localization+Strings.swift */; };
@@ -268,12 +263,47 @@
 		84C87D9328CF462D00B684DE /* InfoCardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C87D0728CF1BFD00B684DE /* InfoCardBackground.swift */; };
 		84D58DD928CF59D9008DD7BE /* CustomFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D58DD828CF59D9008DD7BE /* CustomFormatter.swift */; };
 		84D58DDA28CF59D9008DD7BE /* CustomFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D58DD828CF59D9008DD7BE /* CustomFormatter.swift */; };
+		B35515A429B6241D00B87E92 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
+		B35515A529B6241D00B87E92 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E401299CBADB007A1E2F /* libopencv_core.a */; };
+		B35515A729B6241D00B87E92 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */; };
+		B35515A829B6241D00B87E92 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
+		B35515AA29B624BF00B87E92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7629B1E88F00B80B23 /* Accelerate.framework */; };
+		B35515AB29B624C300B87E92 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7829B1E89300B80B23 /* AVFoundation.framework */; };
+		B35515AC29B624C800B87E92 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7A29B1E89F00B80B23 /* AudioToolbox.framework */; };
+		B35515AD29B624CC00B87E92 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7C29B1E8A800B80B23 /* CoreMedia.framework */; };
+		B35515AE29B624D100B87E92 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7E29B1E8AD00B80B23 /* MobileCoreServices.framework */; };
 		B396B8B6294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B396B8B7294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
 		B3B266802980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
+		B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
+		B3E7BD8829A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
+		B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
+		B3E7BD8B29A6018C003E0971 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */; };
+		B3E7BD8C29A6018C003E0971 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */; };
+		B3E7BD8E29A601AD003E0971 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */; };
+		B3E7BD8F29A601AD003E0971 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */; };
+		B3E7BD9629A6035B003E0971 /* LightPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9529A6035B003E0971 /* LightPalette.swift */; };
+		B3E7BD9729A6035B003E0971 /* LightPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9529A6035B003E0971 /* LightPalette.swift */; };
+		B3E7BD9929A60363003E0971 /* DarkPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9829A60363003E0971 /* DarkPalette.swift */; };
+		B3E7BD9A29A60363003E0971 /* DarkPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9829A60363003E0971 /* DarkPalette.swift */; };
+		B3E7BD9C29A6084A003E0971 /* DefaultLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */; };
+		B3E7BD9D29A6084A003E0971 /* DefaultLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */; };
+		B3E7BD9F29A608A8003E0971 /* DefaultDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */; };
+		B3E7BDA029A608A8003E0971 /* DefaultDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */; };
+		B3E7BDB029A64397003E0971 /* ColorScheme+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */; };
+		B3E7BDB129A64397003E0971 /* ColorScheme+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */; };
 		B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
 		B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */; };
+		B3F7593729B23A2A0041AE49 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA529A6400A003E0971 /* Accelerate.framework */; };
+		B3F7593829B23A2F0041AE49 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA929A64014003E0971 /* AVFoundation.framework */; };
+		B3F7593929B23A340041AE49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */; };
+		B3F7593A29B23A420041AE49 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDAB29A64019003E0971 /* CoreMedia.framework */; };
+		B3F7593B29B23A460041AE49 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */; };
+		B3F87DA729B20FA600ECFD51 /* ExpiryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AC288A732900259A50 /* ExpiryField.swift */; };
+		B3F87DA829B20FA900ECFD51 /* PanField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AF288A733C00259A50 /* PanField.swift */; };
+		B3F87DA929B20FAC00ECFD51 /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
+		B3F87DAA29B20FB600ECFD51 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E292869A460002861F8 /* PaymentMethodsView.swift */; };
 		B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
 		B3FC0027292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
 /* End PBXBuildFile section */
@@ -316,7 +346,6 @@
 		8454EEEE28AA1EDA00199FF3 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		8454EEF228AA232B00199FF3 /* StructCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructCopy.swift; sourceTree = "<group>"; };
 		845507882858A0D8002BBFE0 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
-		8455078C2858A1BB002BBFE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8455078F2858A1FB002BBFE0 /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		845507952858B754002BBFE0 /* UIScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScheme.swift; sourceTree = "<group>"; };
 		845507982859B6F4002BBFE0 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -428,9 +457,43 @@
 		84F26E3D2869C9A1002861F8 /* PaymentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOverview.swift; sourceTree = "<group>"; };
 		84F705C8287C608C00E7CD12 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		84F7ABDE28AB94D700E634D9 /* CustomerFields+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomerFields+Utils.swift"; sourceTree = "<group>"; };
+		B38C6EFE29B73DDA00A23D55 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardView.swift; sourceTree = "<group>"; };
 		B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOverview.swift; sourceTree = "<group>"; };
+		B3CDDC7629B1E88F00B80B23 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
+		B3CDDC7829B1E89300B80B23 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3CDDC7A29B1E89F00B80B23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		B3CDDC7C29B1E8A800B80B23 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		B3CDDC7E29B1E8AD00B80B23 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		B3D4E3F9299CBAD7007A1E2F /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
+		B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
+		B3D4E3FB299CBAD8007A1E2F /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
+		B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
+		B3D4E400299CBADA007A1E2F /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		B3D4E401299CBADB007A1E2F /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
+		B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCardButton.swift; sourceTree = "<group>"; };
+		B3E7BD8729A6014F003E0971 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
+		B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9529A6035B003E0971 /* LightPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9829A60363003E0971 /* DarkPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkPalette.swift; sourceTree = "<group>"; };
+		B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLight.swift; sourceTree = "<group>"; };
+		B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDark.swift; sourceTree = "<group>"; };
+		B3E7BDA529A6400A003E0971 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B3E7BDA929A64014003E0971 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B3E7BDAB29A64019003E0971 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme+Common.swift"; sourceTree = "<group>"; };
 		B3E874CA299116BE003F4CF9 /* ScreenDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenDisplayMode.swift; sourceTree = "<group>"; };
+		B3F87D8229B1FFD100ECFD51 /* mobileSDK.UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mobileSDK.UI; sourceTree = "<group>"; };
+		B3F87D9C29B20AD100ECFD51 /* mobileSDK.UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mobileSDK.UI; sourceTree = "<group>"; };
 		B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -439,6 +502,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3F7593729B23A2A0041AE49 /* Accelerate.framework in Frameworks */,
+				B3F7593829B23A2F0041AE49 /* AVFoundation.framework in Frameworks */,
+				B3F7593B29B23A460041AE49 /* MobileCoreServices.framework in Frameworks */,
+				B3F7593929B23A340041AE49 /* AudioToolbox.framework in Frameworks */,
+				B3F7593A29B23A420041AE49 /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +514,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B35515AE29B624D100B87E92 /* MobileCoreServices.framework in Frameworks */,
+				B35515AD29B624CC00B87E92 /* CoreMedia.framework in Frameworks */,
+				B35515AC29B624C800B87E92 /* AudioToolbox.framework in Frameworks */,
+				B35515AB29B624C300B87E92 /* AVFoundation.framework in Frameworks */,
+				B35515AA29B624BF00B87E92 /* Accelerate.framework in Frameworks */,
+				B35515A429B6241D00B87E92 /* libCardIO.a in Frameworks */,
+				B35515A529B6241D00B87E92 /* libopencv_core.a in Frameworks */,
+				B35515A729B6241D00B87E92 /* libopencv_imgproc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +659,7 @@
 		8455078B2858A1AC002BBFE0 /* ViewParams */ = {
 			isa = PBXGroup;
 			children = (
-				8455078C2858A1BB002BBFE0 /* Colors.swift */,
+				B3E7BD8629A6012B003E0971 /* ColorScheme */,
 				8455078F2858A1FB002BBFE0 /* Dimensions.swift */,
 				845507982859B6F4002BBFE0 /* Fonts.swift */,
 				845507952858B754002BBFE0 /* UIScheme.swift */,
@@ -840,6 +916,18 @@
 		84AFF7D4285210B600E6F1DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3F87D8229B1FFD100ECFD51 /* mobileSDK.UI */,
+				B3F87D9C29B20AD100ECFD51 /* mobileSDK.UI */,
+				B3CDDC7E29B1E8AD00B80B23 /* MobileCoreServices.framework */,
+				B3CDDC7C29B1E8A800B80B23 /* CoreMedia.framework */,
+				B3CDDC7A29B1E89F00B80B23 /* AudioToolbox.framework */,
+				B3CDDC7829B1E89300B80B23 /* AVFoundation.framework */,
+				B3CDDC7629B1E88F00B80B23 /* Accelerate.framework */,
+				B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */,
+				B3E7BDAB29A64019003E0971 /* CoreMedia.framework */,
+				B3E7BDA929A64014003E0971 /* AVFoundation.framework */,
+				B3E7BDA729A6400F003E0971 /* AudioToolbox.framework */,
+				B3E7BDA529A6400A003E0971 /* Accelerate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -888,6 +976,7 @@
 				84B241A9288A730B00259A50 /* CvvField.swift */,
 				84B241AC288A732900259A50 /* ExpiryField.swift */,
 				84B241AF288A733C00259A50 /* PanField.swift */,
+				B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */,
 			);
 			path = FormFields;
 			sourceTree = "<group>";
@@ -933,6 +1022,7 @@
 			children = (
 				84BC13E42852088F008814EB /* mobileSDK.UI */,
 				84A0F13928746596005F81DE /* UIPreview */,
+				B3CDDC6C29B1E7E900B80B23 /* CardIO */,
 				84BC13E32852088F008814EB /* Products */,
 				84AFF7D4285210B600E6F1DE /* Frameworks */,
 			);
@@ -1016,6 +1106,49 @@
 			path = TokenizeCard;
 			sourceTree = "<group>";
 		};
+		B3CDDC6C29B1E7E900B80B23 /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				B3D4E3FB299CBAD8007A1E2F /* CardIO.h */,
+				B3D4E3F9299CBAD7007A1E2F /* CardIO.m */,
+				B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */,
+				B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */,
+				B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */,
+				B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */,
+				B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */,
+				B3D4E400299CBADA007A1E2F /* CardIOView.h */,
+				B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */,
+				B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */,
+				B3D4E401299CBADB007A1E2F /* libopencv_core.a */,
+				B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */,
+				B38C6EFE29B73DDA00A23D55 /* module.modulemap */,
+			);
+			path = CardIO;
+			sourceTree = "<group>";
+		};
+		B3E7BD8629A6012B003E0971 /* ColorScheme */ = {
+			isa = PBXGroup;
+			children = (
+				B3E7BD9029A60325003E0971 /* ColorPalette */,
+				B3E7BD8729A6014F003E0971 /* ColorScheme.swift */,
+				B3E7BDAF29A64397003E0971 /* ColorScheme+Common.swift */,
+				B3E7BD9B29A6084A003E0971 /* DefaultLight.swift */,
+				B3E7BD9E29A608A8003E0971 /* DefaultDark.swift */,
+				B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */,
+			);
+			path = ColorScheme;
+			sourceTree = "<group>";
+		};
+		B3E7BD9029A60325003E0971 /* ColorPalette */ = {
+			isa = PBXGroup;
+			children = (
+				B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */,
+				B3E7BD9529A6035B003E0971 /* LightPalette.swift */,
+				B3E7BD9829A60363003E0971 /* DarkPalette.swift */,
+			);
+			path = ColorPalette;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1067,9 +1200,11 @@
 				TargetAttributes = {
 					84A0F13728746596005F81DE = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1410;
 					};
 					84C87C4B28CB45B900B684DE = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -1130,6 +1265,7 @@
 				84C87D8428CF461D00B684DE /* CenterCropped.swift in Sources */,
 				84C87D4A28CF45EA00B684DE /* ClarificationFieldsScreenIntent.swift in Sources */,
 				84C87D3628CF45D500B684DE /* NewCardCheckoutView.swift in Sources */,
+				B3E7BD8829A6014F003E0971 /* ColorScheme.swift in Sources */,
 				84C87D7C28CF461700B684DE /* PolicyView.swift in Sources */,
 				84C87D2828CF45BE00B684DE /* NavigationComponentState.swift in Sources */,
 				84C87D7228CF460E00B684DE /* View+Keyboard.swift in Sources */,
@@ -1156,22 +1292,24 @@
 				B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */,
 				84C87D6D28CF460900B684DE /* InputMaskTransformation.swift in Sources */,
 				84C87D4B28CF45EA00B684DE /* ClarificationFieldsScreenState.swift in Sources */,
+				B3F87DAA29B20FB600ECFD51 /* PaymentMethodsView.swift in Sources */,
+				B3E7BDB029A64397003E0971 /* ColorScheme+Common.swift in Sources */,
 				84C87D5028CF45F000B684DE /* WebView.swift in Sources */,
 				84C87D1D28CF45AE00B684DE /* CardRemoveInteractor.swift in Sources */,
+				B3E7BD8B29A6018C003E0971 /* Color+Utils.swift in Sources */,
 				84C87D7528CF461100B684DE /* AsyncImagePhase.swift in Sources */,
 				84C87D4F28CF45F000B684DE /* ThreeDSecureScreen.swift in Sources */,
 				84C87D9228CF462D00B684DE /* ImageResourceKeys.swift in Sources */,
 				84C87D7728CF461700B684DE /* FooterView.swift in Sources */,
 				84C87D8228CF461A00B684DE /* RoundedCorner.swift in Sources */,
 				84C87D4128CF45E100B684DE /* CustomerFieldsScreenIntent.swift in Sources */,
-				84C87D3928CF45DB00B684DE /* PaymentMethodsView.swift in Sources */,
 				84C87D4828CF45E500B684DE /* TelCustomerTextField.swift in Sources */,
 				84C87D6628CF460600B684DE /* CustomerField+Validate.swift in Sources */,
-				84C87D3128CF45CF00B684DE /* PanField.swift in Sources */,
 				84C87D2128CF45B300B684DE /* PublicStructs.swift in Sources */,
 				84C87D6E28CF460900B684DE /* EmptyTransformation.swift in Sources */,
 				B3E874CB299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */,
 				84C87D6928CF460600B684DE /* PaymentMethod+ComputedField.swift in Sources */,
+				B3F87DA829B20FA900ECFD51 /* PanField.swift in Sources */,
 				84C87D1628CF45A900B684DE /* PaymentMethodType.swift in Sources */,
 				84C87D7B28CF461700B684DE /* CheckBoxView.swift in Sources */,
 				84C87D2C28CF45C400B684DE /* InitialLoadingScreen.swift in Sources */,
@@ -1181,11 +1319,11 @@
 				84154F2A28E31F6A00F229F5 /* Date.swift in Sources */,
 				84C87D8C28CF462700B684DE /* Localization+Strings.swift in Sources */,
 				84C87D8D28CF462700B684DE /* Localization+Key.swift in Sources */,
-				84C87D3428CF45CF00B684DE /* ExpiryField.swift in Sources */,
 				84C87D2728CF45BA00B684DE /* RootView.swift in Sources */,
 				84C87D9128CF462D00B684DE /* LibraryBundle.swift in Sources */,
 				84C87D3A28CF45DB00B684DE /* PaymentDetailsView.swift in Sources */,
 				84C87D5F28CF45FF00B684DE /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */,
+				B3F87DA929B20FAC00ECFD51 /* ScanCardButton.swift in Sources */,
 				84C87D5128CF45F300B684DE /* ResultDeclineScreen.swift in Sources */,
 				84C87D7D28CF461700B684DE /* CloseButton.swift in Sources */,
 				84C87D7628CF461100B684DE /* AsyncImage.swift in Sources */,
@@ -1198,7 +1336,6 @@
 				84C87D4C28CF45EA00B684DE /* ClarificationFieldsScreen.swift in Sources */,
 				84C87D3B28CF45DB00B684DE /* PaymentOverview.swift in Sources */,
 				84C87D7E28CF461700B684DE /* PayButton.swift in Sources */,
-				84C87D8928CF462100B684DE /* Colors.swift in Sources */,
 				84C87D8328CF461A00B684DE /* BottomCardView.swift in Sources */,
 				84C87D8028CF461700B684DE /* LinkButton.swift in Sources */,
 				84C87D8E28CF462700B684DE /* TranslationsManager.swift in Sources */,
@@ -1210,6 +1347,7 @@
 				84C87D6C28CF460900B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87D5B28CF45FF00B684DE /* InputViewManager.swift in Sources */,
 				84C87D4028CF45E100B684DE /* CustomerFieldsScreenState.swift in Sources */,
+				B3F87DA729B20FA600ECFD51 /* ExpiryField.swift in Sources */,
 				84C87D3C28CF45DB00B684DE /* NativePaymentMethodView.swift in Sources */,
 				84C87D2928CF45BE00B684DE /* NavigationComponent.swift in Sources */,
 				84C87D1928CF45A900B684DE /* CoreError.swift in Sources */,
@@ -1235,18 +1373,23 @@
 				84C87D1E28CF45AE00B684DE /* ValidationService.swift in Sources */,
 				84C87D1828CF45A900B684DE /* FieldType.swift in Sources */,
 				84C87D2528CF45BA00B684DE /* RootIntent.swift in Sources */,
+				B3E7BD9C29A6084A003E0971 /* DefaultLight.swift in Sources */,
 				84C87D4728CF45E500B684DE /* NumberCustomerTextField.swift in Sources */,
 				84C87D6428CF460300B684DE /* MockModels.swift in Sources */,
 				84C87D1728CF45A900B684DE /* PaymentMethodCardType.swift in Sources */,
+				B3E7BD9F29A608A8003E0971 /* DefaultDark.swift in Sources */,
+				B3E7BD9629A6035B003E0971 /* LightPalette.swift in Sources */,
 				84C87D5728CF45F900B684DE /* AttributedTextImpl+iOS.swift in Sources */,
 				84C87D7A28CF461700B684DE /* InfoButton.swift in Sources */,
 				84C87D6B28CF460600B684DE /* ClarificationField+CustomerField.swift in Sources */,
 				84C87D1B28CF45AE00B684DE /* CardTypesManager.swift in Sources */,
+				B3E7BD9929A60363003E0971 /* DarkPalette.swift in Sources */,
 				84C87D5428CF45F900B684DE /* TextSizeViewModel.swift in Sources */,
 				84C87D8128CF461A00B684DE /* RedactedView.swift in Sources */,
 				84C87D6128CF45FF00B684DE /* InputViewContentController.swift in Sources */,
 				84C87D6828CF460600B684DE /* PaymentMethod+Logo.swift in Sources */,
 				84C87D4528CF45E500B684DE /* PasswordCustomerTextField.swift in Sources */,
+				B3E7BD8E29A601AD003E0971 /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1280,6 +1423,7 @@
 				84C87CA128CB474100B684DE /* NumberCustomerTextField.swift in Sources */,
 				84C87C9428CB473900B684DE /* PaymentMethodsView.swift in Sources */,
 				84C87CE228CB478400B684DE /* CenterCropped.swift in Sources */,
+				B3E7BD8C29A6018C003E0971 /* Color+Utils.swift in Sources */,
 				84C87C7628CB470800B684DE /* ValidationService.swift in Sources */,
 				84C87C9928CB473C00B684DE /* CustomerFieldsScreenState.swift in Sources */,
 				84C87CDD28CB478400B684DE /* Shimmer.swift in Sources */,
@@ -1294,6 +1438,7 @@
 				84C87CC628CB476600B684DE /* EmptyTransformation.swift in Sources */,
 				84C87CB428CB475900B684DE /* UIKitTextField.swift in Sources */,
 				84C87C8228CB471A00B684DE /* NavigationComponentState.swift in Sources */,
+				B3E7BD9A29A60363003E0971 /* DarkPalette.swift in Sources */,
 				84C87CA928CB474A00B684DE /* ThreeDSecureScreen.swift in Sources */,
 				84C87CB128CB475500B684DE /* AttributedTextImpl.swift in Sources */,
 				84C87CDF28CB478400B684DE /* TranslationsManager.swift in Sources */,
@@ -1302,7 +1447,9 @@
 				84C87CEA28CB478400B684DE /* BottomCardView.swift in Sources */,
 				84C87CD928CB477500B684DE /* InfoButton.swift in Sources */,
 				84C87C9E28CB474100B684DE /* EmailCustomerTextField.swift in Sources */,
+				B3E7BDB129A64397003E0971 /* ColorScheme+Common.swift in Sources */,
 				84C87CE928CB478400B684DE /* AnimatableCustomFontModifier.swift in Sources */,
+				B3E7BD8F29A601AD003E0971 /* ColorPalette.swift in Sources */,
 				84C87D0F28CF1BFD00B684DE /* ImageResourceKeys.swift in Sources */,
 				84C87CD128CB477500B684DE /* CustomTextField.swift in Sources */,
 				84C87CEB28CB478400B684DE /* Conditional.swift in Sources */,
@@ -1311,6 +1458,7 @@
 				84C87CD528CB477500B684DE /* CloseButton.swift in Sources */,
 				84C87CB228CB475500B684DE /* AttributedTextImpl+iOS.swift in Sources */,
 				84C87CA728CB474400B684DE /* ClarificationFieldsScreenState.swift in Sources */,
+				B3E7BD9D29A6084A003E0971 /* DefaultLight.swift in Sources */,
 				84C87CC228CB476200B684DE /* CustomerField+Validate.swift in Sources */,
 				84C87CB928CB475900B684DE /* InputViewContent.swift in Sources */,
 				84C87C6A28CB470300B684DE /* CoreError.swift in Sources */,
@@ -1330,6 +1478,7 @@
 				84C87CC528CB476200B684DE /* PaymentMethod+DisplayName.swift in Sources */,
 				84C87CE428CB478400B684DE /* Localization+Key.swift in Sources */,
 				84C87C6C28CB470300B684DE /* FieldType.swift in Sources */,
+				B35515A829B6241D00B87E92 /* CardIO.m in Sources */,
 				84C87CDB28CB478400B684DE /* UIScheme.swift in Sources */,
 				84C87C7F28CB471700B684DE /* RootView.swift in Sources */,
 				84C87C9628CB473900B684DE /* PaymentOverview.swift in Sources */,
@@ -1340,6 +1489,7 @@
 				84C87CB328CB475900B684DE /* UIKitTextField+Configuration+UITextFieldDelegate.swift in Sources */,
 				84C87CC928CB476A00B684DE /* ViewModel.swift in Sources */,
 				84C87CAE28CB475500B684DE /* AttributedText.swift in Sources */,
+				B3E7BDA029A608A8003E0971 /* DefaultDark.swift in Sources */,
 				B3E874CC299116BE003F4CF9 /* ScreenDisplayMode.swift in Sources */,
 				84C87C9328CB473900B684DE /* NativePaymentMethodView.swift in Sources */,
 				84C87CBA28CB475900B684DE /* UIKitTextField+Configuration.swift in Sources */,
@@ -1352,15 +1502,17 @@
 				84C87CDE28CB478400B684DE /* Localization+Strings.swift in Sources */,
 				84C87CA828CB474700B684DE /* LoadingScreen.swift in Sources */,
 				84C87C8328CB471A00B684DE /* NavigationComponentViewModel.swift in Sources */,
-				84C87CE628CB478400B684DE /* Colors.swift in Sources */,
 				84C87CD628CB477500B684DE /* BackButton.swift in Sources */,
 				84C87CCC28CB476D00B684DE /* View+Background.swift in Sources */,
 				84C87C9A28CB473C00B684DE /* CustomerFieldsScreenIntent.swift in Sources */,
 				84C87CBB28CB475900B684DE /* InputViewContentController.swift in Sources */,
+				B3E7BD9729A6035B003E0971 /* LightPalette.swift in Sources */,
 				84C87CCE28CB477100B684DE /* AsyncImage.swift in Sources */,
 				84C87CC728CB476600B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */,
 				84C87CEC28CB478400B684DE /* Localization+UI.swift in Sources */,
+				B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */,
+				B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */,
 				84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */,
 				84C87CBC28CB475900B684DE /* UIKitTextField+Coordinator.swift in Sources */,
 				84C87C8B28CB472A00B684DE /* ExpiryField.swift in Sources */,
@@ -1396,9 +1548,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UIPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = 2D6CPF27K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1411,10 +1565,17 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1425,9 +1586,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UIPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = 2D6CPF27K6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1440,7 +1603,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-lc++";
 				PRODUCT_BUNDLE_IDENTIFIER = Ecompay.UIPreview;
 				PRODUCT_NAME = mobileSDK.UI;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1501,11 +1670,17 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CardIO";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1558,10 +1733,16 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lc++",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CardIO";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1572,12 +1753,24 @@
 		84C87C5128CB45B900B684DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/CardIO";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "-ObjC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
+				OTHER_LDFLAGS = "-l\"c++\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1586,10 +1779,22 @@
 		84C87C5228CB45B900B684DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/CardIO";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = "-ObjC";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-l\"c++\"";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

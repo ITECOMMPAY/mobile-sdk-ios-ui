@@ -97,7 +97,12 @@ struct SavedCardCheckoutView: View {
     }
 
     private var dateField: some View {
-        ExpiryField(disabled: true, expiryString: .constant(savedCard.savedCardExpiry?.stringValue ?? ""), isValueValid: .constant(true))
+        ExpiryField(
+            disabled: true,
+            expiryString: .constant(savedCard.savedCardExpiry?.stringValue ?? ""),
+            scannedCardInfo: .constant(nil),
+            isValueValid: .constant(true)
+        )
     }
 
     private var cvvField: some View {

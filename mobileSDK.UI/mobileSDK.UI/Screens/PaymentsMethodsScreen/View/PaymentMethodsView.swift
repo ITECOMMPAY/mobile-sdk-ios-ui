@@ -276,7 +276,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 localImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(UIScheme.color.brandColor)
+                    .foregroundColor(UIScheme.color.paymentMethodIconColor)
             } else {
                 AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
                     image
@@ -288,7 +288,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                         .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }.foregroundColor(UIScheme.color.brandColor)
+                }.foregroundColor(UIScheme.color.paymentMethodIconColor)
             }
         }
     }

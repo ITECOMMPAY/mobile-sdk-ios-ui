@@ -195,6 +195,10 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         }
     }
 
+    var isDarkThemeOn: Bool {
+        publicType.isDarkThemeOn
+    }
+
     var isMockModeEnabled: Bool {
         publicType.mockModeType != .disabled
     }

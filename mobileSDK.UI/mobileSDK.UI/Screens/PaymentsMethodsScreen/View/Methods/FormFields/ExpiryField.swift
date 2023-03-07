@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ExpiryField: View {
     let disabled: Bool
     @Injected var expiryFabric: CardExpiryFabric?
 
     @Binding var expiryString: String
+    @Binding var scannedCardInfo: ScannedCardInfo?
     @Binding var isValueValid: Bool
 
     let transformation = InputMaskTransformation(with: "##/##")
@@ -41,6 +43,10 @@ struct ExpiryField: View {
         }
         .onAppear {
             validate(expiryString, ignoreEmpty: true)
+        }.onReceive(Just(scannedCardInfo)) { info in
+            guard info?.cardExpiry != nil else { return }
+
+            validate(expiryString)
         }
     }
 
@@ -70,7 +76,12 @@ struct ExpiryFieldPreview: View {
     @State var anotherText: String = ""
     var body: some View {
         VStack {
-            ExpiryField(disabled: false, expiryString: $value, isValueValid: $isValid)
+            ExpiryField(
+                disabled: false,
+                expiryString: $value,
+                scannedCardInfo: .constant(nil),
+                isValueValid: $isValid
+            )
             Text("value=\(value)  isValid=\(isValid.description)")
             TextField("Another textfield", text: $anotherText)
         }

@@ -18,6 +18,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
     let forceUppercased: Bool
     let formatter: CustomFormatter
     let maxLength: Int?
+    let adjustsFontSizeToFitWidth: Bool
+    let minimumFontSize: CGFloat
     let isAllowedCharacter: (Character) -> Bool
 
     // MARK: View protocol properties
@@ -30,11 +32,11 @@ struct CustomTextField<AccessoryViewType: View>: View {
                         .padding(textFieldPaddings)
                     HStack(spacing: .zero) {
                         Text(placeholder)
-                            .foregroundColor(!disabled ? placeholderColor : UIScheme.color.textFieldDisabledColor)
+                            .foregroundColor(placeholderColor)
                             .animatableFont(size: placeholderFontSize, makeFont: UIScheme.font.commonRegular)
                             .layoutPriority(1)
                         if isRequired {
-                            Text("*").foregroundColor(UIScheme.color.textFieldRequirementMarkColor)
+                            Text("*").foregroundColor(requiredMarkColor)
                         }
                         Spacer()
                     }
@@ -46,8 +48,9 @@ struct CustomTextField<AccessoryViewType: View>: View {
             }
             .background(backgroundColor.overlay(
                 RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
-                    .stroke(borderColor, lineWidth: UIScheme.dimension.borderWidth)
+                    .stroke(borderColor, lineWidth: borderWidth)
             ))
+            .cornerRadius(UIScheme.dimension.buttonCornerRadius)
 
             .onReceive(Just(editing)) { _ in
                 withAnimation(.easeOut(duration: 0.1)) {
@@ -62,7 +65,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
             if !showValid {
                 Text(hint)
                     .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(valid ? .clear : UIScheme.color.textFieldErrorBorderColor)
+                    .foregroundColor(errorHintColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
@@ -75,6 +78,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
             .isSecureTextEntry(isSecure)
             .keyboardType(keyboardType)
             .autocapitalizationType(forceUppercased ? .allCharacters : nil)
+            .adjustsFontSizeToFitWidth(adjustsFontSizeToFitWidth)
+            .minimumFontSize(minimumFontSize)
             .value(
                 updateViewValue: { textField in
                     if let text = formatter.string(for: $text.wrappedValue),
@@ -129,15 +134,14 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     // MARK: Private properties
 
-    private var textFieldTextColor: Color {
-        disabled ? UIScheme.color.textFieldDisabledColor : UIScheme.color.text
-    }
-
+    private var requiredMarkColor: Color = UIScheme.color.textFieldRequirementMarkColor
     private let placeholder: String
     @State
     private var isFocused = false
     @State
-    private var borderColor = UIScheme.color.textFieldUnfocusedBorderColor
+    private var borderColor = UIScheme.color.textFieldNormalBorderColor
+    @State
+    private var borderWidth = UIScheme.dimension.inputBorderWidth
     @State
     private var backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
     @State
@@ -151,10 +155,32 @@ struct CustomTextField<AccessoryViewType: View>: View {
                                                              bottom: 17,
                                                              trailing: 0)
 
+    private var textFieldTextColor: Color {
+        disabled ? UIScheme.color.textFieldDisabledTextColor : UIScheme.color.text
+    }
+    
+    private var errorHintColor: Color {
+        valid ? .clear : UIScheme.color.textFieldErrorBorderColor
+    }
+
     var placeholderColor: Color {
-        editing
-        ? UIScheme.color.textFieldFocusedBorderColor
-        : UIScheme.color.secondaryText
+        guard !disabled else {
+            return UIScheme.color.textFieldDisabledTextColor
+        }
+
+        guard !editing else {
+            return UIScheme.color.textFieldFocusedPlaceholderColor
+        }
+        
+        guard !text.isEmpty else {
+            return UIScheme.color.textFieldPlaceholderColor
+        }
+
+        guard valid else {
+            return UIScheme.color.textFieldErrorPlaceholderColor
+        }
+
+        return UIScheme.color.textFieldNormalPlaceholderColor
     }
 
     private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,
@@ -188,6 +214,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 forceUppercased: Bool = false,
                 secure: Bool = false,
                 maxLength: Int? = nil,
+                adjustsFontSizeToFitWidth: Bool = false,
+                minimumFontSize: CGFloat = 0.0,
                 isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
                 transformation: CustomFormatterTransformation = EmptyTransformation(),
                 required: Bool = false,
@@ -210,6 +238,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.formatter = CustomFormatter(transformation: transformation)
         self.maxLength = maxLength
         self.isAllowedCharacter = isAllowedCharacter
+        self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+        self.minimumFontSize = minimumFontSize
     }
 
     // MARK: - Methods
@@ -217,16 +247,21 @@ struct CustomTextField<AccessoryViewType: View>: View {
     // MARK: Private methods
 
     private func updateBorder() {
-        updateBorderColor()
-    }
-
-    private func updateBorderColor() {
+        guard !disabled else {
+            borderColor = UIScheme.color.textFieldDisabledBorderColor
+            borderWidth = UIScheme.dimension.inputBorderWidth
+            return
+        }
+        
         if !showValid {
             borderColor = UIScheme.color.textFieldErrorBorderColor
+            borderWidth = UIScheme.dimension.inputAccentedBorderWidth
         } else if editing {
             borderColor = UIScheme.color.textFieldFocusedBorderColor
+            borderWidth = UIScheme.dimension.inputAccentedBorderWidth
         } else {
-            borderColor = UIScheme.color.textFieldUnfocusedBorderColor
+            borderColor = UIScheme.color.textFieldNormalBorderColor
+            borderWidth = UIScheme.dimension.inputBorderWidth
         }
     }
 
@@ -239,7 +274,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         if !showValid {
             backgroundColor = UIScheme.color.textFieldErrorBackgroundColor
         } else if editing {
-            backgroundColor = UIScheme.color.brandColor.opacity(0.05)
+            backgroundColor = UIScheme.color.textFieldFocusedBackgroundColor
         } else {
             backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
         }
