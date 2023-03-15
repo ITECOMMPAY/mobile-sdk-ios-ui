@@ -158,6 +158,7 @@ public protocol PaymentOptions {
     var recipientInfo: RecipientInfo? { get }
     var screenDisplayModes: Set<ScreenDisplayMode> { get }
     var isDarkThemeOn: Bool { get }
+    var hideScanningCards: Bool { get }
 }
 
 public protocol AdditionalField {

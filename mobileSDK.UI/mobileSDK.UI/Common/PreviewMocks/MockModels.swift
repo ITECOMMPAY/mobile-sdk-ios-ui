@@ -128,6 +128,8 @@ struct MockPaymentOptions: PaymentOptions {
     var screenDisplayModes: Set<ScreenDisplayMode> = []
 
     var isDarkThemeOn: Bool = false
+
+    var hideScanningCards: Bool = false
 }
 
 struct MockSavedAccount: SavedAccount {

@@ -248,4 +248,8 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
             })
         )
     }
+
+    var hideScanningCards: Bool {
+        publicType.hideScanningCards
+    }
 }
