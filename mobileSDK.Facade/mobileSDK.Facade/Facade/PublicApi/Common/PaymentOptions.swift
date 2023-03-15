@@ -121,6 +121,8 @@ public class PaymentOptions: NSObject {
         get { paymentInfo.hideSavedWallets }
         set { paymentInfo.hideSavedWallets = newValue }
     }
+    /// Hide card scanning button
+    @objc public var hideScanningCards: Bool = false
     /// language code
     @objc public var languageCode: String? {
         get { paymentInfo.languageCode }
