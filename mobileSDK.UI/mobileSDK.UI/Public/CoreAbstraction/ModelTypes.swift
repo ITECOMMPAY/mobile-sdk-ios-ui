@@ -43,6 +43,12 @@ public enum ThreeDSecurePageType: Int {
     case THREE_DS_2_CHALLENGE = 3
 }
 
+public enum WalletSaveMode: Int {
+    case never = 0
+    case askCustomer = 1
+    case always = 2
+}
+
 public typealias Validator<Type> = (_ isValid: Type) -> Bool
 
 public protocol CustomerField {
@@ -93,7 +99,7 @@ public protocol PaymentMethod {
     var iconUrl: String? { get }
     var translations: [String: String] { get }
     var paymentUrl: String? { get }
-    var walletModeAsk: Bool { get }
+    var walletSaveMode: WalletSaveMode { get }
 }
 
 public protocol SavedAccount {
