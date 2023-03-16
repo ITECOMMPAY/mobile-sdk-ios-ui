@@ -35,7 +35,7 @@ struct NewCardCheckoutView: View {
     }
 
     private var canSaveCard: Bool {
-        paymentOptions.action != .Verify && paymentMethod.walletModeAsk
+        paymentOptions.action != .Verify && paymentMethod.walletSaveMode == .askCustomer
     }
 
     @State private var cardType: CardType?

@@ -158,7 +158,7 @@ struct MockPaymentMethod: PaymentMethod {
     var cardTypeRecognizer: CardTypeRecognizer? = MockCardTypeRecognizer()
     var iconUrl: String?
     var translations: [String: String] = [:]
-    var walletModeAsk: Bool = true
+    var walletSaveMode: WalletSaveMode = .askCustomer
 }
 
 struct MockThreeDSecurePage: ThreeDSecurePage {
