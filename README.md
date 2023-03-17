@@ -162,6 +162,7 @@ Here are the optional parameters:
 *   hideSavedWallets—hiding or displaying saved payment instruments in the payment form. Possible values:
     *   `true`—saved payment instruments are hidden, they are not displayed in the payment form
     *   `false`—saved payment instruments are displayed in the payment form
+*   hideScanningCards-hiding or displaying button to start card scanning flow
 
 4.  Pack all the payment parameters into a string for signing:
 
