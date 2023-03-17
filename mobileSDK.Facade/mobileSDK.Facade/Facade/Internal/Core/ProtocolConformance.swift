@@ -53,8 +53,10 @@ private struct MsdkCorePaymentMethodWrapper: mobileSDK_UI.PaymentMethod {
     var translations: [String: String] { coreType.translations }
 
     var paymentUrl: String? { coreType.paymentUrl }
-
-    var walletModeAsk: Bool { coreType.walletModeAsk }
+    
+    var walletSaveMode: mobileSDK_UI.WalletSaveMode {
+        mobileSDK_UI.WalletSaveMode.createFrom(coreType.walletSaveMode)
+    }
 }
 
 internal extension MsdkCore.SavedAccount {

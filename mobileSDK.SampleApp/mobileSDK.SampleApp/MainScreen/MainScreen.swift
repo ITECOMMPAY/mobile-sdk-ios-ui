@@ -20,6 +20,7 @@ struct MainScreen: View {
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
     @State var isDarkThemeOn: Bool = false
+    @State var hideScanningCards: Bool = false
     @State var overrideApiHosts: Bool = false {
         didSet {
             if !overrideApiHosts {
@@ -91,6 +92,9 @@ struct MainScreen: View {
         Section {
             HStack {
                 Toggle("Hide saved wallets", isOn: $paymentData.hideSavedWallets)
+            }
+            HStack {
+                Toggle("Hide scanning cards", isOn: $hideScanningCards)
             }
             HStack {
                 Toggle("Hide success final page", isOn: $paymentData.hideSuccessFinalPage)
@@ -472,6 +476,8 @@ struct MainScreen: View {
             let applePayOptions = PaymentOptions.ApplePayOptions(applePayMerchantID: paymentData.applePayMerchantID, applePayDescription: paymentData.applePayDescription, countryCode: paymentData.applePayCountryCode)
             paymentOptions.applePayOptions = applePayOptions
         }
+        
+        paymentOptions.hideScanningCards = hideScanningCards
 
         return paymentOptions
     }

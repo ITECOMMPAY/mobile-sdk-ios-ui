@@ -128,6 +128,8 @@ struct MockPaymentOptions: PaymentOptions {
     var screenDisplayModes: Set<ScreenDisplayMode> = []
 
     var isDarkThemeOn: Bool = false
+
+    var hideScanningCards: Bool = false
 }
 
 struct MockSavedAccount: SavedAccount {
@@ -156,7 +158,7 @@ struct MockPaymentMethod: PaymentMethod {
     var cardTypeRecognizer: CardTypeRecognizer? = MockCardTypeRecognizer()
     var iconUrl: String?
     var translations: [String: String] = [:]
-    var walletModeAsk: Bool = true
+    var walletSaveMode: WalletSaveMode = .askCustomer
 }
 
 struct MockThreeDSecurePage: ThreeDSecurePage {

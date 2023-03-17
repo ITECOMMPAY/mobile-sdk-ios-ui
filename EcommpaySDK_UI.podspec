@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "EcommpaySDK_UI"
-  spec.version      = "3.0.0"
+  spec.version      = "3.1.0"
   spec.summary      = "Ecommpay SDK with UI for iOS"
 
   spec.description  = "SDK for iOS is a software development kit for fast integration of the ECommPay payment solutions right in your mobile app for iOS."
-  spec.homepage     = "https://github.com/ITECOMMPAY/paymentpage-sdk-ios-ui"
+  spec.homepage     = "https://github.com/ITECOMMPAY/mobile-sdk-ios-ui"
   spec.license      = "MIT"
  
   spec.authors      = { "Alexey Khrameev"  =>  "a.khrameev@it.ecommpay.com",
@@ -24,5 +24,8 @@ Pod::Spec.new do |spec|
   spec.source       = { :http => "https://github.com/ITECOMMPAY/mobile-sdk-ios-ui/releases/download/#{spec.version}/ecommpaySDK.xcframework.zip" }
 
   spec.ios.vendored_frameworks = 'ecommpaySDK.xcframework'
+
+  spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end

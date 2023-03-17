@@ -53,16 +53,18 @@ struct TokenizeCardView: View {
                     recognizedCardType: $cardType
                 )
 
-                ScanCardButton() { info in
-                    if let cardNumber = info.cardNumber {
-                        formValues.cardNumber = cardNumber
+                if !paymentOptions.hideScanningCards {
+                    ScanCardButton() { info in
+                        if let cardNumber = info.cardNumber {
+                            formValues.cardNumber = cardNumber
+                        }
+                        
+                        if let cardExpiry = info.cardExpiry {
+                            formValues.cardExpiry = cardExpiry
+                        }
+                        
+                        scannedCardInfo = info
                     }
-                    
-                    if let cardExpiry = info.cardExpiry {
-                        formValues.cardExpiry = cardExpiry
-                    }
-
-                    scannedCardInfo = info
                 }
             }.padding(.top, UIScheme.dimension.formSmallSpacing)
 
