@@ -14,6 +14,7 @@ struct ScreenHeader: View {
             .foregroundColor(UIScheme.color.screenHeader)
             .font(UIScheme.font.screenHeader)
             .frame(alignment: .leading)
+            .accessibilityAddTraits(.isHeader)
     }
 }
 

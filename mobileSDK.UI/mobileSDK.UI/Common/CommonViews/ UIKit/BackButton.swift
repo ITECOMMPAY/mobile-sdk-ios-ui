@@ -18,6 +18,7 @@ struct BackButton: View {
             IR.backButton.image?.renderingMode(.template)
                 .foregroundColor(foregroundColor)
         }
+        .accessibilityLabel(Text("Back"))
     }
 }
 
