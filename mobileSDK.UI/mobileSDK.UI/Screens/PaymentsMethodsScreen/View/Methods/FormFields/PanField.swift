@@ -127,7 +127,9 @@ private struct CardTypeView: View {
             } else {
                 view(for: nil)
             }
-        }.onAppear(perform: initTimer)
+        }
+        .onAppear(perform: initTimer)
+        .accessibilityHidden(true)
     }
 
     func view(for type: CardType?) -> some View {

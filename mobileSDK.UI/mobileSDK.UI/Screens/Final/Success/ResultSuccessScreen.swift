@@ -44,11 +44,13 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     IR.successLogo.image
                         .frame(height: 58)
                         .opacity(animationState.showLogo ? 1 : 0)
+                        .accessibilityHidden(true)
                     Text(title)
                         .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                         .foregroundColor(UIScheme.color.text)
                         .offset(x: .zero, y: animationState.titleOffset)
                         .opacity(animationState.showTitle ? 1 : 0)
+                        .accessibilityAddTraits(.isHeader)
                 }
                 .offset(x: .zero, y: animationState.headerOffset)
                 overviewView
@@ -81,6 +83,8 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             .onAppear {
                 animateViews()
             }
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
     
@@ -191,6 +195,10 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
         
         animate(delay: 1.75) {
             animationState.showFooter.toggle()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+            UIAccessibility.post(notification: .layoutChanged, argument: nil)
         }
     }
     

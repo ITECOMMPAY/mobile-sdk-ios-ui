@@ -11,7 +11,8 @@ struct FooterView: View {
     var body: some View {
         IR.poweredByLogo.image?
             .frame(height: UIScheme.dimension.paymentOverviewSpacing)
-        }
+            .accessibilityHidden(true)
+    }
 }
 
 #if DEBUG

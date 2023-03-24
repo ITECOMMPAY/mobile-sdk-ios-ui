@@ -40,6 +40,7 @@ struct PaymentOverview: View {
             .colorMultiply(UIScheme.color.brandColor)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
                           corners: .allCorners)
+            .accessibilityHidden(true)
     }
 
     var logo: some View {
@@ -53,6 +54,7 @@ struct PaymentOverview: View {
                     .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
                 Text(currency).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
             }
+            .accessibilityElement(children: .combine)
             vat
         }
         .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)

@@ -30,13 +30,16 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 ZStack {
                     textField
                         .padding(textFieldPaddings)
+                        .accessibilityHint(disabled ? "Disabled" : "Double tap to edit")
                     HStack(spacing: .zero) {
                         Text(placeholder)
                             .foregroundColor(placeholderColor)
                             .animatableFont(size: placeholderFontSize, makeFont: UIScheme.font.commonRegular)
                             .layoutPriority(1)
+                            .accessibilityHint(isRequired ? "Required" : "")
                         if isRequired {
                             Text("*").foregroundColor(requiredMarkColor)
+                                .accessibilityHidden(true)
                         }
                         Spacer()
                     }
@@ -45,6 +48,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
                     isFocused = true
                 }
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
+                    .accessibilityHidden(true)
             }
             .background(backgroundColor.overlay(
                 RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
@@ -68,7 +72,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
                     .foregroundColor(errorHintColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
-        }
+        }.accessibilityElement(children: .combine)
     }
 
     @ViewBuilder
@@ -186,7 +190,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,
                                                            leading: UIScheme.dimension.middleSpacing,
                                                            bottom: 9,
-                                                           trailing: 0)
+                                                           trailing: UIScheme.dimension.middleSpacing)
 
     @Binding
     private var text: String

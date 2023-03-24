@@ -20,7 +20,7 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            header
+            header.accessibilityElement(children: .combine)
             VStack {
                 if isExpanded {
                     content.transition(.move(edge: .top).combined(with: .opacity))
@@ -70,6 +70,8 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
         Text(methodTitle)
             .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
             .foregroundColor(UIScheme.color.text)
+            .accessibilityLabel(Text(isSavedAccount ? "Saved card \(methodTitle)" : methodTitle))
+            .accessibilityHint(isExpanded ? "Expanded" : "Collapsed")
     }
 
     var chevron: some View {

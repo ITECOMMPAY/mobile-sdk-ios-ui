@@ -20,11 +20,14 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
                 CloseButton {
                     viewModel.dispatch(intent: .close)
                 }
+                .accessibilitySortPriority(-1)
             }.padding(UIScheme.dimension.largeSpacing)
             webView
             .opacity(isLoading ? 0 : 1)
             .overlay(loader)
             .frame(maxWidth: .infinity)
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 

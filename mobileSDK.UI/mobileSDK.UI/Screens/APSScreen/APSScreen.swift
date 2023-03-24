@@ -51,6 +51,8 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
             )
             .frame(maxWidth: .infinity)
 
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 }

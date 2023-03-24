@@ -50,22 +50,29 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 VStack(spacing: UIScheme.dimension.middleSpacing) {
                     ZStack {
-                        IR.errorLogo.image.opacity(animationState.showLogo ? 1 : 0)
+                        IR.errorLogo.image
+                            .opacity(animationState.showLogo ? 1 : 0)
+                            .accessibilityHidden(true)
                         ZStack {
                             CloseButton {
                                 viewModel.dispatch(intent: isTryAgain ? .closeTryAgain : .close)
-                            }.opacity(animationState.showCloseButton ? 1 : 0)
+                            }
+                            .opacity(animationState.showCloseButton ? 1 : 0)
+                            .accessibilityHidden(!isTryAgain)
                         }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
                     }.frame(height: 58)
                     VStack(spacing: UIScheme.dimension.tinySpacing) {
                         Text(title)
                             .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                             .foregroundColor(UIScheme.color.text)
+                            .accessibilityAddTraits(.isHeader)
+                            .accessibilitySortPriority(999)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
                             Text(paymentMessage)
                                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                                 .foregroundColor(UIScheme.color.errorTextColor)
                                 .multilineTextAlignment(.center)
+                                .accessibilitySortPriority(998)
                         }
                     }
                     .offset(x: .zero, y: animationState.titleOffset)
@@ -103,6 +110,8 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             .onAppear {
                 animateViews()
             }
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
     
@@ -214,6 +223,10 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             animate(delay: 1.8) {
                 animationState.showCloseButton.toggle()
             }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+            UIAccessibility.post(notification: .layoutChanged, argument: nil)
         }
     }
     

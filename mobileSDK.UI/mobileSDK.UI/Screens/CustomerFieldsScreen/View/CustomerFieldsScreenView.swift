@@ -58,6 +58,8 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
             }
             .padding(.top, UIScheme.dimension.middleSpacing)
             .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
+        }.onAppear {
+            UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
 

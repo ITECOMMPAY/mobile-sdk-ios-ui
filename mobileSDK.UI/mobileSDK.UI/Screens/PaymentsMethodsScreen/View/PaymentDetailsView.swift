@@ -56,6 +56,7 @@ struct PaymentDetailsAttributes: View {
             HStack(spacing: UIScheme.dimension.tinySpacing) {
                 Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
                     .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
+                    .accessibilityAddTraits(.isHeader)
 //                Button {
 //                    UIPasteboard.general.string = descriptionText
 //                } label: {
