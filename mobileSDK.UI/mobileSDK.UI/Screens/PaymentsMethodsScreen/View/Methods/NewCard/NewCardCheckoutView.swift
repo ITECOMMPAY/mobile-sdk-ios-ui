@@ -22,7 +22,6 @@ struct NewCardCheckoutView: View {
     @State var isCardHolderValid: Bool = false
     @State var isExpiryValid: Bool = false
     @State var isCustomerFieldsValid: Bool = false
-    @State var scannedCardInfo: ScannedCardInfo? = nil
 
     private var isFormValid: Bool {
         [
@@ -51,24 +50,9 @@ struct NewCardCheckoutView: View {
                 PanField(
                     paymentMethod: paymentMethod,
                     cardNumber: $formValues.cardNumber,
-                    scannedCardInfo: $scannedCardInfo,
                     isValueValid: $isCardValid,
                     recognizedCardType: $cardType
                 )
-
-                if !paymentOptions.hideScanningCards {
-                    ScanCardButton() { info in
-                        if let cardNumber = info.cardNumber {
-                            formValues.cardNumber = cardNumber
-                        }
-                        
-                        if let cardExpiry = info.cardExpiry {
-                            formValues.cardExpiry = cardExpiry
-                        }
-                        
-                        scannedCardInfo = info
-                    }
-                }
             }.padding(.top, UIScheme.dimension.formSmallSpacing)
 
             CardHolderField(
@@ -80,7 +64,6 @@ struct NewCardCheckoutView: View {
                 ExpiryField(
                     disabled: false,
                     expiryString: $formValues.cardExpiry,
-                    scannedCardInfo: $scannedCardInfo,
                     isValueValid: $isExpiryValid
                 )
                 CvvField(withInfoButton: true, cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
