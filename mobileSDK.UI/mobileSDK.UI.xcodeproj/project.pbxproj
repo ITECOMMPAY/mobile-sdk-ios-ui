@@ -263,10 +263,6 @@
 		84C87D9328CF462D00B684DE /* InfoCardBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C87D0728CF1BFD00B684DE /* InfoCardBackground.swift */; };
 		84D58DD928CF59D9008DD7BE /* CustomFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D58DD828CF59D9008DD7BE /* CustomFormatter.swift */; };
 		84D58DDA28CF59D9008DD7BE /* CustomFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D58DD828CF59D9008DD7BE /* CustomFormatter.swift */; };
-		B35515A429B6241D00B87E92 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */; };
-		B35515A529B6241D00B87E92 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E401299CBADB007A1E2F /* libopencv_core.a */; };
-		B35515A729B6241D00B87E92 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */; };
-		B35515A829B6241D00B87E92 /* CardIO.m in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E3F9299CBAD7007A1E2F /* CardIO.m */; };
 		B35515AA29B624BF00B87E92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7629B1E88F00B80B23 /* Accelerate.framework */; };
 		B35515AB29B624C300B87E92 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7829B1E89300B80B23 /* AVFoundation.framework */; };
 		B35515AC29B624C800B87E92 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDDC7A29B1E89F00B80B23 /* AudioToolbox.framework */; };
@@ -276,7 +272,6 @@
 		B396B8B7294CB3730089FA22 /* TokenizeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */; };
 		B3B2667F2980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
 		B3B266802980224300F4ACE5 /* VerifyOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */; };
-		B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
 		B3E7BD8829A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
 		B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8729A6014F003E0971 /* ColorScheme.swift */; };
 		B3E7BD8B29A6018C003E0971 /* Color+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */; };
@@ -302,7 +297,6 @@
 		B3F7593B29B23A460041AE49 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E7BDAD29A64022003E0971 /* MobileCoreServices.framework */; };
 		B3F87DA729B20FA600ECFD51 /* ExpiryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AC288A732900259A50 /* ExpiryField.swift */; };
 		B3F87DA829B20FA900ECFD51 /* PanField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241AF288A733C00259A50 /* PanField.swift */; };
-		B3F87DA929B20FAC00ECFD51 /* ScanCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */; };
 		B3F87DAA29B20FB600ECFD51 /* PaymentMethodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F26E292869A460002861F8 /* PaymentMethodsView.swift */; };
 		B3FC0026292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
 		B3FC0027292FA62000A201AA /* PaymentDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FC0025292FA62000A201AA /* PaymentDetailsButton.swift */; };
@@ -457,7 +451,6 @@
 		84F26E3D2869C9A1002861F8 /* PaymentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOverview.swift; sourceTree = "<group>"; };
 		84F705C8287C608C00E7CD12 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		84F7ABDE28AB94D700E634D9 /* CustomerFields+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomerFields+Utils.swift"; sourceTree = "<group>"; };
-		B38C6EFE29B73DDA00A23D55 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizeCardView.swift; sourceTree = "<group>"; };
 		B3B2667E2980224300F4ACE5 /* VerifyOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOverview.swift; sourceTree = "<group>"; };
 		B3CDDC7629B1E88F00B80B23 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
@@ -465,19 +458,6 @@
 		B3CDDC7A29B1E89F00B80B23 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		B3CDDC7C29B1E8A800B80B23 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B3CDDC7E29B1E8AD00B80B23 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
-		B3D4E3F9299CBAD7007A1E2F /* CardIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardIO.m; sourceTree = "<group>"; };
-		B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIODetectionMode.h; sourceTree = "<group>"; };
-		B3D4E3FB299CBAD8007A1E2F /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
-		B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOUtilities.h; sourceTree = "<group>"; };
-		B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
-		B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
-		B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_imgproc.a; sourceTree = "<group>"; };
-		B3D4E400299CBADA007A1E2F /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
-		B3D4E401299CBADB007A1E2F /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libopencv_core.a; sourceTree = "<group>"; };
-		B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
-		B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
-		B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanCardButton.swift; sourceTree = "<group>"; };
 		B3E7BD8729A6014F003E0971 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		B3E7BD8A29A6018C003E0971 /* Color+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utils.swift"; sourceTree = "<group>"; };
 		B3E7BD8D29A601AD003E0971 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
@@ -519,9 +499,6 @@
 				B35515AC29B624C800B87E92 /* AudioToolbox.framework in Frameworks */,
 				B35515AB29B624C300B87E92 /* AVFoundation.framework in Frameworks */,
 				B35515AA29B624BF00B87E92 /* Accelerate.framework in Frameworks */,
-				B35515A429B6241D00B87E92 /* libCardIO.a in Frameworks */,
-				B35515A529B6241D00B87E92 /* libopencv_core.a in Frameworks */,
-				B35515A729B6241D00B87E92 /* libopencv_imgproc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,7 +953,6 @@
 				84B241A9288A730B00259A50 /* CvvField.swift */,
 				84B241AC288A732900259A50 /* ExpiryField.swift */,
 				84B241AF288A733C00259A50 /* PanField.swift */,
-				B3D4E429299CCFF9007A1E2F /* ScanCardButton.swift */,
 			);
 			path = FormFields;
 			sourceTree = "<group>";
@@ -1022,7 +998,6 @@
 			children = (
 				84BC13E42852088F008814EB /* mobileSDK.UI */,
 				84A0F13928746596005F81DE /* UIPreview */,
-				B3CDDC6C29B1E7E900B80B23 /* CardIO */,
 				84BC13E32852088F008814EB /* Products */,
 				84AFF7D4285210B600E6F1DE /* Frameworks */,
 			);
@@ -1104,26 +1079,6 @@
 				B396B8B5294CB3730089FA22 /* TokenizeCardView.swift */,
 			);
 			path = TokenizeCard;
-			sourceTree = "<group>";
-		};
-		B3CDDC6C29B1E7E900B80B23 /* CardIO */ = {
-			isa = PBXGroup;
-			children = (
-				B3D4E3FB299CBAD8007A1E2F /* CardIO.h */,
-				B3D4E3F9299CBAD7007A1E2F /* CardIO.m */,
-				B3D4E402299CBADC007A1E2F /* CardIOCreditCardInfo.h */,
-				B3D4E3FA299CBAD7007A1E2F /* CardIODetectionMode.h */,
-				B3D4E3FE299CBAD9007A1E2F /* CardIOPaymentViewController.h */,
-				B3D4E403299CBADC007A1E2F /* CardIOPaymentViewControllerDelegate.h */,
-				B3D4E3FC299CBAD8007A1E2F /* CardIOUtilities.h */,
-				B3D4E400299CBADA007A1E2F /* CardIOView.h */,
-				B3D4E3F8299CBAD7007A1E2F /* CardIOViewDelegate.h */,
-				B3D4E3FD299CBAD9007A1E2F /* libCardIO.a */,
-				B3D4E401299CBADB007A1E2F /* libopencv_core.a */,
-				B3D4E3FF299CBADA007A1E2F /* libopencv_imgproc.a */,
-				B38C6EFE29B73DDA00A23D55 /* module.modulemap */,
-			);
-			path = CardIO;
 			sourceTree = "<group>";
 		};
 		B3E7BD8629A6012B003E0971 /* ColorScheme */ = {
@@ -1323,7 +1278,6 @@
 				84C87D9128CF462D00B684DE /* LibraryBundle.swift in Sources */,
 				84C87D3A28CF45DB00B684DE /* PaymentDetailsView.swift in Sources */,
 				84C87D5F28CF45FF00B684DE /* UIKitTextField+Configuration+UITextInputTraits.swift in Sources */,
-				B3F87DA929B20FAC00ECFD51 /* ScanCardButton.swift in Sources */,
 				84C87D5128CF45F300B684DE /* ResultDeclineScreen.swift in Sources */,
 				84C87D7D28CF461700B684DE /* CloseButton.swift in Sources */,
 				84C87D7628CF461100B684DE /* AsyncImage.swift in Sources */,
@@ -1478,7 +1432,6 @@
 				84C87CC528CB476200B684DE /* PaymentMethod+DisplayName.swift in Sources */,
 				84C87CE428CB478400B684DE /* Localization+Key.swift in Sources */,
 				84C87C6C28CB470300B684DE /* FieldType.swift in Sources */,
-				B35515A829B6241D00B87E92 /* CardIO.m in Sources */,
 				84C87CDB28CB478400B684DE /* UIScheme.swift in Sources */,
 				84C87C7F28CB471700B684DE /* RootView.swift in Sources */,
 				84C87C9628CB473900B684DE /* PaymentOverview.swift in Sources */,
@@ -1512,7 +1465,6 @@
 				84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */,
 				84C87CEC28CB478400B684DE /* Localization+UI.swift in Sources */,
 				B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */,
-				B3D4E42B299CCFF9007A1E2F /* ScanCardButton.swift in Sources */,
 				84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */,
 				84C87CBC28CB475900B684DE /* UIKitTextField+Coordinator.swift in Sources */,
 				84C87C8B28CB472A00B684DE /* ExpiryField.swift in Sources */,

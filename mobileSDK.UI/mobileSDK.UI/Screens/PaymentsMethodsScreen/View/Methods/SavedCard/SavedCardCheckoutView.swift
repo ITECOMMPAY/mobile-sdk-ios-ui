@@ -100,7 +100,6 @@ struct SavedCardCheckoutView: View {
         ExpiryField(
             disabled: true,
             expiryString: .constant(savedCard.savedCardExpiry?.stringValue ?? ""),
-            scannedCardInfo: .constant(nil),
             isValueValid: .constant(true)
         )
     }
