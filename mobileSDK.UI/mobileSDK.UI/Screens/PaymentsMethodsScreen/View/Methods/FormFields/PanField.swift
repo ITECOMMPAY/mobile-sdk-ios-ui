@@ -21,8 +21,6 @@ struct PanField: View {
 
     @Binding var cardNumber: String
 
-    @Binding var scannedCardInfo: ScannedCardInfo?
-
     @Binding var isValueValid: Bool
 
     @Binding var recognizedCardType: CardType?
@@ -64,10 +62,6 @@ struct PanField: View {
             validate(cardNumber)
         }.onAppear {
             validate(cardNumber, ignoreEmpty: true)
-        }.onReceive(Just(scannedCardInfo)) { info in
-            guard info?.cardNumber != nil else { return }
-
-            validate(cardNumber)
         }
     }
 
@@ -180,7 +174,6 @@ struct PanFieldPreview: View {
         PanField(
             paymentMethod: MockPaymentMethod(),
             cardNumber: $cardNumber,
-            scannedCardInfo: .constant(nil),
             isValueValid: $isValid,
             recognizedCardType: .constant(nil)
         )

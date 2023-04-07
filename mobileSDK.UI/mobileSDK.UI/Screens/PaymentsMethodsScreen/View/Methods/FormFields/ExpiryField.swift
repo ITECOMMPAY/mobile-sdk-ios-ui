@@ -13,7 +13,6 @@ struct ExpiryField: View {
     @Injected var expiryFabric: CardExpiryFabric?
 
     @Binding var expiryString: String
-    @Binding var scannedCardInfo: ScannedCardInfo?
     @Binding var isValueValid: Bool
 
     let transformation = InputMaskTransformation(with: "##/##")
@@ -43,10 +42,6 @@ struct ExpiryField: View {
         }
         .onAppear {
             validate(expiryString, ignoreEmpty: true)
-        }.onReceive(Just(scannedCardInfo)) { info in
-            guard info?.cardExpiry != nil else { return }
-
-            validate(expiryString)
         }
     }
 
@@ -79,7 +74,6 @@ struct ExpiryFieldPreview: View {
             ExpiryField(
                 disabled: false,
                 expiryString: $value,
-                scannedCardInfo: .constant(nil),
                 isValueValid: $isValid
             )
             Text("value=\(value)  isValid=\(isValid.description)")
