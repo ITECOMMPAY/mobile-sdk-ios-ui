@@ -130,6 +130,8 @@ struct MockPaymentOptions: PaymentOptions {
 
     var recurringRegister: Bool = true
 
+    var recurringRegular: Bool = true
+
     var recurringDetails: [RecurringDetailsData] = [
         RecurringDetailsData(
             title: L.recurring_start_date,

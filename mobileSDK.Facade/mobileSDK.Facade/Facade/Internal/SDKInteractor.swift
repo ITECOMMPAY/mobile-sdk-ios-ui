@@ -253,6 +253,10 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         publicType.recurrentInfo?.register == true
     }
 
+    var recurringRegular: Bool {
+        publicType.recurrentInfo?.type == .Regular
+    }
+
     var recurringDetails: [RecurringDetailsData] {
         let recurrentInfo = publicType.recurrentInfo
 

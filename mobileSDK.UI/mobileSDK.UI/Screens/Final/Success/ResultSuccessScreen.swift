@@ -135,6 +135,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
     }
 
     private var showRecurringError: Bool {
+        viewModel.state.paymentOptions.recurringRegular &&
         viewModel.state.paymentOptions.recurringRegister && payment?.recurringId == nil
     }
 
