@@ -48,6 +48,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     Text(title)
                         .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
                         .foregroundColor(UIScheme.color.text)
+                        .multilineTextAlignment(.center)
                         .offset(x: .zero, y: animationState.titleOffset)
                         .opacity(animationState.showTitle ? 1 : 0)
                         .accessibilityAddTraits(.isHeader)
@@ -56,11 +57,15 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                 overviewView
                     .offset(x: .zero, y: animationState.overviewOffset)
                     .opacity(animationState.showOverview ? 1 : 0)
-                ResultTableInfo(resultInfoKeyValuePairs: [
-                    (L.title_card_wallet.rawValue, valueTitleCardWallet),
-                    (L.title_payment_id.rawValue, payment?.id ?? ""),
-                    (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
-                ] + completeFields)
+                ResultTableInfo(
+                    recurringDetails: viewModel.state.paymentOptions.recurringDetails,
+                    showRecurringError: showRecurringError,
+                    resultInfoKeyValuePairs: [
+                        (L.title_card_wallet.rawValue, valueTitleCardWallet),
+                        (L.title_payment_id.rawValue, payment?.id ?? ""),
+                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
+                    ] + completeFields
+                )
                     .offset(x: .zero, y: animationState.infoOffset)
                     .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
@@ -96,6 +101,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                 VerifyOverview(
                     paymentID: nil,
                     paymentDescription: nil,
+                    recurringData: [],
                     backgroundTemplate: UIScheme.infoCardBackground,
                     logoImage: logo
                 )
@@ -107,6 +113,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                 isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                recurringData: [],
                 paymentDetails: [],
                 backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
@@ -125,6 +132,10 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
         default:
             return L.title_result_succes_payment.string
         }
+    }
+
+    private var showRecurringError: Bool {
+        viewModel.state.paymentOptions.recurringRegister && payment?.recurringId == nil
     }
 
     private var valueTitleCardWallet: String {

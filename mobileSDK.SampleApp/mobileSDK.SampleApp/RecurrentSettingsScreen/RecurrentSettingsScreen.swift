@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 struct RecurrentData {
-    var register: Bool = true
+    var register: Bool
     var type: String?
     var expiryDay: String?
     var expiryMonth: String?
     var expiryYear: String?
     var period: String?
+    var interval: Int?
     var time: String?
     var startDate: String?
     var scheduledPaymentID: String?
@@ -28,8 +29,9 @@ struct RecurrentData {
                       expiryMonth: "11",
                       expiryYear: "2026",
                       period: "M",
+                      interval: 1,
                       time: "12:00:00",
-                      startDate: "12-10-2022",
+                      startDate: "12-10-2023",
                       scheduledPaymentID: getUniqueScheduledID(),
                       amount: 1000,
                       schedule: [RecurrentDataSchedule.random])
@@ -66,6 +68,7 @@ struct RecurrentSettingsScreen: View {
                     recurrentData = RecurrentData.mockData
                 }
             }) {
+                Toggle("Register recurring", isOn: $recurrentData.register)
                 FieldWithLabel(label: "Type") {
                     TextField(" R/C/U/I", text: $recurrentData.type.flatten())
                 }
@@ -78,8 +81,13 @@ struct RecurrentSettingsScreen: View {
                 FieldWithLabel(label: "Expiry year") {
                     TextField("YYYY", text: $recurrentData.expiryYear.flatten())
                 }
-                FieldWithLabel(label: "Period") {
-                    TextField("Day/Week/Month/Quarter/Year", text: $recurrentData.period.flatten())
+                Group {
+                    FieldWithLabel(label: "Period") {
+                        TextField("Day/Week/Month/Quarter/Year", text: $recurrentData.period.flatten())
+                    }
+                    FieldWithLabel(label: "Interval") {
+                        TextField("integer number", text: $recurrentData.interval.flattenAsString())
+                    }
                 }
                 FieldWithLabel(label: "Time") {
                     TextField("time", text: $recurrentData.time.flatten())
@@ -119,7 +127,7 @@ struct RecurrentSettingsScreen: View {
         .navigationTitle("Recurrent Data")
         .toolbar {
             Button("Clear") {
-                recurrentData = RecurrentData()
+                recurrentData = RecurrentData(register: true)
             }
         }
         .navigationBarTitleDisplayMode(.inline)

@@ -115,8 +115,8 @@ private struct CardTypeView: View {
             if let recognizedType = recognizedType {
                 view(for: recognizedType)
             } else if !visibleCardTypes.isEmpty {
-                if visibleCardTypeIndex < visibleCardTypes.count, let type = visibleCardTypes[visibleCardTypeIndex] {
-                   view(for: type)
+                if visibleCardTypeIndex < visibleCardTypes.count {
+                   view(for: visibleCardTypes[visibleCardTypeIndex])
                 }
             } else {
                 view(for: nil)

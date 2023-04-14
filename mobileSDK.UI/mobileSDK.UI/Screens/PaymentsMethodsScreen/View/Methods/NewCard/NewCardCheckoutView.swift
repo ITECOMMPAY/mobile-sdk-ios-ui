@@ -93,6 +93,10 @@ struct NewCardCheckoutView: View {
             }
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
+            if !isContinueButton, let recurringDisclaimer = paymentOptions.recurringDisclaimer {
+                RecurringDisclaimer(text: recurringDisclaimer.string)
+                    .padding(.bottom, UIScheme.dimension.middleSpacing)
+            }
         }
         .padding(.horizontal, UIScheme.dimension.middleSpacing)
     }

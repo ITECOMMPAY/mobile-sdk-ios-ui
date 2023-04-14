@@ -10,6 +10,7 @@ import SwiftUI
 struct VerifyOverview: View {
     let paymentID: String?
     let paymentDescription: String?
+    let recurringData: [RecurringDetailsData]
     let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
     var isDimBackground: Bool = false
@@ -17,6 +18,7 @@ struct VerifyOverview: View {
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
             logo
+            if !recurringData.isEmpty { recurringDetails }
             paymentIDView
             details
         }.frame(maxWidth: .infinity, alignment: .topLeading)
@@ -36,6 +38,10 @@ struct VerifyOverview: View {
 
     private var logo: some View {
         logoImage
+    }
+
+    var recurringDetails: some View {
+        RecurringDetailsView(details: recurringData)
     }
 
     @ViewBuilder
@@ -75,6 +81,12 @@ struct VerifyOverview_Previews: PreviewProvider {
         VerifyOverview(
             paymentID: "EP2e11-f018-RQR12-26VL-0412CS",
             paymentDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            recurringData: [
+                RecurringDetailsData(
+                    title: L.recurring_start_date,
+                    description: .value("November 19, 2022")
+                )
+            ],
             backgroundTemplate: .lines,
             logoImage: IR.applePayButtonLogo.image,
             isDimBackground: true

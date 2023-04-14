@@ -59,6 +59,8 @@ func getCoreVersionString() -> String {
         languageCode: "",
         forcePaymentMethod: .none,
         hideSavedWallets: false,
+        hideSuccessFinalPage: false,
+        hideDeclineFinalPage: false,
         secretKey: "",
         apiHost: "sdk.ecommpay.com",
         wsApiHost: "paymentpage.ecommpay.com",

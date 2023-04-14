@@ -249,6 +249,107 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         )
     }
 
+    var recurringRegister: Bool {
+        publicType.recurrentInfo?.register == true
+    }
+
+    var recurringDetails: [RecurringDetailsData] {
+        let recurrentInfo = publicType.recurrentInfo
+
+        guard recurrentInfo?.register == true, recurrentInfo?.type == .Regular else {
+            return []
+        }
+        
+        var recurringDetails: [RecurringDetailsData] = []
+        
+        if action == .Verify {
+            recurringDetails.append(
+                RecurringDetailsData(
+                    title: L.recurring_charged_right_now,
+                    description: .value("0.00 " + publicType.paymentInfo.paymentCurrency)
+                )
+            )
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        if let start = recurrentInfo?.startDate, let startDate = dateFormatter.date(from: start) {
+
+            dateFormatter.dateFormat = "LLLL d, yyyy"
+            let startDateText = dateFormatter.string(from: startDate)
+
+            recurringDetails.append(
+                RecurringDetailsData(
+                    title: L.recurring_start_date,
+                    description: .value(startDateText)
+                )
+            )
+        }
+
+        let numberFormatter = { () -> NumberFormatter in
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 2
+            formatter.minimumFractionDigits = 2
+            return formatter
+        }()
+        let paymentAmount = recurrentInfo?.amount ?? Int(publicType.paymentInfo.paymentAmount)
+
+        if let amount = numberFormatter.string(for: (Decimal(integerLiteral: paymentAmount) / 100) as NSDecimalNumber) {
+            recurringDetails.append(
+                RecurringDetailsData(
+                    title: L.recurring_amount,
+                    description: .value(amount + " " + publicType.paymentInfo.paymentCurrency)
+                )
+            )
+        }
+
+        if let frequency = recurrentInfo?.period, recurrentInfo?.interval == nil || recurrentInfo?.interval == 1 {
+            let period: L
+            switch frequency {
+            case .Day: period = L.recurring_period_daily
+            case .Week: period = L.recurring_period_weekly
+            case .Month: period = L.recurring_period_monthly
+            case .Quarter: period = L.recurring_period_quarterly
+            case .Year: period = L.recurring_period_annually
+            }
+
+            recurringDetails.append(
+                RecurringDetailsData(
+                    title: L.recurring_period_label,
+                    description: .localizable(period)
+                )
+            )
+        }
+        
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        if let expiryDay = recurrentInfo?.expiryDay, let expiryMonth = recurrentInfo?.expiryMonth,
+           let expiryYear = recurrentInfo?.expiryYear,
+           let expiryDate = dateFormatter.date(from: "\(expiryDay)-\(expiryMonth)-\(expiryYear)") {
+            
+            dateFormatter.dateFormat = "LLLL d, yyyy"
+            let expiryText = dateFormatter.string(from: expiryDate)
+            
+            recurringDetails.append(
+                RecurringDetailsData(
+                    title: L.recurring_type_expiry_date,
+                    description: .value(expiryText)
+                )
+            )
+        }
+        
+        return recurringDetails
+    }
+
+    var recurringDisclaimer: L? {
+        let recurrentInfo = publicType.recurrentInfo
+        
+        guard recurrentInfo?.register == true else { return nil }
+
+        return recurrentInfo?.type == .Regular ? L.recurring_type_regular : L.recurring_type_express
+    }
+
     var hideScanningCards: Bool {
         publicType.hideScanningCards
     }

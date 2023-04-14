@@ -16,6 +16,20 @@ extension L {
         // MARK: - Payment details
         .title_payment_information_screen: "Payment Details",
         .button_hide_details: "Hide Details",
+        // MARK: - Recurring details
+        .recurring_start_date: "Next Bill Date",
+        .recurring_type_expiry_date: "End Date",
+        .recurring_period_label: "Frequency",
+        .recurring_period_daily: "Every Day",
+        .recurring_period_weekly: "Every Week",
+        .recurring_period_monthly: "Every Month",
+        .recurring_period_quarterly: "Every Quarter",
+        .recurring_period_annually: "Every Year",
+        .recurring_amount: "Recurring Amount",
+        .recurring_fail: "Failed to register recurring payments",
+        .recurring_type_express: "By clicking pay your methods will be saved for future payments.",
+        .recurring_type_regular: "By clicking pay your methods will be saved for future payments. Subscription can be canceled at any time. Also it will automatically cancel when your card expires.",
+        .recurring_charged_right_now: "Charged Right Now",
         // MARK: - Loading screen
         .title_cancel_payment: "Cancel Payment",
         // MARK: - Success / Error screen

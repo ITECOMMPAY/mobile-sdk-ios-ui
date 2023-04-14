@@ -11,6 +11,7 @@ struct PaymentOverview: View {
     let isVatIncluded: Bool
     let priceValue: Decimal
     let currency: String
+    let recurringData: [RecurringDetailsData]
     let paymentDetails: [PaymentDetailData]
     let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
@@ -26,6 +27,7 @@ struct PaymentOverview: View {
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
             logo
+            if !recurringData.isEmpty { recurringDetails }
             price
             if !paymentDetails.isEmpty { details }
         }.frame(maxWidth: .infinity, alignment: .topLeading)
@@ -70,6 +72,10 @@ struct PaymentOverview: View {
     var details: some View {
         PaymentDetailsView(details: paymentDetails)
     }
+
+    var recurringDetails: some View {
+        RecurringDetailsView(details: recurringData)
+    }
 }
 
 #if DEBUG
@@ -79,6 +85,12 @@ struct PaymentSummaryView_Previews: PreviewProvider {
             isVatIncluded: true,
             priceValue: Decimal(238.50),
             currency: "EUR",
+            recurringData: [
+                RecurringDetailsData(
+                    title: L.recurring_start_date,
+                    description: .value("November 19, 2022")
+                )
+            ],
             paymentDetails: [
                 PaymentDetailData(title: L.title_payment_id,
                                   description: "EP2e11-f018-RQR12-26VL-0412CS",
