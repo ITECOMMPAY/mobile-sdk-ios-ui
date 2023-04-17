@@ -165,6 +165,7 @@ public protocol PaymentOptions {
     var recipientInfo: RecipientInfo? { get }
     var screenDisplayModes: Set<ScreenDisplayMode> { get }
     var recurringRegister: Bool { get }
+    var recurringRegular: Bool { get }
     var recurringDetails: [RecurringDetailsData] { get }
     var recurringDisclaimer: L? { get }
     var isDarkThemeOn: Bool { get }
