@@ -75,6 +75,7 @@ public protocol Payment {
     var paymentStatus: PaymentStatus? { get }
     var method: String? { get }
     var token: String? { get }
+    var recurringId: Int? { get }
 }
 
 public protocol CompleteField {
@@ -163,6 +164,10 @@ public protocol PaymentOptions {
     var token: String? { get }
     var recipientInfo: RecipientInfo? { get }
     var screenDisplayModes: Set<ScreenDisplayMode> { get }
+    var recurringRegister: Bool { get }
+    var recurringRegular: Bool { get }
+    var recurringDetails: [RecurringDetailsData] { get }
+    var recurringDisclaimer: L? { get }
     var isDarkThemeOn: Bool { get }
     var hideScanningCards: Bool { get }
 }

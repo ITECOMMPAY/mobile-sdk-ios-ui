@@ -74,14 +74,19 @@ struct SavedCardCheckoutView: View {
                 }
             }
             .padding(.bottom, UIScheme.dimension.middleSpacing)
-
-            if !isTokenizedAction {
-                LinkButton(text: L.button_delete.string,
-                           fontSize: UIScheme.dimension.smallFont,
-                           foregroundColor: UIScheme.color.deleteCardButtonColor,
-                           onTap: onCardDeleteTap)
-                .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-            }
+            
+            VStack(spacing: UIScheme.dimension.middleSpacing) {
+                if !isTokenizedAction {
+                    LinkButton(text: L.button_delete.string,
+                               fontSize: UIScheme.dimension.smallFont,
+                               foregroundColor: UIScheme.color.deleteCardButtonColor,
+                               onTap: onCardDeleteTap)
+                }
+                
+                if !isContinueButton, let recurringDisclaimer = paymentOptions.recurringDisclaimer {
+                    RecurringDisclaimer(text: recurringDisclaimer.string)
+                }
+            }.padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
         }
         .padding(.horizontal, UIScheme.dimension.middleSpacing)
         .alert(isPresented: $isCardDeleteAlertPresented) {

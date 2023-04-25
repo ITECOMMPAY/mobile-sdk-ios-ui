@@ -20,7 +20,7 @@ mSDKTargets = ["ecommpaySDK", "ecommpaySDK_Dev", "mSDK_UI"]
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
-    pod 'MsdkCore', '0.8.6'
+    pod 'MsdkCore', '0.9.1'
     pod 'KSCrash', :git => 'https://github.com/ECOMMPAY/KSCrash.git'
   end
 end

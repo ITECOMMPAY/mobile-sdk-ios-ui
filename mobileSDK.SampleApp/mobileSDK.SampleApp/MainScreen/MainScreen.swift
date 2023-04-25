@@ -98,9 +98,11 @@ struct MainScreen: View {
             }
             HStack {
                 Toggle("Hide success final page", isOn: $paymentData.hideSuccessFinalPage)
+                    .accessibilityIdentifier("hidesuccessfinalpageCheckbox")
             }
             HStack {
                 Toggle("Hide decline final page", isOn: $paymentData.hideDeclineFinalPage)
+                    .accessibilityIdentifier("hidedeclinefinalpageCheckbox")
             }
         }
     }
@@ -316,10 +318,13 @@ struct MainScreen: View {
             NavigationLink("Apple Pay Params") {
                 Form {
                     TextField("applePayMerchantID", text: $paymentData.applePayMerchantID)
+                        .accessibilityIdentifier("merchantIdTextField")
 
                     TextField("applePayDescription", text: $paymentData.applePayDescription)
+                        .accessibilityIdentifier("applePayDescriptionTextField")
 
                     TextField("countryCode", text: $paymentData.applePayCountryCode)
+                        .accessibilityIdentifier("countryCodeDescriptionTextField")
                 }
                 .toolbar {
                     HStack {
@@ -328,11 +333,13 @@ struct MainScreen: View {
                             paymentData.applePayMerchantID = ""
                             paymentData.applePayCountryCode = ""
                         }
+                        .accessibilityIdentifier("resetApplePaySettingsButton")
                         Button("Defaults") {
                             paymentData.applePayDescription = defaultPaymentData.applePayDescription
                             paymentData.applePayMerchantID = defaultPaymentData.applePayMerchantID
                             paymentData.applePayCountryCode = defaultPaymentData.applePayCountryCode
                         }
+                        .accessibilityIdentifier("fillDefaultApplePaySettingsButton")
                     }
                 }
                 .navigationTitle("Apple Pay Params")
@@ -345,8 +352,10 @@ struct MainScreen: View {
             Picker("Mock Mode Setting", selection: $paymentData.mockModeType) {
                 ForEach(MockModeType.allCases) { type in
                     Text(String(describing: type))
+                        .accessibilityIdentifier(String(describing: type) + "MockModeRadioButton")
                 }
             }
+            .accessibilityIdentifier("mockModePicker")
         }
     }
     
@@ -430,14 +439,17 @@ struct MainScreen: View {
 
         if paymentData.sendRecurrentData {
             let info = RecurrentInfo(
+                register: paymentData.recurrentData.register,
                 type: RecurrentType(rawValue: paymentData.recurrentData.type ?? ""),
                 expiryDay: paymentData.recurrentData.expiryDay,
                 expiryMonth: paymentData.recurrentData.expiryMonth,
                 expiryYear: paymentData.recurrentData.expiryYear,
                 period: RecurrentPeriod(rawValue: paymentData.recurrentData.period),
+                interval: paymentData.recurrentData.interval,
                 time: paymentData.recurrentData.time,
                 startDate: paymentData.recurrentData.startDate,
-                scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID
+                scheduledPaymentID: paymentData.recurrentData.scheduledPaymentID,
+                amount: paymentData.recurrentData.amount
             )
             let schedule = paymentData.recurrentData.schedule
             info.schedule = schedule.count == 0 ? nil : schedule.map({ item in

@@ -45,6 +45,9 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 ) {
                     viewModel.dispatch(intent: .sendFilledFields(clarificationFieldsValues))
                 }
+                if let recurringDisclaimer = viewModel.state.paymentOptions.recurringDisclaimer {
+                    RecurringDisclaimer(text: recurringDisclaimer.string)
+                }
                 PolicyView()
                 FooterView()
             }
@@ -64,6 +67,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             VerifyOverview(
                 paymentID: viewModel.state.paymentOptions.paymentID,
                 paymentDescription: viewModel.state.paymentOptions.paymentDescription,
+                recurringData: viewModel.state.paymentOptions.recurringDetails,
                 backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
@@ -72,6 +76,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
                 backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo

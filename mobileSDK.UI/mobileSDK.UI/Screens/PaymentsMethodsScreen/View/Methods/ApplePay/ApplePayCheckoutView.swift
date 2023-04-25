@@ -22,13 +22,11 @@ struct ApplePayCheckoutView: View {
 
     var body: some View {
         VStack(spacing: UIScheme.dimension.formLargeVerticalSpacing) {
-            if let visibleCustomerFields = paymentMethod.visibleCustomerFields {
-                EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
-                                           additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
-                    formValues.customerFieldValues = fieldsValues
-                    isCustomerFieldsValid = isValid
-                }
+            EmbeddedCustomerFieldsView(visibleCustomerFields: paymentMethod.visibleCustomerFields,
+                                       additionalFields: paymentOptions.uiAdditionalFields,
+                                       customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
+                formValues.customerFieldValues = fieldsValues
+                isCustomerFieldsValid = isValid
             }
             ApplePayButton {
                 if payButtonIsEnabled {
@@ -36,6 +34,11 @@ struct ApplePayCheckoutView: View {
                 } else {
                     triggerValidation()
                 }
+            }
+
+            if let recurringDisclaimer = paymentOptions.recurringDisclaimer {
+                RecurringDisclaimer(text: recurringDisclaimer.string)
+                    .padding(.bottom, UIScheme.dimension.middleSpacing)
             }
         }
         .padding(.top, UIScheme.dimension.formSmallSpacing)
