@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "EcommpaySDK_UI"
-  spec.version      = "3.2.1"
+  spec.version      = "3.3.3"
   spec.summary      = "Ecommpay SDK with UI for iOS"
 
   spec.description  = "SDK for iOS is a software development kit for fast integration of the ECommPay payment solutions right in your mobile app for iOS."
