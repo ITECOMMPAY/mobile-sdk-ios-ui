@@ -95,7 +95,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
     private var buttonLabel: some View {
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
-            return PayButtonLabel(style: .Proceed)
+            return PayButtonLabel(style: .Tokenize)
         case .Verify:
             return PayButtonLabel(style: .Verify)
         default:

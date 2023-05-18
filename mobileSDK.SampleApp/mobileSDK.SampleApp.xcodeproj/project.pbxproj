@@ -639,7 +639,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.ecommpay.sdk.testclient";
+				PROVISIONING_PROFILE_SPECIFIER = mSDKTestClientEcommpay;
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpay;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -677,8 +677,8 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.ecommpay.sdk.testclient";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpay;
+				PROVISIONING_PROFILE_SPECIFIER = mSDKTestClientEcommpayAdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpayAdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

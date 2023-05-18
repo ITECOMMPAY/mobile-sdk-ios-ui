@@ -93,7 +93,16 @@ struct TokenizeCardView: View {
     }
 
     private var buttonLabel: PayButtonLabel {
-        PayButtonLabel(style: .Tokenize)
+        if (isTokenizeButton) {
+            return PayButtonLabel(style: .Tokenize)
+        }
+        else {
+            return PayButtonLabel(style: .Continue)
+        }
+    }
+    
+    private var isTokenizeButton: Bool {
+        return visibleCustomerFields.shouldBeDisplayed
     }
 }
 
