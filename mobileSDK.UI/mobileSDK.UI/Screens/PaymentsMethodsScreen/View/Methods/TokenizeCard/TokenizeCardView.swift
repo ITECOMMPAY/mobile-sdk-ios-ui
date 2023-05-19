@@ -102,7 +102,7 @@ struct TokenizeCardView: View {
     }
     
     private var isTokenizeButton: Bool {
-        return visibleCustomerFields.shouldBeDisplayed
+        return visibleCustomerFields.shouldBeDisplayed || visibleCustomerFields.isEmpty
     }
 }
 
