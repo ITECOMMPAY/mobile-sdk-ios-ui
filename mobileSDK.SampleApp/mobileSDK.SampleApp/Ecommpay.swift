@@ -25,9 +25,9 @@ func getCoreVersionString() -> String {
     let defaultPaymentData = PaymentData(
         brandColor: nil,
         image: nil,
-        projectId: 185541,
+        projectId: 111781,
         paymentId: getUniquePaymentID(),
-        paymentAmount: 11001,
+        paymentAmount: 123,
         paymentCurrency: "USD",
         customerId: "12",
         paymentDescription: "Test payment",
