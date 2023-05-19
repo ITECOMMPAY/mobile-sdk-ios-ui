@@ -89,7 +89,8 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     resultInfoKeyValuePairs: [
                         (L.title_card_wallet.rawValue, valueTitleCardWallet),
                         (L.title_payment_id.rawValue, payment?.id ?? ""),
-                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
+                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? ""),
+                        (L.title_payment_information_description.rawValue, paymentDescription)
                     ] + completeFields
                 )
                     .offset(x: .zero, y: animationState.infoOffset)
@@ -158,6 +159,14 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             return L.title_result_error_verification.string
         default:
             return L.title_result_error_payment.string
+        }
+    }
+    
+    private var paymentDescription: String? {
+        if (viewModel.state.paymentOptions.action != .Tokenize) {
+            return viewModel.state.paymentOptions.paymentDescription
+        } else {
+            return nil
         }
     }
 

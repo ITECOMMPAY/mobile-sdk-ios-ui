@@ -63,7 +63,8 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     resultInfoKeyValuePairs: [
                         (L.title_card_wallet.rawValue, valueTitleCardWallet),
                         (L.title_payment_id.rawValue, payment?.id ?? ""),
-                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? "")
+                        (L.title_payment_date.rawValue, payment?.uiDate ?? payment?.date ?? ""),
+                        (L.title_payment_information_description.rawValue, paymentDescription)
                     ] + completeFields
                 )
                     .offset(x: .zero, y: animationState.infoOffset)
@@ -131,6 +132,14 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             return L.title_result_succes_verification.string
         default:
             return L.title_result_succes_payment.string
+        }
+    }
+    
+    private var paymentDescription: String? {
+        if (viewModel.state.paymentOptions.action != .Tokenize) {
+            return viewModel.state.paymentOptions.paymentDescription
+        } else {
+            return nil
         }
     }
 
