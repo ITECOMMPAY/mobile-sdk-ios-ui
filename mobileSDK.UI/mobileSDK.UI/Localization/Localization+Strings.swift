@@ -43,3 +43,20 @@ extension String {
         return NSLocalizedString(self, tableName: nil, bundle: bundle, value: "**\(self)**", comment: "")
     }
 }
+
+extension String {
+    func localizedWithCode(languageCode: String?) -> String {
+        guard let langCode = languageCode else {
+            return NSLocalizedString(self, tableName: nil, bundle: SDKBundle.get(), comment: "")
+        }
+        
+        let key = "\(self)_\(langCode.lowercased())"
+        var title = NSLocalizedString(key, tableName: "Overrides", bundle: SDKBundle.get(), comment: "")
+        
+        if (title == key) {
+            title = NSLocalizedString(self, tableName: nil, bundle: SDKBundle.get(), comment: "")
+        }
+
+        return title
+    }
+}

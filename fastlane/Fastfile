@@ -40,13 +40,7 @@ platform :ios do
     first_tag = current_commit_tags_list.first
 
     current_branch_name = git_branch
-    if current_branch_name == "dev"
-        UI.user_error!("You are on developer branch. You can only create feature branch")
-    end
     m = current_branch_name.scan(/MSDK-\d+/)
-    if m.length() == 0 && first_tag.nil?
-        UI.user_error!("Name of the branch is wrong or need set TAG. You can use like MSDK-1234...")
-    end
     task_name = first_tag.nil? ? current_branch_name.scan(/MSDK-\d+/)[0] : first_tag
     UI.success("Task name is #{task_name}")
 
@@ -96,7 +90,12 @@ platform :ios do
       suppress_xcode_output: false,
       output_directory: 'archives',
       output_name: "#{target}.ipa",
-      export_method: 'ad-hoc'
+      export_method: 'ad-hoc',
+      export_options: {
+        provisioningProfiles: {
+          "com.ecommpay.sdk.testclient" => "match AdHoc com.ecommpay.sdk.testclient",
+        }
+      }
     )
 
     changelog = changelog_from_git_commits(

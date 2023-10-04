@@ -1,0 +1,14 @@
+/*
+  Localizable.strings
+  mobileSDK.UI
+
+*/
+//Default
+"sale_label" = "Mode de paiement";
+"tokenize_label" = "Enregistrer la carte";
+"verify_label" = "Vérifier la carte";
+"payment_dismiss_confirm_message" = "Le paiement est en cours. Êtes-vous sûr de vouloir fermer la page?";
+"cancel_label" = "Annuler";
+"error_label" = "Erreur";
+"title_camera_permission_label" = "Activez votre caméra pour scanner votre carte bancaire. Pour ce faire, allez dans les Paramètres de l'application.";
+"button_camera_permission_label" = "Paramètres de l'application";

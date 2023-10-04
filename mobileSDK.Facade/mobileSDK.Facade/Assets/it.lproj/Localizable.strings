@@ -1,0 +1,14 @@
+/*
+  Localizable.strings
+  mobileSDK.UI
+
+*/
+//Default
+"sale_label" = "Metodo di Pagamento";
+"tokenize_label" = "Salva Carta";
+"verify_label" = "Verifica Carta";
+"payment_dismiss_confirm_message" = "Il pagamento è in corso. Sei sicuro di voler chiudere la pagina?";
+"cancel_label" = "Annulla";
+"error_label" = "Errore";
+"title_camera_permission_label" = "Abilita la tua fotocamera per scansionare la tua carta bancaria. Per farlo, vai alle Impostazioni dell'app";
+"button_camera_permission_label" = "Impostazioni dell'app";

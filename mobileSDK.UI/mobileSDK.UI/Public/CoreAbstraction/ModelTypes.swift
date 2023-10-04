@@ -28,6 +28,8 @@ public enum PayEvent {
     case onStatusChanged(status: PaymentStatus, payment: Payment)
     // received 3ds page and need open it in WebView
     case onThreeDSecure(page: ThreeDSecurePage, isCascading: Bool, payment: Payment)
+    
+    case onThreeDSecureRedirectComplete
 }
 
 public enum ActionType: Int {
@@ -149,6 +151,7 @@ public protocol PaymentMethodCard {
 }
 
 public protocol PaymentOptions {
+    var languageCode: String? { get }
     var action: ActionType { get }
     var summary: PaymentSummaryData { get }
     var details: [PaymentDetailData] { get }

@@ -1,0 +1,15 @@
+/*
+  Localizable.strings
+  mobileSDK.UI
+
+*/
+//Default
+
+"sale_label" = "Fizetési módot választ";
+"tokenize_label" = "Kártya mentése";
+"verify_label" = "Kártya ellenőrzése";
+"payment_dismiss_confirm_message" = "Fizetés folyamatban. Biztosan be szeretné zárni az oldalt?";
+"cancel_label" = "Mégse";
+"error_label" = "Hiba";
+"title_camera_permission_label" = "Engedélyezze a kamerát a bankkártya beolvasásához. Ezt az Alkalmazás beállításokban teheti meg.";
+"button_camera_permission_label" = "Alkalmazás beállítások";

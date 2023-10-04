@@ -170,6 +170,10 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var action: ActionType {
         ActionType.init(rawValue: publicType.action.rawValue) ?? .Sale
     }
+    
+    var languageCode: String? {
+        publicType.languageCode
+    }
 
     var applePayMerchantID: String? {
         publicType.applePayOptions?.applePayMerchantID

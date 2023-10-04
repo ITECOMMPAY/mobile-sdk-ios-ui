@@ -1,0 +1,65 @@
+/* 
+  Overrides.strings
+  mobileSDK.Facade
+
+  Created by Alex on 05.09.2023.
+  
+*/
+"sale_label_en" = "Select Payment Method";
+"tokenize_label_en" = "Save Card";
+"verify_label_en" = "Verify Card";
+"payment_dismiss_confirm_message_en" = "Payment is in progress. Are you sure you want to close the page?";
+"cancel_label_en" = "Cancel";
+"error_label_en" = "Error";
+"title_camera_permission_label_en" = "Enable your camera to scan your bank card. To do this, go to App Settings.";
+"button_camera_permission_label_en" = "App Settings";
+
+//es
+"sale_label_es" = "Seleccionar Método de Pago";
+"tokenize_label_es" = "Guardar Tarjeta";
+"verify_label_es" = "Verificar Tarjeta";
+"payment_dismiss_confirm_message_es" = "El pago está en proceso. ¿Estás seguro de que quieres cerrar la página?";
+"cancel_label_es" = "Cancelar";
+"error_label_es" = "Error";
+"title_camera_permission_label_es" = " Habilita tu cámara para escanear tu tarjeta bancaria. Para hacerlo, ve a Configuración de la aplicación";
+"button_camera_permission_label_es" = " Configuración de la aplicación";
+
+//de
+"sale_label_de" = "Zahlungsmethode auswählen";
+"tokenize_label_de" = "Karte speichern";
+"verify_label_de" = "Karte verifizieren";
+"payment_dismiss_confirm_message_de" = "Zahlung läuft. Sind Sie sicher, dass Sie die Seite schließen möchten?";
+"cancel_label_de" = "Abbrechen";
+"error_label_de" = "Fehler";
+"title_camera_permission_label_de" = "Aktivieren Sie Ihre Kamera, um Ihre Bankkarte zu scannen. Gehen Sie dazu zu den App-Einstellungen.";
+"button_camera_permission_label_de" = "App-Einstellungen";
+
+//fr
+"sale_label_fr" = "Mode de paiement";
+"tokenize_label_fr" = "Enregistrer la carte";
+"verify_label_fr" = "Vérifier la carte";
+"payment_dismiss_confirm_message_fr" = "Le paiement est en cours. Êtes-vous sûr de vouloir fermer la page?";
+"cancel_label_fr" = "Annuler";
+"error_label_fr" = "Erreur";
+"title_camera_permission_label_fr" = "Activez votre caméra pour scanner votre carte bancaire. Pour ce faire, allez dans les Paramètres de l'application.";
+"button_camera_permission_label_fr" = "Paramètres de l'application";
+
+//it
+"sale_label_it" = "Metodo di Pagamento";
+"tokenize_label_it" = "Salva Carta";
+"verify_label_it" = "Verifica Carta";
+"payment_dismiss_confirm_message_it" = "Il pagamento è in corso. Sei sicuro di voler chiudere la pagina?";
+"cancel_label_it" = "Annulla";
+"error_label_it" = "Errore";
+"title_camera_permission_label_it" = "Abilita la tua fotocamera per scansionare la tua carta bancaria. Per farlo, vai alle Impostazioni dell'app";
+"button_camera_permission_label_it" = "Impostazioni dell'app";
+
+//hu
+"sale_label_hu" = "Fizetési módot választ";
+"tokenize_label_hu" = "Kártya mentése";
+"verify_label_hu" = "Kártya ellenőrzése";
+"payment_dismiss_confirm_message_hu" = "Fizetés folyamatban. Biztosan be szeretné zárni az oldalt?";
+"cancel_label_hu" = "Mégse";
+"error_label_hu" = "Hiba";
+"title_camera_permission_label_hu" = "Engedélyezze a kamerát a bankkártya beolvasásához. Ezt az Alkalmazás beállításokban teheti meg.";
+"button_camera_permission_label_hu" = "Alkalmazás beállítások";

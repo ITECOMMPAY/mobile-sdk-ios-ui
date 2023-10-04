@@ -21,6 +21,10 @@ class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, Core
 }
 
 extension PayDelegateProxy: PayDelegate {
+    func onThreeDSecureRedirectComplete() {
+        send(.success(.onThreeDSecureRedirectComplete))
+    }
+    
 
     func onCustomerFields(customerFields: [MsdkCore.CustomerField]) {
         send(.success(.onCustomerFields(customerFields: customerFields.map(\.wrapper))))

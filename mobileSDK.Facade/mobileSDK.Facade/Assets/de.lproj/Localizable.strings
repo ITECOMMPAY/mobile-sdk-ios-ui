@@ -1,0 +1,14 @@
+/*
+  Localizable.strings
+  mobileSDK.UI
+
+*/
+//Default
+"sale_label" = "Zahlungsmethode auswählen";
+"tokenize_label" = "Karte speichern";
+"verify_label" = "Karte verifizieren";
+"payment_dismiss_confirm_message" = "Zahlung läuft. Sind Sie sicher, dass Sie die Seite schließen möchten?";
+"cancel_label" = "Abbrechen";
+"error_label" = "Fehler";
+"title_camera_permission_label" = "Aktivieren Sie Ihre Kamera, um Ihre Bankkarte zu scannen. Gehen Sie dazu zu den App-Einstellungen.";
+"button_camera_permission_label" = "App-Einstellungen";

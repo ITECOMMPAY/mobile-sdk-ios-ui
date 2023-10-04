@@ -93,6 +93,8 @@ struct MockCarificationField: ClarificationField {
 struct MockPaymentOptions: PaymentOptions {
     var action: ActionType = .Sale
     
+    var languageCode: String? = nil
+    
     var pkPaymentRequest: PKPaymentRequest?
 
     var paymentID: String = "123"

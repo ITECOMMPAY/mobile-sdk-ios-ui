@@ -96,7 +96,7 @@ struct SavedCardCheckoutView: View {
                 primaryButton: .destructive(Text(L.button_delete.string), action: {
                     onIntent(.delete(savedCard))
                 }),
-                secondaryButton: .cancel(Text(L.button_cancel.string))
+                secondaryButton: .cancel(Text("cancel_label".localizedWithCode(languageCode: paymentOptions.languageCode)))
             )
         }
     }

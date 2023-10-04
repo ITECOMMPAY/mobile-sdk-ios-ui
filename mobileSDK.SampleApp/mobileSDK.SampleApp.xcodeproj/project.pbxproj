@@ -93,6 +93,7 @@
 
 /* Begin PBXFileReference section */
 		1A22FB13FFD6A3E1B565FBB9 /* Pods-EcommpaySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.release.xcconfig"; sourceTree = "<group>"; };
+		5B8FCBB22AA74EFA0036214F /* EcommpaySampleNL3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EcommpaySampleNL3-Info.plist"; sourceTree = "<group>"; };
 		840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcommpaySample.entitlements; sourceTree = "<group>"; };
 		8434FB4F28B338DB00814D93 /* SignatureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureUtils.swift; sourceTree = "<group>"; };
 		843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mobileSDK.Facade.xcodeproj; path = ../mobileSDK.Facade/mobileSDK.Facade.xcodeproj; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		845FC80D28AE153300C71288 = {
 			isa = PBXGroup;
 			children = (
+				5B8FCBB22AA74EFA0036214F /* EcommpaySampleNL3-Info.plist */,
 				843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */,
 				840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */,
 				845FC81828AE153300C71288 /* mobileSDK.SampleApp */,
@@ -294,6 +296,7 @@
 				845FC81328AE153300C71288 /* Frameworks */,
 				845FC81428AE153300C71288 /* Resources */,
 				84B67BB029127AD500DF7550 /* Embed Frameworks */,
+				149C314AB32CFAA310DF4D7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,6 +316,7 @@
 				DCC5E7F8294DEB03004E8864 /* Frameworks */,
 				DCC5E7FB294DEB03004E8864 /* Resources */,
 				DCC5E7FE294DEB03004E8864 /* Embed Frameworks */,
+				4C295469350CFED810A4D9FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,7 +348,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				fr,
+				de,
+				it,
+				es,
+				hu,
 			);
 			mainGroup = 845FC80D28AE153300C71288;
 			productRefGroup = 845FC81728AE153300C71288 /* Products */;
@@ -429,6 +437,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		149C314AB32CFAA310DF4D7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C295469350CFED810A4D9FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4E5ACB610168E903317FE4E3 /* [CP] Check Pods Manifest.lock */ = {
@@ -619,7 +661,7 @@
 				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 78;
 				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 4287668275;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4287668275;
@@ -640,7 +682,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = mSDKTestClientEcommpay;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpay;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.ecommpay.sdk.testclient";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -655,9 +697,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 78;
 				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 4287668275;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4287668275;
@@ -678,7 +720,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = mSDKTestClientEcommpayAdHoc;
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpayAdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.ecommpay.sdk.testclient";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -695,12 +737,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 78;
 				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4287668275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EcommpaySampleNL3-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permission is needed in order to scan cards";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -711,12 +754,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "-D NL3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpay;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.ecommpay.sdk.testclient";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -733,12 +776,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 78;
 				DEVELOPMENT_ASSET_PATHS = "\"mobileSDK.SampleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4287668275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "EcommpaySampleNL3-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permission is needed in order to scan cards";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -749,12 +793,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_SWIFT_FLAGS = "-D NL3";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = mSDKTestClientEcommpayAdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match AdHoc com.ecommpay.sdk.testclient";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

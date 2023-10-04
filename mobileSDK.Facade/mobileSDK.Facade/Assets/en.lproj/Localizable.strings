@@ -1,0 +1,14 @@
+/*
+  Localizable.strings
+  mobileSDK.UI
+
+*/
+//Default
+"sale_label" = "Select Payment Method";
+"tokenize_label" = "Save Card";
+"verify_label" = "Verify Card";
+"payment_dismiss_confirm_message" = "Payment is in progress. Are you sure you want to close the page?";
+"cancel_label" = "Cancel";
+"error_label" = "Error";
+"title_camera_permission_label" = "Enable your camera to scan your bank card. To do this, go to App Settings.";
+"button_camera_permission_label" = "App Settings";

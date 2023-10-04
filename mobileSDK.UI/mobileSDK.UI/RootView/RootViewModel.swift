@@ -482,6 +482,10 @@ class RootViewModel: RootViewModelProtocol {
                         $0.clarificationFields = nil
                         $0.isTryAgain = status.isTryAgain
                     }
+                case .onThreeDSecureRedirectComplete:
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = true
+                    }
                 }
             })
             .store(in: &cancellables)

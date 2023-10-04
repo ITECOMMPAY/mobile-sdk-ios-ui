@@ -65,11 +65,11 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
     private var screenTitle: String {
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
-            return L.localizationDefaults[L.button_tokenize] ?? ""
+            return "tokenize_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
         case .Verify:
-            return L.localizationDefaults[L.button_authorize] ?? ""
+            return "verify_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
         default:
-            return L.localizationDefaults[L.title_payment_methods] ?? ""
+            return "sale_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
         }
     }
 

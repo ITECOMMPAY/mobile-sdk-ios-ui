@@ -37,7 +37,7 @@ struct PayButtonLabel: View {
         
         var title: String {
             switch self {
-            case .Pay: return "Pay"
+            case .Pay: return L.button_pay.string
             case .Continue: return L.button_confirmation.string
             case .Tokenize: return L.button_tokenize.string
             case .Verify: return L.button_authorize.string
