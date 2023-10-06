@@ -11,7 +11,7 @@ platform :ios do
 
   desc "Validate build"
   lane :validate do |options|
-    cocoapods(clean_install: false)
+    cocoapods(clean_install: false, repo_update: true)
     build_ios_app(
       workspace: 'mobileSDK.xcworkspace',
       scheme: target,
