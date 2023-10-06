@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C53EA2E9282E3DF22DA38A /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF01B1C3587397FC5834D8E0 /* libPods-EcommpaySample.a */; };
+		67B198A26F9091BBD96A800A /* libPods-EcommpaySampleNL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4294E69FED21982E082FC020 /* libPods-EcommpaySampleNL3.a */; };
 		8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
 		845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D428B33DFA001C2A24 /* MainScreenState.swift */; };
 		845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D828B340A3001C2A24 /* PaymentID.swift */; };
@@ -21,11 +23,8 @@
 		84CDC3E02910DAA100E3EB04 /* ThreeDSecureJsonModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3DF2910DAA100E3EB04 /* ThreeDSecureJsonModels.swift */; };
 		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
 		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
-		9A60DBEE5D8BBACF792DDFC8 /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
 		B3AB4769296BFF9700B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
 		B3AB476A296BFF9F00B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
-		CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */; };
-		D472324B27A8DFF1706A1BA0 /* libPods-EcommpaySampleNL3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */; };
 		DCC5E7EE294DEB03004E8864 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* MainScreen.swift */; };
 		DCC5E7EF294DEB03004E8864 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
 		DCC5E7F0294DEB03004E8864 /* mobileSDK_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81928AE153300C71288 /* mobileSDK_SampleApp.swift */; };
@@ -93,6 +92,7 @@
 
 /* Begin PBXFileReference section */
 		1A22FB13FFD6A3E1B565FBB9 /* Pods-EcommpaySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.release.xcconfig"; sourceTree = "<group>"; };
+		4294E69FED21982E082FC020 /* libPods-EcommpaySampleNL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySampleNL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8FCBB22AA74EFA0036214F /* EcommpaySampleNL3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "EcommpaySampleNL3-Info.plist"; sourceTree = "<group>"; };
 		840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcommpaySample.entitlements; sourceTree = "<group>"; };
 		8434FB4F28B338DB00814D93 /* SignatureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureUtils.swift; sourceTree = "<group>"; };
@@ -113,11 +113,10 @@
 		84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureScreen.swift; sourceTree = "<group>"; };
 		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
 		8D1CAF7D7DABDC4446272652 /* Pods-EcommpaySampleNL3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySampleNL3.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3.debug.xcconfig"; sourceTree = "<group>"; };
+		AF01B1C3587397FC5834D8E0 /* libPods-EcommpaySample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B200B4D837ADFB88C0AF14BE /* Pods-EcommpaySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySample.debug.xcconfig"; path = "Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample.debug.xcconfig"; sourceTree = "<group>"; };
 		B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientInfoScreen.swift; sourceTree = "<group>"; };
-		CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySampleNL3.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCC5E803294DEB03004E8864 /* EcommpaySampleNL3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcommpaySampleNL3.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EcommpaySample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F27BCB494D2826A1C32252 /* Pods-EcommpaySampleNL3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EcommpaySampleNL3.release.xcconfig"; path = "Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,8 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B67BAE29127AD500DF7550 /* ecommpaySDK_Dev.framework in Frameworks */,
-				CED2B7BECC1D549B61747F5D /* libPods-EcommpaySample.a in Frameworks */,
-				9A60DBEE5D8BBACF792DDFC8 /* libPods-EcommpaySample.a in Frameworks */,
+				26C53EA2E9282E3DF22DA38A /* libPods-EcommpaySample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCC5E7F9294DEB03004E8864 /* ecommpaySDK_Dev.framework in Frameworks */,
-				D472324B27A8DFF1706A1BA0 /* libPods-EcommpaySampleNL3.a in Frameworks */,
+				67B198A26F9091BBD96A800A /* libPods-EcommpaySampleNL3.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,8 +250,8 @@
 				84B67B96291251B400DF7550 /* ecommpaySDK_Dev.xcframework */,
 				849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */,
 				845FC82828AE157800C71288 /* ecommpaySDK.framework */,
-				EC27EB9127829FDC4F268E12 /* libPods-EcommpaySample.a */,
-				CF4AD49C8651B4276CAB959E /* libPods-EcommpaySampleNL3.a */,
+				AF01B1C3587397FC5834D8E0 /* libPods-EcommpaySample.a */,
+				4294E69FED21982E082FC020 /* libPods-EcommpaySampleNL3.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,7 +294,6 @@
 				845FC81328AE153300C71288 /* Frameworks */,
 				845FC81428AE153300C71288 /* Resources */,
 				84B67BB029127AD500DF7550 /* Embed Frameworks */,
-				149C314AB32CFAA310DF4D7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,7 +313,6 @@
 				DCC5E7F8294DEB03004E8864 /* Frameworks */,
 				DCC5E7FB294DEB03004E8864 /* Resources */,
 				DCC5E7FE294DEB03004E8864 /* Embed Frameworks */,
-				4C295469350CFED810A4D9FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,40 +433,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		149C314AB32CFAA310DF4D7E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EcommpaySample/Pods-EcommpaySample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4C295469350CFED810A4D9FF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EcommpaySampleNL3/Pods-EcommpaySampleNL3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4E5ACB610168E903317FE4E3 /* [CP] Check Pods Manifest.lock */ = {
