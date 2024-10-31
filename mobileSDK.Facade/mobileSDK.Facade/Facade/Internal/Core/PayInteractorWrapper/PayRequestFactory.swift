@@ -47,15 +47,18 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
+        storedCardType: Int32?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
+        
 
         let request = NewCardSaleRequest(
             cvv: cvv,
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
-            saveCard: saveCard
+            saveCard: saveCard,
+            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
         )
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -70,6 +73,7 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
+        storedCardType: Int32?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
 
@@ -78,7 +82,8 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
-            saveCard: saveCard
+            saveCard: saveCard,
+            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
         )
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -167,14 +172,16 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         pan: String,
         year: Int32,
         month: Int32,
-        cardHolder: String
+        cardHolder: String,
+        storedCardType: Int32?
     ) -> mobileSDK_UI.PayRequest {
 
         let request = CardVerifyRequest(
             cvv: cvv,
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
-            cardHolder: cardHolder
+            cardHolder: cardHolder,
+            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
         )
 
         return PayRequestWrapper(coreRequest: request)

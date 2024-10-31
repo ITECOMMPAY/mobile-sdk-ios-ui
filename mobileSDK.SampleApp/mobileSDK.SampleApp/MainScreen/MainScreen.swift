@@ -51,7 +51,10 @@ struct MainScreen: View {
         NavigationView {
             Form {
                 actions
-                basicSettings
+                Group {
+                    basicSettings
+                    localeSettings
+                }
                 Group {
                     additionalFields
                     recipientInfoFields
@@ -62,9 +65,15 @@ struct MainScreen: View {
                     themeSettings
                     merchantLogo
                 }
-                forcePaymentMethods
-                apiUrls
-                applePayParams
+                Group {
+                    forcePaymentMethods
+                }
+                Group {
+                    apiUrls
+                }
+                Group {
+                    applePayParams
+                }
                 Group {
                     mockModeSetting
                     simulateCrashToggle
@@ -183,6 +192,17 @@ struct MainScreen: View {
                     .multilineTextAlignment(.trailing)
             }
             HStack {
+                Text("Stored Card Type").foregroundColor(Color.secondary)
+                Spacer()
+                TextField("0..6", text: $paymentData.storedCardType)
+                    .multilineTextAlignment(.trailing)
+            }
+        }
+    }
+    
+    var localeSettings: some View {
+        Section(header: Text("Locale settings")) {
+            HStack {
                 Text("Language code").foregroundColor(Color.secondary)
                 Spacer()
                 TextField("Optional", text: $paymentData.languageCode)
@@ -196,6 +216,7 @@ struct MainScreen: View {
             }
         }
     }
+
 
     var additionalFields: some View {
         Section {
@@ -399,7 +420,8 @@ struct MainScreen: View {
             paymentDescription: paymentData.paymentDescription,
             customerID: paymentData.customerId,
             regionCode: !paymentData.regionCode.isEmpty ? paymentData.regionCode : nil,
-            token: token.isEmpty ? nil : token
+            token: token.isEmpty ? nil : token,
+            storedCardType: !paymentData.storedCardType.isEmpty ? NSNumber(value: Int(paymentData.storedCardType) ?? 0) : nil
         )
         
         paymentOptions.action = action

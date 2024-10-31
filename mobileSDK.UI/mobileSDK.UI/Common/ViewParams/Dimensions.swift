@@ -77,12 +77,12 @@ protocol DimensionScheme {
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
-    let tinyFont: CGFloat = 12
-    let smallFont: CGFloat = 14
-    let middleFont: CGFloat = 16
-    let bigFont: CGFloat = 22
-    let hugeFont: CGFloat = 28
-    let biggerFont: CGFloat = 24
+    let tinyFont: CGFloat = UIFontMetrics.default.scaledValue(for: 12)
+    let smallFont: CGFloat = UIFontMetrics.default.scaledValue(for: 14)
+    let middleFont: CGFloat = UIFontMetrics.default.scaledValue(for: 16)
+    let bigFont: CGFloat = UIFontMetrics.default.scaledValue(for: 22)
+    let hugeFont: CGFloat = UIFontMetrics.default.scaledValue(for: 28)
+    let biggerFont: CGFloat = UIFontMetrics.default.scaledValue(for: 24)
 
     let textFieldHeight: CGFloat = 55
     let payButtonPayPriceSpacing: CGFloat = 5

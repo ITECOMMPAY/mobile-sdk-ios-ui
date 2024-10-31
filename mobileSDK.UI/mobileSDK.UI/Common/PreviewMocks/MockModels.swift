@@ -91,6 +91,8 @@ struct MockCarificationField: ClarificationField {
 }
 
 struct MockPaymentOptions: PaymentOptions {
+    var storedCarType: Int32? = nil
+    
     var action: ActionType = .Sale
     
     var languageCode: String? = nil
@@ -146,6 +148,8 @@ struct MockPaymentOptions: PaymentOptions {
     var isDarkThemeOn: Bool = false
 
     var hideScanningCards: Bool = false
+    
+    var footerImage: Image? = nil
 }
 
 struct MockSavedAccount: SavedAccount {

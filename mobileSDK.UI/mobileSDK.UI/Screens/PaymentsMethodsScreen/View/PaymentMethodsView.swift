@@ -45,7 +45,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 }
                 paymentMethodsList
                 PolicyView()
-                FooterView()
+                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
             }
             .padding(.horizontal, UIScheme.dimension.largeSpacing)
             .padding(.top, UIScheme.dimension.middleSpacing)

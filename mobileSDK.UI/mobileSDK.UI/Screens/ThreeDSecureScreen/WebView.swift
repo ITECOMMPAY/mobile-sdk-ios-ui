@@ -68,7 +68,7 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         didFinish(self.currentUrl)
     }
-    
+
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: ((WKNavigationActionPolicy) -> Void)) {
         currentUrl = navigationAction.request.url?.absoluteString
         decisionHandler(.allow)

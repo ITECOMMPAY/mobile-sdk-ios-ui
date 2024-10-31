@@ -14,7 +14,7 @@ class ContainerViewController<Content: View>: UIHostingController<Content> {
         false
     }
 
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        .portrait
-    }
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        .portrait
+//    }
 }

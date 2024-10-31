@@ -79,6 +79,8 @@ struct CvvField: View {
             InfoButton {
                 showAbout = true
             }
+            .accessibilityLabel(Text( L.title_about_cvv.string))
+            .accessibilityHint(L.message_about_cvv.string)
         } else {
             EmptyView()
         }

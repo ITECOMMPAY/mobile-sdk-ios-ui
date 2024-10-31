@@ -31,6 +31,7 @@ struct PaymentData {
     var merchantName: String
     var mockModeType: MockModeType
     var regionCode: String
+    var storedCardType: String
 
     var applePayMerchantID: String = "merchant.ecommpayDemo.sdk"
     var applePayDescription: String = "Apple Pay Description"

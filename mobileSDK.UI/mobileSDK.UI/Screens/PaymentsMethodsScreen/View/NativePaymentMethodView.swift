@@ -50,8 +50,15 @@ public struct iPaymentButton: View {
     }
 
     public var body: some View {
-        Button(action: action, label: { EmptyView() })
-            .buttonStyle(iPaymentButtonStyle(type: type, style: style, cornerRadius: cornerRadius))
+        if #available(iOS 16.0, *) {
+            PayWithApplePayButton(action: action)
+                .cornerRadius(cornerRadius)
+                .frame(height: UIScheme.dimension.applePayButtonHeight)
+                .frame(maxWidth: .infinity)
+        } else {
+            Button(action: action, label: { EmptyView() })
+                .buttonStyle(iPaymentButtonStyle(type: type, style: style, cornerRadius: cornerRadius))
+        }
     }
 }
 

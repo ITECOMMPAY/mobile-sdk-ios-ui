@@ -32,7 +32,7 @@ struct PaymentOverview: View {
             if !paymentDetails.isEmpty { details }
         }.frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(UIScheme.dimension.paymentOverviewSpacing)
-        .background() {
+        .background {
             cardBackground.opacity(isDimBackground ? 0.4 : 1)
         }
     }

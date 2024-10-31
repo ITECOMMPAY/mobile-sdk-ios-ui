@@ -15,16 +15,13 @@ import mobileSDK_UI
 import SwiftUI
 
 class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, CoreError> {
-    override var delegate: PayDelegate {
-        return self
-    }
+    override var delegate: PayDelegate { self }
 }
 
 extension PayDelegateProxy: PayDelegate {
     func onThreeDSecureRedirectComplete() {
         send(.success(.onThreeDSecureRedirectComplete))
     }
-    
 
     func onCustomerFields(customerFields: [MsdkCore.CustomerField]) {
         send(.success(.onCustomerFields(customerFields: customerFields.map(\.wrapper))))

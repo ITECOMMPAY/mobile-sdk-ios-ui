@@ -34,8 +34,8 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
                 }))
             case .CloseWarning(let confirmClose):
                 return Alert(
-                    title: Text("payment_dismiss_confirm_message".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)),
-                    primaryButton: Alert.Button.cancel(Text("cancel_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)), action: {
+                    title: Text("Your payment is being processed, are you sure you want to close the payment page?"),
+                    primaryButton: Alert.Button.cancel(Text(L.button_cancel.string), action: {
                         viewModel.dispatch(intent: .alertClosed)
                     }),
                     secondaryButton: Alert.Button.default(Text(L.button_ok.string), action: {

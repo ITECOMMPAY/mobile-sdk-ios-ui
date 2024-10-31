@@ -12,12 +12,23 @@ enum LoadingScreenIntent {
     case close
 }
 
-protocol LoadingScreenViewModelProtocol: ViewModel
-where UserIntent == LoadingScreenIntent, ViewState == Void {} // ViewState == Void т.к. этот экран всегда в одном состоянии, его представление неизменно
 
-class LoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<Void, LoadingScreenIntent, rootVM>, LoadingScreenViewModelProtocol {
+protocol LoadingScreenScreenState {
+    var paymentOptions: PaymentOptions { get }
+}
+
+extension RootState: LoadingScreenScreenState { }
+
+protocol LoadingScreenViewModelProtocol: ViewModel
+where UserIntent == LoadingScreenIntent, ViewState == LoadingScreenScreenState {} // ViewState == Void т.к. этот экран всегда в одном состоянии, его представление неизменно
+
+class LoadingScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<LoadingScreenScreenState, LoadingScreenIntent, rootVM>, LoadingScreenViewModelProtocol {
     override func mapIntent(from childIntent: LoadingScreenIntent) throws -> rootVM.UserIntent {
         return .loadingScreenIntent(childIntent)
+    }
+    
+    override func mapState(from parentState: RootState) throws -> LoadingScreenScreenState {
+        parentState as LoadingScreenScreenState
     }
 }
 
@@ -45,7 +56,7 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
     @ObservedObject var viewModel: VM
 
     public var body: some View {
-        LoadingView() {
+        LoadingView(footerImage: viewModel.state.paymentOptions.footerImage) {
             viewModel.dispatch(intent: .close)
         }.onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
@@ -54,6 +65,7 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
 }
 
 struct LoadingView: View {
+    let footerImage: Image?
     var cancelAction: () -> Void = {}
     @State private var animationState = LoadingScreenAnimationState()
     
@@ -86,7 +98,7 @@ struct LoadingView: View {
             }.padding(.top, UIScheme.dimension.cancelButtonLoadingSubtitleSpacing)
                 .opacity(animationState.showButton ? 1 : 0)
             Spacer()
-            FooterView().padding(.bottom, UIScheme.dimension.largeSpacing)
+            FooterView(footerImage: footerImage).padding(.bottom, UIScheme.dimension.largeSpacing)
         }
         .frame(maxWidth: .infinity)
         .onAppear {

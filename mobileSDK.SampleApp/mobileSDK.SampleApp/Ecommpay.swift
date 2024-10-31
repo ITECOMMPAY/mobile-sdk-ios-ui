@@ -42,7 +42,8 @@ func getCoreVersionString() -> String {
         merchantId: "BCR2DN6TZ75OBLTH",
         merchantName: "Example Merchant",
         mockModeType: MockModeType.disabled,
-        regionCode: ""
+        regionCode: "",
+        storedCardType: ""
     )
 
 #else
@@ -50,7 +51,7 @@ func getCoreVersionString() -> String {
     let defaultPaymentData = PaymentData(
         brandColor: nil,
         image: nil,
-        projectId: 0,
+        projectId: 127033,
         paymentId: getUniquePaymentID(),
         paymentAmount: 123,
         paymentCurrency: "USD",
@@ -67,7 +68,8 @@ func getCoreVersionString() -> String {
         merchantId: "BCR2DN6TZ75OBLTH",
         merchantName: "Example Merchant",
         mockModeType: MockModeType.disabled,
-        regionCode: ""
+        regionCode: "",
+        storedCardType: ""
     )
 
 #endif

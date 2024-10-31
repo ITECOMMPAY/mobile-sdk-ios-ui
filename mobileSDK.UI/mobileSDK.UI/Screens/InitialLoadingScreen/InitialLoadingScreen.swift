@@ -51,7 +51,7 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
         } content: {
             VStack(spacing: .zero) {
                 paymentMethodsPlaceholders
-                FooterView()
+                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
                     .padding([.top, .bottom], UIScheme.dimension.largeSpacing)
             }
             .padding(.horizontal, UIScheme.dimension.largeSpacing)
@@ -65,11 +65,11 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
     private var screenTitle: String {
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
-            return "tokenize_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
+            return L.localizationDefaults[L.button_tokenize] ?? ""
         case .Verify:
-            return "verify_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
+            return L.localizationDefaults[L.button_authorize] ?? ""
         default:
-            return "sale_label".localizedWithCode(languageCode: viewModel.state.paymentOptions.languageCode)
+            return L.localizationDefaults[L.title_payment_methods] ?? ""
         }
     }
 

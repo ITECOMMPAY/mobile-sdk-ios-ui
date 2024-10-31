@@ -106,7 +106,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                 PolicyView()
                     .offset(x: .zero, y: animationState.policyOffset)
                     .opacity(animationState.showPolicy ? 1 : 0)
-                FooterView()
+                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
                     .offset(x: .zero, y: animationState.footerOffset)
                     .opacity(animationState.showFooter ? 1 : 0)
             }

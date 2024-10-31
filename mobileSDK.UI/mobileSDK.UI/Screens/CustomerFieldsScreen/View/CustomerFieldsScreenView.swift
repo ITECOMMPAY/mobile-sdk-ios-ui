@@ -57,7 +57,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     RecurringDisclaimer(text: recurringDisclaimer.string)
                 }
                 PolicyView()
-                FooterView()
+                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
             }
             .padding(.top, UIScheme.dimension.middleSpacing)
             .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)

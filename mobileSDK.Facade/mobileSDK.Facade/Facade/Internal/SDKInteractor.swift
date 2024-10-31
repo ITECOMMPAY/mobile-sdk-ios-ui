@@ -77,13 +77,13 @@ class SDKInteractor {
 
         self.completionHandler = completion
 
-        CrashReportSender.shared.start(
-            projectId: Int(paymentOptions.paymentInfo.projectId),
-            paymentId: paymentOptions.paymentInfo.paymentId,
-            customerId: paymentOptions.paymentInfo.customerId,
-            signature: paymentOptions.signature,
-            errorInteractor: msdkSession.getErrorEventInteractor()
-        )
+//        CrashReportSender.shared.start(
+//            projectId: Int(paymentOptions.paymentInfo.projectId),
+//            paymentId: paymentOptions.paymentInfo.paymentId,
+//            customerId: paymentOptions.paymentInfo.customerId,
+//            signature: paymentOptions.signature,
+//            errorInteractor: msdkSession.getErrorEventInteractor()
+//        )
 
         let delegateProxy = InitDelegateProxy()
 
@@ -101,7 +101,7 @@ class SDKInteractor {
             })
         ) { reason in
             viewController.dismiss(animated: true) { [weak self] in
-                CrashReportSender.shared.stop()
+                //CrashReportSender.shared.stop()
                 
                 switch reason {
                 case .byUser:
@@ -165,6 +165,11 @@ fileprivate extension PaymentOptions {
 }
 
 private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
+    
+    var footerImage: Image? {
+        publicType.footerImage.map({ Image(uiImage: $0)})
+    }
+    
     let publicType: PaymentOptions
     
     var action: ActionType {
@@ -174,6 +179,7 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var languageCode: String? {
         publicType.languageCode
     }
+
 
     var applePayMerchantID: String? {
         publicType.applePayOptions?.applePayMerchantID
@@ -238,6 +244,11 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     var token: String? {
         publicType.paymentInfo.token
     }
+    
+    var storedCarType: Int32? {
+        publicType.storedCardType?.int32Value
+    }
+
 
     var recipientInfo: mobileSDK_UI.RecipientInfo? {
         publicType.recipientInfo?.wrapper

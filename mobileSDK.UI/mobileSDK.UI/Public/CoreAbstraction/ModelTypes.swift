@@ -30,6 +30,7 @@ public enum PayEvent {
     case onThreeDSecure(page: ThreeDSecurePage, isCascading: Bool, payment: Payment)
     
     case onThreeDSecureRedirectComplete
+
 }
 
 public enum ActionType: Int {
@@ -164,6 +165,7 @@ public protocol PaymentOptions {
     var paymentDescription: String? { get }
     var applePayDescription: String? { get }
     var pkPaymentRequest: PKPaymentRequest? { get }
+    var storedCarType: Int32? { get }
     var token: String? { get }
     var recipientInfo: RecipientInfo? { get }
     var screenDisplayModes: Set<ScreenDisplayMode> { get }
@@ -173,6 +175,7 @@ public protocol PaymentOptions {
     var recurringDisclaimer: L? { get }
     var isDarkThemeOn: Bool { get }
     var hideScanningCards: Bool { get }
+    var footerImage: Image? { get }
 }
 
 public protocol AdditionalField {

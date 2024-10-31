@@ -1,3 +1,4 @@
+[![Build Status](https://github.com/ITECOMMPAY/mobile-sdk-ios-ui/actions/workflows/master_push_pr.yml/badge.svg)]()
 ![Cocoapods](https://img.shields.io/cocoapods/v/EcommpaySDK_UI)
 
 Ecommpay SDK UI for iOS

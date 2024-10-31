@@ -50,7 +50,9 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
                         chevron
                     }
                 }
-            }.padding(.horizontal, UIScheme.dimension.middleSpacing)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .padding(.horizontal, UIScheme.dimension.middleSpacing)
                 .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
                 .background {
                     isSavedAccount && !isExpanded

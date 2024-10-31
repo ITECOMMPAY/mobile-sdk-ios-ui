@@ -77,8 +77,11 @@ public class PaymentOptions: NSObject {
     internal var paymentInfo: PaymentInfo
 
     @objc public var applePayOptions: ApplePayOptions?
-
-
+    
+    @objc public var storedCardType: NSNumber?
+    
+    /// Payment logo image
+    @objc public var footerImage: UIImage?
 
     /// Payment logo image
     @objc public var logoImage: UIImage?
@@ -152,7 +155,7 @@ public class PaymentOptions: NSObject {
     ///   - customerID: Unique identifier of the customer in your project
     ///   - regionCode: Region code of a customer
     ///   - token: Saved card token
-    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:paymentDescription:customerID:regionCode:token:)
+    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:paymentDescription:customerID:regionCode:token:storedCardType:)
     public init(projectID: Int32,
                 paymentID: String,
                 paymentAmount: Int64,
@@ -160,7 +163,8 @@ public class PaymentOptions: NSObject {
                 paymentDescription: String?,
                 customerID: String?,
                 regionCode: String?,
-                token: String? = nil) {
+                token: String? = nil,
+                storedCardType: NSNumber? = nil) {
         self.paymentInfo = PaymentInfo.companion.create(projectId: projectID,
                                                         paymentId: paymentID,
                                                         paymentAmount: paymentAmount,
@@ -169,6 +173,7 @@ public class PaymentOptions: NSObject {
         self.paymentInfo.customerId = customerID
         self.paymentInfo.regionCode = regionCode
         self.paymentInfo.token = token
+        self.storedCardType = storedCardType
         super.init()
     }
 
@@ -179,15 +184,17 @@ public class PaymentOptions: NSObject {
     ///   - paymentID: Unique identifier of the payment in your project
     ///   - paymentAmount: Payment amount in minor units of currency, 1999 means 19.99, 10 means 0.10
     ///   - paymentCurrency: Payment currency in ISO 4217 alpha-3 format
-    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:)
+    @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:storedCardType:)
     public init(projectID: Int32,
                 paymentID: String,
                 paymentAmount: Int64,
-                paymentCurrency: String) {
+                paymentCurrency: String,
+                storedCardType: NSNumber? = nil) {
         self.paymentInfo = PaymentInfo.companion.create(projectId: projectID,
                                                         paymentId: paymentID,
                                                         paymentAmount: paymentAmount,
                                                         paymentCurrency: paymentCurrency)
+        self.storedCardType = storedCardType
         super.init()
     }
 

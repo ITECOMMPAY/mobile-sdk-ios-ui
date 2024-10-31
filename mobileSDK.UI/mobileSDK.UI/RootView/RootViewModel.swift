@@ -233,6 +233,7 @@ class RootViewModel: RootViewModelProtocol {
                     month: month,
                     cardHolder: cardHolder,
                     saveCard: saveCard,
+                    storedCardType: state.paymentOptions.storedCarType,
                     recipientInfo: state.paymentOptions.recipientInfo
                 )
             case .Auth:
@@ -243,6 +244,7 @@ class RootViewModel: RootViewModelProtocol {
                     month: month,
                     cardHolder: cardHolder,
                     saveCard: saveCard,
+                    storedCardType: state.paymentOptions.storedCarType,
                     recipientInfo: state.paymentOptions.recipientInfo
                 )
             case .Tokenize:
@@ -258,7 +260,8 @@ class RootViewModel: RootViewModelProtocol {
                     pan: pan,
                     year: year + 2000,
                     month: month,
-                    cardHolder: cardHolder
+                    cardHolder: cardHolder,
+                    storedCardType: state.paymentOptions.storedCarType
                 )
             }
 

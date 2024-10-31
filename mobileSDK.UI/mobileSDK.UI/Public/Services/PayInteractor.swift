@@ -38,6 +38,7 @@ public protocol PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
+        storedCardType: Int32?,
         recipientInfo: RecipientInfo?
     ) -> PayRequest
 
@@ -48,6 +49,7 @@ public protocol PayRequestFactory {
         month: Int32,
         cardHolder: String,
         saveCard: Bool,
+        storedCardType: Int32?,
         recipientInfo: RecipientInfo?
     ) -> PayRequest
 
@@ -87,7 +89,8 @@ public protocol PayRequestFactory {
         pan: String,
         year: Int32,
         month: Int32,
-        cardHolder: String
+        cardHolder: String,
+        storedCardType: Int32?
     ) -> mobileSDK_UI.PayRequest
 
     func createVerifyApplePayRequest(

@@ -88,7 +88,7 @@ struct NewCardCheckoutView: View {
                                           year: expiry.expiryYear!,
                                           month: expiry.expiryMonth!,
                                           cardHolder: formValues.cardHolder,
-                                          saveCard: formValues.isCOFAgreementChecked,
+                                          saveCard: formValues.isCOFAgreementChecked, 
                                           customerFields: formValues.customerFieldValues))
             }
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)

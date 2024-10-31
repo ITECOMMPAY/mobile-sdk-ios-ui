@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct FooterView: View {
+    
+    let footerImage: Image?
+    
     var body: some View {
-        IR.poweredByLogo.image?
-            .frame(height: UIScheme.dimension.paymentOverviewSpacing)
-            .accessibilityHidden(true)
+        if (footerImage != nil) {
+            footerImage.frame(height: UIScheme.dimension.paymentOverviewSpacing)
+                .accessibilityHidden(true)
+        } else {
+            IR.poweredByLogo.image?
+                .frame(height: UIScheme.dimension.paymentOverviewSpacing)
+                .accessibilityHidden(true)
+        }
+        
     }
 }
 
@@ -19,7 +28,7 @@ struct FooterView: View {
 
 struct FooterView_Previews: PreviewProvider {
     static var previews: some View {
-        FooterView().previewLayout(.sizeThatFits)
+        FooterView(footerImage: nil).previewLayout(.sizeThatFits)
     }
 }
 
