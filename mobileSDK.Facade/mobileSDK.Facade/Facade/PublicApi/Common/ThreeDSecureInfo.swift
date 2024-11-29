@@ -7,7 +7,7 @@
 //
 import Foundation
 #if !DEVELOPMENT
-@_implementationOnly import MsdkCore
+internal import MsdkCore
 #else
 import MsdkCore
 #endif

@@ -56,13 +56,6 @@
 			remoteGlobalIDString = 849C535828BF62C800C1CF71;
 			remoteInfo = ecommpaySDK;
 		};
-		B3AB4766296BFF8200B2EED5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DCC5E8E2294E023E004E8864;
-			remoteInfo = mSDK_UI;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -185,7 +178,6 @@
 			children = (
 				843B503E28F5607E00A4F779 /* ecommpaySDK_Dev.framework */,
 				843B504028F5607E00A4F779 /* ecommpaySDK.framework */,
-				B3AB4767296BFF8200B2EED5 /* mSDK_UI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -382,13 +374,6 @@
 			remoteRef = 843B503F28F5607E00A4F779 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B3AB4767296BFF8200B2EED5 /* mSDK_UI.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = mSDK_UI.framework;
-			remoteRef = B3AB4766296BFF8200B2EED5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -550,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -604,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

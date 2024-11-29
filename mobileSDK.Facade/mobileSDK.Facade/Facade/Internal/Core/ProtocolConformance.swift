@@ -6,8 +6,8 @@
 //
 
 #if !DEVELOPMENT
-@_implementationOnly import MsdkCore
-@_implementationOnly import mobileSDK_UI
+internal import MsdkCore
+internal import mobileSDK_UI
 #else
 import MsdkCore
 import mobileSDK_UI
@@ -235,6 +235,8 @@ private struct MsdkCoreAccountWrapper: mobileSDK_UI.Account {
     var number: String? { coreType.number }
 
     var type: String? { coreType.type }
+    
+    var cardHolder: String? { coreType.cardHolder }
 }
 
 internal extension MsdkCore.CompleteField {

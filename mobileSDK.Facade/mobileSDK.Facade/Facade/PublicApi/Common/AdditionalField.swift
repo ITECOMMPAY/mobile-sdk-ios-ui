@@ -6,7 +6,7 @@
 //  Copyright © 2019 Ecommpay. All rights reserved.
 //
 #if !DEVELOPMENT
-@_implementationOnly import MsdkCore
+internal import MsdkCore
 #else
 import MsdkCore
 #endif

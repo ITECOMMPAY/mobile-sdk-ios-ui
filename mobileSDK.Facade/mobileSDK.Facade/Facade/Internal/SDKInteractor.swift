@@ -10,8 +10,8 @@ import UIKit
 import SwiftUI
 
 #if !DEVELOPMENT
-@_implementationOnly import mobileSDK_UI
-@_implementationOnly import MsdkCore
+internal import mobileSDK_UI
+internal import MsdkCore
 #else
 import mobileSDK_UI
 import MsdkCore

@@ -8,7 +8,7 @@
 
 import Foundation
 #if !DEVELOPMENT
-@_implementationOnly import MsdkCore
+internal import MsdkCore
 #else
 import MsdkCore
 #endif
@@ -22,6 +22,7 @@ import MsdkCore
     public var sum: Int64
     public var currency: String?
     public var token: String?
+    public var account: PaymentAccount?
 
     internal init(from corePayment: MsdkCore.Payment) {
         status = corePayment.status.map { $0.name }
@@ -32,6 +33,20 @@ import MsdkCore
         sum = corePayment.sum
         currency = corePayment.currency
         token = corePayment.token
+        account = corePayment.account != nil ? PaymentAccount(from: corePayment.account!) : nil
+        super.init()
+    }
+}
+
+@objcMembers public class PaymentAccount: NSObject, Codable {
+    public var number: String?
+    public var type: String?
+    public var cardHolder: String?   
+
+    internal init(from corePayment: MsdkCore.Account) {
+        number = corePayment.number
+        type = corePayment.type
+        cardHolder = corePayment.cardHolder
         super.init()
     }
 }

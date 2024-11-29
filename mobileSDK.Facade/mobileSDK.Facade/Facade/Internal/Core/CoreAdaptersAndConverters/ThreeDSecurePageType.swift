@@ -6,8 +6,8 @@
 //
 
 #if !DEVELOPMENT
-@_implementationOnly import MsdkCore
-@_implementationOnly import mobileSDK_UI
+internal import MsdkCore
+internal import mobileSDK_UI
 #else
 import MsdkCore
 import mobileSDK_UI

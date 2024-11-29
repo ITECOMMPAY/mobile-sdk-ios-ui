@@ -16,7 +16,7 @@ end
 
 #mSDK iOS
 
-mSDKTargets = ["ecommpaySDK", "ecommpaySDK_Dev", "mSDK_UI"]
+mSDKTargets = ["ecommpaySDK", "ecommpaySDK_Dev"]
 for targetName in mSDKTargets
   target targetName do
     project './mobileSDK.Facade/mobileSDK.Facade.xcodeproj'
