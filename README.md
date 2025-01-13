@@ -81,7 +81,7 @@ Listed below are the instructions on how to import the libraries via CocoaPods.
     
         target 'App' do
           # Pods for App
-          pod 'EcommpaySDK_UI', '3.0.0'
+          pod 'EcommpaySDK_UI'
         end
     
 2.  Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
