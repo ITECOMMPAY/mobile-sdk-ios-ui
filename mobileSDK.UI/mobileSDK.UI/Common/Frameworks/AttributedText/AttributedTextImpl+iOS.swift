@@ -67,9 +67,9 @@
 
       private func url(at location: CGPoint) -> URL? {
         guard let attributedText = self.attributedText else { return nil }
-
         let index = indexOfCharacter(at: location)
-        return attributedText.attribute(.link, at: index, effectiveRange: nil) as? URL
+        guard let link = attributedText.attribute(.link, at: index, effectiveRange: nil) as? String else { return nil }
+        return URL(string: link)
       }
 
       private func indexOfCharacter(at location: CGPoint) -> Int {

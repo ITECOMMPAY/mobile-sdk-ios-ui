@@ -10,7 +10,7 @@ xcodebuild archive -workspace "mobileSDK.xcworkspace" \
                    -destination "generic/platform=iOS Simulator" \
                    -archivePath "/tmp/xcf/iossimulator.xcarchive" \
                    SKIP_INSTALL=NO  \
-                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES | xcpretty
+                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 xcodebuild archive -workspace "mobileSDK.xcworkspace" \
                    -OTHER_SWIFT_FLAGS="-no-verify-emitted-module-interface" \
@@ -19,7 +19,7 @@ xcodebuild archive -workspace "mobileSDK.xcworkspace" \
                    -destination "generic/platform=iOS" \
                    -archivePath "/tmp/xcf/ios.xcarchive" \
                    SKIP_INSTALL=NO \
-                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES | xcpretty
+                   BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 xcodebuild -create-xcframework -framework /tmp/xcf/ios.xcarchive/Products/Library/Frameworks/$1.framework \
                                -framework /tmp/xcf/iossimulator.xcarchive/Products/Library/Frameworks/$1.framework \

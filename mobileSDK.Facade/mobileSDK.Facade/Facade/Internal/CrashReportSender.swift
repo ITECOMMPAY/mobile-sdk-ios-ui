@@ -7,10 +7,10 @@
 
 //import Foundation
 //#if !targetEnvironment(simulator)
-//internal import KSCrash
+//@_implementationOnly import KSCrash
 //#endif
 //#if !DEVELOPMENT
-//internal import MsdkCore
+//@_implementationOnly import MsdkCore
 //#else
 //import MsdkCore
 //#endif

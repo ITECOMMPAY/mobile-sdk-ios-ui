@@ -15,6 +15,8 @@ extension TranslationWithLink {
             for linkStruct in messageLinks ?? [] {
                 if let text = linkStruct.messageLink, let link = linkStruct.url {
                     let range = result.mutableString.range(of: text)
+//                    result.addAttributes(linksAttributes, range: range)
+//                    result.addAttributes([.link: link], range: range)
                     result.setAttributes(merge([.link: link], linksAttributes), range: range)
                 }
             }

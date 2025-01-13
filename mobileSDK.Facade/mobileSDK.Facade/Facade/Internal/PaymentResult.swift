@@ -9,8 +9,8 @@
 import Foundation
 
 #if !DEVELOPMENT
-internal import mobileSDK_UI
-internal import MsdkCore
+@_implementationOnly import mobileSDK_UI
+@_implementationOnly import MsdkCore
 #else
 import mobileSDK_UI
 import MsdkCore

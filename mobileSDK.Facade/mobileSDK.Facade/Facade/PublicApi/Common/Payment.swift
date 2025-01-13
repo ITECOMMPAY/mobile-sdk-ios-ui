@@ -8,7 +8,7 @@
 
 import Foundation
 #if !DEVELOPMENT
-internal import MsdkCore
+@_implementationOnly import MsdkCore
 #else
 import MsdkCore
 #endif
