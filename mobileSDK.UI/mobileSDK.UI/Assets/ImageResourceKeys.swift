@@ -11,6 +11,7 @@ typealias IR = ImageResourceKeys
 
 enum ImageResourceKeys: String {
     // MARK: Common
+    case ecommpayLogo
     case poweredByLogo
     case closeButton
     case copyButton

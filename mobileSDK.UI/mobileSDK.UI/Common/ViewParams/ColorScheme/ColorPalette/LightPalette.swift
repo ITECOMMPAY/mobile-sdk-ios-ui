@@ -11,7 +11,7 @@ protocol LightPalette: ColorPalette { }
 
 extension LightPalette {
     var primary: Color {
-        Color(hex: 0x00579E)
+        Color(hex: 0x4B007C)
     }
 
     var link: Color {

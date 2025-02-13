@@ -11,7 +11,7 @@ protocol DarkPalette: ColorPalette { }
 
 extension DarkPalette {
     var primary: Color {
-        Color(hex: 0x054BA0)
+        Color(hex: 0x4B007C)
     }
 
     var link: Color {

@@ -37,7 +37,7 @@ struct VerifyOverview: View {
     }
 
     private var logo: some View {
-        logoImage
+        logoImage ?? IR.ecommpayLogo.image
     }
 
     var recurringDetails: some View {
