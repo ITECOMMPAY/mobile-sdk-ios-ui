@@ -72,21 +72,8 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     var body: some View {
         VStack(spacing: .zero) {
             header
-            if #available(iOS 15.0, *) {
-                List {
-                    content
-                        .buttonStyle(.plain)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(UIScheme.color.mainBackground)
-                }
-            } else {
-                List {
-                    content
-                        .buttonStyle(.plain)
-                        .listRowInsets(EdgeInsets(top: -1, leading: 0, bottom: -1, trailing: 0))
-                        .listRowBackground(UIScheme.color.mainBackground)
-                }
+            ScrollView {
+                content
             }
         }
         .keyboardAwarePadding()
