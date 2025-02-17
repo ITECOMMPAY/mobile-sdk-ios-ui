@@ -104,7 +104,7 @@ private struct MsdkCoreExpiryWrapper: mobileSDK_UI.CardExpiry {
 
     public var expiryYear: Int32? { coreType.year?.int32Value }
 
-    func isValid() -> Bool { coreType.isValid() }
+    func isValid() -> Bool { coreType.isValid() && coreType.isMoreThanNow() }
 
     var stringValue: String { coreType.stringValue }
 }
