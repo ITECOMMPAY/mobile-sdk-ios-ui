@@ -139,6 +139,8 @@ private struct CardTypeView: View {
             } else {
                 IR.bankCard.image?
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundStyle(UIScheme.color.navigationButtonColor)
                     .aspectRatio(contentMode: .fit)
             }
         }

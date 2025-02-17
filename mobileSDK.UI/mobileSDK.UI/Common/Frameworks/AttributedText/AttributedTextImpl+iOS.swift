@@ -10,11 +10,9 @@
       uiView.attributedText = attributedText
       uiView.maxLayoutWidth = maxLayoutWidth
 
-      uiView.textContainer.maximumNumberOfLines = context.environment.lineLimit ?? 0
-      uiView.textContainer.lineBreakMode = NSLineBreakMode(
-        truncationMode: context.environment.truncationMode
-      )
-      uiView.openLink = onOpenLink ?? { context.environment.openURL($0) }
+      uiView.textContainer.maximumNumberOfLines = 0
+
+        uiView.openLink = onOpenLink ?? { context.environment.openURL($0) }
       textSizeViewModel.didUpdateTextView(uiView)
     }
   }

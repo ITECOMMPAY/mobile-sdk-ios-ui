@@ -21,11 +21,10 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             header.accessibilityElement(children: .combine)
-            VStack {
-                if isExpanded {
-                    content.transition(.move(edge: .top).combined(with: .opacity))
-                }
-            }.clipped()
+            content
+                .opacity(isExpanded ? 1 : 0)
+                .frame(maxHeight: isExpanded ? .infinity : 0)
+                .zIndex(-1)
         }
         .background(UIScheme.color.paymentMethodBackground)
         .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)

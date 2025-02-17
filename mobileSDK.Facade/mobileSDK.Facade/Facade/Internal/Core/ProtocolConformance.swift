@@ -14,7 +14,7 @@ import mobileSDK_UI
 #endif
 
 internal extension MsdkCore.PaymentMethod {
-    var wrapper: some mobileSDK_UI.PaymentMethod {
+    var wrapper: mobileSDK_UI.PaymentMethod {
         MsdkCorePaymentMethodWrapper(coreType: self)
     }
 }
@@ -60,7 +60,7 @@ private struct MsdkCorePaymentMethodWrapper: mobileSDK_UI.PaymentMethod {
 }
 
 internal extension MsdkCore.SavedAccount {
-    var wrapper: some mobileSDK_UI.SavedAccount {
+    var wrapper: mobileSDK_UI.SavedAccount {
         MsdkCoreSavedAccountWrapper(coreType: self)
     }
 }
@@ -88,7 +88,7 @@ private struct MsdkCoreSavedAccountWrapper: mobileSDK_UI.SavedAccount {
 }
 
 internal extension MsdkCore.SdkExpiry {
-    var wrapper: some mobileSDK_UI.CardExpiry {
+    var wrapper: mobileSDK_UI.CardExpiry {
         MsdkCoreExpiryWrapper(coreType: self)
     }
 }
@@ -104,7 +104,7 @@ private struct MsdkCoreExpiryWrapper: mobileSDK_UI.CardExpiry {
 
     public var expiryYear: Int32? { coreType.year?.int32Value }
 
-    func isValid() -> Bool { coreType.isValid() &&  coreType.isMoreThanNow()}
+    func isValid() -> Bool { coreType.isValid() && coreType.isMoreThanNow() }
 
     var stringValue: String { coreType.stringValue }
 }
@@ -125,7 +125,7 @@ internal class CoreValidationService: ValidationService {
 }
 
 extension MsdkCore.CustomerField {
-    var wrapper: some mobileSDK_UI.CustomerField {
+    var wrapper: mobileSDK_UI.CustomerField {
         MsdkCoreCustomerFieldWrapper(coreType: self)
     }
 }
@@ -168,7 +168,7 @@ struct MsdkCoreCustomerFieldWrapper: mobileSDK_UI.CustomerField {
 }
 
 internal extension MsdkCore.ClarificationField {
-    var wrapper: some mobileSDK_UI.ClarificationField {
+    var wrapper: mobileSDK_UI.ClarificationField {
         MsdkCoreClarificationFieldWrapper(coreType: self)
     }
 }
@@ -202,7 +202,7 @@ private struct MsdkCoreClarificationFieldWrapper: mobileSDK_UI.ClarificationFiel
 }
 
 internal extension MsdkCore.PaymentStatus {
-    var wrapper: some mobileSDK_UI.PaymentStatus {
+    var wrapper: mobileSDK_UI.PaymentStatus {
         MsdkCorePaymentStatusWrapper(coreType: self)
     }
 }
@@ -220,7 +220,7 @@ private struct MsdkCorePaymentStatusWrapper: mobileSDK_UI.PaymentStatus {
 }
 
 internal extension MsdkCore.Account {
-    var wrapper: some mobileSDK_UI.Account {
+    var wrapper: mobileSDK_UI.Account {
         MsdkCoreAccountWrapper(coreType: self)
     }
 }
@@ -240,7 +240,7 @@ private struct MsdkCoreAccountWrapper: mobileSDK_UI.Account {
 }
 
 internal extension MsdkCore.CompleteField {
-    var wrapper: some mobileSDK_UI.CompleteField {
+    var wrapper: mobileSDK_UI.CompleteField {
         MsdkCoreCompleteFieldWrapper(coreType: self)
     }
 }
@@ -260,7 +260,7 @@ private struct MsdkCoreCompleteFieldWrapper: mobileSDK_UI.CompleteField {
 }
 
 internal extension MsdkCore.Payment {
-    var wrapper: some mobileSDK_UI.Payment {
+    var wrapper: mobileSDK_UI.Payment {
         MsdkCorePaymentWrapper(coreType: self)
     }
 }
@@ -306,7 +306,7 @@ internal struct MsdkCorePaymentWrapper: mobileSDK_UI.Payment {
 }
 
 internal extension MsdkCore.ThreeDSecurePage {
-    var wrapper: some mobileSDK_UI.ThreeDSecurePage {
+    var wrapper: mobileSDK_UI.ThreeDSecurePage {
         MsdkCoreThreeDSecurePageWrapper(coreType: self)
     }
 }
@@ -346,7 +346,7 @@ internal struct StringResourceManagerAdapter: mobileSDK_UI.StringResourceManager
 }
 
 internal extension LinkMessage {
-    var wrapper: some mobileSDK_UI.TranslationWithLink {
+    var wrapper: mobileSDK_UI.TranslationWithLink {
         TranslationWithLink(message: message, name: message, messageLinks: links?.map({ link in
             Link(url: link.url, messageLink: link.message)
         }))
@@ -365,7 +365,7 @@ private struct Link: mobileSDK_UI.Link {
 }
 
 internal extension AdditionalField {
-    var wrapper: some mobileSDK_UI.AdditionalField {
+    var wrapper: mobileSDK_UI.AdditionalField {
         AdditionalFieldWrapper(publicType: self)
     }
 }
@@ -388,7 +388,7 @@ private struct AdditionalFieldWrapper: mobileSDK_UI.AdditionalField {
 }
 
 internal extension RecipientInfo {
-    var wrapper: some mobileSDK_UI.RecipientInfo {
+    var wrapper: mobileSDK_UI.RecipientInfo {
         RecipientInfoWrapper(publicType: self)
     }
 }
