@@ -81,23 +81,25 @@ protocol ColorScheme {
     /// TextField requirement mark color
     var textFieldRequirementMarkColor: Color { get }
 
-    /// цвет малозначимых декоративных элементов
+    /// Цвет малозначимых декоративных элементов
     var minorShapesColor: Color { get }
 
     /// Цвет точек на экране загрузки
     var loadingDotsColor: Color { get }
     
-    /// цвет кнопки delete card
+    /// Цвет кнопки delete card
     var deleteCardButtonColor: Color { get }
-    /// цвет кнопки cancel payment
+    /// Цвет кнопки cancel payment
     var cancelPaymentButtonColor: Color { get }
-    /// цвет границы невыделеного чекбокса
+    /// Цвет границы невыделеного чекбокса
     var checkboxUnselectedForeground: Color { get }
-    /// цвет фона невыделенного чекбокса
+    /// Контрастный цвет границы невыделенного чекбокса
+    var checkboxUnselectedForegroundContrast: Color { get }
+    /// Цвет фона невыделенного чекбокса
     var checkboxUnselectedBackground: Color { get }
-    /// цвет границы выделеного чекбокса
+    /// Цвет границы выделеного чекбокса
     var checkboxSelectedForeground: Color { get }
-    /// цвет фона выделенного чекбокса
+    /// Цвет фона выделенного чекбокса
     var checkboxSelectedBackground: Color { get }
     /// Цвет текста успеха
     var successTextColor: Color { get }

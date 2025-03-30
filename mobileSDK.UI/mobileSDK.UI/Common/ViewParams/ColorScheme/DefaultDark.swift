@@ -25,7 +25,7 @@ struct DefaultDark: ColorScheme, DarkPalette {
 
     var paymentMethodIconColor: Color { brand ?? globalWhite }
 
-    var navigationButtonColor: Color { brand ?? globalWhite }
+    var navigationButtonColor: Color { globalWhite }
 
     var textFieldPlaceholderColor: Color { neutral }
 
@@ -39,6 +39,7 @@ struct DefaultDark: ColorScheme, DarkPalette {
     var textFieldDisabledTextColor: Color { grey }
 
     var checkboxUnselectedForeground: Color { highlight }
+    var checkboxUnselectedForegroundContrast: Color { globalWhite }
     var checkboxUnselectedBackground: Color { inputField }
 
     var deleteCardButtonColor: Color { link }

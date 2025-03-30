@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CheckBoxStyle: ToggleStyle {
+    @Environment(\.accessibilityShowButtonShapes) private var accessibilityShowButtonShapes
+    
     func makeBody(configuration: Configuration) -> some View {
         Button {
             configuration.isOn.toggle()
@@ -17,7 +19,13 @@ struct CheckBoxStyle: ToggleStyle {
                     Image(systemName: configuration.isOn ? "square.fill" : "square")
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(configuration.isOn ? UIScheme.color.checkboxSelectedBackground : UIScheme.color.checkboxUnselectedForeground)
+                        .foregroundColor(
+                            configuration.isOn
+                                ? UIScheme.color.checkboxSelectedBackground
+                                : accessibilityShowButtonShapes
+                                    ? UIScheme.color.checkboxUnselectedForegroundContrast
+                                    : UIScheme.color.checkboxUnselectedForeground
+                        )
                         .background(configuration.isOn ? .clear : UIScheme.color.checkboxUnselectedBackground)
                         .cornerRadius(2.7)
                     if configuration.isOn {
