@@ -93,8 +93,6 @@ protocol ColorScheme {
     var cancelPaymentButtonColor: Color { get }
     /// Цвет границы невыделеного чекбокса
     var checkboxUnselectedForeground: Color { get }
-    /// Контрастный цвет границы невыделенного чекбокса
-    var checkboxUnselectedForegroundContrast: Color { get }
     /// Цвет фона невыделенного чекбокса
     var checkboxUnselectedBackground: Color { get }
     /// Цвет границы выделеного чекбокса

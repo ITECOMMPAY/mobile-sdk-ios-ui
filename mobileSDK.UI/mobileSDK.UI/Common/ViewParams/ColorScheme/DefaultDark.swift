@@ -38,8 +38,7 @@ struct DefaultDark: ColorScheme, DarkPalette {
 
     var textFieldDisabledTextColor: Color { grey }
 
-    var checkboxUnselectedForeground: Color { highlight }
-    var checkboxUnselectedForegroundContrast: Color { globalWhite }
+    var checkboxUnselectedForeground: Color { mediumGrey }
     var checkboxUnselectedBackground: Color { inputField }
 
     var deleteCardButtonColor: Color { link }
