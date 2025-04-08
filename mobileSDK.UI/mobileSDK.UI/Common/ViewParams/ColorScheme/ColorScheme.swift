@@ -11,108 +11,96 @@ import PassKit
 protocol ColorScheme {
     /// Dark/Light
     var isDarkTheme: Bool { get }
-    /// Цвет затемнения фона
+    /// Background dimming color
     var dimming: Color { get }
-    /// Основной цвет фона скелетного вью
+    /// Primary color of skeleton view
     var shimmeringBackground: Color { get }
-    /// Основной цвет Shimmering эффекта
+    /// Primary color of shimmer effect
     var shimmeringBase: Color { get }
-    /// Цвет блика Shimmering эффекта
+    /// Accent color of shimmer effect
     var shimmeringAccent: Color { get }
-    /// Цвет основного фона карточки экранов оплаты
+    /// Primary background color of payment screens
     var mainBackground: Color { get }
-    /// Цвет заголовков экрана
+    /// Screen header color
     var screenHeader: Color { get }
-    /// Цвет  бренда
+    /// Brand color
     var brandColor: Color { get }
-    /// Цвет подложки деталей платежа на финальном экране
+    /// Background color of payment details on final screen
     var resultInfoBackgroundColor: Color { get }
-    /// Цвет рамки платёжного метода
+    /// Color of payment method border
     var paymentMethodBorder: Color { get }
-    /// secondary Text Color
+    /// Secondary Text Color
     var secondaryTextColor: Color { get }
-    /// Цвет текста
+    /// Text color
     var text: Color { get }
-    /// paymentInfoCard foreground color
+    /// Foreground color of payment information card
     var paymentInfoCardForegroundColor: Color { get }
-
-    /// Цвет сохранённой карты в списке платёжных методов`
+    /// Color of saved card in list of payment methods
     var savedAccountBackground: Color { get }
-    /// Цвет ячейки в списке платёжных методов`
+    /// Cell color in list of payment methods
     var paymentMethodBackground: Color { get }
-
-    /// Цвет стандартных иконок платёжных методов
+    /// Color of standard icons of payment methods
     var paymentMethodIconColor: Color { get }
-
-    /// Цвет кнопок навигации
+    /// Color of navigation buttons
     var navigationButtonColor: Color { get }
-    /// Цвет кнопок-ссылок
+    /// Color of link buttons
     var linkButtonColor: Color { get }
-
     /// TextField full-size placeholder color
     var textFieldPlaceholderColor: Color { get }
-    
     /// TextField normal placeholder color
     var textFieldNormalPlaceholderColor: Color { get }
     /// TextField normal border color
     var textFieldNormalBorderColor: Color { get }
     /// TextField normal background color
     var textFieldNormalBackgroundColor: Color { get }
-
     /// TextField focused placeholder color
     var textFieldFocusedPlaceholderColor: Color { get }
     /// TextField focused border color
     var textFieldFocusedBorderColor: Color { get }
     /// TextField focused background color
     var textFieldFocusedBackgroundColor: Color { get }
-
     /// TextField error placeholder color
     var textFieldErrorPlaceholderColor: Color { get }
     /// TextField error border color
     var textFieldErrorBorderColor: Color { get }
-    /// TextField error  background color
+    /// TextField error background color
     var textFieldErrorBackgroundColor: Color { get }
-
     /// TextField disabled text color
     var textFieldDisabledTextColor: Color { get }
     /// TextField disabled border color
     var textFieldDisabledBorderColor: Color { get }
-
     /// TextField requirement mark color
     var textFieldRequirementMarkColor: Color { get }
-
-    /// Цвет малозначимых декоративных элементов
+    /// Color of minor shapes
     var minorShapesColor: Color { get }
-
-    /// Цвет точек на экране загрузки
+    /// Color of loading dots
     var loadingDotsColor: Color { get }
-    
-    /// Цвет кнопки delete card
+    /// Color of delete card button
     var deleteCardButtonColor: Color { get }
-    /// Цвет кнопки cancel payment
+    /// Color of cancel payment button
     var cancelPaymentButtonColor: Color { get }
-    /// Цвет границы невыделеного чекбокса
+    /// Foreground color of unselected checkbox
     var checkboxUnselectedForeground: Color { get }
-    /// Цвет фона невыделенного чекбокса
+    /// Background color of unselected checkbox
     var checkboxUnselectedBackground: Color { get }
-    /// Цвет границы выделеного чекбокса
+    /// Foreground color of selected checkbox
     var checkboxSelectedForeground: Color { get }
-    /// Цвет фона выделенного чекбокса
+    /// Background color of selected checkbox
     var checkboxSelectedBackground: Color { get }
-    /// Цвет текста успеха
+    /// Success text color
     var successTextColor: Color { get }
-    /// Цвет текста ошибки
+    /// Error text color
     var errorTextColor: Color { get }
-    /// Основной цвет в детальной информации о платеже
+    /// Primary color in detailed payment information
     var paymentDetailsForegroundColor: Color { get }
-    /// Фон элементов в детальной информации о платеже(divider, кнопка)
+    /// Background color of elements in detailed payment information (divider, button)
     var paymentDetailsBackgroundColor: Color { get }
-    /// Цвет заголовков в детальной информации о платеже
+    /// Color of headings in detailed payment information
     var paymentDetailsTitleColor: Color { get }
-    /// Цвет иконки кнопки доп. информации
+    /// Color of icon in additional information button
     var infoIconColor: Color { get }
-    /// Цвет иконки кнопки сканирования карты
+    /// Color of card scan button icon
     var scanCardIconColor: Color { get }
-    /// ApplePay button style
+    /// Apple Pay button style
     var applePayButtonStyle: PKPaymentButtonStyle { get }
 }
