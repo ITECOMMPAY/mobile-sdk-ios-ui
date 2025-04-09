@@ -101,6 +101,7 @@ private struct CardTypeView: View {
     let connectedCardTypes: [CardType]
     @Binding var recognizedType: CardType?
 
+    @State private var needAnimation = true
     @State private var timer: Timer?
     @State private var visibleCardTypeIndex: Int = 0
 
@@ -112,15 +113,20 @@ private struct CardTypeView: View {
 
     var body: some View {
         HStack(spacing: UIScheme.dimension.tinySpacing) {
-            if let recognizedType = recognizedType {
+            if let recognizedType {
                 view(for: recognizedType)
             } else if !visibleCardTypes.isEmpty {
-                if visibleCardTypeIndex < visibleCardTypes.count {
-                   view(for: visibleCardTypes[visibleCardTypeIndex])
+                if needAnimation, visibleCardTypeIndex < visibleCardTypes.count {
+                    view(for: visibleCardTypes[visibleCardTypeIndex])
+                } else {
+                    view(for: nil)
                 }
             } else {
                 view(for: nil)
             }
+        }
+        .onTapGesture {
+            needAnimation = !needAnimation
         }
         .onAppear(perform: initTimer)
         .accessibilityHidden(true)

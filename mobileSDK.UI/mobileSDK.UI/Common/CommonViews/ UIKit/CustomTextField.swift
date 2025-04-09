@@ -48,7 +48,6 @@ struct CustomTextField<AccessoryViewType: View>: View {
                     isFocused = true
                 }
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
-                    .accessibilityHidden(true)
             }
             .background(backgroundColor.overlay(
                 RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
