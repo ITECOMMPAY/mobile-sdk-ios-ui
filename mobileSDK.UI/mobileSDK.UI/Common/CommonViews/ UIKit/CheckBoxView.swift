@@ -17,7 +17,11 @@ struct CheckBoxStyle: ToggleStyle {
                     Image(systemName: configuration.isOn ? "square.fill" : "square")
                         .resizable()
                         .frame(width: 20, height: 20)
-                        .foregroundColor(configuration.isOn ? UIScheme.color.checkboxSelectedBackground : UIScheme.color.checkboxUnselectedForeground)
+                        .foregroundColor(
+                            configuration.isOn
+                                ? UIScheme.color.checkboxSelectedBackground
+                                : UIScheme.color.checkboxUnselectedForeground
+                        )
                         .background(configuration.isOn ? .clear : UIScheme.color.checkboxUnselectedBackground)
                         .cornerRadius(2.7)
                     if configuration.isOn {
