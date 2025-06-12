@@ -32,29 +32,39 @@ class RootViewModel: RootViewModelProtocol {
     var cancellables: Set<AnyCancellable> = []
     var onFlowFinished: PaymentFlowCompletion
 
-    init(paymentOptions: PaymentOptions,
-         futureData: AnyPublisher<InitEvent, CoreError>,
-         onFlowFinished: @escaping PaymentFlowCompletion) {
+    init(
+        paymentOptions: PaymentOptions,
+        futureData: AnyPublisher<InitEvent, CoreError>,
+        onFlowFinished: @escaping PaymentFlowCompletion
+    ) {
         self.futureData = futureData
         self.onFlowFinished = onFlowFinished
         self.state = RootState(paymentOptions: paymentOptions, savedValues: [:])
+        
         subscribeInit()
     }
 
     func subscribeInit() {
         state.isLoading = true
+        
         self.futureData
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
                     self?.state.alertModel = .FinalError(error, onClose: { self?.onFlowFinished(.withError(error)) })
                 }
             }, receiveValue: { [weak self] event in
-                guard let self = self else { return }
+                guard let self else { return }
+                
                 self.state.isLoading = false
+                
                 switch event {
-                case .onInitReceived(paymentMethods: let paymentMethods, savedAccounts: let accounts):
+                case let .onInitReceived(paymentMethods, savedAccounts):
+                    applePayService.availableCardTypes = paymentMethods
+                        .first(where: { $0.methodType == .applePay })?
+                        .connectedCardTypes ?? []
+                    
                     let action = self.state.paymentOptions.action
-                    let accounts = action == .Tokenize || action == .Verify ? [] : accounts
+                    let accounts = action == .Tokenize || action == .Verify ? [] : savedAccounts
                     
                     let methods: [PaymentMethod]
                     if action == .Tokenize || self.state.isTokenizedAction {
@@ -66,7 +76,7 @@ class RootViewModel: RootViewModelProtocol {
                     } else if self.applePayService.isAvailable {
                         methods = paymentMethods
                     } else {
-                        // выкидываем applePay если он не поддерживается на устройстве
+                        // Drop Apple Pay if it is not supported on device
                         methods = paymentMethods.filter { $0.methodType != .applePay }
                     }
                     
@@ -91,9 +101,10 @@ class RootViewModel: RootViewModelProtocol {
                             }
                         }()
                     }
-                case .onPaymentRestored(let payment):
+                case let .onPaymentRestored(payment):
                     self.state.isLoading = false
                     self.state.payment = payment
+                    
                     if let paymentMethod = self.state.availablePaymentMethods?.first(where: { paymentMethod in
                         payment.method == paymentMethod.code
                     }) {
