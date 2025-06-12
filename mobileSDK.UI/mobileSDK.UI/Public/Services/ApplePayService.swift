@@ -7,25 +7,40 @@
 
 import PassKit
 
-class ApplePayService: NSObject {
+final class ApplePayService: NSObject {
     static let shared = ApplePayService()
+    
+    var onApplePayResult: ((ApplePayResult) -> Void)?
+    
+    var availableCardTypes: [CardType] = [] {
+        didSet {
+            availablePaymentNetworks = availableCardTypes.compactMap(\.pkPaymentNetwork)
+        }
+    }
 
-    private override init() {
-        super.init()
+    var isAvailable: Bool {
+        return PKPaymentAuthorizationController.canMakePayments(
+            usingNetworks: availablePaymentNetworks.isEmpty
+                ? defaultAvailablePaymentNetworks
+                : availablePaymentNetworks
+        )
     }
 
     private var controller: PKPaymentAuthorizationController?
     private var wasAuthorizedPayment: Bool = false
-
-    static let supportedPaymentNetworks = [
+    
+    private(set) var paymentCompletion: ((PKPaymentAuthorizationResult) -> Void)?
+    
+    private var availablePaymentNetworks: [PKPaymentNetwork] = []
+    private let defaultAvailablePaymentNetworks = [
         PKPaymentNetwork.visa,
         PKPaymentNetwork.masterCard,
         PKPaymentNetwork.maestro,
         PKPaymentNetwork.amex
     ]
-
-    var isAvailable: Bool {
-        return PKPaymentAuthorizationController.canMakePayments(usingNetworks: ApplePayService.supportedPaymentNetworks)
+    
+    private override init() {
+        super.init()
     }
 
     func createRequest(with options: PaymentOptions) -> PKPaymentRequest? {
@@ -39,16 +54,22 @@ class ApplePayService: NSObject {
         }
         request.merchantIdentifier = applePayMerchantID
         request.merchantCapabilities = PKMerchantCapability.capability3DS
-        request.supportedNetworks = ApplePayService.supportedPaymentNetworks
+        request.supportedNetworks = availablePaymentNetworks.isEmpty
+            ? defaultAvailablePaymentNetworks
+            : availablePaymentNetworks
         if let description = options.applePayDescription, !description.isEmpty {
             request.paymentSummaryItems = [
-                PKPaymentSummaryItem(label: description ,
-                                     amount: options.summary.value as NSDecimalNumber)
+                PKPaymentSummaryItem(
+                    label: description ,
+                    amount: options.summary.value as NSDecimalNumber
+                )
             ]
         } else {
             request.paymentSummaryItems = [
-                PKPaymentSummaryItem(label: options.paymentID ,
-                                     amount: options.summary.value as NSDecimalNumber)
+                PKPaymentSummaryItem(
+                    label: options.paymentID ,
+                    amount: options.summary.value as NSDecimalNumber
+                )
             ]
         }
         return request
@@ -64,9 +85,6 @@ class ApplePayService: NSObject {
             }
         }
     }
-
-    var onApplePayResult: ((ApplePayResult) -> Void)?
-    private(set) var paymentCompletion: ((PKPaymentAuthorizationResult) -> Void)?
 }
 
 enum ApplePayResult {
@@ -84,13 +102,14 @@ extension ApplePayService: PKPaymentAuthorizationControllerDelegate {
         }
     }
 
-    func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController,
-                                        didAuthorizePayment payment: PKPayment,
-                                        handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
+    func paymentAuthorizationController(
+        _ controller: PKPaymentAuthorizationController,
+        didAuthorizePayment payment: PKPayment,
+        handler completion: @escaping (PKPaymentAuthorizationResult) -> Void
+    ) {
         let token = String(decoding: payment.token.paymentData, as: UTF8.self)
         wasAuthorizedPayment = true
         paymentCompletion = completion
         onApplePayResult?(.didAuthorizePayment(token: token))
     }
-
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PassKit
 
 public enum CardType: String {
     case forbrugsforeningen
@@ -22,6 +23,29 @@ public enum CardType: String {
     case visa
     case diners_club
     case unknown
+    
+    var pkPaymentNetwork: PKPaymentNetwork? {
+        switch self {
+        case .discover:
+            return .discover
+        case .dankort:
+            return .dankort
+        case .mir:
+            return .mir
+        case .amex:
+            return .amex
+        case .maestro:
+            return .maestro
+        case .jcb:
+            return .JCB
+        case .mastercard:
+            return .masterCard
+        case .visa:
+            return .visa
+        default:
+            return nil
+        }
+    }
 }
 
 extension CardType: CaseIterable {}
