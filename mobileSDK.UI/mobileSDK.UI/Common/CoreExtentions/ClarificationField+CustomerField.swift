@@ -43,4 +43,6 @@ extension ClarificationFieldAdapter: CustomerField {
     var errorMessage: String? { clarificationField.defaultErrorMessage }
 
     var errorMessageKey: String { L.message_general_invalid.rawValue }
+    
+    var options: [any AdditionalField]? { clarificationField.options }
 }
