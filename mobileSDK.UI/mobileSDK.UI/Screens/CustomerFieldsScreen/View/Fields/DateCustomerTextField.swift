@@ -41,6 +41,7 @@ struct DateCustomerTextField_Previews: PreviewProvider {
         var validationMethod: Validator<String>? = { _ in false }
         var errorMessage: String? = "mockField error"
         var errorMessageKey: String = "mockField error key"
+        var options: [any AdditionalField]? = nil
     }
 
     struct DateCustomerTextFieldPreview: View {

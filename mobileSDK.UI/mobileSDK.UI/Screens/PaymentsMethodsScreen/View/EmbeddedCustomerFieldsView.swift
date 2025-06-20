@@ -18,15 +18,32 @@ struct EmbeddedCustomerFieldsView: View {
     var body: some View {
         VStack(spacing: UIScheme.dimension.formSmallSpacing) {
             ForEach(visibleCustomerFields, id: \.name) { field in
-                let foundAdditionalField = additionalFields.first { $0.name == field.name }
-                let foundFieldValue = customerFieldValues.first { $0.name == field.name }
-                view(for: field, value: foundFieldValue?.value ?? foundAdditionalField?.value ?? "") { customerField, newValue, isValid in
-                    validateFields(
-                        customerField: customerField,
-                        value: newValue,
-                        isValid: isValid,
-                        onCustomerFieldsChanged: onCustomerFieldsChanged
-                    )
+                if field.options != nil {
+                    OptionsCustomerTextField(
+                        customerField: field
+                    ) { customerField, newValue, isValid in
+                        validateFields(
+                            customerField: customerField,
+                            value: newValue,
+                            isValid: isValid,
+                            onCustomerFieldsChanged: onCustomerFieldsChanged
+                        )
+                    }
+                } else {
+                    let foundAdditionalField = additionalFields.first { $0.name == field.name }
+                    let foundFieldValue = customerFieldValues.first { $0.name == field.name }
+                    
+                    view(
+                        for: field,
+                        value: foundFieldValue?.value ?? foundAdditionalField?.value ?? ""
+                    ) { customerField, newValue, isValid in
+                        validateFields(
+                            customerField: customerField,
+                            value: newValue,
+                            isValid: isValid,
+                            onCustomerFieldsChanged: onCustomerFieldsChanged
+                        )
+                    }
                 }
             }
         }
@@ -34,23 +51,49 @@ struct EmbeddedCustomerFieldsView: View {
 
     @State private var changedFieldsMap: [String: ValidatedFieldValue] = [:]
 
-    private func view(for customerField: CustomerField,
-              value: String,
-              onValueChanged: @escaping OnBaseCustomerTextFieldValueChanged) -> some View {
+    private func view(
+        for customerField: CustomerField,
+        value: String,
+        onValueChanged: @escaping OnBaseCustomerTextFieldValueChanged
+    ) -> some View {
         return Group {
             switch customerField.fieldServerType {
             case .tel:
-                TelCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                TelCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             case .password:
-                PasswordCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                PasswordCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             case .number:
-                NumberCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                NumberCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             case .email:
-                EmailCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                EmailCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             case .date:
-                DateCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                DateCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             case .text, .file, .textarea, .search, .url:
-                TextCustomerTextField(value: value, customerField: customerField, onValueChanged: onValueChanged)
+                TextCustomerTextField(
+                    value: value,
+                    customerField: customerField,
+                    onValueChanged: onValueChanged
+                )
             }
         }
     }

@@ -66,6 +66,7 @@ public protocol CustomerField {
     var fieldServerType: FieldServerType { get }
     var errorMessage: String? { get }
     var errorMessageKey: String { get }
+    var options: [AdditionalField]? { get }
 }
 
 public protocol Payment {
@@ -122,6 +123,7 @@ public protocol ClarificationField {
     var defaultHint: String? { get }
     var defaultLabel: String? { get }
     var defaultErrorMessage: String? { get }
+    var options: [any AdditionalField]? { get }
 }
 
 public protocol PaymentStatus {

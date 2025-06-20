@@ -165,6 +165,14 @@ struct MsdkCoreCustomerFieldWrapper: mobileSDK_UI.CustomerField {
     var errorMessage: String? { coreType.errorMessage }
 
     var errorMessageKey: String { coreType.errorMessageKey }
+    
+    var options: [any mobileSDK_UI.AdditionalField]? {
+        coreType.options?
+            .compactMap {
+                guard let name = $0.name, let value = $0.value else { return nil }
+                return AdditionalField(customName: name, value: value).wrapper
+            }
+    }
 }
 
 internal extension MsdkCore.ClarificationField {
@@ -199,6 +207,8 @@ private struct MsdkCoreClarificationFieldWrapper: mobileSDK_UI.ClarificationFiel
     var defaultLabel: String? { coreType.defaultLabel }
 
     var defaultErrorMessage: String? { coreType.defaultErrorMessage }
+    
+    var options: [any mobileSDK_UI.AdditionalField]? { coreType.wrapper.options }
 }
 
 internal extension MsdkCore.PaymentStatus {

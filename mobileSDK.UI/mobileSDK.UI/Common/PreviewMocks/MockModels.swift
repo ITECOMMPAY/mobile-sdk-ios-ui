@@ -49,6 +49,7 @@ struct MockCustomerField: CustomerField {
     var validationMethod: Validator<String>? = { _ in true }
     var errorMessage: String? = "mockField error"
     var errorMessageKey: String = "mockField error key"
+    var options: [any AdditionalField]? = nil
 }
 
 struct MockPaymentStatus: PaymentStatus {
@@ -88,6 +89,7 @@ struct MockCarificationField: ClarificationField {
     var defaultHint: String? = "MockCarificationField_defaultHint"
     var defaultLabel: String? = "MockCarificationField_defaultLabel"
     var defaultErrorMessage: String? = "MockCarificationField_defaultErrorMessage"
+    var options: [any AdditionalField]? = nil
 }
 
 struct MockPaymentOptions: PaymentOptions {

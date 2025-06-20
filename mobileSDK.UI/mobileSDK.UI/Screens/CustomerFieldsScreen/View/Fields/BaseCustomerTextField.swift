@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-typealias OnBaseCustomerTextFieldValueChanged = (_ customerField: CustomerField,
-                                                 _ newValue: String,
-                                                 _ isValid: Bool) -> Void
+typealias OnBaseCustomerTextFieldValueChanged = (
+    _ customerField: CustomerField,
+    _ newValue: String,
+    _ isValid: Bool
+) -> Void
 
 let ValidationTriggerNotification = "ValidationTriggerNotification"
 
@@ -21,7 +23,7 @@ struct BaseCustomerTextField: View {
     let customerField: CustomerField
     var keyboardType: UIKeyboardType = .default
     var transformation: CustomFormatterTransformation = EmptyTransformation()
-    var isAllowedCharacter: (Character) -> Bool = {_ in true }
+    var isAllowedCharacter: (Character) -> Bool = { _ in true }
     var maxLength: Int?
     var isSecure: Bool = false
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
@@ -96,6 +98,7 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
         var validationMethod: Validator<String>? = { _ in false }
         var errorMessage: String? = "mockField error"
         var errorMessageKey: String = "mockField error key"
+        var options: [any AdditionalField]? = nil
     }
 
     static var previews: some View {
