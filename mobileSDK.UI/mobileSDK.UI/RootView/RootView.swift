@@ -17,9 +17,11 @@ struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
         .alert(isPresented: .constant(viewModel.state.alertModel != nil)) {
             alert
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
+        .simultaneousGesture(
+            TapGesture().onEnded { _ in
+                hideKeyboard()
+            }
+        )
     }
 
     private var alert: Alert {

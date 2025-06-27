@@ -159,9 +159,7 @@ class RootViewModel: RootViewModelProtocol {
         case .declineScreenIntent(.close):
             self.onFlowFinished(.decline(state.payment))
         case .declineScreenIntent(.tryAgain):
-            let methods = state.availablePaymentMethods?.filter {
-                $0.code == state.currentPaymentMethod?.code
-            } ?? []
+            let methods = state.availablePaymentMethods ?? []
 
             state = modifiedCopy(of: state) {
                 $0.isLoading = false
@@ -450,6 +448,9 @@ class RootViewModel: RootViewModelProtocol {
                         $0.payment = payment
                         $0.request = nil
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
+                        $0.customerFields = nil
+                        $0.clarificationFields = nil
+                        $0.threeDSecurePageState = nil
                     }
                     
                     if self.state.paymentOptions.action == .Tokenize {
