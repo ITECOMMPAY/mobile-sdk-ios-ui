@@ -15,7 +15,6 @@ struct MainScreen: View {
     @State var token: String = ""
 
     @State var action: PaymentOptions.ActionType = .Sale
-    @State var sdk = EcommpaySDK()
 
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
@@ -38,7 +37,12 @@ struct MainScreen: View {
     @State var showVersion: Bool = false
     
     @State var simulateCrash: Bool = false
-
+    
+    let sdk: EcommpaySDK = EcommpaySDK()
+    
+    @State var apiHost: String = EcommpaySDK.apiHost
+    @State var socketHost: String = EcommpaySDK.socketHost
+    
     var body: some View {
         mainPage
             .overlay(paymentPage)
@@ -309,13 +313,13 @@ struct MainScreen: View {
                 HStack {
                     Text("Host").foregroundColor(Color.secondary)
                     Spacer()
-                    TextField("Required", text: $paymentData.apiHost)
+                    TextField("Required", text: $apiHost)
                         .multilineTextAlignment(.trailing)
                 }
                 HStack {
                     Text("Socket").foregroundColor(Color.secondary)
                     Spacer()
-                    TextField("Required", text: $paymentData.wsApiHost)
+                    TextField("Required", text: $socketHost)
                         .multilineTextAlignment(.trailing)
                 }
                 VStack {
@@ -330,8 +334,8 @@ struct MainScreen: View {
     }
 
     func resetUrls() {
-        paymentData.wsApiHost = defaultPaymentData.wsApiHost
-        paymentData.apiHost = defaultPaymentData.apiHost
+        apiHost = EcommpaySDK.apiHost
+        socketHost = EcommpaySDK.socketHost
     }
 
     var applePayParams: some View {
@@ -401,7 +405,6 @@ struct MainScreen: View {
     
     func presentPaymentPage(action: PaymentOptions.ActionType) {
         self.action = action
-        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
         isPaymentPagePresented = true
         
         if simulateCrash {

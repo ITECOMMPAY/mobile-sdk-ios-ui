@@ -197,7 +197,6 @@
 				843B503728F5607E00A4F779 /* mobileSDK.Facade.xcodeproj */,
 				840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */,
 				845FC81828AE153300C71288 /* mobileSDK.SampleApp */,
-				845FC81728AE153300C71288 /* Products */,
 				845FC82728AE157800C71288 /* Frameworks */,
 				282458DC041CAAFE17DE2812 /* Pods */,
 			);
@@ -239,6 +238,7 @@
 		845FC82728AE157800C71288 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				845FC81728AE153300C71288 /* Products */,
 				84B67B96291251B400DF7550 /* ecommpaySDK_Dev.xcframework */,
 				849DCBAB28B7BF4D00C36361 /* mobileSDK_UI.framework */,
 				845FC82828AE157800C71288 /* ecommpaySDK.framework */,

@@ -7,6 +7,7 @@
 
 import Foundation
 import ecommpaySDK_Dev
+import SwiftUI
 
 func getBrandName() -> String {
     return String(#file.split(separator: "/").last?.split(separator: ".").first ?? "")
@@ -37,8 +38,6 @@ func getCoreVersionString() -> String {
         hideSuccessFinalPage: false,
         hideDeclineFinalPage: false,
         secretKey: "123",
-        apiHost: "pp-sdk.westresscode.net",
-        wsApiHost: "paymentpage.westresscode.net",
         merchantId: "BCR2DN6TZ75OBLTH",
         merchantName: "Example Merchant",
         mockModeType: MockModeType.disabled,
@@ -63,8 +62,6 @@ func getCoreVersionString() -> String {
         hideSuccessFinalPage: false,
         hideDeclineFinalPage: false,
         secretKey: "",
-        apiHost: "sdk.ecommpay.com",
-        wsApiHost: "paymentpage.ecommpay.com",
         merchantId: "BCR2DN6TZ75OBLTH",
         merchantName: "Example Merchant",
         mockModeType: MockModeType.disabled,
@@ -73,3 +70,15 @@ func getCoreVersionString() -> String {
     )
 
 #endif
+
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
+    }
+}

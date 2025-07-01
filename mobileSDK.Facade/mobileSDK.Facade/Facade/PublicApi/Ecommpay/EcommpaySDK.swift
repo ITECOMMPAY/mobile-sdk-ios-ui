@@ -19,15 +19,19 @@ public class EcommpaySDK: NSObject {
     @objc public static let buildNumber: String = SDKInteractor.getBuildNumberOfBundle(for: EcommpaySDK.self)
     @objc public static let sdkVersion: String = SDKInteractor.getBundleVersion(for: EcommpaySDK.self)
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
-
-    /// Debug initializer, should not be present in release version!
-    ///
-    /// - Parameters:
-    ///   - url_api: API url to send requests to
-    ///   - url_socket: Socket url to listen for callbacks
-    @objc(initWithApi:socket:)
-    public init(apiUrlString: String, socketUrlString: String) {
-        interactor = SDKInteractor(apiUrlString: apiUrlString, socketUrlString: socketUrlString)
+    @objc public static var apiHost: String {
+        #if DEBUG
+        return Config.app.apiHost
+        #else
+        return ""
+        #endif
+    }
+    @objc public static var socketHost: String {
+        #if DEBUG
+        return Config.app.socketHost
+        #else
+        return ""
+        #endif
     }
 
     private let interactor: SDKInteractor
