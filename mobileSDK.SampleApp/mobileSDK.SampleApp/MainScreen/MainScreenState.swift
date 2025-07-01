@@ -25,8 +25,6 @@ struct PaymentData {
     var hideSuccessFinalPage: Bool
     var hideDeclineFinalPage: Bool
     var secretKey: String
-    var apiHost: String
-    var wsApiHost: String
     var merchantId: String
     var merchantName: String
     var mockModeType: MockModeType

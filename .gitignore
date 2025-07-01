@@ -87,3 +87,6 @@ mobileSDK.Core
 *.xcframework
 *.xcframework.zip
 Gemfile.lock
+# Automatically generated configuration files
+mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/
+*.json

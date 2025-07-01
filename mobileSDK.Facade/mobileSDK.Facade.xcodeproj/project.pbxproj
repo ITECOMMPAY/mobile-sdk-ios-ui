@@ -21,7 +21,6 @@
 		849C533D28BF62C800C1CF71 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BD285B0463002BBFE0 /* PaymentResult.swift */; };
 		849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */; };
 		849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */; };
-		849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
 		849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241822889069A00259A50 /* PayDelegateProxy.swift */; };
 		849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */; };
 		849C534328BF62C800C1CF71 /* AdditionalFieldEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */; };
@@ -49,6 +48,16 @@
 		B3D4E419299CC0C3007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
 		B3D4E41A299CC0C8007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
 		B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		B3D4E41C299CC0D3007A1E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
+		B3D4E41D299CC0D9007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
+		B3D4E41E299CC0E0007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
+		B3D4E41F299CC0E7007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
+		B3D4E420299CC0EC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
+		CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
+		CE6CEFEC2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
+		CE6CEFED2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
+		E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +145,8 @@
 		B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		B3D4E413299CC05F007A1E2F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		CE6CEFE62E01A039003251A2 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigIndex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -204,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				84B241A2288A5AD900259A50 /* Core */,
-				84B241652887D83C00259A50 /* Config */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
 				840704C828D8850600DBD249 /* ContainerViewController.swift */,
@@ -262,15 +272,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84B241652887D83C00259A50 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				84B2416D2887D83C00259A50 /* ECMPConfig.swift */,
-				84B2416E2887D83C00259A50 /* NetworkConfig.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		84B241A2288A5AD900259A50 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +308,7 @@
 			children = (
 				845507B6285B0463002BBFE0 /* Facade */,
 				7594FE1B2E45590800A714F6 /* Resources */,
+				CE6CEFE92E01A039003251A2 /* Sources */,
 			);
 			path = mobileSDK.Facade;
 			sourceTree = "<group>";
@@ -455,7 +457,8 @@
 				849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */,
 				849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */,
 				84CDC3E72911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
-				849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */,
+				CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */,
+				CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */,
 				849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */,
 				840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */,

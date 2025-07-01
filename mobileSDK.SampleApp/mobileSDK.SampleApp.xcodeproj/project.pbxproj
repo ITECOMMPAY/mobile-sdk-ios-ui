@@ -92,7 +92,6 @@
 			children = (
 				840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */,
 				845FC81828AE153300C71288 /* mobileSDK.SampleApp */,
-				845FC81728AE153300C71288 /* Products */,
 				845FC82728AE157800C71288 /* Frameworks */,
 			);
 			sourceTree = "<group>";

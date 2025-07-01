@@ -30,12 +30,15 @@ class SDKInteractor {
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
-    
+
     init() {
-        msdkConfig = MSDKCoreSessionConfig.companion.release(
-            apiHost: NetworkConfigType().apiHost,
-            wsApiHost: NetworkConfigType().socketHost
-        )
+    #if DEVELOPMENT
+        msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: Config.app.apiHost,
+                                                           wsApiHost: Config.app.socketHost)
+    #else
+        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: Config.app.apiHost,
+                                                             wsApiHost: Config.app.socketHost)
+    #endif
     }
 
     public init(apiUrlString: String, socketUrlString: String) {
@@ -83,7 +86,7 @@ class SDKInteractor {
         setupDependency(with: msdkSession)
 
         self.completionHandler = completion
-        
+
         let delegateProxy = InitDelegateProxy()
 
         let view = ViewFactory.assembleRootView(
