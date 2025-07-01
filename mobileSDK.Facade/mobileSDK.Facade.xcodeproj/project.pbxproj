@@ -33,13 +33,11 @@
 		849C533D28BF62C800C1CF71 /* PaymentResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507BD285B0463002BBFE0 /* PaymentResult.swift */; };
 		849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */; };
 		849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8EE288FC20E00B6EED2 /* CardTypesManager.swift */; };
-		849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
 		849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241822889069A00259A50 /* PayDelegateProxy.swift */; };
 		849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE3285C7F8D0009FD38 /* AdditionalField.swift */; };
 		849C534328BF62C800C1CF71 /* AdditionalFieldEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D87CE5285C7FC50009FD38 /* AdditionalFieldEnums.swift */; };
 		849C534428BF62C800C1CF71 /* InitDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */; };
 		849C534528BF62C800C1CF71 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C2285B0463002BBFE0 /* PaymentOptions.swift */; };
-		849C534628BF62C800C1CF71 /* ECMPConfigDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241672887D83C00259A50 /* ECMPConfigDev.swift */; };
 		849C534728BF62C800C1CF71 /* CardRemoveWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */; };
 		849C534828BF62C800C1CF71 /* ProtocolConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419E2889653500259A50 /* ProtocolConformance.swift */; };
 		849C534928BF62C800C1CF71 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845507C3285B0463002BBFE0 /* Payment.swift */; };
@@ -50,8 +48,6 @@
 		849C534E28BF62C800C1CF71 /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */; };
 		849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; };
 		84A35C4F2893B2A20037A604 /* FieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C4E2893B2A20037A604 /* FieldType.swift */; };
-		84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241672887D83C00259A50 /* ECMPConfigDev.swift */; };
-		84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416E2887D83C00259A50 /* NetworkConfig.swift */; };
 		84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241822889069A00259A50 /* PayDelegateProxy.swift */; };
 		84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2419E2889653500259A50 /* ProtocolConformance.swift */; };
 		84B241A128896AB200259A50 /* BaseDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241A028896AB200259A50 /* BaseDelegateProxy.swift */; };
@@ -96,6 +92,10 @@
 		B3D4E41E299CC0E0007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
 		B3D4E41F299CC0E7007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
 		B3D4E420299CC0EC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
+		CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
+		CE6CEFEC2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
+		CE6CEFED2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
 		E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */; };
 /* End PBXBuildFile section */
 
@@ -176,9 +176,6 @@
 		847EBAE7290BEC5F0080F99E /* RecurreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurreInfo.swift; sourceTree = "<group>"; };
 		849C535828BF62C800C1CF71 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A35C4E2893B2A20037A604 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
-		84B241672887D83C00259A50 /* ECMPConfigDev.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfigDev.swift; sourceTree = "<group>"; };
-		84B2416D2887D83C00259A50 /* ECMPConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfig.swift; sourceTree = "<group>"; };
-		84B2416E2887D83C00259A50 /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		84B241822889069A00259A50 /* PayDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDelegateProxy.swift; sourceTree = "<group>"; };
 		84B2419E2889653500259A50 /* ProtocolConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConformance.swift; sourceTree = "<group>"; };
 		84B241A028896AB200259A50 /* BaseDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateProxy.swift; sourceTree = "<group>"; };
@@ -208,6 +205,8 @@
 		B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		B3D4E413299CC05F007A1E2F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		CE6CEFE62E01A039003251A2 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigIndex.swift; sourceTree = "<group>"; };
 		DE98D5D8EA71C79BC4BD42CD /* Pods-ecommpaySDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK/Pods-ecommpaySDK.release.xcconfig"; sourceTree = "<group>"; };
 		FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -282,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				84B241A2288A5AD900259A50 /* Core */,
-				84B241652887D83C00259A50 /* Config */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
 				B3491657296EFB5800D9844B /* CrashReportSender.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
@@ -343,16 +341,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84B241652887D83C00259A50 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				84B241672887D83C00259A50 /* ECMPConfigDev.swift */,
-				84B2416D2887D83C00259A50 /* ECMPConfig.swift */,
-				84B2416E2887D83C00259A50 /* NetworkConfig.swift */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		84B241A2288A5AD900259A50 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +379,7 @@
 			children = (
 				84C87CF428CF1BFD00B684DE /* Assets */,
 				845507B6285B0463002BBFE0 /* Facade */,
+				CE6CEFE92E01A039003251A2 /* Sources */,
 			);
 			path = mobileSDK.Facade;
 			sourceTree = "<group>";
@@ -458,6 +447,23 @@
 			);
 			name = Pods;
 			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		CE6CEFE82E01A039003251A2 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				CE6CEFE62E01A039003251A2 /* AppConfig.swift */,
+				CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		CE6CEFE92E01A039003251A2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CE6CEFE82E01A039003251A2 /* Generated */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -661,7 +667,8 @@
 				849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */,
 				849C533F28BF62C800C1CF71 /* CardTypesManager.swift in Sources */,
 				84CDC3E72911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
-				849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */,
+				CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */,
+				CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */,
 				849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */,
 				B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */,
 				840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */,
@@ -670,7 +677,6 @@
 				847EBAE9290BEC5F0080F99E /* RecurreInfo.swift in Sources */,
 				849C534428BF62C800C1CF71 /* InitDelegateProxy.swift in Sources */,
 				849C534528BF62C800C1CF71 /* PaymentOptions.swift in Sources */,
-				849C534628BF62C800C1CF71 /* ECMPConfigDev.swift in Sources */,
 				849C534728BF62C800C1CF71 /* CardRemoveWrapper.swift in Sources */,
 				849C534828BF62C800C1CF71 /* ProtocolConformance.swift in Sources */,
 				849C534928BF62C800C1CF71 /* Payment.swift in Sources */,
@@ -698,7 +704,8 @@
 				8421F8E7288EBFA400B6EED2 /* PayInteractorWrapper.swift in Sources */,
 				8421F8EF288FC20E00B6EED2 /* CardTypesManager.swift in Sources */,
 				84CDC3E62911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
-				84B241772887D83C00259A50 /* NetworkConfig.swift in Sources */,
+				CE6CEFEC2E01A039003251A2 /* AppConfig.swift in Sources */,
+				CE6CEFED2E01A039003251A2 /* ConfigIndex.swift in Sources */,
 				84B241832889069A00259A50 /* PayDelegateProxy.swift in Sources */,
 				B3491658296EFB5800D9844B /* CrashReportSender.swift in Sources */,
 				840704C928D8850600DBD249 /* ContainerViewController.swift in Sources */,
@@ -707,7 +714,6 @@
 				847EBAE8290BEC5F0080F99E /* RecurreInfo.swift in Sources */,
 				84F705C5287C534300E7CD12 /* InitDelegateProxy.swift in Sources */,
 				845507D7285B0463002BBFE0 /* PaymentOptions.swift in Sources */,
-				84B241702887D83C00259A50 /* ECMPConfigDev.swift in Sources */,
 				84EA605B28BF27EC008D4CC2 /* CardRemoveWrapper.swift in Sources */,
 				84B2419F2889653500259A50 /* ProtocolConformance.swift in Sources */,
 				845507D8285B0463002BBFE0 /* Payment.swift in Sources */,

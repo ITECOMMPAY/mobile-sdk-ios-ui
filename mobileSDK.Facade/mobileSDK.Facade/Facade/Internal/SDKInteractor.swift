@@ -31,8 +31,13 @@ class SDKInteractor {
 
     // MARK: - Init
     init() {
-        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
-                                                           wsApiHost: NetworkConfigType().socketHost)
+    #if DEVELOPMENT
+        msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: Config.app.apiHost,
+                                                           wsApiHost: Config.app.socketHost)
+    #else
+        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: Config.app.apiHost,
+                                                             wsApiHost: Config.app.socketHost)
+    #endif
     }
 
     public init(apiUrlString: String, socketUrlString: String) {
