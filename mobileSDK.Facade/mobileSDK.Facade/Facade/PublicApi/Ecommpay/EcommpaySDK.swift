@@ -18,6 +18,26 @@ public class Ecommpay: NSObject {
     /// Version of currently installed Ecommpay SDK
     @objc public static let sdkVersion: String = "4.0.1"
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
+    @objc public static var apiHost: String {
+        #if DEBUG
+        return Config.app.apiHost
+        #else
+        return ""
+        #endif
+    }
+    @objc public static var socketHost: String {
+        #if DEBUG
+        return Config.app.socketHost
+        #else
+        return ""
+        #endif
+    }
+
+    private let interactor: SDKInteractor
+
+    @objc(init) public override init() {
+        interactor = SDKInteractor()
+    }
 
     /// Debug initializer, should not be present in release version!
     ///
@@ -29,12 +49,6 @@ public class Ecommpay: NSObject {
         interactor = SDKInteractor(apiUrlString: apiUrlString, socketUrlString: socketUrlString)
     }
 
-    private let interactor: SDKInteractor
-
-    @objc(init) public override init() {
-        interactor = SDKInteractor()
-    }
-    
     /// Presents UI to begin payment flow
     ///
     /// - Parameters:

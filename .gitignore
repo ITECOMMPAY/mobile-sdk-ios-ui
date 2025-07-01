@@ -87,3 +87,4 @@ mobileSDK.Core
 *.xcframework
 *.xcframework.zip
 Gemfile.lock
+*.json

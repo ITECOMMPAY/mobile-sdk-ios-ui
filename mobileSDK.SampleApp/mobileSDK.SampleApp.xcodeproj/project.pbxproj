@@ -21,6 +21,8 @@
 		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
 		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
 		B3AB476A296BFF9F00B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
+		CED706FB2E9FF0050088AFFE /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED706F92E9FF0050088AFFE /* ConfigIndex.swift */; };
+		CED706FC2E9FF0050088AFFE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED706FA2E9FF0050088AFFE /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureScreen.swift; sourceTree = "<group>"; };
 		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
 		B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientInfoScreen.swift; sourceTree = "<group>"; };
+		CED706F92E9FF0050088AFFE /* ConfigIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigIndex.swift; path = ../mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/ConfigIndex.swift; sourceTree = "<group>"; };
+		CED706FA2E9FF0050088AFFE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfig.swift; path = ../mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +94,10 @@
 		845FC80D28AE153300C71288 = {
 			isa = PBXGroup;
 			children = (
+				CED706FA2E9FF0050088AFFE /* AppConfig.swift */,
+				CED706F92E9FF0050088AFFE /* ConfigIndex.swift */,
 				840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */,
 				845FC81828AE153300C71288 /* mobileSDK.SampleApp */,
-				845FC81728AE153300C71288 /* Products */,
 				845FC82728AE157800C71288 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -242,6 +247,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED706FB2E9FF0050088AFFE /* ConfigIndex.swift in Sources */,
+				CED706FC2E9FF0050088AFFE /* AppConfig.swift in Sources */,
 				845FC81C28AE153300C71288 /* MainScreen.swift in Sources */,
 				8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */,
 				845FC81A28AE153300C71288 /* mobileSDK_SampleApp.swift in Sources */,
