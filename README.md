@@ -277,3 +277,121 @@ The following enumeration lists possible response codes returned in the PaymentR
     case Error = 500 // An internal error occurred. You may need to contact technical support.
 }
 ```
+
+Configuration Generator
+-----------------------
+
+The project includes a Python script `gen_config.py` that provides two main functionalities: configuration file generation and project-wide renaming operations.
+
+### Generating Configuration Files
+
+The configuration generator creates Swift configuration files for different API endpoints.
+
+#### Using Configuration Files
+
+1. **Create a sample configuration file:**
+   ```bash
+   python3 gen_config.py --create-sample-config
+   ```
+   
+   This creates a `config.json` file with the following structure:
+   ```json
+   {
+     "api_host": "https://sdk.api.example.com",
+     "socket_host": "https://paymentpage.api.example.com",
+   }
+   ```
+   
+   Then edit `config.json` accordingly with specific config values.
+
+2. **Generate configuration from file:**
+   ```bash
+   python3 gen_config.py --config config.json
+   ```
+   
+   This generates Swift configuration files in the `mobileSDK.Facade/mobileSDK.Facade/Sources/Generated` directory:
+   - `AppConfig.swift` - Main configuration with API endpoints
+   - `ConfigIndex.swift` - Unified access point for all configurations
+
+3. **Custom output directory:**
+   ```bash
+   python3 gen_config.py --config config.json --output-dir custom/path
+   ```
+
+### Project Renaming
+
+The script can rename all occurrences of the original project name throughout the codebase, including file names, folder names, and content within files.
+
+#### Using Rename Configuration
+
+1. **Create a sample rename configuration:**
+   ```bash
+   python3 gen_config.py --create-sample-rename-config
+   ```
+   
+   This creates a `rename_config.json` file with comprehensive renaming options:
+   ```json
+   {
+     "merchant_name": "YourBrandName",
+     "project_root": ".",
+     "exclude_dirs": [".git", ".build", "node_modules", ".idea", ".vscode"],
+     "exclude_files": [".DS_Store", ".gitignore", "rename_config.json"],
+     "file_extensions": [".swift", ".h", ".m", ".json", ".plist", ".md"],
+     "files_without_extension": ["Podfile", "Fastfile"],
+	 "dry_run": true,
+     "case_sensitive": false
+   }
+   ```
+
+2. **Test changes with dry run** (modify `dry_run: true` in config):
+   ```bash
+   python3 gen_config.py --rename-config rename_config.json
+   ```
+
+2. **Run actual changes** (modify `dry_run: false` in config):
+   ```bash
+   python3 gen_config.py --rename-config rename_config.json
+   ```
+
+#### Rename Configuration Options
+
+- **merchant_name**: The new name to replace "ecommpay" throughout the project
+- **project_root**: Root directory for the renaming operation (default: current directory)
+- **exclude_dirs**: Directories to ignore during renaming
+- **exclude_files**: Specific files to exclude from processing
+- **file_extensions**: File types to process for content renaming
+- **files_without_extension**: Specific files without extensions to process
+- **dry_run**: Test mode without making actual changes
+- **case_sensitive**: 
+  - `false` (recommended): Preserves original case patterns and matches case-insensitively
+  - `true`: Performs exact case matching only
+
+#### What Gets Renamed
+
+The script performs intelligent renaming across multiple case variants:
+- **Original**: ecommpay → YourBrand
+- **PascalCase**: Ecommpay → YourBrand  
+- **camelCase**: ecommpay → yourBrand
+- **UPPERCASE**: ECOMMPAY → YOURBRAND
+- **lowercase**: ecommpay → yourbrand
+- **snake_case**: ecommpay → your_brand
+- **kebab-case**: ecommpay → your-brand
+
+Examples of transformations:
+- `ecommpaySDK` → `YourBrandSDK`
+- `EcommpayManager` → `YourBrandManager`
+- `ECOMMPAY_API_KEY` → `YOURBRAND_API_KEY`
+- `ecommpaySDK.framework` → `YourBrandSDK.framework`
+
+The script processes:
+1. **File and folder names** containing the original name
+2. **Content within files** (code, documentation, configuration files)
+3. **Various file types** including Swift, Objective-C, JSON, Plist, Markdown, and build files
+
+#### Safety Features
+
+- Excludes version control directories (`.git`) and build artifacts
+- Preserves original case patterns when `case_sensitive: false`
+- Provides detailed operation summary with statistics
+- Handles binary files safely by skipping them
+- Processes files in order to avoid path conflicts during renaming
