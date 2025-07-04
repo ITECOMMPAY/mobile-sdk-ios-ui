@@ -139,7 +139,7 @@ class ProjectRenamer:
         self.modified_files = 0
         self.total_replacements = 0
         
-        print(f"🔄 Initializing project renamer")
+        print(f"   Initializing project renamer")
         print(f"   From: {original_name}")
         print(f"   To: {config.merchant_name}")
         print(f"   Case sensitive: {config.case_sensitive}")
@@ -147,14 +147,14 @@ class ProjectRenamer:
         print(f"   Project root: {self.project_root}")
         
         # Show file processing info
-        print(f"\n📁 File processing configuration:")
+        print(f"\nFile processing configuration:")
         if self.config.file_extensions:
             print(f"   Extensions: {', '.join(self.config.file_extensions)}")
         if self.config.files_without_extension:
             print(f"   Files without ext: {', '.join(self.config.files_without_extension)}")
         
         # Show all variants that will be processed
-        print(f"\n🔤 Case variants to be processed:")
+        print(f"\n Case variants to be processed:")
         for variant_name, (from_val, to_val) in zip(
             self.from_variants.keys(),
             zip(self.from_variants.values(), self.to_variants.values())
@@ -164,9 +164,9 @@ class ProjectRenamer:
     
     def rename_all(self) -> None:
         if self.config.dry_run:
-            print("\n🔍 Starting dry run (no actual changes will be made)...")
+            print("\n Starting dry run (no actual changes will be made)...")
         else:
-            print("\n🚀 Starting rename operation...")
+            print("\n Starting rename operation...")
         
         try:
             self._rename_content()
@@ -175,7 +175,7 @@ class ProjectRenamer:
             self._print_summary()
             
         except Exception as e:
-            print(f"\n❌ Error during rename operation: {e}")
+            print(f"\n Error during rename operation: {e}")
             sys.exit(1)
     
     def _rename_content(self) -> None:
@@ -190,7 +190,7 @@ class ProjectRenamer:
                 try:
                     self._rename_file_content(file_path)
                 except Exception as e:
-                    print(f"      ⚠️  Warning: Failed to process {file_path}: {e}")
+                    print(f"        Warning: Failed to process {file_path}: {e}")
     
     def _rename_files(self) -> None:
         """Rename files"""
@@ -217,10 +217,10 @@ class ProjectRenamer:
                 else:
                     new_path = file_path.parent / new_name
                     file_path.rename(new_path)
-                    print(f"      ✓ {file_path.name} → {new_name}")
+                    print(f"       {file_path.name} → {new_name}")
                 self.renamed_files += 1
             except Exception as e:
-                print(f"      ⚠️  Warning: Failed to rename {file_path}: {e}")
+                print(f"        Warning: Failed to rename {file_path}: {e}")
     
     def _rename_folders(self) -> None:
         """Rename folders"""
@@ -247,10 +247,10 @@ class ProjectRenamer:
                 else:
                     new_path = dir_path.parent / new_name
                     dir_path.rename(new_path)
-                    print(f"      ✓ {dir_path.name}/ → {new_name}/")
+                    print(f"       {dir_path.name}/ → {new_name}/")
                 self.renamed_folders += 1
             except Exception as e:
-                print(f"      ⚠️  Warning: Failed to rename {dir_path}: {e}")
+                print(f"        Warning: Failed to rename {dir_path}: {e}")
     
     def _rename_file_content(self, file_path: Path) -> None:
         """Rename content inside a single file"""
@@ -271,7 +271,7 @@ class ProjectRenamer:
                 else:
                     with open(file_path, 'w', encoding='utf-8') as f:
                         f.write(content)
-                    print(f"      ✓ Modified {file_path.relative_to(self.project_root)}")
+                    print(f"       Modified {file_path.relative_to(self.project_root)}")
                 self.modified_files += 1
                 
         except UnicodeDecodeError:
@@ -412,20 +412,20 @@ class ProjectRenamer:
     def _print_summary(self) -> None:
         """Print operation summary"""
         if self.config.dry_run:
-            print(f"\n📊 Dry run summary (no changes made):")
+            print(f"\n Dry run summary (no changes made):")
             print(f"   Files that would be renamed: {self.renamed_files}")
             print(f"   Folders that would be renamed: {self.renamed_folders}")
             print(f"   Files that would be modified: {self.modified_files}")
             print(f"   Total replacements that would be made: {self.total_replacements}")
         else:
-            print(f"\n📊 Rename operation summary:")
+            print(f"\n Rename operation summary:")
             print(f"   Files renamed: {self.renamed_files}")
             print(f"   Folders renamed: {self.renamed_folders}")
             print(f"   Files modified: {self.modified_files}")
             print(f"   Total replacements: {self.total_replacements}")
         
         if self.total_replacements > 0:
-            print(f"\n💡 Examples of replacements made:")
+            print(f"\n Examples of replacements made:")
             for variant_name, (from_val, to_val) in zip(
                 list(self.from_variants.keys())[:3],
                 list(zip(self.from_variants.values(), self.to_variants.values()))[:3]
@@ -458,7 +458,7 @@ class ConfigGenerator:
         # Create output directory if it doesn't exist
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        print(f"🔧 Initializing configuration generator")
+        print(f"   Initializing configuration generator")
         print(f"   API URL: {config.api_host}")
         print(f"   SOCKET API URL: {config.socket_host}")
         print(f"   Output directory: {self.output_dir}")
@@ -470,18 +470,18 @@ class ConfigGenerator:
         This method coordinates the entire generation process,
         calling specialized methods for each file type.
         """
-        print("\n📝 Generating configuration files...")
+        print("\n Generating configuration files...")
         
         try:
             self._generate_app_config()
             self._generate_config_index()
             self._update_gitignore()
             
-            print("\n✅ All configuration files generated successfully!")
+            print("\n All configuration files generated successfully!")
             self._validate_generated_files()
             
         except Exception as e:
-            print(f"\n❌ Error generating configuration: {e}")
+            print(f"\n Error generating configuration: {e}")
             sys.exit(1)
     
     def _generate_app_config(self) -> None:
@@ -527,7 +527,7 @@ public struct Config {
     /// Validate all configurations
     public static func validateAll() -> Bool {
         guard let _ = URL(string: AppConfig.apiHost) else {
-            print("❌ Invalid API HOST")
+            print("Invalid API HOST")
             return false
         }
         
@@ -536,7 +536,7 @@ public struct Config {
     
     /// Print debug information about the configuration
     public static func printDebugInfo() {
-        print("📱 Application configuration:")
+        print(" Application configuration:")
         print("   API HOST: \\(AppConfig.apiHost)")
         print("   SOCKET HOST: \\(AppConfig.socketHost)")
     }
@@ -557,7 +557,7 @@ public struct Config {
         try:
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"      ✓ {filename} created")
+            print(f"      {filename} created")
         except IOError as e:
             raise Exception(f"Failed to write file {filename}: {e}")
     
@@ -574,15 +574,15 @@ public struct Config {
             if str(self.output_dir) not in content:
                 with open(gitignore_path, 'a', encoding='utf-8') as f:
                     f.write(generated_entry)
-                print("      ✓ .gitignore updated")
+                print("      .gitignore updated")
         else:
             with open(gitignore_path, 'w', encoding='utf-8') as f:
                 f.write(generated_entry)
-            print("      ✓ .gitignore created")
+            print("      .gitignore created")
     
     def _validate_generated_files(self) -> None:
         """Validates the correctness of generated files"""
-        print("\n🔍 Validating generated files...")
+        print("\n Validating generated files...")
         
         swift_files = list(self.output_dir.glob("*.swift"))
         
@@ -591,7 +591,7 @@ public struct Config {
         
         for file_path in swift_files:
             file_size = file_path.stat().st_size
-            print(f"   ✓ {file_path.name}: {file_size} bytes")
+            print(f"   {file_path.name}: {file_size} bytes")
             
             # Basic Swift syntax check (if swift is available)
             try:
@@ -601,10 +601,10 @@ public struct Config {
                     text=True
                 )
                 if result.returncode != 0:
-                    print(f"   ⚠️  Warning: possible syntax issues in {file_path.name}")
+                    print(f"     Warning: possible syntax issues in {file_path.name}")
                     print(f"       {result.stderr}")
             except FileNotFoundError:
-                print("   ℹ️  Swift compiler not available for syntax checking")
+                print("     Swift compiler not available for syntax checking")
                 break
 
 
@@ -619,10 +619,10 @@ def load_config_from_file(config_file: str) -> Dict[str, Any]:
         with open(config_file, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"❌ Configuration file {config_file} not found")
+        print(f" Configuration file {config_file} not found")
         sys.exit(1)
     except json.JSONDecodeError as e:
-        print(f"❌ JSON parsing error in file {config_file}: {e}")
+        print(f" JSON parsing error in file {config_file}: {e}")
         sys.exit(1)
 
 
@@ -636,7 +636,7 @@ def create_sample_config_file(filename: str = "config.json") -> None:
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(sample_config, f, indent=2)
     
-    print(f"✅ Sample configuration file created: {filename}")
+    print(f" Sample configuration file created: {filename}")
 
 
 def create_sample_rename_config(filename: str = "rename_config.json") -> None:
@@ -655,8 +655,8 @@ def create_sample_rename_config(filename: str = "rename_config.json") -> None:
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(sample_config, f, indent=2)
     
-    print(f"✅ Sample rename configuration file created: {filename}")
-    print("📝 Configuration options:")
+    print(f" Sample rename configuration file created: {filename}")
+    print(" Configuration options:")
     print("   file_extensions: List of file extensions to process (e.g., ['.swift', '.json'])")
     print("   files_without_extension: List of specific filenames without extensions")
     print("     (e.g., ['Podfile', 'Makefile', 'Dockerfile'])")
@@ -664,7 +664,7 @@ def create_sample_rename_config(filename: str = "rename_config.json") -> None:
     print("   case_sensitive: true  = exact case matching only")
     print("   dry_run: true = show what would be changed without making actual changes")
     print("   dry_run: false = perform actual renaming operations")
-    print("\n📋 Replacement behavior:")
+    print("\n Replacement behavior:")
     print("   'ecommpaySDK' → 'replacedSDK' will also replace:")
     print("   'EcommpaySDK' → 'ReplacedSDK' (preserving capitalization)")
     print("   'ECOMMPAYSDK' → 'REPLACEDSDK' (preserving uppercase)")
@@ -715,7 +715,7 @@ Usage examples:
     # Handle rename operations
     if args.rename_config:
         # Load rename config from file
-        print(f"📄 Loading rename configuration from file: {args.rename_config}")
+        print(f" Loading rename configuration from file: {args.rename_config}")
         try:
             with open(args.rename_config, 'r', encoding='utf-8') as f:
                 rename_data = json.load(f)
@@ -732,7 +732,7 @@ Usage examples:
                 dry_run=rename_data.get('dry_run', True)
             )
         except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
-            print(f"❌ Error loading rename configuration: {e}")
+            print(f" Error loading rename configuration: {e}")
             sys.exit(1)
         
         # Execute rename operation
@@ -744,7 +744,7 @@ Usage examples:
     # Determine configuration source
     if args.config:
         # Load from file
-        print(f"📄 Loading configuration from file: {args.config}")
+        print(f" Loading configuration from file: {args.config}")
         config_data = load_config_from_file(args.config)
         
         build_config = BuildConfig(
@@ -752,7 +752,7 @@ Usage examples:
             socket_host=config_data['socket_host'],
         )
     else:
-        print("❌ You must specify --config for configuration generation")
+        print(" You must specify --config for configuration generation")
         print("   Or use rename operations with --rename-config")
         parser.print_help()
         sys.exit(1)
