@@ -36,8 +36,6 @@ class BuildConfig:
     """
     Class for storing build configuration
     
-    Using dataclass simplifies working with configuration
-    and automatically generates __init__, __repr__, and other methods.
     """
     api_host: str
     socket_host: str
@@ -45,16 +43,15 @@ class BuildConfig:
 
 @dataclass
 class RenameConfig:
-    """Configuration for renaming operations"""
     from_name: str
     merchant_name: str
     project_root: str = "."
     exclude_dirs: List[str] = None
     exclude_files: List[str] = None
     file_extensions: List[str] = None
-    files_without_extension: List[str] = None  # New field for files without extensions
-    case_sensitive: bool = False  # New option for case sensitivity
-    dry_run: bool = False  # New option for dry run mode
+    files_without_extension: List[str] = None
+    case_sensitive: bool = False
+    dry_run: bool = False
     
     def __post_init__(self):
         if self.exclude_dirs is None:
@@ -79,38 +76,30 @@ class TextTransformer:
     
     @staticmethod
     def to_camel_case(text: str) -> str:
-        """Convert to camelCase (first letter lowercase)"""
         if not text:
             return text
         return text[0].lower() + text[1:]
     
     @staticmethod
     def to_upper_case(text: str) -> str:
-        """Convert to UPPERCASE"""
         return text.upper()
     
     @staticmethod
     def to_lower_case(text: str) -> str:
-        """Convert to lowercase"""
         return text.lower()
     
     @staticmethod
     def to_snake_case(text: str) -> str:
-        """Convert to snake_case"""
-        # Insert underscore before uppercase letters (except first)
         s1 = re.sub('([a-z0-9])([A-Z])', r'\1_\2', text)
         return s1.lower()
     
     @staticmethod
     def to_kebab_case(text: str) -> str:
-        """Convert to kebab-case"""
-        # Insert dash before uppercase letters (except first)
         s1 = re.sub('([a-z0-9])([A-Z])', r'\1-\2', text)
         return s1.lower()
     
     @classmethod
     def generate_all_variants(cls, text: str) -> Dict[str, str]:
-        """Generate all possible case variants of the text"""
         return {
             'original': text,
             'pascal': cls.to_pascal_case(text),
@@ -123,7 +112,6 @@ class TextTransformer:
 
 
 class ProjectRenamer:
-    """Class for handling project-wide renaming operations"""
     
     def __init__(self, config: RenameConfig):
         self.config = config
@@ -139,7 +127,6 @@ class ProjectRenamer:
         self.modified_files = 0
         self.total_replacements = 0
         
-        print(f"   Initializing project renamer")
         print(f"   From: {original_name}")
         print(f"   To: {config.merchant_name}")
         print(f"   Case sensitive: {config.case_sensitive}")
@@ -193,13 +180,11 @@ class ProjectRenamer:
                     print(f"        Warning: Failed to process {file_path}: {e}")
     
     def _rename_files(self) -> None:
-        """Rename files"""
         if self.config.dry_run:
             print("   → [DRY RUN] Analyzing files to rename...")
         else:
             print("   → Renaming files...")
-        
-        # Get all files that need renaming
+
         files_to_rename = []
         
         for file_path in self._get_files_to_process():
@@ -253,18 +238,14 @@ class ProjectRenamer:
                 print(f"        Warning: Failed to rename {dir_path}: {e}")
     
     def _rename_file_content(self, file_path: Path) -> None:
-        """Rename content inside a single file"""
         try:
-            # Read file content
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
             
             original_content = content
             
-            # Apply intelligent string replacement
-            content = self._apply_intelligent_replacement(content)
-            
-            # Write back if changed
+            content = self._apply_replacement(content)
+
             if content != original_content:
                 if self.config.dry_run:
                     print(f"      [DRY RUN] Would modify: {file_path.relative_to(self.project_root)}")
@@ -282,13 +263,9 @@ class ProjectRenamer:
     
     def _get_renamed_filename(self, filename: str) -> str:
         """Get the new filename after applying all rename variants"""
-        return self._apply_intelligent_replacement(filename)
+        return self._apply_replacement(filename)
     
-    def _apply_intelligent_replacement(self, text: str) -> str:
-        """
-        Apply intelligent string replacement that handles substrings properly.
-        Prioritizes longer matches to avoid incorrect replacements.
-        """
+    def _apply_replacement(self, text: str) -> str:
         if not text:
             return text
         
@@ -305,13 +282,11 @@ class ProjectRenamer:
         # Sort by length of the 'from' string (longest first)
         replacement_pairs.sort(key=lambda x: len(x[0]), reverse=True)
         
-        # Apply direct substring replacement
         result = self._apply_substring_replacement(result, replacement_pairs)
         
         return result
     
     def _apply_substring_replacement(self, text: str, replacement_pairs: List[Tuple[str, str]]) -> str:
-        """Apply direct substring replacement with proper case handling"""
         result = text
         replacements_made = 0
         
@@ -378,7 +353,6 @@ class ProjectRenamer:
         return files
     
     def _get_directories_to_process(self) -> List[Path]:
-        """Get list of directories to process"""
         directories = []
         
         for root, dirs, filenames in os.walk(self.project_root):
@@ -410,7 +384,6 @@ class ProjectRenamer:
         return file_path.suffix.lower() in self.config.file_extensions
     
     def _print_summary(self) -> None:
-        """Print operation summary"""
         if self.config.dry_run:
             print(f"\n Dry run summary (no changes made):")
             print(f"   Files that would be renamed: {self.renamed_files}")
@@ -458,7 +431,6 @@ class ConfigGenerator:
         # Create output directory if it doesn't exist
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
-        print(f"   Initializing configuration generator")
         print(f"   API URL: {config.api_host}")
         print(f"   SOCKET API URL: {config.socket_host}")
         print(f"   Output directory: {self.output_dir}")
@@ -466,9 +438,6 @@ class ConfigGenerator:
     def generate_all(self) -> None:
         """
         Generates all configuration files
-        
-        This method coordinates the entire generation process,
-        calling specialized methods for each file type.
         """
         print("\n Generating configuration files...")
         
@@ -478,7 +447,6 @@ class ConfigGenerator:
             self._update_gitignore()
             
             print("\n All configuration files generated successfully!")
-            self._validate_generated_files()
             
         except Exception as e:
             print(f"\n Error generating configuration: {e}")
@@ -486,7 +454,7 @@ class ConfigGenerator:
     
     def _generate_app_config(self) -> None:
         """Generates the main application configuration file"""
-        print("   → Generating AppConfig.swift...")
+        print("\n Generating AppConfig.swift...")
         
         # Use triple quotes for multiline Swift code
         # f-strings allow inserting Python variables directly into the text
@@ -511,9 +479,6 @@ public struct AppConfig {{
 
     
     def _generate_config_index(self) -> None:
-        """Generates an index file for convenient access to configurations"""
-        print("   → Generating ConfigIndex.swift...")
-        
         swift_code = '''// Index file for all configurations
 // Provides a single access point to all configuration types
 
@@ -546,12 +511,6 @@ public struct Config {
         self._write_swift_file("ConfigIndex.swift", swift_code)
     
     def _write_swift_file(self, filename: str, content: str) -> None:
-        """
-        Writes Swift code to a file
-        
-        This helper method ensures consistent file writing
-        with proper formatting.
-        """
         file_path = self.output_dir / filename
         
         try:
@@ -579,42 +538,9 @@ public struct Config {
             with open(gitignore_path, 'w', encoding='utf-8') as f:
                 f.write(generated_entry)
             print("      .gitignore created")
-    
-    def _validate_generated_files(self) -> None:
-        """Validates the correctness of generated files"""
-        print("\n Validating generated files...")
-        
-        swift_files = list(self.output_dir.glob("*.swift"))
-        
-        if not swift_files:
-            raise Exception("No generated Swift files found")
-        
-        for file_path in swift_files:
-            file_size = file_path.stat().st_size
-            print(f"   {file_path.name}: {file_size} bytes")
-            
-            # Basic Swift syntax check (if swift is available)
-            try:
-                result = subprocess.run(
-                    ['swift', '-frontend', '-parse', str(file_path)],
-                    capture_output=True,
-                    text=True
-                )
-                if result.returncode != 0:
-                    print(f"     Warning: possible syntax issues in {file_path.name}")
-                    print(f"       {result.stderr}")
-            except FileNotFoundError:
-                print("     Swift compiler not available for syntax checking")
-                break
 
 
 def load_config_from_file(config_file: str) -> Dict[str, Any]:
-    """
-    Loads configuration from a JSON file
-    
-    This allows saving frequently used configurations
-    in files for reuse.
-    """
     try:
         with open(config_file, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -627,7 +553,6 @@ def load_config_from_file(config_file: str) -> Dict[str, Any]:
 
 
 def create_sample_config_file(filename: str = "config.json") -> None:
-    """Creates a sample configuration file"""
     sample_config = {
         "api_host": "https://sdk.api.example.com",
         "socket_host" : "https://paymentpage.api.example.com",
@@ -640,22 +565,20 @@ def create_sample_config_file(filename: str = "config.json") -> None:
 
 
 def create_sample_rename_config(filename: str = "rename_config.json") -> None:
-    """Creates a sample rename configuration file"""
     sample_config = {
         "merchant_name": "sample",
         "project_root": ".",
-        "exclude_dirs": [".git", ".build", "node_modules", ".idea", ".vscode"],
+        "exclude_dirs": [".git", ".build", ".idea"],
         "exclude_files": [".DS_Store", ".gitignore", "rename_config.json"],
-        "file_extensions": [".swift", ".h", ".m", ".mm", ".cpp", ".c", ".json", ".plist", ".md", ".txt", ".yml", ".yaml", ".xml", ".podspec", ".pbxproj", ".xcscheme", ".entitlements"],
-        "files_without_extension": ["Podfile", "Fastfile"],
+        "file_extensions": [".swift", ".h", ".m", ".mm", ".json", ".plist", ".md", ".txt", ".xml", ".podspec", ".pbxproj", ".xcscheme", ".entitlements"],
+        "files_without_extension": ["Podfile"],
         "case_sensitive": False,
         "dry_run": True
     }
     
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(sample_config, f, indent=2)
-    
-    print(f" Sample rename configuration file created: {filename}")
+
     print(" Configuration options:")
     print("   file_extensions: List of file extensions to process (e.g., ['.swift', '.json'])")
     print("   files_without_extension: List of specific filenames without extensions")
@@ -672,7 +595,6 @@ def create_sample_rename_config(filename: str = "rename_config.json") -> None:
 
 
 def main():
-    """Main script function"""
     parser = argparse.ArgumentParser(
         description="Configuration generator for iOS project with renaming functionality",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -714,7 +636,6 @@ Usage examples:
     
     # Handle rename operations
     if args.rename_config:
-        # Load rename config from file
         print(f" Loading rename configuration from file: {args.rename_config}")
         try:
             with open(args.rename_config, 'r', encoding='utf-8') as f:
@@ -734,16 +655,12 @@ Usage examples:
         except (FileNotFoundError, json.JSONDecodeError, KeyError) as e:
             print(f" Error loading rename configuration: {e}")
             sys.exit(1)
-        
-        # Execute rename operation
+
         renamer = ProjectRenamer(rename_config)
         renamer.rename_all()
         return
     
-    # Handle configuration generation
-    # Determine configuration source
     if args.config:
-        # Load from file
         print(f" Loading configuration from file: {args.config}")
         config_data = load_config_from_file(args.config)
         
