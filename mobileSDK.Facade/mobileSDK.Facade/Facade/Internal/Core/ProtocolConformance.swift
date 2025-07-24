@@ -381,9 +381,21 @@ internal extension AdditionalField {
 }
 
 private struct AdditionalFieldWrapper: mobileSDK_UI.AdditionalField {
+    
+    let name: String
+    let value: String
+    
     init(publicType: AdditionalField) {
-        value = publicType.value
-        name = {
+        let processedValue: String = {
+            switch publicType.type {
+            case .customer_phone:
+                return AdditionalFieldWrapper.normalizePhoneNumber(publicType.value)
+            default:
+                return publicType.value
+            }
+        }()
+
+        let processedName: String = {
             switch publicType.type {
             case .custom:
                 return publicType.serverName
@@ -391,10 +403,14 @@ private struct AdditionalFieldWrapper: mobileSDK_UI.AdditionalField {
                 return publicType.type.description
             }
         }()
+
+        self.value = processedValue
+        self.name = processedName
     }
 
-    let name: String
-    let value: String
+    private static func normalizePhoneNumber(_ phone: String) -> String {
+        return phone.filter { $0.isNumber }
+    }
 }
 
 internal extension RecipientInfo {
