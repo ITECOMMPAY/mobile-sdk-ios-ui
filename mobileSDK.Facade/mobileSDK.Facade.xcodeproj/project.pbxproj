@@ -160,6 +160,7 @@
 		1F636E930C2887C9C6220DDE /* Pods-ecommpaySDK_Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK_Dev.debug.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK_Dev/Pods-ecommpaySDK_Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		28F83C3D87DC6714B7B340BA /* libPods-ecommpaySDK_Dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ecommpaySDK_Dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52986476C74E1CDF2B723D1D /* Pods-ecommpaySDK_Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ecommpaySDK_Dev.release.xcconfig"; path = "Target Support Files/Pods-ecommpaySDK_Dev/Pods-ecommpaySDK_Dev.release.xcconfig"; sourceTree = "<group>"; };
+		75A52E7F2E2E4F26001FBB1C /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		785E16284E2B17C115D84522 /* Pods-mSDK_UI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mSDK_UI.release.xcconfig"; path = "Target Support Files/Pods-mSDK_UI/Pods-mSDK_UI.release.xcconfig"; sourceTree = "<group>"; };
 		840704C828D8850600DBD249 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
@@ -369,6 +370,7 @@
 		84BC13C42852086E008814EB = {
 			isa = PBXGroup;
 			children = (
+				75A52E7F2E2E4F26001FBB1C /* Package.swift */,
 				84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */,
 				84BC13D02852086E008814EB /* mobileSDK.Facade */,
 				84BC13CF2852086E008814EB /* Products */,
