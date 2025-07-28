@@ -58,10 +58,9 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
             saveCard: saveCard,
-            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
+            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil,
+            recipientInfo: recipientInfo?.coreRecipientInfo
         )
-
-        request.recipientInfo = recipientInfo?.coreRecipientInfo
 
         return PayRequestWrapper(coreRequest: request)
     }
