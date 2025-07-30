@@ -569,7 +569,7 @@ def create_sample_rename_config(filename: str = "rename_config.json") -> None:
         "merchant_name": "sample",
         "project_root": ".",
         "exclude_dirs": [".git", ".build", ".idea"],
-        "exclude_files": [".DS_Store", ".gitignore", "rename_config.json"],
+        "exclude_files": [".DS_Store", ".gitignore", "gen_config.py", "rename_config.json"],
         "file_extensions": [".swift", ".h", ".m", ".mm", ".json", ".plist", ".md", ".txt", ".xml", ".podspec", ".pbxproj", ".xcscheme", ".entitlements"],
         "files_without_extension": ["Podfile"],
         "case_sensitive": False,
