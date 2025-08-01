@@ -18,9 +18,16 @@ struct EmbeddedCustomerFieldsView: View {
     var body: some View {
         VStack(spacing: UIScheme.dimension.formSmallSpacing) {
             ForEach(visibleCustomerFields, id: \.name) { field in
+                let foundAdditionalField = additionalFields.first { $0.name == field.name }
+                let foundFieldValue = customerFieldValues.first { $0.name == field.name }
+                
                 if field.options != nil {
+                    let selectedOption = field.options?.first { $0.value == foundAdditionalField?.value }
+                    
                     OptionsCustomerTextField(
-                        customerField: field
+                        customerField: field,
+                        initialValue: selectedOption?.name,
+                        isRequired: field.isRequired
                     ) { customerField, newValue, isValid in
                         validateFields(
                             customerField: customerField,
@@ -30,9 +37,6 @@ struct EmbeddedCustomerFieldsView: View {
                         )
                     }
                 } else {
-                    let foundAdditionalField = additionalFields.first { $0.name == field.name }
-                    let foundFieldValue = customerFieldValues.first { $0.name == field.name }
-                    
                     view(
                         for: field,
                         value: foundFieldValue?.value ?? foundAdditionalField?.value ?? ""
