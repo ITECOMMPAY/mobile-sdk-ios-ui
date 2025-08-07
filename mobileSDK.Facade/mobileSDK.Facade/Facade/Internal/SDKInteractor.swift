@@ -30,19 +30,26 @@ class SDKInteractor {
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
+    
     init() {
-        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
-                                                           wsApiHost: NetworkConfigType().socketHost)
+        msdkConfig = MSDKCoreSessionConfig.companion.release(
+            apiHost: NetworkConfigType().apiHost,
+            wsApiHost: NetworkConfigType().socketHost
+        )
     }
 
     public init(apiUrlString: String, socketUrlString: String) {
-#if DEVELOPMENT
-        msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
-                                                           wsApiHost: socketUrlString)
-#else
-        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: apiUrlString,
-                                                             wsApiHost: socketUrlString)
-#endif
+        #if DEVELOPMENT
+        msdkConfig = MSDKCoreSessionConfig.companion.debug(
+            apiHost: apiUrlString,
+            wsApiHost: socketUrlString
+        )
+        #else
+        msdkConfig = MSDKCoreSessionConfig.companion.release(
+            apiHost: apiUrlString,
+            wsApiHost: socketUrlString
+        )
+        #endif
     }
 
     /// Presents UI to begin payment flow

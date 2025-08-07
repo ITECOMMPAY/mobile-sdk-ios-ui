@@ -1,6 +1,6 @@
 //
 //  RecipientInfoScreen.swift
-//  EcommpaySampleNL3
+//  EcommpaySample
 //
 //  Created by Artem Serebrennikov on 09.01.2023.
 //

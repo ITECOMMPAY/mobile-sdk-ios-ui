@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7525D00E2E0509110000B795 /* OptionsCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */; };
 		7525D00F2E0509110000B795 /* OptionsCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */; };
+		752AF83B2E44D81C00D14658 /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 752AF8372E44D81C00D14658 /* CardTypesLogo.xcassets */; };
+		752AF83C2E44D81C00D14658 /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 752AF8382E44D81C00D14658 /* APSIcons.xcassets */; };
+		752AF83D2E44D81C00D14658 /* CommonSDKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 752AF8392E44D81C00D14658 /* CommonSDKAssets.xcassets */; };
 		84154F1328E1CD4300F229F5 /* CardTypesLogo.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84154F0D28E1CD4300F229F5 /* CardTypesLogo.xcassets */; };
 		84154F1528E1CD4300F229F5 /* APSIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84154F0E28E1CD4300F229F5 /* APSIcons.xcassets */; };
 		84154F1628E1CD4300F229F5 /* CommonSDKAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84154F1228E1CD4300F229F5 /* CommonSDKAssets.xcassets */; };
@@ -328,6 +331,9 @@
 
 /* Begin PBXFileReference section */
 		7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCustomerTextField.swift; sourceTree = "<group>"; };
+		752AF8372E44D81C00D14658 /* CardTypesLogo.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CardTypesLogo.xcassets; sourceTree = "<group>"; };
+		752AF8382E44D81C00D14658 /* APSIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = APSIcons.xcassets; sourceTree = "<group>"; };
+		752AF8392E44D81C00D14658 /* CommonSDKAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CommonSDKAssets.xcassets; sourceTree = "<group>"; };
 		8400A54F28B392CE00C202E5 /* CardType+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardType+Logo.swift"; sourceTree = "<group>"; };
 		8402783F286D7B7C000970DA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
 		8403056328B7B61800DE38D3 /* APSScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSScreen.swift; sourceTree = "<group>"; };
@@ -523,6 +529,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		752AF83A2E44D81C00D14658 /* Ecommpay */ = {
+			isa = PBXGroup;
+			children = (
+				752AF8372E44D81C00D14658 /* CardTypesLogo.xcassets */,
+				752AF8382E44D81C00D14658 /* APSIcons.xcassets */,
+				752AF8392E44D81C00D14658 /* CommonSDKAssets.xcassets */,
+			);
+			path = Ecommpay;
+			sourceTree = "<group>";
+		};
 		8403056228B7B61800DE38D3 /* APSScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +714,7 @@
 		845507A7285B00CE002BBFE0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				752AF83A2E44D81C00D14658 /* Ecommpay */,
 				84C87D0728CF1BFD00B684DE /* InfoCardBackground.swift */,
 				84C87D0928CF1BFD00B684DE /* ImageResourceKeys.swift */,
 				84C87D0828CF1BFD00B684DE /* LibraryBundle.swift */,
@@ -1216,6 +1233,9 @@
 				84154F1628E1CD4300F229F5 /* CommonSDKAssets.xcassets in Resources */,
 				84A0F14228746598005F81DE /* Preview Assets.xcassets in Resources */,
 				84154F1328E1CD4300F229F5 /* CardTypesLogo.xcassets in Resources */,
+				752AF83B2E44D81C00D14658 /* CardTypesLogo.xcassets in Resources */,
+				752AF83C2E44D81C00D14658 /* APSIcons.xcassets in Resources */,
+				752AF83D2E44D81C00D14658 /* CommonSDKAssets.xcassets in Resources */,
 				84A0F13F28746598005F81DE /* Assets.xcassets in Resources */,
 				84154F1528E1CD4300F229F5 /* APSIcons.xcassets in Resources */,
 			);
