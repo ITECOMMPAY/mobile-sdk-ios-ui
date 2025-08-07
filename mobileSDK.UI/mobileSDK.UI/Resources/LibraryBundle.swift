@@ -13,17 +13,16 @@ class SDKBundle: Bundle {
     }
 }
 
-
 extension SDKBundle {
     static var localizationFramework: Bundle {
-        guard let localizationBundle = Bundle(identifier: "com.ecommpay.mobilesdk-ios-dev") else { return .main }
-
+        let bundle = Bundle(for: SDKBundle.self)
+        
         guard
-            let bundlePath = localizationBundle.path(forResource: currentLanguage(of: localizationBundle),
+            let bundlePath = bundle.path(forResource: currentLanguage(of: bundle),
                                                      ofType: "lproj"),
-            let bundle = Bundle(path: bundlePath) else { return .main }
+            let localizedBundle = Bundle(path: bundlePath) else { return bundle }
 
-        return bundle
+        return localizedBundle
     }
 
     static func currentLanguage(of bundle: Bundle) -> String {
