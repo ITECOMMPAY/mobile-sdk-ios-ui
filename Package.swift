@@ -20,13 +20,16 @@ let package = Package(
             dependencies: ["mobileSDK_UI", "MsdkCore"],
             path: "mobileSDK.Facade/mobileSDK.Facade",
             resources: [
-                .process("Assets")
+                .process("Resources")
             ]
         ),
         .target(
             name: "mobileSDK_UI",
             dependencies: ["MsdkCore"],
-            path: "mobileSDK.UI/mobileSDK.UI"
+            path: "mobileSDK.UI/mobileSDK.UI",
+            resources: [
+                .process("../../mobileSDK.Facade/mobileSDK.Facade/Resources")
+            ]
         ),
         .binaryTarget(
             name: "MsdkCore",

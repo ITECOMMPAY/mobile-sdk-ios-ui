@@ -1,9 +1,3 @@
-/*
-  Localizable.strings
-  mobileSDK.UI
-
-*/
-//Default
 "sale_label" = "Mode de paiement";
 "tokenize_label" = "Enregistrer la carte";
 "verify_label" = "Vérifier la carte";

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -59,13 +59,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 84C87C4B28CB45B900B684DE;
 			remoteInfo = mobileSDK.UI;
-		};
-		84A0F16B28748493005F81DE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84A0F13828746596005F81DE;
-			remoteInfo = UIPreview;
 		};
 		84BC13F0285208A3008814EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -146,6 +139,10 @@
 		B3D4E413299CC05F007A1E2F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		7594FE1B2E45590800A714F6 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		849C534F28BF62C800C1CF71 /* Frameworks */ = {
@@ -312,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				845507B6285B0463002BBFE0 /* Facade */,
+				7594FE1B2E45590800A714F6 /* Resources */,
 			);
 			path = mobileSDK.Facade;
 			sourceTree = "<group>";
@@ -319,7 +317,6 @@
 		84BC13ED285208A3008814EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84A0F16C28748493005F81DE /* mobileSDK.UI.app */,
 				84BC13F1285208A3008814EB /* libmobileSDK.UI.a */,
 			);
 			name = Products;
@@ -379,6 +376,9 @@
 			dependencies = (
 				849C533028BF62C800C1CF71 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				7594FE1B2E45590800A714F6 /* Resources */,
+			);
 			name = ecommpaySDK;
 			productName = mobileSDK.Facade;
 			productReference = 849C535828BF62C800C1CF71 /* ecommpaySDK.framework */;
@@ -399,7 +399,11 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				fr,
+				it,
+				es,
+				de,
+				hu,
 			);
 			mainGroup = 84BC13C42852086E008814EB;
 			productRefGroup = 84BC13CF2852086E008814EB /* Products */;
@@ -418,13 +422,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		84A0F16C28748493005F81DE /* mobileSDK.UI.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = mobileSDK.UI.app;
-			remoteRef = 84A0F16B28748493005F81DE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		84BC13F1285208A3008814EB /* libmobileSDK.UI.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
