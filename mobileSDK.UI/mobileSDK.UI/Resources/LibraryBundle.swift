@@ -16,7 +16,7 @@ class SDKBundle: Bundle {
 extension SDKBundle {
     static var localizationFramework: Bundle {
         let bundle = Bundle(for: SDKBundle.self)
-        
+
         guard
             let bundlePath = bundle.path(forResource: currentLanguage(of: bundle),
                                                      ofType: "lproj"),
