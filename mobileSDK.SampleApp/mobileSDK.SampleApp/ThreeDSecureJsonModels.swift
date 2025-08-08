@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ecommpaySDK
+import EcommpaySDK
 
 struct Account: Codable {
     var additional: String?
@@ -242,17 +242,17 @@ struct ThreeDSecureInfo: Codable {
         paymentMerchantRisk: PaymentMerchantRisk.default
     )
 
-    var sdkThreeDSecureInfo: ecommpaySDK.ThreeDSecureInfo {
-        ecommpaySDK.ThreeDSecureInfo.init(
+    var sdkThreeDSecureInfo: EcommpaySDK.ThreeDSecureInfo {
+        EcommpaySDK.ThreeDSecureInfo.init(
             threeDSecurePaymentInfo: paymentMerchantRisk?.payment.map({ payment in
-                ecommpaySDK.ThreeDSecurePaymentInfo(
+                EcommpaySDK.ThreeDSecurePaymentInfo(
                     reorder: payment.reorder,
                     preorderPurchase: payment.preorderPurchase,
                     preorderDate: payment.preorderDate,
                     challengeIndicator: payment.challengeIndicator,
                     challengeWindow: payment.challengeWindow,
                     giftCard: payment.giftCard.map({ giftCard in
-                        ecommpaySDK.ThreeDSecureGiftCardInfo(
+                        EcommpaySDK.ThreeDSecureGiftCardInfo(
                             amount: giftCard.amount,
                             currency: giftCard.currency,
                             count: giftCard.count
@@ -260,13 +260,13 @@ struct ThreeDSecureInfo: Codable {
                     })
                 )
             }),
-            threeDSecureCustomerInfo: ecommpaySDK.ThreeDSecureCustomerInfo(
+            threeDSecureCustomerInfo: EcommpaySDK.ThreeDSecureCustomerInfo(
                 addressMatch: customerAccountInfo?.customer?.addressMatch,
                 homePhone: customerAccountInfo?.customer?.homePhone,
                 workPhone: customerAccountInfo?.customer?.workPhone,
                 billingRegionCode: billingRegionCode,
                 accountInfo: customerAccountInfo?.customer?.account.map({ account in
-                    ecommpaySDK.ThreeDSecureAccountInfo(
+                    EcommpaySDK.ThreeDSecureAccountInfo(
                         additional: account.additional,
                         ageIndicator: account.ageIndicator,
                         date: account.date,
@@ -286,7 +286,7 @@ struct ThreeDSecureInfo: Codable {
                         authData: account.authData)
                 }),
                 shippingInfo: customerShipping?.customer?.shipping.map({ shipping in
-                    ecommpaySDK.ThreeDSecureShippingInfo(
+                    EcommpaySDK.ThreeDSecureShippingInfo(
                         type: shipping.type,
                         deliveryTime: shipping.deliveryTime,
                         deliveryEmail: shipping.deliveryEmail,
@@ -301,7 +301,7 @@ struct ThreeDSecureInfo: Codable {
                     )
                 }),
                 mpiResultInfo: customerMpiResult?.customer?.mpiResult.map({ mpiResult in
-                    ecommpaySDK.ThreeDSecureMpiResultInfo(
+                    EcommpaySDK.ThreeDSecureMpiResultInfo(
                         acsOperationId: mpiResult.acsOperationId,
                         authenticationFlow: mpiResult.authenticationFlow,
                         authenticationTimestamp: mpiResult.authenticationTimestamp

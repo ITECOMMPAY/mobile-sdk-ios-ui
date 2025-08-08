@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ecommpaySDK
+import EcommpaySDK
 import SwiftUI
 
 struct PaymentData {

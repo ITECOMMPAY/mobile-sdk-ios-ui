@@ -75,7 +75,7 @@ class SDKInteractor {
         msdkConfig.userAgentData = UserAgentData(
             screenInfo: .init(width: Int32(UIScreen.main.bounds.width),
                               height: Int32(UIScreen.main.bounds.height)),
-            applicationInfo: .init(version: EcommpaySDK.sdkVersion,
+            applicationInfo: .init(version: EcommpaySDKEntity.sdkVersion,
                                    bundleId: Bundle.main.bundleIdentifier,
                                    appName: Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String))
 
