@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ecommpaySDK_Dev
+import EcommpaySDK
 
 func getBrandName() -> String {
     return String(#file.split(separator: "/").last?.split(separator: ".").first ?? "")
