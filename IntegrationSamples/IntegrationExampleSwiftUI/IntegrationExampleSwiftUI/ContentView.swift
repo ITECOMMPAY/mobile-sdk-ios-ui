@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ecommpaySDK
+import EcommpaySDK
 
 struct ContentView: View {
     private let secret = "your_secret"

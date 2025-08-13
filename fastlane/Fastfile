@@ -11,13 +11,17 @@ platform :ios do
 
   desc "Validate build"
   lane :validate do |options|
-    # Swift Package Manager resolves dependencies automatically
-    # No need for cocoapods(clean_install: false)
+    # Clean up derived data to ensure fresh build
+    clear_derived_data
+    
+    # Explicitly resolve SPM packages
+    sh("xcodebuild -resolvePackageDependencies -workspace ../mobileSDK.xcworkspace -scheme #{target}")
     
     build_ios_app(
       workspace: 'mobileSDK.xcworkspace',
       scheme: target,
       configuration: 'Release',
+      destination: 'generic/platform=iOS Simulator',
       clean: true,
       suppress_xcode_output: false,
       output_directory: 'archives',
@@ -77,12 +81,6 @@ platform :ios do
       target: target,
       xcodeproj: "./mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj"
     )
-    
-    # No longer need to increment build for Facade project since we're using SPM
-    # The SPM package version is handled in Package.swift
-    
-    # Swift Package Manager resolves dependencies automatically
-    # No need for cocoapods(clean_install: false)
 
     build_ios_app(
       workspace: 'mobileSDK.xcworkspace',
