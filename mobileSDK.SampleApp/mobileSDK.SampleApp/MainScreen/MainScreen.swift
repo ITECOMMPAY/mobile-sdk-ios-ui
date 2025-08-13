@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import ecommpaySDK_Dev
+import EcommpaySDK
 
 struct MainScreen: View {
     @State var result: PaymentResult?
@@ -15,7 +15,7 @@ struct MainScreen: View {
     @State var token: String = ""
 
     @State var action: PaymentOptions.ActionType = .Sale
-    @State var sdk = EcommpaySDK()
+    @State var sdk = EcommpaySDKEntity()
 
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
@@ -401,7 +401,7 @@ struct MainScreen: View {
     
     func presentPaymentPage(action: PaymentOptions.ActionType) {
         self.action = action
-        sdk = EcommpaySDK(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+        sdk = EcommpaySDKEntity(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
         isPaymentPagePresented = true
         
         if simulateCrash {

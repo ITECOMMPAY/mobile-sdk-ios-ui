@@ -5,9 +5,9 @@
       location = "group:mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:mobileSDK.Facade/mobileSDK.Facade.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:mobileSDK.Facade/mobileSDK.Facade.xcodeproj">
+      location = "group:Package.swift">
    </FileRef>
 </Workspace>
