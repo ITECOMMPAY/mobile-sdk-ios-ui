@@ -13,11 +13,11 @@ func getBrandName() -> String {
 }
 
 func getSDKVersionString() -> String {
-    return EcommpaySDK.sdkVersion + "(" + EcommpaySDK.buildNumber + ")"
+    return EcommpaySDKEntity.sdkVersion + "(" + EcommpaySDKEntity.buildNumber + ")"
 }
 
 func getCoreVersionString() -> String {
-    return EcommpaySDK.coreVerion
+    return EcommpaySDKEntity.coreVerion
 }
 
 #if NL3
