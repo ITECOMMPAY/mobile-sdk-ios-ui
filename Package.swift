@@ -19,11 +19,9 @@ let package = Package(
             name: "EcommpaySDK",
             dependencies: ["mobileSDK_UI", "MsdkCore"],
             path: "mobileSDK.Facade/mobileSDK.Facade",
-            exclude: [
-                "Facade/Internal/Config/ECMPConfigDev.swift"
-            ],
+            exclude: ["Resources/Overrides.strings", "Resources/de.lproj", "Resources/en.lproj", "Resources/es.lproj", "Resources/fr.lproj", "Resources/hu.lproj", "Resources/it.lproj"],
             resources: [
-                .process("Assets")
+                .process("Resources")
             ]
         ),
         .target(

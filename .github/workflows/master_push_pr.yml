@@ -21,6 +21,16 @@ jobs:
           brew install grep
           bundle install
       
+      - name: Cache SPM packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+      
       - name: Validate
         run: |
           bundle exec fastlane validate

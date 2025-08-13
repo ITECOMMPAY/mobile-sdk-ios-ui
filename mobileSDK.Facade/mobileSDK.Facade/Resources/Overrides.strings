@@ -1,10 +1,4 @@
-/* 
-  Overrides.strings
-  mobileSDK.Facade
-
-  Created by Alex on 05.09.2023.
-  
-*/
+//en
 "sale_label_en" = "Select Payment Method";
 "tokenize_label_en" = "Save Card";
 "verify_label_en" = "Verify Card";

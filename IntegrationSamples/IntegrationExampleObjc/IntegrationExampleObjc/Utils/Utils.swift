@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ecommpaySDK
+import EcommpaySDK
 
 class Utils: NSObject {
     @objc(signature:secret:)
