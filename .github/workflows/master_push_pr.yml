@@ -16,9 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Select Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
-
       - name: Bundle install
         run: |
           brew install grep
