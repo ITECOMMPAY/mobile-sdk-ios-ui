@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ecommpaySDK
+import EcommpaySDK
 
 class ViewController: UIViewController {
 

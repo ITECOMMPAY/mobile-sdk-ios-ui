@@ -30,19 +30,26 @@ class SDKInteractor {
     internal var completionHandler: PaymentCompletion?
 
     // MARK: - Init
+    
     init() {
-        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: NetworkConfigType().apiHost,
-                                                           wsApiHost: NetworkConfigType().socketHost)
+        msdkConfig = MSDKCoreSessionConfig.companion.release(
+            apiHost: NetworkConfigType().apiHost,
+            wsApiHost: NetworkConfigType().socketHost
+        )
     }
 
     public init(apiUrlString: String, socketUrlString: String) {
-#if DEVELOPMENT
-        msdkConfig = MSDKCoreSessionConfig.companion.debug(apiHost: apiUrlString,
-                                                           wsApiHost: socketUrlString)
-#else
-        msdkConfig = MSDKCoreSessionConfig.companion.release(apiHost: apiUrlString,
-                                                             wsApiHost: socketUrlString)
-#endif
+        #if DEVELOPMENT
+        msdkConfig = MSDKCoreSessionConfig.companion.debug(
+            apiHost: apiUrlString,
+            wsApiHost: socketUrlString
+        )
+        #else
+        msdkConfig = MSDKCoreSessionConfig.companion.release(
+            apiHost: apiUrlString,
+            wsApiHost: socketUrlString
+        )
+        #endif
     }
 
     /// Presents UI to begin payment flow
@@ -68,7 +75,7 @@ class SDKInteractor {
         msdkConfig.userAgentData = UserAgentData(
             screenInfo: .init(width: Int32(UIScreen.main.bounds.width),
                               height: Int32(UIScreen.main.bounds.height)),
-            applicationInfo: .init(version: EcommpaySDK.sdkVersion,
+            applicationInfo: .init(version: EcommpaySDKEntity.sdkVersion,
                                    bundleId: Bundle.main.bundleIdentifier,
                                    appName: Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String))
 

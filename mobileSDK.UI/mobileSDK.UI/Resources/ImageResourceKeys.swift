@@ -44,8 +44,7 @@ extension Image {
             return Image(uiImage: uiImage)
         }
         
-        if let uiImage =
-            UIImage(named: name, in: SDKBundle.get(), compatibleWith: nil) {
+        if let uiImage = UIImage(named: name, in: SDKBundle.get(), compatibleWith: nil) {
             return Image(uiImage: uiImage)
         }
         return nil
