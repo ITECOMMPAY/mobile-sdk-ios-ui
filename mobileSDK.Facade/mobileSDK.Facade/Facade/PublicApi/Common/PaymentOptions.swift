@@ -41,7 +41,11 @@ public class PaymentOptions: NSObject {
         /// - **countryCode** - The merchant's ISO country code. It is required parameter:
         /// - **applePayDescription**  Optional. PaymentID will be used as description of payment if not provided
         @objc
-        public init(applePayMerchantID: String?, applePayDescription: String?, countryCode: String?) {
+        public init(
+            applePayMerchantID: String?,
+            applePayDescription: String?,
+            countryCode: String?
+        ) {
             self.applePayMerchantID = applePayMerchantID
             self.applePayDescription = applePayDescription
             self.countryCode = countryCode
@@ -59,7 +63,12 @@ public class PaymentOptions: NSObject {
         /// - **applePayDescription**  Optional. PaymentID will be used as description of payment if not provided
         /// - **paymentRequest**  Optional.  pre-filed PKPaymentRequest
         @objc
-        public init(applePayMerchantID: String?, applePayDescription: String?, countryCode: String?, paymentRequest: PKPaymentRequest?) {
+        public init(
+            applePayMerchantID: String?,
+            applePayDescription: String?,
+            countryCode: String?,
+            paymentRequest: PKPaymentRequest?
+        ) {
             self.applePayMerchantID = applePayMerchantID
             self.applePayDescription = applePayDescription
             self.countryCode = countryCode
@@ -165,10 +174,12 @@ public class PaymentOptions: NSObject {
                 regionCode: String?,
                 token: String? = nil,
                 storedCardType: NSNumber? = nil) {
-        self.paymentInfo = PaymentInfo.companion.create(projectId: projectID,
-                                                        paymentId: paymentID,
-                                                        paymentAmount: paymentAmount,
-                                                        paymentCurrency: paymentCurrency)
+        self.paymentInfo = PaymentInfo.companion.create(
+            projectId: projectID,
+            paymentId: paymentID,
+            paymentAmount: paymentAmount,
+            paymentCurrency: paymentCurrency
+        )
         self.paymentInfo.paymentDescription = (paymentDescription?.isEmpty ?? true) ? nil : paymentDescription
         self.paymentInfo.customerId = customerID
         self.paymentInfo.regionCode = regionCode
@@ -190,10 +201,12 @@ public class PaymentOptions: NSObject {
                 paymentAmount: Int64,
                 paymentCurrency: String,
                 storedCardType: NSNumber? = nil) {
-        self.paymentInfo = PaymentInfo.companion.create(projectId: projectID,
-                                                        paymentId: paymentID,
-                                                        paymentAmount: paymentAmount,
-                                                        paymentCurrency: paymentCurrency)
+        self.paymentInfo = PaymentInfo.companion.create(
+            projectId: projectID,
+            paymentId: paymentID,
+            paymentAmount: paymentAmount,
+            paymentCurrency: paymentCurrency
+        )
         self.storedCardType = storedCardType
         super.init()
     }

@@ -15,7 +15,7 @@ struct MainScreen: View {
     @State var token: String = ""
 
     @State var action: PaymentOptions.ActionType = .Sale
-    @State var sdk = EcommpaySDKEntity()
+    @State var sdk = Ecommpay()
 
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
@@ -79,7 +79,7 @@ struct MainScreen: View {
                     simulateCrashToggle
                 }
             }
-            .navigationBarTitle(Text("\(getBrandName()) \(getAppVersionString())"), displayMode: .inline)
+            .navigationBarTitle(Text("\(getBrandName()) \(Ecommpay.sdkVersion)"), displayMode: .inline)
             .toolbar {
                 HStack {
                     Button("Info") {
@@ -401,7 +401,7 @@ struct MainScreen: View {
     
     func presentPaymentPage(action: PaymentOptions.ActionType) {
         self.action = action
-        sdk = EcommpaySDKEntity(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+        sdk = Ecommpay(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
         isPaymentPagePresented = true
         
         if simulateCrash {
@@ -528,19 +528,6 @@ struct MainScreen: View {
                 }))
         }
         return nil
-    }
-}
-
-private func getAppVersionString() -> String {
-    return "\(Bundle.main.releaseVersionNumber)(\(Bundle.main.buildVersionNumber))"
-}
-
-extension Bundle {
-    var releaseVersionNumber: String {
-        return (infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
-    }
-    var buildVersionNumber: String {
-        return (infoDictionary?["CFBundleVersion"] as? String) ?? ""
     }
 }
 

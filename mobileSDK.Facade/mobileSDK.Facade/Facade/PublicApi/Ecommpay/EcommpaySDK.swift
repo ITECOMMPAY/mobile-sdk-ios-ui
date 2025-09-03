@@ -12,12 +12,11 @@ import UIKit
 
 public typealias PaymentCompletion = (_ result: PaymentResult) -> Void
 
-public class EcommpaySDKEntity: NSObject {
+public class Ecommpay: NSObject {
     /// The key is used to get error-code from UserInfo of NSError instance returned while mobile SDK session initialisation
     @objc public static let kSDKInitErrorCodeKey = "SDKInitErrorCode"
     /// Version of currently installed Ecommpay SDK
-    @objc public static let buildNumber: String = SDKInteractor.getBuildNumberOfBundle(for: EcommpaySDKEntity.self)
-    @objc public static let sdkVersion: String = SDKInteractor.getBundleVersion(for: EcommpaySDKEntity.self)
+    @objc public static let sdkVersion: String = "3.10.0"
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
 
     /// Debug initializer, should not be present in release version!

@@ -38,7 +38,6 @@
 		849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84BC13F1285208A3008814EB /* libmobileSDK.UI.a */; };
 		84CDC3E72911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E52911454100E3EB04 /* ThreeDSecureInfo.swift */; };
 		B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */; };
-		B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3491657296EFB5800D9844B /* CrashReportSender.swift */; };
 		B34916762970128300D9844B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B349166E2970121B00D9844B /* libc++.tbd */; };
 		B34916772970128700D9844B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916702970124000D9844B /* libz.tbd */; };
 		B34916782970128C00D9844B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B34916722970126700D9844B /* MessageUI.framework */; };
@@ -126,7 +125,6 @@
 		84EFA163287708850043C360 /* CoreErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorCode.swift; sourceTree = "<group>"; };
 		84F705C4287C534300E7CD12 /* InitDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitDelegateProxy.swift; sourceTree = "<group>"; };
 		B3330B59295B2B47004DA575 /* ThreeDSecurePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecurePageType.swift; sourceTree = "<group>"; };
-		B3491657296EFB5800D9844B /* CrashReportSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportSender.swift; sourceTree = "<group>"; };
 		B349166E2970121B00D9844B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		B34916702970124000D9844B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		B34916722970126700D9844B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/iOSSupport/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
@@ -208,7 +206,6 @@
 				84B241A2288A5AD900259A50 /* Core */,
 				84B241652887D83C00259A50 /* Config */,
 				845507BC285B0463002BBFE0 /* SDKInteractor.swift */,
-				B3491657296EFB5800D9844B /* CrashReportSender.swift */,
 				845507BD285B0463002BBFE0 /* PaymentResult.swift */,
 				840704C828D8850600DBD249 /* ContainerViewController.swift */,
 			);
@@ -460,7 +457,6 @@
 				84CDC3E72911454100E3EB04 /* ThreeDSecureInfo.swift in Sources */,
 				849C534028BF62C800C1CF71 /* NetworkConfig.swift in Sources */,
 				849C534128BF62C800C1CF71 /* PayDelegateProxy.swift in Sources */,
-				B3491659296EFB5800D9844B /* CrashReportSender.swift in Sources */,
 				840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */,
 				849C534228BF62C800C1CF71 /* AdditionalField.swift in Sources */,
 				849C534328BF62C800C1CF71 /* AdditionalFieldEnums.swift in Sources */,
@@ -516,7 +512,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecommpay.mobilesdk-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -554,7 +550,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ecommpay.mobilesdk-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";

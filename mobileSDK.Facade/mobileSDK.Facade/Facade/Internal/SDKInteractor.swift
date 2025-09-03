@@ -75,7 +75,7 @@ class SDKInteractor {
         msdkConfig.userAgentData = UserAgentData(
             screenInfo: .init(width: Int32(UIScreen.main.bounds.width),
                               height: Int32(UIScreen.main.bounds.height)),
-            applicationInfo: .init(version: EcommpaySDKEntity.sdkVersion,
+            applicationInfo: .init(version: Ecommpay.sdkVersion,
                                    bundleId: Bundle.main.bundleIdentifier,
                                    appName: Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String))
 
@@ -83,15 +83,7 @@ class SDKInteractor {
         setupDependency(with: msdkSession)
 
         self.completionHandler = completion
-
-//        CrashReportSender.shared.start(
-//            projectId: Int(paymentOptions.paymentInfo.projectId),
-//            paymentId: paymentOptions.paymentInfo.paymentId,
-//            customerId: paymentOptions.paymentInfo.customerId,
-//            signature: paymentOptions.signature,
-//            errorInteractor: msdkSession.getErrorEventInteractor()
-//        )
-
+        
         let delegateProxy = InitDelegateProxy()
 
         let view = ViewFactory.assembleRootView(
@@ -108,8 +100,6 @@ class SDKInteractor {
             })
         ) { reason in
             viewController.dismiss(animated: true) { [weak self] in
-                //CrashReportSender.shared.stop()
-                
                 switch reason {
                 case .byUser:
                     self?.completionHandler?(PaymentResult(status: .Cancelled, error: nil))
@@ -150,14 +140,6 @@ class SDKInteractor {
         serviceLocator.addService(
             instance: CardRemoveInteractorWrapper(msdkSession: session) as mobileSDK_UI.CardRemoveInteractor
         )
-    }
-
-    internal static func getBundleVersion(for aClass: AnyClass) -> String {
-        return Bundle(for: aClass).infoDictionary?["CFBundleShortVersionString"] as! String
-    }
-
-    internal static func getBuildNumberOfBundle(for aClass: AnyClass) -> String {
-        return Bundle(for: aClass).infoDictionary?["CFBundleVersion"] as! String
     }
 
     internal static func getCoreVersion() -> String {
