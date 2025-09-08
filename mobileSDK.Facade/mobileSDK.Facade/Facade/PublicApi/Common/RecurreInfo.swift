@@ -111,16 +111,18 @@ public class RecurrentInfo: NSObject, Codable {
     ///   - startDate: Date to start recurrent payment, must be string(10) in DD-MM-YYYY format
     ///   - scheduledPaymentID: Recurring payment ID
     @objc(initWithRecurrentType:register:expiryDay:expiryMonth:expiryYear:period:interval:time:startDate:scheduledPaymentID:)
-    public init(register: Bool,
-                type: RecurrentType,
-                expiryDay: String,
-                expiryMonth: String,
-                expiryYear: String,
-                period: RecurrentPeriod,
-                interval: Int,
-                time: String,
-                startDate: String,
-                scheduledPaymentID: String) {
+    public init(
+        register: Bool,
+        type: RecurrentType,
+        expiryDay: String,
+        expiryMonth: String,
+        expiryYear: String,
+        period: RecurrentPeriod,
+        interval: Int,
+        time: String,
+        startDate: String,
+        scheduledPaymentID: String
+    ) {
         self.register = register
         self.type = type
         self.expiryDay = expiryDay

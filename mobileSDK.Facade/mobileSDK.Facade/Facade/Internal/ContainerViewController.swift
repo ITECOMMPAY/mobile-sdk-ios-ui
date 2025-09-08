@@ -13,8 +13,4 @@ class ContainerViewController<Content: View>: UIHostingController<Content> {
     override var shouldAutorotate: Bool {
         false
     }
-
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        .portrait
-//    }
 }
