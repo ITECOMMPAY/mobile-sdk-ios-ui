@@ -53,7 +53,7 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
         Group {
             if isLoading {
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
+                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.primaryBrandColor))
                     .scaleEffect(x: 2, y: 2, anchor: .center)
             } else {
                 EmptyView()

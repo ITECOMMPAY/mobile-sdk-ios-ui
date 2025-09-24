@@ -94,10 +94,10 @@ struct TokenizeCardView: View {
 
     private var buttonLabel: PayButtonLabel {
         if (isTokenizeButton) {
-            return PayButtonLabel(style: .Tokenize)
+            return PayButtonLabel(style: .tokenize)
         }
         else {
-            return PayButtonLabel(style: .Continue)
+            return PayButtonLabel(style: .continue)
         }
     }
     

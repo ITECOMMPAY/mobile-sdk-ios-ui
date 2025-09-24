@@ -37,7 +37,6 @@ struct CvvField: View {
             secure: true,
             maxLength: length,
             isAllowedCharacter: allowedCharacters,
-            required: true,
             hint: errorMessage,
             valid: isFieldValid,
             disabled: false,

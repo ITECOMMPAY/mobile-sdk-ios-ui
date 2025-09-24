@@ -12,7 +12,6 @@ struct CustomTextField<AccessoryViewType: View>: View {
     // MARK: - Properties
     let accessoryView: AccessoryViewType
     let isSecure: Bool
-    let isRequired: Bool
     let onCommit: () -> Void
     let keyboardType: UIKeyboardType
     let forceUppercased: Bool
@@ -36,24 +35,21 @@ struct CustomTextField<AccessoryViewType: View>: View {
                             .foregroundColor(placeholderColor)
                             .animatableFont(size: placeholderFontSize, makeFont: UIScheme.font.commonRegular)
                             .layoutPriority(1)
-                            .accessibilityHint(isRequired ? "Required" : "")
-                        if isRequired {
-                            Text("*").foregroundColor(requiredMarkColor)
-                                .accessibilityHidden(true)
-                        }
                         Spacer()
                     }
                     .padding(placeholderPaddings)
-                }.onTapGesture {
+                }
+                .onTapGesture {
                     isFocused = true
                 }
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
             }
-            .background(backgroundColor.overlay(
-                RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
-                    .stroke(borderColor, lineWidth: borderWidth)
-            ))
-            .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+            .border(.black)
+//            .background(backgroundColor.overlay(
+//                RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
+//                    .stroke(borderColor, lineWidth: borderWidth)
+//            ))
+            .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .bottomRight)
 
             .onReceive(Just(editing)) { _ in
                 withAnimation(.easeOut(duration: 0.1)) {
@@ -71,7 +67,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
                     .foregroundColor(errorHintColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
-        }.accessibilityElement(children: .combine)
+        }
+        .accessibilityElement(children: .combine)
     }
 
     @ViewBuilder
@@ -114,7 +111,10 @@ struct CustomTextField<AccessoryViewType: View>: View {
         .disabled(disabled)
     }
 
-    private func shouldChangeCharacters(uiTextField: BaseUITextField, range: NSRange, replacementString: String) -> Bool {
+    private func shouldChangeCharacters(
+        uiTextField: BaseUITextField,
+        range: NSRange, replacementString: String
+    ) -> Bool {
         if replacementString.isEmpty {
             return true
         }
@@ -130,8 +130,10 @@ struct CustomTextField<AccessoryViewType: View>: View {
               let rangeOfTextToReplace = Range(range, in: textFieldText) else {
             return false
         }
-        let previewString = textFieldText.replacingCharacters(in: rangeOfTextToReplace,
-                                                              with: replacementString)
+        let previewString = textFieldText.replacingCharacters(
+            in: rangeOfTextToReplace,
+            with: replacementString
+        )
         return formatter.transformation.rawString(from: previewString).count <= maxLength
     }
 
@@ -153,10 +155,12 @@ struct CustomTextField<AccessoryViewType: View>: View {
     @State
     private var placeholderFontSize = UIScheme.dimension.middleFont
     @State
-    private var placeholderPaddings: EdgeInsets = EdgeInsets(top: 17,
-                                                             leading: UIScheme.dimension.middleSpacing,
-                                                             bottom: 17,
-                                                             trailing: 0)
+    private var placeholderPaddings: EdgeInsets = EdgeInsets(
+        top: 17,
+        leading: UIScheme.dimension.middleSpacing,
+        bottom: 17,
+        trailing: 0
+    )
 
     private var textFieldTextColor: Color {
         disabled ? UIScheme.color.textFieldDisabledTextColor : UIScheme.color.text
@@ -186,10 +190,12 @@ struct CustomTextField<AccessoryViewType: View>: View {
         return UIScheme.color.textFieldNormalPlaceholderColor
     }
 
-    private let textFieldPaddings: EdgeInsets = EdgeInsets(top: 25,
-                                                           leading: UIScheme.dimension.middleSpacing,
-                                                           bottom: 9,
-                                                           trailing: UIScheme.dimension.middleSpacing)
+    private let textFieldPaddings: EdgeInsets = EdgeInsets(
+        top: 25,
+        leading: UIScheme.dimension.middleSpacing,
+        bottom: 9,
+        trailing: UIScheme.dimension.middleSpacing
+    )
 
     @Binding
     private var text: String
@@ -211,22 +217,23 @@ struct CustomTextField<AccessoryViewType: View>: View {
     ///   - hint: The field hint string.
     ///   - editing: Whether the field is in the editing state.
     ///   - valid: Whether the field is in the valid state.
-    public init(_ text: Binding<String>,
-                placeholder: String,
-                keyboardType: UIKeyboardType = .default,
-                forceUppercased: Bool = false,
-                secure: Bool = false,
-                maxLength: Int? = nil,
-                adjustsFontSizeToFitWidth: Bool = false,
-                minimumFontSize: CGFloat = 0.0,
-                isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
-                transformation: CustomFormatterTransformation = EmptyTransformation(),
-                required: Bool = false,
-                hint: String,
-                valid: Bool,
-                disabled: Bool = false,
-                accessoryView: AccessoryViewType,
-                onCommit: @escaping () -> Void = {}) {
+    public init(
+        _ text: Binding<String>,
+        placeholder: String,
+        keyboardType: UIKeyboardType = .default,
+        forceUppercased: Bool = false,
+        secure: Bool = false,
+        maxLength: Int? = nil,
+        adjustsFontSizeToFitWidth: Bool = false,
+        minimumFontSize: CGFloat = 0.0,
+        isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
+        transformation: CustomFormatterTransformation = EmptyTransformation(),
+        hint: String,
+        valid: Bool,
+        disabled: Bool = false,
+        accessoryView: AccessoryViewType,
+        onCommit: @escaping () -> Void = {}
+    ) {
         self._text = text
         self.onCommit = onCommit
         self.placeholder = placeholder
@@ -234,7 +241,6 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.valid = valid
         self.disabled = disabled
         self.accessoryView = accessoryView
-        self.isRequired = required
         self.isSecure = secure
         self.keyboardType = keyboardType
         self.forceUppercased = forceUppercased
@@ -300,15 +306,19 @@ struct CustomTextField<AccessoryViewType: View>: View {
     private func updatePlaceholderPosition() {
         if editing
             || !text.isEmpty {
-            placeholderPaddings = EdgeInsets(top: 9.0,
-                                             leading: UIScheme.dimension.middleSpacing,
-                                             bottom: 29.0,
-                                             trailing: 0)
+            placeholderPaddings = EdgeInsets(
+                top: 9.0,
+                leading: UIScheme.dimension.middleSpacing,
+                bottom: 29.0,
+                trailing: 0
+            )
         } else {
-            placeholderPaddings = EdgeInsets(top: 17.0,
-                                             leading: UIScheme.dimension.middleSpacing,
-                                             bottom: 17.0,
-                                             trailing: 0)
+            placeholderPaddings = EdgeInsets(
+                top: 17.0,
+                leading: UIScheme.dimension.middleSpacing,
+                bottom: 17.0,
+                trailing: 0
+            )
         }
     }
 }
@@ -318,43 +328,53 @@ struct CustomTextField<AccessoryViewType: View>: View {
 struct CustomTextField_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CustomTextField(.constant(""),
-                          placeholder: "placeholder text",
-                          hint: "hint text",
-                          valid: true,
-                          accessoryView: EmptyView()).previewDisplayName("Empty")
-            CustomTextField(.constant(""),
-                          placeholder: "placeholder text",
-                          required: true,
-                          hint: "hint text",
-                          valid: true,
-                          accessoryView: EmptyView()).previewDisplayName("Requered")
-            CustomTextField(.constant("some text"),
-                          placeholder: "placeholder text",
-                          hint: "hint text",
-                          valid: false,
-                          accessoryView: Color.red.frame(width: 20,
-                                                         height: 20)).previewDisplayName("Error hint")
-            CustomTextField(.constant("some text"),
-                          placeholder: "placeholder text",
-                          hint: "hint text",
-                          valid: true,
-                          disabled: true,
-                          accessoryView: EmptyView()).previewDisplayName("Disabled")
-            CustomTextField(.constant("cvc"),
-                          placeholder: "CVC",
-                          secure: true,
-                          required: true,
-                          hint: "hint text",
-                          valid: true,
-                          disabled: false,
-                          accessoryView: EmptyView()).previewDisplayName("Sequre")
-
+            CustomTextField(
+                .constant(""),
+                placeholder: "placeholder text",
+                hint: "hint text",
+                valid: true,
+                accessoryView: EmptyView()
+            )
+            .previewDisplayName("Empty")
+            CustomTextField(
+                .constant(""),
+                placeholder: "placeholder text",
+                hint: "hint text",
+                valid: true,
+                accessoryView: EmptyView()
+            )
+            .previewDisplayName("Requered")
+            CustomTextField(
+                .constant("some text"),
+                placeholder: "placeholder text",
+                hint: "hint text",
+                valid: false,
+                accessoryView: Color.red.frame(width: 20, height: 20)
+            )
+            .previewDisplayName("Error hint")
+            CustomTextField(
+                .constant("some text"),
+                placeholder: "placeholder text",
+                hint: "hint text",
+                valid: true,
+                disabled: true,
+                accessoryView: EmptyView()
+            )
+            .previewDisplayName("Disabled")
+            CustomTextField(
+                .constant("cvc"),
+                placeholder: "CVC",
+                secure: true,
+                hint: "hint text",
+                valid: true,
+                disabled: false,
+                accessoryView: EmptyView()
+            )
+            .previewDisplayName("Sequre")
         }
         .padding()
         .previewLayout(.sizeThatFits)
     }
-
 }
 
 #endif

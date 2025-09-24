@@ -159,7 +159,8 @@ public protocol PaymentOptions {
     var details: [PaymentDetailData] { get }
     var uiAdditionalFields: [AdditionalField] { get }
     var isMockModeEnabled: Bool { get }
-    var brandColorOverride: Color? { get }
+    var primaryBrandColorOverride: Color? { get }
+    var secondaryBrandColorOverride: Color? { get }
     var applePayMerchantID: String? { get }
     var appleCountryCode: String? { get }
     var paymentID: String { get }

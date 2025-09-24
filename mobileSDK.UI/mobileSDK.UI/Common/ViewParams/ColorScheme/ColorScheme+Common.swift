@@ -43,7 +43,7 @@ extension ColorScheme where Self: ColorPalette {
     var textFieldRequirementMarkColor: Color { red }
 
     var checkboxSelectedForeground: Color { globalWhite }
-    var checkboxSelectedBackground: Color { brandColor }
+    var checkboxSelectedBackground: Color { primaryBrandColor }
 
     var cancelPaymentButtonColor: Color { mediumGrey }
 

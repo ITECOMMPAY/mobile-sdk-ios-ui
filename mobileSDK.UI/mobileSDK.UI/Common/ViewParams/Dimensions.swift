@@ -34,8 +34,6 @@ protocol DimensionScheme {
     var smallestCornerRadius: CGFloat { get }
     /// Наименьшая облась нажатия по гайдлайнам интерфейса iOS. **default: 44**
     var minimumTapAreaSize: CGFloat { get }
-    /// Размер обводки элементов **default: 1**
-    var borderWidth: CGFloat { get }
     /// Размер обводки полей ввода **default: 1**
     var inputBorderWidth: CGFloat { get }
     /// Размер обводки выделеных полей ввода **default: 1**
@@ -90,7 +88,7 @@ struct DefaultDimensionScheme: DimensionScheme {
     let infoCardShortenedHeight: CGFloat = 92
     let formSmallSpacing: CGFloat = 12
     let formLargeVerticalSpacing: CGFloat = 22
-    let backgroundSheetCornerRadius: CGFloat = 12
+    let backgroundSheetCornerRadius: CGFloat = 20
     let paymentMethodButtonHeight: CGFloat = 50
     let applePayButtonHeight: CGFloat = 48
     let tinySpacing: CGFloat = 6
@@ -100,7 +98,7 @@ struct DefaultDimensionScheme: DimensionScheme {
     let paymentDetailsButtonHeight: CGFloat = 33
     let largeSpacing: CGFloat = 26
     let middleSpacing: CGFloat = 16
-    let buttonCornerRadius: CGFloat = 8
+    let buttonCornerRadius: CGFloat = 12
     let smallestCornerRadius: CGFloat = 4
     let minimumTapAreaSize: CGFloat = 44
     let borderWidth: CGFloat = 1

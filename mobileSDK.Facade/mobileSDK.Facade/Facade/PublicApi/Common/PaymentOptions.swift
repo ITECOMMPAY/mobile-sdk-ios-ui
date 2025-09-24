@@ -95,8 +95,11 @@ public class PaymentOptions: NSObject {
     /// Payment logo image
     @objc public var logoImage: UIImage?
 
-    /// Brand color
-    @objc public var brandColor: UIColor?
+    /// Primary brand color
+    @objc public var primaryBrandColor: UIColor?
+    
+    /// Secondary brand color
+    @objc public var secondaryBrandColor: UIColor?
 
     /// Dark theme mode
     @objc public var isDarkThemeOn: Bool = false

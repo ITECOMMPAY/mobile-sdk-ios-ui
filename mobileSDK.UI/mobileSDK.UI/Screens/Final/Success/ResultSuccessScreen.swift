@@ -70,7 +70,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     .offset(x: .zero, y: animationState.infoOffset)
                     .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
-                    label: PayButtonLabel(style: .Done),
+                    label: PayButtonLabel(style: .done),
                     disabled: false) {
                         viewModel.dispatch(intent: .close)
                     }
@@ -103,7 +103,6 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                     paymentID: nil,
                     paymentDescription: nil,
                     recurringData: [],
-                    backgroundTemplate: UIScheme.infoCardBackground,
                     logoImage: logo
                 )
             } else {
@@ -111,12 +110,10 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             }
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: [],
                 paymentDetails: [],
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }

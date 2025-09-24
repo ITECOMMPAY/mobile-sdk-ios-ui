@@ -76,17 +76,14 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                 paymentID: viewModel.state.paymentOptions.paymentID,
                 paymentDescription: viewModel.state.paymentOptions.paymentDescription,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }
@@ -95,13 +92,13 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
     private var buttonLabel: some View {
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
-            return PayButtonLabel(style: .Tokenize)
+            return PayButtonLabel(style: .tokenize)
         case .Verify:
-            return PayButtonLabel(style: .Verify)
+            return PayButtonLabel(style: .verify)
         default:
             return PayButtonLabel(
-                style: .Pay(
-                    viewModel.state.paymentOptions.summary.value,
+                style: .pay(
+                    amount: viewModel.state.paymentOptions.summary.value,
                     currency: viewModel.state.paymentOptions.summary.currency
                 )
             )

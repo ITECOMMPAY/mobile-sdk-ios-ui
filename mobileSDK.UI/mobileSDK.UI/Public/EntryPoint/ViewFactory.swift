@@ -9,15 +9,23 @@ import SwiftUI
 import Combine
 
 public struct ViewFactory {
-    public static func assembleRootView(paymentOptions: PaymentOptions,
-                                        initPublisher: AnyPublisher<InitEvent, CoreError>,
-                                        onDismiss completion: @escaping PaymentFlowCompletion) -> some View {
+    public static func assembleRootView(
+        paymentOptions: PaymentOptions,
+        initPublisher: AnyPublisher<InitEvent, CoreError>,
+        onDismiss completion: @escaping PaymentFlowCompletion
+    ) -> some View {
         serviceLocator.addService(instance: TranslationsManager())
 
         if paymentOptions.isDarkThemeOn {
-            UIScheme.color = DefaultDark(brandColor: paymentOptions.brandColorOverride)
+            UIScheme.color = DefaultDark(
+                primaryBrandColor: paymentOptions.primaryBrandColorOverride,
+                secondaryBrandColor: paymentOptions.secondaryBrandColorOverride
+            )
         } else {
-            UIScheme.color = DefaultLight(brandColor: paymentOptions.brandColorOverride)
+            UIScheme.color = DefaultLight(
+                primaryBrandColor: paymentOptions.primaryBrandColorOverride,
+                secondaryBrandColor: paymentOptions.secondaryBrandColorOverride
+            )
         }
 
         let rootViewModel = RootViewModel(paymentOptions: paymentOptions, futureData: initPublisher, onFlowFinished: completion)

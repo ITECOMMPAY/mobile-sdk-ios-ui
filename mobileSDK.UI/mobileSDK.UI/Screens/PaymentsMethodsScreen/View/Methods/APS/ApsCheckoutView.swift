@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ApsCheckoutView: View {
-
     let paymentOptions: PaymentOptions
     let paymentMethod: PaymentMethod
 
@@ -19,15 +18,13 @@ struct ApsCheckoutView: View {
             Text(L.aps_payment_disclaimer.string)
                 .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
                 .foregroundColor(UIScheme.color.text)
-            PayButton(label: buttonLabel,
-                      disabled: false) {
+            PayButton(
+                label: buttonLabel,
+                disabled: false
+            ) {
                 payAction(.payAPS(paymentMethod))
             }
             .padding(.top, UIScheme.dimension.formLargeVerticalSpacing)
-            /*.padding(.bottom, UIScheme.dimension.middleSpacing)
-            Text(L.aps_vat_disclaimer.string)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                .foregroundColor(UIScheme.color.text)*/
         }
         .padding(.top, UIScheme.dimension.formSmallSpacing)
         .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
@@ -37,7 +34,7 @@ struct ApsCheckoutView: View {
     private var buttonLabel: PayButtonLabel {
         let paymentAmount = paymentOptions.summary.value
         let paymentCurrency = paymentOptions.summary.currency
-        return PayButtonLabel(style: .Pay(paymentAmount, currency: paymentCurrency))
+        return PayButtonLabel(style: .pay(amount: paymentAmount, currency: paymentCurrency))
     }
 }
 

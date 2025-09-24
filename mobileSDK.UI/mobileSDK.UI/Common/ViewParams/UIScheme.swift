@@ -9,7 +9,6 @@ import Foundation
 
 class UIScheme {
     static let underlinedLinks: Bool = true
-    static let infoCardBackground: InfoCardBackground = .lines
     static let countOfVisibleCustomerFields = 3
     static var color: ColorScheme = DefaultLight()
     static let dimension: DimensionScheme = DefaultDimensionScheme()

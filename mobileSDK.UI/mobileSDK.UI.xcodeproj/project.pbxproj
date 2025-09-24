@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7525D00F2E0509110000B795 /* OptionsCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */; };
+		755D05252E7B132000B70736 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755D05242E7B131D00B70736 /* Locale.swift */; };
 		84154F2B28E31F6A00F229F5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84154F2928E31F6A00F229F5 /* Date.swift */; };
 		84C87C6928CB470200B684DE /* PaymentMethodCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8421F8DD288EB6AB00B6EED2 /* PaymentMethodCardType.swift */; };
 		84C87C6A28CB470300B684DE /* CoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EFA16528770B4D0043C360 /* CoreError.swift */; };
@@ -169,6 +170,7 @@
 
 /* Begin PBXFileReference section */
 		7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCustomerTextField.swift; sourceTree = "<group>"; };
+		755D05242E7B131D00B70736 /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		8400A54F28B392CE00C202E5 /* CardType+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardType+Logo.swift"; sourceTree = "<group>"; };
 		8402783F286D7B7C000970DA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
 		8403056328B7B61800DE38D3 /* APSScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSScreen.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		8454EEF128AA230E00199FF3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				755D05242E7B131D00B70736 /* Locale.swift */,
 				8454EEF228AA232B00199FF3 /* StructCopy.swift */,
 				84154F2928E31F6A00F229F5 /* Date.swift */,
 			);
@@ -1098,6 +1101,7 @@
 				84C87CC728CB476600B684DE /* CardNumberTransformation.swift in Sources */,
 				84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */,
 				84C87CEC28CB478400B684DE /* Localization+UI.swift in Sources */,
+				755D05252E7B132000B70736 /* Locale.swift in Sources */,
 				B3E7BD8929A6014F003E0971 /* ColorScheme.swift in Sources */,
 				84C87C7A28CB470C00B684DE /* ViewFactory.swift in Sources */,
 				84C87CBC28CB475900B684DE /* UIKitTextField+Coordinator.swift in Sources */,

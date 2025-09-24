@@ -23,12 +23,12 @@ protocol ColorScheme {
     var mainBackground: Color { get }
     /// Screen header color
     var screenHeader: Color { get }
-    /// Brand color
-    var brandColor: Color { get }
+    /// Primary brand color
+    var primaryBrandColor: Color { get }
+    /// Secondary brand color
+    var secondaryBrandColor: Color { get }
     /// Background color of payment details on final screen
     var resultInfoBackgroundColor: Color { get }
-    /// Color of payment method border
-    var paymentMethodBorder: Color { get }
     /// Secondary Text Color
     var secondaryTextColor: Color { get }
     /// Text color

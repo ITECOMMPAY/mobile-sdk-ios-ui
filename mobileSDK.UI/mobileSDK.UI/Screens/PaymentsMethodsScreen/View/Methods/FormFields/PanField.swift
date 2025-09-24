@@ -50,7 +50,6 @@ struct PanField: View {
             minimumFontSize: 10.0,
             isAllowedCharacter: allowedCharacters,
             transformation: transformation,
-            required: true,
             hint: errorMessage,
             valid: isFieldValid,
             disabled: false,

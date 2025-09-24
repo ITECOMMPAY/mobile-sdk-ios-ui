@@ -46,7 +46,7 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
             .opacity(isLoading ? 0 : 1)
             .overlay(
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
+                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.primaryBrandColor))
                     .opacity(isLoading ? 1 : 0)
             )
             .frame(maxWidth: .infinity)

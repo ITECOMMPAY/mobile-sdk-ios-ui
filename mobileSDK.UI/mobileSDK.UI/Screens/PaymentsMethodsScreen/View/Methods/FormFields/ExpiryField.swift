@@ -32,7 +32,6 @@ struct ExpiryField: View {
             secure: false,
             isAllowedCharacter: allowedCharacters,
             transformation: transformation,
-            required: !disabled,
             hint: errorMessage,
             valid: isFieldValid,
             disabled: disabled,

@@ -186,8 +186,16 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         publicType.applePayOptions?.countryCode
     }
 
-    var brandColorOverride: Color? {
-        if let uiColor = publicType.brandColor {
+    var primaryBrandColorOverride: Color? {
+        if let uiColor = publicType.primaryBrandColor {
+            return Color(uiColor)
+        } else {
+            return nil
+        }
+    }
+    
+    var secondaryBrandColorOverride: Color? {
+        if let uiColor = publicType.secondaryBrandColor {
             return Color(uiColor)
         } else {
             return nil

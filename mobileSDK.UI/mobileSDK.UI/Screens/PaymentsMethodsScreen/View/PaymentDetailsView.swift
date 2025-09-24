@@ -21,9 +21,7 @@ struct PaymentDetailsView: View {
     }
 
     private var togglePaymentDetailsButton: some View {
-        PaymentDetailsButton(
-            text: expanded ? L.button_hide_details.string : L.title_payment_information_screen.string
-        ) {
+        PaymentDetailsButton(expanded: expanded) {
             withAnimation {
                 expanded.toggle()
             }
@@ -37,9 +35,11 @@ struct PaymentDetailsView: View {
                 .frame(height: UIScheme.dimension.dividerHeight)
                 .overlay(UIScheme.color.paymentDetailsBackgroundColor)
             ForEach(details, id: \.title) { detail in
-                PaymentDetailsAttributes(labelText: detail.title.string,
-                                         descriptionText: detail.description,
-                                         canCopy: detail.canBeCopied)
+                PaymentDetailsAttributes(
+                    labelText: detail.title.string,
+                    descriptionText: detail.description,
+                    canCopy: detail.canBeCopied
+                )
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -53,24 +53,31 @@ struct PaymentDetailsAttributes: View {
     var canCopy: Bool = false
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-            HStack(spacing: UIScheme.dimension.tinySpacing) {
-                Text(labelText).font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                    .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
-                    .accessibilityAddTraits(.isHeader)
-//                Button {
-//                    UIPasteboard.general.string = descriptionText
-//                } label: {
-//                    IR.copyButton.image?.renderingMode(.template)
-//                        .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
-//                        .frame(width: 16, height: 16, alignment: .center)
-//                }
-//                .applyIf(!canCopy) {
-//                    $0.hidden()
-//                }
+            Text(labelText)
+                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
+                .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
+                .accessibilityAddTraits(.isHeader)
+            HStack {
+                Text(descriptionText)
+                    .font(
+                        canCopy
+                            ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont)
+                            : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont)
+                    )
+                    .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                if canCopy {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .fill(Color.white.opacity(0.1))
+                            .frame(width: 32, height: 32)
+                        Image(systemName: "square.on.square")
+                            .scaleEffect(x: -1, y: 1)
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(.white)
+                    }
+                }
             }
-            Text(descriptionText)
-                .font(canCopy ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont) : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
         }
     }
 }
@@ -81,15 +88,22 @@ struct PaymentDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.red
-            PaymentDetailsView(expanded: true, details: [
-                PaymentDetailData(title: L.title_payment_id,
-                                  description: "EP2e11-f018-RQR12-26VL-0412CS",
-                                  canBeCopied: true),
-                PaymentDetailData(title: L.title_payment_information_description,
-                                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                  canBeCopied: false)
-
-            ])
+            PaymentDetailsView(
+                expanded: true,
+                details: [
+                    PaymentDetailData(
+                        title: L.title_payment_id,
+                        description: "EP2e11-f018-RQR12-26VL-0412CS",
+                        canBeCopied: true
+                    ),
+                    PaymentDetailData(
+                        title: L.title_payment_information_description,
+                        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                        canBeCopied: false
+                    )
+                    
+                ]
+            )
         }
     }
 }

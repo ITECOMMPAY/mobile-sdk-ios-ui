@@ -45,16 +45,19 @@ struct SavedCardCheckoutView: View {
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             if visibleCustomerFields.shouldBeDisplayed {
-                EmbeddedCustomerFieldsView(visibleCustomerFields: visibleCustomerFields,
-                                           additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
+                EmbeddedCustomerFieldsView(
+                    visibleCustomerFields: visibleCustomerFields,
+                    additionalFields: paymentOptions.uiAdditionalFields,
+                    customerFieldValues: formValues.customerFieldValues
+                ) { fieldsValues, isValid in
                     formValues.customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
                 }
                 .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
-            PayButton(label: buttonLabel,
-                      disabled: !payButtonIsEnabled
+            PayButton(
+                label: buttonLabel,
+                disabled: !payButtonIsEnabled
             ) {
                 if isTokenizedAction {
                     onIntent(
@@ -77,10 +80,12 @@ struct SavedCardCheckoutView: View {
             
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 if !isTokenizedAction {
-                    LinkButton(text: L.button_delete.string,
-                               fontSize: UIScheme.dimension.smallFont,
-                               foregroundColor: UIScheme.color.deleteCardButtonColor,
-                               onTap: onCardDeleteTap)
+                    LinkButton(
+                        text: L.button_delete.string,
+                        fontSize: UIScheme.dimension.smallFont,
+                        foregroundColor: UIScheme.color.deleteCardButtonColor,
+                        onTap: onCardDeleteTap
+                    )
                 }
                 
                 if !isContinueButton, let recurringDisclaimer = paymentOptions.recurringDisclaimer {
@@ -93,9 +98,12 @@ struct SavedCardCheckoutView: View {
             Alert(
                 title: Text(L.message_delete_card_single.string),
                 message: nil,
-                primaryButton: .destructive(Text(L.button_delete.string), action: {
-                    onIntent(.delete(savedCard))
-                }),
+                primaryButton: .destructive(
+                    Text(L.button_delete.string),
+                    action: {
+                        onIntent(.delete(savedCard))
+                    }
+                ),
                 secondaryButton: .cancel(Text(L.button_cancel.string))
             )
         }
@@ -110,17 +118,24 @@ struct SavedCardCheckoutView: View {
     }
 
     private var cvvField: some View {
-        CvvField(withInfoButton: false,
-                 cardType: savedCard.savedAccountCardType,
-                 cvvValue: $formValues.cardCVV,
-                 isValueValid: $isCvvValid)
+        CvvField(
+            withInfoButton: false,
+            cardType: savedCard.savedAccountCardType,
+            cvvValue: $formValues.cardCVV,
+            isValueValid: $isCvvValid
+        )
     }
 
     private var buttonLabel: PayButtonLabel {
         if isContinueButton {
-            return PayButtonLabel(style: .Continue)
+            return PayButtonLabel(style: .continue)
         } else {
-            return PayButtonLabel(style: .Pay(paymentOptions.summary.value, currency: paymentOptions.summary.currency))
+            return PayButtonLabel(
+                style: .pay(
+                    amount: paymentOptions.summary.value,
+                    currency: paymentOptions.summary.currency
+                )
+            )
         }
     }
 
@@ -132,12 +147,13 @@ struct SavedCardCheckoutView: View {
 #if DEBUG
 
 struct SavedCardCheckoutView_Previews: PreviewProvider {
-
     static var previews: some View {
-        SavedCardCheckoutView(formValues: .constant(FormData()),
-                              paymentOptions: MockPaymentOptions(),
-                              savedCard: MockSavedAccount(),
-                              methodForAccount: MockPaymentMethod())
+        SavedCardCheckoutView(
+            formValues: .constant(FormData()),
+            paymentOptions: MockPaymentOptions(),
+            savedCard: MockSavedAccount(),
+            methodForAccount: MockPaymentMethod()
+        )
         .previewLayout(.sizeThatFits)
     }
 }

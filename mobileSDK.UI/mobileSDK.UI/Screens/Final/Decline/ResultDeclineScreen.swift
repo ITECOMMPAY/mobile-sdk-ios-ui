@@ -96,7 +96,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     .offset(x: .zero, y: animationState.infoOffset)
                     .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
-                    label: PayButtonLabel(style: isTryAgain ? .TryAgain : .Close),
+                    label: PayButtonLabel(style: isTryAgain ? .tryAgain : .close),
                     disabled: false
                 ) {
                     viewModel.dispatch(intent: isTryAgain ? .tryAgain : .close)
@@ -130,7 +130,6 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     paymentID: nil,
                     paymentDescription: nil,
                     recurringData: [],
-                    backgroundTemplate: UIScheme.infoCardBackground,
                     logoImage: logo
                 )
             } else {
@@ -138,12 +137,10 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             }
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: [],
                 paymentDetails: [],
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }

@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct PaymentOverview: View {
-    let isVatIncluded: Bool
     let priceValue: Decimal
     let currency: String
     let recurringData: [RecurringDetailsData]
     let paymentDetails: [PaymentDetailData]
-    let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
     var isDimBackground: Bool = false
 
@@ -25,12 +23,28 @@ struct PaymentOverview: View {
     }()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
-            logo
+        VStack(
+            alignment: .leading,
+            spacing: UIScheme.dimension.paymentOverviewSpacing
+        ) {
+            HStack {
+                logo
+                Spacer()
+                IR.flag.image
+                Text(Locale.current.threeLetterLanguageCode())
+                    .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
+                    .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+            }
             if !recurringData.isEmpty { recurringDetails }
-            price
-            if !paymentDetails.isEmpty { details }
-        }.frame(maxWidth: .infinity, alignment: .topLeading)
+            VStack(
+                alignment: .leading,
+                spacing: 6
+            ) {
+                price
+                if !paymentDetails.isEmpty { details }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(UIScheme.dimension.paymentOverviewSpacing)
         .background {
             cardBackground.opacity(isDimBackground ? 0.4 : 1)
@@ -38,10 +52,16 @@ struct PaymentOverview: View {
     }
 
     var cardBackground: some View {
-        backgroundTemplate.image?.resizable()
-            .colorMultiply(UIScheme.color.brandColor)
-            .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
-                          corners: .allCorners)
+        UIScheme.color.primaryBrandColor
+            .overlay(
+                IR.cardBackgroundPattern.image?
+                    .resizable(resizingMode: .tile)
+                    .foregroundColor(.white)
+            )
+            .cornerRadius(
+                UIScheme.dimension.backgroundSheetCornerRadius,
+                corners: .allCorners
+            )
             .accessibilityHidden(true)
     }
 
@@ -51,22 +71,10 @@ struct PaymentOverview: View {
 
     var price: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-            HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
-                Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
-                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
-                Text(currency).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-            }
-            .accessibilityElement(children: .combine)
-            vat
+            Text("\(currency) \(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
+                .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
         }
         .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)
-    }
-
-    var vat: some View {
-        Text(L.title_total_price.string + " ")
-            .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
-        + Text(isVatIncluded ? L.vat_included.string : "")
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
     }
     
     var details: some View {
@@ -82,7 +90,6 @@ struct PaymentOverview: View {
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         PaymentOverview(
-            isVatIncluded: true,
             priceValue: Decimal(238.50),
             currency: "EUR",
             recurringData: [
@@ -92,14 +99,17 @@ struct PaymentSummaryView_Previews: PreviewProvider {
                 )
             ],
             paymentDetails: [
-                PaymentDetailData(title: L.title_payment_id,
-                                  description: "EP2e11-f018-RQR12-26VL-0412CS",
-                                  canBeCopied: true),
-                PaymentDetailData(title: L.title_payment_information_description,
-                                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                  canBeCopied: false)
+                PaymentDetailData(
+                    title: L.title_payment_id,
+                    description: "EP2e11-f018-RQR12-26VL-0412CS",
+                    canBeCopied: true
+                ),
+                PaymentDetailData(
+                    title: L.title_payment_information_description,
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    canBeCopied: false
+                )
             ],
-            backgroundTemplate: .lines,
             logoImage: IR.applePayButtonLogo.image,
             isDimBackground: true
         ).padding().previewLayout(.sizeThatFits)

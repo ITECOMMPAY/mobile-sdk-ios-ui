@@ -79,11 +79,11 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
             .frame(height: 150)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
         HStack {
-            ForEach((0..<2), id: \.self) {_ in
-                RedactedView()
-                    .cornerRadius(UIScheme.dimension.buttonCornerRadius)
-            }
-        }.frame(height: UIScheme.dimension.applePayButtonHeight)
+            RedactedView()
+                .clipShape(.capsule)
+                .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+        }
+        .frame(height: UIScheme.dimension.applePayButtonHeight)
     }
 
     private var paymentMethodsPlaceholders: some View {

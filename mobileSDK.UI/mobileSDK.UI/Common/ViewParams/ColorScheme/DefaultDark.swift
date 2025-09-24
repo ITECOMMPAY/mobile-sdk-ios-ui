@@ -11,7 +11,8 @@ import PassKit
 struct DefaultDark: ColorScheme, DarkPalette {
     // MARK: - Matching colors
 
-    var brandColor: Color { primaryColor }
+    var primaryBrandColor: Color { primaryColor }
+    var secondaryBrandColor: Color { secondaryColor }
 
     // MARK: - Non-matching colors
 
@@ -19,11 +20,10 @@ struct DefaultDark: ColorScheme, DarkPalette {
 
     var applePayButtonStyle: PKPaymentButtonStyle { .white }
 
-    var paymentMethodBorder: Color { container }
     var paymentMethodBackground: Color { container }
     var savedAccountBackground: Color { paymentMethodBackground }
 
-    var paymentMethodIconColor: Color { brand ?? globalWhite }
+    var paymentMethodIconColor: Color { primaryBrand ?? globalWhite }
 
     var navigationButtonColor: Color { globalWhite }
 
@@ -32,7 +32,7 @@ struct DefaultDark: ColorScheme, DarkPalette {
     var textFieldNormalBorderColor: Color { inputField }
 
     var textFieldFocusedPlaceholderColor: Color { neutral }
-    var textFieldFocusedBorderColor: Color { brand ?? link }
+    var textFieldFocusedBorderColor: Color { primaryBrand ?? link }
 
     var textFieldErrorPlaceholderColor: Color { red }
 
@@ -48,13 +48,20 @@ struct DefaultDark: ColorScheme, DarkPalette {
     var infoIconColor: Color { neutral }
     var scanCardIconColor: Color { neutral }
 
-    var loadingDotsColor: Color { brand ?? neutral }
+    var loadingDotsColor: Color { primaryBrand ?? neutral }
 
-    private var primaryColor: Color { brand ?? primary }
-    let brand: Color?
+    private var primaryColor: Color { primaryBrand ?? primary }
+    private var secondaryColor: Color { secondaryBrand ?? secondary }
+    
+    let primaryBrand: Color?
+    let secondaryBrand: Color?
 
-    init(brandColor: Color? = nil) {
-        self.brand = brandColor
+    init(
+        primaryBrandColor: Color? = nil,
+        secondaryBrandColor: Color? = nil
+    ) {
+        self.primaryBrand = primaryBrandColor
+        self.secondaryBrand = secondaryBrandColor
     }
 }
 

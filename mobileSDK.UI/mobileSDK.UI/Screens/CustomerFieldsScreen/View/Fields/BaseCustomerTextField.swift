@@ -45,7 +45,6 @@ struct BaseCustomerTextField: View {
             maxLength: maxLength,
             isAllowedCharacter: isAllowedCharacter,
             transformation: transformation,
-            required: customerField.isRequired,
             hint: hint,
             valid: isFieldValid,
             disabled: false,

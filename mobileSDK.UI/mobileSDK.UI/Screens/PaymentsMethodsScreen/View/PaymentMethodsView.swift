@@ -69,11 +69,10 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             .frame(height: 150)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
         HStack {
-            ForEach((0..<2), id: \.self) {_ in
-                RedactedView()
-                    .cornerRadius(UIScheme.dimension.buttonCornerRadius)
-            }
-        }.frame(height: UIScheme.dimension.applePayButtonHeight)
+            RedactedView()
+                .clipShape(.capsule)
+        }
+        .frame(height: UIScheme.dimension.applePayButtonHeight)
     }
 
     @ViewBuilder
@@ -86,17 +85,14 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 paymentID: viewModel.state.paymentOptions.paymentID,
                 paymentDescription: viewModel.state.paymentOptions.paymentDescription,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }

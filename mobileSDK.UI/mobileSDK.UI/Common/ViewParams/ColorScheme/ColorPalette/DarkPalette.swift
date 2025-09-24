@@ -13,6 +13,11 @@ extension DarkPalette {
     var primary: Color {
         Color(hex: 0x4B007C)
     }
+    
+    var secondary: Color {
+        // TODO: Add secondary color for dark palette
+        return .pink
+    }
 
     var link: Color {
         Color(hex: 0x4299FF)

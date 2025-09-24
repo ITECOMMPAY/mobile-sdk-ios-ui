@@ -121,17 +121,17 @@ struct NewCardCheckoutView: View {
 
     private var buttonLabel: PayButtonLabel {
         guard !isContinueButton else {
-            return PayButtonLabel(style: .Continue)
+            return PayButtonLabel(style: .continue)
         }
 
         guard paymentOptions.action != .Verify else {
-            return PayButtonLabel(style: .Verify)
+            return PayButtonLabel(style: .verify)
         }
 
         let paymentAmount = paymentOptions.summary.value
         let paymentCurrency = paymentOptions.summary.currency
 
-        return PayButtonLabel(style: .Pay(paymentAmount, currency: paymentCurrency))
+        return PayButtonLabel(style: .pay(amount: paymentAmount, currency: paymentCurrency))
     }
 
     private var isContinueButton: Bool {

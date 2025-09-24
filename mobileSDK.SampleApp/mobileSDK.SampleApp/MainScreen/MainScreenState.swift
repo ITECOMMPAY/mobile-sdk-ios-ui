@@ -10,7 +10,8 @@ import EcommpaySDK
 import SwiftUI
 
 struct PaymentData {
-    var brandColor: Color?
+    var primaryBrandColor: Color?
+    var secondaryBrandColor: Color?
     var image: UIImage?
     var projectId: Int
     var paymentId: String

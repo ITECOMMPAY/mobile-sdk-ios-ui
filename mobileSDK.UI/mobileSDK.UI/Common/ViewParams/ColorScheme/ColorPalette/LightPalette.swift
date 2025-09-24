@@ -13,6 +13,10 @@ extension LightPalette {
     var primary: Color {
         Color(hex: 0x4B007C)
     }
+    
+    var secondary: Color {
+        Color(hex: 0xCAB2FF)
+    }
 
     var link: Color {
         Color(hex: 0x00579E)
@@ -23,7 +27,7 @@ extension LightPalette {
     }
 
     var background: Color {
-        Color(hex: 0xFFFFFF)
+        Color(hex: 0xF0F1F3)
     }
 
     var container: Color {

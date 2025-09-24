@@ -19,22 +19,23 @@ protocol FontLibrary {
 }
 
 struct DefaultFontLibrary: FontLibrary {
-    let screenHeader: Font = Font.system(size: 22, weight: .bold, design: .default)
+    let screenHeader: Font = Font.custom("Inter-Bold", size: 22)
 
     func commonRegular(size: CGFloat) -> Font {
-        return Font.system(size: size, weight: .regular, design: .default)
+        return Font.custom("Inter-Regular", size: size)
     }
 
     func commonBold(size: CGFloat) -> Font {
-        return Font.system(size: size, weight: .bold, design: .default)
+        return Font.custom("Inter-Bold", size: size)
     }
 
     func commonSemiBold(size: CGFloat) -> Font {
-        return Font.system(size: size, weight: .semibold, design: .default)
+        print("AAA: \(UIFont.familyNames)")
+        return Font.custom("Inter-SemiBold", size: size)
     }
 
     func commonRegular(size: CGFloat) -> UIFont {
-        return UIFont.systemFont(ofSize: size, weight: .regular)
+        return UIFont(name: "Inter-Regular", size: size) ?? UIFont.systemFont(ofSize: size, weight: .regular)
     }
 }
 

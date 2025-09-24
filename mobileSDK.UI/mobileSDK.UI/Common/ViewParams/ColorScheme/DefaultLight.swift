@@ -11,7 +11,8 @@ import PassKit
 struct DefaultLight: ColorScheme, LightPalette {
     // MARK: - Matching colors
 
-    var brandColor: Color { primaryColor }
+    var primaryBrandColor: Color { primaryColor }
+    var secondaryBrandColor: Color { secondaryColor }
 
     // MARK: - Non-matching colors
 
@@ -19,8 +20,7 @@ struct DefaultLight: ColorScheme, LightPalette {
 
     var applePayButtonStyle: PKPaymentButtonStyle { .black }
 
-    var paymentMethodBorder: Color { highlight }
-    var paymentMethodBackground: Color { background }
+    var paymentMethodBackground: Color { .white }
     var savedAccountBackground: Color { paymentMethodBackground }
 
     var paymentMethodIconColor: Color { primaryColor }
@@ -50,10 +50,17 @@ struct DefaultLight: ColorScheme, LightPalette {
 
     var loadingDotsColor: Color { primaryColor }
 
-    private var primaryColor: Color { brand ?? primary }
-    let brand: Color?
+    private var primaryColor: Color { primaryBrand ?? primary }
+    private var secondaryColor: Color { secondaryBrand ?? secondary }
+    
+    let primaryBrand: Color?
+    let secondaryBrand: Color?
 
-    init(brandColor: Color? = nil) {
-        self.brand = brandColor
+    init(
+        primaryBrandColor: Color? = nil,
+        secondaryBrandColor: Color? = nil
+    ) {
+        self.primaryBrand = primaryBrandColor
+        self.secondaryBrand = secondaryBrandColor
     }
 }

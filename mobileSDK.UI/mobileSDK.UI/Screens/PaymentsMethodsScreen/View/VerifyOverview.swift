@@ -11,7 +11,6 @@ struct VerifyOverview: View {
     let paymentID: String?
     let paymentDescription: String?
     let recurringData: [RecurringDetailsData]
-    let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
     var isDimBackground: Bool = false
 
@@ -27,12 +26,18 @@ struct VerifyOverview: View {
             cardBackground.opacity(isDimBackground ? 0.4 : 1)
         }
     }
-
+    
     var cardBackground: some View {
-        backgroundTemplate.image?.resizable()
-            .colorMultiply(UIScheme.color.brandColor)
-            .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
-                          corners: .allCorners)
+        UIScheme.color.primaryBrandColor
+            .overlay(
+                IR.cardBackgroundPattern.image?
+                    .resizable(resizingMode: .tile)
+                    .foregroundColor(.white)
+            )
+            .cornerRadius(
+                UIScheme.dimension.backgroundSheetCornerRadius,
+                corners: .allCorners
+            )
             .accessibilityHidden(true)
     }
 
@@ -87,7 +92,6 @@ struct VerifyOverview_Previews: PreviewProvider {
                     description: .value("November 19, 2022")
                 )
             ],
-            backgroundTemplate: .lines,
             logoImage: IR.applePayButtonLogo.image,
             isDimBackground: true
         ).padding().previewLayout(.sizeThatFits)

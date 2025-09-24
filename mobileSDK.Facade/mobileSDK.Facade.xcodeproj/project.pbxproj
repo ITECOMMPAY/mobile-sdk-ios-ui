@@ -95,6 +95,7 @@
 /* Begin PBXFileReference section */
 		752AF83E2E44DA5500D14658 /* MsdkCore.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MsdkCore.podspec; sourceTree = "<group>"; };
 		752AF83F2E44DA5500D14658 /* MsdkCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MsdkCore.xcframework; sourceTree = "<group>"; };
+		755D06062E7C19F300B70736 /* ecommpaySDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ecommpaySDK-Info.plist"; sourceTree = "<group>"; };
 		840704C828D8850600DBD249 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
 		8421F8E6288EBFA400B6EED2 /* PayInteractorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInteractorWrapper.swift; sourceTree = "<group>"; };
@@ -287,6 +288,7 @@
 		84BC13C42852086E008814EB = {
 			isa = PBXGroup;
 			children = (
+				755D06062E7C19F300B70736 /* ecommpaySDK-Info.plist */,
 				84BC13EC285208A3008814EB /* mobileSDK.UI.xcodeproj */,
 				84BC13D02852086E008814EB /* mobileSDK.Facade */,
 				84BC13CF2852086E008814EB /* Products */,
@@ -504,6 +506,7 @@
 					"\"${PODS_ROOT}/Headers/Public/KSCrash\"",
 					"/Users/flyiingv/mobile-sdk-ios-ui/mobileSDK.UI/CardIO/**",
 				);
+				INFOPLIST_FILE = "ecommpaySDK-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
@@ -542,6 +545,7 @@
 					"\"${PODS_ROOT}/Headers/Public/KSCrash\"",
 					"/Users/flyiingv/mobile-sdk-ios-ui/mobileSDK.UI/CardIO/**",
 				);
+				INFOPLIST_FILE = "ecommpaySDK-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
