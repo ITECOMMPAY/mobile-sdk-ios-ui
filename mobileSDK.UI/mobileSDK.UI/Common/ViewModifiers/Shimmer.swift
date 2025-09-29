@@ -41,8 +41,8 @@ public struct Shimmer: ViewModifier {
     /// The `phase` parameter shifts the gradient, moving the opaque band.
     struct GradientMask: View {
         let phase: CGFloat
-        let centerColor = UIScheme.color.shimmeringAccent
-        let edgeColor = UIScheme.color.shimmeringBase
+        let centerColor = UIScheme.color.cardBackground
+        let edgeColor = UIScheme.color.background
 
         var body: some View {
             LinearGradient(gradient:

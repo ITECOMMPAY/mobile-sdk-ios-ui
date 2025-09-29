@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LinkButton: View {
     let text: String
-    var fontSize: CGFloat = UIScheme.dimension.tinyFont
-    var foregroundColor: Color = UIScheme.color.primaryBrandColor
+    var fontSize: AppFont.Size = .xs
+    var foregroundColor: Color = UIScheme.color.brandPrimary
     var onTap: () -> Void = {}
 
     var body: some View {
@@ -18,7 +18,7 @@ struct LinkButton: View {
             onTap()
         } label: {
             Text(text)
-                .font(UIScheme.font.commonRegular(size: fontSize))
+                .font(.custom(.primary(size: fontSize, weight: .regular)))
                 .underline()
                 .foregroundColor(foregroundColor)
         }
@@ -30,8 +30,8 @@ struct LinkButton: View {
 struct LinkButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LinkButton(text: "Blue", fontSize: UIScheme.dimension.tinyFont)
-            LinkButton(text: "Red", fontSize: 22, foregroundColor: .red)
+            LinkButton(text: "Blue", fontSize: .xs)
+            LinkButton(text: "Red", fontSize: .l, foregroundColor: .red)
         }
         .padding()
         .previewLayout(.sizeThatFits)

@@ -19,11 +19,12 @@ struct PaymentDetailsButton: View {
                         ? L.button_hide_details.string
                         : L.title_payment_information_screen.string
                 )
-                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                .font(.custom(.secondary(size: .s, weight: .bold)))
+                .foregroundColor(UIScheme.color.cardBackground)
                 Spacer()
                 ZStack {
                     Circle()
-                        .fill(UIScheme.color.secondaryBrandColor)
+                        .fill(UIScheme.color.brandSecondary)
                         .frame(width: 28, height: 28)
                     Image(systemName: expanded ? "chevron.up" : "chevron.down")
                         .font(.system(size: 12, weight: .semibold))

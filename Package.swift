@@ -6,7 +6,7 @@ let package = Package(
     name: "EcommpaySDK",
     defaultLocalization: "en",
     platforms: [
-        .iOS("15.6")
+        .iOS("16.6")
     ],
     products: [
         .library(

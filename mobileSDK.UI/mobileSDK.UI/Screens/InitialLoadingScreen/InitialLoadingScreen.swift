@@ -47,16 +47,16 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
                 }
                 .frame(maxWidth: .infinity)
                 loadingStateHeader
-            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.middleSpacing)
         } content: {
             VStack(spacing: .zero) {
                 paymentMethodsPlaceholders
                 FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
                     .padding([.top, .bottom], UIScheme.dimension.largeSpacing)
             }
-            .padding(.horizontal, UIScheme.dimension.largeSpacing)
-            .padding(.top, UIScheme.dimension.middleSpacing)
-            .background(UIScheme.color.mainBackground)
+            .padding([.horizontal, .bottom], UIScheme.dimension.middleSpacing)
+            .background(UIScheme.color.background)
         }.onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }

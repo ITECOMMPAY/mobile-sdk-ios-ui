@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CvvField: View {
-    let withInfoButton: Bool
     var cardType: CardType = .unknown
 
     var length: Int {
@@ -22,8 +21,6 @@ struct CvvField: View {
     @Binding var isValueValid: Bool
 
     @State private var isFieldValid: Bool = true
-
-    @State private var showAbout: Bool = false
 
     @State private var errorMessage: String = ""
 
@@ -40,19 +37,13 @@ struct CvvField: View {
             hint: errorMessage,
             valid: isFieldValid,
             disabled: false,
-            accessoryView: aboutButton
+            accessoryView: EmptyView()
         ) {
             validate(cvvValue)
-        }
-        .alert(isPresented: $showAbout) {
-            aboutCVVAlert
         }
         .onAppear {
             validate(cvvValue, ignoreEmpty: true)
         }
-        .accessibilityAction(named: L.title_about_cvv.string, {
-            showAbout = true
-        })
     }
 
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
@@ -71,33 +62,17 @@ struct CvvField: View {
             }
         }
     }
-
-    @ViewBuilder
-    var aboutButton: some View {
-        if withInfoButton {
-            InfoButton {
-                showAbout = true
-            }
-            .accessibilityLabel(Text( L.title_about_cvv.string))
-            .accessibilityHint(L.message_about_cvv.string)
-        } else {
-            EmptyView()
-        }
-    }
-
-    var aboutCVVAlert: Alert {
-        Alert(title: Text(L.title_about_cvv.string),
-              message: Text(L.message_about_cvv.string),
-              dismissButton: Alert.Button.default(Text(L.button_ok.string), action: {
-            showAbout = false
-        }))
-    }
 }
 
 #if DEBUG
+
 struct CvvField_Previews: PreviewProvider {
     static var previews: some View {
-        CvvField(withInfoButton: true, cvvValue: .constant("123"), isValueValid: .constant(false))
+        CvvField(
+            cvvValue: .constant("123"),
+            isValueValid: .constant(false)
+        )
     }
 }
+
 #endif

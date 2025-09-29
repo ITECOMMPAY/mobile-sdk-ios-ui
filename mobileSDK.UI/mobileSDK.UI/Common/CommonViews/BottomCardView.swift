@@ -16,10 +16,12 @@ struct BottomCardView<Content: View>: View {
 
     @State private var allHeight: CGFloat = UIScreen.main.bounds.height
 
-    init(cardShown: Bool = false,
-         screenProportion: CGFloat = 0.9,
-         dissmissClosure: @escaping () -> Void = {},
-         @ViewBuilder content: () -> Content) {
+    init(
+        cardShown: Bool = false,
+        screenProportion: CGFloat = 0.9,
+        dissmissClosure: @escaping () -> Void = {},
+        @ViewBuilder content: () -> Content
+    ) {
         self.cardShown = cardShown
         self.screenProportion = screenProportion
         self.dissmissClosure = dissmissClosure
@@ -35,23 +37,32 @@ struct BottomCardView<Content: View>: View {
             GeometryReader { reader in
                 Spacer().onAppear {
                     allHeight = reader.size.height
-                }.ignoresSafeArea()
-            }.background(UIScheme.color.dimming)
-                .opacity(cardShown ? 1 : 0)
-                .animation(Animation.easeIn)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    dissmissClosure()
                 }
+                .ignoresSafeArea()
+            }
+            .background(.black)
+            .opacity(cardShown ? 0.6 : 0)
+            .animation(Animation.easeIn)
+            .ignoresSafeArea()
+            .onTapGesture {
+                dissmissClosure()
+            }
             VStack(spacing: .zero) {
-                Spacer().frame(height: spacerHeight + cardOffset)
+                Spacer()
+                    .frame(height: spacerHeight + cardOffset)
                 content
-                    .background(UIScheme.color.mainBackground)
-                    .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: [.topLeft, .topRight])
+                    .background(UIScheme.color.background)
+                    .clipShape(
+                        .rect(
+                            topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                            topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+                        )
+                    )
                     .frame(maxHeight: cardShown ? .infinity : 0)
             }
             .animation(.default, value: cardOffset)
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
     }
 
     var cardOffset: CGFloat {
@@ -63,8 +74,10 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     let content: ScrollableContent
     let header: Header
 
-    init(@ViewBuilder header: () -> Header,
-         @ViewBuilder content: () -> ScrollableContent) {
+    init(
+        @ViewBuilder header: () -> Header,
+         @ViewBuilder content: () -> ScrollableContent
+    ) {
         self.header = header()
         self.content = content()
     }
@@ -93,7 +106,8 @@ struct KeyboardAwareModifier: ViewModifier {
             NotificationCenter.default
                 .publisher(for: UIResponder.keyboardWillHideNotification)
                 .map { _ in CGFloat(0) }
-        ).eraseToAnyPublisher()
+        )
+        .eraseToAnyPublisher()
     }
 
     func body(content: Content) -> some View {
@@ -112,7 +126,6 @@ extension View {
 #if DEBUG
 
 struct BottomCardView_Previews: PreviewProvider {
-
     struct BottomCardViewExample: View {
         @State var cardShown: Bool = false
         @State var expanded: Bool = false
@@ -123,7 +136,9 @@ struct BottomCardView_Previews: PreviewProvider {
                 BottomCardView(cardShown: cardShown, screenProportion: 0.9) {
                     BottomCardViewContent {
                         HStack {
-                            Text("Screen header").font(UIScheme.font.screenHeader).padding()
+                            Text("Screen header")
+                                .font(.custom(.secondary(size: .l, weight: .bold)))
+                                .padding()
                             Spacer()
                             CloseButton {
                                 cardShown = false

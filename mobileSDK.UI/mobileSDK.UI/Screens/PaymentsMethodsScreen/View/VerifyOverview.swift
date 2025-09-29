@@ -28,15 +28,19 @@ struct VerifyOverview: View {
     }
     
     var cardBackground: some View {
-        UIScheme.color.primaryBrandColor
+        UIScheme.color.brandPrimary
             .overlay(
                 IR.cardBackgroundPattern.image?
                     .resizable(resizingMode: .tile)
                     .foregroundColor(.white)
             )
-            .cornerRadius(
-                UIScheme.dimension.backgroundSheetCornerRadius,
-                corners: .allCorners
+            .clipShape(
+                .rect(
+                    topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+                )
             )
             .accessibilityHidden(true)
     }
@@ -52,13 +56,15 @@ struct VerifyOverview: View {
     @ViewBuilder
     private var details: some View {
         if let paymentDescription = paymentDescription {
-            PaymentDetailsView(details: [
-                .init(
-                    title: L.title_payment_information_description,
-                    description: paymentDescription,
-                    canBeCopied: false
-                )
-            ])
+            PaymentDetailsView(
+                details: [
+                    .init(
+                        title: L.title_payment_information_description,
+                        description: paymentDescription,
+                        canBeCopied: false
+                    )
+                ]
+            )
         } else {
             EmptyView()
         }
@@ -68,11 +74,12 @@ struct VerifyOverview: View {
     var paymentIDView: some View {
         if let paymentID = paymentID {
             VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-                Text(L.title_payment_id.string).font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                    .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
+                Text(L.title_payment_id.string)
+                    .font(.custom(.primary(size: .xs, weight: .regular)))
+                    .foregroundColor(UIScheme.color.buttonCard)
                 Text(paymentID)
-                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                    .font(.custom(.primary(size: .s, weight: .bold)))
+                    .foregroundColor(UIScheme.color.buttonCard)
             }
         } else {
             EmptyView()
@@ -81,6 +88,7 @@ struct VerifyOverview: View {
 }
 
 #if DEBUG
+
 struct VerifyOverview_Previews: PreviewProvider {
     static var previews: some View {
         VerifyOverview(
@@ -94,7 +102,10 @@ struct VerifyOverview_Previews: PreviewProvider {
             ],
             logoImage: IR.applePayButtonLogo.image,
             isDimBackground: true
-        ).padding().previewLayout(.sizeThatFits)
+        )
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
+
 #endif

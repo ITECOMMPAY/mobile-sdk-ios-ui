@@ -36,7 +36,8 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.middleSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 overviewView
@@ -47,12 +48,11 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 PolicyView()
                 FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
             }
-            .padding(.horizontal, UIScheme.dimension.largeSpacing)
-            .padding(.top, UIScheme.dimension.middleSpacing)
-            .padding(.bottom, UIScheme.dimension.largeSpacing)
-        }.onAppear {
+            .padding([.horizontal, .bottom], UIScheme.dimension.middleSpacing)
+        }
+        .onAppear {
             if viewModel.state.applePayPresentationMode == .button
-            && viewModel.state.mergedList.compactMap({ $0.paymentMethod}).count == 1 {
+               && viewModel.state.mergedList.compactMap({ $0.paymentMethod}).count == 1 {
                 viewModel.dispatch(intent: .payWithApplePay(customerFields: []))
             }
 
@@ -150,10 +150,12 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         }
     }
 
-    private func getPaymentMethodCell(for method: PaymentMethod,
-                                      isExpanded: Bool,
-                                      isCollapsible: Bool,
-                                      onTap: @escaping () -> Void) -> some View {
+    private func getPaymentMethodCell(
+        for method: PaymentMethod,
+        isExpanded: Bool,
+        isCollapsible: Bool,
+        onTap: @escaping () -> Void
+    ) -> some View {
         return Group {
             if method.methodType == .applePay && viewModel.state.applePayPresentationMode != .method {
                 EmptyView()
@@ -175,17 +177,21 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
         }
     }
 
-    private func getPaymentMethodCell(for savedAccount: SavedAccount,
-                                      isExpanded: Bool,
-                                      isCollapsible: Bool,
-                                      onTap: @escaping () -> Void) -> some View {
+    private func getPaymentMethodCell(
+        for savedAccount: SavedAccount,
+        isExpanded: Bool,
+        isCollapsible: Bool,
+        onTap: @escaping () -> Void
+    ) -> some View {
         return Group {
-            PaymentMethodCell(methodTitle: savedAccount.number ?? "***",
-                              methodImage: getLogo(for: savedAccount),
-                              isSavedAccount: true,
-                              isExpanded: isExpanded,
-                              isCollapsible: isCollapsible,
-                              content: savedCardView(for: savedAccount)) {
+            PaymentMethodCell(
+                methodTitle: savedAccount.number ?? "***",
+                methodImage: getLogo(for: savedAccount),
+                isSavedAccount: true,
+                isExpanded: isExpanded,
+                isCollapsible: isCollapsible,
+                content: savedCardView(for: savedAccount)
+            ) {
                 withAnimation {
                     onTap()
                 }
@@ -276,7 +282,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 localImage
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(UIScheme.color.paymentMethodIconColor)
+                    .foregroundColor(UIScheme.color.brandPrimary)
             } else {
                 AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
                     image
@@ -288,7 +294,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                         .renderingMode(.template)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                }.foregroundColor(UIScheme.color.paymentMethodIconColor)
+                }.foregroundColor(UIScheme.color.brandPrimary)
             }
         }
     }

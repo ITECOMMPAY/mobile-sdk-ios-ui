@@ -8,10 +8,10 @@
 import SwiftUI
 
 protocol DimensionScheme {
-    /// Типичное расстояние от границ экрана до контента страницы, а также между логическими блоками. **default: 26**
-    var largeSpacing: CGFloat { get }
     /// Типичное расстояние от границ логического блока до элемента внутри. **default: 16**
     var middleSpacing: CGFloat { get }
+    /// Типичное расстояние от границ экрана до контента страницы, а также между логическими блоками. **default: 26**
+    var largeSpacing: CGFloat { get }
     /// Расстояние от границ блока деталей платежа до элементов внутри. **default: 20**
     var paymentOverviewSpacing: CGFloat { get }
     /// Расстояние между элементами в блоке детальной информации о платеже. **default: 18**
@@ -58,30 +58,9 @@ protocol DimensionScheme {
     var cancelButtonLoadingSubtitleSpacing: CGFloat { get }
     /// Высота разделителя **default: 1**
     var dividerHeight: CGFloat { get }
-
-    // MARK: Fot sizes
-    /// **default: 12**
-    var tinyFont: CGFloat { get }
-    /// **default: 14**
-    var smallFont: CGFloat { get }
-    /// **default: 16**
-    var middleFont: CGFloat { get }
-    /// **default: 22**
-    var bigFont: CGFloat { get }
-    /// **default: 28**
-    var hugeFont: CGFloat { get }
-    /// **default: 24**
-    var biggerFont: CGFloat { get }
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
-    let tinyFont: CGFloat = UIFontMetrics.default.scaledValue(for: 12)
-    let smallFont: CGFloat = UIFontMetrics.default.scaledValue(for: 14)
-    let middleFont: CGFloat = UIFontMetrics.default.scaledValue(for: 16)
-    let bigFont: CGFloat = UIFontMetrics.default.scaledValue(for: 22)
-    let hugeFont: CGFloat = UIFontMetrics.default.scaledValue(for: 28)
-    let biggerFont: CGFloat = UIFontMetrics.default.scaledValue(for: 24)
-
     let textFieldHeight: CGFloat = 55
     let payButtonPayPriceSpacing: CGFloat = 5
     let payButtonHeight: CGFloat = 45

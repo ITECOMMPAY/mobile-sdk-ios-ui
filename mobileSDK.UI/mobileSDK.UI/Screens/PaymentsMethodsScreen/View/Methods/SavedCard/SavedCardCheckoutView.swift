@@ -82,8 +82,8 @@ struct SavedCardCheckoutView: View {
                 if !isTokenizedAction {
                     LinkButton(
                         text: L.button_delete.string,
-                        fontSize: UIScheme.dimension.smallFont,
-                        foregroundColor: UIScheme.color.deleteCardButtonColor,
+                        fontSize: .s,
+                        foregroundColor: UIScheme.color.inputTextAdditional,
                         onTap: onCardDeleteTap
                     )
                 }
@@ -119,7 +119,6 @@ struct SavedCardCheckoutView: View {
 
     private var cvvField: some View {
         CvvField(
-            withInfoButton: false,
             cardType: savedCard.savedAccountCardType,
             cvvValue: $formValues.cardCVV,
             isValueValid: $isCvvValid

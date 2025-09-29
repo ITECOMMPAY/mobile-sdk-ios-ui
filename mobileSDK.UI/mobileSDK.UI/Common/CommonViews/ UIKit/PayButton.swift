@@ -14,27 +14,28 @@ struct PayButton<Label: View>: View {
     
     var body: some View {
         Button(action: action) {
+            label
+                .frame(maxWidth: .infinity, alignment: .center)
+                .foregroundColor(.black)
+        }
+        .overlay(
             HStack {
-                label
-                    .frame(maxWidth: .infinity)
-                    .foregroundColor(.black)
+                Spacer()
                 ZStack {
                     Circle()
-                        .fill(UIScheme.color.primaryBrandColor)
+                        .fill(UIScheme.color.brandPrimary)
                         .frame(width: 36, height: 36)
-                    Image(systemName: "chevron.right")
+                    Image(systemName: "arrow.right")
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white)
+                        .foregroundColor(UIScheme.isDarkTheme ? .black : .white)
                 }
             }
-        }
-        .frame(height: UIScheme.dimension.payButtonHeight)
-        .background(
-            disabled
-                ? UIScheme.color.primaryBrandColor.opacity(0.3)
-                : UIScheme.color.primaryBrandColor
+            .padding(.trailing, 4)
         )
+        .frame(height: UIScheme.dimension.payButtonHeight)
+        .background(UIScheme.color.brandSecondary)
         .clipShape(.capsule)
+        .opacity(disabled ? 0.3 : 1)
         .disabled(disabled)
         Button(
             action: action,
@@ -42,11 +43,7 @@ struct PayButton<Label: View>: View {
                 label.frame(maxWidth: .infinity)
                     .frame(height: UIScheme.dimension.payButtonHeight)
                     .foregroundColor(.black)
-                    .background(
-                        disabled
-                            ? UIScheme.color.primaryBrandColor.opacity(0.3)
-                            : UIScheme.color.primaryBrandColor
-                    )
+                    .background(UIScheme.color.brandSecondary.opacity(disabled ? 0.3 : 1))
                     .clipShape(.capsule)
             }
         )
@@ -93,7 +90,7 @@ struct PayButtonLabel: View {
             HStack(spacing: UIScheme.dimension.payButtonPayPriceSpacing) {
                 plainText
                 Text("\(currency) \(amount as NSDecimalNumber, formatter: numberFormatter)")
-                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.middleFont))
+                    .font(.custom(.primary(size: .m, weight: .bold)))
             }
         default:
             plainText
@@ -101,7 +98,8 @@ struct PayButtonLabel: View {
     }
     
     var plainText: some View {
-        Text(style.title).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
+        Text(style.title)
+            .font(.custom(.primary(size: .m, weight: .regular)))
     }
 }
 

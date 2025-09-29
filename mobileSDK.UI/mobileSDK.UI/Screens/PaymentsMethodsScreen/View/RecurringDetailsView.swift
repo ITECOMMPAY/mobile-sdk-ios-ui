@@ -21,7 +21,7 @@ struct RecurringDetailsView: View {
             Divider()
                 .frame(maxWidth: .infinity)
                 .frame(height: UIScheme.dimension.dividerHeight)
-                .overlay(UIScheme.color.paymentDetailsBackgroundColor)
+                .overlay(UIScheme.color.cardBackground)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -34,12 +34,12 @@ struct PaymentRecurringAttributes: View {
     var body: some View {
         HStack() {
             Text(labelText)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                .font(.custom(.primary(size: .s, weight: .regular)))
+                .foregroundColor(UIScheme.color.inputTextPrimary)
             Spacer()
             Text(descriptionText)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                .font(.custom(.primary(size: .s, weight: .regular)))
+                .foregroundColor(UIScheme.color.inputTextPrimary)
         }
     }
 }

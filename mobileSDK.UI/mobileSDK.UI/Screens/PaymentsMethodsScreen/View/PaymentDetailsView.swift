@@ -33,7 +33,8 @@ struct PaymentDetailsView: View {
             Divider()
                 .frame(maxWidth: .infinity)
                 .frame(height: UIScheme.dimension.dividerHeight)
-                .overlay(UIScheme.color.paymentDetailsBackgroundColor)
+                .overlay(UIScheme.color.cardBackground)
+                .opacity(0.1)
             ForEach(details, id: \.title) { detail in
                 PaymentDetailsAttributes(
                     labelText: detail.title.string,
@@ -54,27 +55,25 @@ struct PaymentDetailsAttributes: View {
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
             Text(labelText)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-                .foregroundColor(UIScheme.color.paymentDetailsTitleColor)
+                .font(.custom(.primary(size: .xs, weight: .regular)))
+                .foregroundColor(UIScheme.color.buttonCard)
+                .opacity(0.6)
                 .accessibilityAddTraits(.isHeader)
             HStack {
                 Text(descriptionText)
-                    .font(
-                        canCopy
-                            ? UIScheme.font.commonBold(size: UIScheme.dimension.smallFont)
-                            : UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont)
-                    )
-                    .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                    .font(.custom(.primary(size: .s, weight: canCopy ? .bold : .regular)))
+                    .foregroundColor(UIScheme.color.buttonCard)
                 if canCopy {
                     Spacer()
                     ZStack {
                         Circle()
-                            .fill(Color.white.opacity(0.1))
+                            .fill(Color.white)
+                            .opacity(0.1)
                             .frame(width: 32, height: 32)
                         Image(systemName: "square.on.square")
                             .scaleEffect(x: -1, y: 1)
                             .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(.white)
+                            .foregroundColor(UIScheme.color.cardBackground)
                     }
                 }
             }

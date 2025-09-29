@@ -66,7 +66,7 @@ struct NewCardCheckoutView: View {
                     expiryString: $formValues.cardExpiry,
                     isValueValid: $isExpiryValid
                 )
-                CvvField(withInfoButton: true, cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
+                CvvField(cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
             }
             .padding(.top, UIScheme.dimension.formSmallSpacing)
             .padding(.bottom, UIScheme.dimension.formSmallSpacing)

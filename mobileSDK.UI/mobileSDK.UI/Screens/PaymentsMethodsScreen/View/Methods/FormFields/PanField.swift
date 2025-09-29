@@ -137,7 +137,8 @@ private struct CardTypeView: View {
             removal: .move(edge: .bottom).combined(with: .opacity)
         )
         return Group {
-            if let type = type, let logo = type.localLogo {
+            if let type = type,
+               let logo = type.localLogo {
                 logo
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -145,7 +146,7 @@ private struct CardTypeView: View {
                 IR.bankCard.image?
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundStyle(UIScheme.color.navigationButtonColor)
+                    .foregroundStyle(UIScheme.color.buttonText)
                     .aspectRatio(contentMode: .fit)
             }
         }
@@ -194,4 +195,5 @@ struct PanField_Previews: PreviewProvider {
         PanFieldPreview()
     }
 }
+
 #endif

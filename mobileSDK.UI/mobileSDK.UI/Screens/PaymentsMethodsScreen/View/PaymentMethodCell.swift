@@ -32,8 +32,15 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
                 .frame(maxHeight: isExpanded ? .infinity : 0)
                 .zIndex(-1)
         }
-        .background(UIScheme.color.paymentMethodBackground)
-        .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)
+        .background(UIScheme.color.cardBackground)
+        .clipShape(
+            .rect(
+                topLeadingRadius: UIScheme.dimension.buttonCornerRadius,
+                bottomLeadingRadius: UIScheme.dimension.buttonCornerRadius,
+                bottomTrailingRadius: UIScheme.dimension.buttonCornerRadius,
+                topTrailingRadius: UIScheme.dimension.buttonCornerRadius
+            )
+        )
     }
     
     @ViewBuilder
@@ -47,11 +54,7 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.horizontal, UIScheme.dimension.middleSpacing)
             .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
-            .background {
-                isSavedAccount && !isExpanded
-                    ? UIScheme.color.savedAccountBackground
-                    : UIScheme.color.paymentMethodBackground
-            }
+            .background(UIScheme.color.cardBackground)
         } else {
             EmptyView()
         }
@@ -59,8 +62,8 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     
     var titleView: some View {
         Text(methodTitle)
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-            .foregroundColor(UIScheme.color.text)
+            .font(.custom(.primary(size: .s, weight: .regular)))
+            .foregroundColor(UIScheme.color.inputTextPrimary)
             .accessibilityLabel(Text(isSavedAccount ? "Saved card \(methodTitle)" : methodTitle))
             .accessibilityHint(isExpanded ? "Expanded" : "Collapsed")
     }

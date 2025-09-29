@@ -19,6 +19,7 @@ struct PaymentOverview: View {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
+        formatter.decimalSeparator = "."
         return formatter
     }()
 
@@ -32,8 +33,8 @@ struct PaymentOverview: View {
                 Spacer()
                 IR.flag.image
                 Text(Locale.current.threeLetterLanguageCode())
-                    .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
+                    .font(.custom(.primary(size: .s, weight: .semiBold)))
+                    .foregroundColor(UIScheme.color.buttonCard)
             }
             if !recurringData.isEmpty { recurringDetails }
             VStack(
@@ -52,15 +53,19 @@ struct PaymentOverview: View {
     }
 
     var cardBackground: some View {
-        UIScheme.color.primaryBrandColor
+        UIScheme.color.brandPrimary
             .overlay(
                 IR.cardBackgroundPattern.image?
                     .resizable(resizingMode: .tile)
                     .foregroundColor(.white)
             )
-            .cornerRadius(
-                UIScheme.dimension.backgroundSheetCornerRadius,
-                corners: .allCorners
+            .clipShape(
+                .rect(
+                    topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+                )
             )
             .accessibilityHidden(true)
     }
@@ -72,9 +77,9 @@ struct PaymentOverview: View {
     var price: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
             Text("\(currency) \(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
-                .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
+                .font(.custom(.secondary(size: .xxl, weight: .bold)))
         }
-        .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)
+        .foregroundColor(UIScheme.color.buttonCard)
     }
     
     var details: some View {

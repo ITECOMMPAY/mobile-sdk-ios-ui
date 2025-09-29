@@ -1,14 +1,17 @@
 //
-//  Color+Utils.swift
+//  Color.swift
 //  mobileSDK.UI
 //
-//  Created by Artem Serebrennikov on 22.02.2023.
+//  Created by Ilya Matveev on 29.09.2025.
 //
 
 import SwiftUI
 
 extension Color {
-    init(hex: UInt, alpha: Double = 1) {
+    init(
+        hex: UInt,
+        alpha: Double = 1
+    ) {
         self.init(
             .sRGB,
             red: Double((hex >> 16) & 0xff) / 255,

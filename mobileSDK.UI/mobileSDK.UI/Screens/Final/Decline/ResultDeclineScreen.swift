@@ -63,15 +63,15 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     }.frame(height: 58)
                     VStack(spacing: UIScheme.dimension.tinySpacing) {
                         Text(title)
-                            .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
-                            .foregroundColor(UIScheme.color.text)
+                            .font(.custom(.primary(size: .xl, weight: .bold)))
+                            .foregroundColor(UIScheme.color.brandPrimary)
                             .multilineTextAlignment(.center)
                             .accessibilityAddTraits(.isHeader)
                             .accessibilitySortPriority(999)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
                             Text(paymentMessage)
-                                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                                .foregroundColor(UIScheme.color.errorTextColor)
+                                .font(.custom(.primary(size: .s, weight: .regular)))
+                                .foregroundColor(UIScheme.color.inputTextPrimary)
                                 .multilineTextAlignment(.center)
                                 .accessibilitySortPriority(998)
                         }

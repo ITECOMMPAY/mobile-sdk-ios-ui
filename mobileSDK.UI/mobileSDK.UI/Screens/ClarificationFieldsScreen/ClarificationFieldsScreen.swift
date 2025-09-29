@@ -23,13 +23,14 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.middleSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 overviewView
                 Text(L.title_payment_additional_data_disclaimer.string)
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.text)
+                    .font(.custom(.primary(size: .s, weight: .regular)))
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
                     .fixedSize(horizontal: false, vertical: true)
                 EmbeddedCustomerFieldsView(
                     visibleCustomerFields: viewModel.state.clarificationFields?.map { $0.asCustomerField } ?? [],
@@ -51,9 +52,9 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                 PolicyView()
                 FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
             }
-            .padding(.top, UIScheme.dimension.middleSpacing)
-            .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
-        }.onAppear {
+            .padding([.bottom, .horizontal], UIScheme.dimension.middleSpacing)
+        }
+        .onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }

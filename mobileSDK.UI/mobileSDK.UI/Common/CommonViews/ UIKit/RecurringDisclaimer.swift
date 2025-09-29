@@ -11,8 +11,8 @@ struct RecurringDisclaimer: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont))
-            .foregroundColor(UIScheme.color.secondaryTextColor)
+            .font(.custom(.primary(size: .xs, weight: .regular)))
+            .foregroundColor(UIScheme.color.inputTextAdditional)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
     }

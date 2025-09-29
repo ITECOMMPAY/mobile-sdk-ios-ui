@@ -16,8 +16,8 @@ struct ApsCheckoutView: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(L.aps_payment_disclaimer.string)
-                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .foregroundColor(UIScheme.color.text)
+                .font(.custom(.primary(size: .s, weight: .regular)))
+                .foregroundColor(UIScheme.color.inputTextPrimary)
             PayButton(
                 label: buttonLabel,
                 disabled: false

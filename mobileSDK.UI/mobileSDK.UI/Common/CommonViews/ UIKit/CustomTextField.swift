@@ -33,7 +33,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
                     HStack(spacing: .zero) {
                         Text(placeholder)
                             .foregroundColor(placeholderColor)
-                            .animatableFont(size: placeholderFontSize, makeFont: UIScheme.font.commonRegular)
+                            .font(.custom(.primary(size: .m, weight: .regular)))
                             .layoutPriority(1)
                         Spacer()
                     }
@@ -45,12 +45,14 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
             }
             .border(.black)
-//            .background(backgroundColor.overlay(
-//                RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius, style: .continuous)
-//                    .stroke(borderColor, lineWidth: borderWidth)
-//            ))
-            .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .bottomRight)
-
+            .clipShape(
+                .rect(
+                    topLeadingRadius: 0,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: 0
+                )
+            )
             .onReceive(Just(editing)) { _ in
                 withAnimation(.easeOut(duration: 0.1)) {
                     updateBorder()
@@ -63,7 +65,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
             if !showValid {
                 Text(hint)
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+                    .font(.custom(.primary(size: .s, weight: .regular)))
                     .foregroundColor(errorHintColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -73,40 +75,46 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     @ViewBuilder
     var textField: some View {
-        UIKitTextField(config: .init()
-            .focused($isFocused)
-            .isSecureTextEntry(isSecure)
-            .keyboardType(keyboardType)
-            .autocapitalizationType(forceUppercased ? .allCharacters : nil)
-            .adjustsFontSizeToFitWidth(adjustsFontSizeToFitWidth)
-            .minimumFontSize(minimumFontSize)
-            .value(
-                updateViewValue: { textField in
-                    if let text = formatter.string(for: $text.wrappedValue),
-                       text != textField.text {
-                        textField.text = text
+        UIKitTextField(
+            config: .init()
+                .focused($isFocused)
+                .isSecureTextEntry(isSecure)
+                .keyboardType(keyboardType)
+                .autocapitalizationType(forceUppercased ? .allCharacters : nil)
+                .adjustsFontSizeToFitWidth(adjustsFontSizeToFitWidth)
+                .minimumFontSize(minimumFontSize)
+                .value(
+                    updateViewValue: { textField in
+                        if let text = formatter.string(for: $text.wrappedValue),
+                           text != textField.text {
+                            textField.text = text
+                        }
+                    },
+                    onViewValueChanged: { textField in
+                        var objectValue: AnyObject?
+                        if formatter.getObjectValue(&objectValue, for: textField.text ?? "", errorDescription: nil),
+                           let newValue = objectValue as? String {
+                            $text.wrappedValue = newValue
+                        } else {
+                            $text.wrappedValue = ""
+                        }
                     }
-                },
-                onViewValueChanged: { textField in
-                    var objectValue: AnyObject?
-                    if formatter.getObjectValue(&objectValue, for: textField.text ?? "", errorDescription: nil),
-                       let newValue = objectValue as? String {
-                        $text.wrappedValue = newValue
-                    } else {
-                        $text.wrappedValue = ""
-                    }
-                })
+                )
                 .shouldChangeCharacters(handler: shouldChangeCharacters)
-                    .onBeganEditing(handler: { _ in
+                .onBeganEditing(
+                    handler: { _ in
                         editing = true
-                    })
-                    .onEndedEditing(handler: { _, _ in
+                    }
+                )
+                .onEndedEditing(
+                    handler: { _, _ in
                         editing = false
                         onCommit()
-                    })
-                        .textColor(textFieldTextColor)
+                    }
+                )
+                .textColor(textFieldTextColor)
         )
-        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
+        .font(.custom(.primary(size: .m, weight: .regular)))
         .foregroundColor(textFieldTextColor)
         .disabled(disabled)
     }
@@ -139,21 +147,18 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     // MARK: Private properties
 
-    private var requiredMarkColor: Color = UIScheme.color.textFieldRequirementMarkColor
     private let placeholder: String
     @State
-    private var isFocused = false
+    private var isFocused: Bool = false
     @State
-    private var borderColor = UIScheme.color.textFieldNormalBorderColor
+    private var borderColor: Color = .clear
     @State
-    private var borderWidth = UIScheme.dimension.inputBorderWidth
+    private var borderWidth: CGFloat = UIScheme.dimension.inputBorderWidth
     @State
-    private var backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
+    private var backgroundColor: Color = UIScheme.color.inputNeutral
     @State
     private var editing: Bool = false
 
-    @State
-    private var placeholderFontSize = UIScheme.dimension.middleFont
     @State
     private var placeholderPaddings: EdgeInsets = EdgeInsets(
         top: 17,
@@ -163,31 +168,23 @@ struct CustomTextField<AccessoryViewType: View>: View {
     )
 
     private var textFieldTextColor: Color {
-        disabled ? UIScheme.color.textFieldDisabledTextColor : UIScheme.color.text
+        disabled ? UIScheme.color.inputTextAdditional : UIScheme.color.inputTextPrimary
     }
     
     private var errorHintColor: Color {
-        valid ? .clear : UIScheme.color.textFieldErrorBorderColor
+        valid ? .clear : UIScheme.color.inputErrorBorder
     }
 
     var placeholderColor: Color {
         guard !disabled else {
-            return UIScheme.color.textFieldDisabledTextColor
-        }
-
-        guard !editing else {
-            return UIScheme.color.textFieldFocusedPlaceholderColor
-        }
-        
-        guard !text.isEmpty else {
-            return UIScheme.color.textFieldPlaceholderColor
+            return UIScheme.color.inputDisabled
         }
 
         guard valid else {
-            return UIScheme.color.textFieldErrorPlaceholderColor
+            return UIScheme.color.inputErrorBackground
         }
 
-        return UIScheme.color.textFieldNormalPlaceholderColor
+        return UIScheme.color.inputNeutral
     }
 
     private let textFieldPaddings: EdgeInsets = EdgeInsets(
@@ -257,19 +254,19 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     private func updateBorder() {
         guard !disabled else {
-            borderColor = UIScheme.color.textFieldDisabledBorderColor
+            borderColor = UIScheme.color.inputDisabled
             borderWidth = UIScheme.dimension.inputBorderWidth
             return
         }
         
         if !showValid {
-            borderColor = UIScheme.color.textFieldErrorBorderColor
+            borderColor = UIScheme.color.inputErrorBorder
             borderWidth = UIScheme.dimension.inputAccentedBorderWidth
         } else if editing {
-            borderColor = UIScheme.color.textFieldFocusedBorderColor
+            borderColor = .clear
             borderWidth = UIScheme.dimension.inputAccentedBorderWidth
         } else {
-            borderColor = UIScheme.color.textFieldNormalBorderColor
+            borderColor = .clear
             borderWidth = UIScheme.dimension.inputBorderWidth
         }
     }
@@ -281,26 +278,14 @@ struct CustomTextField<AccessoryViewType: View>: View {
         }
 
         if !showValid {
-            backgroundColor = UIScheme.color.textFieldErrorBackgroundColor
-        } else if editing {
-            backgroundColor = UIScheme.color.textFieldFocusedBackgroundColor
+            backgroundColor = UIScheme.color.inputErrorBackground
         } else {
-            backgroundColor = UIScheme.color.textFieldNormalBackgroundColor
+            backgroundColor = UIScheme.color.inputNeutral
         }
     }
 
     private func updatePlaceholder() {
-        updatePlaceholderFontSize()
         updatePlaceholderPosition()
-    }
-
-    private func updatePlaceholderFontSize() {
-        if editing
-            || !text.isEmpty {
-            placeholderFontSize = UIScheme.dimension.tinyFont
-        } else {
-            placeholderFontSize = UIScheme.dimension.middleFont
-        }
     }
 
     private func updatePlaceholderPosition() {

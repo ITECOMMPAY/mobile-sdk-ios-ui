@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
     spec.summary                  = 'Payment msdk core module'
     spec.vendored_frameworks      = 'MsdkCore.xcframework'
     spec.libraries                = 'c++'
-    spec.ios.deployment_target = '15.6'
+    spec.ios.deployment_target = '16.6'
                 
                 
                 
