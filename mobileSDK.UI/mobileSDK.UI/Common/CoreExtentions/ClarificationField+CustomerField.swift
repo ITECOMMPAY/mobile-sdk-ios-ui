@@ -44,5 +44,5 @@ extension ClarificationFieldAdapter: CustomerField {
 
     var errorMessageKey: String { L.message_general_invalid.rawValue }
     
-    var options: [any AdditionalField]? { clarificationField.options }
+    var options: [any AdditionalField]? { nil }
 }

@@ -16,7 +16,7 @@ public class Ecommpay: NSObject {
     /// The key is used to get error-code from UserInfo of NSError instance returned while mobile SDK session initialisation
     @objc public static let kSDKInitErrorCodeKey = "SDKInitErrorCode"
     /// Version of currently installed Ecommpay SDK
-    @objc public static let sdkVersion: String = "3.10.0"
+    @objc public static let sdkVersion: String = "3.10.1"
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
 
     /// Debug initializer, should not be present in release version!

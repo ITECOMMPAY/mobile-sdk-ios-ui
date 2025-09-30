@@ -123,7 +123,6 @@ public protocol ClarificationField {
     var defaultHint: String? { get }
     var defaultLabel: String? { get }
     var defaultErrorMessage: String? { get }
-    var options: [any AdditionalField]? { get }
 }
 
 public protocol PaymentStatus {

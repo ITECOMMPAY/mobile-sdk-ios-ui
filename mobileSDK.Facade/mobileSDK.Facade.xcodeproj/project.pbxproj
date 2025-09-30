@@ -274,10 +274,10 @@
 		84B241A2288A5AD900259A50 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				84B2419E2889653500259A50 /* ProtocolConformance.swift */,
 				84EA605A28BF27EC008D4CC2 /* CardRemoveWrapper.swift */,
 				8421F8ED288FC1FF00B6EED2 /* CardTypesManagerAdapter */,
 				8421F8E5288EBF8700B6EED2 /* PayInteractorWrapper */,
-				84B2419E2889653500259A50 /* ProtocolConformance.swift */,
 				84F705C1287C531F00E7CD12 /* CoreDelegates */,
 				84EFA1602877086C0043C360 /* CoreAdaptersAndConverters */,
 			);
