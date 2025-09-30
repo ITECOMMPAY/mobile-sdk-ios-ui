@@ -89,7 +89,6 @@ struct MockCarificationField: ClarificationField {
     var defaultHint: String? = "MockCarificationField_defaultHint"
     var defaultLabel: String? = "MockCarificationField_defaultLabel"
     var defaultErrorMessage: String? = "MockCarificationField_defaultErrorMessage"
-    var options: [any AdditionalField]? = nil
 }
 
 struct MockPaymentOptions: PaymentOptions {
