@@ -1,10 +1,10 @@
 origin_branch = "origin/master"
-owner_name = "Ecommpay-1"
+owner_name = "Mglwallet-1"
 destinations_group = "Collaborators"
 app_name = "ECP-SDK2-iOS"
-target = "EcommpaySample"
-lib_target = "EcommpaySDK"
-app_identifier = 'com.ecommpay.sdk.testclient'
+target = "MglwalletSample"
+lib_target = "MglwalletSDK"
+app_identifier = 'com.mglwallet.sdk.testclient'
 
 default_platform(:ios)
 platform :ios do

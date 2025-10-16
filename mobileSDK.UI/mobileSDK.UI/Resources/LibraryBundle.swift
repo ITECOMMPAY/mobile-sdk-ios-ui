@@ -10,7 +10,7 @@ import Foundation
 class SDKBundle: Bundle {
     static func get() -> Bundle {
         // For Swift Package Manager, try to find the resource bundle first
-        if let resourceBundleURL = Bundle.main.url(forResource: "EcommpaySDK_EcommpaySDK", withExtension: "bundle"),
+        if let resourceBundleURL = Bundle.main.url(forResource: "MglwalletSDK_MglwalletSDK", withExtension: "bundle"),
            let resourceBundle = Bundle(url: resourceBundleURL) {
             return resourceBundle
         }

@@ -1,8 +1,8 @@
-[![Build Status](https://github.com/ITECOMMPAY/mobile-sdk-ios-ui/actions/workflows/master_push_pr.yml/badge.svg)]()
+[![Build Status](https://github.com/ITMGLWALLET/mobile-sdk-ios-ui/actions/workflows/master_push_pr.yml/badge.svg)]()
 
-# Ecommpay SDK UI for iOS
+# Mglwallet SDK UI for iOS
 
-SDK for iOS is a software development kit for fast integration of the Ecommpay payment solutions right in your mobile app for iOS. With SDK for iOS, you can quickly build and offer your customers a fast checkout experience from in your iOS app. In this section you will find information about using SDK for iOS as well as Swift and Objective-C code samples.
+SDK for iOS is a software development kit for fast integration of the Mglwallet payment solutions right in your mobile app for iOS. With SDK for iOS, you can quickly build and offer your customers a fast checkout experience from in your iOS app. In this section you will find information about using SDK for iOS as well as Swift and Objective-C code samples.
 
 ## General information about SDK for iOS
 
@@ -20,8 +20,8 @@ After you integrate an SDK for iOS library into your iOS app, checkout payment i
 
 1. Your client app creates an instance of payment object with all the necessary checkout details.
 2. On the basis of the payment object parameters, the back end part of you app generates the signature for checkout request.
-3. You call a special method of the payment object to have the client app initiate a checkout request and send it to the Ecommpay payment platform.
-4. The Ecommpay payment platform processes the checkout request and performs the payment.
+3. You call a special method of the payment object to have the client app initiate a checkout request and send it to the Mglwallet payment platform.
+4. The Mglwallet payment platform processes the checkout request and performs the payment.
 5. The payment platform sends the payment processing results to the client app.
 6. The payment platform sends a callback with the payment processing results to the callback URL you specified.
 
@@ -29,19 +29,19 @@ After you integrate an SDK for iOS library into your iOS app, checkout payment i
 
 ### Importing library in Swift
 
-Listed below are the instructions on how to import a Ecommpay library into your Swift project.
+Listed below are the instructions on how to import a Mglwallet library into your Swift project.
 
-1. Copy the `ecommpaySDK.xcframework` file in the project folder of you iOS app.
+1. Copy the `mglwalletSDK.xcframework` file in the project folder of you iOS app.
 2. Add the library into your project:
    1. Open the target of your project.
    2. Select General > Embedded Binaries.
    3. Click +.
    4. Click Add Other.
-   5. Select the `ecommpaySDK.xcframework` file and click Add.
+   5. Select the `mglwalletSDK.xcframework` file and click Add.
 3. Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 4. If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
 
-   The Ecommpay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+   The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
 
    If your iOS app requests user location information, you can skip this step.
 
@@ -49,21 +49,21 @@ Listed below are the instructions on how to import a Ecommpay library into your 
 
 ### Importing library in Objective-C
 
-Listed below are the instructions on how to import a Ecommpay library into your Objective-C project.
+Listed below are the instructions on how to import a Mglwallet library into your Objective-C project.
 
-1. Copy the `ecommpaySDK.xcframework` file in the project folder of you iOS app.
+1. Copy the `mglwalletSDK.xcframework` file in the project folder of you iOS app.
 2. Add the library into your project:
    1. Open the target of your project.
    2. Select General > Embedded Binaries.
    3. Click +.
    4. Click Add Other.
-   5. Select the `ecommpaySDK.xcframework` file and click Add.
+   5. Select the `mglwalletSDK.xcframework` file and click Add.
    6. Select Build Settings.
    7. Set Always embed swift embedded libraries to Yes.
 3. Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 4. If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
 
-   The Ecommpay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+   The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
 
    If your iOS app requests user location information, you can skip this step.
 
@@ -71,15 +71,15 @@ Listed below are the instructions on how to import a Ecommpay library into your 
 
 ### Importing library via Swift Package Manager
 
-Listed below are the instructions on how to import a Ecommpay library via Swift Package Manager.
+Listed below are the instructions on how to import a Mglwallet library via Swift Package Manager.
 
 #### Using Xcode
 
 1. In Xcode, select File > Add Package Dependencies.
-2. Enter the repository URL: `https://github.com/ITECOMMPAY/mobile-sdk-ios-ui.git`
+2. Enter the repository URL: `https://github.com/ITMGLWALLET/mobile-sdk-ios-ui.git`
 3. Select the version rule (recommend "Up to Next Major Version").
 4. Click Add Package.
-5. Select the EcommpaySDK library and add it to your target.
+5. Select the MglwalletSDK library and add it to your target.
 
 #### Using Package.swift
 
@@ -87,13 +87,13 @@ Add the following to your Package.swift file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ITECOMMPAY/mobile-sdk-ios-ui.git", from: "3.10.0")
+    .package(url: "https://github.com/ITMGLWALLET/mobile-sdk-ios-ui.git", from: "3.10.0")
 ],
 targets: [
     .target(
         name: "YourTarget",
         dependencies: [
-            .product(name: "EcommpaySDK", package: "mobile-sdk-ios-ui")
+            .product(name: "MglwalletSDK", package: "mobile-sdk-ios-ui")
         ]
     )
 ]
@@ -104,7 +104,7 @@ targets: [
 1. Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 2. If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
 
-   The Ecommpay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+   The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
 
    If your iOS app requests user location information, you can skip this step.
 
@@ -119,27 +119,27 @@ This section contains samples of payment form invocation code in Swift and Objec
 - Swift
 
   ```swift
-  import ecommpaySDK
+  import mglwalletSDK
   ```
 
 - Objective-C
 
   ```objc
-  #import <EcommpaySDK/EcommpaySDK.h>
+  #import <MglwalletSDK/MglwalletSDK.h>
   ```
 
-2. Declare the reference to instance of `Ecommpay` class in you app (for example, inside the `viewDidLoad` method):
+2. Declare the reference to instance of `Mglwallet` class in you app (for example, inside the `viewDidLoad` method):
 
 - Swift
 
   ```swift
-  let ecommpay = Ecommpay()
+  let mglwallet = Mglwallet()
   ```
 
 - Objective-C
 
   ```objc
-  Ecommpay *ecommpay = [[Ecommpay alloc] init];
+  Mglwallet *mglwallet = [[Mglwallet alloc] init];
   ```
 
 3. Create an object named `PaymentOptions` with all the required parameters and any number of optional parameters, for example:
@@ -174,7 +174,7 @@ This section contains samples of payment form invocation code in Swift and Objec
 
 Here are the required parameters:
 
-- projectID — project (merchant) ID Ecommpay assigned you
+- projectID — project (merchant) ID Mglwallet assigned you
 - paymentID — payment ID, must be unique within the project
 - paymentAmount — payment amount in minor currency units
 - paymentCurrency — payment currency code according to ISO-4217 alpha-3
@@ -220,8 +220,8 @@ Here are the optional parameters:
 - Swift
 
   ```swift
-  ecommpay.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
-  print("Ecommpay SDK finished with status \(result.status.rawValue)")
+  mglwallet.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
+  print("Mglwallet SDK finished with status \(result.status.rawValue)")
   ...
   }
   ```
@@ -229,9 +229,9 @@ Here are the optional parameters:
 - Objective-C
 
   ```objc
-  [ecommpay presentPaymentAt:self paymentOptions:paymentOptions
+  [mglwallet presentPaymentAt:self paymentOptions:paymentOptions
       completionHandler:^(PaymentResult *result) {
-      NSLog(@"Ecommpay SDK finished with status %ld", (long)result.status);
+      NSLog(@"Mglwallet SDK finished with status %ld", (long)result.status);
       ...
   }];
   ```
@@ -245,8 +245,8 @@ To receive and process response with the payment processing results you need to 
 - Swift
 
 ```swift
-ecommpay.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
-   print("Ecommpay SDK finished with status \(result.status.rawValue)")
+mglwallet.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
+   print("Mglwallet SDK finished with status \(result.status.rawValue)")
    if let error = result.error { // if error encountered
       print("ErrorCode: \(error.code) message: \(error.message)")
    }
@@ -256,9 +256,9 @@ ecommpay.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
 - Objective-C
 
 ```objc
-[self.ecommpay presentPaymentAt:self paymentOptions:paymentOptions
+[self.mglwallet presentPaymentAt:self paymentOptions:paymentOptions
     completionHandler:^(PaymentResult *result) {
-        NSLog(@"Ecommpay SDK finished with status %ld", (long)result.status);
+        NSLog(@"Mglwallet SDK finished with status %ld", (long)result.status);
         if(result.error != NULL) { // if error encountered
             NSLog(@"Error code: %@ %@", result.error.codeString, result.error.message);
         }
@@ -355,7 +355,7 @@ The script can rename all occurrences of the original project name throughout th
 
 #### Rename Configuration Options
 
-- **merchant_name**: The new name to replace "ecommpay" throughout the project
+- **merchant_name**: The new name to replace "mglwallet" throughout the project
 - **project_root**: Root directory for the renaming operation (default: current directory)
 - **exclude_dirs**: Directories to ignore during renaming
 - **exclude_files**: Specific files to exclude from processing
@@ -369,19 +369,19 @@ The script can rename all occurrences of the original project name throughout th
 #### What Gets Renamed
 
 The script performs intelligent renaming across multiple case variants:
-- **Original**: ecommpay → YourBrand
-- **PascalCase**: Ecommpay → YourBrand  
-- **camelCase**: ecommpay → yourBrand
-- **UPPERCASE**: ECOMMPAY → YOURBRAND
-- **lowercase**: ecommpay → yourbrand
-- **snake_case**: ecommpay → your_brand
-- **kebab-case**: ecommpay → your-brand
+- **Original**: mglwallet → YourBrand
+- **PascalCase**: Mglwallet → YourBrand  
+- **camelCase**: mglwallet → yourBrand
+- **UPPERCASE**: MGLWALLET → YOURBRAND
+- **lowercase**: mglwallet → yourbrand
+- **snake_case**: mglwallet → your_brand
+- **kebab-case**: mglwallet → your-brand
 
 Examples of transformations:
-- `ecommpaySDK` → `YourBrandSDK`
-- `EcommpayManager` → `YourBrandManager`
-- `ECOMMPAY_API_KEY` → `YOURBRAND_API_KEY`
-- `ecommpaySDK.framework` → `YourBrandSDK.framework`
+- `mglwalletSDK` → `YourBrandSDK`
+- `MglwalletManager` → `YourBrandManager`
+- `MGLWALLET_API_KEY` → `YOURBRAND_API_KEY`
+- `mglwalletSDK.framework` → `YourBrandSDK.framework`
 
 The script processes:
 1. **File and folder names** containing the original name

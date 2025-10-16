@@ -2,8 +2,8 @@
 //  MobileSDK.swift
 //  mobilesdk-ios
 //
-//  Created by Ecommpay on 10/31/17.
-//  Copyright © 2017 Ecommpay. All rights reserved.
+//  Created by Mglwallet on 10/31/17.
+//  Copyright © 2017 Mglwallet. All rights reserved.
 //
 
 import UIKit
@@ -78,7 +78,7 @@ class SDKInteractor {
         msdkConfig.userAgentData = UserAgentData(
             screenInfo: .init(width: Int32(UIScreen.main.bounds.width),
                               height: Int32(UIScreen.main.bounds.height)),
-            applicationInfo: .init(version: Ecommpay.sdkVersion,
+            applicationInfo: .init(version: Mglwallet.sdkVersion,
                                    bundleId: Bundle.main.bundleIdentifier,
                                    appName: Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String))
 

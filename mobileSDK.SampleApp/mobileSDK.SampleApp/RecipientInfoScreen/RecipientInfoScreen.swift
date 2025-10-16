@@ -1,6 +1,6 @@
 //
 //  RecipientInfoScreen.swift
-//  EcommpaySample
+//  MglwalletSample
 //
 //  Created by Artem Serebrennikov on 09.01.2023.
 //

@@ -147,7 +147,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = Ecommpay;
+				ORGANIZATIONNAME = Mglwallet;
 				TargetAttributes = {
 					CB9B39C5220C1DFE00B9A300 = {
 						CreatedOnToolsVersion = 10.1;
@@ -403,7 +403,7 @@
 					"-l\"z\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ecommpay.com.IntegrationExampleSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = mglwallet.com.IntegrationExampleSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -434,7 +434,7 @@
 					"-l\"z\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ecommpay.com.IntegrationExampleSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = mglwallet.com.IntegrationExampleSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

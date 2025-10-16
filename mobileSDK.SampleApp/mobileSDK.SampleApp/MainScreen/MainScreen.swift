@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EcommpaySDK
+import MglwalletSDK
 
 struct MainScreen: View {
     @State var result: PaymentResult?
@@ -15,7 +15,7 @@ struct MainScreen: View {
     @State var token: String = ""
 
     @State var action: PaymentOptions.ActionType = .Sale
-    @State var sdk = Ecommpay()
+    @State var sdk = Mglwallet()
 
     @State var brandColorOverride: Color = .red
     @State var colorOverrideEnabled: Bool = false
@@ -39,8 +39,8 @@ struct MainScreen: View {
     
     @State var simulateCrash: Bool = false
 
-    @State var apiHost: String = Ecommpay.apiHost
-    @State var socketHost: String = Ecommpay.socketHost
+    @State var apiHost: String = Mglwallet.apiHost
+    @State var socketHost: String = Mglwallet.socketHost
 
     var body: some View {
         mainPage
@@ -82,7 +82,7 @@ struct MainScreen: View {
                     simulateCrashToggle
                 }
             }
-            .navigationBarTitle(Text("\(getBrandName()) \(Ecommpay.sdkVersion)"), displayMode: .inline)
+            .navigationBarTitle(Text("\(getBrandName()) \(Mglwallet.sdkVersion)"), displayMode: .inline)
             .toolbar {
                 HStack {
                     Button("Info") {
@@ -333,8 +333,8 @@ struct MainScreen: View {
     }
 
     func resetUrls() {
-        apiHost = Ecommpay.apiHost
-        socketHost = Ecommpay.socketHost
+        apiHost = Mglwallet.apiHost
+        socketHost = Mglwallet.socketHost
     }
 
     var applePayParams: some View {
@@ -404,7 +404,7 @@ struct MainScreen: View {
     
     func presentPaymentPage(action: PaymentOptions.ActionType) {
         self.action = action
-        sdk = Ecommpay(apiUrlString: apiHost, socketUrlString: socketHost)
+        sdk = Mglwallet(apiUrlString: apiHost, socketUrlString: socketHost)
         isPaymentPagePresented = true
         
         if simulateCrash {

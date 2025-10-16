@@ -1,12 +1,12 @@
 //
 //  Models.swift
-//  EcommpaySample
+//  MglwalletSample
 //
 //  Created by Ivan Krapivtsev on 28.10.2022.
 //
 
 import Foundation
-import EcommpaySDK
+import MglwalletSDK
 
 struct Account: Codable {
     var additional: String?
@@ -242,17 +242,17 @@ struct ThreeDSecureInfo: Codable {
         paymentMerchantRisk: PaymentMerchantRisk.default
     )
 
-    var sdkThreeDSecureInfo: EcommpaySDK.ThreeDSecureInfo {
-        EcommpaySDK.ThreeDSecureInfo.init(
+    var sdkThreeDSecureInfo: MglwalletSDK.ThreeDSecureInfo {
+        MglwalletSDK.ThreeDSecureInfo.init(
             threeDSecurePaymentInfo: paymentMerchantRisk?.payment.map({ payment in
-                EcommpaySDK.ThreeDSecurePaymentInfo(
+                MglwalletSDK.ThreeDSecurePaymentInfo(
                     reorder: payment.reorder,
                     preorderPurchase: payment.preorderPurchase,
                     preorderDate: payment.preorderDate,
                     challengeIndicator: payment.challengeIndicator,
                     challengeWindow: payment.challengeWindow,
                     giftCard: payment.giftCard.map({ giftCard in
-                        EcommpaySDK.ThreeDSecureGiftCardInfo(
+                        MglwalletSDK.ThreeDSecureGiftCardInfo(
                             amount: giftCard.amount,
                             currency: giftCard.currency,
                             count: giftCard.count
@@ -260,13 +260,13 @@ struct ThreeDSecureInfo: Codable {
                     })
                 )
             }),
-            threeDSecureCustomerInfo: EcommpaySDK.ThreeDSecureCustomerInfo(
+            threeDSecureCustomerInfo: MglwalletSDK.ThreeDSecureCustomerInfo(
                 addressMatch: customerAccountInfo?.customer?.addressMatch,
                 homePhone: customerAccountInfo?.customer?.homePhone,
                 workPhone: customerAccountInfo?.customer?.workPhone,
                 billingRegionCode: billingRegionCode,
                 accountInfo: customerAccountInfo?.customer?.account.map({ account in
-                    EcommpaySDK.ThreeDSecureAccountInfo(
+                    MglwalletSDK.ThreeDSecureAccountInfo(
                         additional: account.additional,
                         ageIndicator: account.ageIndicator,
                         date: account.date,
@@ -286,7 +286,7 @@ struct ThreeDSecureInfo: Codable {
                         authData: account.authData)
                 }),
                 shippingInfo: customerShipping?.customer?.shipping.map({ shipping in
-                    EcommpaySDK.ThreeDSecureShippingInfo(
+                    MglwalletSDK.ThreeDSecureShippingInfo(
                         type: shipping.type,
                         deliveryTime: shipping.deliveryTime,
                         deliveryEmail: shipping.deliveryEmail,
@@ -301,7 +301,7 @@ struct ThreeDSecureInfo: Codable {
                     )
                 }),
                 mpiResultInfo: customerMpiResult?.customer?.mpiResult.map({ mpiResult in
-                    EcommpaySDK.ThreeDSecureMpiResultInfo(
+                    MglwalletSDK.ThreeDSecureMpiResultInfo(
                         acsOperationId: mpiResult.acsOperationId,
                         authenticationFlow: mpiResult.authenticationFlow,
                         authenticationTimestamp: mpiResult.authenticationTimestamp

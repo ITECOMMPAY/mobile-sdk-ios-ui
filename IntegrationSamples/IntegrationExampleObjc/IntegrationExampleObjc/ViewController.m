@@ -3,19 +3,19 @@
 //  IntegrationExampleObjc
 //
 //  Created by Deniss Kaibagarovs on 07/02/2019.
-//  Copyright © 2019 Ecommpay. All rights reserved.
+//  Copyright © 2019 Mglwallet. All rights reserved.
 //
 
 #import "ViewController.h"
 #import "IntegrationExampleObjc-Swift.h"
 
-#import <EcommpaySDK/EcommpaySDK.h>
+#import <MglwalletSDK/MglwalletSDK.h>
 
 #define SECRET @"your_secret"
 #define PROJECT_ID 10 // your project id
 
 @interface ViewController ()
-@property (nonatomic, strong) EcommpaySDK *ecommpaySDK;
+@property (nonatomic, strong) MglwalletSDK *mglwalletSDK;
 @end
 
 @implementation ViewController
@@ -24,7 +24,7 @@
     [super viewDidAppear:animated];
     
     // Init SDK
-    self.ecommpaySDK = [[EcommpaySDK alloc] init];
+    self.mglwalletSDK = [[MglwalletSDK alloc] init];
     
     // Create payment info with product information
     PaymentOptions *paymentOptions = [self getPaymentOptionsAllParams];
@@ -41,8 +41,8 @@
     //enable test environment
     paymentOptions.mockModeType = MockModeTypeSuccess; // built in mocks will be used instead of making real server requests to server
     
-    [self.ecommpaySDK presentPaymentAt:self paymentOptions:paymentOptions completionHandler:^(PaymentResult *result) {
-        NSLog(@"ecommpaySDK finished with status %ld", (long)result.status);
+    [self.mglwalletSDK presentPaymentAt:self paymentOptions:paymentOptions completionHandler:^(PaymentResult *result) {
+        NSLog(@"mglwalletSDK finished with status %ld", (long)result.status);
         switch (result.status) {
             case PaymentStatusSuccess:
             case PaymentStatusDecline:

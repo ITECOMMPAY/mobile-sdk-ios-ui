@@ -1,9 +1,9 @@
 //
 //  TranslationKey.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Виталий Морозов on 08.09.2021.
-//  Copyright © 2021 Ecommpay. All rights reserved.
+//  Copyright © 2021 Mglwallet. All rights reserved.
 //
 
 import Foundation

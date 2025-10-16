@@ -444,7 +444,6 @@ class ConfigGenerator:
         try:
             self._generate_app_config()
             self._generate_config_index()
-            self._update_gitignore()
             
             print("\n All configuration files generated successfully!")
             
@@ -519,25 +518,6 @@ public struct Config {
             print(f"      {filename} created")
         except IOError as e:
             raise Exception(f"Failed to write file {filename}: {e}")
-    
-    def _update_gitignore(self) -> None:
-        """Updates .gitignore to exclude generated files"""
-        gitignore_path = Path(".gitignore")
-        
-        generated_entry = f"\n# Automatically generated configuration files\n{self.output_dir}/\n"
-        
-        if gitignore_path.exists():
-            with open(gitignore_path, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            if str(self.output_dir) not in content:
-                with open(gitignore_path, 'a', encoding='utf-8') as f:
-                    f.write(generated_entry)
-                print("      .gitignore updated")
-        else:
-            with open(gitignore_path, 'w', encoding='utf-8') as f:
-                f.write(generated_entry)
-            print("      .gitignore created")
 
 
 def load_config_from_file(config_file: str) -> Dict[str, Any]:

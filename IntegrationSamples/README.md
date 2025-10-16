@@ -1,9 +1,9 @@
-[![CocoaPods](https://img.shields.io/cocoapods/v/EcommpaySDK_UI.svg?style=flat)](https://github.com/ITECOMMPAY/paymentpage-sdk-ios-ui)
+[![CocoaPods](https://img.shields.io/cocoapods/v/MglwalletSDK_UI.svg?style=flat)](https://github.com/ITMGLWALLET/paymentpage-sdk-ios-ui)
 
-Ecommpay SDK UI for iOS
+Mglwallet SDK UI for iOS
 ===========
 
-SDK for iOS is a software development kit for fast integration of the ECommPay payment solutions right in your mobile app for iOS. With SDK for iOS, you can quickly build and offer your customers a fast checkout experience from in your iOS app. In this section you will find information about using SDK for iOS as well as Swift and Objective-C code samples.
+SDK for iOS is a software development kit for fast integration of the Mglwallet payment solutions right in your mobile app for iOS. With SDK for iOS, you can quickly build and offer your customers a fast checkout experience from in your iOS app. In this section you will find information about using SDK for iOS as well as Swift and Objective-C code samples.
 
 General information about SDK for iOS
 -------------------------------------
@@ -22,8 +22,8 @@ After you integrate an SDK for iOS library into your iOS app, checkout payment i
 
 1.  Your client app creates an instance of payment object with all the necessary checkout details.
 2.  On the basis of the payment object parameters, the back end part of you app generates the signature for checkout request.
-3.  You call a special method of the payment object to have the client app initiate a checkout request and send it to the ECommPay payment platform.
-4.  The ECommPay payment platform processes the checkout request and performs the payment.
+3.  You call a special method of the payment object to have the client app initiate a checkout request and send it to the Mglwallet payment platform.
+4.  The Mglwallet payment platform processes the checkout request and performs the payment.
 5.  The payment platform sends the payment processing results to the client app.
 6.  The payment platform sends a callback with the payment processing results to the callback URL you specified.
 
@@ -32,19 +32,19 @@ Adding library in your project
 
 ### Importing libraries in Swift
 
-Listed below are the instructions on how to import a ECommPay library into your iOS app.
+Listed below are the instructions on how to import a Mglwallet library into your iOS app.
 
-1.  Copy the `ecommpaySDK.xcframework` file in the project folder of you iOS app.
+1.  Copy the `mglwalletSDK.xcframework` file in the project folder of you iOS app.
 2.  Add the library into your project. When using Xcode 12, you need to do the following:
     1.  Open the target of your project.
     2.  Select General > Embedded Binaries.
     3.  Click +.
     4.  Click Add Other.
-    5.  Select the `ecommpaySDK.xcframework` file and click Add.
+    5.  Select the `mglwalletSDK.xcframework` file and click Add.
 3.  Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 4.  If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
     
-    The ECommPay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+    The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
     
     If your iOS app requests user location information, you can skip this step.
     
@@ -52,21 +52,21 @@ Listed below are the instructions on how to import a ECommPay library into your 
 
 ### Importing libraries in Objective-C
 
-Listed below are the instructions on how to import a ECommPay library into your iOS app.
+Listed below are the instructions on how to import a Mglwallet library into your iOS app.
 
-1.  Copy the `ecommpaySDK.xcframework` file in the project folder of you iOS app.
+1.  Copy the `mglwalletSDK.xcframework` file in the project folder of you iOS app.
 2.  Add the library into your project. When using Xcode 12, you need to do the following:
     1.  Open the target of your project.
     2.  Select General > Embedded Binaries.
     3.  Click +.
     4.  Click Add Other.
-    5.  Select the `ecommpaySDK.xcframework` file and click Add.
+    5.  Select the `mglwalletSDK.xcframework` file and click Add.
     6.  Select Build Settings.
     7.  Set Always embed swift embedded libraries to Yes.
 3.  Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 4.  If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
     
-    The ECommPay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+    The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
     
     If your iOS app requests user location information, you can skip this step.
     
@@ -80,13 +80,13 @@ Listed below are the instructions on how to import the libraries via CocoaPods.
     
         target 'App' do
           # Pods for App
-          pod 'EcommpaySDK_UI', '2.0.0'
+          pod 'MglwalletSDK_UI', '2.0.0'
         end
     
 2.  Add key NSCameraUsageDescription with value `permission is needed in order to scan card` to the Info.plist file.
 3.  If your iOS app does not use user location information, add the NSLocationWhenInUseUsageDescription key with the `fraud prevention` value in the Info.plist file.
     
-    The ECommPay libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
+    The Mglwallet libraries code does not request user location, if the request is not initiated by the host app, but App Store requires that the NSLocationWhenInUseUsageDescription key value is not empty.
     
     If your iOS app requests user location information, you can skip this step.
     
@@ -103,11 +103,11 @@ To open payment form, do the following:
 
 1.  Import the library:
     
-        import ecommpaySDK
+        import mglwalletSDK
     
-2.  Declare the reference to instance of `EcommpaySDK` class in you app (for example, inside the `viewDidLoad` method):
+2.  Declare the reference to instance of `MglwalletSDK` class in you app (for example, inside the `viewDidLoad` method):
     
-        let sdkFacade = EcommpaySDK()
+        let sdkFacade = MglwalletSDK()
     
 3.  Create an object named `PaymentOptions` with all the required parameters and any number of optional parameters, for example:
     
@@ -121,7 +121,7 @@ To open payment form, do the following:
     
     Here are the required parameters:
     
-    *   projectID—project (merchant) ID ECommPay assigned you
+    *   projectID—project (merchant) ID Mglwallet assigned you
     *   paymentID—payment ID, must be unique within the project
     *   paymentAmount—payment amount in minor currency units
     *   paymentCurrency—payment currency code according to ISO-4217 alpha-3
@@ -152,7 +152,7 @@ To open payment form, do the following:
 8.  Open the payment form by using the following code:
     
         sdkFacade.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
-           print("ECommPay SDK finished with status \\(result.status.rawValue)")
+           print("Mglwallet SDK finished with status \\(result.status.rawValue)")
            ...
          }
         
@@ -165,11 +165,11 @@ To open payment form, do the following:
 
 1.  Import the library:
     
-        #import <ecommpaySDK/ECommPayhostsSDK.h>
+        #import <mglwalletSDK/MglwallethostsSDK.h>
     
-2.  Declare the EcommpaySDK library in you app (for example, inside the `viewDidLoad` method).
+2.  Declare the MglwalletSDK library in you app (for example, inside the `viewDidLoad` method).
     
-        EcommpaySDK *sdkFacade = [[EcommpaySDK alloc] init];
+        MglwalletSDK *sdkFacade = [[MglwalletSDK alloc] init];
     
 3.  Create an object named `PaymentOptions` with all the required parameters and any number of optional parameters, for example:
     
@@ -183,7 +183,7 @@ To open payment form, do the following:
     
     Here are the required parameters:
     
-    *   projectID—project (merchant) ID ECommPay assigned you
+    *   projectID—project (merchant) ID Mglwallet assigned you
     *   paymentID—payment ID, must be unique within the project
     *   paymentAmount—payment amount in minor currency units
     *   paymentCurrency—payment currency code according to ISO-4217 alpha-3
@@ -215,7 +215,7 @@ To open payment form, do the following:
     
         [sdkFacade presentPaymentAt:self paymentOptions:paymentOptions 
              completionHandler:^(PaymentResult *result) {
-             NSLog(@"ECommPay SDK finished with status %ld", (long)result.status);
+             NSLog(@"Mglwallet SDK finished with status %ld", (long)result.status);
              ...
          }];
     
@@ -230,7 +230,7 @@ To receive and process response with the payment processing results you need to 
 Figure: Receiving response in Swift
 
     sdkFacade.presentPayment(at: self, paymentOptions: paymentOptions) { (result) in
-       print("ECommPay SDK finished with status \(result.status.rawValue)")
+       print("Mglwallet SDK finished with status \(result.status.rawValue)")
        if let error = result.error { //// if error encountered
           print("ErrorCode: \(error.code) message: \(error.message)")
        }
@@ -240,7 +240,7 @@ Figure: Receiving response in Objective-C
 
     [self.sdkFacade presentPaymentAt:self paymentOptions:paymentOptions
         completionHandler:^(PaymentResult *result) {
-            NSLog(@"ECommPay SDK finished with status %ld", (long)result.status);
+            NSLog(@"Mglwallet SDK finished with status %ld", (long)result.status);
             if(result.error != NULL) { // if error encountered
                 NSLog(@"Error code: %@ %@", result.error.codeString, result.error.message);
             }

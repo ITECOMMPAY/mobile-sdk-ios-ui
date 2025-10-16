@@ -1,6 +1,6 @@
 //
 //  ExpandingTextView.swift
-//  EcommpaySample
+//  MglwalletSample
 //
 //  Created by Ivan Krapivtsev on 01.11.2022.
 //

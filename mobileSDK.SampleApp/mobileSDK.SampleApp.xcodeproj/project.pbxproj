@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		752AF8352E44D63400D14658 /* EcommpaySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 752AF8342E44D63400D14658 /* EcommpaySDK */; };
+		752AF8352E44D63400D14658 /* MglwalletSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 752AF8342E44D63400D14658 /* MglwalletSDK */; };
 		8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
 		845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D428B33DFA001C2A24 /* MainScreenState.swift */; };
 		845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D828B340A3001C2A24 /* PaymentID.swift */; };
-		845BB1DE28B35592001C2A24 /* Ecommpay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DD28B35592001C2A24 /* Ecommpay.swift */; };
+		845BB1DE28B35592001C2A24 /* Mglwallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DD28B35592001C2A24 /* Mglwallet.swift */; };
 		845FC81A28AE153300C71288 /* mobileSDK_SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81928AE153300C71288 /* mobileSDK_SampleApp.swift */; };
 		845FC81C28AE153300C71288 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FC81B28AE153300C71288 /* MainScreen.swift */; };
 		845FC81E28AE153400C71288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845FC81D28AE153400C71288 /* Assets.xcassets */; };
@@ -21,17 +21,15 @@
 		84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */; };
 		84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */; };
 		B3AB476A296BFF9F00B2EED5 /* RecipientInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */; };
-		CED706FB2E9FF0050088AFFE /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED706F92E9FF0050088AFFE /* ConfigIndex.swift */; };
-		CED706FC2E9FF0050088AFFE /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED706FA2E9FF0050088AFFE /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcommpaySample.entitlements; sourceTree = "<group>"; };
+		840304B428B74E7E00DE38D3 /* MglwalletSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MglwalletSample.entitlements; sourceTree = "<group>"; };
 		8434FB4F28B338DB00814D93 /* SignatureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureUtils.swift; sourceTree = "<group>"; };
 		845BB1D428B33DFA001C2A24 /* MainScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenState.swift; sourceTree = "<group>"; };
 		845BB1D828B340A3001C2A24 /* PaymentID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentID.swift; sourceTree = "<group>"; };
-		845BB1DD28B35592001C2A24 /* Ecommpay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ecommpay.swift; sourceTree = "<group>"; };
-		845FC81628AE153300C71288 /* EcommpaySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EcommpaySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		845BB1DD28B35592001C2A24 /* Mglwallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mglwallet.swift; sourceTree = "<group>"; };
+		845FC81628AE153300C71288 /* MglwalletSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MglwalletSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845FC81928AE153300C71288 /* mobileSDK_SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mobileSDK_SampleApp.swift; sourceTree = "<group>"; };
 		845FC81B28AE153300C71288 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		845FC81D28AE153400C71288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,8 +39,6 @@
 		84CDC3E12910E62D00E3EB04 /* ThreeDSecureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDSecureScreen.swift; sourceTree = "<group>"; };
 		84CDC3E32911268000E3EB04 /* ExpandingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingTextView.swift; sourceTree = "<group>"; };
 		B3AB4768296BFF9700B2EED5 /* RecipientInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientInfoScreen.swift; sourceTree = "<group>"; };
-		CED706F92E9FF0050088AFFE /* ConfigIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConfigIndex.swift; path = ../mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/ConfigIndex.swift; sourceTree = "<group>"; };
-		CED706FA2E9FF0050088AFFE /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfig.swift; path = ../mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				752AF8352E44D63400D14658 /* EcommpaySDK in Frameworks */,
+				752AF8352E44D63400D14658 /* MglwalletSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +82,7 @@
 		845BB1DC28B3557E001C2A24 /* Brands */ = {
 			isa = PBXGroup;
 			children = (
-				845BB1DD28B35592001C2A24 /* Ecommpay.swift */,
+				845BB1DD28B35592001C2A24 /* Mglwallet.swift */,
 			);
 			name = Brands;
 			sourceTree = "<group>";
@@ -94,9 +90,7 @@
 		845FC80D28AE153300C71288 = {
 			isa = PBXGroup;
 			children = (
-				CED706FA2E9FF0050088AFFE /* AppConfig.swift */,
-				CED706F92E9FF0050088AFFE /* ConfigIndex.swift */,
-				840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */,
+				840304B428B74E7E00DE38D3 /* MglwalletSample.entitlements */,
 				845FC81828AE153300C71288 /* mobileSDK.SampleApp */,
 				845FC82728AE157800C71288 /* Frameworks */,
 			);
@@ -105,7 +99,7 @@
 		845FC81728AE153300C71288 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				845FC81628AE153300C71288 /* EcommpaySample.app */,
+				845FC81628AE153300C71288 /* MglwalletSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,9 +164,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		845FC81528AE153300C71288 /* EcommpaySample */ = {
+		845FC81528AE153300C71288 /* MglwalletSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 845FC82428AE153400C71288 /* Build configuration list for PBXNativeTarget "EcommpaySample" */;
+			buildConfigurationList = 845FC82428AE153400C71288 /* Build configuration list for PBXNativeTarget "MglwalletSample" */;
 			buildPhases = (
 				845FC81228AE153300C71288 /* Sources */,
 				845FC81328AE153300C71288 /* Frameworks */,
@@ -182,12 +176,12 @@
 			);
 			dependencies = (
 			);
-			name = EcommpaySample;
+			name = MglwalletSample;
 			packageProductDependencies = (
-				752AF8342E44D63400D14658 /* EcommpaySDK */,
+				752AF8342E44D63400D14658 /* MglwalletSDK */,
 			);
 			productName = mobileSDK.SampleApp;
-			productReference = 845FC81628AE153300C71288 /* EcommpaySample.app */;
+			productReference = 845FC81628AE153300C71288 /* MglwalletSample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -225,7 +219,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				845FC81528AE153300C71288 /* EcommpaySample */,
+				845FC81528AE153300C71288 /* MglwalletSample */,
 			);
 		};
 /* End PBXProject section */
@@ -247,14 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED706FB2E9FF0050088AFFE /* ConfigIndex.swift in Sources */,
-				CED706FC2E9FF0050088AFFE /* AppConfig.swift in Sources */,
 				845FC81C28AE153300C71288 /* MainScreen.swift in Sources */,
 				8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */,
 				845FC81A28AE153300C71288 /* mobileSDK_SampleApp.swift in Sources */,
 				845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */,
 				845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */,
-				845BB1DE28B35592001C2A24 /* Ecommpay.swift in Sources */,
+				845BB1DE28B35592001C2A24 /* Mglwallet.swift in Sources */,
 				84CDC3E42911268000E3EB04 /* ExpandingTextView.swift in Sources */,
 				84BCB96A2912189B00FAB064 /* RecurrentSettingsScreen.swift in Sources */,
 				84CDC3E22910E62D00E3EB04 /* ThreeDSecureScreen.swift in Sources */,
@@ -386,7 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MglwalletSample.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 78;
@@ -407,7 +399,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mglwallet.sdk.testclient1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -421,7 +413,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = EcommpaySample.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MglwalletSample.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 78;
@@ -442,7 +434,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ecommpay.sdk.testclient1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mglwallet.sdk.testclient1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -463,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		845FC82428AE153400C71288 /* Build configuration list for PBXNativeTarget "EcommpaySample" */ = {
+		845FC82428AE153400C71288 /* Build configuration list for PBXNativeTarget "MglwalletSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				845FC82528AE153400C71288 /* Debug */,
@@ -482,10 +474,10 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		752AF8342E44D63400D14658 /* EcommpaySDK */ = {
+		752AF8342E44D63400D14658 /* MglwalletSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 752AF8332E44D63400D14658 /* XCLocalSwiftPackageReference "../" */;
-			productName = EcommpaySDK;
+			productName = MglwalletSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

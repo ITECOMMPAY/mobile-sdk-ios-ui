@@ -1,9 +1,9 @@
 //
 //  AdditionalField.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Deniss Kaibagarovs on 03/05/2019.
-//  Copyright © 2019 Ecommpay. All rights reserved.
+//  Copyright © 2019 Mglwallet. All rights reserved.
 //
 #if !DEVELOPMENT
 @_implementationOnly import MsdkCore

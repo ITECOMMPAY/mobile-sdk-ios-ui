@@ -1,6 +1,6 @@
 //
 //  CardTypesManager.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Ivan Krapivtsev on 26.07.2022.
 //

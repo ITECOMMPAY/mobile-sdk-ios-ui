@@ -1,6 +1,6 @@
 //
 //  InitDelegateProxy.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Ivan Krapivtsev on 11.07.2022.
 //

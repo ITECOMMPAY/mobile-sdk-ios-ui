@@ -1,6 +1,6 @@
 //
 //  RecurrentSettingsScreen.swift
-//  EcommpaySample
+//  MglwalletSample
 //
 //  Created by Ivan Krapivtsev on 31.10.2022.
 //

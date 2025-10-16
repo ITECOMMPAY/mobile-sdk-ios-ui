@@ -1,9 +1,9 @@
 //
 //  RecipientInfo.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Ivan Krapivtsev on 13.05.2022.
-//  Copyright © 2022 Ecommpay. All rights reserved.
+//  Copyright © 2022 Mglwallet. All rights reserved.
 //
 
 import Foundation

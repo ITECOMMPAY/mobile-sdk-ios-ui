@@ -1,6 +1,6 @@
 //
 //  ProtocolConformance.swift
-//  ecommpaySDK
+//  mglwalletSDK
 //
 //  Created by Ivan Krapivtsev on 21.07.2022.
 //
