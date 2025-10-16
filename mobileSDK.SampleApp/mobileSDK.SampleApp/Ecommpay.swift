@@ -7,6 +7,7 @@
 
 import Foundation
 import EcommpaySDK
+import SwiftUI
 
 func getBrandName() -> String {
     return String(#file.split(separator: "/").last?.split(separator: ".").first ?? "")
@@ -23,7 +24,7 @@ func getCoreVersionString() -> String {
 let defaultPaymentData = PaymentData(
     brandColor: nil,
     image: nil,
-    projectId: 127033,
+    projectId: 109751,
     paymentId: getUniquePaymentID(),
     paymentAmount: 123,
     paymentCurrency: "USD",
@@ -34,9 +35,7 @@ let defaultPaymentData = PaymentData(
     hideSavedWallets: false,
     hideSuccessFinalPage: false,
     hideDeclineFinalPage: false,
-    secretKey: "",
-    apiHost: "sdk.ecommpay.com",
-    wsApiHost: "paymentpage.ecommpay.com",
+    secretKey: "9085e3712fe773da63a9f3f8cd4e1923bbaf2ea33d62d8f36aed286497a8b8dde238d5e353886ee21159b9359b2b9fb24cb97bfb7bee953033901c6d02adf0b9",
     merchantId: "BCR2DN6TZ75OBLTH",
     merchantName: "Example Merchant",
     mockModeType: MockModeType.disabled,

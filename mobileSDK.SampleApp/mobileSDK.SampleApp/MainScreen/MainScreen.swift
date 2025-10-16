@@ -39,10 +39,8 @@ struct MainScreen: View {
     
     @State var simulateCrash: Bool = false
 
-    let sdk: EcommpaySDK = EcommpaySDK()
-
-    @State var apiHost: String = EcommpaySDK.apiHost
-    @State var socketHost: String = EcommpaySDK.socketHost
+    @State var apiHost: String = Ecommpay.apiHost
+    @State var socketHost: String = Ecommpay.socketHost
 
     var body: some View {
         mainPage
@@ -335,8 +333,8 @@ struct MainScreen: View {
     }
 
     func resetUrls() {
-        apiHost = EcommpaySDK.apiHost
-        socketHost = EcommpaySDK.socketHost
+        apiHost = Ecommpay.apiHost
+        socketHost = Ecommpay.socketHost
     }
 
     var applePayParams: some View {
@@ -406,7 +404,7 @@ struct MainScreen: View {
     
     func presentPaymentPage(action: PaymentOptions.ActionType) {
         self.action = action
-        sdk = Ecommpay(apiUrlString: paymentData.apiHost, socketUrlString: paymentData.wsApiHost)
+        sdk = Ecommpay(apiUrlString: apiHost, socketUrlString: socketHost)
         isPaymentPagePresented = true
         
         if simulateCrash {

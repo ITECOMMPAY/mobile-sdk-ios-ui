@@ -39,6 +39,16 @@ public class Ecommpay: NSObject {
         interactor = SDKInteractor()
     }
 
+    /// Debug initializer, should not be present in release version!
+    ///
+    /// - Parameters:
+    ///   - url_api: API url to send requests to
+    ///   - url_socket: Socket url to listen for callbacks
+    @objc(initWithApi:socket:)
+    public init(apiUrlString: String, socketUrlString: String) {
+        interactor = SDKInteractor(apiUrlString: apiUrlString, socketUrlString: socketUrlString)
+    }
+
     /// Presents UI to begin payment flow
     ///
     /// - Parameters:
