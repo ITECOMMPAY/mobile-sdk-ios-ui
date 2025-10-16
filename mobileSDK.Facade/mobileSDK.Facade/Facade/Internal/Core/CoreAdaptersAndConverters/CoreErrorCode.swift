@@ -1,6 +1,6 @@
 //
 //  CoreErrorCode.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 07.07.2022.
 //

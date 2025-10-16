@@ -1,6 +1,6 @@
 //
 //  PayDelegateProxy.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 21.07.2022.
 //

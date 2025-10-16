@@ -1,6 +1,6 @@
 //
 //  FieldType.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 29.07.2022.
 //

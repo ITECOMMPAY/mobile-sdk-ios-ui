@@ -3,18 +3,18 @@
 //  IntegrationExampleSwift
 //
 //  Created by Deniss Kaibagarovs on 07/02/2019.
-//  Copyright © 2019 Ecommpay. All rights reserved.
+//  Copyright © 2019 Etoedto. All rights reserved.
 //
 
 import UIKit
-import EcommpaySDK
+import EtoedtoSDK
 
 class ViewController: UIViewController {
 
     let secret = "your_secret"
     let project_id: Int32 = 10 // your project id
 
-    let ecompaySDK = EcommpaySDK()
+    let ecompaySDK = EtoedtoSDK()
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         paymentOptions.signature = signature
 
         ecompaySDK.presentPayment(at: self, paymentOptions: paymentOptions) { result in
-            print("ecommpaySDK finished with status \(result.status.rawValue)")
+            print("etoedtoSDK finished with status \(result.status.rawValue)")
             switch  result.status {
             case .Success, .Decline:
                 print("payment: \(String(describing: result.payment))")

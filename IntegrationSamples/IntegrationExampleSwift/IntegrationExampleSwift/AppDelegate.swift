@@ -3,7 +3,7 @@
 //  IntegrationExampleSwift
 //
 //  Created by Deniss Kaibagarovs on 07/02/2019.
-//  Copyright © 2019 Ecommpay. All rights reserved.
+//  Copyright © 2019 Etoedto. All rights reserved.
 //
 
 import UIKit

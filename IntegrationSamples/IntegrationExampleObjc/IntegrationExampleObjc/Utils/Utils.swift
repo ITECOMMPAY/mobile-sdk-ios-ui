@@ -2,12 +2,12 @@
 //  Utils.swift
 //  TestClient
 //
-//  Created by Ecommpay on 8/10/18.
-//  Copyright © 2018 Ecommpay. All rights reserved.
+//  Created by Etoedto on 8/10/18.
+//  Copyright © 2018 Etoedto. All rights reserved.
 //
 
 import UIKit
-import EcommpaySDK
+import EtoedtoSDK
 
 class Utils: NSObject {
     @objc(signature:secret:)

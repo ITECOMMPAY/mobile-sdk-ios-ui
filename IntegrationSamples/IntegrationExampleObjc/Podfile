@@ -6,5 +6,5 @@ target 'IntegrationExampleObjc' do
   use_frameworks!
 
   # Pods for IntegrationExampleObjc
-  pod 'EcommpaySDK_UI', '3.3.5'
+  pod 'EtoedtoSDK_UI', '3.3.5'
 end

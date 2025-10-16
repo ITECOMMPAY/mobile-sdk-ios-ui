@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EcommpaySDK
+import EtoedtoSDK
 
 struct ContentView: View {
     private let secret = "your_secret"
@@ -14,7 +14,7 @@ struct ContentView: View {
 
     @State private var result: PaymentResult?
     @State private var isPaymentPagePresented: Bool = true
-    @State private var ecompaySDK = EcommpaySDK()
+    @State private var ecompaySDK = EtoedtoSDK()
 
     private var paymentOptions: PaymentOptions {
         // Create payment info with product information

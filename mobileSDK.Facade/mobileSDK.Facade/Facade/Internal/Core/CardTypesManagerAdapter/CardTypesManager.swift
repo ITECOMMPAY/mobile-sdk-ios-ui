@@ -1,6 +1,6 @@
 //
 //  CardTypesManager.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 26.07.2022.
 //

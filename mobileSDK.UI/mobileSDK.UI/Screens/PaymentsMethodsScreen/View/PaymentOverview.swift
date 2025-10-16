@@ -46,7 +46,7 @@ struct PaymentOverview: View {
     }
 
     var logo: some View {
-        logoImage ?? IR.ecommpayLogo.image
+        logoImage ?? IR.etoedtoLogo.image
     }
 
     var price: some View {

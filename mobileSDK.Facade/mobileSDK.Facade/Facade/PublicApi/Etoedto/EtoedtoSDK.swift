@@ -1,9 +1,9 @@
 //
-//  EcommpaySDK.swift
-//  ecommpaySDK
+//  EtoedtoSDK.swift
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 25.01.2022.
-//  Copyright © 2022 Ecommpay. All rights reserved.
+//  Copyright © 2022 Etoedto. All rights reserved.
 //
 
 import Foundation
@@ -12,26 +12,17 @@ import UIKit
 
 public typealias PaymentCompletion = (_ result: PaymentResult) -> Void
 
-public class Ecommpay: NSObject {
+public class Etoedto: NSObject {
     /// The key is used to get error-code from UserInfo of NSError instance returned while mobile SDK session initialisation
     @objc public static let kSDKInitErrorCodeKey = "SDKInitErrorCode"
-    /// Version of currently installed Ecommpay SDK
+    /// Version of currently installed Etoedto SDK
     @objc public static let sdkVersion: String = "3.10.1"
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
-    @objc public static var apiHost: String {
-        #if DEBUG
-        return Config.app.apiHost
-        #else
-        return ""
-        #endif
-    }
-    @objc public static var socketHost: String {
-        #if DEBUG
-        return Config.app.socketHost
-        #else
-        return ""
-        #endif
-    }
+    @objc public static var defaultApiHost: String = Config.app.apiHost
+    @objc public static var defaultSocketHost: String = Config.app.socketHost
+    
+    @objc public var apiHost: String = Config.app.apiHost
+    @objc public var socketHost: String = Config.app.socketHost
 
     private let interactor: SDKInteractor
 
@@ -46,6 +37,9 @@ public class Ecommpay: NSObject {
     ///   - url_socket: Socket url to listen for callbacks
     @objc(initWithApi:socket:)
     public init(apiUrlString: String, socketUrlString: String) {
+        self.apiHost = apiUrlString
+        self.socketHost = socketUrlString
+
         interactor = SDKInteractor(apiUrlString: apiUrlString, socketUrlString: socketUrlString)
     }
 

@@ -1,6 +1,6 @@
 //
 //  CardRemoveWrapper.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 30.08.2022.
 //

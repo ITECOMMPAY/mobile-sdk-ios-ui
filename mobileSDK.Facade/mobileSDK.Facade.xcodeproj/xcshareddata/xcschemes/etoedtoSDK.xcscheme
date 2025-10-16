@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "849C532F28BF62C800C1CF71"
-               BuildableName = "ecommpaySDK.framework"
-               BlueprintName = "ecommpaySDK"
+               BuildableName = "etoedtoSDK.framework"
+               BlueprintName = "etoedtoSDK"
                ReferencedContainer = "container:mobileSDK.Facade.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "849C532F28BF62C800C1CF71"
-            BuildableName = "ecommpaySDK.framework"
-            BlueprintName = "ecommpaySDK"
+            BuildableName = "etoedtoSDK.framework"
+            BlueprintName = "etoedtoSDK"
             ReferencedContainer = "container:mobileSDK.Facade.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

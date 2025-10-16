@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "845FC81528AE153300C71288"
-               BuildableName = "EcommpaySample.app"
-               BlueprintName = "EcommpaySample"
+               BuildableName = "EtoedtoSample.app"
+               BlueprintName = "EtoedtoSample"
                ReferencedContainer = "container:mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845FC81528AE153300C71288"
-            BuildableName = "EcommpaySample.app"
-            BlueprintName = "EcommpaySample"
+            BuildableName = "EtoedtoSample.app"
+            BlueprintName = "EtoedtoSample"
             ReferencedContainer = "container:mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845FC81528AE153300C71288"
-            BuildableName = "EcommpaySample.app"
-            BlueprintName = "EcommpaySample"
+            BuildableName = "EtoedtoSample.app"
+            BlueprintName = "EtoedtoSample"
             ReferencedContainer = "container:mobileSDK.SampleApp/mobileSDK.SampleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

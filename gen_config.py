@@ -7,7 +7,7 @@ configuration files locally on the developer's machine.
 It also supports renaming functionality for refactoring projects.
 
 Usage:
-    python generate_config.py --api-url https://sdk.api.example.com --environment production
+    python generate_config.py --api-url sdk.api.example.com --environment production
     python generate_config.py --config config.json
     python generate_config.py --rename-config rename_config.json
 """
@@ -554,8 +554,8 @@ def load_config_from_file(config_file: str) -> Dict[str, Any]:
 
 def create_sample_config_file(filename: str = "config.json") -> None:
     sample_config = {
-        "api_host": "https://sdk.api.example.com",
-        "socket_host" : "https://paymentpage.api.example.com",
+        "api_host": "sdk.api.example.com",
+        "socket_host" : "paymentpage.api.example.com",
     }
     
     with open(filename, 'w', encoding='utf-8') as f:

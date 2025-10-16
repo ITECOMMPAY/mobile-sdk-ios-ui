@@ -1,6 +1,6 @@
 //
 //  PaymentMethodType.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 22.07.2022.
 //

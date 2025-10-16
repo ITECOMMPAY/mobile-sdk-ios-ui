@@ -1,9 +1,9 @@
 //
 //  ThreeDSecureInfo.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Виталий Морозов on 09.04.2020.
-//  Copyright © 2020 Ecommpay. All rights reserved.
+//  Copyright © 2020 Etoedto. All rights reserved.
 //
 import Foundation
 #if !DEVELOPMENT

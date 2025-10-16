@@ -1,6 +1,6 @@
 //
 //  PayInteractorWrapper.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 25.07.2022.
 //

@@ -1,6 +1,6 @@
 //
 //  ThreeDSecureScreen.swift
-//  EcommpaySample
+//  EtoedtoSample
 //
 //  Created by Ivan Krapivtsev on 01.11.2022.
 //

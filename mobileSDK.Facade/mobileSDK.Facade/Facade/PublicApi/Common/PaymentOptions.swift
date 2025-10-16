@@ -2,7 +2,7 @@
 //  PaymentOptions.swift
 //  mobilesdk-ios
 //
-//  Copyright © 2018 Ecommpay. All rights reserved.
+//  Copyright © 2018 Etoedto. All rights reserved.
 //
 
 import Foundation

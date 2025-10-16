@@ -1,12 +1,12 @@
 //
-//  Ecommpay.swift
+//  Etoedto.swift
 //  SampleApp
 //
 //  Created by Ivan Krapivtsev on 22.08.2022.
 //
 
 import Foundation
-import EcommpaySDK
+import EtoedtoSDK
 import SwiftUI
 
 func getBrandName() -> String {
@@ -14,11 +14,11 @@ func getBrandName() -> String {
 }
 
 func getSDKVersionString() -> String {
-    return Ecommpay.sdkVersion
+    return Etoedto.sdkVersion
 }
 
 func getCoreVersionString() -> String {
-    return Ecommpay.coreVerion
+    return Etoedto.coreVerion
 }
 
 let defaultPaymentData = PaymentData(

@@ -1,9 +1,9 @@
 //
 //  PaymentResult.swift
-//  ecommpaySDK
+//  etoedtoSDK
 //
 //  Created by Ivan Krapivtsev on 25.01.2022.
-//  Copyright © 2022 Ecommpay. All rights reserved.
+//  Copyright © 2022 Etoedto. All rights reserved.
 //
 
 import Foundation

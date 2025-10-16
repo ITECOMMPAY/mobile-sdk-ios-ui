@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import EcommpaySDK
+import EtoedtoSDK
 import SwiftUI
 
 struct PaymentData {
@@ -31,7 +31,7 @@ struct PaymentData {
     var regionCode: String
     var storedCardType: String
 
-    var applePayMerchantID: String = "merchant.ecommpayDemo.sdk"
+    var applePayMerchantID: String = "merchant.etoedtoDemo.sdk"
     var applePayDescription: String = "Apple Pay Description"
     var applePayCountryCode: String = "US"
 
