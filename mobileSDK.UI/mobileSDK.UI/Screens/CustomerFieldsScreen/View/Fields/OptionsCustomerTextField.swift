@@ -37,11 +37,13 @@ struct OptionsCustomerTextField: View {
         } label: {
             HStack {
                 Text(selectedValue.isEmpty ? customerField.name : selectedValue)
+                    .font(.custom(.primary(size: .s, weight: .regular)))
                     .foregroundColor(UIScheme.color.inputTextPrimary)
-                    .font(.custom(.primary(size: .m, weight: .regular)))
                 Spacer()
-                Image(systemName: "chevron.down")
-                    .foregroundColor(.secondary)
+                Image(systemName: "arrowtriangle.down.fill")
+                    .resizable()
+                    .frame(width: 10, height: 6)
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
             }
             .padding()
             .background(UIScheme.color.inputNeutral)

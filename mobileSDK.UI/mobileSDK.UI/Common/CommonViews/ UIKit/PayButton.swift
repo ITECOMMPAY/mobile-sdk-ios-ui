@@ -16,7 +16,7 @@ struct PayButton<Label: View>: View {
         Button(action: action) {
             label
                 .frame(maxWidth: .infinity, alignment: .center)
-                .foregroundColor(.black)
+                .foregroundColor(UIScheme.isDarkTheme ? .white : .black)
         }
         .overlay(
             HStack {
@@ -37,17 +37,6 @@ struct PayButton<Label: View>: View {
         .clipShape(.capsule)
         .opacity(disabled ? 0.3 : 1)
         .disabled(disabled)
-        Button(
-            action: action,
-            label: {
-                label.frame(maxWidth: .infinity)
-                    .frame(height: UIScheme.dimension.payButtonHeight)
-                    .foregroundColor(.black)
-                    .background(UIScheme.color.brandSecondary.opacity(disabled ? 0.3 : 1))
-                    .clipShape(.capsule)
-            }
-        )
-        .disabled(disabled)
     }
 }
 
@@ -64,14 +53,22 @@ struct PayButtonLabel: View {
         
         var title: String {
             switch self {
-            case .pay: return L.button_pay.string
-            case .continue: return L.button_confirmation.string
-            case .tokenize: return L.button_tokenize.string
-            case .verify: return L.button_authorize.string
-            case .proceed: return L.button_proceed.string
-            case .tryAgain: return L.button_try_again.string
-            case .done: return L.button_done.string
-            case .close: return L.button_close.string
+            case .pay:
+                return L.button_pay.string
+            case .continue:
+                return L.button_confirmation.string
+            case .tokenize:
+                return L.button_tokenize.string
+            case .verify:
+                return L.button_authorize.string
+            case .proceed:
+                return L.button_proceed.string
+            case .tryAgain:
+                return L.button_try_again.string
+            case .done:
+                return L.button_done.string
+            case .close:
+                return L.button_close.string
             }
         }
     }
@@ -90,7 +87,7 @@ struct PayButtonLabel: View {
             HStack(spacing: UIScheme.dimension.payButtonPayPriceSpacing) {
                 plainText
                 Text("\(currency) \(amount as NSDecimalNumber, formatter: numberFormatter)")
-                    .font(.custom(.primary(size: .m, weight: .bold)))
+                    .font(.custom(.secondary(size: .s, weight: .bold)))
             }
         default:
             plainText
@@ -99,7 +96,7 @@ struct PayButtonLabel: View {
     
     var plainText: some View {
         Text(style.title)
-            .font(.custom(.primary(size: .m, weight: .regular)))
+            .font(.custom(.secondary(size: .s, weight: .bold)))
     }
 }
 

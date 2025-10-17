@@ -23,7 +23,7 @@ enum ImageResourceKeys: String {
     case cardBackgroundPattern
 
     // Basic payment methods
-    case bankCard
+    case card
     case applePayButtonLogo
     case applePay
     case defaultApsLogo

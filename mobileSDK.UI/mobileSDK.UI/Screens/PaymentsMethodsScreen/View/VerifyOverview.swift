@@ -12,62 +12,26 @@ struct VerifyOverview: View {
     let paymentDescription: String?
     let recurringData: [RecurringDetailsData]
     let logoImage: Image?
-    var isDimBackground: Bool = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
             logo
-            if !recurringData.isEmpty { recurringDetails }
+            
+            if !recurringData.isEmpty {
+                recurringDetails
+            }
+            
             paymentIDView
+            
             details
-        }.frame(maxWidth: .infinity, alignment: .topLeading)
-        .padding(UIScheme.dimension.paymentOverviewSpacing)
-        .background() {
-            cardBackground.opacity(isDimBackground ? 0.4 : 1)
         }
-    }
-    
-    var cardBackground: some View {
-        UIScheme.color.brandPrimary
-            .overlay(
-                IR.cardBackgroundPattern.image?
-                    .resizable(resizingMode: .tile)
-                    .foregroundColor(.white)
-            )
-            .clipShape(
-                .rect(
-                    topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
-                    bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
-                    bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
-                    topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
-                )
-            )
-            .accessibilityHidden(true)
-    }
-
-    private var logo: some View {
-        logoImage ?? IR.ecommpayLogo.image
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding(UIScheme.dimension.paymentOverviewSpacing)
+        .background(cardBackground)
     }
 
     var recurringDetails: some View {
         RecurringDetailsView(details: recurringData)
-    }
-
-    @ViewBuilder
-    private var details: some View {
-        if let paymentDescription = paymentDescription {
-            PaymentDetailsView(
-                details: [
-                    .init(
-                        title: L.title_payment_information_description,
-                        description: paymentDescription,
-                        canBeCopied: false
-                    )
-                ]
-            )
-        } else {
-            EmptyView()
-        }
     }
     
     @ViewBuilder
@@ -85,6 +49,51 @@ struct VerifyOverview: View {
             EmptyView()
         }
     }
+    
+    @ViewBuilder
+    private var details: some View {
+        if let paymentDescription = paymentDescription {
+            PaymentDetailsView(
+                details: [
+                    .init(
+                        title: L.title_payment_information_description,
+                        description: paymentDescription,
+                        canBeCopied: false
+                    )
+                ]
+            )
+        } else {
+            EmptyView()
+        }
+    }
+    
+    private var logo: some View {
+        logoImage?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
+        ?? IR.ecommpayLogo.image?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
+    }
+    
+    private var cardBackground: some View {
+        UIScheme.color.brandPrimary
+            .overlay(
+                IR.cardBackgroundPattern.image?
+                    .renderingMode(.template)
+                    .resizable(resizingMode: .tile)
+                    .foregroundColor(UIScheme.isDarkTheme ? .black : .white)
+            )
+            .clipShape(
+                .rect(
+                    topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+                )
+            )
+            .accessibilityHidden(true)
+    }
 }
 
 #if DEBUG
@@ -100,8 +109,7 @@ struct VerifyOverview_Previews: PreviewProvider {
                     description: .value("November 19, 2022")
                 )
             ],
-            logoImage: IR.applePayButtonLogo.image,
-            isDimBackground: true
+            logoImage: IR.applePayButtonLogo.image
         )
         .padding()
         .previewLayout(.sizeThatFits)

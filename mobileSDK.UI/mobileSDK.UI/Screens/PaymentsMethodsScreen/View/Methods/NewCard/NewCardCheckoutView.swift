@@ -44,74 +44,64 @@ struct NewCardCheckoutView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                
-                PanField(
+        VStack(spacing: 20) {
+            VStack(spacing: 8) {
+                CardView(
+                    isSaved: false,
+                    needCVV: true,
                     paymentMethod: paymentMethod,
-                    cardNumber: $formValues.cardNumber,
-                    isValueValid: $isCardValid,
-                    recognizedCardType: $cardType
+                    formValues: $formValues
                 )
-            }.padding(.top, UIScheme.dimension.formSmallSpacing)
-
-            CardHolderField(
-                cardHolder: $formValues.cardHolder,
-                isValueValid: $isCardHolderValid
-            ).padding(.top, UIScheme.dimension.formSmallSpacing)
-
-            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                ExpiryField(
-                    disabled: false,
-                    expiryString: $formValues.cardExpiry,
-                    isValueValid: $isExpiryValid
+                
+                CardHolderField(
+                    cardHolder: $formValues.cardHolder,
+                    isValueValid: $isCardHolderValid
                 )
-                CvvField(cardType: cardType ?? .unknown, cvvValue: $formValues.cardCVV, isValueValid: $isCVVValid)
-            }
-            .padding(.top, UIScheme.dimension.formSmallSpacing)
-            .padding(.bottom, UIScheme.dimension.formSmallSpacing)
-            if paymentMethod.visibleCustomerFields.shouldBeDisplayed {
-                EmbeddedCustomerFieldsView(visibleCustomerFields: paymentMethod.visibleCustomerFields,
-                                           additionalFields: paymentOptions.uiAdditionalFields,
-                                           customerFieldValues: formValues.customerFieldValues) { fieldsValues, isValid in
-                    formValues.customerFieldValues = fieldsValues
-                    isCustomerFieldsValid = isValid
+                
+                if paymentMethod.visibleCustomerFields.shouldBeDisplayed {
+                    EmbeddedCustomerFieldsView(
+                        visibleCustomerFields: paymentMethod.visibleCustomerFields,
+                        additionalFields: paymentOptions.uiAdditionalFields,
+                        customerFieldValues: formValues.customerFieldValues
+                    ) { fieldsValues, isValid in
+                        formValues.customerFieldValues = fieldsValues
+                        isCustomerFieldsValid = isValid
+                    }
                 }
-                .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
 
-            saveCardCheckbox.padding(.bottom, UIScheme.dimension.formSmallSpacing)
+            saveCardCheckbox
 
             PayButton(label: buttonLabel, disabled: !isFormValid) {
-                payAction(.payNewCardWith(cvv: formValues.cardCVV,
-                                          pan: formValues.cardNumber,
-                                          year: expiry.expiryYear!,
-                                          month: expiry.expiryMonth!,
-                                          cardHolder: formValues.cardHolder,
-                                          saveCard: formValues.isCOFAgreementChecked, 
-                                          customerFields: formValues.customerFieldValues))
+                payAction(
+                    .payNewCardWith(
+                        cvv: formValues.cardCVV,
+                        pan: formValues.cardNumber,
+                        year: expiry.expiryYear!,
+                        month: expiry.expiryMonth!,
+                        cardHolder: formValues.cardHolder,
+                        saveCard: formValues.isCOFAgreementChecked,
+                        customerFields: formValues.customerFieldValues
+                    )
+                )
             }
-            .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
 
-            if !isContinueButton, let recurringDisclaimer = paymentOptions.recurringDisclaimer {
+            if !isContinueButton,
+               let recurringDisclaimer = paymentOptions.recurringDisclaimer {
                 RecurringDisclaimer(text: recurringDisclaimer.string)
-                    .padding(.bottom, UIScheme.dimension.middleSpacing)
             }
         }
-        .padding(.horizontal, UIScheme.dimension.middleSpacing)
     }
     
     @ViewBuilder
     private var saveCardCheckbox: some View {
         if canSaveCard {
             VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-                HStack() {
-                    Toggle(L.title_saved_cards.string, isOn: $formValues.isCOFAgreementChecked)
-                        .toggleStyle(CheckBoxStyle())
-                    Spacer()
-                }
+                Toggle(L.title_saved_cards.string, isOn: $formValues.isCOFAgreementChecked)
+                    .toggleStyle(CheckBoxStyle())
                 if let translationWithLink = L.cof_agreements.translationWithLink {
                     translationWithLink.attributedText
+                        .padding(.leading, 30)
                 }
             }
         } else {
@@ -123,17 +113,17 @@ struct NewCardCheckoutView: View {
         guard !isContinueButton else {
             return PayButtonLabel(style: .continue)
         }
-
+        
         guard paymentOptions.action != .Verify else {
             return PayButtonLabel(style: .verify)
         }
-
+        
         let paymentAmount = paymentOptions.summary.value
         let paymentCurrency = paymentOptions.summary.currency
-
+        
         return PayButtonLabel(style: .pay(amount: paymentAmount, currency: paymentCurrency))
     }
-
+    
     private var isContinueButton: Bool {
         return paymentMethod.visibleCustomerFields.count > UIScheme.countOfVisibleCustomerFields
     }

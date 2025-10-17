@@ -34,10 +34,8 @@ protocol DimensionScheme {
     var smallestCornerRadius: CGFloat { get }
     /// Наименьшая облась нажатия по гайдлайнам интерфейса iOS. **default: 44**
     var minimumTapAreaSize: CGFloat { get }
-    /// Размер обводки полей ввода **default: 1**
+    /// Размер обводки полей ввода **default: 2**
     var inputBorderWidth: CGFloat { get }
-    /// Размер обводки выделеных полей ввода **default: 1**
-    var inputAccentedBorderWidth: CGFloat { get }
     /// Высона карточки с информацией **default: 150**
     var infoCardHeight: CGFloat { get }
     /// Высона карточки с информацией без логотипа**default: 92**
@@ -80,9 +78,7 @@ struct DefaultDimensionScheme: DimensionScheme {
     let buttonCornerRadius: CGFloat = 12
     let smallestCornerRadius: CGFloat = 4
     let minimumTapAreaSize: CGFloat = 44
-    let borderWidth: CGFloat = 1
-    let inputBorderWidth: CGFloat = 1
-    let inputAccentedBorderWidth: CGFloat = 2
+    let inputBorderWidth: CGFloat = 2
     let infoCardHeight: CGFloat = 150
     let valueToCurrencySpacing: CGFloat = 8
     let cancelButtonLoadingSubtitleSpacing: CGFloat = 34

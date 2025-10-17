@@ -20,6 +20,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     let adjustsFontSizeToFitWidth: Bool
     let minimumFontSize: CGFloat
     let isAllowedCharacter: (Character) -> Bool
+    let cornerRadii: RectangleCornerRadii
 
     // MARK: View protocol properties
 
@@ -32,8 +33,21 @@ struct CustomTextField<AccessoryViewType: View>: View {
                         .accessibilityHint(disabled ? "Disabled" : "Double tap to edit")
                     HStack(spacing: .zero) {
                         Text(placeholder)
-                            .foregroundColor(placeholderColor)
-                            .font(.custom(.primary(size: .m, weight: .regular)))
+                            .font(
+                                .custom(
+                                    .primary(
+                                        size: editing || disabled || !text.isEmpty ? .xs : .s,
+                                        weight: .regular
+                                    )
+                                )
+                            )
+                            .foregroundStyle(
+                                editing
+                                    ? UIScheme.color.brandPrimary
+                                    : disabled || !text.isEmpty
+                                        ? UIScheme.color.inputTextAdditional
+                                        : UIScheme.color.inputTextPrimary
+                            )
                             .layoutPriority(1)
                         Spacer()
                     }
@@ -44,15 +58,8 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 }
                 accessoryView.padding(.trailing, UIScheme.dimension.middleSpacing)
             }
-            .border(.black)
-            .clipShape(
-                .rect(
-                    topLeadingRadius: 0,
-                    bottomLeadingRadius: 0,
-                    bottomTrailingRadius: 0,
-                    topTrailingRadius: 0
-                )
-            )
+            .background(backgroundColor)
+            .clipShape(.rect(cornerRadii: cornerRadii))
             .onReceive(Just(editing)) { _ in
                 withAnimation(.easeOut(duration: 0.1)) {
                     updateBorder()
@@ -62,10 +69,15 @@ struct CustomTextField<AccessoryViewType: View>: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: UIScheme.dimension.textFieldHeight)
+            .overlay(
+                UnevenRoundedRectangle(cornerRadii: cornerRadii)
+                    .inset(by: borderWidth / 2)
+                    .stroke(borderColor, lineWidth: borderWidth)
+            )
 
-            if !showValid {
+            if !showValid && !hint.isEmpty {
                 Text(hint)
-                    .font(.custom(.primary(size: .s, weight: .regular)))
+                    .font(.custom(.primary(size: .xs, weight: .regular)))
                     .foregroundColor(errorHintColor)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -76,7 +88,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     @ViewBuilder
     var textField: some View {
         UIKitTextField(
-            config: .init()
+            config: UIKitTextField.Configuration()
                 .focused($isFocused)
                 .isSecureTextEntry(isSecure)
                 .keyboardType(keyboardType)
@@ -114,8 +126,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
                 )
                 .textColor(textFieldTextColor)
         )
-        .font(.custom(.primary(size: .m, weight: .regular)))
-        .foregroundColor(textFieldTextColor)
+        .font(.custom(.primary(size: .s, weight: .regular)))
         .disabled(disabled)
     }
 
@@ -175,18 +186,6 @@ struct CustomTextField<AccessoryViewType: View>: View {
         valid ? .clear : UIScheme.color.inputErrorBorder
     }
 
-    var placeholderColor: Color {
-        guard !disabled else {
-            return UIScheme.color.inputDisabled
-        }
-
-        guard valid else {
-            return UIScheme.color.inputErrorBackground
-        }
-
-        return UIScheme.color.inputNeutral
-    }
-
     private let textFieldPaddings: EdgeInsets = EdgeInsets(
         top: 25,
         leading: UIScheme.dimension.middleSpacing,
@@ -214,6 +213,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
     ///   - hint: The field hint string.
     ///   - editing: Whether the field is in the editing state.
     ///   - valid: Whether the field is in the valid state.
+    ///   - cornerRadii: Corner radii configuration for the text field shape.
     public init(
         _ text: Binding<String>,
         placeholder: String,
@@ -223,18 +223,24 @@ struct CustomTextField<AccessoryViewType: View>: View {
         maxLength: Int? = nil,
         adjustsFontSizeToFitWidth: Bool = false,
         minimumFontSize: CGFloat = 0.0,
-        isAllowedCharacter: @escaping (Character) -> Bool = {_ in true },
+        isAllowedCharacter: @escaping (Character) -> Bool = { _ in true },
         transformation: CustomFormatterTransformation = EmptyTransformation(),
-        hint: String,
+        hint: String? = nil,
         valid: Bool,
         disabled: Bool = false,
+        cornerRadii: RectangleCornerRadii = .init(
+            topLeading: UIScheme.dimension.buttonCornerRadius,
+            bottomLeading: UIScheme.dimension.buttonCornerRadius,
+            bottomTrailing: UIScheme.dimension.buttonCornerRadius,
+            topTrailing: UIScheme.dimension.buttonCornerRadius
+        ),
         accessoryView: AccessoryViewType,
         onCommit: @escaping () -> Void = {}
     ) {
         self._text = text
         self.onCommit = onCommit
         self.placeholder = placeholder
-        self.hint = hint
+        self.hint = hint ?? ""
         self.valid = valid
         self.disabled = disabled
         self.accessoryView = accessoryView
@@ -246,6 +252,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.isAllowedCharacter = isAllowedCharacter
         self.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         self.minimumFontSize = minimumFontSize
+        self.cornerRadii = cornerRadii
     }
 
     // MARK: - Methods
@@ -254,31 +261,29 @@ struct CustomTextField<AccessoryViewType: View>: View {
 
     private func updateBorder() {
         guard !disabled else {
-            borderColor = UIScheme.color.inputDisabled
-            borderWidth = UIScheme.dimension.inputBorderWidth
+            borderColor = .clear
             return
         }
         
         if !showValid {
             borderColor = UIScheme.color.inputErrorBorder
-            borderWidth = UIScheme.dimension.inputAccentedBorderWidth
-        } else if editing {
-            borderColor = .clear
-            borderWidth = UIScheme.dimension.inputAccentedBorderWidth
+        } else if isFocused {
+            borderColor = UIScheme.color.brandPrimary
         } else {
             borderColor = .clear
-            borderWidth = UIScheme.dimension.inputBorderWidth
         }
     }
 
     private func updateBackgroundColor() {
         guard !disabled else {
-            backgroundColor = .clear
+            backgroundColor = UIScheme.color.inputDisabled
             return
         }
 
         if !showValid {
             backgroundColor = UIScheme.color.inputErrorBackground
+        } else if isFocused {
+            backgroundColor = UIScheme.color.brandSecondary.opacity(0.3)
         } else {
             backgroundColor = UIScheme.color.inputNeutral
         }
@@ -322,14 +327,6 @@ struct CustomTextField_Previews: PreviewProvider {
             )
             .previewDisplayName("Empty")
             CustomTextField(
-                .constant(""),
-                placeholder: "placeholder text",
-                hint: "hint text",
-                valid: true,
-                accessoryView: EmptyView()
-            )
-            .previewDisplayName("Requered")
-            CustomTextField(
                 .constant("some text"),
                 placeholder: "placeholder text",
                 hint: "hint text",
@@ -347,8 +344,8 @@ struct CustomTextField_Previews: PreviewProvider {
             )
             .previewDisplayName("Disabled")
             CustomTextField(
-                .constant("cvc"),
-                placeholder: "CVC",
+                .constant("cvv"),
+                placeholder: "CVV",
                 secure: true,
                 hint: "hint text",
                 valid: true,

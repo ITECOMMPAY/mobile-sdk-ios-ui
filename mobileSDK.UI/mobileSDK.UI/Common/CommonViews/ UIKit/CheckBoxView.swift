@@ -12,7 +12,7 @@ struct CheckBoxStyle: ToggleStyle {
         Button {
             configuration.isOn.toggle()
         } label: {
-            HStack(spacing: UIScheme.dimension.formSmallSpacing) {
+            HStack(spacing: 12) {
                 ZStack {
                     Image(systemName: configuration.isOn ? "square.fill" : "square")
                         .resizable()
@@ -30,10 +30,11 @@ struct CheckBoxStyle: ToggleStyle {
                             .frame(width: 10, height: 8)
                             .foregroundColor(UIScheme.color.checkboxForeground)
                     }
-                }.accessibilityElement(children: .ignore)
+                }
+                .accessibilityElement(children: .ignore)
 
                 configuration.label
-                    .font(.custom(.primary(size: .m, weight: .regular)))
+                    .font(.custom(.secondary(size: .s, weight: .bold)))
                     .foregroundColor(UIScheme.color.inputTextPrimary)
             }
         }

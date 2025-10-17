@@ -28,7 +28,7 @@ struct PaymentDetailsButton: View {
                         .frame(width: 28, height: 28)
                     Image(systemName: expanded ? "chevron.up" : "chevron.down")
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(.black)
+                        .foregroundColor(UIScheme.isDarkTheme ? .white : .black)
                 }
             }
         }

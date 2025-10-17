@@ -284,7 +284,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(UIScheme.color.brandPrimary)
             } else {
-                AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
+                SwiftUI.AsyncImage(url: method.iconUrl.flatMap { URL(string: $0) }) { image in
                     image
                         .resizable()
                         .renderingMode(.original)

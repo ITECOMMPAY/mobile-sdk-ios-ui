@@ -65,8 +65,8 @@ struct BaseCustomerTextField: View {
 
         if value.isEmpty {
             hint = L.message_required_field.string
-            isValid = !customerField.isRequired
-            isFieldValid = ignoreEmpty || !customerField.isRequired
+            isValid = false
+            isFieldValid = ignoreEmpty
         } else {
             if let validationError = customerField.getValidationMessage(value: value) {
                 hint = validationError
@@ -87,7 +87,6 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
     struct MockCustomerField: CustomerField {
         var fieldServerType: FieldServerType = .text
         var name: String = "mockField name"
-        var isRequired: Bool = true
         var isHidden: Bool = false
         var isTokenize: Bool = false
         var hint: String? = "mockField hint"

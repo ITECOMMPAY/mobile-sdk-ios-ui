@@ -15,14 +15,12 @@ struct CvvField: View {
     }
 
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
-
+    
+    @Binding var errorMessage: String?
     @Binding var cvvValue: String
-
     @Binding var isValueValid: Bool
 
     @State private var isFieldValid: Bool = true
-
-    @State private var errorMessage: String = ""
 
     var body: some View {
         CustomTextField(
@@ -34,10 +32,15 @@ struct CvvField: View {
             secure: true,
             maxLength: length,
             isAllowedCharacter: allowedCharacters,
-            hint: errorMessage,
             valid: isFieldValid,
             disabled: false,
-            accessoryView: EmptyView()
+            cornerRadii: .init(
+                topLeading: 2,
+                bottomLeading: 2,
+                bottomTrailing: UIScheme.dimension.buttonCornerRadius,
+                topTrailing: 2
+            ),
+            accessoryView: EmptyView(),
         ) {
             validate(cvvValue)
         }
@@ -48,11 +51,12 @@ struct CvvField: View {
 
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
         if value.isEmpty {
-            errorMessage = L.message_required_field.string
+            errorMessage = ignoreEmpty ? nil : L.message_required_field.string
             isValueValid = false
             isFieldValid = ignoreEmpty
         } else {
             if value.count == length {
+                errorMessage = nil
                 isValueValid = true
                 isFieldValid = true
             } else {
@@ -69,6 +73,7 @@ struct CvvField: View {
 struct CvvField_Previews: PreviewProvider {
     static var previews: some View {
         CvvField(
+            errorMessage: .constant(nil),
             cvvValue: .constant("123"),
             isValueValid: .constant(false)
         )

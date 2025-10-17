@@ -37,13 +37,16 @@ struct SavedCardCheckoutView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            HStack(alignment: .top, spacing: UIScheme.dimension.formSmallSpacing) {
-                dateField
-                cvvField
+        VStack(spacing: 20) {
+            VStack(spacing: 2) {
+                panField
+                
+                HStack(spacing: 2) {
+                    dateField
+                    cvvField
+                }
             }
-            .padding(.top, UIScheme.dimension.formSmallSpacing)
-            .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+            
             if visibleCustomerFields.shouldBeDisplayed {
                 EmbeddedCustomerFieldsView(
                     visibleCustomerFields: visibleCustomerFields,
@@ -53,8 +56,8 @@ struct SavedCardCheckoutView: View {
                     formValues.customerFieldValues = fieldsValues
                     isCustomerFieldsValid = isValid
                 }
-                .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
             }
+            
             PayButton(
                 label: buttonLabel,
                 disabled: !payButtonIsEnabled
@@ -76,13 +79,12 @@ struct SavedCardCheckoutView: View {
                     )
                 }
             }
-            .padding(.bottom, UIScheme.dimension.middleSpacing)
             
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 if !isTokenizedAction {
                     LinkButton(
                         text: L.button_delete.string,
-                        fontSize: .s,
+                        fontSize: .m,
                         foregroundColor: UIScheme.color.inputTextAdditional,
                         onTap: onCardDeleteTap
                     )
@@ -91,27 +93,35 @@ struct SavedCardCheckoutView: View {
                 if !isContinueButton, let recurringDisclaimer = paymentOptions.recurringDisclaimer {
                     RecurringDisclaimer(text: recurringDisclaimer.string)
                 }
-            }.padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
+            }
         }
-        .padding(.horizontal, UIScheme.dimension.middleSpacing)
-        .alert(isPresented: $isCardDeleteAlertPresented) {
-            Alert(
-                title: Text(L.message_delete_card_single.string),
-                message: nil,
-                primaryButton: .destructive(
-                    Text(L.button_delete.string),
-                    action: {
-                        onIntent(.delete(savedCard))
-                    }
-                ),
-                secondaryButton: .cancel(Text(L.button_cancel.string))
-            )
+        .alert(
+            L.message_delete_card_single.string,
+            isPresented: $isCardDeleteAlertPresented,
+            presenting: savedCard
+        ) { savedCard in
+            Button(L.button_delete.string, role: .destructive) {
+                onIntent(.delete(savedCard))
+            }
+            Button(L.button_cancel.string, role: .cancel) { }
         }
+    }
+    
+    private var panField: some View {
+        PanField(
+            paymentMethod: methodForAccount,
+            disabled: true,
+            errorMessage: .constant(nil),
+            cardNumber: .constant(savedCard.number ?? ""),
+            isValueValid: .constant(true),
+            recognizedCardType: .constant(nil)
+        )
     }
 
     private var dateField: some View {
         ExpiryField(
             disabled: true,
+            errorMessage: .constant(nil),
             expiryString: .constant(savedCard.savedCardExpiry?.stringValue ?? ""),
             isValueValid: .constant(true)
         )
@@ -120,6 +130,7 @@ struct SavedCardCheckoutView: View {
     private var cvvField: some View {
         CvvField(
             cardType: savedCard.savedAccountCardType,
+            errorMessage: .constant(nil),
             cvvValue: $formValues.cardCVV,
             isValueValid: $isCvvValid
         )

@@ -142,18 +142,29 @@ struct BottomCardView_Previews: PreviewProvider {
                             Spacer()
                             CloseButton {
                                 cardShown = false
-                            }.padding()
-                        }.padding()
-                        RedactedView().frame(height: 100)
-                        PaymentMethodCell(methodTitle: "Test", methodImage: IR.bankCard.image, isExpanded: expanded, content: RedactedView().frame(height: 100)) {
-                            expanded.toggle()
+                            }
+                            .padding()
+                        }
+                        .padding()
+                        RedactedView()
+                            .frame(height: 100)
+                        PaymentMethodCell(
+                            methodTitle: "Test",
+                            methodImage: IR.card.image,
+                            isExpanded: expanded,
+                            content: RedactedView()
+                                .frame(height: 100)
+                        ) {
+                            expanded
+                                .toggle()
                         }
                     } content: {
                         RedactedView().frame(height: 50).padding(2)
                         RedactedView().frame(height: 50).padding(2)
                         RedactedView().frame(height: 50).padding(2)
                     }
-                }.onAppear {
+                }
+                .onAppear {
                     cardShown = true
                 }
             }

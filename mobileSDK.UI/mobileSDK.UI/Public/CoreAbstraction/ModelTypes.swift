@@ -56,7 +56,6 @@ public typealias Validator<Type> = (_ isValid: Type) -> Bool
 
 public protocol CustomerField {
     var name: String { get }
-    var isRequired: Bool { get }
     var isHidden: Bool { get }
     var isTokenize: Bool { get }
     var hint: String? { get }

@@ -47,17 +47,16 @@ struct PaymentOverview: View {
         }
         .frame(maxWidth: .infinity, alignment: .topLeading)
         .padding(UIScheme.dimension.paymentOverviewSpacing)
-        .background {
-            cardBackground.opacity(isDimBackground ? 0.4 : 1)
-        }
+        .background(cardBackground)
     }
 
     var cardBackground: some View {
         UIScheme.color.brandPrimary
             .overlay(
                 IR.cardBackgroundPattern.image?
+                    .renderingMode(.template)
                     .resizable(resizingMode: .tile)
-                    .foregroundColor(.white)
+                    .foregroundColor(UIScheme.isDarkTheme ? .black : .white)
             )
             .clipShape(
                 .rect(
@@ -71,7 +70,12 @@ struct PaymentOverview: View {
     }
 
     var logo: some View {
-        logoImage ?? IR.ecommpayLogo.image
+        logoImage?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
+        ?? IR.ecommpayLogo.image?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
     }
 
     var price: some View {
@@ -92,6 +96,7 @@ struct PaymentOverview: View {
 }
 
 #if DEBUG
+
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         PaymentOverview(
@@ -115,9 +120,11 @@ struct PaymentSummaryView_Previews: PreviewProvider {
                     canBeCopied: false
                 )
             ],
-            logoImage: IR.applePayButtonLogo.image,
-            isDimBackground: true
-        ).padding().previewLayout(.sizeThatFits)
+            logoImage: IR.applePayButtonLogo.image
+        )
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
+
 #endif

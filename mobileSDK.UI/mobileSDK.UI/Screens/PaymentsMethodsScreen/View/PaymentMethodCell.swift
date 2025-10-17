@@ -19,7 +19,7 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     let onTap: () -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 20) {
             header
                 .onTapGesture {
                     if isCollapsible {
@@ -27,11 +27,11 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
                     }
                 }
                 .accessibilityElement(children: .combine)
-            content
-                .opacity(isExpanded ? 1 : 0)
-                .frame(maxHeight: isExpanded ? .infinity : 0)
-                .zIndex(-1)
+            if isExpanded {
+                content
+            }
         }
+        .padding(20)
         .background(UIScheme.color.cardBackground)
         .clipShape(
             .rect(
@@ -52,8 +52,6 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
                 iconView
             }
             .buttonStyle(PlainButtonStyle())
-            .padding(.horizontal, UIScheme.dimension.middleSpacing)
-            .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
             .background(UIScheme.color.cardBackground)
         } else {
             EmptyView()
@@ -62,7 +60,7 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     
     var titleView: some View {
         Text(methodTitle)
-            .font(.custom(.primary(size: .s, weight: .regular)))
+            .font(.custom(.primary(size: .s, weight: .medium)))
             .foregroundColor(UIScheme.color.inputTextPrimary)
             .accessibilityLabel(Text(isSavedAccount ? "Saved card \(methodTitle)" : methodTitle))
             .accessibilityHint(isExpanded ? "Expanded" : "Collapsed")
@@ -70,7 +68,7 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
 
     var iconView: some View {
         methodImage
-            .frame(width: 50, height: 25, alignment: .trailing)
+            .frame(maxHeight: 20, alignment: .trailing)
     }
 }
 

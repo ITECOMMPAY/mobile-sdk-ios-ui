@@ -25,6 +25,7 @@ enum AppFont {
     
     enum PrimaryFontWeight {
         case regular
+        case medium
         case semiBold
         case bold
         
@@ -32,7 +33,9 @@ enum AppFont {
             switch self {
             case .regular: 
                 return "Inter-Regular"
-            case .semiBold: 
+            case .medium:
+                return "Inter-Medium"
+            case .semiBold:
                 return "Inter-SemiBold"
             case .bold:
                 return "Inter-Bold"
@@ -56,8 +59,8 @@ enum AppFont {
     
     static func registerIfNeeded() {
         let bundle = SDKBundle.get()
-        print(UIFont.familyNames.sorted())
         UIFont.registerFontIfNeeded(bundle: bundle, fontName: "Inter-Regular", fontExtension: "ttf")
+        UIFont.registerFontIfNeeded(bundle: bundle, fontName: "Inter-Medium", fontExtension: "ttf")
         UIFont.registerFontIfNeeded(bundle: bundle, fontName: "Inter-SemiBold", fontExtension: "ttf")
         UIFont.registerFontIfNeeded(bundle: bundle, fontName: "Inter-Bold", fontExtension: "ttf")
         UIFont.registerFontIfNeeded(bundle: bundle, fontName: "SohneBreit-Kraftig", fontExtension: "otf")

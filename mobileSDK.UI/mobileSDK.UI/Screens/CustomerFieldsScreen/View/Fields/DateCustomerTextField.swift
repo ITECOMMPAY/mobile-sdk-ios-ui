@@ -11,17 +11,22 @@ struct DateCustomerTextField: View {
     let value: String
     let customerField: CustomerField
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
-
+    
     private let keyboardType: UIKeyboardType = .default
-
+    
     var body: some View {
-        BaseCustomerTextField(value: value,
-                              customerField: customerField,
-                              keyboardType: .numberPad,
-                              transformation: InputMaskTransformation(with: "##-##-####", unmaskingEnabled: false),
-                              isAllowedCharacter: { $0.isASCII && $0.isNumber },
-                              maxLength: 8,
-                              onValueChanged: onValueChanged)
+        BaseCustomerTextField(
+            value: value,
+            customerField: customerField,
+            keyboardType: .numberPad,
+            transformation: InputMaskTransformation(
+                with: "##-##-####",
+                unmaskingEnabled: false
+            ),
+            isAllowedCharacter: { $0.isASCII && $0.isNumber },
+            maxLength: 8,
+            onValueChanged: onValueChanged
+        )
     }
 }
 
@@ -31,7 +36,6 @@ struct DateCustomerTextField_Previews: PreviewProvider {
     struct MockCustomerField: CustomerField {
         var fieldServerType: FieldServerType = .text
         var name: String = "mockField name"
-        var isRequired: Bool = true
         var isHidden: Bool = false
         var isTokenize: Bool = false
         var hint: String? = "mockField hint"
@@ -47,7 +51,7 @@ struct DateCustomerTextField_Previews: PreviewProvider {
     struct DateCustomerTextFieldPreview: View {
         @State var value = ""
         @State var isValid = false
-
+        
         var body: some View {
             VStack {
                 DateCustomerTextField(value: value, customerField: MockCustomerField()) { _, newValue, isValid in
@@ -56,7 +60,8 @@ struct DateCustomerTextField_Previews: PreviewProvider {
                 }
                 Text("Unmasked value:\(value) isValid: \(isValid.description)")
                 TextField("Another textfield", text: .constant(""))
-            }.padding()
+            }
+            .padding()
         }
     }
 

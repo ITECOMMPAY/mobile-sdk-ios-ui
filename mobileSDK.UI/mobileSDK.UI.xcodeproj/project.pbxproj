@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7525D00F2E0509110000B795 /* OptionsCustomerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */; };
+		755AE1342E9BC463009A9F4F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755AE1332E9BC452009A9F4F /* CardView.swift */; };
 		755D05252E7B132000B70736 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755D05242E7B131D00B70736 /* Locale.swift */; };
 		7562BAF92E8ACD2600C57029 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7562BAF82E8ACD2300C57029 /* Color.swift */; };
 		84154F2B28E31F6A00F229F5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84154F2928E31F6A00F229F5 /* Date.swift */; };
@@ -101,7 +102,6 @@
 		84C87CC928CB476A00B684DE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0F12728740390005F81DE /* ViewModel.swift */; };
 		84C87CCA28CB476D00B684DE /* Binding+didSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */; };
 		84C87CCB28CB476D00B684DE /* View+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416E2542864756700B11F6C /* View+Overlay.swift */; };
-		84C87CCC28CB476D00B684DE /* View+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416E2522864753100B11F6C /* View+Background.swift */; };
 		84C87CCD28CB476D00B684DE /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C90289AAE6D0037A604 /* View+Keyboard.swift */; };
 		84C87CCE28CB477100B684DE /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C82289A7C700037A604 /* AsyncImage.swift */; };
 		84C87CCF28CB477100B684DE /* BackportAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C83289A7C700037A604 /* BackportAsyncImage.swift */; };
@@ -163,13 +163,13 @@
 
 /* Begin PBXFileReference section */
 		7525D00D2E0508FC0000B795 /* OptionsCustomerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCustomerTextField.swift; sourceTree = "<group>"; };
+		755AE1332E9BC452009A9F4F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		755D05242E7B131D00B70736 /* Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		7562BAF82E8ACD2300C57029 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8400A54F28B392CE00C202E5 /* CardType+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardType+Logo.swift"; sourceTree = "<group>"; };
 		8402783F286D7B7C000970DA /* PaymentMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCell.swift; sourceTree = "<group>"; };
 		8403056328B7B61800DE38D3 /* APSScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APSScreen.swift; sourceTree = "<group>"; };
 		84154F2928E31F6A00F229F5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		8416E2522864753100B11F6C /* View+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Background.swift"; sourceTree = "<group>"; };
 		8416E2542864756700B11F6C /* View+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Overlay.swift"; sourceTree = "<group>"; };
 		8421F8DD288EB6AB00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
 		8421F8E3288EBA9B00B6EED2 /* PayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayInteractor.swift; sourceTree = "<group>"; };
@@ -345,7 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				8454EEC928A2A56B00199FF3 /* Binding+didSet.swift */,
-				8416E2522864753100B11F6C /* View+Background.swift */,
 				8416E2542864756700B11F6C /* View+Overlay.swift */,
 				84A35C90289AAE6D0037A604 /* View+Keyboard.swift */,
 			);
@@ -741,6 +740,7 @@
 		84B2418E28891FC300259A50 /* FormFields */ = {
 			isa = PBXGroup;
 			children = (
+				755AE1332E9BC452009A9F4F /* CardView.swift */,
 				84B241922889201200259A50 /* CardHolderField.swift */,
 				84B241A9288A730B00259A50 /* CvvField.swift */,
 				84B241AC288A732900259A50 /* ExpiryField.swift */,
@@ -971,6 +971,7 @@
 				84C87CA528CB474400B684DE /* ClarificationFieldsScreenIntent.swift in Sources */,
 				B37767C1298AB6A400759CD5 /* RecurringDetailsData.swift in Sources */,
 				84C87C8E28CB472A00B684DE /* CardHolderField.swift in Sources */,
+				755AE1342E9BC463009A9F4F /* CardView.swift in Sources */,
 				84C87C9528CB473900B684DE /* PaymentDetailsView.swift in Sources */,
 				B37767CA298AB6FE00759CD5 /* FieldValue.swift in Sources */,
 				84C87CD328CB477500B684DE /* ScreenHeader.swift in Sources */,
@@ -1058,7 +1059,6 @@
 				84C87CA828CB474700B684DE /* LoadingScreen.swift in Sources */,
 				84C87C8328CB471A00B684DE /* NavigationComponentViewModel.swift in Sources */,
 				84C87CD628CB477500B684DE /* BackButton.swift in Sources */,
-				84C87CCC28CB476D00B684DE /* View+Background.swift in Sources */,
 				84C87C9A28CB473C00B684DE /* CustomerFieldsScreenIntent.swift in Sources */,
 				84C87CBB28CB475900B684DE /* InputViewContentController.swift in Sources */,
 				B3E7BD9729A6035B003E0971 /* LightPalette.swift in Sources */,

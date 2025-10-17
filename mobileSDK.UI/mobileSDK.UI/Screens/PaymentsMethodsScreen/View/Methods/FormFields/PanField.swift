@@ -12,12 +12,15 @@ struct PanField: View {
     @Injected private var validationService: ValidationService?
 
     let paymentMethod: PaymentMethod
+    var disabled: Bool = false
 
     var cardTypeRecognizer: CardTypeRecognizer? {
         paymentMethod.cardTypeRecognizer
     }
 
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
+    
+    @Binding var errorMessage: String?
 
     @Binding var cardNumber: String
 
@@ -26,8 +29,6 @@ struct PanField: View {
     @Binding var recognizedCardType: CardType?
 
     @State private var isFieldValid: Bool = true
-
-    @State private var errorMessage: String = ""
 
     var transformation: CustomFormatterTransformation {
         if let cardTypeRecognizer = cardTypeRecognizer {
@@ -49,30 +50,49 @@ struct PanField: View {
             adjustsFontSizeToFitWidth: true,
             minimumFontSize: 10.0,
             isAllowedCharacter: allowedCharacters,
-            transformation: transformation,
-            hint: errorMessage,
+            transformation: disabled ? EmptyTransformation() : transformation,
             valid: isFieldValid,
-            disabled: false,
+            disabled: disabled,
+            cornerRadii: .init(
+                topLeading: UIScheme.dimension.buttonCornerRadius,
+                bottomLeading: 2,
+                bottomTrailing: 2,
+                topTrailing: UIScheme.dimension.buttonCornerRadius
+            ),
             accessoryView: CardTypeView(
+                disabled: disabled,
                 connectedCardTypes: paymentMethod.connectedCardTypes,
                 recognizedType: $recognizedCardType
             )
         ) {
-            validate(cardNumber)
-        }.onAppear {
-            validate(cardNumber, ignoreEmpty: true)
+            if !disabled {
+                validate(cardNumber)
+            }
+        }
+        .disabled(disabled)
+        .onAppear {
+            if !disabled {
+                validate(cardNumber, ignoreEmpty: true)
+            }
         }
     }
 
+    func recognizeCardType(_ value: String) {
+        recognizedCardType = cardTypeRecognizer?
+            .getCardType(for: value)?
+            .cardType ?? (value.isEmpty ? nil : .unknown )
+    }
+    
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
         recognizeCardType(value)
         if value.isEmpty {
-            errorMessage = L.message_required_field.string
+            errorMessage = ignoreEmpty ? nil : L.message_required_field.string
             isValueValid = false
             isFieldValid = ignoreEmpty
         } else {
             if validationService?.isPanValidatorValid(value: value) ?? false {
                 if paymentMethod.connectedCardTypes.contains(recognizedCardType ?? .unknown) {
+                    errorMessage = nil
                     isValueValid = true
                     isFieldValid = true
                 } else {
@@ -88,16 +108,12 @@ struct PanField: View {
             }
         }
     }
-
-    func recognizeCardType(_ value: String) {
-        recognizedCardType = cardTypeRecognizer?
-            .getCardType(for: value)?
-            .cardType ?? (value.isEmpty ? nil : .unknown )
-    }
 }
 
 private struct CardTypeView: View {
+    let disabled: Bool
     let connectedCardTypes: [CardType]
+    
     @Binding var recognizedType: CardType?
 
     @State private var needAnimation = true
@@ -111,24 +127,28 @@ private struct CardTypeView: View {
     }
 
     var body: some View {
-        HStack(spacing: UIScheme.dimension.tinySpacing) {
-            if let recognizedType {
-                view(for: recognizedType)
-            } else if !visibleCardTypes.isEmpty {
-                if needAnimation, visibleCardTypeIndex < visibleCardTypes.count {
-                    view(for: visibleCardTypes[visibleCardTypeIndex])
+        if disabled {
+            EmptyView()
+        } else {
+            HStack(spacing: UIScheme.dimension.tinySpacing) {
+                if let recognizedType {
+                    view(for: recognizedType)
+                } else if !visibleCardTypes.isEmpty {
+                    if needAnimation, visibleCardTypeIndex < visibleCardTypes.count {
+                        view(for: visibleCardTypes[visibleCardTypeIndex])
+                    } else {
+                        view(for: nil)
+                    }
                 } else {
                     view(for: nil)
                 }
-            } else {
-                view(for: nil)
             }
+            .onTapGesture {
+                needAnimation = !needAnimation
+            }
+            .onAppear(perform: initTimer)
+            .accessibilityHidden(true)
         }
-        .onTapGesture {
-            needAnimation = !needAnimation
-        }
-        .onAppear(perform: initTimer)
-        .accessibilityHidden(true)
     }
 
     func view(for type: CardType?) -> some View {
@@ -143,10 +163,9 @@ private struct CardTypeView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             } else {
-                IR.bankCard.image?
+                IR.card.image?
                     .resizable()
-                    .renderingMode(.template)
-                    .foregroundStyle(UIScheme.color.buttonText)
+                    .foregroundStyle(UIScheme.color.brandPrimary)
                     .aspectRatio(contentMode: .fit)
             }
         }
@@ -157,8 +176,10 @@ private struct CardTypeView: View {
     }
 
     func initTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.5,
-                       repeats: true) { _ in
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 1.5,
+            repeats: true
+        ) { _ in
             withAnimation(.linear(duration: 0.5)) {
                 onTimerTick()
             }
@@ -166,7 +187,9 @@ private struct CardTypeView: View {
     }
 
     private func onTimerTick() {
-        guard !visibleCardTypes.isEmpty else { return }
+        guard !visibleCardTypes.isEmpty else {
+            return
+        }
 
         visibleCardTypeIndex = (visibleCardTypeIndex + 1) % visibleCardTypes.count
     }
@@ -178,9 +201,11 @@ struct PanFieldPreview: View {
     @State var cardNumber: String = ""
     @State var isValid: Bool = true
     @State var anotherText: String = ""
+    
     var body: some View {
         PanField(
             paymentMethod: MockPaymentMethod(),
+            errorMessage: .constant(nil),
             cardNumber: $cardNumber,
             isValueValid: $isValid,
             recognizedCardType: .constant(nil)

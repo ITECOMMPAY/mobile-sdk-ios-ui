@@ -14,7 +14,7 @@ struct ApsCheckoutView: View {
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 20) {
             Text(L.aps_payment_disclaimer.string)
                 .font(.custom(.primary(size: .s, weight: .regular)))
                 .foregroundColor(UIScheme.color.inputTextPrimary)
@@ -24,11 +24,7 @@ struct ApsCheckoutView: View {
             ) {
                 payAction(.payAPS(paymentMethod))
             }
-            .padding(.top, UIScheme.dimension.formLargeVerticalSpacing)
         }
-        .padding(.top, UIScheme.dimension.formSmallSpacing)
-        .padding(.bottom, UIScheme.dimension.formLargeVerticalSpacing)
-        .padding(.horizontal, UIScheme.dimension.middleSpacing)
     }
 
     private var buttonLabel: PayButtonLabel {

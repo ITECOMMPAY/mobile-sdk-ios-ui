@@ -34,7 +34,7 @@ struct LightPalette: ColorPalette {
         self.inputNeutral = Color(hex: 0xEEEEEE)
         self.inputErrorBackground = Color(hex: 0xFFE4E1)
         self.inputErrorBorder = Color(hex: 0xCF0022)
-        self.inputDisabled = Color(hex: 0x000000).opacity(0.4)
+        self.inputDisabled = Color(hex: 0x000000).opacity(0.04)
         self.inputTextPrimary = Color(hex: 0x000000)
         self.inputTextAdditional = Color(hex: 0x666666)
         self.buttonText = Color(hex: 0x000000)

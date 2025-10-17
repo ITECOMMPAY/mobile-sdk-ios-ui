@@ -40,7 +40,7 @@ extension TranslationWithLink {
         paragraphStyle.lineHeightMultiple = 1.09
         return [
             .font: UIFont.custom(.primary(size: .xs, weight: .regular)),
-            .foregroundColor: UIColor(UIScheme.color.inputTextAdditional),
+            .foregroundColor: UIColor(UIScheme.color.inputTextPrimary),
             .paragraphStyle: paragraphStyle
         ]
     }
