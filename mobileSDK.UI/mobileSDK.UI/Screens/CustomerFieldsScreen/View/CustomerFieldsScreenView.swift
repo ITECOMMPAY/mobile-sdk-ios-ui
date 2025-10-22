@@ -58,7 +58,10 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     RecurringDisclaimer(text: recurringDisclaimer.string)
                 }
                 PolicyView()
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                }
             }
             .padding(UIScheme.dimension.middleSpacing)
         }.onAppear {

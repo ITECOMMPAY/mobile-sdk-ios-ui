@@ -24,7 +24,7 @@ private struct ClarificationFieldAdapter {
 extension ClarificationFieldAdapter: CustomerField {
     var name: String { clarificationField.name }
 
-    var isRequired: Bool { true }  // clarification fields are always true
+    var isOptional: Bool { false }
 
     var isHidden: Bool { false }
 

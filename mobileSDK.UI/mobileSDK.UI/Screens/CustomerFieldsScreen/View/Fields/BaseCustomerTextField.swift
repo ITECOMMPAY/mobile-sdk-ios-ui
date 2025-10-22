@@ -41,6 +41,7 @@ struct BaseCustomerTextField: View {
             placeholder: customerField.placeholder ?? (customerField.hint ?? ""),
             keyboardType: keyboardType,
             forceUppercased: false,
+            isOptional: customerField.isOptional,
             secure: isSecure,
             maxLength: maxLength,
             isAllowedCharacter: isAllowedCharacter,
@@ -63,7 +64,11 @@ struct BaseCustomerTextField: View {
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
         let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if value.isEmpty {
+        if value.isEmpty && customerField.isOptional {
+            hint = ""
+            isValid = true
+            isFieldValid = true
+        } else if value.isEmpty {
             hint = L.message_required_field.string
             isValid = false
             isFieldValid = ignoreEmpty
@@ -73,10 +78,12 @@ struct BaseCustomerTextField: View {
                 isValid = false
                 isFieldValid = false
             } else {
+                hint = ""
                 isValid = true
                 isFieldValid = true
             }
         }
+        
         onValueChanged(customerField, value, isValid)
     }
 }
@@ -87,6 +94,7 @@ struct BaseCustomerTextField_Previews: PreviewProvider {
     struct MockCustomerField: CustomerField {
         var fieldServerType: FieldServerType = .text
         var name: String = "mockField name"
+        var isOptional: Bool = false
         var isHidden: Bool = false
         var isTokenize: Bool = false
         var hint: String? = "mockField hint"

@@ -40,14 +40,14 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             EmptyView()
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                VStack(spacing: UIScheme.dimension.middleSpacing) {
+                VStack(spacing: 12) {
                     IR.successLogo.image
                         .frame(height: 58)
                         .opacity(animationState.showLogo ? 1 : 0)
                         .accessibilityHidden(true)
                     Text(title)
-                        .font(.custom(.primary(size: .xl, weight: .bold)))
-                        .foregroundColor(UIScheme.color.brandPrimary)
+                        .font(.custom(.secondary(size: .l, weight: .bold)))
+                        .foregroundColor(UIScheme.color.inputTextPrimary)
                         .multilineTextAlignment(.center)
                         .offset(x: .zero, y: animationState.titleOffset)
                         .opacity(animationState.showTitle ? 1 : 0)
@@ -79,9 +79,12 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
                 PolicyView()
                     .offset(x: .zero, y: animationState.policyOffset)
                     .opacity(animationState.showPolicy ? 1 : 0)
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
-                    .offset(x: .zero, y: animationState.footerOffset)
-                    .opacity(animationState.showFooter ? 1 : 0)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                        .offset(x: .zero, y: animationState.footerOffset)
+                        .opacity(animationState.showFooter ? 1 : 0)
+                }
             }
             .padding([.horizontal, .bottom], UIScheme.dimension.paymentOverviewSpacing)
             .padding([.top], UIScheme.dimension.largeSpacing)
@@ -89,7 +92,8 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             .onAppear {
                 animateViews()
             }
-        }.onAppear {
+        }
+        .onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
@@ -192,7 +196,6 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             animationState.infoOffset = .zero
         }
         
-        
         animate(delay: 1.5) {
             animationState.showInfo.toggle()
             animationState.buttonOffset = .zero
@@ -238,17 +241,6 @@ extension Array where Element == CompleteField {
     }
 }
 
-#if DEBUG
-
-struct ResultSuccessScreen_Previews: PreviewProvider {
-
-    static var previews: some View {
-        ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
-    }
-}
-
-#endif
-
 enum ResultSuccessScreenIntent {
     case close
 }
@@ -276,3 +268,13 @@ class ResultSuccessScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewMode
 }
 
 extension RootState: ResultSuccessScreenState {}
+
+#if DEBUG
+
+struct ResultSuccessScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultSuccessScreen(viewModel: ResultSuccessScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
+    }
+}
+
+#endif

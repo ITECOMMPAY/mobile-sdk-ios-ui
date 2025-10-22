@@ -11,6 +11,7 @@ import Combine
 struct CustomTextField<AccessoryViewType: View>: View {
     // MARK: - Properties
     let accessoryView: AccessoryViewType
+    let isOptional: Bool
     let isSecure: Bool
     let onCommit: () -> Void
     let keyboardType: UIKeyboardType
@@ -49,6 +50,21 @@ struct CustomTextField<AccessoryViewType: View>: View {
                                         : UIScheme.color.inputTextPrimary
                             )
                             .layoutPriority(1)
+                        
+                        if isOptional && !editing && text.isEmpty && !disabled {
+                            Text(" (optional)")
+                                .font(
+                                    .custom(
+                                        .primary(
+                                            size: editing || disabled || !text.isEmpty ? .xs : .s,
+                                            weight: .regular
+                                        )
+                                    )
+                                )
+                                .foregroundStyle(UIScheme.color.inputTextAdditional)
+                                .layoutPriority(1)
+                        }
+                        
                         Spacer()
                     }
                     .padding(placeholderPaddings)
@@ -219,6 +235,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         placeholder: String,
         keyboardType: UIKeyboardType = .default,
         forceUppercased: Bool = false,
+        isOptional: Bool = false,
         secure: Bool = false,
         maxLength: Int? = nil,
         adjustsFontSizeToFitWidth: Bool = false,
@@ -244,6 +261,7 @@ struct CustomTextField<AccessoryViewType: View>: View {
         self.valid = valid
         self.disabled = disabled
         self.accessoryView = accessoryView
+        self.isOptional = isOptional
         self.isSecure = secure
         self.keyboardType = keyboardType
         self.forceUppercased = forceUppercased

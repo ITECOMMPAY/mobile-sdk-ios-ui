@@ -56,7 +56,10 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
     @ObservedObject var viewModel: VM
 
     public var body: some View {
-        LoadingView(footerImage: viewModel.state.paymentOptions.footerImage) {
+        LoadingView(
+            hideFooterLogo: viewModel.state.paymentOptions.hideFooterLogo,
+            footerImage: viewModel.state.paymentOptions.footerImage
+        ) {
             viewModel.dispatch(intent: .close)
         }.onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
@@ -65,6 +68,7 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
 }
 
 struct LoadingView: View {
+    let hideFooterLogo: Bool
     let footerImage: Image?
     var cancelAction: () -> Void = {}
     @State private var animationState = LoadingScreenAnimationState()
@@ -79,7 +83,7 @@ struct LoadingView: View {
                     .padding(.bottom, UIScheme.dimension.middleSpacing)
                     .opacity(animationState.showDots ? 1 : 0)
                 Text(L.title_loading_screen.string)
-                    .font(.custom(.primary(size: .xl, weight: .bold)))
+                    .font(.custom(.secondary(size: .l, weight: .bold)))
                     .foregroundColor(UIScheme.color.inputTextPrimary)
                     .offset(x: .zero, y: animationState.titleOffset)
                     .opacity(animationState.showTitle ? 1 : 0)
@@ -99,8 +103,11 @@ struct LoadingView: View {
             .padding(.top, UIScheme.dimension.cancelButtonLoadingSubtitleSpacing)
             .opacity(animationState.showButton ? 1 : 0)
             Spacer()
-            FooterView(footerImage: footerImage)
-                .padding(.bottom, UIScheme.dimension.largeSpacing)
+            
+            if !hideFooterLogo {
+                FooterView(footerImage: footerImage)
+                    .padding(.bottom, UIScheme.dimension.largeSpacing)
+            }
         }
         .frame(maxWidth: .infinity)
         .onAppear {

@@ -50,7 +50,10 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
                     RecurringDisclaimer(text: recurringDisclaimer.string)
                 }
                 PolicyView()
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                }
             }
             .padding([.bottom, .horizontal], UIScheme.dimension.middleSpacing)
         }

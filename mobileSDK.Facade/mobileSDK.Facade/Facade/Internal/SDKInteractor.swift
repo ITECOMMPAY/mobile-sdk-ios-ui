@@ -154,7 +154,6 @@ fileprivate extension PaymentOptions {
 }
 
 private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
-    
     var footerImage: Image? {
         publicType.footerImage.map({ Image(uiImage: $0)})
     }
@@ -381,5 +380,9 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
 
     var hideScanningCards: Bool {
         publicType.hideScanningCards
+    }
+    
+    var hideFooterLogo: Bool {
+        publicType.hideFooterLogo
     }
 }

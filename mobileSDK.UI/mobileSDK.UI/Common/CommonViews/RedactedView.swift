@@ -20,7 +20,6 @@ struct RedactedView_Previews: PreviewProvider {
 
 struct RedactedView: View {
     var body : some View {
-        UIScheme.color.background
-            .shimmering()
+        UIScheme.color.cardBackground
     }
 }

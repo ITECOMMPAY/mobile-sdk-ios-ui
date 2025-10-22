@@ -40,7 +40,7 @@ struct MockCardExpiry: CardExpiry {
 struct MockCustomerField: CustomerField {
     var fieldServerType: FieldServerType = .text
     var name: String = "MockCustomerField_name"
-    var isRequired: Bool = true
+    var isOptional: Bool = false
     var isHidden: Bool = false
     var isTokenize: Bool = false
     var hint: String? = "mockField hint"
@@ -157,6 +157,8 @@ struct MockPaymentOptions: PaymentOptions {
     var hideScanningCards: Bool = false
     
     var footerImage: Image? = nil
+    
+    var hideFooterLogo: Bool = false
 }
 
 struct MockSavedAccount: SavedAccount {

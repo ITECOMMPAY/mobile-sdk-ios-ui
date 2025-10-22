@@ -21,12 +21,14 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
                     viewModel.dispatch(intent: .close)
                 }
                 .accessibilitySortPriority(-1)
-            }.padding(UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.largeSpacing)
             webView
-            .opacity(isLoading ? 0 : 1)
-            .overlay(loader)
-            .frame(maxWidth: .infinity)
-        }.onAppear {
+                .opacity(isLoading ? 0 : 1)
+                .overlay(loader)
+                .frame(maxWidth: .infinity)
+        }
+        .onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
@@ -62,21 +64,6 @@ struct ThreeDSecureScreen<VM: ThreeDSecureScreenViewModelProtocol>: View, ViewWi
     }
 }
 
-#if DEBUG
-
-struct ThreeDSecureScreen_Previews: PreviewProvider {
-
-    static var previews: some View {
-        ThreeDSecureScreen(
-            viewModel: ThreeDSecureScreenViewModel(
-                parentViewModel: MockRootViewModel(with: stateMock)
-            )
-        )
-    }
-}
-
-#endif
-
 enum ThreeDSecureScreenIntent {
     case close
     case threeDSecure(String)
@@ -101,3 +88,17 @@ class ThreeDSecureScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewModel
 }
 
 extension RootState: ThreeDSecureScreenState {}
+
+#if DEBUG
+
+struct ThreeDSecureScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ThreeDSecureScreen(
+            viewModel: ThreeDSecureScreenViewModel(
+                parentViewModel: MockRootViewModel(with: stateMock)
+            )
+        )
+    }
+}
+
+#endif

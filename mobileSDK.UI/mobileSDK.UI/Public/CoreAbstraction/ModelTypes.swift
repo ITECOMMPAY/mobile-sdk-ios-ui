@@ -56,6 +56,7 @@ public typealias Validator<Type> = (_ isValid: Type) -> Bool
 
 public protocol CustomerField {
     var name: String { get }
+    var isOptional: Bool { get }
     var isHidden: Bool { get }
     var isTokenize: Bool { get }
     var hint: String? { get }
@@ -177,6 +178,7 @@ public protocol PaymentOptions {
     var isDarkThemeOn: Bool { get }
     var hideScanningCards: Bool { get }
     var footerImage: Image? { get }
+    var hideFooterLogo: Bool { get }
 }
 
 public protocol AdditionalField {

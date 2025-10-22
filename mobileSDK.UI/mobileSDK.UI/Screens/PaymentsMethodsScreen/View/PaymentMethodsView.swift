@@ -46,7 +46,10 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 }
                 paymentMethodsList
                 PolicyView()
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                }
             }
             .padding([.horizontal, .bottom], UIScheme.dimension.middleSpacing)
         }

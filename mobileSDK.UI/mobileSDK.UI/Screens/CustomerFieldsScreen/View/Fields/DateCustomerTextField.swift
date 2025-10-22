@@ -36,6 +36,7 @@ struct DateCustomerTextField_Previews: PreviewProvider {
     struct MockCustomerField: CustomerField {
         var fieldServerType: FieldServerType = .text
         var name: String = "mockField name"
+        var isOptional: Bool = false
         var isHidden: Bool = false
         var isTokenize: Bool = false
         var hint: String? = "mockField hint"
