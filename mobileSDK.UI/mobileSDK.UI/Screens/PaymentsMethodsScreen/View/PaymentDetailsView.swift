@@ -52,6 +52,7 @@ struct PaymentDetailsAttributes: View {
     var labelText: String
     var descriptionText: String
     var canCopy: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
             Text(labelText)
@@ -65,15 +66,21 @@ struct PaymentDetailsAttributes: View {
                     .foregroundColor(UIScheme.color.buttonCard)
                 if canCopy {
                     Spacer()
-                    ZStack {
-                        Circle()
-                            .fill(Color.white)
-                            .opacity(0.1)
-                            .frame(width: 32, height: 32)
-                        Image(systemName: "square.on.square")
-                            .scaleEffect(x: -1, y: 1)
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(UIScheme.color.cardBackground)
+                    Button(
+                        action: {
+                            UIPasteboard.general.string = descriptionText
+                        }
+                    ) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.white)
+                                .opacity(0.1)
+                                .frame(width: 32, height: 32)
+                            Image(systemName: "square.on.square")
+                                .scaleEffect(x: -1, y: 1)
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundColor(UIScheme.color.cardBackground)
+                        }
                     }
                 }
             }
