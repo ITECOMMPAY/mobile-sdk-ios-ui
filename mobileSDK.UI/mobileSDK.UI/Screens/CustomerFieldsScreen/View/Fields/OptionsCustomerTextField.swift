@@ -10,22 +10,22 @@ import SwiftUI
 struct OptionsCustomerTextField: View {
     let customerField: CustomerField
     let initialValue: String?
-    let isRequired: Bool
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
-    
-    private var requiredMarkColor: Color = UIScheme.color.textFieldRequirementMarkColor
     
     @State private var selectedValue = ""
     @State private var showingPicker = false
     
-    init(customerField: CustomerField, initialValue: String?, isRequired: Bool, onValueChanged: @escaping OnBaseCustomerTextFieldValueChanged) {
-            self.customerField = customerField
-            self.initialValue = initialValue
-            self.onValueChanged = onValueChanged
-            self.isRequired = isRequired
-            
-            _selectedValue = State(initialValue: initialValue ?? "")
-        }
+    init(
+        customerField: CustomerField,
+        initialValue: String?,
+        onValueChanged: @escaping OnBaseCustomerTextFieldValueChanged
+    ) {
+        self.customerField = customerField
+        self.initialValue = initialValue
+        self.onValueChanged = onValueChanged
+        
+        _selectedValue = State(initialValue: initialValue ?? "")
+    }
     
     var body: some View {
         Menu {
@@ -37,34 +37,29 @@ struct OptionsCustomerTextField: View {
         } label: {
             HStack {
                 Text(selectedValue.isEmpty ? customerField.name : selectedValue)
-                    .foregroundColor(
-                        selectedValue.isEmpty
-                            ? UIScheme.color.textFieldPlaceholderColor
-                            : UIScheme.color.text
-                    )
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-                if isRequired {
-                    Text("*").foregroundColor(requiredMarkColor)
-                        .accessibilityHidden(true)
-                }
+                    .font(.custom(.primary(size: .s, weight: .regular)))
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
                 Spacer()
-                Image(systemName: "chevron.down")
-                    .foregroundColor(.secondary)
+                Image(systemName: "arrowtriangle.down.fill")
+                    .resizable()
+                    .frame(width: 10, height: 6)
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
             }
             .padding()
-            .background(UIScheme.color.textFieldNormalBackgroundColor)
+            .background(UIScheme.color.inputNeutral)
             .cornerRadius(UIScheme.dimension.buttonCornerRadius)
         }
         .onAppear() {
             let value = customerField.options?.first(where: { $0.name == initialValue })?.value ?? ""
 
-            onValueChanged(customerField, value, self.isRequired ? !value.isEmpty : true)
+            onValueChanged(customerField, value, !value.isEmpty)
         }
         .onChange(of: selectedValue) { name in
             guard let value = customerField.options?.first(where: { $0.name == name })?.value else {
                 return
             }
-            onValueChanged(customerField, value, self.isRequired ? !value.isEmpty : true)
+            
+            onValueChanged(customerField, value, !value.isEmpty)
         }
     }
 }

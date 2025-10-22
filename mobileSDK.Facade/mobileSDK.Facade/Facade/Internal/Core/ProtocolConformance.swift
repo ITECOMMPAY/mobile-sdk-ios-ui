@@ -127,7 +127,7 @@ struct MsdkCoreCustomerFieldWrapper: mobileSDK_UI.CustomerField {
     
     let coreType: MsdkCore.CustomerField
     var name: String { coreType.name }
-    var isRequired: Bool { coreType.isRequired }
+    var isOptional: Bool { !coreType.isRequired }
     var isHidden: Bool { coreType.isHidden }
     var isTokenize: Bool { coreType.isTokenize }
     var hint: String? { coreType.hint }

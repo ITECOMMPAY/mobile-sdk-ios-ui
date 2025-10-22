@@ -22,7 +22,8 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
                 CloseButton {
                     viewModel.dispatch(intent: .close)
                 }
-            }.padding(UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.middleSpacing)
             Group {
                 if let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                    let url = URL(string: paymentUrlString) {
@@ -46,7 +47,7 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
             .opacity(isLoading ? 0 : 1)
             .overlay(
                 ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandColor))
+                    .progressViewStyle(CircularProgressViewStyle(tint: UIScheme.color.brandPrimary))
                     .opacity(isLoading ? 1 : 0)
             )
             .frame(maxWidth: .infinity)

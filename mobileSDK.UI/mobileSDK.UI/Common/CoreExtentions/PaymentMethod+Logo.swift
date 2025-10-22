@@ -11,11 +11,14 @@ extension PaymentMethod {
     var localLogo: Image? {
         switch self.methodType {
         case .card:
-            return IR.bankCard.image?.renderingMode(.template)
+            return IR.card.image?
+                .renderingMode(.template)
         case .applePay:
-            return IR.applePay.image?.renderingMode(.original)
+            return IR.applePay.image?
+                .renderingMode(.original)
         default:
-            return Image.getImage(name: self.code)?.renderingMode(.original)
+            return Image.getImage(name: self.code)?
+                .renderingMode(.original)
         }
     }
 }

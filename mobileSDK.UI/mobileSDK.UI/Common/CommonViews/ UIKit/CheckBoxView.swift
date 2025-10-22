@@ -12,7 +12,7 @@ struct CheckBoxStyle: ToggleStyle {
         Button {
             configuration.isOn.toggle()
         } label: {
-            HStack(spacing: UIScheme.dimension.formSmallSpacing) {
+            HStack(spacing: 12) {
                 ZStack {
                     Image(systemName: configuration.isOn ? "square.fill" : "square")
                         .resizable()
@@ -20,7 +20,7 @@ struct CheckBoxStyle: ToggleStyle {
                         .foregroundColor(
                             configuration.isOn
                                 ? UIScheme.color.checkboxSelectedBackground
-                                : UIScheme.color.checkboxUnselectedForeground
+                                : UIScheme.color.checkboxUnselectedBackground
                         )
                         .background(configuration.isOn ? .clear : UIScheme.color.checkboxUnselectedBackground)
                         .cornerRadius(2.7)
@@ -28,13 +28,14 @@ struct CheckBoxStyle: ToggleStyle {
                         Image(systemName: "checkmark")
                             .resizable()
                             .frame(width: 10, height: 8)
-                            .foregroundColor(UIScheme.color.checkboxSelectedForeground)
+                            .foregroundColor(UIScheme.color.checkboxForeground)
                     }
-                }.accessibilityElement(children: .ignore)
+                }
+                .accessibilityElement(children: .ignore)
 
                 configuration.label
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-                    .foregroundColor(UIScheme.color.text)
+                    .font(.custom(.secondary(size: .s, weight: .bold)))
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -52,14 +53,18 @@ struct CheckBoxView: View {
                 Image(systemName: checked ? "square.fill" : "square")
                     .resizable()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(checked ? UIScheme.color.checkboxSelectedBackground : UIScheme.color.checkboxUnselectedForeground)
+                    .foregroundColor(
+                        checked
+                            ? UIScheme.color.checkboxSelectedBackground
+                            : UIScheme.color.checkboxUnselectedBackground
+                    )
                     .background(checked ? .clear : UIScheme.color.checkboxUnselectedBackground)
                     .cornerRadius(2.7)
                 if checked {
                     Image(systemName: "checkmark")
                         .resizable()
                         .frame(width: 10, height: 8)
-                        .foregroundColor(UIScheme.color.checkboxSelectedForeground)
+                        .foregroundColor(UIScheme.color.checkboxForeground)
                 }
             }
         }

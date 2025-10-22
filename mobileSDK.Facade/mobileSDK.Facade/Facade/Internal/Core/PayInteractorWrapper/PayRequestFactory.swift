@@ -19,7 +19,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         accountId: Int64,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = SavedCardSaleRequest(cvv: cvv, accountId: accountId)
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -32,7 +31,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         accountId: Int64,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = SavedCardAuthRequest(cvv: cvv, accountId: accountId)
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -50,15 +48,15 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         storedCardType: Int32?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-        
-
         let request = NewCardSaleRequest(
             cvv: cvv,
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
             saveCard: saveCard,
-            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil,
+            storedCardType: storedCardType != nil
+                ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!))
+                : nil,
             recipientInfo: recipientInfo?.coreRecipientInfo
         )
 
@@ -75,14 +73,15 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         storedCardType: Int32?,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = CardAuthRequest(
             cvv: cvv,
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
             saveCard: saveCard,
-            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
+            storedCardType: storedCardType != nil
+                ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!))
+                : nil
         )
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -94,7 +93,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         cvv: String,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = CardSaleTokenizeRequest(cvv: cvv)
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -106,7 +104,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         cvv: String,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = CardAuthTokenizeRequest(cvv: cvv)
 
         request.recipientInfo = recipientInfo?.coreRecipientInfo
@@ -118,7 +115,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         token: String,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-        
         #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
         let request = ApplePaySaleRequest(token: debugToken)
         #else
@@ -134,7 +130,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         token: String,
         recipientInfo: mobileSDK_UI.RecipientInfo?
     ) -> mobileSDK_UI.PayRequest {
-
         #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
         let request = ApplePayAuthRequest(token: debugToken)
         #else
@@ -160,8 +155,11 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         year: Int32,
         cardHolder: String
     ) -> mobileSDK_UI.PayRequest {
-        
-        let request = CardTokenizeRequest(pan: pan, expiryDate: CardDate(month: month, year: year), cardHolder: cardHolder)
+        let request = CardTokenizeRequest(
+            pan: pan,
+            expiryDate: CardDate(month: month, year: year),
+            cardHolder: cardHolder
+        )
 
         return PayRequestWrapper(coreRequest: request)
     }
@@ -174,13 +172,14 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
         cardHolder: String,
         storedCardType: Int32?
     ) -> mobileSDK_UI.PayRequest {
-
         let request = CardVerifyRequest(
             cvv: cvv,
             pan: pan,
             expiryDate: CardDate(month: month, year: year),
             cardHolder: cardHolder,
-            storedCardType: storedCardType != nil ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!)) : nil
+            storedCardType: storedCardType != nil
+                ? StoredCardType.companion.from(value: KotlinInt(int: storedCardType!))
+                : nil
         )
 
         return PayRequestWrapper(coreRequest: request)
@@ -189,7 +188,6 @@ class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
     func createVerifyApplePayRequest(
         token: String
     ) -> mobileSDK_UI.PayRequest {
-
         #if targetEnvironment(simulator) && DEBUG && DEVELOPMENT
         let request = ApplePayVerifyRequest(token: debugToken)
         #else

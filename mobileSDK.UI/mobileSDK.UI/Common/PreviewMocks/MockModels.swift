@@ -40,7 +40,7 @@ struct MockCardExpiry: CardExpiry {
 struct MockCustomerField: CustomerField {
     var fieldServerType: FieldServerType = .text
     var name: String = "MockCustomerField_name"
-    var isRequired: Bool = true
+    var isOptional: Bool = false
     var isHidden: Bool = false
     var isTokenize: Bool = false
     var hint: String? = "mockField hint"
@@ -110,19 +110,25 @@ struct MockPaymentOptions: PaymentOptions {
 
     var applePayMerchantID: String?
 
-    var brandColorOverride: Color?
+    var primaryBrandColorOverride: Color?
+    
+    var secondaryBrandColorOverride: Color?
 
     var isMockModeEnabled: Bool = true
 
     var summary: PaymentSummaryData = PaymentSummaryData(currency: "RUB", value: 123.23)
 
     var details: [PaymentDetailData] = [
-        PaymentDetailData(title: L.title_payment_id,
-                          description: "EP2e11-f018-RQR12-26VL-0412CS",
-                          canBeCopied: true),
-        PaymentDetailData(title: L.title_payment_information_description,
-                          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                          canBeCopied: false)
+        PaymentDetailData(
+            title: L.title_payment_id,
+            description: "EP2e11-f018-RQR12-26VL-0412CS",
+            canBeCopied: true
+        ),
+        PaymentDetailData(
+            title: L.title_payment_information_description,
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+            canBeCopied: false
+        )
     ]
 
     var uiAdditionalFields: [AdditionalField] = []
@@ -151,6 +157,8 @@ struct MockPaymentOptions: PaymentOptions {
     var hideScanningCards: Bool = false
     
     var footerImage: Image? = nil
+    
+    var hideFooterLogo: Bool = false
 }
 
 struct MockSavedAccount: SavedAccount {

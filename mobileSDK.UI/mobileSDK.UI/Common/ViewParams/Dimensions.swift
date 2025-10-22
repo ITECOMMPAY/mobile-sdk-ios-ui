@@ -8,10 +8,10 @@
 import SwiftUI
 
 protocol DimensionScheme {
-    /// Типичное расстояние от границ экрана до контента страницы, а также между логическими блоками. **default: 26**
-    var largeSpacing: CGFloat { get }
     /// Типичное расстояние от границ логического блока до элемента внутри. **default: 16**
     var middleSpacing: CGFloat { get }
+    /// Типичное расстояние от границ экрана до контента страницы, а также между логическими блоками. **default: 26**
+    var largeSpacing: CGFloat { get }
     /// Расстояние от границ блока деталей платежа до элементов внутри. **default: 20**
     var paymentOverviewSpacing: CGFloat { get }
     /// Расстояние между элементами в блоке детальной информации о платеже. **default: 18**
@@ -34,12 +34,8 @@ protocol DimensionScheme {
     var smallestCornerRadius: CGFloat { get }
     /// Наименьшая облась нажатия по гайдлайнам интерфейса iOS. **default: 44**
     var minimumTapAreaSize: CGFloat { get }
-    /// Размер обводки элементов **default: 1**
-    var borderWidth: CGFloat { get }
-    /// Размер обводки полей ввода **default: 1**
+    /// Размер обводки полей ввода **default: 2**
     var inputBorderWidth: CGFloat { get }
-    /// Размер обводки выделеных полей ввода **default: 1**
-    var inputAccentedBorderWidth: CGFloat { get }
     /// Высона карточки с информацией **default: 150**
     var infoCardHeight: CGFloat { get }
     /// Высона карточки с информацией без логотипа**default: 92**
@@ -60,37 +56,16 @@ protocol DimensionScheme {
     var cancelButtonLoadingSubtitleSpacing: CGFloat { get }
     /// Высота разделителя **default: 1**
     var dividerHeight: CGFloat { get }
-
-    // MARK: Fot sizes
-    /// **default: 12**
-    var tinyFont: CGFloat { get }
-    /// **default: 14**
-    var smallFont: CGFloat { get }
-    /// **default: 16**
-    var middleFont: CGFloat { get }
-    /// **default: 22**
-    var bigFont: CGFloat { get }
-    /// **default: 28**
-    var hugeFont: CGFloat { get }
-    /// **default: 24**
-    var biggerFont: CGFloat { get }
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
-    let tinyFont: CGFloat = UIFontMetrics.default.scaledValue(for: 12)
-    let smallFont: CGFloat = UIFontMetrics.default.scaledValue(for: 14)
-    let middleFont: CGFloat = UIFontMetrics.default.scaledValue(for: 16)
-    let bigFont: CGFloat = UIFontMetrics.default.scaledValue(for: 22)
-    let hugeFont: CGFloat = UIFontMetrics.default.scaledValue(for: 28)
-    let biggerFont: CGFloat = UIFontMetrics.default.scaledValue(for: 24)
-
     let textFieldHeight: CGFloat = 55
     let payButtonPayPriceSpacing: CGFloat = 5
     let payButtonHeight: CGFloat = 45
     let infoCardShortenedHeight: CGFloat = 92
     let formSmallSpacing: CGFloat = 12
     let formLargeVerticalSpacing: CGFloat = 22
-    let backgroundSheetCornerRadius: CGFloat = 12
+    let backgroundSheetCornerRadius: CGFloat = 20
     let paymentMethodButtonHeight: CGFloat = 50
     let applePayButtonHeight: CGFloat = 48
     let tinySpacing: CGFloat = 6
@@ -100,12 +75,10 @@ struct DefaultDimensionScheme: DimensionScheme {
     let paymentDetailsButtonHeight: CGFloat = 33
     let largeSpacing: CGFloat = 26
     let middleSpacing: CGFloat = 16
-    let buttonCornerRadius: CGFloat = 8
+    let buttonCornerRadius: CGFloat = 12
     let smallestCornerRadius: CGFloat = 4
     let minimumTapAreaSize: CGFloat = 44
-    let borderWidth: CGFloat = 1
-    let inputBorderWidth: CGFloat = 1
-    let inputAccentedBorderWidth: CGFloat = 2
+    let inputBorderWidth: CGFloat = 2
     let infoCardHeight: CGFloat = 150
     let valueToCurrencySpacing: CGFloat = 8
     let cancelButtonLoadingSubtitleSpacing: CGFloat = 34

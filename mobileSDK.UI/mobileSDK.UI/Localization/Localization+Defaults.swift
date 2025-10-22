@@ -14,8 +14,8 @@ extension L {
         // MARK: - Saved card method
         .title_expiry: "MM/YY",
         // MARK: - Payment details
-        .title_payment_information_screen: "Payment Details",
-        .button_hide_details: "Hide Details",
+        .title_payment_information_screen: "Payment details",
+        .button_hide_details: "Hide details",
         // MARK: - Recurring details
         .recurring_start_date: "Next Bill Date",
         .recurring_type_expiry_date: "End Date",

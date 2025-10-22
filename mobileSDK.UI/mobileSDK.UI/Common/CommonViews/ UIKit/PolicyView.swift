@@ -10,23 +10,32 @@ import SwiftUI
 struct PolicyView: View {
     var privacyPolicyLink = L.privacy_policy.translationWithLink
     var cookiePolicyLink = L.cookie_policy.translationWithLink
-
+    
     var body: some View {
         HStack(spacing: UIScheme.dimension.middleSpacing) {
-            LinkButton(text: privacyPolicyLink?.message ?? L.privacy_policy.rawValue,
-                       fontSize: UIScheme.dimension.tinyFont) {
+            LinkButton(
+                text: privacyPolicyLink?.message ?? L.privacy_policy.rawValue,
+                fontSize: .xs
+            ) {
                 guard let urlStr = privacyPolicyLink?.messageLinks?.first?.url,
                       let url = URL(string: urlStr)
-                else { return }
+                else {
+                    return
+                }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
-            Circle().frame(width: 3, height: 3)
-                .foregroundColor(UIScheme.color.minorShapesColor)
-            LinkButton(text: cookiePolicyLink?.message ?? L.cookie_policy.rawValue,
-                       fontSize: UIScheme.dimension.tinyFont) {
+            Circle()
+                .frame(width: 3, height: 3)
+                .foregroundColor(UIScheme.color.inputTextAdditional)
+            LinkButton(
+                text: cookiePolicyLink?.message ?? L.cookie_policy.rawValue,
+                fontSize: .xs
+            ) {
                 guard let urlStr = cookiePolicyLink?.messageLinks?.first?.url,
                       let url = URL(string: urlStr)
-                else { return }
+                else {
+                    return
+                }
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 private struct ResultDeclineAnimationState {
-    var headerOffset: CGFloat = UIScreen.main.bounds.height*0.25
+    var headerOffset: CGFloat = UIScreen.main.bounds.height * 0.25
     
     var showLogo = false
     var showCloseButton = false
@@ -42,13 +42,13 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         default: return false
         }
     }
-
+    
     var body: some View {
         BottomCardViewContent {
             EmptyView()
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
-                VStack(spacing: UIScheme.dimension.middleSpacing) {
+                VStack(spacing: 12) {
                     ZStack {
                         IR.errorLogo.image
                             .opacity(animationState.showLogo ? 1 : 0)
@@ -59,19 +59,21 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                             }
                             .opacity(animationState.showCloseButton ? 1 : 0)
                             .accessibilityHidden(!isTryAgain)
-                        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    }.frame(height: 58)
-                    VStack(spacing: UIScheme.dimension.tinySpacing) {
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                    }
+                    .frame(height: 58)
+                    VStack(spacing: 8) {
                         Text(title)
-                            .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
-                            .foregroundColor(UIScheme.color.text)
+                            .font(.custom(.secondary(size: .l, weight: .bold)))
+                            .foregroundColor(UIScheme.color.inputTextPrimary)
                             .multilineTextAlignment(.center)
                             .accessibilityAddTraits(.isHeader)
                             .accessibilitySortPriority(999)
                         if let paymentMessage = payment?.paymentMassage, !paymentMessage.isEmpty {
                             Text(paymentMessage)
-                                .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                                .foregroundColor(UIScheme.color.errorTextColor)
+                                .font(.custom(.primary(size: .m, weight: .regular)))
+                                .foregroundColor(UIScheme.color.inputTextPrimary)
                                 .multilineTextAlignment(.center)
                                 .accessibilitySortPriority(998)
                         }
@@ -93,22 +95,25 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                         (L.title_payment_information_description.rawValue, paymentDescription)
                     ] + completeFields
                 )
-                    .offset(x: .zero, y: animationState.infoOffset)
-                    .opacity(animationState.showInfo ? 1 : 0)
+                .offset(x: .zero, y: animationState.infoOffset)
+                .opacity(animationState.showInfo ? 1 : 0)
                 PayButton(
-                    label: PayButtonLabel(style: isTryAgain ? .TryAgain : .Close),
+                    label: PayButtonLabel(style: isTryAgain ? .tryAgain : .close),
                     disabled: false
                 ) {
                     viewModel.dispatch(intent: isTryAgain ? .tryAgain : .close)
                 }
-                    .offset(x: .zero, y: animationState.buttonOffset)
-                    .opacity(animationState.showButton ? 1 : 0)
+                .offset(x: .zero, y: animationState.buttonOffset)
+                .opacity(animationState.showButton ? 1 : 0)
                 PolicyView()
                     .offset(x: .zero, y: animationState.policyOffset)
                     .opacity(animationState.showPolicy ? 1 : 0)
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
-                    .offset(x: .zero, y: animationState.footerOffset)
-                    .opacity(animationState.showFooter ? 1 : 0)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                        .offset(x: .zero, y: animationState.footerOffset)
+                        .opacity(animationState.showFooter ? 1 : 0)
+                }
             }
             .padding([.horizontal, .bottom], UIScheme.dimension.paymentOverviewSpacing)
             .padding([.top], UIScheme.dimension.largeSpacing)
@@ -116,7 +121,8 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             .onAppear {
                 animateViews()
             }
-        }.onAppear {
+        }
+        .onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
@@ -130,7 +136,6 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
                     paymentID: nil,
                     paymentDescription: nil,
                     recurringData: [],
-                    backgroundTemplate: UIScheme.infoCardBackground,
                     logoImage: logo
                 )
             } else {
@@ -138,21 +143,19 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             }
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: [],
                 paymentDetails: [],
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }
     }
-
+    
     private var payment: Payment? {
         viewModel.state.payment ?? nil
     }
-
+    
     private var title: String {
         switch viewModel.state.paymentOptions.action {
         case .Verify:
@@ -169,17 +172,17 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             return nil
         }
     }
-
+    
     private var showRecurringError: Bool {
         viewModel.state.paymentOptions.recurringRegular &&
         viewModel.state.paymentOptions.recurringRegister && payment?.recurringId == nil
     }
-
+    
     private var valueTitleCardWallet: String {
         guard let payment = viewModel.state.payment, let paymentMethod = viewModel.state.currentPaymentMethod else {
             return ""
         }
-
+        
         switch paymentMethod.methodType {
         case .card:
             return "\(payment.paymentAccount?.type?.uppercased() ?? "") \(payment.paymentAccount?.number ?? "")"
@@ -187,16 +190,16 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             return paymentMethod.name ?? paymentMethod.translations["title"] ?? ""
         }
     }
-
+    
     private var completeFields: [(String?, String?)] {
         return payment?.paymentCompleteFields?.asTuples ?? []
     }
-
+    
     private func animateViews() {
         animate {
             animationState.showLogo.toggle()
         }
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation(Animation.timingCurve(0.4, 0, 0.2, 1, duration: 0.5)) {
                 animationState.titleOffset = .zero
@@ -222,7 +225,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
             animationState.showInfo.toggle()
             animationState.buttonOffset = .zero
         }
-
+        
         animate(delay: 1.6) {
             animationState.showButton.toggle()
             animationState.policyOffset = .zero
@@ -231,7 +234,7 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
         animate(delay: 1.7) {
             animationState.showPolicy.toggle()
         }
-
+        
         animate(delay: 1.65) {
             animationState.footerOffset = .zero
         }
@@ -260,16 +263,6 @@ struct ResultDeclineScreen<VM: ResultDeclineScreenViewModelProtocol>: View, View
     }
 }
 
-#if DEBUG
-
-struct ResultDeclineScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ResultDeclineScreen(viewModel: ResultDeclineScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
-    }
-}
-
-#endif
-
 enum ResultDeclineScreenIntent {
     case close
     case closeTryAgain
@@ -292,10 +285,20 @@ class ResultDeclineScreenViewModel<rootVM: RootViewModelProtocol>: ChildViewMode
     override func mapState(from parentState: RootState) throws -> ResultDeclineScreenState {
         parentState as ResultDeclineScreenState
     }
-
+    
     override func mapIntent(from childIntent: ResultDeclineScreenIntent) throws -> RootIntent {
         .declineScreenIntent(childIntent)
     }
 }
 
 extension RootState: ResultDeclineScreenState {}
+
+#if DEBUG
+
+struct ResultDeclineScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultDeclineScreen(viewModel: ResultDeclineScreenViewModel(parentViewModel: MockRootViewModel(with: stateMock)))
+    }
+}
+
+#endif

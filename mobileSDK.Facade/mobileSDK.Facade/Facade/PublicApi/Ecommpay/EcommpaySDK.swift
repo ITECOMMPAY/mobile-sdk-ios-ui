@@ -16,7 +16,7 @@ public class Ecommpay: NSObject {
     /// The key is used to get error-code from UserInfo of NSError instance returned while mobile SDK session initialisation
     @objc public static let kSDKInitErrorCodeKey = "SDKInitErrorCode"
     /// Version of currently installed Ecommpay SDK
-    @objc public static let sdkVersion: String = "3.10.1"
+    @objc public static let sdkVersion: String = "4.0.0"
     @objc public static let coreVerion: String = SDKInteractor.getCoreVersion()
 
     /// Debug initializer, should not be present in release version!
@@ -34,7 +34,7 @@ public class Ecommpay: NSObject {
     @objc(init) public override init() {
         interactor = SDKInteractor()
     }
-
+    
     /// Presents UI to begin payment flow
     ///
     /// - Parameters:
@@ -42,14 +42,17 @@ public class Ecommpay: NSObject {
     ///   - paymentOptions: info that is needed to perform payment (merchant_id, proeject_id, etc)
     ///   - completion: result of payment flow
     @objc(presentPaymentAt:paymentOptions:completionHandler:)
-    public func presentPayment(at viewController: UIViewController,
-                               paymentOptions: PaymentOptions,
-                               completion: ((_ result: PaymentResult) -> Void)?) {
-        interactor.presentPayment(at: viewController,
-                                  paymentOptions: paymentOptions) { result in
+    public func presentPayment(
+        at viewController: UIViewController,
+        paymentOptions: PaymentOptions,
+        completion: ((_ result: PaymentResult) -> Void)?
+    ) {
+        interactor.presentPayment(
+            at: viewController,
+            paymentOptions: paymentOptions
+        ) { result in
             completion?(result)
         }
-
     }
 
     /// Create pament page UI to begin payment flow
@@ -58,8 +61,10 @@ public class Ecommpay: NSObject {
     ///   - rootView: view to present payment on
     ///   - paymentOptions: info that is needed to perform payment (merchant_id, proeject_id, etc)
     ///   - completion: result of payment flow
-    public func getPaymentView(with paymentOptions: PaymentOptions,
-                               completion: ((_ result: PaymentResult) -> Void)?) -> some View {
+    public func getPaymentView(
+        with paymentOptions: PaymentOptions,
+        completion: ((_ result: PaymentResult) -> Void)?
+    ) -> some View {
         typealias OnViewDidAppear = (_ controlledBy: UIViewController) -> Void
         
         final class WrapperViewController: UIViewController {

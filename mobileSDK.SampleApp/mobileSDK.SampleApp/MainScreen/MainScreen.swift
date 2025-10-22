@@ -17,7 +17,8 @@ struct MainScreen: View {
     @State var action: PaymentOptions.ActionType = .Sale
     @State var sdk = Ecommpay()
 
-    @State var brandColorOverride: Color = .red
+    @State var primaryBrandColorOverride: Color = .red
+    @State var secondaryBrandColorOverride: Color = .pink
     @State var colorOverrideEnabled: Bool = false
     @State var isDarkThemeOn: Bool = false
     @State var hideScanningCards: Bool = false
@@ -290,7 +291,7 @@ struct MainScreen: View {
         Section(header: Text("Theme settings")) {
             Toggle("Override default", isOn: $colorOverrideEnabled)
             if colorOverrideEnabled {
-                ColorPicker("Custom color", selection: $brandColorOverride)
+                ColorPicker("Custom color", selection: $primaryBrandColorOverride)
             }
             Toggle("Dark theme", isOn: $isDarkThemeOn)
         }
@@ -483,7 +484,8 @@ struct MainScreen: View {
         paymentOptions.mockModeType = paymentData.mockModeType
 
         if colorOverrideEnabled {
-            paymentOptions.brandColor = UIColor(brandColorOverride)
+            paymentOptions.primaryBrandColor = UIColor(primaryBrandColorOverride)
+            paymentOptions.secondaryBrandColor = UIColor(secondaryBrandColorOverride)
         }
 
         paymentOptions.isDarkThemeOn = isDarkThemeOn

@@ -154,7 +154,6 @@ fileprivate extension PaymentOptions {
 }
 
 private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
-    
     var footerImage: Image? {
         publicType.footerImage.map({ Image(uiImage: $0)})
     }
@@ -186,8 +185,16 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         publicType.applePayOptions?.countryCode
     }
 
-    var brandColorOverride: Color? {
-        if let uiColor = publicType.brandColor {
+    var primaryBrandColorOverride: Color? {
+        if let uiColor = publicType.primaryBrandColor {
+            return Color(uiColor)
+        } else {
+            return nil
+        }
+    }
+    
+    var secondaryBrandColorOverride: Color? {
+        if let uiColor = publicType.secondaryBrandColor {
             return Color(uiColor)
         } else {
             return nil
@@ -207,9 +214,22 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     }
 
     var summary: PaymentSummaryData {
-        return PaymentSummaryData(logo: publicType.logoImage.map({ Image(uiImage: $0)}),
-                                  currency: publicType.paymentInfo.paymentCurrency,
-                                  value: Decimal(publicType.paymentInfo.paymentAmount) / 100)
+        var currency: String
+        if publicType.paymentInfo.paymentCurrency == "USD" {
+            currency = "$"
+        } else if publicType.paymentInfo.paymentCurrency == "EUR" {
+            currency = "€"
+        } else if publicType.paymentInfo.paymentCurrency == "GBP" {
+           currency = "£"
+        } else {
+            currency = publicType.paymentInfo.paymentCurrency
+        }
+        
+        return PaymentSummaryData(
+            logo: publicType.logoImage.map({ Image(uiImage: $0)}),
+            currency: currency,
+            value: Decimal(publicType.paymentInfo.paymentAmount) / 100
+        )
     }
 
     var details: [PaymentDetailData] {
@@ -360,5 +380,9 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
 
     var hideScanningCards: Bool {
         publicType.hideScanningCards
+    }
+    
+    var hideFooterLogo: Bool {
+        publicType.hideFooterLogo
     }
 }

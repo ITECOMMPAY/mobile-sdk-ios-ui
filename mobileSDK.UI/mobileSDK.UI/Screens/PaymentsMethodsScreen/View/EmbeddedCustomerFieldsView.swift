@@ -26,8 +26,7 @@ struct EmbeddedCustomerFieldsView: View {
                     
                     OptionsCustomerTextField(
                         customerField: field,
-                        initialValue: selectedOption?.name,
-                        isRequired: field.isRequired
+                        initialValue: selectedOption?.name
                     ) { customerField, newValue, isValid in
                         validateFields(
                             customerField: customerField,

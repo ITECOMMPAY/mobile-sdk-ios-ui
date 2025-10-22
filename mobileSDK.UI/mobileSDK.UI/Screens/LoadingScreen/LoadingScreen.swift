@@ -56,7 +56,10 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
     @ObservedObject var viewModel: VM
 
     public var body: some View {
-        LoadingView(footerImage: viewModel.state.paymentOptions.footerImage) {
+        LoadingView(
+            hideFooterLogo: viewModel.state.paymentOptions.hideFooterLogo,
+            footerImage: viewModel.state.paymentOptions.footerImage
+        ) {
             viewModel.dispatch(intent: .close)
         }.onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
@@ -65,6 +68,7 @@ struct LoadingScreen<VM: LoadingScreenViewModelProtocol>: View, ViewWithViewMode
 }
 
 struct LoadingView: View {
+    let hideFooterLogo: Bool
     let footerImage: Image?
     var cancelAction: () -> Void = {}
     @State private var animationState = LoadingScreenAnimationState()
@@ -79,26 +83,31 @@ struct LoadingView: View {
                     .padding(.bottom, UIScheme.dimension.middleSpacing)
                     .opacity(animationState.showDots ? 1 : 0)
                 Text(L.title_loading_screen.string)
-                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.biggerFont))
-                    .foregroundColor(UIScheme.color.text)
+                    .font(.custom(.secondary(size: .l, weight: .bold)))
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
                     .offset(x: .zero, y: animationState.titleOffset)
                     .opacity(animationState.showTitle ? 1 : 0)
                 Text(L.sub_title_loading_screen.string)
-                    .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                    .foregroundColor(UIScheme.color.text)
+                    .font(.custom(.primary(size: .s, weight: .regular)))
+                    .foregroundColor(UIScheme.color.inputTextPrimary)
                     .offset(x: .zero, y: animationState.subtitleOffset)
                     .opacity(animationState.showSubtitle ? 1 : 0)
             }
             LinkButton(
                 text: L.title_cancel_payment.string,
-                fontSize: UIScheme.dimension.smallFont,
-                foregroundColor: UIScheme.color.cancelPaymentButtonColor
+                fontSize: .s,
+                foregroundColor: UIScheme.color.brandPrimary
             ) {
                 cancelAction()
-            }.padding(.top, UIScheme.dimension.cancelButtonLoadingSubtitleSpacing)
-                .opacity(animationState.showButton ? 1 : 0)
+            }
+            .padding(.top, UIScheme.dimension.cancelButtonLoadingSubtitleSpacing)
+            .opacity(animationState.showButton ? 1 : 0)
             Spacer()
-            FooterView(footerImage: footerImage).padding(.bottom, UIScheme.dimension.largeSpacing)
+            
+            if !hideFooterLogo {
+                FooterView(footerImage: footerImage)
+                    .padding(.bottom, UIScheme.dimension.largeSpacing)
+            }
         }
         .frame(maxWidth: .infinity)
         .onAppear {
@@ -132,7 +141,6 @@ struct LoadingView: View {
 }
 
 fileprivate final class DotsAnimationViewController: UIViewController {
-
     private let stackView: UIStackView = {
         $0.distribution = .fill
         $0.axis = .horizontal
@@ -178,7 +186,7 @@ fileprivate final class DotsAnimationViewController: UIViewController {
         circles.forEach {
             $0.layer.cornerRadius =  DotsAnimationParams.dotSize/2
             $0.layer.masksToBounds = true
-            $0.backgroundColor = UIColor(UIScheme.color.loadingDotsColor)
+            $0.backgroundColor = UIColor(UIScheme.color.inputTextPrimary)
             stackView.addArrangedSubview($0)
             $0.widthAnchor.constraint(equalToConstant: DotsAnimationParams.dotSize).isActive = true
             $0.heightAnchor.constraint(equalTo: $0.widthAnchor).isActive = true

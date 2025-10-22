@@ -27,8 +27,8 @@ struct ApplePayButton: View {
     func createApplePayButton(_ action: (() -> Void)? = nil) -> some View {
         iPaymentButtonRepresentable(
             type: .plain,
-            style: UIScheme.color.applePayButtonStyle,
-            cornerRadius: UIScheme.dimension.buttonCornerRadius,
+            style: UIScheme.isDarkTheme ? .white : .black,
+            cornerRadius: UIScheme.dimension.applePayButtonHeight / 2,
             action: action
         )
         .frame(height: UIScheme.dimension.applePayButtonHeight)

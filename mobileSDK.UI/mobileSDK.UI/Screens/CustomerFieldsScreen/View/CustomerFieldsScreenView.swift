@@ -29,14 +29,15 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     }
                 }
                 .frame(maxWidth: .infinity)
-            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
+            }
+            .padding(UIScheme.dimension.middleSpacing)
         } content: {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 overviewView
                 if viewModel.state.paymentOptions.action != .Tokenize {
                     Text(L.title_payment_additional_data_disclaimer.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                        .foregroundColor(UIScheme.color.text)
+                        .font(.custom(.primary(size: .s, weight: .regular)))
+                        .foregroundColor(UIScheme.color.inputTextPrimary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 EmbeddedCustomerFieldsView(
@@ -57,10 +58,12 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                     RecurringDisclaimer(text: recurringDisclaimer.string)
                 }
                 PolicyView()
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                }
             }
-            .padding(.top, UIScheme.dimension.middleSpacing)
-            .padding([.bottom, .horizontal], UIScheme.dimension.largeSpacing)
+            .padding(UIScheme.dimension.middleSpacing)
         }.onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
@@ -76,17 +79,14 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
                 paymentID: viewModel.state.paymentOptions.paymentID,
                 paymentDescription: viewModel.state.paymentOptions.paymentDescription,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         default:
             PaymentOverview(
-                isVatIncluded: viewModel.state.isVatIncluded,
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
-                backgroundTemplate: UIScheme.infoCardBackground,
                 logoImage: viewModel.state.paymentOptions.summary.logo
             )
         }
@@ -95,13 +95,13 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
     private var buttonLabel: some View {
         switch viewModel.state.paymentOptions.action {
         case .Tokenize:
-            return PayButtonLabel(style: .Tokenize)
+            return PayButtonLabel(style: .tokenize)
         case .Verify:
-            return PayButtonLabel(style: .Verify)
+            return PayButtonLabel(style: .verify)
         default:
             return PayButtonLabel(
-                style: .Pay(
-                    viewModel.state.paymentOptions.summary.value,
+                style: .pay(
+                    amount: viewModel.state.paymentOptions.summary.value,
                     currency: viewModel.state.paymentOptions.summary.currency
                 )
             )

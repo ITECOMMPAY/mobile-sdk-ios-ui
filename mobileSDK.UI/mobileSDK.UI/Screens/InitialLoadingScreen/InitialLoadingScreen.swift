@@ -46,18 +46,29 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
                     }
                 }
                 .frame(maxWidth: .infinity)
-                loadingStateHeader
-            }.padding([.horizontal, .top], UIScheme.dimension.largeSpacing)
-        } content: {
-            VStack(spacing: .zero) {
-                paymentMethodsPlaceholders
-                FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
-                    .padding([.top, .bottom], UIScheme.dimension.largeSpacing)
             }
-            .padding(.horizontal, UIScheme.dimension.largeSpacing)
-            .padding(.top, UIScheme.dimension.middleSpacing)
-            .background(UIScheme.color.mainBackground)
-        }.onAppear {
+            .padding(UIScheme.dimension.middleSpacing)
+        } content: {
+            VStack(spacing: 12) {
+                VStack(spacing: 12) {
+                    loadingStateHeader
+                    
+                    RedactedView()
+                        .frame(height: 240)
+                        .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+                    
+                    paymentMethodsPlaceholders
+                }
+                .shimmer()
+                
+                if !viewModel.state.paymentOptions.hideFooterLogo {
+                    FooterView(footerImage: viewModel.state.paymentOptions.footerImage)
+                }
+            }
+            .padding([.horizontal, .bottom], UIScheme.dimension.middleSpacing)
+        }
+        .background(UIScheme.color.background)
+        .onAppear {
             UIAccessibility.post(notification: .screenChanged, argument: nil)
         }
     }
@@ -76,19 +87,19 @@ struct InitialLoadingScreen<VM: InitialLoadingScreenViewModelProtocol>: View, Vi
     @ViewBuilder
     private var loadingStateHeader: some View {
         RedactedView()
-            .frame(height: 150)
+            .frame(height: 172)
             .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius)
         HStack {
-            ForEach((0..<2), id: \.self) {_ in
-                RedactedView()
-                    .cornerRadius(UIScheme.dimension.buttonCornerRadius)
-            }
-        }.frame(height: UIScheme.dimension.applePayButtonHeight)
+            RedactedView()
+                .clipShape(.capsule)
+                .cornerRadius(UIScheme.dimension.buttonCornerRadius)
+        }
+        .frame(height: UIScheme.dimension.applePayButtonHeight)
     }
 
     private var paymentMethodsPlaceholders: some View {
-        VStack(spacing: UIScheme.dimension.smallSpacing) {
-            ForEach((0..<6), id: \.self) {_ in
+        VStack(spacing: 12) {
+            ForEach((0..<3), id: \.self) { _ in
                 RedactedView()
                     .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
                     .cornerRadius(UIScheme.dimension.buttonCornerRadius)

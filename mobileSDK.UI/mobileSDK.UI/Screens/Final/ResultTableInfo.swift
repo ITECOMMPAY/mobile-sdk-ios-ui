@@ -18,20 +18,27 @@ struct ResultTableInfo: View {
                 if let key = pair.key, let value = pair.value {
                     HStack(alignment: .firstTextBaseline) {
                         Text(TranslationsManager.shared.stringValue(for: key) ?? key)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.secondaryTextColor)
+                            .font(.custom(.primary(size: .s, weight: .regular)))
+                            .foregroundColor(UIScheme.color.inputTextAdditional)
                         Spacer()
                         Text(value)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.text)
+                            .font(.custom(.primary(size: .s, weight: .regular)))
+                            .foregroundColor(UIScheme.color.inputTextPrimary)
                     }
                 }
             }
         }
         .frame(maxWidth: .infinity)
         .padding(UIScheme.dimension.largeSpacing)
-        .background(UIScheme.color.resultInfoBackgroundColor)
-        .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius, corners: .allCorners)
+        .background(UIScheme.color.cardBackground)
+        .clipShape(
+            .rect(
+                topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+            )
+        )
     }
 
     @ViewBuilder
@@ -42,25 +49,25 @@ struct ResultTableInfo: View {
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 if showRecurringError {
                     Text(L.recurring_fail.string)
-                        .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                        .foregroundColor(UIScheme.color.errorTextColor)
+                        .font(.custom(.primary(size: .s, weight: .regular)))
+                        .foregroundColor(UIScheme.color.inputTextPrimary)
                         .multilineTextAlignment(.center)
                 }
                 ForEach(recurringDetails, id: \.title) { details in
                     HStack(alignment: .firstTextBaseline) {
                         Text(details.title.string)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.secondaryTextColor)
+                            .font(.custom(.primary(size: .s, weight: .regular)))
+                            .foregroundColor(UIScheme.color.inputTextAdditional)
                         Spacer()
                         Text(details.description.stringValue)
-                            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                            .foregroundColor(UIScheme.color.text)
+                            .font(.custom(.primary(size: .s, weight: .regular)))
+                            .foregroundColor(UIScheme.color.inputTextPrimary)
                     }
                 }
                 Line()
                   .stroke(style: StrokeStyle(lineWidth: 1, dash: [4]))
                   .frame(height: 1)
-                  .foregroundColor(UIScheme.color.secondaryTextColor)
+                  .foregroundColor(UIScheme.color.inputTextAdditional)
                   .accessibilityHidden(true)
             }
         }

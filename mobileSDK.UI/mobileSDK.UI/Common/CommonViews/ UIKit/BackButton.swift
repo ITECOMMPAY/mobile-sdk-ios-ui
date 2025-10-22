@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BackButton: View {
-    var foregroundColor: Color = UIScheme.color.navigationButtonColor
+    var foregroundColor: Color = UIScheme.color.inputTextPrimary
     var onTap: () -> Void = {}
 
     var body: some View {
