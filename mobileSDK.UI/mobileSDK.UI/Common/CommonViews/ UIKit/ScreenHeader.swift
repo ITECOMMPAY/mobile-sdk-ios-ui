@@ -11,8 +11,8 @@ struct ScreenHeader: View {
     let text: String
     var body: some View {
         Text(text)
-            .foregroundColor(UIScheme.color.screenHeader)
-            .font(UIScheme.font.screenHeader)
+            .foregroundColor(UIScheme.color.inputTextPrimary)
+            .font(.custom(.secondary(size: .m, weight: .bold)))
             .frame(alignment: .leading)
             .accessibilityAddTraits(.isHeader)
     }

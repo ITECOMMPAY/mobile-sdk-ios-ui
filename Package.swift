@@ -6,7 +6,7 @@ let package = Package(
     name: "EcommpaySDK",
     defaultLocalization: "en",
     platforms: [
-        .iOS("15.6")
+        .iOS("16.6")
     ],
     products: [
         .library(
@@ -19,7 +19,15 @@ let package = Package(
             name: "EcommpaySDK",
             dependencies: ["mobileSDK_UI", "MsdkCore"],
             path: "mobileSDK.Facade/mobileSDK.Facade",
-            exclude: ["Resources/Overrides.strings", "Resources/de.lproj", "Resources/en.lproj", "Resources/es.lproj", "Resources/fr.lproj", "Resources/hu.lproj", "Resources/it.lproj"],
+            exclude: [
+                "Resources/Overrides.strings",
+                "Resources/de.lproj",
+                "Resources/en.lproj",
+                "Resources/es.lproj",
+                "Resources/fr.lproj",
+                "Resources/hu.lproj",
+                "Resources/it.lproj"
+            ],
             resources: [
                 .process("Resources")
             ]

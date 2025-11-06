@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-/// Корневая вью
 struct RootView<ViewModel: RootViewModelProtocol>: View, ViewWithViewModel {
     @ObservedObject var viewModel: ViewModel
     let cardShown: Bool = true

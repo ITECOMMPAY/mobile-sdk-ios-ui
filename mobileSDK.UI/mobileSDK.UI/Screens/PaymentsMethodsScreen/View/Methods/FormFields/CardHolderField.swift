@@ -26,13 +26,13 @@ struct CardHolderField: View {
             isAllowedCharacter: { it in
                 it.isLetter || " .-'".contains(it)
             },
-            required: true,
             hint: errorMessage,
             valid: isFieldValid,
             disabled: false,
             accessoryView: EmptyView()) {
                 validate(cardHolder)
-            }.onAppear {
+            }
+            .onAppear {
                 validate(cardHolder, ignoreEmpty: true)
             }
     }
@@ -56,9 +56,11 @@ struct CardHolderField: View {
 }
 
 #if DEBUG
+
 struct CardHolderField_Previews: PreviewProvider {
     static var previews: some View {
         CardHolderField(cardHolder: .constant(""), isValueValid: .constant(true))
     }
 }
+
 #endif

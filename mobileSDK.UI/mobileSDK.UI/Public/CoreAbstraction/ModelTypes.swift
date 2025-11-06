@@ -56,7 +56,7 @@ public typealias Validator<Type> = (_ isValid: Type) -> Bool
 
 public protocol CustomerField {
     var name: String { get }
-    var isRequired: Bool { get }
+    var isOptional: Bool { get }
     var isHidden: Bool { get }
     var isTokenize: Bool { get }
     var hint: String? { get }
@@ -159,7 +159,8 @@ public protocol PaymentOptions {
     var details: [PaymentDetailData] { get }
     var uiAdditionalFields: [AdditionalField] { get }
     var isMockModeEnabled: Bool { get }
-    var brandColorOverride: Color? { get }
+    var primaryBrandColorOverride: Color? { get }
+    var secondaryBrandColorOverride: Color? { get }
     var applePayMerchantID: String? { get }
     var appleCountryCode: String? { get }
     var paymentID: String { get }
@@ -177,6 +178,7 @@ public protocol PaymentOptions {
     var isDarkThemeOn: Bool { get }
     var hideScanningCards: Bool { get }
     var footerImage: Image? { get }
+    var hideFooterLogo: Bool { get }
 }
 
 public protocol AdditionalField {

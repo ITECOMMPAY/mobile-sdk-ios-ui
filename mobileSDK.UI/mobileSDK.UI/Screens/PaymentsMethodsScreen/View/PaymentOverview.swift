@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct PaymentOverview: View {
-    let isVatIncluded: Bool
     let priceValue: Decimal
     let currency: String
     let recurringData: [RecurringDetailsData]
     let paymentDetails: [PaymentDetailData]
-    let backgroundTemplate: InfoCardBackground
     let logoImage: Image?
     var isDimBackground: Bool = false
 
@@ -21,52 +19,71 @@ struct PaymentOverview: View {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
+        formatter.decimalSeparator = "."
         return formatter
     }()
 
     var body: some View {
-        VStack(alignment: .leading, spacing: UIScheme.dimension.paymentOverviewSpacing) {
-            logo
+        VStack(
+            alignment: .leading,
+            spacing: UIScheme.dimension.paymentOverviewSpacing
+        ) {
+            HStack {
+                logo
+                Spacer()
+                IR.flag.image
+                Text(Locale.current.threeLetterLanguageCode())
+                    .font(.custom(.primary(size: .s, weight: .semiBold)))
+                    .foregroundColor(UIScheme.color.buttonCard)
+            }
             if !recurringData.isEmpty { recurringDetails }
-            price
-            if !paymentDetails.isEmpty { details }
-        }.frame(maxWidth: .infinity, alignment: .topLeading)
-        .padding(UIScheme.dimension.paymentOverviewSpacing)
-        .background {
-            cardBackground.opacity(isDimBackground ? 0.4 : 1)
+            VStack(
+                alignment: .leading,
+                spacing: 6
+            ) {
+                price
+                if !paymentDetails.isEmpty { details }
+            }
         }
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .padding(UIScheme.dimension.paymentOverviewSpacing)
+        .background(cardBackground)
     }
 
     var cardBackground: some View {
-        backgroundTemplate.image?.resizable()
-            .colorMultiply(UIScheme.color.brandColor)
-            .cornerRadius(UIScheme.dimension.backgroundSheetCornerRadius,
-                          corners: .allCorners)
+        UIScheme.color.brandPrimary
+            .overlay(
+                IR.cardBackgroundPattern.image?
+                    .renderingMode(.template)
+                    .resizable(resizingMode: .tile)
+                    .foregroundColor(UIScheme.isDarkTheme ? .black : .white)
+            )
+            .clipShape(
+                .rect(
+                    topLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomLeadingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    bottomTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius,
+                    topTrailingRadius: UIScheme.dimension.backgroundSheetCornerRadius
+                )
+            )
             .accessibilityHidden(true)
     }
 
     var logo: some View {
-        logoImage ?? IR.ecommpayLogo.image
+        logoImage?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
+        ?? IR.ecommpayLogo.image?
+            .renderingMode(.template)
+            .foregroundStyle(UIScheme.color.buttonCard)
     }
 
     var price: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-            HStack(alignment: .firstTextBaseline, spacing: UIScheme.dimension.valueToCurrencySpacing) {
-                Text("\(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
-                    .font(UIScheme.font.commonBold(size: UIScheme.dimension.hugeFont))
-                Text(currency).font(UIScheme.font.commonRegular(size: UIScheme.dimension.middleFont))
-            }
-            .accessibilityElement(children: .combine)
-            vat
+            Text("\(currency) \(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
+                .font(.custom(.secondary(size: .xxl, weight: .bold)))
         }
-        .foregroundColor(UIScheme.color.paymentInfoCardForegroundColor)
-    }
-
-    var vat: some View {
-        Text(L.title_total_price.string + " ")
-            .font(UIScheme.font.commonSemiBold(size: UIScheme.dimension.smallFont))
-        + Text(isVatIncluded ? L.vat_included.string : "")
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
+        .foregroundColor(UIScheme.color.buttonCard)
     }
     
     var details: some View {
@@ -79,10 +96,10 @@ struct PaymentOverview: View {
 }
 
 #if DEBUG
+
 struct PaymentSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         PaymentOverview(
-            isVatIncluded: true,
             priceValue: Decimal(238.50),
             currency: "EUR",
             recurringData: [
@@ -92,17 +109,22 @@ struct PaymentSummaryView_Previews: PreviewProvider {
                 )
             ],
             paymentDetails: [
-                PaymentDetailData(title: L.title_payment_id,
-                                  description: "EP2e11-f018-RQR12-26VL-0412CS",
-                                  canBeCopied: true),
-                PaymentDetailData(title: L.title_payment_information_description,
-                                  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                                  canBeCopied: false)
+                PaymentDetailData(
+                    title: L.title_payment_id,
+                    description: "EP2e11-f018-RQR12-26VL-0412CS",
+                    canBeCopied: true
+                ),
+                PaymentDetailData(
+                    title: L.title_payment_information_description,
+                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    canBeCopied: false
+                )
             ],
-            backgroundTemplate: .lines,
-            logoImage: IR.applePayButtonLogo.image,
-            isDimBackground: true
-        ).padding().previewLayout(.sizeThatFits)
+            logoImage: IR.applePayButtonLogo.image
+        )
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
+
 #endif

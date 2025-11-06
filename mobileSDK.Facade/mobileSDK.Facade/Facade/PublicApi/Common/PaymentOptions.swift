@@ -95,13 +95,19 @@ public class PaymentOptions: NSObject {
     /// Payment logo image
     @objc public var logoImage: UIImage?
 
-    /// Brand color
-    @objc public var brandColor: UIColor?
+    /// Primary brand color
+    @objc public var primaryBrandColor: UIColor?
+    
+    /// Secondary brand color
+    @objc public var secondaryBrandColor: UIColor?
 
     /// Dark theme mode
     @objc public var isDarkThemeOn: Bool = false
+    
+    /// Hiding logo in the footer
+    @objc public var hideFooterLogo: Bool = false
 
-    /// mock Mode type
+    /// Mock mode type
     @objc public var mockModeType: MockModeType = .disabled
 
     /* TODO: add auth, verify support */
@@ -165,15 +171,17 @@ public class PaymentOptions: NSObject {
     ///   - regionCode: Region code of a customer
     ///   - token: Saved card token
     @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:paymentDescription:customerID:regionCode:token:storedCardType:)
-    public init(projectID: Int32,
-                paymentID: String,
-                paymentAmount: Int64,
-                paymentCurrency: String,
-                paymentDescription: String?,
-                customerID: String?,
-                regionCode: String?,
-                token: String? = nil,
-                storedCardType: NSNumber? = nil) {
+    public init(
+        projectID: Int32,
+        paymentID: String,
+        paymentAmount: Int64,
+        paymentCurrency: String,
+        paymentDescription: String?,
+        customerID: String?,
+        regionCode: String?,
+        token: String? = nil,
+        storedCardType: NSNumber? = nil
+    ) {
         self.paymentInfo = PaymentInfo.companion.create(
             projectId: projectID,
             paymentId: paymentID,
@@ -196,11 +204,13 @@ public class PaymentOptions: NSObject {
     ///   - paymentAmount: Payment amount in minor units of currency, 1999 means 19.99, 10 means 0.10
     ///   - paymentCurrency: Payment currency in ISO 4217 alpha-3 format
     @objc(initWithProjectID:paymentID:paymentAmount:paymentCurrency:storedCardType:)
-    public init(projectID: Int32,
-                paymentID: String,
-                paymentAmount: Int64,
-                paymentCurrency: String,
-                storedCardType: NSNumber? = nil) {
+    public init(
+        projectID: Int32,
+        paymentID: String,
+        paymentAmount: Int64,
+        paymentCurrency: String,
+        storedCardType: NSNumber? = nil
+    ) {
         self.paymentInfo = PaymentInfo.companion.create(
             projectId: projectID,
             paymentId: paymentID,

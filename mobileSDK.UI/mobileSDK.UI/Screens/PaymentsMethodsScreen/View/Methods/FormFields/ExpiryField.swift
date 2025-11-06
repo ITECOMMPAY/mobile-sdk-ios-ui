@@ -10,17 +10,24 @@ import Combine
 
 struct ExpiryField: View {
     let disabled: Bool
+    
     @Injected var expiryFabric: CardExpiryFabric?
-
+    
+    @Binding var errorMessage: String?
     @Binding var expiryString: String
     @Binding var isValueValid: Bool
 
     let transformation = InputMaskTransformation(with: "##/##")
     let allowedCharacters = { (c: Character) in c.isASCII && c.isNumber }
+    
+    var cornerRadii: RectangleCornerRadii = .init(
+        topLeading: 2,
+        bottomLeading: UIScheme.dimension.buttonCornerRadius,
+        bottomTrailing: 2,
+        topTrailing: 2
+    )
 
     @State private var isFieldValid: Bool = true
-
-    @State var errorMessage: String = ""
 
     var body: some View {
         CustomTextField(
@@ -32,10 +39,9 @@ struct ExpiryField: View {
             secure: false,
             isAllowedCharacter: allowedCharacters,
             transformation: transformation,
-            required: !disabled,
-            hint: errorMessage,
             valid: isFieldValid,
             disabled: disabled,
+            cornerRadii: cornerRadii,
             accessoryView: EmptyView()
         ) {
             validate(expiryString)
@@ -47,11 +53,12 @@ struct ExpiryField: View {
 
     private func validate(_ value: String, ignoreEmpty: Bool = false) {
         if value.isEmpty {
-            errorMessage = L.message_required_field.string
+            errorMessage = ignoreEmpty ? nil : L.message_required_field.string
             isValueValid = false
             isFieldValid = ignoreEmpty
         } else {
             if expiryFabric?.createCardExpiry(with: value).isValid() ?? false {
+                errorMessage = nil
                 isValueValid = true
                 isFieldValid = true
             } else {
@@ -69,10 +76,12 @@ struct ExpiryFieldPreview: View {
     @State var value: String = ""
     @State var isValid: Bool = true
     @State var anotherText: String = ""
+    
     var body: some View {
         VStack {
             ExpiryField(
                 disabled: false,
+                errorMessage: .constant(nil),
                 expiryString: $value,
                 isValueValid: $isValid
             )
@@ -87,4 +96,5 @@ struct ExpiryField_Previews: PreviewProvider {
         ExpiryFieldPreview()
     }
 }
+
 #endif

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FooterView: View {
-    
     let footerImage: Image?
     
     var body: some View {

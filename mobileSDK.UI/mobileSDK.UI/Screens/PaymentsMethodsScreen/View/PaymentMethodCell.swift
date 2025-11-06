@@ -19,93 +19,85 @@ struct PaymentMethodCell<Content: View, Logo: View>: View {
     let onTap: () -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
-            header.accessibilityElement(children: .combine)
-            content
-                .opacity(isExpanded ? 1 : 0)
-                .frame(maxHeight: isExpanded ? .infinity : 0)
-                .zIndex(-1)
+        VStack(spacing: 20) {
+            header
+                .onTapGesture {
+                    if isCollapsible {
+                        onTap()
+                    }
+                }
+                .accessibilityElement(children: .combine)
+            if isExpanded {
+                content
+            }
         }
-        .background(UIScheme.color.paymentMethodBackground)
-        .cornerRadius(UIScheme.dimension.buttonCornerRadius, corners: .allCorners)
-        .overlay(
-            RoundedRectangle(cornerRadius: UIScheme.dimension.buttonCornerRadius)
-                .stroke(UIScheme.color.paymentMethodBorder, lineWidth: UIScheme.dimension.borderWidth)
+        .padding(20)
+        .background(UIScheme.color.cardBackground)
+        .clipShape(
+            .rect(
+                topLeadingRadius: UIScheme.dimension.buttonCornerRadius,
+                bottomLeadingRadius: UIScheme.dimension.buttonCornerRadius,
+                bottomTrailingRadius: UIScheme.dimension.buttonCornerRadius,
+                topTrailingRadius: UIScheme.dimension.buttonCornerRadius
+            )
         )
     }
     
     @ViewBuilder
     private var header: some View {
         if hasHeader {
-            Button(action: {
-                guard isCollapsible else { return }
-                onTap()
-            }) {
-                HStack {
-                    iconView
-                    Spacer()
-                    titleView
-                    if isCollapsible {
-                        chevron
-                    }
-                }
+            HStack {
+                titleView
+                Spacer()
+                iconView
             }
             .buttonStyle(PlainButtonStyle())
-            .padding(.horizontal, UIScheme.dimension.middleSpacing)
-                .frame(height: UIScheme.dimension.paymentMethodButtonHeight)
-                .background {
-                    isSavedAccount && !isExpanded
-                    ? UIScheme.color.savedAccountBackground
-                    : UIScheme.color.paymentMethodBackground
-                }
+            .background(UIScheme.color.cardBackground)
         } else {
             EmptyView()
         }
     }
-
-    var iconView: some View {
-        methodImage.frame(width: 50, height: 25, alignment: .leading)
-    }
-
+    
     var titleView: some View {
         Text(methodTitle)
-            .font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-            .foregroundColor(UIScheme.color.text)
+            .font(.custom(.primary(size: .s, weight: .medium)))
+            .foregroundColor(UIScheme.color.inputTextPrimary)
             .accessibilityLabel(Text(isSavedAccount ? "Saved card \(methodTitle)" : methodTitle))
             .accessibilityHint(isExpanded ? "Expanded" : "Collapsed")
     }
 
-    var chevron: some View {
-        IR.chevron.image?
-            .renderingMode(.template)
-            .foregroundColor(UIScheme.color.text)
-            .rotationEffect(isExpanded ? .degrees(180) : .zero)
+    var iconView: some View {
+        methodImage
+            .frame(maxHeight: 20, alignment: .trailing)
     }
-
 }
 
 #if DEBUG
 
 struct PaymentMethodCell_Previews: PreviewProvider {
-
     struct PaymentMethodCellExample: View {
         @State var expanded: Int = 0
+        
         var body: some View {
             ScrollView {
                 VStack {
-                    PaymentMethodCell(methodTitle: "Alipay",
-                                      methodImage: EmptyView(),
-                                      isSavedAccount: false,
-                                      isExpanded: expanded == 1,
-                                      content: Color.red.frame(height: 100),
-                                      onTap: { expanded = 1 })
+                    PaymentMethodCell(
+                        methodTitle: "Alipay",
+                        methodImage: EmptyView(),
+                        isSavedAccount: false,
+                        isExpanded: expanded == 1,
+                        content: Color.red.frame(height: 100),
+                        onTap: { expanded = 1 }
+                    )
                 }
             }
         }
     }
 
     static var previews: some View {
-        PaymentMethodCellExample().previewLayout(.sizeThatFits)
+        PaymentMethodCellExample()
+            .previewLayout(.sizeThatFits)
     }
 }
+
 #endif

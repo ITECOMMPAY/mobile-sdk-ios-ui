@@ -11,11 +11,13 @@ struct EmailCustomerTextField: View {
     let value: String
     let customerField: CustomerField
     let onValueChanged: OnBaseCustomerTextFieldValueChanged
-
+    
     var body: some View {
-        BaseCustomerTextField(value: value,
-                              customerField: customerField,
-                              keyboardType: .emailAddress,
-                              onValueChanged: onValueChanged)
+        BaseCustomerTextField(
+            value: value,
+            customerField: customerField,
+            keyboardType: .emailAddress,
+            onValueChanged: onValueChanged
+        )
     }
 }

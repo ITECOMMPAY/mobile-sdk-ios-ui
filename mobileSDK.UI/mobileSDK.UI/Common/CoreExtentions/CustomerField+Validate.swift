@@ -9,7 +9,7 @@ import Foundation
 
 extension CustomerField {
     func getValidationMessage( value: String, onTransformValueBeforeValidate: ((String) -> String)? = nil) -> String? {
-        if self.isRequired && value.isEmpty {
+        if value.isEmpty {
             return L.message_required_field.string
         }
         guard let validator = self.validationMethod else {

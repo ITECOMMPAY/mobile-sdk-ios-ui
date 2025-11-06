@@ -15,8 +15,6 @@ extension TranslationWithLink {
             for linkStruct in messageLinks ?? [] {
                 if let text = linkStruct.messageLink, let link = linkStruct.url {
                     let range = result.mutableString.range(of: text)
-//                    result.addAttributes(linksAttributes, range: range)
-//                    result.addAttributes([.link: link], range: range)
                     result.setAttributes(merge([.link: link], linksAttributes), range: range)
                 }
             }
@@ -30,8 +28,8 @@ extension TranslationWithLink {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.09
         return [
-            .font: UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont) as UIFont,
-            .foregroundColor: UIColor(UIScheme.color.linkButtonColor),
+            .font: UIFont.custom(.primary(size: .xs, weight: .regular)),
+            .foregroundColor: UIColor(UIScheme.color.brandPrimary),
             .underlineStyle: UIScheme.underlinedLinks ? NSUnderlineStyle.single.rawValue : 0,
             .paragraphStyle: paragraphStyle
         ]
@@ -41,8 +39,8 @@ extension TranslationWithLink {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.09
         return [
-            .font: UIScheme.font.commonRegular(size: UIScheme.dimension.tinyFont) as UIFont,
-            .foregroundColor: UIColor(UIScheme.color.secondaryTextColor),
+            .font: UIFont.custom(.primary(size: .xs, weight: .regular)),
+            .foregroundColor: UIColor(UIScheme.color.inputTextPrimary),
             .paragraphStyle: paragraphStyle
         ]
     }

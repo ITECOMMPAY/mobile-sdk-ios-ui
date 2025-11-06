@@ -32,12 +32,6 @@ extension Array where Element == CustomerField {
         }
     }
 
-    var isAllCustomerFieldsNonRequired: Bool {
-        self.contains { customerField in
-            !customerField.isRequired
-        }
-    }
-
     var hasVisibleCustomerFields: Bool {
         self.contains { customerField in
             !customerField.isHidden

@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct PaymentDetailsButton: View {
-    let text: String
+    let expanded: Bool
     let action: () -> Void
 
     var body: some View {
-        Button(action: action, label: {
-            Text(text).font(UIScheme.font.commonRegular(size: UIScheme.dimension.smallFont))
-                .frame(maxWidth: .infinity)
-                .frame(height: UIScheme.dimension.paymentDetailsButtonHeight)
-                .foregroundColor(UIScheme.color.paymentDetailsForegroundColor)
-                .background(UIScheme.color.paymentDetailsBackgroundColor)
-                .cornerRadius(6)
-        })
+        Button(action: action) {
+            HStack {
+                Text(
+                    expanded
+                        ? L.button_hide_details.string
+                        : L.title_payment_information_screen.string
+                )
+                .font(.custom(.secondary(size: .s, weight: .bold)))
+                .foregroundColor(UIScheme.color.cardBackground)
+                Spacer()
+                ZStack {
+                    Circle()
+                        .fill(UIScheme.color.brandSecondary)
+                        .frame(width: 28, height: 28)
+                    Image(systemName: expanded ? "chevron.up" : "chevron.down")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(UIScheme.isDarkTheme ? .white : .black)
+                }
+            }
+        }
     }
 }
 
@@ -29,7 +41,7 @@ import AVFoundation
 
 struct PaymentDetailsButton_Previews: PreviewProvider {
     static var previews: some View {
-        PaymentDetailsButton(text: "Payment Details") {
+        PaymentDetailsButton(expanded: false) {
             AudioServicesPlaySystemSound(1016)
         }
     }
