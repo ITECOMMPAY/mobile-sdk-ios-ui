@@ -19,7 +19,7 @@ enum NavigationComponentIntent {
 protocol NavigationComponentViewModelProtocol: ViewModel, RootChild
 where ViewState == NavigationComponentState, UserIntent == NavigationComponentIntent {}
 
-/// Модель компонента навигации. В маппингах с помощью рутового состояния определяется то какой экран сейчас нужно отображать
+/// Navigation component model. In mappings, the root state determines which screen should be displayed.
 class NavigationComponentViewModel<rootVM: RootViewModelProtocol>: ChildViewModel<NavigationComponentState, NavigationComponentIntent, rootVM>, NavigationComponentViewModelProtocol {
     override func mapState(from parentState: rootVM.ViewState) throws -> NavigationComponentState {
         return NavigationComponentState(currentScreen: parentState.currentScreen)

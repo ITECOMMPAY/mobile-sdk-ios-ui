@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-/// Компонент навигации, на основе своего состояния определяет текущий экран который будет отображён
+/// The navigation component, based on its state, determines the current screen that will be displayed.
 struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>: View, ViewWithViewModel {
     let viewModel: ViewModelType
     @State var cardShown: Bool = false

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Stored properties
-/// Корневое состояние на основе которого строится представление всех экранов
+/// The root state on which all screens are based
 struct RootState {
     var isLoading: Bool = false
     var isTryAgain: Bool = false
@@ -39,13 +39,13 @@ struct FormData {
 enum AlertModel {
     typealias Action = () -> Void
 
-    /// Уведомление об ошибке после которой продолжение сценария оплаты невозможно
+    /// Notification of an error after which the payment scenario cannot be continued
     case FinalError(CoreError, onClose: Action?)
-    /// Уведомление о не критичной ошибке
+    /// Notification of a non-critical error
     case InfoError(CoreError, onClose: Action?)
-    /// Предупреждение о закрытии страницы оплаты
+    /// Warning about closing the payment page
     case CloseWarning(confirmClose: Action?)
-    /// Уведомление о завершении токенизации
+    /// Notification of tokenization completion
     case TokenizeResult(message: String, onClose: Action?)
 }
 
