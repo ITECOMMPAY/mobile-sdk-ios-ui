@@ -61,6 +61,7 @@ protocol DimensionScheme {
 }
 
 struct DefaultDimensionScheme: DimensionScheme {
+    let inputAccentedBorderWidth: CGFloat = 1
     let textFieldHeight: CGFloat = 55
     let payButtonPayPriceSpacing: CGFloat = 5
     let payButtonHeight: CGFloat = 45
