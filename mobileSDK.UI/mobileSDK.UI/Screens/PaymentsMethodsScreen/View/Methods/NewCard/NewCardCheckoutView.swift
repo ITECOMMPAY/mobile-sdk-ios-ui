@@ -17,18 +17,16 @@ struct NewCardCheckoutView: View {
 
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
 
-    @State var isCardValid: Bool = false
-    @State var isCVVValid: Bool = false
+    @State var isCardFieldsValid: Bool = false
     @State var isCardHolderValid: Bool = false
+
     @State var isExpiryValid: Bool = false
     @State var isCustomerFieldsValid: Bool = false
 
     private var isFormValid: Bool {
         [
-            isCardValid,
-            isCVVValid,
-            isCardHolderValid,
-            isExpiryValid
+            isCardFieldsValid,
+            isCardHolderValid
         ].allSatisfy { $0 }
         && (!isContinueButton ? (isCustomerFieldsValid || paymentMethod.visibleCustomerFields.isEmpty): true)
     }
@@ -50,6 +48,9 @@ struct NewCardCheckoutView: View {
                     isSaved: false,
                     needCVV: true,
                     paymentMethod: paymentMethod,
+                    cardValidationChanged: { isValid in
+                        self.isCardFieldsValid = isValid
+                    },
                     formValues: $formValues
                 )
                 

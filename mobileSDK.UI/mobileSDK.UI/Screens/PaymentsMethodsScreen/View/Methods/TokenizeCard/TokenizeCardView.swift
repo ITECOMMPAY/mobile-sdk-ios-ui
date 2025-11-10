@@ -17,16 +17,14 @@ struct TokenizeCardView: View {
     
     var payAction: (PaymentMethodsIntent) -> Void = { _ in }
     
-    @State var isCardValid: Bool = false
+    @State var isCardFieldsValid: Bool = false
     @State var isCardHolderValid: Bool = false
-    @State var isExpiryValid: Bool = false
     @State var isCustomerFieldsValid: Bool = false
     
     private var isFormValid: Bool {
         [
-            isCardValid,
-            isCardHolderValid,
-            isExpiryValid
+            isCardFieldsValid,
+            isCardHolderValid
         ].allSatisfy { $0 }
         && (visibleCustomerFields.shouldBeDisplayed ? isCustomerFieldsValid : true)
     }
@@ -48,6 +46,9 @@ struct TokenizeCardView: View {
                     isSaved: false,
                     needCVV: false,
                     paymentMethod: paymentMethod,
+                    cardValidationChanged: { isValid in
+                        self.isCardFieldsValid = isValid
+                    },
                     formValues: $formValues
                 )
                 

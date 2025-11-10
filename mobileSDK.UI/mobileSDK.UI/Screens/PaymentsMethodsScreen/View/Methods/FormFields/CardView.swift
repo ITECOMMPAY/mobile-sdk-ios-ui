@@ -17,12 +17,18 @@ struct CardView: View {
     @State var isExpiryValid: Bool = false
     @State var isCvvValid: Bool = false
     
+    var cardValidationChanged: (Bool) -> Void
+    
     @Binding var formValues: FormData
     
     @State private var cardType: CardType?
     @State private var panErrorMessage: String?
     @State private var expiryErrorMessage: String?
     @State private var cvvErrorMessage: String?
+    
+    private var isFormValid: Bool {
+        isPanValid && isExpiryValid && isCvvValid
+    }
 
     private var prioritizedErrorMessage: String? {
         panErrorMessage ?? expiryErrorMessage ?? cvvErrorMessage
@@ -70,6 +76,8 @@ struct CardView: View {
                         )
                     }
                 }
+            }.onChange(of: isFormValid) { isValid in
+                cardValidationChanged(isValid)
             }
 
             if let errorMessage = prioritizedErrorMessage {
@@ -90,6 +98,7 @@ struct CardView_Previews: PreviewProvider {
             isSaved: false,
             needCVV: true,
             paymentMethod: MockPaymentMethod(),
+            cardValidationChanged: { _ in },
             formValues: .constant(FormData())
         )
     }
