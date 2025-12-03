@@ -455,7 +455,11 @@ class ConfigGenerator:
     def _generate_app_config(self) -> None:
         """Generates the main application configuration file"""
         print("\n Generating AppConfig.swift...")
-        
+
+        # Remove https:// or http:// prefix if present
+        api_host = self.config.api_host.removeprefix("https://").removeprefix("http://")
+        socket_host = self.config.socket_host.removeprefix("https://").removeprefix("http://")
+
         # Use triple quotes for multiline Swift code
         # f-strings allow inserting Python variables directly into the text
         swift_code = f'''// Automatically generated configuration file
@@ -467,14 +471,14 @@ import Foundation
 /// Application configuration generated during build
 public struct AppConfig {{
     /// Base API URL
-    public static let apiHost = "{self.config.api_host}"
-    
+    public static let apiHost = "{api_host}"
+
     /// Base SOCKET API URL
-    public static let socketHost = "{self.config.socket_host}"
+    public static let socketHost = "{socket_host}"
 }}
 
 '''
-        
+
         self._write_swift_file("AppConfig.swift", swift_code)
 
     
