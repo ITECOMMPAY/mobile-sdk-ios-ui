@@ -82,9 +82,7 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
-mobileSDK.Core
 
-*.xcframework
 *.xcframework.zip
 Gemfile.lock
 *.json
