@@ -136,8 +136,8 @@ public class PaymentOptions: NSObject {
     @objc public var recipientInfo: RecipientInfo?
     /// Hide saved wallets
     @objc public var hideSavedWallets: Bool {
-        get { paymentInfo.hideSavedWallets }
-        set { paymentInfo.hideSavedWallets = newValue }
+        get { paymentInfo.hideSavedWallets?.boolValue ?? false }
+        set { paymentInfo.hideSavedWallets = KotlinBoolean(bool: newValue) }
     }
     /// Hide card scanning button
     @objc public var hideScanningCards: Bool = false
