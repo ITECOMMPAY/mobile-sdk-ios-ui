@@ -86,7 +86,7 @@ struct PayButtonLabel: View {
             }()
             HStack(spacing: UIScheme.dimension.payButtonPayPriceSpacing) {
                 plainText
-                Text("\(currency) \(amount as NSDecimalNumber, formatter: numberFormatter)")
+                Text("\(currency.currencySymbol) \(amount as NSDecimalNumber, formatter: numberFormatter)")
                     .font(.custom(.secondary(size: .s, weight: .bold)))
             }
         default:

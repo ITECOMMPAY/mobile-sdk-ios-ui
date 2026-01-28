@@ -80,7 +80,7 @@ struct PaymentOverview: View {
 
     var price: some View {
         VStack(alignment: .leading, spacing: UIScheme.dimension.tinySpacing) {
-            Text("\(currency) \(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
+            Text("\(currency.currencySymbol) \(priceValue as NSDecimalNumber, formatter: self.numberFormatter)")
                 .font(.custom(.secondary(size: .xxl, weight: .bold)))
         }
         .foregroundColor(UIScheme.color.buttonCard)
