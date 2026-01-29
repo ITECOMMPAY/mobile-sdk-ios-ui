@@ -217,20 +217,9 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     }
 
     var summary: PaymentSummaryData {
-        var currency: String
-        if publicType.paymentInfo.paymentCurrency == "USD" {
-            currency = "$"
-        } else if publicType.paymentInfo.paymentCurrency == "EUR" {
-            currency = "€"
-        } else if publicType.paymentInfo.paymentCurrency == "GBP" {
-           currency = "£"
-        } else {
-            currency = publicType.paymentInfo.paymentCurrency
-        }
-        
         return PaymentSummaryData(
             logo: publicType.logoImage.map({ Image(uiImage: $0)}),
-            currency: currency,
+            currency: publicType.paymentInfo.paymentCurrency,
             value: Decimal(publicType.paymentInfo.paymentAmount) / 100
         )
     }
