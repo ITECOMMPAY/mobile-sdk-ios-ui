@@ -85,17 +85,25 @@ struct BottomCardViewContent<Header: View, ScrollableContent: View>: View {
     var body: some View {
         VStack(spacing: .zero) {
             header
-            ScrollView {
-                content
+            ScrollViewReader { proxy in
+                ScrollView {
+                    content
+                }
+                .modifier(KeyboardAwareModifier(scrollProxy: proxy))
             }
         }
-        .keyboardAwarePadding()
         .listStyle(.plain)
     }
 }
 
 struct KeyboardAwareModifier: ViewModifier {
+    let scrollProxy: ScrollViewProxy?
+
     @State private var keyboardHeight: CGFloat = 0
+
+    init(scrollProxy: ScrollViewProxy? = nil) {
+        self.scrollProxy = scrollProxy
+    }
 
     private var keyboardHeightPublisher: AnyPublisher<CGFloat, Never> {
         Publishers.Merge(
@@ -113,13 +121,19 @@ struct KeyboardAwareModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .padding(.bottom, keyboardHeight)
-            .onReceive(keyboardHeightPublisher) { self.keyboardHeight = $0 }
-    }
-}
+            .onReceive(keyboardHeightPublisher) { newHeight in
+                withAnimation(.easeOut(duration: 0.25)) {
+                    self.keyboardHeight = newHeight
+                }
 
-extension View {
-    func keyboardAwarePadding() -> some View {
-        ModifiedContent(content: self, modifier: KeyboardAwareModifier())
+                if newHeight > 0, let proxy = scrollProxy {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        withAnimation(.easeOut(duration: 0.25)) {
+                            proxy.scrollTo("payButton", anchor: .bottom)
+                        }
+                    }
+                }
+            }
     }
 }
 

@@ -73,19 +73,25 @@ struct NewCardCheckoutView: View {
 
             saveCardCheckbox
 
-            PayButton(label: buttonLabel, disabled: !isFormValid) {
-                payAction(
-                    .payNewCardWith(
-                        cvv: formValues.cardCVV,
-                        pan: formValues.cardNumber,
-                        year: expiry.expiryYear!,
-                        month: expiry.expiryMonth!,
-                        cardHolder: formValues.cardHolder,
-                        saveCard: formValues.isCOFAgreementChecked,
-                        customerFields: formValues.customerFieldValues
+            VStack(spacing: 0) {
+                PayButton(label: buttonLabel, disabled: !isFormValid) {
+                    payAction(
+                        .payNewCardWith(
+                            cvv: formValues.cardCVV,
+                            pan: formValues.cardNumber,
+                            year: expiry.expiryYear!,
+                            month: expiry.expiryMonth!,
+                            cardHolder: formValues.cardHolder,
+                            saveCard: formValues.isCOFAgreementChecked,
+                            customerFields: formValues.customerFieldValues
+                        )
                     )
-                )
+                }
+
+                Spacer()
+                    .frame(height: 8)
             }
+            .id("payButton")
 
             if !isContinueButton,
                let recurringDisclaimer = paymentOptions.recurringDisclaimer {

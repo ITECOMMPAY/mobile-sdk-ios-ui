@@ -58,27 +58,33 @@ struct SavedCardCheckoutView: View {
                 }
             }
             
-            PayButton(
-                label: buttonLabel,
-                disabled: !payButtonIsEnabled
-            ) {
-                if isTokenizedAction {
-                    onIntent(
-                        .payToken(
-                            cvv: formValues.cardCVV,
-                            customerFields: formValues.customerFieldValues
+            VStack(spacing: 0) {
+                PayButton(
+                    label: buttonLabel,
+                    disabled: !payButtonIsEnabled
+                ) {
+                    if isTokenizedAction {
+                        onIntent(
+                            .payToken(
+                                cvv: formValues.cardCVV,
+                                customerFields: formValues.customerFieldValues
+                            )
                         )
-                    )
-                } else {
-                    onIntent(
-                        .paySavedAccountWith(
-                            id: savedCard.id,
-                            cvv: formValues.cardCVV,
-                            customerFields: formValues.customerFieldValues
+                    } else {
+                        onIntent(
+                            .paySavedAccountWith(
+                                id: savedCard.id,
+                                cvv: formValues.cardCVV,
+                                customerFields: formValues.customerFieldValues
+                            )
                         )
-                    )
+                    }
                 }
+
+                Spacer()
+                    .frame(height: 8)
             }
+            .id("payButton")
             
             VStack(spacing: UIScheme.dimension.middleSpacing) {
                 if !isTokenizedAction {
