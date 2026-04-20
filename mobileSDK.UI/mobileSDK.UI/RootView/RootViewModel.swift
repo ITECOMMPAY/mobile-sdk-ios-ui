@@ -344,10 +344,10 @@ class RootViewModel: RootViewModelProtocol {
             }
         case .paymentMethodsScreenIntent(.payAPS(let method)):
             state.apsPaymentMethod = method
-        case .apsScreenIntent(.executePayment):
+        case .apsScreenIntent(.executePayment(let event)):
             if let methodCode = state.apsPaymentMethod?.code,
                 let request = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
-                execute(payRequest: request, customerFields: [], isLoading: false)
+                execute(payRequest: request, customerFields: [], isLoading: event != nil)
             }
         case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
             state.savedValues[entity] = newValues

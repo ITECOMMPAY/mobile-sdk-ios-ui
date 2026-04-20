@@ -27,19 +27,24 @@ struct ApsScreen<VM: ApsScreenViewModelProtocol>: View, ViewWithViewModel {
             Group {
                 if let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                    let url = URL(string: paymentUrlString) {
-                    WebView(task: .request(URLRequest(url: url))) { url in
+                    WebView(task: .request(URLRequest(url: url)), didFinish: { url in
                         if viewModel.state.isTryAgain {
                             isStartedStatusCheck = false
                         }
-                        
+
                         isLoading = false
                         if let currentUrl = url,
                            let paymentUrlString = self.viewModel.state.apsPaymentMethod?.paymentUrl,
                            !currentUrl.hasPrefix(paymentUrlString), !isStartedStatusCheck {
                             isStartedStatusCheck = true
-                            viewModel.dispatch(intent: .executePayment)
+                            viewModel.dispatch(intent: .executePayment(nil))
                         }
-                    }.equatable()
+                    }, onEvent: { event in
+                        if !isStartedStatusCheck {
+                            isStartedStatusCheck = true
+                            viewModel.dispatch(intent: .executePayment(event))
+                        }
+                    }).equatable()
                 } else {
                     Spacer()
                 }
@@ -71,7 +76,7 @@ struct ApsScreen_Previews: PreviewProvider {
 
 enum ApsScreenIntent {
     case close
-    case executePayment
+    case executePayment(String?)
 }
 
 protocol ApsScreenState {

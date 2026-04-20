@@ -22,15 +22,21 @@ struct WebView: UIViewRepresentable, Equatable {
 
     let task: WebViewTask
     let didFinish: (_ url: String?) -> Void
+    var onEvent: ((String) -> Void)? = nil
 
     // MARK: - Functions
 
     func makeCoordinator() -> WebViewCoordinator {
-        WebViewCoordinator(task: task, didFinish: didFinish)
+        WebViewCoordinator(task: task, didFinish: didFinish, onEvent: onEvent)
     }
 
     public func makeUIView(context: Context) -> WKWebView {
-        let uiView = WKWebView()
+        let config = WKWebViewConfiguration()
+        let controller = WKUserContentController()
+        controller.add(context.coordinator, name: "EcpMobileSDK")
+        config.userContentController = controller
+
+        let uiView = WKWebView(frame: .zero, configuration: config)
         return uiView
     }
 
@@ -42,15 +48,17 @@ struct WebView: UIViewRepresentable, Equatable {
 
 }
 
-class WebViewCoordinator: NSObject, WKNavigationDelegate {
-    internal init(task: WebViewTask, didFinish: @escaping (String?) -> Void, currentUrl: String? = nil) {
+class WebViewCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
+    internal init(task: WebViewTask, didFinish: @escaping (String?) -> Void, onEvent: ((String) -> Void)? = nil, currentUrl: String? = nil) {
         self.task = task
         self.didFinish = didFinish
+        self.onEvent = onEvent
         self.currentUrl = currentUrl
     }
 
     var task: WebViewTask
     var didFinish: (_ url: String?) -> Void
+    var onEvent: ((String) -> Void)?
 
     private var currentUrl: String?
 
@@ -75,6 +83,12 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate {
         if navigationAction.navigationType == .linkActivated {
             guard let url = navigationAction.request.url else {return}
             webView.load(URLRequest(url: url))
+        }
+    }
+
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "EcpMobileSDK", let messageBody = message.body as? String {
+            onEvent?(messageBody)
         }
     }
 }
