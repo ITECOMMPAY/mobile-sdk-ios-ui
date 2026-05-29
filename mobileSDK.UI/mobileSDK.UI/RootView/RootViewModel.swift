@@ -350,9 +350,15 @@ class RootViewModel: RootViewModelProtocol {
                 execute(payRequest: request, customerFields: [], isLoading: event != nil)
             }
         case .paymentMethodsScreenIntent(.paySBP(let method)):
+            state.sbpPaymentMethod = method
             if let request = payRequestFactory?.createSBPSaleRequest() {
                 state.isLoading = true
                 execute(payRequest: request, customerFields: [])
+            }
+        case .sbpQrScreenIntent(.openWebView(let url)):
+            self.state = modifiedCopy(of: self.state) {
+                $0.sbpQrData = nil
+                $0.sbpWebViewData = url
             }
         case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
             state.savedValues[entity] = newValues
@@ -446,14 +452,6 @@ class RootViewModel: RootViewModelProtocol {
                         $0.request = nil
                         $0.sbpQrData = qrData
                     }
-                case .onSbpWebViewDataReceived(qrData: let qrData, payment: let payment):
-                    debugPrint("\(type(of: self)) received onSbpWebViewDataReceived")
-                    self.state = modifiedCopy(of: self.state) {
-                        $0.isLoading = false
-                        $0.payment = payment
-                        $0.request = nil
-                        $0.sbpWebViewData = qrData
-                    }
                 case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")
 
@@ -471,6 +469,9 @@ class RootViewModel: RootViewModelProtocol {
                         $0.finalPaymentState = .Decline(paymentMessage: paymentMessage, isTryAgain: isTryAgain)
                         $0.customerFields = nil
                         $0.clarificationFields = nil
+                        $0.sbpQrData = nil
+                        $0.sbpWebViewData = nil
+                        $0.sbpPaymentMethod = nil
                         $0.threeDSecurePageState = nil
                     }
                     
@@ -497,6 +498,9 @@ class RootViewModel: RootViewModelProtocol {
                         $0.isLoading = false
                         $0.request = nil
                         $0.finalPaymentState = .Success
+                        $0.sbpQrData = nil
+                        $0.sbpWebViewData = nil
+                        $0.sbpPaymentMethod = nil
                     }
                     
                     if self.state.paymentOptions.action == .Tokenize {
@@ -537,6 +541,8 @@ class RootViewModel: RootViewModelProtocol {
 
         if payment.uiPaymentMethodType == .aps {
             dispatch(intent: .paymentMethodsScreenIntent(.payAPS(paymentMethod)))
+        } else if payment.uiPaymentMethodType == .sbp {
+            dispatch(intent: .paymentMethodsScreenIntent(.paySBP(paymentMethod)))
         } else {
             state.isLoading = true
         }

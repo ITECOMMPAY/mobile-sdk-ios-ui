@@ -84,13 +84,13 @@ public struct ViewFactory {
         parentModel: Model
     ) -> some View {
         let qrData = parentModel.state.sbpQrData ?? ""
+        let paymentMethod = parentModel.state.sbpPaymentMethod
         return SbpQrScreen(
             qrData: qrData,
+            paymentMethod: paymentMethod,
             paymentOptions: parentModel.state.paymentOptions,
             onLinkTap: { url in
-                if let urlToOpen = URL(string: url) {
-                    UIApplication.shared.open(urlToOpen)
-                }
+                parentModel.dispatch(intent: .sbpQrScreenIntent(.openWebView(url)))
             },
             onClose: {
                 parentModel.dispatch(intent: .paymentMethodsScreenIntent(.close))
@@ -102,8 +102,10 @@ public struct ViewFactory {
         parentModel: Model
     ) -> some View {
         let webViewData = parentModel.state.sbpWebViewData ?? ""
+        let paymentMethod = parentModel.state.sbpPaymentMethod
         return SbpWebViewScreen(
             webViewData: webViewData,
+            paymentMethod: paymentMethod,
             paymentOptions: parentModel.state.paymentOptions,
             onClose: {
                 parentModel.dispatch(intent: .paymentMethodsScreenIntent(.close))

@@ -34,9 +34,6 @@ public enum PayEvent {
     // received SBP QR data for displaying QR code
     case onSbpQrDataReceived(qrData: String, payment: Payment)
 
-    // received SBP WebView data for displaying WebView
-    case onSbpWebViewDataReceived(qrData: String, payment: Payment)
-
 }
 
 public enum ActionType: Int {

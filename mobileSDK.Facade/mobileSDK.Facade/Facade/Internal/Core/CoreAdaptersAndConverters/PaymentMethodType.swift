@@ -15,7 +15,10 @@ import mobileSDK_UI
 
 extension mobileSDK_UI.PaymentMethodType {
     static func createFrom(_ coreEnum: MsdkCore.PaymentMethodType) -> mobileSDK_UI.PaymentMethodType {
-        if coreEnum == MsdkCore.PaymentMethodType.card { return .card } else if coreEnum == MsdkCore.PaymentMethodType.googlePay { return .googlePay } else if coreEnum == MsdkCore.PaymentMethodType.applePay { return .applePay }
+        if coreEnum == MsdkCore.PaymentMethodType.card { return .card }
+        else if coreEnum == MsdkCore.PaymentMethodType.googlePay { return .googlePay }
+        else if coreEnum == MsdkCore.PaymentMethodType.applePay { return .applePay }
+        else if coreEnum == MsdkCore.PaymentMethodType.sbp { return .sbp }
         return .aps
     }
 }

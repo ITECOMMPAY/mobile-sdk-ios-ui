@@ -46,15 +46,8 @@
 		B3D4E419299CC0C3007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
 		B3D4E41A299CC0C8007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
 		B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
-		B3D4E41C299CC0D3007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
-		B3D4E41D299CC0D9007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
-		B3D4E41E299CC0E0007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
-		B3D4E41F299CC0E7007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
-		B3D4E420299CC0EC007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
 		CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
 		CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
-		CE6CEFEC2E01A039003251A2 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
-		CE6CEFED2E01A039003251A2 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +108,6 @@
 		849C535828BF62C800C1CF71 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A35C4E2893B2A20037A604 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
 		84B2416D2887D83C00259A50 /* ECMPConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfig.swift; sourceTree = "<group>"; };
-		84B2416E2887D83C00259A50 /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		84B241822889069A00259A50 /* PayDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDelegateProxy.swift; sourceTree = "<group>"; };
 		84B2419E2889653500259A50 /* ProtocolConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConformance.swift; sourceTree = "<group>"; };
 		84B241A028896AB200259A50 /* BaseDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDelegateProxy.swift; sourceTree = "<group>"; };
@@ -145,15 +137,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7594FE1B2E45590800A714F6 /* Resources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
+		7594FE1B2E45590800A714F6 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +277,7 @@
 				84BC13D02852086E008814EB /* mobileSDK.Facade */,
 				84BC13CF2852086E008814EB /* Products */,
 				84AFF7CF285208CD00E6F1DE /* Frameworks */,
+				85E3DD1A2FCA1D3B00803BBD /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -309,7 +294,6 @@
 			children = (
 				845507B6285B0463002BBFE0 /* Facade */,
 				7594FE1B2E45590800A714F6 /* Resources */,
-				CE6CEFE92E01A039003251A2,
 			);
 			path = mobileSDK.Facade;
 			sourceTree = "<group>";
@@ -344,6 +328,16 @@
 				84B241A028896AB200259A50 /* BaseDelegateProxy.swift */,
 			);
 			path = CoreDelegates;
+			sourceTree = "<group>";
+		};
+		85E3DD1A2FCA1D3B00803BBD /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				84B2416D2887D83C00259A50 /* ECMPConfig.swift */,
+				CE6CEFE62E01A039003251A2 /* AppConfig.swift */,
+				CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

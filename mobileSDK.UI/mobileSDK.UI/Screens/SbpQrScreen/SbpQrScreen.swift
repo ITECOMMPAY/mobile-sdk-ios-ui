@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SbpQrScreen: View {
     let qrData: String
+    let paymentMethod: PaymentMethod?
     let paymentOptions: PaymentOptions
     let onLinkTap: (String) -> Void
     let onClose: () -> Void
@@ -21,7 +22,7 @@ struct SbpQrScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                ScreenHeader(text: "SBP")
+                ScreenHeader(text: paymentMethod?.displayName ?? "SBP")
                 Spacer()
                 CloseButton {
                     onClose()
@@ -125,6 +126,7 @@ struct SbpQrScreen_Previews: PreviewProvider {
     static var previews: some View {
         SbpQrScreen(
             qrData: "https://example.com/sbp/qr/payment?id=1234567890",
+            paymentMethod: nil,
             paymentOptions: MockPaymentOptions(),
             onLinkTap: { _ in },
             onClose: {}

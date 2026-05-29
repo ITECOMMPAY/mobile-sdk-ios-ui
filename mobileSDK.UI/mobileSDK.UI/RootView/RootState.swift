@@ -23,6 +23,7 @@ struct RootState {
     var finalPaymentState: FinalPaymentState?
     var threeDSecurePageState: ThreeDSecurePageState?
     var apsPaymentMethod: PaymentMethod?
+    var sbpPaymentMethod: PaymentMethod?
     var sbpQrData: String?
     var sbpWebViewData: String?
     var savedValues: [PaymentMethodsListEntity: FormData]
