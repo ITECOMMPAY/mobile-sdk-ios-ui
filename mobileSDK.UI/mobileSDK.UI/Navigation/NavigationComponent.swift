@@ -41,6 +41,10 @@ struct NavigationComponent<ViewModelType: NavigationComponentViewModelProtocol>:
             ViewFactory.assembleThreeDSPageScreen(parentModel: viewModel.parentViewModel)
         case .apsPage:
             ViewFactory.assembleAPSPageScreen(parentModel: viewModel.parentViewModel)
+        case .sbpQrPage:
+            ViewFactory.assembleSbpQrScreen(parentModel: viewModel.parentViewModel)
+        case .sbpWebViewPage:
+            ViewFactory.assembleSbpWebViewScreen(parentModel: viewModel.parentViewModel)
         case .loading:
             ViewFactory.assembleLoadingScreen(parentModel: viewModel.parentViewModel)
         case .successResult:

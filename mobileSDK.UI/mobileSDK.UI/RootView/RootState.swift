@@ -23,6 +23,8 @@ struct RootState {
     var finalPaymentState: FinalPaymentState?
     var threeDSecurePageState: ThreeDSecurePageState?
     var apsPaymentMethod: PaymentMethod?
+    var sbpQrData: String?
+    var sbpWebViewData: String?
     var savedValues: [PaymentMethodsListEntity: FormData]
     var request: PayRequest? = nil
 }
@@ -114,6 +116,14 @@ extension RootState {
 
         if apsPaymentMethod != nil {
             return .apsPage
+        }
+
+        if sbpWebViewData != nil {
+            return .sbpWebViewPage
+        }
+
+        if sbpQrData != nil {
+            return .sbpQrPage
         }
 
         if availablePaymentMethods != nil {

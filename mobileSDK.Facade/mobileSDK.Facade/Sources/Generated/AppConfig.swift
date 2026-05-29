@@ -1,15 +1,15 @@
 // Automatically generated configuration file
 // DO NOT EDIT MANUALLY - will be overwritten during build
-// Generated: 2025-12-03T15:34:24.464056+00:00
+// Generated: 2026-05-25T19:58:16.008856+00:00
 
 import Foundation
 
 /// Application configuration generated during build
 public struct AppConfig {
     /// Base API URL
-    public static let apiHost = "sdk.ecommpay.com"
+    public static let apiHost = "sdk.etoplatezhi.ru"
 
     /// Base SOCKET API URL
-    public static let socketHost = "paymentpage.ecommpay.com"
+    public static let socketHost = "paymentpage.etoplatezhi.ru"
 }
 

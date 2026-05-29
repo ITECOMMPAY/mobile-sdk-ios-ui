@@ -86,3 +86,6 @@ iOSInjectionProject/
 *.xcframework.zip
 Gemfile.lock
 *.json
+
+# Automatically generated configuration files
+mobileSDK.Facade/mobileSDK.Facade/Sources/Generated/

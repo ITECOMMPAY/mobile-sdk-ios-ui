@@ -80,6 +80,37 @@ public struct ViewFactory {
         ApsScreen(viewModel: ApsScreenViewModel(parentViewModel: parentModel))
     }
 
+    internal static func assembleSbpQrScreen<Model: RootViewModelProtocol>(
+        parentModel: Model
+    ) -> some View {
+        let qrData = parentModel.state.sbpQrData ?? ""
+        return SbpQrScreen(
+            qrData: qrData,
+            paymentOptions: parentModel.state.paymentOptions,
+            onLinkTap: { url in
+                if let urlToOpen = URL(string: url) {
+                    UIApplication.shared.open(urlToOpen)
+                }
+            },
+            onClose: {
+                parentModel.dispatch(intent: .paymentMethodsScreenIntent(.close))
+            }
+        )
+    }
+
+    internal static func assembleSbpWebViewScreen<Model: RootViewModelProtocol>(
+        parentModel: Model
+    ) -> some View {
+        let webViewData = parentModel.state.sbpWebViewData ?? ""
+        return SbpWebViewScreen(
+            webViewData: webViewData,
+            paymentOptions: parentModel.state.paymentOptions,
+            onClose: {
+                parentModel.dispatch(intent: .paymentMethodsScreenIntent(.close))
+            }
+        )
+    }
+
     internal static func assembleFinalSuccessScreen<Model: RootViewModelProtocol>(
         parentModel: Model
     ) -> some View {

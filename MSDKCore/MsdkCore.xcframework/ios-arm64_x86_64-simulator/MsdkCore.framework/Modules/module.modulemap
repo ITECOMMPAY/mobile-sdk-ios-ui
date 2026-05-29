@@ -1,6 +1,5 @@
-framework module MsdkCore {
+framework module "MsdkCore" {
     umbrella header "MsdkCore.h"
-
     export *
     module * { export * }
 }

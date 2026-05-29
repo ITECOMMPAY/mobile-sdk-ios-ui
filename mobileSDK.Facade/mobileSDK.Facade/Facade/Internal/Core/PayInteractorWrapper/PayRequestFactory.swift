@@ -14,6 +14,10 @@ import MsdkCore
 #endif
 
 class PayRequestFactory: mobileSDK_UI.PayRequestFactory {
+    func createSBPSaleRequest() -> any mobileSDK_UI.PayRequest {
+        PayRequestWrapper(coreRequest: SbpSaleRequest())
+    }
+    
     func createSavedCardSaleRequest(
         cvv: String,
         accountId: Int64,

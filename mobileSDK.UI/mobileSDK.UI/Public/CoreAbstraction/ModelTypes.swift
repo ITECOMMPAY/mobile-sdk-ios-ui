@@ -28,8 +28,14 @@ public enum PayEvent {
     case onStatusChanged(status: PaymentStatus, payment: Payment)
     // received 3ds page and need open it in WebView
     case onThreeDSecure(page: ThreeDSecurePage, isCascading: Bool, payment: Payment)
-    
+
     case onThreeDSecureRedirectComplete
+
+    // received SBP QR data for displaying QR code
+    case onSbpQrDataReceived(qrData: String, payment: Payment)
+
+    // received SBP WebView data for displaying WebView
+    case onSbpWebViewDataReceived(qrData: String, payment: Payment)
 
 }
 

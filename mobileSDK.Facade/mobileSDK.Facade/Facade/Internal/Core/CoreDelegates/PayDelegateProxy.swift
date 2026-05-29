@@ -19,6 +19,15 @@ class PayDelegateProxy: BasePassthroughDelegateProxy<PayDelegate, PayEvent, Core
 }
 
 extension PayDelegateProxy: PayDelegate {
+ 
+    func onSbpQrDataReceived(qrData: String, payment: MsdkCore.Payment) {
+        send(.success(.onSbpQrDataReceived(qrData: qrData, payment: payment.wrapper)))
+    }
+
+    func onSbpWebViewDataReceived(qrData: String, payment: MsdkCore.Payment) {
+        send(.success(.onSbpWebViewDataReceived(qrData: qrData, payment: payment.wrapper)))
+    }
+
     func onThreeDSecureRedirectComplete() {
         send(.success(.onThreeDSecureRedirectComplete))
     }

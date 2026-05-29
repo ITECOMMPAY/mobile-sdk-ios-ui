@@ -248,6 +248,10 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
                 ApsCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
                     viewModel.dispatch(intent: $0)
                 }
+            case .sbp:
+                SbpCheckoutView(paymentOptions: viewModel.state.paymentOptions, paymentMethod: method) {
+                    viewModel.dispatch(intent: $0)
+                }
             default:
                 Color.red.frame(height: 10)
             }

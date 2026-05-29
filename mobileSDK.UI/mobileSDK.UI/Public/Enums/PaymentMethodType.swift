@@ -10,6 +10,7 @@ import Foundation
 public enum PaymentMethodType: String {
     case card
     case aps
+    case sbp
     case googlePay
     case applePay
 }

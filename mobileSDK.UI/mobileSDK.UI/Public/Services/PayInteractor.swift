@@ -75,6 +75,8 @@ public protocol PayRequestFactory {
 
     func createAPSSaleRequest(methodCode: String) -> PayRequest
 
+    func createSBPSaleRequest() -> PayRequest
+
     func createPaymentRestoreRequest(methodCode: String) -> PayRequest
     
     func createTokenizeRequest(

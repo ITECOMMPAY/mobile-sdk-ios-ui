@@ -232,6 +232,6 @@ public class PaymentOptions: NSObject {
     }
 
     @objc public var paramsForSignature: String {
-        paymentInfo.getParamsForSignature()
+        paymentInfo.getParamsForSignature(params: SignatureParam.companion.DEFAULT)
     }
 }

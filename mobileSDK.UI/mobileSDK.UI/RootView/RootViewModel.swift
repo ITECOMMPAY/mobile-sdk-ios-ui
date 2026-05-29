@@ -349,6 +349,11 @@ class RootViewModel: RootViewModelProtocol {
                 let request = payRequestFactory?.createAPSSaleRequest(methodCode: methodCode) {
                 execute(payRequest: request, customerFields: [], isLoading: event != nil)
             }
+        case .paymentMethodsScreenIntent(.paySBP(let method)):
+            if let request = payRequestFactory?.createSBPSaleRequest() {
+                state.isLoading = true
+                execute(payRequest: request, customerFields: [])
+            }
         case .paymentMethodsScreenIntent(.store(let newValues, let entity)):
             state.savedValues[entity] = newValues
         case .customerFieldsScreenIntent(.store(let customerFieldValues)):
@@ -432,6 +437,22 @@ class RootViewModel: RootViewModelProtocol {
                             threeDSecurePage: threeDSecurePage,
                             isCascading: isCascading
                         )
+                    }
+                case .onSbpQrDataReceived(qrData: let qrData, payment: let payment):
+                    debugPrint("\(type(of: self)) received onSbpQrDataReceived")
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.payment = payment
+                        $0.request = nil
+                        $0.sbpQrData = qrData
+                    }
+                case .onSbpWebViewDataReceived(qrData: let qrData, payment: let payment):
+                    debugPrint("\(type(of: self)) received onSbpWebViewDataReceived")
+                    self.state = modifiedCopy(of: self.state) {
+                        $0.isLoading = false
+                        $0.payment = payment
+                        $0.request = nil
+                        $0.sbpWebViewData = qrData
                     }
                 case .onCompleteWithDecline(isTryAgain: let isTryAgain, paymentMessage: let paymentMessage, payment: let payment):
                     debugPrint("\(type(of: self)) received onCompleteWithDecline")

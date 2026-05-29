@@ -14,6 +14,8 @@ enum SDKScreen {
     case clarificationFields
     case threeDSecurePage
     case apsPage
+    case sbpQrPage
+    case sbpWebViewPage
     case loading
     case successResult
     case declineResult
