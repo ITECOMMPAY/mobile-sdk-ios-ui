@@ -1,6 +1,6 @@
 // Automatically generated configuration file
 // DO NOT EDIT MANUALLY - will be overwritten during build
-// Generated: 2026-05-25T19:58:16.008856+00:00
+// Generated: 2026-06-01T18:49:18.563824+00:00
 
 import Foundation
 
