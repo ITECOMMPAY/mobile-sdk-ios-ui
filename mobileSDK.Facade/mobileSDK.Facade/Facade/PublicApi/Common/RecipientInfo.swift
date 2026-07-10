@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// This data class represents additional info requered for ApplePay auth with support FT and F52 fundings
+/// This data class represents additional info required for ApplePay auth with support FT and F52 fundings
 @objcMembers public final class RecipientInfo: NSObject, Codable {
     /// Wallet ID for replenishment. Field is mandatory for MasterCard.
     public var walletId: String?
@@ -40,41 +40,6 @@ import Foundation
     ///   - stateCode: State/province of recipient. Optional.
     ///   - city: City of recipient. Optional.
     ///   - address: Address of recipient. Optional.
-    @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:)
-    public convenience init(
-        walletId: String? = nil,
-        walletOwner: String? = nil,
-        pan: String? = nil,
-        cardHolder: String? = nil,
-        country: String? = nil,
-        stateCode: String? = nil,
-        city: String? = nil,
-        address: String? = nil
-    ) {
-        self.init(
-            walletId: walletId,
-            walletOwner: walletOwner,
-            pan: pan,
-            cardHolder: cardHolder,
-            country: country,
-            stateCode: stateCode,
-            city: city,
-            address: address,
-            dayOfBirth: nil
-        )
-    }
-
-    /// Init Recipient Info
-    ///
-    /// - Parameters:
-    ///   - walletId: Wallet ID for replenishment. Optional.
-    ///   - walletOwner: The owner of the replenished wallet. Optional.
-    ///   - pan: Recipient card number. Optional.
-    ///   - cardHolder: Recipient card holder. Optional.
-    ///   - country:  Country of recipient (wallet owner). Optional.
-    ///   - stateCode: State/province of recipient. Optional.
-    ///   - city: City of recipient. Optional.
-    ///   - address: Address of recipient. Optional.
     ///   - dayOfBirth: Day of birth of recipient in DD-MM-YYYY format. Optional.
     @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:dayOfBirth:)
     public init(
@@ -86,7 +51,7 @@ import Foundation
         stateCode: String? = nil,
         city: String? = nil,
         address: String? = nil,
-        dayOfBirth: String?
+        dayOfBirth: String? = nil
     ) {
         self.walletId = walletId
         self.walletOwner = walletOwner
