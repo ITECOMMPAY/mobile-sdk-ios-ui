@@ -395,6 +395,7 @@ private struct RecipientInfoWrapper: mobileSDK_UI.RecipientInfo {
     var stateCode: String? { publicType.stateCode }
     var city: String? { publicType.city }
     var address: String? { publicType.address }
+    var dayOfBirth: String? { publicType.dayOfBirth }
     
     init(publicType: RecipientInfo) {
         self.publicType = publicType

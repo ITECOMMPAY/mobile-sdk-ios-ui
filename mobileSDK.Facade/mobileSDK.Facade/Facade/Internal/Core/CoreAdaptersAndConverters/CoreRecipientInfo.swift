@@ -23,6 +23,7 @@ extension mobileSDK_UI.RecipientInfo {
             country: country,
             pan: pan,
             cardHolder: cardHolder,
+            dayOfBirth: dayOfBirth,
             address: address,
             city: city,
             stateCode: stateCode,

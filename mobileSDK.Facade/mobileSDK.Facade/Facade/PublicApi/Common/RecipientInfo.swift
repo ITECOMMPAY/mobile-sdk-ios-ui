@@ -26,6 +26,8 @@ import Foundation
     public var city: String?
     /// Recipient address
     public var address: String?
+    /// Recipient day of birth in DD-MM-YYYY format
+    public var dayOfBirth: String?
 
     /// Init Recipient Info
     ///
@@ -39,7 +41,7 @@ import Foundation
     ///   - city: City of recipient. Optional.
     ///   - address: Address of recipient. Optional.
     @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:)
-    public init(
+    public convenience init(
         walletId: String? = nil,
         walletOwner: String? = nil,
         pan: String? = nil,
@@ -49,6 +51,43 @@ import Foundation
         city: String? = nil,
         address: String? = nil
     ) {
+        self.init(
+            walletId: walletId,
+            walletOwner: walletOwner,
+            pan: pan,
+            cardHolder: cardHolder,
+            country: country,
+            stateCode: stateCode,
+            city: city,
+            address: address,
+            dayOfBirth: nil
+        )
+    }
+
+    /// Init Recipient Info
+    ///
+    /// - Parameters:
+    ///   - walletId: Wallet ID for replenishment. Optional.
+    ///   - walletOwner: The owner of the replenished wallet. Optional.
+    ///   - pan: Recipient card number. Optional.
+    ///   - cardHolder: Recipient card holder. Optional.
+    ///   - country:  Country of recipient (wallet owner). Optional.
+    ///   - stateCode: State/province of recipient. Optional.
+    ///   - city: City of recipient. Optional.
+    ///   - address: Address of recipient. Optional.
+    ///   - dayOfBirth: Day of birth of recipient in DD-MM-YYYY format. Optional.
+    @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:dayOfBirth:)
+    public init(
+        walletId: String? = nil,
+        walletOwner: String? = nil,
+        pan: String? = nil,
+        cardHolder: String? = nil,
+        country: String? = nil,
+        stateCode: String? = nil,
+        city: String? = nil,
+        address: String? = nil,
+        dayOfBirth: String?
+    ) {
         self.walletId = walletId
         self.walletOwner = walletOwner
         self.pan = pan
@@ -57,6 +96,7 @@ import Foundation
         self.stateCode = stateCode
         self.city = city
         self.address = address
+        self.dayOfBirth = dayOfBirth
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -68,5 +108,6 @@ import Foundation
         case stateCode = "state_code"
         case city = "city"
         case address = "address"
+        case dayOfBirth = "day_of_birth"
     }
 }

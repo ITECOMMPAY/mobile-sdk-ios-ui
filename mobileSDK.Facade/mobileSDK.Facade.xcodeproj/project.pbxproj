@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		752AF8412E44DA7800D14658 /* MsdkCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 752AF83F2E44DA5500D14658 /* MsdkCore.xcframework */; };
-		752AF8422E44DA7800D14658 /* MsdkCore.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 752AF83F2E44DA5500D14658 /* MsdkCore.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		752AF8442E44E0C100D14658 /* ECMPConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B2416D2887D83C00259A50 /* ECMPConfig.swift */; };
 		840704CA28D8850600DBD249 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840704C828D8850600DBD249 /* ContainerViewController.swift */; };
 		847EBAE9290BEC5F0080F99E /* RecurreInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847EBAE7290BEC5F0080F99E /* RecurreInfo.swift */; };
 		849C533528BF62C800C1CF71 /* EcommpaySDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 845507C8285B0463002BBFE0 /* EcommpaySDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,16 +45,15 @@
 		B3D4E419299CC0C3007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
 		B3D4E41A299CC0C8007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
 		B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
-		B3D4E41C299CC0D3007A1E2F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
-		B3D4E41D299CC0D9007A1E2F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
-		B3D4E41E299CC0E0007A1E2F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
-		B3D4E41F299CC0E7007A1E2F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
-		B3D4E420299CC0EC007A1E2F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
+		B3D4E41C299CC0D3007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E40F299CC043007A1E2F /* AVFoundation.framework */; };
+		B3D4E41D299CC0D9007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E411299CC04C007A1E2F /* AudioToolbox.framework */; };
+		B3D4E41E299CC0E0007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E40C299CC03A007A1E2F /* Accelerate.framework */; };
+		B3D4E41F299CC0E7007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E413299CC05F007A1E2F /* CoreMedia.framework */; };
+		B3D4E420299CC0EC007A1E2F /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = B3D4E415299CC06C007A1E2F /* MobileCoreServices.framework */; };
 		CE6CEFEA2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
 		CE6CEFEB2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
-		CE6CEFEC2E01A039003251A2 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
-		CE6CEFED2E01A039003251A2 /* ConfigIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
-		E8B0E2A5D693A2D94A7B409C /* libPods-ecommpaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE74ED5459B2FD4D9C2D10F3 /* libPods-ecommpaySDK.a */; };
+		CE6CEFEC2E01A039003251A2 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = CE6CEFE62E01A039003251A2 /* AppConfig.swift */; };
+		CE6CEFED2E01A039003251A2 /* PBXBuildFile */ = {isa = PBXBuildFile; fileRef = CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,7 +80,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				752AF8422E44DA7800D14658 /* MsdkCore.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,8 +97,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		752AF83E2E44DA5500D14658 /* MsdkCore.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = MsdkCore.podspec; sourceTree = "<group>"; };
-		752AF83F2E44DA5500D14658 /* MsdkCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = MsdkCore.xcframework; sourceTree = "<group>"; };
 		755D06062E7C19F300B70736 /* ecommpaySDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ecommpaySDK-Info.plist"; sourceTree = "<group>"; };
 		840704C828D8850600DBD249 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8421F8DF288EB9BA00B6EED2 /* PaymentMethodCardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCardType.swift; sourceTree = "<group>"; };
@@ -120,7 +113,6 @@
 		847EBAE7290BEC5F0080F99E /* RecurreInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurreInfo.swift; sourceTree = "<group>"; };
 		849C535828BF62C800C1CF71 /* ecommpaySDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ecommpaySDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A35C4E2893B2A20037A604 /* FieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldType.swift; sourceTree = "<group>"; };
-		84B2416D2887D83C00259A50 /* ECMPConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECMPConfig.swift; sourceTree = "<group>"; };
 		84B2416E2887D83C00259A50 /* NetworkConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		84B241822889069A00259A50 /* PayDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayDelegateProxy.swift; sourceTree = "<group>"; };
 		84B2419E2889653500259A50 /* ProtocolConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolConformance.swift; sourceTree = "<group>"; };
@@ -151,7 +143,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		7594FE1B2E45590800A714F6 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+		7594FE1B2E45590800A714F6 /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			explicitFileTypes = {
+			};
+			explicitFolders = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +162,6 @@
 				B34916772970128700D9844B /* libz.tbd in Frameworks */,
 				B3D4E41B299CC0CC007A1E2F /* MobileCoreServices.framework in Frameworks */,
 				B34916762970128300D9844B /* libc++.tbd in Frameworks */,
-				752AF8412E44DA7800D14658 /* MsdkCore.xcframework in Frameworks */,
 				B3D4E418299CC0BA007A1E2F /* AVFoundation.framework in Frameworks */,
 				849C535128BF62C800C1CF71 /* libmobileSDK.UI.a in Frameworks */,
 				B34916792970129900D9844B /* SystemConfiguration.framework in Frameworks */,
@@ -179,8 +178,6 @@
 		752AF8402E44DA5500D14658 /* MSDKCore */ = {
 			isa = PBXGroup;
 			children = (
-				752AF83E2E44DA5500D14658 /* MsdkCore.podspec */,
-				752AF83F2E44DA5500D14658 /* MsdkCore.xcframework */,
 			);
 			name = MSDKCore;
 			path = ../MSDKCore;
@@ -347,6 +344,23 @@
 			path = CoreDelegates;
 			sourceTree = "<group>";
 		};
+		CE6CEFE92E01A039003251A2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CE6CEFF02E01A039003251A2 /* Generated */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CE6CEFF02E01A039003251A2 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				CE6CEFE62E01A039003251A2 /* AppConfig.swift */,
+				CE6CEFE72E01A039003251A2 /* ConfigIndex.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -453,7 +467,6 @@
 				849C533A28BF62C800C1CF71 /* RecipientInfo.swift in Sources */,
 				849C533B28BF62C800C1CF71 /* PayRequestFactory.swift in Sources */,
 				849C533C28BF62C800C1CF71 /* ScreenDisplayMode.swift in Sources */,
-				752AF8442E44E0C100D14658 /* ECMPConfig.swift in Sources */,
 				B3330B5B295B2B47004DA575 /* ThreeDSecurePageType.swift in Sources */,
 				849C533D28BF62C800C1CF71 /* PaymentResult.swift in Sources */,
 				849C533E28BF62C800C1CF71 /* PayInteractorWrapper.swift in Sources */,
