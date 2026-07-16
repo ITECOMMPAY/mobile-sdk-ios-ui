@@ -195,4 +195,5 @@ public protocol RecipientInfo {
     var stateCode: String? { get }
     var city: String? { get }
     var address: String? { get }
+    var dayOfBirth: String? { get }
 }

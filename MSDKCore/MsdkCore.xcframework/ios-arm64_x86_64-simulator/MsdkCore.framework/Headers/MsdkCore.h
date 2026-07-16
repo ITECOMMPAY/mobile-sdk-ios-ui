@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class MsdkCoreMSDKCoreSessionConfig, MsdkCoreMSDKCoreSessionCompanion, MsdkCoreCardRemoveInteractor, MsdkCorePayment, MsdkCoreErrorEventInteractor, MsdkCoreInitInteractor, MsdkCorePayInteractor, MsdkCorePaymentInfo, MsdkCorePaymentMethod, MsdkCoreSavedAccount, MsdkCoreKotlinx_serialization_jsonJson, MsdkCoreMSDKCoreMetadata, MsdkCoreMSDKCoreMockConfig, MsdkCoreMSDKCoreSessionConfigCompanion, MsdkCoreUserAgentData, MsdkCoreDuration, MsdkCoreDeviceScreenResolutionInfo, MsdkCoreApplicationInfo, MsdkCoreKotlinEnumCompanion, MsdkCoreKotlinEnum<E>, MsdkCoreErrorCodeCompanion, MsdkCoreErrorCode, MsdkCoreKotlinArray<T>, MsdkCoreKotlinThrowable, MsdkCoreApiLinkMessageLink, MsdkCoreApiLinkMessageCompanion, MsdkCoreApiLinkMessage, MsdkCoreApiLinkMessageLinkCompanion, MsdkCoreThreeDSecureInfo, MsdkCorePaymentInfoCompanion, MsdkCoreRecipientInfoCompanion, MsdkCoreRecurrentInfoSchedule, MsdkCoreRecurrentInfoCompanion, MsdkCoreRecurrentInfoScheduleCompanion, MsdkCoreClarificationFieldCompanion, MsdkCoreClarificationField, MsdkCoreClarificationFieldValueCompanion, MsdkCoreClarificationFieldValue, MsdkCoreCompleteFieldCompanion, MsdkCoreCompleteField, MsdkCoreFieldServerType, MsdkCoreCustomerFieldOption, MsdkCoreCustomerField, MsdkCoreCustomerFieldOptionCompanion, MsdkCoreCustomerFieldValueCompanion, MsdkCoreCustomerFieldValue, MsdkCoreFieldServerTypeCompanion, MsdkCorePaymentFieldValueCompanion, MsdkCorePaymentFieldValue, MsdkCoreSenderFieldValueCompanion, MsdkCoreSenderFieldValue, MsdkCoreAccountFactory, MsdkCoreAccount, MsdkCoreWalletSaveMode, MsdkCoreCardTypesManager, MsdkCorePaymentMethodType, MsdkCorePaymentMethodTypeCompanion, MsdkCoreSdkExpiry, MsdkCoreSavedAccountCompanion, MsdkCoreWalletSaveModeCompanion, MsdkCoreLink, MsdkCorePaymentStatus, MsdkCoreAcs, MsdkCoreThreeds2, MsdkCoreConsentData, MsdkCoreRedirectInfo, MsdkCorePaymentFlow, MsdkCorePaymentCompanion, MsdkCorePaymentStatusCompanion, MsdkCoreConsentDataCompanion, MsdkCoreRedirectInfoCompanion, MsdkCoreAcsCompanion, MsdkCoreAcsPageCompanion, MsdkCoreAcsReturnUrlCompanion, MsdkCoreThreeDSecureAccountInfoCompanion, MsdkCoreThreeDSecureAccountInfo, MsdkCoreThreeDSecureShippingInfo, MsdkCoreThreeDSecureMpiResultInfo, MsdkCoreThreeDSecureCustomerInfoCompanion, MsdkCoreThreeDSecureCustomerInfo, MsdkCoreThreeDSecureGiftCardInfoCompanion, MsdkCoreThreeDSecureGiftCardInfo, MsdkCoreThreeDSecurePaymentInfo, MsdkCoreThreeDSecureInfoFactory, MsdkCoreThreeDSecureMpiResultInfoCompanion, MsdkCoreThreeDSecurePageType, MsdkCoreThreeDSecurePageCompanion, MsdkCoreThreeDSecurePageTypeCompanion, MsdkCoreThreeDSecurePaymentInfoCompanion, MsdkCoreThreeDSecureShippingInfoCompanion, MsdkCoreThreeds2Iframe, MsdkCoreThreeds2Redirect, MsdkCoreThreeds2Companion, MsdkCoreThreeds2IframeCompanion, MsdkCoreThreeds2RedirectCompanion, MsdkCoreErrorEventRequest, MsdkCoreRequest, MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher, MsdkCoreBaseInteractor<R, T>, MsdkCoreCardRemoveRequest, MsdkCoreInitRequest, MsdkCoreRecurrentInfo, MsdkCoreThreeDSecurePage, MsdkCorePayRequest, MsdkCoreApplePayRequest, MsdkCoreRecipientInfo, MsdkCoreStoredCardTypeCompanion, MsdkCoreStoredCardType, MsdkCoreCardPayRequest, MsdkCoreCardDate, MsdkCoreNewCardSaleRequest, MsdkCoreGooglePayEnvironment, MsdkCoreGooglePayRequest, MsdkCoreCardTypesManagerCompanion, MsdkCorePaymentMethodCard, MsdkCoreLinkMessage, MsdkCoreMockInitConfig, MsdkCoreMockPaymentStatusesConfig, MsdkCoreMSDKCoreMockConfigCompanion, MsdkCoreMockInitCustomerFieldsConfig, MsdkCoreMockBaseStatus, MsdkCoreMockPaymentStatusesConfigCompanion, MsdkCoreKotlinException, MsdkCoreMockErrorStatus, MsdkCoreCustomHeadersPluginPlugin, MsdkCoreCustomHeadersPlugin, MsdkCoreKtor_client_coreHttpClient, MsdkCoreKtor_utilsAttributeKey<T>, MsdkCoreCustomHeadersPluginConfig, MsdkCoreJsonFixTranslationsAsMapPluginPlugin, MsdkCoreJsonFixTranslationsAsMapPlugin, MsdkCoreJsonFixTranslationsAsMapPluginConfig, MsdkCoreJsonPluginPlugin, MsdkCoreKtor_httpContentType, MsdkCoreJsonPlugin, MsdkCoreJsonPluginConfig, MsdkCoreDurationCompanion, MsdkCoreBaseValidator, MsdkCoreRegexWithLengthValidator, MsdkCoreLengthValidator, MsdkCoreRegexValidator, MsdkCoreRegexWithMaxMinLengthValidator, MsdkCoreKotlinByteIterator, MsdkCoreKotlinByteArray, NSData, MsdkCoreKotlinx_serialization_coreSerializersModule, MsdkCoreKotlinx_serialization_jsonJsonDefault, MsdkCoreKotlinx_serialization_jsonJsonElement, MsdkCoreKotlinx_serialization_jsonJsonConfiguration, MsdkCoreKotlinAbstractCoroutineContextElement, MsdkCoreKotlinx_coroutines_coreCoroutineDispatcherKey, MsdkCoreKtor_client_coreHttpClientEngineConfig, MsdkCoreKtor_client_coreHttpClientConfig<T>, MsdkCoreKtor_eventsEvents, MsdkCoreKtor_client_coreHttpReceivePipeline, MsdkCoreKtor_client_coreHttpRequestPipeline, MsdkCoreKtor_client_coreHttpResponsePipeline, MsdkCoreKtor_client_coreHttpSendPipeline, MsdkCoreKtor_utilsTypeInfo, MsdkCoreKtor_ioInput, MsdkCoreKtor_httpOutgoingContent, MsdkCoreKtor_httpHeaderValueParam, MsdkCoreKtor_httpHeaderValueWithParametersCompanion, MsdkCoreKtor_httpHeaderValueWithParameters, MsdkCoreKtor_httpContentTypeCompanion, MsdkCoreKotlinx_serialization_jsonJsonElementCompanion, MsdkCoreKotlinx_serialization_coreSerialKind, MsdkCoreKotlinNothing, MsdkCoreKotlinAbstractCoroutineContextKey<B, E>, MsdkCoreKtor_client_coreHttpRequestData, MsdkCoreKtor_client_coreHttpResponseData, MsdkCoreKtor_client_coreProxyConfig, MsdkCoreKtor_eventsEventDefinition<T>, MsdkCoreKtor_utilsPipelinePhase, MsdkCoreKtor_utilsPipeline<TSubject, TContext>, MsdkCoreKtor_client_coreHttpReceivePipelinePhases, MsdkCoreKtor_client_coreHttpResponse, MsdkCoreKotlinUnit, MsdkCoreKtor_client_coreHttpRequestPipelinePhases, MsdkCoreKtor_client_coreHttpRequestBuilder, MsdkCoreKtor_client_coreHttpResponsePipelinePhases, MsdkCoreKtor_client_coreHttpResponseContainer, MsdkCoreKtor_client_coreHttpClientCall, MsdkCoreKtor_client_coreHttpSendPipelinePhases, MsdkCoreKtor_ioChunkBuffer, MsdkCoreKtor_ioInputCompanion, MsdkCoreKtor_ioMemory, MsdkCoreKtor_httpHttpStatusCode, MsdkCoreKotlinRuntimeException, MsdkCoreKotlinIllegalStateException, MsdkCoreKtor_httpUrl, MsdkCoreKtor_httpHttpMethod, MsdkCoreKtor_utilsGMTDate, MsdkCoreKtor_httpHttpProtocolVersion, MsdkCoreKtor_httpHeadersBuilder, MsdkCoreKtor_client_coreHttpRequestBuilderCompanion, MsdkCoreKtor_httpURLBuilder, MsdkCoreKtor_client_coreHttpClientCallCompanion, MsdkCoreKotlinKTypeProjection, MsdkCoreKtor_ioBufferCompanion, MsdkCoreKtor_ioBuffer, MsdkCoreKtor_ioChunkBufferCompanion, MsdkCoreKtor_ioMemoryCompanion, MsdkCoreKtor_httpHttpStatusCodeCompanion, MsdkCoreKtor_httpUrlCompanion, MsdkCoreKtor_httpURLProtocol, MsdkCoreKtor_httpHttpMethodCompanion, MsdkCoreKotlinCancellationException, MsdkCoreKtor_utilsGMTDateCompanion, MsdkCoreKtor_utilsWeekDay, MsdkCoreKtor_utilsMonth, MsdkCoreKtor_httpHttpProtocolVersionCompanion, MsdkCoreKtor_ioByteReadPacket, MsdkCoreKtor_utilsStringValuesBuilderImpl, MsdkCoreKtor_httpURLBuilderCompanion, MsdkCoreKotlinKVariance, MsdkCoreKotlinKTypeProjectionCompanion, MsdkCoreKtor_httpURLProtocolCompanion, MsdkCoreKtor_utilsWeekDayCompanion, MsdkCoreKtor_utilsMonthCompanion, MsdkCoreKtor_ioByteReadPacketCompanion;
+@class MsdkCoreAccount, MsdkCoreAccountFactory, MsdkCoreAcs, MsdkCoreAcsCompanion, MsdkCoreAcsPageCompanion, MsdkCoreAcsReturnUrlCompanion, MsdkCoreApiLinkMessage, MsdkCoreApiLinkMessageCompanion, MsdkCoreApiLinkMessageLink, MsdkCoreApiLinkMessageLinkCompanion, MsdkCoreApplePayRequest, MsdkCoreApplicationInfo, MsdkCoreBaseInteractor<R, T>, MsdkCoreBaseValidator, MsdkCoreCardDate, MsdkCoreCardPayRequest, MsdkCoreCardRemoveInteractor, MsdkCoreCardRemoveRequest, MsdkCoreCardTypesManager, MsdkCoreCardTypesManagerCompanion, MsdkCoreClarificationField, MsdkCoreClarificationFieldCompanion, MsdkCoreClarificationFieldValue, MsdkCoreClarificationFieldValueCompanion, MsdkCoreCompleteField, MsdkCoreCompleteFieldCompanion, MsdkCoreConsentData, MsdkCoreConsentDataCompanion, MsdkCoreCustomHeadersPlugin, MsdkCoreCustomHeadersPluginConfig, MsdkCoreCustomHeadersPluginPlugin, MsdkCoreCustomerField, MsdkCoreCustomerFieldOption, MsdkCoreCustomerFieldOptionCompanion, MsdkCoreCustomerFieldValue, MsdkCoreCustomerFieldValueCompanion, MsdkCoreDeviceScreenResolutionInfo, MsdkCoreDuration, MsdkCoreDurationCompanion, MsdkCoreErrorCode, MsdkCoreErrorCodeCompanion, MsdkCoreErrorEventInteractor, MsdkCoreErrorEventRequest, MsdkCoreFieldServerType, MsdkCoreFieldServerTypeCompanion, MsdkCoreGooglePayEnvironment, MsdkCoreGooglePayRequest, MsdkCoreInitInteractor, MsdkCoreInitRequest, MsdkCoreJsonFixTranslationsAsMapPlugin, MsdkCoreJsonFixTranslationsAsMapPluginConfig, MsdkCoreJsonFixTranslationsAsMapPluginPlugin, MsdkCoreKotlinAbstractCoroutineContextElement, MsdkCoreKotlinAbstractCoroutineContextKey<B, E>, MsdkCoreKotlinArray<T>, MsdkCoreKotlinByteArray, MsdkCoreKotlinByteIterator, MsdkCoreKotlinCancellationException, MsdkCoreKotlinEnum<E>, MsdkCoreKotlinEnumCompanion, MsdkCoreKotlinException, MsdkCoreKotlinIllegalStateException, MsdkCoreKotlinKTypeProjection, MsdkCoreKotlinKTypeProjectionCompanion, MsdkCoreKotlinKVariance, MsdkCoreKotlinNothing, MsdkCoreKotlinRuntimeException, MsdkCoreKotlinThrowable, MsdkCoreKotlinUnit, MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher, MsdkCoreKotlinx_coroutines_coreCoroutineDispatcherKey, MsdkCoreKotlinx_io_coreBuffer, MsdkCoreKotlinx_serialization_coreSerialKind, MsdkCoreKotlinx_serialization_coreSerializersModule, MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode, MsdkCoreKotlinx_serialization_jsonJson, MsdkCoreKotlinx_serialization_jsonJsonConfiguration, MsdkCoreKotlinx_serialization_jsonJsonDefault, MsdkCoreKotlinx_serialization_jsonJsonElement, MsdkCoreKotlinx_serialization_jsonJsonElementCompanion, MsdkCoreKtor_client_coreHttpClient, MsdkCoreKtor_client_coreHttpClientCall, MsdkCoreKtor_client_coreHttpClientCallCompanion, MsdkCoreKtor_client_coreHttpClientConfig<T>, MsdkCoreKtor_client_coreHttpClientEngineConfig, MsdkCoreKtor_client_coreHttpReceivePipeline, MsdkCoreKtor_client_coreHttpReceivePipelinePhases, MsdkCoreKtor_client_coreHttpRequestBuilder, MsdkCoreKtor_client_coreHttpRequestBuilderCompanion, MsdkCoreKtor_client_coreHttpRequestData, MsdkCoreKtor_client_coreHttpRequestPipeline, MsdkCoreKtor_client_coreHttpRequestPipelinePhases, MsdkCoreKtor_client_coreHttpResponse, MsdkCoreKtor_client_coreHttpResponseContainer, MsdkCoreKtor_client_coreHttpResponseData, MsdkCoreKtor_client_coreHttpResponsePipeline, MsdkCoreKtor_client_coreHttpResponsePipelinePhases, MsdkCoreKtor_client_coreHttpSendPipeline, MsdkCoreKtor_client_coreHttpSendPipelinePhases, MsdkCoreKtor_client_coreProxyConfig, MsdkCoreKtor_eventsEventDefinition<T>, MsdkCoreKtor_eventsEvents, MsdkCoreKtor_httpContentType, MsdkCoreKtor_httpContentTypeCompanion, MsdkCoreKtor_httpHeaderValueParam, MsdkCoreKtor_httpHeaderValueWithParameters, MsdkCoreKtor_httpHeaderValueWithParametersCompanion, MsdkCoreKtor_httpHeadersBuilder, MsdkCoreKtor_httpHttpMethod, MsdkCoreKtor_httpHttpMethodCompanion, MsdkCoreKtor_httpHttpProtocolVersion, MsdkCoreKtor_httpHttpProtocolVersionCompanion, MsdkCoreKtor_httpHttpStatusCode, MsdkCoreKtor_httpHttpStatusCodeCompanion, MsdkCoreKtor_httpOutgoingContent, MsdkCoreKtor_httpURLBuilder, MsdkCoreKtor_httpURLBuilderCompanion, MsdkCoreKtor_httpURLProtocol, MsdkCoreKtor_httpURLProtocolCompanion, MsdkCoreKtor_httpUrl, MsdkCoreKtor_httpUrlCompanion, MsdkCoreKtor_utilsAttributeKey<T>, MsdkCoreKtor_utilsGMTDate, MsdkCoreKtor_utilsGMTDateCompanion, MsdkCoreKtor_utilsMonth, MsdkCoreKtor_utilsMonthCompanion, MsdkCoreKtor_utilsPipeline<TSubject, TContext>, MsdkCoreKtor_utilsPipelinePhase, MsdkCoreKtor_utilsStringValuesBuilderImpl, MsdkCoreKtor_utilsTypeInfo, MsdkCoreKtor_utilsWeekDay, MsdkCoreKtor_utilsWeekDayCompanion, MsdkCoreLengthValidator, MsdkCoreLink, MsdkCoreLinkMessage, MsdkCoreMSDKCoreMetadata, MsdkCoreMSDKCoreMockConfig, MsdkCoreMSDKCoreMockConfigCompanion, MsdkCoreMSDKCoreSessionCompanion, MsdkCoreMSDKCoreSessionConfig, MsdkCoreMSDKCoreSessionConfigCompanion, MsdkCoreMockBaseStatus, MsdkCoreMockErrorStatus, MsdkCoreMockInitConfig, MsdkCoreMockInitCustomerFieldsConfig, MsdkCoreMockPaymentStatusesConfig, MsdkCoreMockPaymentStatusesConfigCompanion, MsdkCoreNewCardSaleRequest, MsdkCorePayInteractor, MsdkCorePayRequest, MsdkCorePayment, MsdkCorePaymentCompanion, MsdkCorePaymentFieldValue, MsdkCorePaymentFieldValueCompanion, MsdkCorePaymentFlow, MsdkCorePaymentInfo, MsdkCorePaymentInfoCompanion, MsdkCorePaymentMethod, MsdkCorePaymentMethodCard, MsdkCorePaymentMethodType, MsdkCorePaymentMethodTypeCompanion, MsdkCorePaymentStatus, MsdkCorePaymentStatusCompanion, MsdkCoreRecipientInfo, MsdkCoreRecipientInfoCompanion, MsdkCoreRecurrentInfo, MsdkCoreRecurrentInfoCompanion, MsdkCoreRecurrentInfoSchedule, MsdkCoreRecurrentInfoScheduleCompanion, MsdkCoreRedirectInfo, MsdkCoreRedirectInfoCompanion, MsdkCoreRegexValidator, MsdkCoreRegexWithLengthValidator, MsdkCoreRegexWithMaxMinLengthValidator, MsdkCoreRequest, MsdkCoreSavedAccount, MsdkCoreSavedAccountCompanion, MsdkCoreSdkExpiry, MsdkCoreSenderFieldValue, MsdkCoreSenderFieldValueCompanion, MsdkCoreSignatureParam, MsdkCoreSignatureParamCompanion, MsdkCoreSignatureParamsBuilder, MsdkCoreStoredCardType, MsdkCoreStoredCardTypeCompanion, MsdkCoreThreeDSecureAccountInfo, MsdkCoreThreeDSecureAccountInfoCompanion, MsdkCoreThreeDSecureCustomerInfo, MsdkCoreThreeDSecureCustomerInfoCompanion, MsdkCoreThreeDSecureGiftCardInfo, MsdkCoreThreeDSecureGiftCardInfoCompanion, MsdkCoreThreeDSecureInfo, MsdkCoreThreeDSecureInfoFactory, MsdkCoreThreeDSecureMpiResultInfo, MsdkCoreThreeDSecureMpiResultInfoCompanion, MsdkCoreThreeDSecurePage, MsdkCoreThreeDSecurePageCompanion, MsdkCoreThreeDSecurePageType, MsdkCoreThreeDSecurePageTypeCompanion, MsdkCoreThreeDSecurePaymentInfo, MsdkCoreThreeDSecurePaymentInfoCompanion, MsdkCoreThreeDSecureShippingInfo, MsdkCoreThreeDSecureShippingInfoCompanion, MsdkCoreThreeds2, MsdkCoreThreeds2Companion, MsdkCoreThreeds2Iframe, MsdkCoreThreeds2IframeCompanion, MsdkCoreThreeds2Redirect, MsdkCoreThreeds2RedirectCompanion, MsdkCoreUserAgentData, MsdkCoreWalletSaveMode, MsdkCoreWalletSaveModeCompanion, NSData;
 
-@protocol MsdkCoreCancellable, MsdkCoreSecureLogoResourceManager, MsdkCoreStringResourceManager, MsdkCoreKotlinComparable, MsdkCoreKotlinx_serialization_coreKSerializer, MsdkCoreValidator, MsdkCoreErrorEventDelegate, MsdkCoreCardRemoveDelegate, MsdkCoreInitDelegate, MsdkCorePaymentStatusDelegate, MsdkCorePayDelegate, MsdkCoreKtor_client_coreHttpClientPlugin, MsdkCoreKtor_client_jsonJsonSerializer, MsdkCoreKtor_httpContentTypeMatcher, MsdkCoreKtor_client_loggingLogger, MsdkCoreKotlinx_serialization_coreDeserializationStrategy, MsdkCoreKotlinx_serialization_coreSerializationStrategy, MsdkCoreKotlinx_serialization_coreSerialFormat, MsdkCoreKotlinx_serialization_coreStringFormat, MsdkCoreKotlinIterator, MsdkCoreKotlinx_serialization_coreEncoder, MsdkCoreKotlinx_serialization_coreSerialDescriptor, MsdkCoreKotlinx_serialization_coreDecoder, MsdkCoreKotlinCoroutineContextKey, MsdkCoreKotlinCoroutineContextElement, MsdkCoreKotlinCoroutineContext, MsdkCoreKotlinContinuation, MsdkCoreKotlinContinuationInterceptor, MsdkCoreKotlinx_coroutines_coreRunnable, MsdkCoreKotlinx_coroutines_coreCoroutineScope, MsdkCoreKtor_ioCloseable, MsdkCoreKtor_client_coreHttpClientEngine, MsdkCoreKtor_client_coreHttpClientEngineCapability, MsdkCoreKtor_utilsAttributes, MsdkCoreKotlinx_serialization_coreSerializersModuleCollector, MsdkCoreKotlinKClass, MsdkCoreKotlinx_serialization_jsonJsonNamingStrategy, MsdkCoreKotlinx_serialization_coreCompositeEncoder, MsdkCoreKotlinAnnotation, MsdkCoreKotlinx_serialization_coreCompositeDecoder, MsdkCoreKotlinx_coroutines_coreDisposableHandle, MsdkCoreKotlinSuspendFunction2, MsdkCoreKotlinKType, MsdkCoreKtor_ioObjectPool, MsdkCoreKotlinAppendable, MsdkCoreKtor_httpHeaders, MsdkCoreKotlinKDeclarationContainer, MsdkCoreKotlinKAnnotatedElement, MsdkCoreKotlinKClassifier, MsdkCoreKotlinx_coroutines_coreJob, MsdkCoreKotlinFunction, MsdkCoreKtor_httpHttpMessage, MsdkCoreKtor_ioByteReadChannel, MsdkCoreKtor_httpHttpMessageBuilder, MsdkCoreKtor_client_coreHttpRequest, MsdkCoreKotlinMapEntry, MsdkCoreKtor_utilsStringValues, MsdkCoreKtor_httpParameters, MsdkCoreKotlinx_coroutines_coreChildHandle, MsdkCoreKotlinx_coroutines_coreChildJob, MsdkCoreKotlinSequence, MsdkCoreKotlinx_coroutines_coreSelectClause0, MsdkCoreKtor_ioReadSession, MsdkCoreKotlinSuspendFunction1, MsdkCoreKtor_utilsStringValuesBuilder, MsdkCoreKtor_httpParametersBuilder, MsdkCoreKotlinx_coroutines_coreParentJob, MsdkCoreKotlinx_coroutines_coreSelectInstance, MsdkCoreKotlinx_coroutines_coreSelectClause;
+@protocol MsdkCoreCancellable, MsdkCoreCardRemoveDelegate, MsdkCoreErrorEventDelegate, MsdkCoreInitDelegate, MsdkCoreKotlinAnnotation, MsdkCoreKotlinAutoCloseable, MsdkCoreKotlinComparable, MsdkCoreKotlinContinuation, MsdkCoreKotlinContinuationInterceptor, MsdkCoreKotlinCoroutineContext, MsdkCoreKotlinCoroutineContextElement, MsdkCoreKotlinCoroutineContextKey, MsdkCoreKotlinFunction, MsdkCoreKotlinIterator, MsdkCoreKotlinKAnnotatedElement, MsdkCoreKotlinKClass, MsdkCoreKotlinKClassifier, MsdkCoreKotlinKDeclarationContainer, MsdkCoreKotlinKType, MsdkCoreKotlinMapEntry, MsdkCoreKotlinSequence, MsdkCoreKotlinSuspendFunction2, MsdkCoreKotlinx_coroutines_coreChildHandle, MsdkCoreKotlinx_coroutines_coreChildJob, MsdkCoreKotlinx_coroutines_coreCoroutineScope, MsdkCoreKotlinx_coroutines_coreDisposableHandle, MsdkCoreKotlinx_coroutines_coreJob, MsdkCoreKotlinx_coroutines_coreParentJob, MsdkCoreKotlinx_coroutines_coreRunnable, MsdkCoreKotlinx_coroutines_coreSelectClause, MsdkCoreKotlinx_coroutines_coreSelectClause0, MsdkCoreKotlinx_coroutines_coreSelectInstance, MsdkCoreKotlinx_io_coreRawSink, MsdkCoreKotlinx_io_coreRawSource, MsdkCoreKotlinx_io_coreSink, MsdkCoreKotlinx_io_coreSource, MsdkCoreKotlinx_serialization_coreCompositeDecoder, MsdkCoreKotlinx_serialization_coreCompositeEncoder, MsdkCoreKotlinx_serialization_coreDecoder, MsdkCoreKotlinx_serialization_coreDeserializationStrategy, MsdkCoreKotlinx_serialization_coreEncoder, MsdkCoreKotlinx_serialization_coreKSerializer, MsdkCoreKotlinx_serialization_coreSerialDescriptor, MsdkCoreKotlinx_serialization_coreSerialFormat, MsdkCoreKotlinx_serialization_coreSerializationStrategy, MsdkCoreKotlinx_serialization_coreSerializersModuleCollector, MsdkCoreKotlinx_serialization_coreStringFormat, MsdkCoreKotlinx_serialization_jsonJsonNamingStrategy, MsdkCoreKtor_client_coreHttpClientEngine, MsdkCoreKtor_client_coreHttpClientEngineCapability, MsdkCoreKtor_client_coreHttpClientPlugin, MsdkCoreKtor_client_coreHttpRequest, MsdkCoreKtor_client_loggingLogger, MsdkCoreKtor_httpHeaders, MsdkCoreKtor_httpHttpMessage, MsdkCoreKtor_httpHttpMessageBuilder, MsdkCoreKtor_httpParameters, MsdkCoreKtor_httpParametersBuilder, MsdkCoreKtor_ioByteReadChannel, MsdkCoreKtor_ioCloseable, MsdkCoreKtor_ioJvmSerializable, MsdkCoreKtor_utilsAttributes, MsdkCoreKtor_utilsStringValues, MsdkCoreKtor_utilsStringValuesBuilder, MsdkCorePayDelegate, MsdkCorePaymentStatusDelegate, MsdkCoreSecureLogoResourceManager, MsdkCoreStringResourceManager, MsdkCoreValidator;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -426,6 +426,11 @@ __attribute__((swift_name("ApiLinkMessageLink")))
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.SerialName(value="message_link")
+*/
 @property (readonly) NSString * _Nullable messageLink __attribute__((swift_name("messageLink")));
 @property (readonly) NSString * _Nullable url __attribute__((swift_name("url")));
 @end
@@ -458,8 +463,31 @@ __attribute__((swift_name("CardDate")))
 __attribute__((swift_name("PaymentInfo")))
 @interface MsdkCorePaymentInfo : MsdkCoreBase
 - (instancetype)initWithProjectId:(int32_t)projectId paymentId:(NSString *)paymentId paymentAmount:(int64_t)paymentAmount paymentCurrency:(NSString *)paymentCurrency paymentDescription:(NSString * _Nullable)paymentDescription customerId:(NSString * _Nullable)customerId regionCode:(NSString * _Nullable)regionCode token:(NSString * _Nullable)token languageCode:(NSString * _Nullable)languageCode receiptData:(NSString * _Nullable)receiptData threeDSecureInfo:(MsdkCoreThreeDSecureInfo * _Nullable)threeDSecureInfo hideSavedWallets:(MsdkCoreBoolean * _Nullable)hideSavedWallets forcePaymentMethod:(NSString * _Nullable)forcePaymentMethod signature:(NSString * _Nullable)signature __attribute__((swift_name("init(projectId:paymentId:paymentAmount:paymentCurrency:paymentDescription:customerId:regionCode:token:languageCode:receiptData:threeDSecureInfo:hideSavedWallets:forcePaymentMethod:signature:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 projectId:(int32_t)projectId paymentId:(NSString * _Nullable)paymentId paymentAmount:(int64_t)paymentAmount paymentCurrency:(NSString * _Nullable)paymentCurrency paymentDescription:(NSString * _Nullable)paymentDescription customerId:(NSString * _Nullable)customerId regionCode:(NSString * _Nullable)regionCode token:(NSString * _Nullable)token languageCode:(NSString * _Nullable)languageCode receiptData:(NSString * _Nullable)receiptData threeDSecureInfo:(MsdkCoreThreeDSecureInfo * _Nullable)threeDSecureInfo hideSavedWallets:(MsdkCoreBoolean * _Nullable)hideSavedWallets forcePaymentMethod:(NSString * _Nullable)forcePaymentMethod signature:(NSString * _Nullable)signature serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:projectId:paymentId:paymentAmount:paymentCurrency:paymentDescription:customerId:regionCode:token:languageCode:receiptData:threeDSecureInfo:hideSavedWallets:forcePaymentMethod:signature:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCorePaymentInfoCompanion *companion __attribute__((swift_name("companion")));
-- (NSString *)getParamsForSignature __attribute__((swift_name("getParamsForSignature()")));
+
+/**
+ * Generates a formatted parameter string for cryptographic signature computation.
+ *
+ * This method creates a key-value map containing only non-null payment parameters
+ * that are required for digital signature computation, then formats them as a
+ * semicolon-separated string of key-value pairs sorted alphabetically by key names.
+ * The resulting string is used for generating digital signatures to ensure
+ * payment request integrity and authenticity.
+ *
+ * The format follows the pattern: "key1:value1;key2:value2;..."
+ * If 3D Secure information is present, secure parameters are appended with "secure_info:" prefix.
+ * Empty or null parameter values are excluded from the result.
+ *
+ * @param params Set of parameters to include in the signature map.
+ *               Defaults to [SignatureParam.DEFAULT] which contains all standard payment parameters.
+ * @return Formatted parameter string suitable for signature generation, without trailing semicolon.
+ */
+- (NSString *)getParamsForSignatureParams:(NSSet<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("getParamsForSignature(params:)")));
+
+/**
+ * unique customer identifier for linking payments to specific users
+ */
 @property NSString * _Nullable customerId __attribute__((swift_name("customerId")));
 
 /**
@@ -471,6 +499,10 @@ __attribute__((swift_name("PaymentInfo")))
  * hiding or displaying saved payment instruments in the payment form
  */
 @property MsdkCoreBoolean * _Nullable hideSavedWallets __attribute__((swift_name("hideSavedWallets")));
+
+/**
+ * interface language code (ISO 639-1 format, e.g., "en", "ru")
+ */
 @property NSString * _Nullable languageCode __attribute__((swift_name("languageCode")));
 
 /**
@@ -497,17 +529,29 @@ __attribute__((swift_name("PaymentInfo")))
  * project (merchant) ID
  */
 @property (readonly) int32_t projectId __attribute__((swift_name("projectId")));
+
+/**
+ * receipt data for payment transaction record keeping
+ */
 @property NSString * _Nullable receiptData __attribute__((swift_name("receiptData")));
 
 /**
- * customer country
+ * customer country code (ISO 3166-1 alpha-2 format)
  */
 @property NSString * _Nullable regionCode __attribute__((swift_name("regionCode")));
+
+/**
+ * digital signature for request authentication and integrity verification
+ */
 @property NSString * _Nullable signature __attribute__((swift_name("signature")));
+
+/**
+ * 3D Secure authentication configuration and parameters
+ */
 @property MsdkCoreThreeDSecureInfo * _Nullable threeDSecureInfo __attribute__((swift_name("threeDSecureInfo")));
 
 /**
- * card token
+ * saved payment instrument token for recurring payments
  */
 @property NSString * _Nullable token __attribute__((swift_name("token")));
 @end
@@ -531,12 +575,13 @@ __attribute__((swift_name("PaymentInfo.Companion")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RecipientInfo")))
 @interface MsdkCoreRecipientInfo : MsdkCoreBase
-- (instancetype)initWithWalletOwner:(NSString * _Nullable)walletOwner walletId:(NSString * _Nullable)walletId country:(NSString * _Nullable)country pan:(NSString * _Nullable)pan cardHolder:(NSString * _Nullable)cardHolder address:(NSString * _Nullable)address city:(NSString * _Nullable)city stateCode:(NSString * _Nullable)stateCode firstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName __attribute__((swift_name("init(walletOwner:walletId:country:pan:cardHolder:address:city:stateCode:firstName:lastName:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithWalletOwner:(NSString * _Nullable)walletOwner walletId:(NSString * _Nullable)walletId country:(NSString * _Nullable)country pan:(NSString * _Nullable)pan cardHolder:(NSString * _Nullable)cardHolder dayOfBirth:(NSString * _Nullable)dayOfBirth address:(NSString * _Nullable)address city:(NSString * _Nullable)city stateCode:(NSString * _Nullable)stateCode firstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName __attribute__((swift_name("init(walletOwner:walletId:country:pan:cardHolder:dayOfBirth:address:city:stateCode:firstName:lastName:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreRecipientInfoCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable address __attribute__((swift_name("address")));
 @property (readonly) NSString * _Nullable cardHolder __attribute__((swift_name("cardHolder")));
 @property (readonly) NSString * _Nullable city __attribute__((swift_name("city")));
 @property (readonly) NSString * _Nullable country __attribute__((swift_name("country")));
+@property (readonly) NSString * _Nullable dayOfBirth __attribute__((swift_name("dayOfBirth")));
 @property (readonly) NSString * _Nullable firstName __attribute__((swift_name("firstName")));
 @property (readonly) NSString * _Nullable lastName __attribute__((swift_name("lastName")));
 @property (readonly) NSString * _Nullable pan __attribute__((swift_name("pan")));
@@ -565,6 +610,7 @@ __attribute__((swift_name("RecipientInfo.Companion")))
 __attribute__((swift_name("RecurrentInfo")))
 @interface MsdkCoreRecurrentInfo : MsdkCoreBase
 - (instancetype)initWithRegister:(BOOL)register_ type:(NSString * _Nullable)type expiryDay:(NSString * _Nullable)expiryDay expiryMonth:(NSString * _Nullable)expiryMonth expiryYear:(NSString * _Nullable)expiryYear period:(NSString * _Nullable)period interval:(MsdkCoreInt * _Nullable)interval time:(NSString * _Nullable)time startDate:(NSString * _Nullable)startDate scheduledPaymentID:(NSString * _Nullable)scheduledPaymentID amount:(MsdkCoreLong * _Nullable)amount schedule:(NSArray<MsdkCoreRecurrentInfoSchedule *> * _Nullable)schedule __attribute__((swift_name("init(register:type:expiryDay:expiryMonth:expiryYear:period:interval:time:startDate:scheduledPaymentID:amount:schedule:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 register:(BOOL)register_ type:(NSString * _Nullable)type expiryDay:(NSString * _Nullable)expiryDay expiryMonth:(NSString * _Nullable)expiryMonth expiryYear:(NSString * _Nullable)expiryYear period:(NSString * _Nullable)period interval:(MsdkCoreInt * _Nullable)interval time:(NSString * _Nullable)time startDate:(NSString * _Nullable)startDate scheduledPaymentID:(NSString * _Nullable)scheduledPaymentID amount:(MsdkCoreLong * _Nullable)amount schedule:(NSArray<MsdkCoreRecurrentInfoSchedule *> * _Nullable)schedule serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:register:type:expiryDay:expiryMonth:expiryYear:period:interval:time:startDate:scheduledPaymentID:amount:schedule:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreRecurrentInfoCompanion *companion __attribute__((swift_name("companion")));
 
 /**
@@ -655,6 +701,7 @@ __attribute__((swift_name("RecurrentInfo.Companion")))
 __attribute__((swift_name("RecurrentInfoSchedule")))
 @interface MsdkCoreRecurrentInfoSchedule : MsdkCoreBase
 - (instancetype)initWithDate:(NSString * _Nullable)date amount:(MsdkCoreLong * _Nullable)amount __attribute__((swift_name("init(date:amount:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 date:(NSString * _Nullable)date amount:(MsdkCoreLong * _Nullable)amount serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:date:amount:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreRecurrentInfoScheduleCompanion *companion __attribute__((swift_name("companion")));
 
 /**
@@ -702,18 +749,157 @@ __attribute__((swift_name("SdkExpiry")))
 
 
 /**
+ * Enumeration of payment parameters that can be included in signature generation.
+ *
+ * This enum provides a type-safe way to specify which payment parameters should be
+ * included when generating cryptographic signatures, hiding internal implementation
+ * details from library users.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("SignatureParam")))
+@interface MsdkCoreSignatureParam : MsdkCoreKotlinEnum<MsdkCoreSignatureParam *>
++ (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Enumeration of payment parameters that can be included in signature generation.
+ *
+ * This enum provides a type-safe way to specify which payment parameters should be
+ * included when generating cryptographic signatures, hiding internal implementation
+ * details from library users.
+ */
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) MsdkCoreSignatureParamCompanion *companion __attribute__((swift_name("companion")));
+@property (class, readonly) MsdkCoreSignatureParam *projectId __attribute__((swift_name("projectId")));
+@property (class, readonly) MsdkCoreSignatureParam *paymentId __attribute__((swift_name("paymentId")));
+@property (class, readonly) MsdkCoreSignatureParam *paymentAmount __attribute__((swift_name("paymentAmount")));
+@property (class, readonly) MsdkCoreSignatureParam *paymentDescription __attribute__((swift_name("paymentDescription")));
+@property (class, readonly) MsdkCoreSignatureParam *paymentCurrency __attribute__((swift_name("paymentCurrency")));
+@property (class, readonly) MsdkCoreSignatureParam *customerId __attribute__((swift_name("customerId")));
+@property (class, readonly) MsdkCoreSignatureParam *regionCode __attribute__((swift_name("regionCode")));
+@property (class, readonly) MsdkCoreSignatureParam *token __attribute__((swift_name("token")));
+@property (class, readonly) MsdkCoreSignatureParam *languageCode __attribute__((swift_name("languageCode")));
+@property (class, readonly) MsdkCoreSignatureParam *forcePaymentMethod __attribute__((swift_name("forcePaymentMethod")));
+@property (class, readonly) MsdkCoreSignatureParam *hideSavedWallets __attribute__((swift_name("hideSavedWallets")));
++ (MsdkCoreKotlinArray<MsdkCoreSignatureParam *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MsdkCoreSignatureParam *> *entries __attribute__((swift_name("entries")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("SignatureParam.Companion")))
+@interface MsdkCoreSignatureParamCompanion : MsdkCoreBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MsdkCoreSignatureParamCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Standard parameter set including all common payment parameters
+ */
+@property (readonly) NSSet<MsdkCoreSignatureParam *> *DEFAULT __attribute__((swift_name("DEFAULT")));
+
+/**
+ * Minimal required parameter set for basic payments
+ */
+@property (readonly) NSSet<MsdkCoreSignatureParam *> *MINIMAL __attribute__((swift_name("MINIMAL")));
+
+/**
+ * Parameter set excluding the hideSavedWallets flag for backward compatibility
+ */
+@property (readonly) NSSet<MsdkCoreSignatureParam *> *WITHOUT_HIDE_SAVED_WALLETS __attribute__((swift_name("WITHOUT_HIDE_SAVED_WALLETS")));
+@end
+
+
+/**
+ * DSL builder for constructing custom signature parameter sets.
+ *
+ * Usage example:
+ * ```kotlin
+ * val params = signatureParams {
+ *     include(SignatureParam.PROJECT_ID, SignatureParam.PAYMENT_ID)
+ *     includeAll(SignatureParam.DEFAULT)
+ *     exclude(SignatureParam.HIDE_SAVED_WALLETS)
+ * }
+ * ```
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("SignatureParamsBuilder")))
+@interface MsdkCoreSignatureParamsBuilder : MsdkCoreBase
+
+/**
+ * DSL builder for constructing custom signature parameter sets.
+ *
+ * Usage example:
+ * ```kotlin
+ * val params = signatureParams {
+ *     include(SignatureParam.PROJECT_ID, SignatureParam.PAYMENT_ID)
+ *     includeAll(SignatureParam.DEFAULT)
+ *     exclude(SignatureParam.HIDE_SAVED_WALLETS)
+ * }
+ * ```
+ */
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * DSL builder for constructing custom signature parameter sets.
+ *
+ * Usage example:
+ * ```kotlin
+ * val params = signatureParams {
+ *     include(SignatureParam.PROJECT_ID, SignatureParam.PAYMENT_ID)
+ *     includeAll(SignatureParam.DEFAULT)
+ *     exclude(SignatureParam.HIDE_SAVED_WALLETS)
+ * }
+ * ```
+ */
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/**
+ * Add a single parameter
+ */
+- (void)addParam:(MsdkCoreSignatureParam *)param __attribute__((swift_name("add(param:)")));
+
+/**
+ * Exclude specific parameters from the signature
+ */
+- (void)excludeParams:(MsdkCoreKotlinArray<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("exclude(params:)")));
+
+/**
+ * Include specific parameters in the signature
+ */
+- (void)includeParams:(MsdkCoreKotlinArray<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("include(params:)")));
+
+/**
+ * Include all parameters from a predefined set
+ */
+- (void)includeAllParams:(NSSet<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("includeAll(params:)")));
+
+/**
+ * Remove a single parameter
+ */
+- (void)removeParam:(MsdkCoreSignatureParam *)param __attribute__((swift_name("remove(param:)")));
+@end
+
+
+/**
  * @note annotations
  *   kotlinx.serialization.Serializable
 */
 __attribute__((swift_name("ClarificationField")))
 @interface MsdkCoreClarificationField : MsdkCoreBase
 - (instancetype)initWithName:(NSString *)name validatorName:(NSString * _Nullable)validatorName validator:(id<MsdkCoreValidator> _Nullable)validator defaultLabel:(NSString * _Nullable)defaultLabel defaultHint:(NSString * _Nullable)defaultHint defaultPlaceholder:(NSString * _Nullable)defaultPlaceholder defaultErrorMessage:(NSString * _Nullable)defaultErrorMessage __attribute__((swift_name("init(name:validatorName:validator:defaultLabel:defaultHint:defaultPlaceholder:defaultErrorMessage:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 name:(NSString * _Nullable)name validatorName:(NSString * _Nullable)validatorName defaultLabel:(NSString * _Nullable)defaultLabel defaultHint:(NSString * _Nullable)defaultHint defaultPlaceholder:(NSString * _Nullable)defaultPlaceholder defaultErrorMessage:(NSString * _Nullable)defaultErrorMessage serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:name:validatorName:defaultLabel:defaultHint:defaultPlaceholder:defaultErrorMessage:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreClarificationFieldCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable defaultErrorMessage __attribute__((swift_name("defaultErrorMessage")));
 @property (readonly) NSString * _Nullable defaultHint __attribute__((swift_name("defaultHint")));
 @property (readonly) NSString * _Nullable defaultLabel __attribute__((swift_name("defaultLabel")));
 @property (readonly) NSString * _Nullable defaultPlaceholder __attribute__((swift_name("defaultPlaceholder")));
 @property (readonly) NSString *name __attribute__((swift_name("name")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Transient
+*/
 @property (readonly) id<MsdkCoreValidator> _Nullable validator __attribute__((swift_name("validator")));
 @property (readonly) NSString * _Nullable validatorName __attribute__((swift_name("validatorName")));
 @end
@@ -755,6 +941,7 @@ __attribute__((swift_name("ClarificationFieldValue.Companion")))
 __attribute__((swift_name("CompleteField")))
 @interface MsdkCoreCompleteField : MsdkCoreBase
 - (instancetype)initWithName:(NSString * _Nullable)name defaultLabel:(NSString * _Nullable)defaultLabel value:(NSString * _Nullable)value __attribute__((swift_name("init(name:defaultLabel:value:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 name:(NSString * _Nullable)name defaultLabel:(NSString * _Nullable)defaultLabel value:(NSString * _Nullable)value serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:name:defaultLabel:value:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreCompleteFieldCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable defaultLabel __attribute__((swift_name("defaultLabel")));
 @property (readonly) NSString * _Nullable name __attribute__((swift_name("name")));
@@ -911,6 +1098,7 @@ __attribute__((swift_name("SenderFieldValue.Companion")))
 __attribute__((swift_name("Account")))
 @interface MsdkCoreAccount : MsdkCoreBase
 - (instancetype)initWithId:(int64_t)id number:(NSString * _Nullable)number type:(NSString * _Nullable)type cardHolder:(NSString * _Nullable)cardHolder expiryMonth:(NSString * _Nullable)expiryMonth expiryYear:(NSString * _Nullable)expiryYear __attribute__((swift_name("init(id:number:type:cardHolder:expiryMonth:expiryYear:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 id:(int64_t)id number:(NSString * _Nullable)number type:(NSString * _Nullable)type cardHolder:(NSString * _Nullable)cardHolder expiryMonth:(NSString * _Nullable)expiryMonth expiryYear:(NSString * _Nullable)expiryYear serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:id:number:type:cardHolder:expiryMonth:expiryYear:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreAccountFactory *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable cardHolder __attribute__((swift_name("cardHolder")));
 @property (readonly) NSString * _Nullable expiryMonth __attribute__((swift_name("expiryMonth")));
@@ -939,10 +1127,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("PaymentMethod")))
 @interface MsdkCorePaymentMethod : MsdkCoreBase
 - (instancetype)initWithWalletModeAsk:(BOOL)walletModeAsk walletSaveMode:(MsdkCoreWalletSaveMode *)walletSaveMode code:(NSString *)code name:(NSString * _Nullable)name translations:(NSDictionary<NSString *, NSString *> *)translations isVatInfo:(BOOL)isVatInfo paymentUrl:(NSString * _Nullable)paymentUrl iconUrl:(NSString * _Nullable)iconUrl customerFields:(NSArray<MsdkCoreCustomerField *> *)customerFields cardTypesManager:(MsdkCoreCardTypesManager * _Nullable)cardTypesManager availableCardTypes:(NSArray<NSString *> *)availableCardTypes paymentMethodType:(MsdkCorePaymentMethodType *)paymentMethodType __attribute__((swift_name("init(walletModeAsk:walletSaveMode:code:name:translations:isVatInfo:paymentUrl:iconUrl:customerFields:cardTypesManager:availableCardTypes:paymentMethodType:)"))) __attribute__((objc_designated_initializer));
-
-/**
- * Payment method item, received from server
- */
 - (MsdkCorePaymentMethod *)doCopyWalletModeAsk:(BOOL)walletModeAsk walletSaveMode:(MsdkCoreWalletSaveMode *)walletSaveMode code:(NSString *)code name:(NSString * _Nullable)name translations:(NSDictionary<NSString *, NSString *> *)translations isVatInfo:(BOOL)isVatInfo paymentUrl:(NSString * _Nullable)paymentUrl iconUrl:(NSString * _Nullable)iconUrl customerFields:(NSArray<MsdkCoreCustomerField *> *)customerFields cardTypesManager:(MsdkCoreCardTypesManager * _Nullable)cardTypesManager availableCardTypes:(NSArray<NSString *> *)availableCardTypes paymentMethodType:(MsdkCorePaymentMethodType *)paymentMethodType __attribute__((swift_name("doCopy(walletModeAsk:walletSaveMode:code:name:translations:isVatInfo:paymentUrl:iconUrl:customerFields:cardTypesManager:availableCardTypes:paymentMethodType:)")));
 
 /**
@@ -1141,6 +1325,7 @@ __attribute__((swift_name("LinkMessage")))
 __attribute__((swift_name("Payment")))
 @interface MsdkCorePayment : MsdkCoreBase
 - (instancetype)initWithId:(NSString * _Nullable)id serverStatusName:(NSString * _Nullable)serverStatusName status:(MsdkCorePaymentStatus * _Nullable)status purchase:(NSString * _Nullable)purchase date:(NSString * _Nullable)date method:(NSString * _Nullable)method paymentMethodType:(MsdkCorePaymentMethodType *)paymentMethodType methodName:(NSString * _Nullable)methodName description:(NSString * _Nullable)description account:(MsdkCoreAccount * _Nullable)account sum:(int64_t)sum acs:(MsdkCoreAcs * _Nullable)acs threeds2:(MsdkCoreThreeds2 * _Nullable)threeds2 type:(NSString * _Nullable)type token:(NSString * _Nullable)token clarificationFields:(NSArray<MsdkCoreClarificationField *> * _Nullable)clarificationFields completeFields:(NSArray<MsdkCoreCompleteField *> * _Nullable)completeFields currency:(NSString * _Nullable)currency cascadingWithRedirect:(MsdkCoreBoolean * _Nullable)cascadingWithRedirect projectName:(NSString * _Nullable)projectName recurringId:(MsdkCoreInt * _Nullable)recurringId redirectInfo:(NSString * _Nullable)redirectInfo consentData:(NSArray<MsdkCoreConsentData *> * _Nullable)consentData redirectInfoObject:(MsdkCoreRedirectInfo * _Nullable)redirectInfoObject paymentMassage:(NSString * _Nullable)paymentMassage paymentFlow:(MsdkCorePaymentFlow * _Nullable)paymentFlow __attribute__((swift_name("init(id:serverStatusName:status:purchase:date:method:paymentMethodType:methodName:description:account:sum:acs:threeds2:type:token:clarificationFields:completeFields:currency:cascadingWithRedirect:projectName:recurringId:redirectInfo:consentData:redirectInfoObject:paymentMassage:paymentFlow:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 id:(NSString * _Nullable)id serverStatusName:(NSString * _Nullable)serverStatusName status:(MsdkCorePaymentStatus * _Nullable)status purchase:(NSString * _Nullable)purchase date:(NSString * _Nullable)date method:(NSString * _Nullable)method paymentMethodType:(MsdkCorePaymentMethodType * _Nullable)paymentMethodType methodName:(NSString * _Nullable)methodName description:(NSString * _Nullable)description account:(MsdkCoreAccount * _Nullable)account sum:(int64_t)sum acs:(MsdkCoreAcs * _Nullable)acs threeds2:(MsdkCoreThreeds2 * _Nullable)threeds2 type:(NSString * _Nullable)type token:(NSString * _Nullable)token clarificationFields:(NSArray<MsdkCoreClarificationField *> * _Nullable)clarificationFields completeFields:(NSArray<MsdkCoreCompleteField *> * _Nullable)completeFields currency:(NSString * _Nullable)currency cascadingWithRedirect:(MsdkCoreBoolean * _Nullable)cascadingWithRedirect projectName:(NSString * _Nullable)projectName recurringId:(MsdkCoreInt * _Nullable)recurringId redirectInfo:(NSString * _Nullable)redirectInfo consentData:(NSArray<MsdkCoreConsentData *> * _Nullable)consentData redirectInfoObject:(MsdkCoreRedirectInfo * _Nullable)redirectInfoObject paymentMassage:(NSString * _Nullable)paymentMassage paymentFlow:(MsdkCorePaymentFlow * _Nullable)paymentFlow json:(NSString * _Nullable)json serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:id:serverStatusName:status:purchase:date:method:paymentMethodType:methodName:description:account:sum:acs:threeds2:type:token:clarificationFields:completeFields:currency:cascadingWithRedirect:projectName:recurringId:redirectInfo:consentData:redirectInfoObject:paymentMassage:paymentFlow:json:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCorePaymentCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) MsdkCoreAccount * _Nullable account __attribute__((swift_name("account")));
 @property (readonly) MsdkCoreAcs * _Nullable acs __attribute__((swift_name("acs")));
@@ -1260,6 +1445,7 @@ __attribute__((swift_name("PaymentStatus.Companion")))
 __attribute__((swift_name("ConsentData")))
 @interface MsdkCoreConsentData : MsdkCoreBase
 - (instancetype)initWithName:(NSString * _Nullable)name message:(NSString * _Nullable)message list:(NSArray<NSString *> * _Nullable)list __attribute__((swift_name("init(name:message:list:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 name:(NSString * _Nullable)name message:(NSString * _Nullable)message list:(NSArray<NSString *> * _Nullable)list serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:name:message:list:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreConsentDataCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSArray<NSString *> * _Nullable list __attribute__((swift_name("list")));
 @property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
@@ -1284,6 +1470,7 @@ __attribute__((swift_name("ConsentData.Companion")))
 __attribute__((swift_name("RedirectInfo")))
 @interface MsdkCoreRedirectInfo : MsdkCoreBase
 - (instancetype)initWithUrl:(NSString * _Nullable)url method:(NSString * _Nullable)method __attribute__((swift_name("init(url:method:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 url:(NSString * _Nullable)url method:(NSString * _Nullable)method serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:url:method:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreRedirectInfoCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable method __attribute__((swift_name("method")));
 @property (readonly) NSString * _Nullable url __attribute__((swift_name("url")));
@@ -1345,6 +1532,11 @@ __attribute__((swift_name("AcsPage")))
 @property (class, readonly, getter=companion) MsdkCoreAcsPageCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) MsdkCoreAcs * _Nullable acs __attribute__((swift_name("acs")));
 @property (readonly) NSString * _Nullable content __attribute__((swift_name("content")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Transient
+*/
 @property (readonly) MsdkCoreKotlinThrowable * _Nullable error __attribute__((swift_name("error")));
 @property (readonly) NSString * _Nullable errorMessage __attribute__((swift_name("errorMessage")));
 @property (readonly) NSString * _Nullable returnUrl __attribute__((swift_name("returnUrl")));
@@ -1393,6 +1585,7 @@ __attribute__((swift_name("AcsReturnUrl.Companion")))
 __attribute__((swift_name("ThreeDSecureAccountInfo")))
 @interface MsdkCoreThreeDSecureAccountInfo : MsdkCoreBase
 - (instancetype)initWithAdditional:(NSString * _Nullable)additional ageIndicator:(NSString * _Nullable)ageIndicator date:(NSString * _Nullable)date changeIndicator:(NSString * _Nullable)changeIndicator changeDate:(NSString * _Nullable)changeDate passChangeIndicator:(NSString * _Nullable)passChangeIndicator passChangeDate:(NSString * _Nullable)passChangeDate purchaseNumber:(MsdkCoreInt * _Nullable)purchaseNumber provisionAttempts:(MsdkCoreInt * _Nullable)provisionAttempts activityDay:(MsdkCoreInt * _Nullable)activityDay activityYear:(MsdkCoreInt * _Nullable)activityYear paymentAgeIndicator:(NSString * _Nullable)paymentAgeIndicator paymentAge:(NSString * _Nullable)paymentAge suspiciousActivity:(NSString * _Nullable)suspiciousActivity authMethod:(NSString * _Nullable)authMethod authTime:(NSString * _Nullable)authTime authData:(NSString * _Nullable)authData __attribute__((swift_name("init(additional:ageIndicator:date:changeIndicator:changeDate:passChangeIndicator:passChangeDate:purchaseNumber:provisionAttempts:activityDay:activityYear:paymentAgeIndicator:paymentAge:suspiciousActivity:authMethod:authTime:authData:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 additional:(NSString * _Nullable)additional ageIndicator:(NSString * _Nullable)ageIndicator date:(NSString * _Nullable)date changeIndicator:(NSString * _Nullable)changeIndicator changeDate:(NSString * _Nullable)changeDate passChangeIndicator:(NSString * _Nullable)passChangeIndicator passChangeDate:(NSString * _Nullable)passChangeDate purchaseNumber:(MsdkCoreInt * _Nullable)purchaseNumber provisionAttempts:(MsdkCoreInt * _Nullable)provisionAttempts activityDay:(MsdkCoreInt * _Nullable)activityDay activityYear:(MsdkCoreInt * _Nullable)activityYear paymentAgeIndicator:(NSString * _Nullable)paymentAgeIndicator paymentAge:(NSString * _Nullable)paymentAge suspiciousActivity:(NSString * _Nullable)suspiciousActivity authMethod:(NSString * _Nullable)authMethod authTime:(NSString * _Nullable)authTime authData:(NSString * _Nullable)authData serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:additional:ageIndicator:date:changeIndicator:changeDate:passChangeIndicator:passChangeDate:purchaseNumber:provisionAttempts:activityDay:activityYear:paymentAgeIndicator:paymentAge:suspiciousActivity:authMethod:authTime:authData:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureAccountInfoCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) MsdkCoreInt * _Nullable activityDay __attribute__((swift_name("activityDay")));
 @property (readonly) MsdkCoreInt * _Nullable activityYear __attribute__((swift_name("activityYear")));
@@ -1434,6 +1627,7 @@ __attribute__((swift_name("ThreeDSecureAccountInfo.Companion")))
 __attribute__((swift_name("ThreeDSecureCustomerInfo")))
 @interface MsdkCoreThreeDSecureCustomerInfo : MsdkCoreBase
 - (instancetype)initWithAddressMatch:(NSString * _Nullable)addressMatch homePhone:(NSString * _Nullable)homePhone workPhone:(NSString * _Nullable)workPhone billingRegionCode:(NSString * _Nullable)billingRegionCode accountInfo:(MsdkCoreThreeDSecureAccountInfo * _Nullable)accountInfo shippingInfo:(MsdkCoreThreeDSecureShippingInfo * _Nullable)shippingInfo mpiResultInfo:(MsdkCoreThreeDSecureMpiResultInfo * _Nullable)mpiResultInfo __attribute__((swift_name("init(addressMatch:homePhone:workPhone:billingRegionCode:accountInfo:shippingInfo:mpiResultInfo:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 addressMatch:(NSString * _Nullable)addressMatch homePhone:(NSString * _Nullable)homePhone workPhone:(NSString * _Nullable)workPhone billingRegionCode:(NSString * _Nullable)billingRegionCode accountInfo:(MsdkCoreThreeDSecureAccountInfo * _Nullable)accountInfo shippingInfo:(MsdkCoreThreeDSecureShippingInfo * _Nullable)shippingInfo mpiResultInfo:(MsdkCoreThreeDSecureMpiResultInfo * _Nullable)mpiResultInfo serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:addressMatch:homePhone:workPhone:billingRegionCode:accountInfo:shippingInfo:mpiResultInfo:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureCustomerInfoCompanion *companion __attribute__((swift_name("companion")));
 
 /**
@@ -1475,6 +1669,7 @@ __attribute__((swift_name("ThreeDSecureCustomerInfo.Companion")))
 __attribute__((swift_name("ThreeDSecureGiftCardInfo")))
 @interface MsdkCoreThreeDSecureGiftCardInfo : MsdkCoreBase
 - (instancetype)initWithAmount:(MsdkCoreInt * _Nullable)amount currency:(NSString * _Nullable)currency count:(MsdkCoreInt * _Nullable)count __attribute__((swift_name("init(amount:currency:count:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 amount:(MsdkCoreInt * _Nullable)amount currency:(NSString * _Nullable)currency count:(MsdkCoreInt * _Nullable)count serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:amount:currency:count:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureGiftCardInfoCompanion *companion __attribute__((swift_name("companion")));
 - (NSArray<NSString *> *)getParamsForSignature __attribute__((swift_name("getParamsForSignature()")));
 @property (readonly) MsdkCoreInt * _Nullable amount __attribute__((swift_name("amount")));
@@ -1503,6 +1698,7 @@ __attribute__((swift_name("ThreeDSecureGiftCardInfo.Companion")))
 __attribute__((swift_name("ThreeDSecureInfo")))
 @interface MsdkCoreThreeDSecureInfo : MsdkCoreBase
 - (instancetype)initWithThreeDSecureCustomerInfo:(MsdkCoreThreeDSecureCustomerInfo * _Nullable)threeDSecureCustomerInfo threeDSecurePaymentInfo:(MsdkCoreThreeDSecurePaymentInfo * _Nullable)threeDSecurePaymentInfo __attribute__((swift_name("init(threeDSecureCustomerInfo:threeDSecurePaymentInfo:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 threeDSecureCustomerInfo:(MsdkCoreThreeDSecureCustomerInfo * _Nullable)threeDSecureCustomerInfo threeDSecurePaymentInfo:(MsdkCoreThreeDSecurePaymentInfo * _Nullable)threeDSecurePaymentInfo serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:threeDSecureCustomerInfo:threeDSecurePaymentInfo:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureInfoFactory *companion __attribute__((swift_name("companion")));
 
 /**
@@ -1537,6 +1733,7 @@ __attribute__((swift_name("ThreeDSecureInfo.Factory")))
 __attribute__((swift_name("ThreeDSecureMpiResultInfo")))
 @interface MsdkCoreThreeDSecureMpiResultInfo : MsdkCoreBase
 - (instancetype)initWithAcsOperationId:(NSString * _Nullable)acsOperationId authenticationFlow:(NSString * _Nullable)authenticationFlow authenticationTimestamp:(NSString * _Nullable)authenticationTimestamp __attribute__((swift_name("init(acsOperationId:authenticationFlow:authenticationTimestamp:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 acsOperationId:(NSString * _Nullable)acsOperationId authenticationFlow:(NSString * _Nullable)authenticationFlow authenticationTimestamp:(NSString * _Nullable)authenticationTimestamp serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:acsOperationId:authenticationFlow:authenticationTimestamp:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureMpiResultInfoCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable acsOperationId __attribute__((swift_name("acsOperationId")));
 @property (readonly) NSString * _Nullable authenticationFlow __attribute__((swift_name("authenticationFlow")));
@@ -1620,6 +1817,7 @@ __attribute__((swift_name("ThreeDSecurePageType.Companion")))
 __attribute__((swift_name("ThreeDSecurePaymentInfo")))
 @interface MsdkCoreThreeDSecurePaymentInfo : MsdkCoreBase
 - (instancetype)initWithReorder:(NSString * _Nullable)reorder preorderPurchase:(NSString * _Nullable)preorderPurchase preorderDate:(NSString * _Nullable)preorderDate challengeIndicator:(NSString * _Nullable)challengeIndicator challengeWindow:(NSString * _Nullable)challengeWindow giftCard:(MsdkCoreThreeDSecureGiftCardInfo * _Nullable)giftCard __attribute__((swift_name("init(reorder:preorderPurchase:preorderDate:challengeIndicator:challengeWindow:giftCard:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 reorder:(NSString * _Nullable)reorder preorderPurchase:(NSString * _Nullable)preorderPurchase preorderDate:(NSString * _Nullable)preorderDate challengeIndicator:(NSString * _Nullable)challengeIndicator challengeWindow:(NSString * _Nullable)challengeWindow giftCard:(MsdkCoreThreeDSecureGiftCardInfo * _Nullable)giftCard serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:reorder:preorderPurchase:preorderDate:challengeIndicator:challengeWindow:giftCard:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecurePaymentInfoCompanion *companion __attribute__((swift_name("companion")));
 - (NSArray<NSString *> *)getParamsForPaymentRiskSignature __attribute__((swift_name("getParamsForPaymentRiskSignature()")));
 @property (readonly) NSString * _Nullable challengeIndicator __attribute__((swift_name("challengeIndicator")));
@@ -1655,6 +1853,7 @@ __attribute__((swift_name("ThreeDSecurePaymentInfo.Companion")))
 __attribute__((swift_name("ThreeDSecureShippingInfo")))
 @interface MsdkCoreThreeDSecureShippingInfo : MsdkCoreBase
 - (instancetype)initWithType:(NSString * _Nullable)type deliveryTime:(NSString * _Nullable)deliveryTime deliveryEmail:(NSString * _Nullable)deliveryEmail addressUsageIndicator:(NSString * _Nullable)addressUsageIndicator addressUsage:(NSString * _Nullable)addressUsage city:(NSString * _Nullable)city country:(NSString * _Nullable)country address:(NSString * _Nullable)address postal:(NSString * _Nullable)postal regionCode:(NSString * _Nullable)regionCode nameIndicator:(NSString * _Nullable)nameIndicator __attribute__((swift_name("init(type:deliveryTime:deliveryEmail:addressUsageIndicator:addressUsage:city:country:address:postal:regionCode:nameIndicator:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithSeen0:(int32_t)seen0 type:(NSString * _Nullable)type deliveryTime:(NSString * _Nullable)deliveryTime deliveryEmail:(NSString * _Nullable)deliveryEmail addressUsageIndicator:(NSString * _Nullable)addressUsageIndicator addressUsage:(NSString * _Nullable)addressUsage city:(NSString * _Nullable)city country:(NSString * _Nullable)country address:(NSString * _Nullable)address postal:(NSString * _Nullable)postal regionCode:(NSString * _Nullable)regionCode nameIndicator:(NSString * _Nullable)nameIndicator serializationConstructorMarker:(id _Nullable)serializationConstructorMarker __attribute__((swift_name("init(seen0:type:deliveryTime:deliveryEmail:addressUsageIndicator:addressUsage:city:country:address:postal:regionCode:nameIndicator:serializationConstructorMarker:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreThreeDSecureShippingInfoCompanion *companion __attribute__((swift_name("companion")));
 @property (readonly) NSString * _Nullable address __attribute__((swift_name("address")));
 @property (readonly) NSString * _Nullable addressUsage __attribute__((swift_name("addressUsage")));
@@ -2417,11 +2616,35 @@ __attribute__((swift_name("CustomHeadersPlugin.Config")))
 @property NSDictionary<NSString *, NSString *> *headers __attribute__((swift_name("headers")));
 @end
 
+
+/**
+ * Base interface representing a [HttpClient] plugin.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.HttpClientPlugin)
+ */
 __attribute__((swift_name("Ktor_client_coreHttpClientPlugin")))
 @protocol MsdkCoreKtor_client_coreHttpClientPlugin
 @required
+
+/**
+ * Installs the [plugin] class for a [HttpClient] defined at [scope].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.HttpClientPlugin.install)
+ */
 - (void)installPlugin:(id)plugin scope:(MsdkCoreKtor_client_coreHttpClient *)scope __attribute__((swift_name("install(plugin:scope:)")));
+
+/**
+ * Builds a [TPlugin] by calling the [block] with a [TConfig] config instance as receiver.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.HttpClientPlugin.prepare)
+ */
 - (id)prepareBlock:(void (^)(id))block __attribute__((swift_name("prepare(block:)")));
+
+/**
+ * The [AttributeKey] for this plugin.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.HttpClientPlugin.key)
+ */
 @property (readonly) MsdkCoreKtor_utilsAttributeKey<id> *key __attribute__((swift_name("key")));
 @end
 
@@ -2465,89 +2688,21 @@ __attribute__((swift_name("JsonFixTranslationsAsMapPlugin.Plugin")))
 @property (readonly) MsdkCoreKtor_utilsAttributeKey<MsdkCoreJsonFixTranslationsAsMapPlugin *> *key __attribute__((swift_name("key")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("JsonPlugin")))
-@interface MsdkCoreJsonPlugin : MsdkCoreBase
-@property (class, readonly, getter=companion) MsdkCoreJsonPluginPlugin *companion __attribute__((swift_name("companion")));
-@property (readonly) id<MsdkCoreKtor_client_jsonJsonSerializer> serializer __attribute__((swift_name("serializer")));
-@end
-
 
 /**
- * [JsonPlugin] configuration that is used during installation
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("JsonPlugin.Config")))
-@interface MsdkCoreJsonPluginConfig : MsdkCoreBase
-
-/**
- * [JsonPlugin] configuration that is used during installation
- */
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-
-/**
- * [JsonPlugin] configuration that is used during installation
- */
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-
-/**
- * Adds accepted content types. Be aware that [ContentType.Application.Json] accepted by default is removed from
- * the list if you use this function to provide accepted content types.
- * It also affects `Accept` request header value.
- */
-- (void)acceptContentTypes:(MsdkCoreKotlinArray<MsdkCoreKtor_httpContentType *> *)contentTypes __attribute__((swift_name("accept(contentTypes:)")));
-
-/**
- * Adds accepted content types. Existing content types will not be removed.
- */
-- (void)receiveMatcher:(id<MsdkCoreKtor_httpContentTypeMatcher>)matcher __attribute__((swift_name("receive(matcher:)")));
-
-/**
- * List of content types that are handled by this feature.
- * It also affects `Accept` request header value.
- * Please note that wildcard content types are supported but no quality specification provided.
- */
-@property NSArray<MsdkCoreKtor_httpContentType *> *acceptContentTypes __attribute__((swift_name("acceptContentTypes")));
-
-/**
- * List of content type matchers that are handled by this feature.
- * Please note that wildcard content types are supported but no quality specification provided.
- */
-@property NSArray<id<MsdkCoreKtor_httpContentTypeMatcher>> *receiveContentTypeMatchers __attribute__((swift_name("receiveContentTypeMatchers")));
-
-/**
- * Serializer that will be used for serializing requests and deserializing response bodies.
+ * [HttpClient] Logger.
  *
- * Default value for [serializer] is [defaultSerializer].
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.logging.Logger)
  */
-@property id<MsdkCoreKtor_client_jsonJsonSerializer> _Nullable serializer __attribute__((swift_name("serializer")));
-@end
-
-
-/**
- * @ThreadLocal
-companion object for feature installation
- */
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("JsonPlugin.Plugin")))
-@interface MsdkCoreJsonPluginPlugin : MsdkCoreBase <MsdkCoreKtor_client_coreHttpClientPlugin>
-+ (instancetype)alloc __attribute__((unavailable));
-
-/**
- * @ThreadLocal
-companion object for feature installation
- */
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)plugin __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreJsonPluginPlugin *shared __attribute__((swift_name("shared")));
-- (void)installPlugin:(MsdkCoreJsonPlugin *)plugin scope:(MsdkCoreKtor_client_coreHttpClient *)scope __attribute__((swift_name("install(plugin:scope:)")));
-- (MsdkCoreJsonPlugin *)prepareBlock:(void (^)(MsdkCoreJsonPluginConfig *))block __attribute__((swift_name("prepare(block:)")));
-@property (readonly) MsdkCoreKtor_utilsAttributeKey<MsdkCoreJsonPlugin *> *key __attribute__((swift_name("key")));
-@end
-
 __attribute__((swift_name("Ktor_client_loggingLogger")))
 @protocol MsdkCoreKtor_client_loggingLogger
 @required
+
+/**
+ * Add [message] to log.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.plugins.logging.Logger.log)
+ */
 - (void)logMessage:(NSString *)message __attribute__((swift_name("log(message:)")));
 @end
 
@@ -2794,6 +2949,52 @@ __attribute__((swift_name("NsDataUtilsKt")))
 + (MsdkCoreKotlinByteArray * _Nullable)toByteArray:(NSData *)receiver __attribute__((swift_name("toByteArray(_:)")));
 @end
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("SignatureParamKt")))
+@interface MsdkCoreSignatureParamKt : MsdkCoreBase
+
+/**
+ * Creates a signature parameter set with only core payment parameters
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)coreOnly:(NSSet<MsdkCoreSignatureParam *> *)receiver __attribute__((swift_name("coreOnly(_:)")));
+
+/**
+ * Removes a parameter from the current set
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)minus:(NSSet<MsdkCoreSignatureParam *> *)receiver param:(MsdkCoreSignatureParam *)param __attribute__((swift_name("minus(_:param:)")));
+
+/**
+ * Removes multiple parameters from the current set
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)minus:(NSSet<MsdkCoreSignatureParam *> *)receiver params:(NSSet<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("minus(_:params:)")));
+
+/**
+ * Adds a parameter to the current set
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)plus:(NSSet<MsdkCoreSignatureParam *> *)receiver param:(MsdkCoreSignatureParam *)param __attribute__((swift_name("plus(_:param:)")));
+
+/**
+ * Adds multiple parameters to the current set
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)plus:(NSSet<MsdkCoreSignatureParam *> *)receiver params:(NSSet<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("plus(_:params:)")));
+
+/**
+ * DSL function for building signature parameter sets
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)signatureParamsBlock:(void (^)(MsdkCoreSignatureParamsBuilder *))block __attribute__((swift_name("signatureParams(block:)")));
+
+/**
+ * Convenience function to create a custom parameter set from varargs
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)signatureParamsOfParams:(MsdkCoreKotlinArray<MsdkCoreSignatureParam *> *)params __attribute__((swift_name("signatureParamsOf(params:)")));
+
+/**
+ * Creates a signature parameter set without the hideSavedWallets parameter
+ * for backward compatibility
+ */
++ (NSSet<MsdkCoreSignatureParam *> *)withoutHideSavedWallets:(NSSet<MsdkCoreSignatureParam *> *)receiver __attribute__((swift_name("withoutHideSavedWallets(_:)")));
+@end
+
 __attribute__((swift_name("Kotlinx_serialization_coreSerialFormat")))
 @protocol MsdkCoreKotlinx_serialization_coreSerialFormat
 @required
@@ -2814,6 +3015,7 @@ __attribute__((swift_name("Kotlinx_serialization_jsonJson")))
 - (id _Nullable)decodeFromStringString:(NSString *)string __attribute__((swift_name("decodeFromString(string:)")));
 - (id _Nullable)decodeFromStringDeserializer:(id<MsdkCoreKotlinx_serialization_coreDeserializationStrategy>)deserializer string:(NSString *)string __attribute__((swift_name("decodeFromString(deserializer:string:)")));
 - (MsdkCoreKotlinx_serialization_jsonJsonElement *)encodeToJsonElementSerializer:(id<MsdkCoreKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeToJsonElement(serializer:value:)")));
+- (NSString *)encodeToStringValue:(id _Nullable)value __attribute__((swift_name("encodeToString(value:)")));
 - (NSString *)encodeToStringSerializer:(id<MsdkCoreKotlinx_serialization_coreSerializationStrategy>)serializer value:(id _Nullable)value __attribute__((swift_name("encodeToString(serializer:value:)")));
 - (MsdkCoreKotlinx_serialization_jsonJsonElement *)parseToJsonElementString:(NSString *)string __attribute__((swift_name("parseToJsonElement(string:)")));
 @property (readonly) MsdkCoreKotlinx_serialization_jsonJsonConfiguration *configuration __attribute__((swift_name("configuration")));
@@ -2910,15 +3112,15 @@ __attribute__((swift_name("Kotlinx_coroutines_coreCoroutineDispatcher")))
 - (instancetype)initWithKey:(id<MsdkCoreKotlinCoroutineContextKey>)key __attribute__((swift_name("init(key:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MsdkCoreKotlinx_coroutines_coreCoroutineDispatcherKey *companion __attribute__((swift_name("companion")));
 - (void)dispatchContext:(id<MsdkCoreKotlinCoroutineContext>)context block:(id<MsdkCoreKotlinx_coroutines_coreRunnable>)block __attribute__((swift_name("dispatch(context:block:)")));
-- (void)dispatchYieldContext:(id<MsdkCoreKotlinCoroutineContext>)context block:(id<MsdkCoreKotlinx_coroutines_coreRunnable>)block __attribute__((swift_name("dispatchYield(context:block:)")));
-- (id<MsdkCoreKotlinContinuation>)interceptContinuationContinuation:(id<MsdkCoreKotlinContinuation>)continuation __attribute__((swift_name("interceptContinuation(continuation:)")));
-- (BOOL)isDispatchNeededContext:(id<MsdkCoreKotlinCoroutineContext>)context __attribute__((swift_name("isDispatchNeeded(context:)")));
 
 /**
  * @note annotations
- *   kotlinx.coroutines.ExperimentalCoroutinesApi
+ *   kotlinx.coroutines.InternalCoroutinesApi
 */
-- (MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher *)limitedParallelismParallelism:(int32_t)parallelism __attribute__((swift_name("limitedParallelism(parallelism:)")));
+- (void)dispatchYieldContext:(id<MsdkCoreKotlinCoroutineContext>)context block:(id<MsdkCoreKotlinx_coroutines_coreRunnable>)block __attribute__((swift_name("dispatchYield(context:block:)")));
+- (id<MsdkCoreKotlinContinuation>)interceptContinuationContinuation:(id<MsdkCoreKotlinContinuation>)continuation __attribute__((swift_name("interceptContinuation(continuation:)")));
+- (BOOL)isDispatchNeededContext:(id<MsdkCoreKotlinCoroutineContext>)context __attribute__((swift_name("isDispatchNeeded(context:)")));
+- (MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher *)limitedParallelismParallelism:(int32_t)parallelism name:(NSString * _Nullable)name __attribute__((swift_name("limitedParallelism(parallelism:name:)")));
 - (MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher *)plusOther:(MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher *)other __attribute__((swift_name("plus(other:)"))) __attribute__((unavailable("Operator '+' on two CoroutineDispatcher objects is meaningless. CoroutineDispatcher is a coroutine context element and `+` is a set-sum operator for coroutine contexts. The dispatcher to the right of `+` just replaces the dispatcher to the left.")));
 - (void)releaseInterceptedContinuationContinuation:(id<MsdkCoreKotlinContinuation>)continuation __attribute__((swift_name("releaseInterceptedContinuation(continuation:)")));
 - (NSString *)description __attribute__((swift_name("description()")));
@@ -2939,83 +3141,478 @@ __attribute__((swift_name("Kotlinx_coroutines_coreCoroutineScope")))
 @property (readonly) id<MsdkCoreKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
 @end
 
-__attribute__((swift_name("Ktor_ioCloseable")))
-@protocol MsdkCoreKtor_ioCloseable
+
+/**
+ * @note annotations
+ *   kotlin.SinceKotlin(version="2.0")
+*/
+__attribute__((swift_name("KotlinAutoCloseable")))
+@protocol MsdkCoreKotlinAutoCloseable
 @required
 - (void)close __attribute__((swift_name("close()")));
 @end
 
+__attribute__((swift_name("Ktor_ioCloseable")))
+@protocol MsdkCoreKtor_ioCloseable <MsdkCoreKotlinAutoCloseable>
+@required
+@end
+
+
+/**
+ * A multiplatform asynchronous HTTP client that allows you to make requests, handle responses,
+ * and extend its functionality with plugins such as authentication, JSON serialization, and more.
+ *
+ * # Creating client
+ * To create a new client, you can call:
+ * ```kotlin
+ * val client = HttpClient()
+ * ```
+ * You can create as many clients as you need.
+ *
+ * If you no longer need the client, please consider closing it to release resources:
+ * ```
+ * client.close()
+ * ```
+ *
+ * To learn more on how to create and configure an [HttpClient] see the tutorial page:
+ * [Creating and configuring a client](https://ktor.io/docs/create-client.html).
+ *
+ * # Making API Requests
+ * For every HTTP method (GET, POST, PUT, etc.), there is a corresponding function:
+ * ```kotlin
+ * val response: HttpResponse = client.get("https://ktor.io/")
+ * val body = response.bodyAsText()
+ * ```
+ * See [Making HTTP requests](https://ktor.io/docs/client-requests.html) for more details.
+ *
+ * # Query Parameters
+ * Add query parameters to your request using the `parameter` function:
+ * ```kotlin
+ * val response = client.get("https://google.com/search") {
+ *     url {
+ *         parameter("q", "REST API with Ktor")
+ *     }
+ * }
+ * ```
+ * For more information, refer to [Passing request parameters](https://ktor.io/docs/client-requests.html#parameters).
+ *
+ * # Adding Headers
+ * Include headers in your request using the `headers` builder or the `header` function:
+ * ```kotlin
+ * val response = client.get("https://httpbin.org/bearer") {
+ *     headers {
+ *         append("Authorization", "Bearer your_token_here")
+ *         append("Accept", "application/json")
+ *     }
+ * }
+ * ```
+ * Learn more at [Adding headers to a request](https://ktor.io/docs/client-requests.html#headers).
+ *
+ * # JSON Serialization
+ * Add dependencies:
+ * - io.ktor:ktor-client-content-negotiation:3.+
+ * - io.ktor:ktor-serialization-kotlinx-json:3.+
+ * Add Gradle plugin:
+ * ```
+ * plugins {
+ *     kotlin("plugin.serialization")
+ * }
+ * ```
+ *
+ * Send and receive JSON data by installing the `ContentNegotiation` plugin with `kotlinx.serialization`:
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(ContentNegotiation) {
+ *         json()
+ *     }
+ * }
+ *
+ * @Serializable
+ * data class MyRequestType(val someData: String)
+ *
+ * @Serializable
+ * data class MyResponseType(val someResponseData: String)
+ *
+ * val response: MyResponseType = client.post("https://api.example.com/data") {
+ *     contentType(ContentType.Application.Json)
+ *     setBody(MyRequestType(someData = "value"))
+ * }.body()
+ * ```
+ * See [Serializing JSON data](https://ktor.io/docs/client-serialization.html) for maven configuration and other details.
+ *
+ * # Submitting Forms
+ * Submit form data using `FormDataContent` or the `submitForm` function:
+ * ```kotlin
+ * // Using FormDataContent
+ * val response = client.post("https://example.com/submit") {
+ *     setBody(FormDataContent(Parameters.build {
+ *         append("username", "user")
+ *         append("password", "pass")
+ *     }))
+ * }
+ *
+ * // Or using submitForm
+ * val response = client.submitForm(
+ *     url = "https://example.com/submit",
+ *     formParameters = Parameters.build {
+ *         append("username", "user")
+ *         append("password", "pass")
+ *     }
+ * )
+ * ```
+ * More information is available at [Submitting form parameters](https://ktor.io/docs/client-requests.html#form_parameters).
+ *
+ * # Handling Authentication
+ * Add dependency: io.ktor:ktor-client-auth:3.+
+ *
+ * Use the `Auth` plugin to handle various authentication schemes like Basic or Bearer token authentication:
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(Auth) {
+ *         bearer {
+ *             loadTokens {
+ *                 BearerTokens(accessToken = "your_access_token", refreshToken = "your_refresh_token")
+ *             }
+ *         }
+ *     }
+ * }
+ *
+ * val response = client.get("https://api.example.com/protected")
+ * ```
+ * Refer to [Client authentication](https://ktor.io/docs/client-auth.html) for more details.
+ *
+ * # Setting Timeouts and Retries
+ * Configure timeouts and implement retry logic for your requests:
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(HttpTimeout) {
+ *         requestTimeoutMillis = 10000
+ *         connectTimeoutMillis = 5000
+ *         socketTimeoutMillis = 15000
+ *     }
+ * }
+ * ```
+ *
+ * For the request timeout:
+ * ```kotlin
+ * client.get("") {
+ *     timeout {
+ *         requestTimeoutMillis = 1000
+ *     }
+ * }
+ * ```
+ * See [Timeout](https://ktor.io/docs/client-timeout.html) for more information.
+ *
+ * # Handling Cookies
+ *
+ * Manage cookies automatically by installing the `HttpCookies` plugin:
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(HttpCookies) {
+ *         storage = AcceptAllCookiesStorage()
+ *     }
+ * }
+ *
+ * // Accessing cookies
+ * val cookies: List<Cookie> = client.cookies("https://example.com")
+ * ```
+ * Learn more at [Cookies](https://ktor.io/docs/client-cookies.html).
+ *
+ * # Uploading Files
+ * Upload files using multipart/form-data requests:
+ * ```kotlin
+ * client.submitFormWithBinaryData(
+ *      url = "https://example.com/upload",
+ *      formData = formData {
+ *          append("description", "File upload example")
+ *          append("file", {
+ *              File("path/to/file.txt").readChannel()
+ *          })
+ *      }
+ *  )
+ *
+ * See [Uploading data](https://ktor.io/docs/client-requests.html#upload_file) for details.
+ *
+ * # Using WebSockets
+ *
+ * Communicate over WebSockets using the `webSocket` function:
+ * ```kotlin
+ * client.webSocket("wss://echo.websocket.org") {
+ *     send(Frame.Text("Hello, WebSocket!"))
+ *     val frame = incoming.receive()
+ *     if (frame is Frame.Text) {
+ *         println("Received: ${frame.readText()}")
+ *     }
+ * }
+ * ```
+ * Learn more at [Client WebSockets](https://ktor.io/docs/client-websockets.html).
+ *
+ * # Error Handling
+ * Handle exceptions and HTTP error responses gracefully:
+ * val client = HttpClient {
+ *     HttpResponseValidator {
+ *         validateResponse { response ->
+ *             val statusCode = response.status.value
+ *             when (statusCode) {
+ *                 in 300..399 -> error("Redirects are not allowed")
+ *             }
+ *         }
+ *     }
+ * }
+ * See [Error handling](https://ktor.io/docs/client-response-validation.html) for more information.
+ *
+ * # Configuring SSL/TLS
+ *
+ * Customize SSL/TLS settings for secure connections is engine-specific. Please refer to the following page for
+ * the details: [Client SSL/TLS](https://ktor.io/docs/client-ssl.html).
+ *
+ * # Using Proxies
+ * Route requests through an HTTP or SOCKS proxy:
+ * ```kotlin
+ * val client = HttpClient() {
+ *     engine {
+ *         proxy = ProxyBuilder.http("http://proxy.example.com:8080")
+ *         // For a SOCKS proxy:
+ *         // proxy = ProxyBuilder.socks(host = "proxy.example.com", port = 1080)
+ *     }
+ * }
+ * ```
+ * See [Using a proxy](https://ktor.io/docs/client-proxy.html) for details.
+ *
+ * # Streaming Data
+ *
+ * Stream large data efficiently without loading it entirely into memory.
+ *
+ * Stream request:
+ * ```kotlin
+ * val response = client.post("https://example.com/upload") {
+ *      setBody(object: OutgoingContent.WriteChannelContent() {
+ *          override suspend fun writeTo(channel: ByteWriteChannel) {
+ *              repeat(1000) {
+ *                  channel.writeString("Hello!")
+ *              }
+ *          }
+ *      })
+ * }
+ * ```
+ *
+ * Stream response:
+ * ```kotlin
+ * client.prepareGet("https://example.com/largefile.zip").execute { response ->
+ *     val channel: ByteReadChannel = response.bodyAsChannel()
+ *
+ *     while (!channel.exhausted()) {
+ *         val chunk = channel.readBuffer()
+ *         // ...
+ *     }
+ * }
+ * ```
+ * Learn more at [Streaming data](https://ktor.io/docs/client-responses.html#streaming).
+ *
+ * # Using SSE
+ * Server-Sent Events (SSE) is a technology that allows a server to continuously push events to a client over an HTTP
+ * connection. It's particularly useful in cases where the server needs to send event-based updates without requiring
+ * the client to repeatedly poll the server.
+ *
+ * Install the plugin:
+ * ```kotlin
+ * val client = HttpClient(CIO) {
+ *     install(SSE)
+ * }
+ * ```
+ *
+ * ```
+ * client.sse(host = "0.0.0.0", port = 8080, path = "/events") {
+ *     while (true) {
+ *         for (event in incoming) {
+ *             println("Event from server:")
+ *             println(event)
+ *         }
+ *     }
+ * }
+ * ```
+ *
+ * Visit [Using SSE](https://ktor.io/docs/client-server-sent-events.html#install_plugin) to learn more.
+ *
+ * # Customizing a client with plugins
+ * To extend out-of-the-box functionality, you can install plugins for a Ktor client:
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(ContentNegotiation) {
+ *         json()
+ *     }
+ * }
+ * ```
+ *
+ * There are many plugins available out of the box, and you can write your own. See
+ * [Create custom client plugins](https://ktor.io/docs/client-custom-plugins.html) to learn more.
+ *
+ * # Service Loader and Default Engine
+ * On JVM, calling `HttpClient()` without specifying an engine uses a service loader mechanism to
+ * determine the appropriate default engine. This can introduce a performance overhead, especially on
+ * slower devices, such as Android.
+ *
+ * **Performance Note**: If you are targeting platforms where initialization speed is critical,
+ * consider explicitly specifying an engine to avoid the service loader lookup.
+ *
+ * Example with manual engine specification:
+ * ```
+ * val client = HttpClient(Apache) // Explicitly uses Apache engine, bypassing service loader
+ * ```
+ *
+ * By directly setting the engine (e.g., `Apache`, `OkHttp`), you can optimize startup performance
+ * by preventing the default service loader mechanism.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpClient")))
 @interface MsdkCoreKtor_client_coreHttpClient : MsdkCoreBase <MsdkCoreKotlinx_coroutines_coreCoroutineScope, MsdkCoreKtor_ioCloseable>
 - (instancetype)initWithEngine:(id<MsdkCoreKtor_client_coreHttpClientEngine>)engine userConfig:(MsdkCoreKtor_client_coreHttpClientConfig<MsdkCoreKtor_client_coreHttpClientEngineConfig *> *)userConfig __attribute__((swift_name("init(engine:userConfig:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Initiates the shutdown process for the `HttpClient`. This is a non-blocking call, which
+ * means it returns immediately and begins the client closure in the background.
+ *
+ * ## Usage
+ * ```
+ * val client = HttpClient()
+ * client.close()
+ * client.coroutineContext.job.join() // Waits for complete termination if necessary
+ * ```
+ *
+ * ## Important Notes
+ * - **Non-blocking**: `close()` only starts the closing process and does not wait for it to complete.
+ * - **Coroutine Context**: To wait for all client resources to be freed, use `client.coroutineContext.job.join()`
+ *   or `client.coroutineContext.cancel()` to terminate ongoing tasks.
+ * - **Manual Engine Management**: If a custom `engine` was manually created, it must be closed explicitly
+ *   after calling `client.close()` to release all resources.
+ *
+ * Example with custom engine management:
+ * ```
+ * val engine = HttpClientEngine() // Custom engine instance
+ * val client = HttpClient(engine)
+ *
+ * client.close()
+ * engine.close() // Ensure manually created engine is also closed
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.close)
+ */
 - (void)close __attribute__((swift_name("close()")));
+
+/**
+ * Returns a new [HttpClient] by copying this client's configuration
+ * and additionally configured by the [block] parameter.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.config)
+ */
 - (MsdkCoreKtor_client_coreHttpClient *)configBlock:(void (^)(MsdkCoreKtor_client_coreHttpClientConfig<id> *))block __attribute__((swift_name("config(block:)")));
+
+/**
+ * Checks if the specified [capability] is supported by this client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.isSupported)
+ */
 - (BOOL)isSupportedCapability:(id<MsdkCoreKtor_client_coreHttpClientEngineCapability>)capability __attribute__((swift_name("isSupported(capability:)")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
-@property (readonly) id<MsdkCoreKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
-@property (readonly) id<MsdkCoreKtor_client_coreHttpClientEngine> engine __attribute__((swift_name("engine")));
-@property (readonly) MsdkCoreKtor_client_coreHttpClientEngineConfig *engineConfig __attribute__((swift_name("engineConfig")));
-@property (readonly) MsdkCoreKtor_eventsEvents *monitor __attribute__((swift_name("monitor")));
-@property (readonly) MsdkCoreKtor_client_coreHttpReceivePipeline *receivePipeline __attribute__((swift_name("receivePipeline")));
-@property (readonly) MsdkCoreKtor_client_coreHttpRequestPipeline *requestPipeline __attribute__((swift_name("requestPipeline")));
-@property (readonly) MsdkCoreKtor_client_coreHttpResponsePipeline *responsePipeline __attribute__((swift_name("responsePipeline")));
-@property (readonly) MsdkCoreKtor_client_coreHttpSendPipeline *sendPipeline __attribute__((swift_name("sendPipeline")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_utilsAttributeKey")))
-@interface MsdkCoreKtor_utilsAttributeKey<T> : MsdkCoreBase
-- (instancetype)initWithName:(NSString *)name __attribute__((swift_name("init(name:)"))) __attribute__((objc_designated_initializer));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@end
-
-__attribute__((swift_name("Ktor_client_jsonJsonSerializer")))
-@protocol MsdkCoreKtor_client_jsonJsonSerializer
-@required
-- (id)readType:(MsdkCoreKtor_utilsTypeInfo *)type body:(MsdkCoreKtor_ioInput *)body __attribute__((swift_name("read(type:body:)")));
-- (MsdkCoreKtor_httpOutgoingContent *)writeData:(id)data __attribute__((swift_name("write(data:)")));
-- (MsdkCoreKtor_httpOutgoingContent *)writeData:(id)data contentType:(MsdkCoreKtor_httpContentType *)contentType __attribute__((swift_name("write(data:contentType:)")));
-@end
-
-__attribute__((swift_name("Ktor_httpHeaderValueWithParameters")))
-@interface MsdkCoreKtor_httpHeaderValueWithParameters : MsdkCoreBase
-- (instancetype)initWithContent:(NSString *)content parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(content:parameters:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_httpHeaderValueWithParametersCompanion *companion __attribute__((swift_name("companion")));
-- (NSString * _Nullable)parameterName:(NSString *)name __attribute__((swift_name("parameter(name:)")));
 - (NSString *)description __attribute__((swift_name("description()")));
 
 /**
- * @note This property has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-@property (readonly) NSString *content __attribute__((swift_name("content")));
-@property (readonly) NSArray<MsdkCoreKtor_httpHeaderValueParam *> *parameters __attribute__((swift_name("parameters")));
+ * Typed attributes used as a lightweight container for this client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.attributes)
+ */
+@property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+@property (readonly) id<MsdkCoreKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
+@property (readonly) id<MsdkCoreKtor_client_coreHttpClientEngine> engine __attribute__((swift_name("engine")));
+
+/**
+ * Provides access to the client's engine configuration.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.engineConfig)
+ */
+@property (readonly) MsdkCoreKtor_client_coreHttpClientEngineConfig *engineConfig __attribute__((swift_name("engineConfig")));
+
+/**
+ * Provides access to the events of the client's lifecycle.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.monitor)
+ */
+@property (readonly) MsdkCoreKtor_eventsEvents *monitor __attribute__((swift_name("monitor")));
+
+/**
+ * A pipeline used for receiving a request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.receivePipeline)
+ */
+@property (readonly) MsdkCoreKtor_client_coreHttpReceivePipeline *receivePipeline __attribute__((swift_name("receivePipeline")));
+
+/**
+ * A pipeline used for processing all requests sent by this client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.requestPipeline)
+ */
+@property (readonly) MsdkCoreKtor_client_coreHttpRequestPipeline *requestPipeline __attribute__((swift_name("requestPipeline")));
+
+/**
+ * A pipeline used for processing all responses sent by the server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.responsePipeline)
+ */
+@property (readonly) MsdkCoreKtor_client_coreHttpResponsePipeline *responsePipeline __attribute__((swift_name("responsePipeline")));
+
+/**
+ * A pipeline used for sending a request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClient.sendPipeline)
+ */
+@property (readonly) MsdkCoreKtor_client_coreHttpSendPipeline *sendPipeline __attribute__((swift_name("sendPipeline")));
 @end
 
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpContentType")))
-@interface MsdkCoreKtor_httpContentType : MsdkCoreKtor_httpHeaderValueWithParameters
-- (instancetype)initWithContentType:(NSString *)contentType contentSubtype:(NSString *)contentSubtype parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(contentType:contentSubtype:parameters:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithContent:(NSString *)content parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(content:parameters:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MsdkCoreKtor_httpContentTypeCompanion *companion __attribute__((swift_name("companion")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (BOOL)matchPattern:(MsdkCoreKtor_httpContentType *)pattern __attribute__((swift_name("match(pattern:)")));
-- (BOOL)matchPattern_:(NSString *)pattern __attribute__((swift_name("match(pattern_:)")));
-- (MsdkCoreKtor_httpContentType *)withParameterName:(NSString *)name value:(NSString *)value __attribute__((swift_name("withParameter(name:value:)")));
-- (MsdkCoreKtor_httpContentType *)withoutParameters __attribute__((swift_name("withoutParameters()")));
-@property (readonly) NSString *contentSubtype __attribute__((swift_name("contentSubtype")));
-@property (readonly) NSString *contentType __attribute__((swift_name("contentType")));
-@end
+__attribute__((swift_name("Ktor_utilsAttributeKey")))
+@interface MsdkCoreKtor_utilsAttributeKey<T> : MsdkCoreBase
 
-__attribute__((swift_name("Ktor_httpContentTypeMatcher")))
-@protocol MsdkCoreKtor_httpContentTypeMatcher
-@required
-- (BOOL)containsContentType:(MsdkCoreKtor_httpContentType *)contentType __attribute__((swift_name("contains(contentType:)")));
+/**
+ * @note annotations
+ *   kotlin.jvm.JvmOverloads
+*/
+- (instancetype)initWithName:(NSString *)name type:(MsdkCoreKtor_utilsTypeInfo *)type __attribute__((swift_name("init(name:type:)"))) __attribute__((objc_designated_initializer));
+- (MsdkCoreKtor_utilsAttributeKey<T> *)doCopyName:(NSString *)name type:(MsdkCoreKtor_utilsTypeInfo *)type __attribute__((swift_name("doCopy(name:type:)")));
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Specifies a key for an attribute in [Attributes]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.AttributeKey)
+ *
+ * @param T is a type of the value stored in the attribute
+ * @property name is a name of the attribute for diagnostic purposes. Can't be blank
+ * @property type the recorded kotlin type of T
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
 __attribute__((swift_name("KotlinIterator")))
@@ -3084,16 +3681,35 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Kotlinx_serialization_jsonJsonConfiguration")))
 @interface MsdkCoreKotlinx_serialization_jsonJsonConfiguration : MsdkCoreBase
 - (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) BOOL allowSpecialFloatingPointValues __attribute__((swift_name("allowSpecialFloatingPointValues")));
-@property (readonly) BOOL allowStructuredMapKeys __attribute__((swift_name("allowStructuredMapKeys")));
-@property (readonly) NSString *classDiscriminator __attribute__((swift_name("classDiscriminator")));
-@property (readonly) BOOL coerceInputValues __attribute__((swift_name("coerceInputValues")));
-@property (readonly) BOOL encodeDefaults __attribute__((swift_name("encodeDefaults")));
 
 /**
  * @note annotations
  *   kotlinx.serialization.ExperimentalSerializationApi
 */
+@property (readonly) BOOL allowComments __attribute__((swift_name("allowComments")));
+@property (readonly) BOOL allowSpecialFloatingPointValues __attribute__((swift_name("allowSpecialFloatingPointValues")));
+@property (readonly) BOOL allowStructuredMapKeys __attribute__((swift_name("allowStructuredMapKeys")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+@property (readonly) BOOL allowTrailingComma __attribute__((swift_name("allowTrailingComma")));
+@property (readonly) NSString *classDiscriminator __attribute__((swift_name("classDiscriminator")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+@property MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *classDiscriminatorMode __attribute__((swift_name("classDiscriminatorMode")));
+@property (readonly) BOOL coerceInputValues __attribute__((swift_name("coerceInputValues")));
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.ExperimentalSerializationApi
+*/
+@property (readonly) BOOL decodeEnumsCaseInsensitive __attribute__((swift_name("decodeEnumsCaseInsensitive")));
+@property (readonly) BOOL encodeDefaults __attribute__((swift_name("encodeDefaults")));
 @property (readonly) BOOL explicitNulls __attribute__((swift_name("explicitNulls")));
 @property (readonly) BOOL ignoreUnknownKeys __attribute__((swift_name("ignoreUnknownKeys")));
 @property (readonly) BOOL isLenient __attribute__((swift_name("isLenient")));
@@ -3155,66 +3771,16 @@ __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
 __attribute__((swift_name("Kotlinx_serialization_coreSerialDescriptor")))
 @protocol MsdkCoreKotlinx_serialization_coreSerialDescriptor
 @required
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (NSArray<id<MsdkCoreKotlinAnnotation>> *)getElementAnnotationsIndex:(int32_t)index __attribute__((swift_name("getElementAnnotations(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (id<MsdkCoreKotlinx_serialization_coreSerialDescriptor>)getElementDescriptorIndex:(int32_t)index __attribute__((swift_name("getElementDescriptor(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (int32_t)getElementIndexName:(NSString *)name __attribute__((swift_name("getElementIndex(name:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (NSString *)getElementNameIndex:(int32_t)index __attribute__((swift_name("getElementName(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 - (BOOL)isElementOptionalIndex:(int32_t)index __attribute__((swift_name("isElementOptional(index:)")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) NSArray<id<MsdkCoreKotlinAnnotation>> *annotations __attribute__((swift_name("annotations")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) int32_t elementsCount __attribute__((swift_name("elementsCount")));
 @property (readonly) BOOL isInline __attribute__((swift_name("isInline")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) BOOL isNullable __attribute__((swift_name("isNullable")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) MsdkCoreKotlinx_serialization_coreSerialKind *kind __attribute__((swift_name("kind")));
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 @property (readonly) NSString *serialName __attribute__((swift_name("serialName")));
 @end
 
@@ -3304,63 +3870,577 @@ __attribute__((swift_name("Kotlinx_coroutines_coreRunnable")))
 - (void)run __attribute__((swift_name("run()")));
 @end
 
+
+/**
+ * Serves as the base interface for an [HttpClient]'s engine.
+ *
+ * An `HttpClientEngine` represents the underlying network implementation that
+ * performs HTTP requests and handles responses.
+ * Developers can implement this interface to create custom engines for use with [HttpClient].
+ *
+ * This interface provides a set of properties and methods that define the
+ * contract for configuring, executing, and managing HTTP requests within the engine.
+ *
+ * For a base implementation that handles common engine functionality, see [HttpClientEngineBase].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine)
+ */
 __attribute__((swift_name("Ktor_client_coreHttpClientEngine")))
 @protocol MsdkCoreKtor_client_coreHttpClientEngine <MsdkCoreKotlinx_coroutines_coreCoroutineScope, MsdkCoreKtor_ioCloseable>
 @required
 
 /**
+ * Executes an HTTP request and produces an HTTP response.
+ *
+ * This function takes [HttpRequestData], which contains all details of the HTTP request,
+ * and returns [HttpResponseData] with the server's response, including headers, status code, and body.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine.execute)
+ *
+ * @param data The [HttpRequestData] representing the request to be executed.
+ * @return An [HttpResponseData] object containing the server's response.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)executeData:(MsdkCoreKtor_client_coreHttpRequestData *)data completionHandler:(void (^)(MsdkCoreKtor_client_coreHttpResponseData * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("execute(data:completionHandler:)")));
+
+/**
+ * Installs the engine into an [HttpClient].
+ *
+ * This method is called when the engine is being set up within an `HttpClient`.
+ * Use it to register interceptors, validate configuration, or prepare the engine
+ * for use with the client.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine.install)
+ *
+ * @param client The [HttpClient] instance to which the engine is being installed.
+ */
 - (void)installClient:(MsdkCoreKtor_client_coreHttpClient *)client __attribute__((swift_name("install(client:)")));
+
+/**
+ * Provides access to the engine's configuration via [HttpClientEngineConfig].
+ *
+ * The [config] object stores user-defined parameters or settings that control
+ * how the engine operates. When creating a custom engine, this property
+ * should return the specific configuration implementation.
+ *
+ * Example:
+ * ```kotlin
+ * override val config: HttpClientEngineConfig = CustomEngineConfig()
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine.config)
+ */
 @property (readonly) MsdkCoreKtor_client_coreHttpClientEngineConfig *config __attribute__((swift_name("config")));
+
+/**
+ * Specifies the [CoroutineDispatcher] for I/O operations in the engine.
+ *
+ * This dispatcher is used for all network-related operations, such as
+ * sending requests and receiving responses.
+ * By default, it should be optimized for I/O tasks.
+ *
+ * Example:
+ * ```kotlin
+ * override val dispatcher: CoroutineDispatcher = Dispatchers.IO
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine.dispatcher)
+ */
 @property (readonly) MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher *dispatcher __attribute__((swift_name("dispatcher")));
+
+/**
+ * Specifies the set of capabilities supported by this HTTP client engine.
+ *
+ * Capabilities provide a mechanism for plugins and other components to
+ * determine whether the engine supports specific features such as timeouts,
+ * WebSocket communication, HTTP/2, HTTP/3, or other advanced networking
+ * capabilities. This allows seamless integration of features based on the
+ * engine's functionality.
+ *
+ * Each capability is represented as an instance of [HttpClientEngineCapability],
+ * which can carry additional metadata or configurations for the capability.
+ *
+ * Example:
+ * ```kotlin
+ * override val supportedCapabilities: Set<HttpClientEngineCapability<*>> = setOf(
+ *     WebSocketCapability,
+ *     Http2Capability,
+ *     TimeoutCapability
+ * )
+ * ```
+ *
+ * **Usage in Plugins**:
+ * Plugins can check if the engine supports a specific capability before
+ * applying behavior:
+ * ```kotlin
+ * if (engine.supportedCapabilities.contains(WebSocketCapability)) {
+ *     // Configure WebSocket-specific settings
+ * }
+ * ```
+ *
+ * When implementing a custom engine, ensure this property accurately reflects
+ * the engine's abilities to avoid unexpected plugin behavior or runtime errors.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngine.supportedCapabilities)
+ */
 @property (readonly) NSSet<id<MsdkCoreKtor_client_coreHttpClientEngineCapability>> *supportedCapabilities __attribute__((swift_name("supportedCapabilities")));
 @end
 
+
+/**
+ * Base configuration for [HttpClientEngine].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig)
+ */
 __attribute__((swift_name("Ktor_client_coreHttpClientEngineConfig")))
 @interface MsdkCoreKtor_client_coreHttpClientEngineConfig : MsdkCoreBase
+
+/**
+ * Base configuration for [HttpClientEngine].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig)
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Base configuration for [HttpClientEngine].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig)
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/**
+ * Allow specifying the coroutine dispatcher to use for IO operations.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig.dispatcher)
+ */
+@property MsdkCoreKotlinx_coroutines_coreCoroutineDispatcher * _Nullable dispatcher __attribute__((swift_name("dispatcher")));
+
+/**
+ * Enables HTTP pipelining advice.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig.pipelining)
+ */
 @property BOOL pipelining __attribute__((swift_name("pipelining")));
+
+/**
+ * Specifies a proxy address to use.
+ * Uses a system proxy by default.
+ *
+ * You can learn more from [Proxy](https://ktor.io/docs/proxy.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig.proxy)
+ */
 @property MsdkCoreKtor_client_coreProxyConfig * _Nullable proxy __attribute__((swift_name("proxy")));
-@property int32_t threadsCount __attribute__((swift_name("threadsCount")));
+
+/**
+ * Specifies network threads count advice.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineConfig.threadsCount)
+ */
+@property int32_t threadsCount __attribute__((swift_name("threadsCount"))) __attribute__((unavailable("The [threadsCount] property is deprecated. Consider setting [dispatcher] instead.")));
 @end
 
+
+/**
+ * A mutable [HttpClient] configuration used to adjust settings, install plugins and interceptors.
+ *
+ * This configuration can be provided as a lambda in the [HttpClient] constructor or the [HttpClient.config] builder:
+ * ```kotlin
+ * val client = HttpClient { // HttpClientConfig<Engine>()
+ *     // Configure engine settings
+ *     engine { // HttpClientEngineConfig
+ *         threadsCount = 4
+ *         pipelining = true
+ *     }
+ *
+ *     // Install and configure plugins
+ *     install(ContentNegotiation) {
+ *         json()
+ *     }
+ *
+ *     // Configure default request parameters
+ *     defaultRequest {
+ *         url("https://api.example.com")
+ *         header("X-Custom-Header", "value")
+ *     }
+ *
+ *     // Configure client-wide settings
+ *     expectSuccess = true
+ *     followRedirects = true
+ * }
+ * ```
+ * ## Configuring [HttpClientEngine]
+ *
+ * If the engine is specified explicitly, engine-specific properties will be available in the `engine` block:
+ * ```kotlin
+ * val client = HttpClient(CIO) { // HttpClientConfig<CIOEngineConfig>.() -> Unit
+ *     engine { // CIOEngineConfig.() -> Unit
+ *         // engine specific properties
+ *     }
+ * }
+ * ```
+ *
+ * Learn more about the client's configuration from
+ * [Creating and configuring a client](https://ktor.io/docs/create-client.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpClientConfig")))
 @interface MsdkCoreKtor_client_coreHttpClientConfig<T> : MsdkCoreBase
+
+/**
+ * A mutable [HttpClient] configuration used to adjust settings, install plugins and interceptors.
+ *
+ * This configuration can be provided as a lambda in the [HttpClient] constructor or the [HttpClient.config] builder:
+ * ```kotlin
+ * val client = HttpClient { // HttpClientConfig<Engine>()
+ *     // Configure engine settings
+ *     engine { // HttpClientEngineConfig
+ *         threadsCount = 4
+ *         pipelining = true
+ *     }
+ *
+ *     // Install and configure plugins
+ *     install(ContentNegotiation) {
+ *         json()
+ *     }
+ *
+ *     // Configure default request parameters
+ *     defaultRequest {
+ *         url("https://api.example.com")
+ *         header("X-Custom-Header", "value")
+ *     }
+ *
+ *     // Configure client-wide settings
+ *     expectSuccess = true
+ *     followRedirects = true
+ * }
+ * ```
+ * ## Configuring [HttpClientEngine]
+ *
+ * If the engine is specified explicitly, engine-specific properties will be available in the `engine` block:
+ * ```kotlin
+ * val client = HttpClient(CIO) { // HttpClientConfig<CIOEngineConfig>.() -> Unit
+ *     engine { // CIOEngineConfig.() -> Unit
+ *         // engine specific properties
+ *     }
+ * }
+ * ```
+ *
+ * Learn more about the client's configuration from
+ * [Creating and configuring a client](https://ktor.io/docs/create-client.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig)
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * A mutable [HttpClient] configuration used to adjust settings, install plugins and interceptors.
+ *
+ * This configuration can be provided as a lambda in the [HttpClient] constructor or the [HttpClient.config] builder:
+ * ```kotlin
+ * val client = HttpClient { // HttpClientConfig<Engine>()
+ *     // Configure engine settings
+ *     engine { // HttpClientEngineConfig
+ *         threadsCount = 4
+ *         pipelining = true
+ *     }
+ *
+ *     // Install and configure plugins
+ *     install(ContentNegotiation) {
+ *         json()
+ *     }
+ *
+ *     // Configure default request parameters
+ *     defaultRequest {
+ *         url("https://api.example.com")
+ *         header("X-Custom-Header", "value")
+ *     }
+ *
+ *     // Configure client-wide settings
+ *     expectSuccess = true
+ *     followRedirects = true
+ * }
+ * ```
+ * ## Configuring [HttpClientEngine]
+ *
+ * If the engine is specified explicitly, engine-specific properties will be available in the `engine` block:
+ * ```kotlin
+ * val client = HttpClient(CIO) { // HttpClientConfig<CIOEngineConfig>.() -> Unit
+ *     engine { // CIOEngineConfig.() -> Unit
+ *         // engine specific properties
+ *     }
+ * }
+ * ```
+ *
+ * Learn more about the client's configuration from
+ * [Creating and configuring a client](https://ktor.io/docs/create-client.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig)
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/**
+ * Clones this [HttpClientConfig] by duplicating all the [plugins] and [customInterceptors].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.clone)
+ */
 - (MsdkCoreKtor_client_coreHttpClientConfig<T> *)clone __attribute__((swift_name("clone()")));
+
+/**
+ * A builder for configuring engine-specific settings in [HttpClientEngineConfig],
+ * such as dispatcher, thread count, proxy, and more.
+ *
+ * ```kotlin
+ * val client = HttpClient(CIO) { // HttpClientConfig<CIOEngineConfig>
+ *     engine { // CIOEngineConfig.() -> Unit
+ *         proxy = ProxyBuilder.http("proxy.example.com", 8080)
+ *     }
+ * ```
+ *
+ * You can learn more from [Engines](https://ktor.io/docs/http-client-engines.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.engine)
+ */
 - (void)engineBlock:(void (^)(T))block __attribute__((swift_name("engine(block:)")));
+
+/**
+ * Applies all the installed [plugins] and [customInterceptors] from this configuration
+ * into the specified [client].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.install)
+ */
 - (void)installClient:(MsdkCoreKtor_client_coreHttpClient *)client __attribute__((swift_name("install(client:)")));
+
+/**
+ * Installs the specified [plugin] and optionally configures it using the [configure] block.
+ *
+ * ```kotlin
+ * val client = HttpClient {
+ *     install(ContentNegotiation) {
+ *         // configuration block
+ *         json()
+ *     }
+ * }
+ * ```
+ *
+ * If the plugin is already installed, the configuration block will be applied to the existing configuration class.
+ *
+ * Learn more from [Plugins](https://ktor.io/docs/http-client-plugins.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.install)
+ */
 - (void)installPlugin:(id<MsdkCoreKtor_client_coreHttpClientPlugin>)plugin configure:(void (^)(id))configure __attribute__((swift_name("install(plugin:configure:)")));
+
+/**
+ * Installs an interceptor defined by [block].
+ * The [key] parameter is used as a unique name, that also prevents installing duplicated interceptors.
+ *
+ * If the [key] is already used, the new interceptor will replace the old one.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.install)
+ */
 - (void)installKey:(NSString *)key block:(void (^)(MsdkCoreKtor_client_coreHttpClient *))block __attribute__((swift_name("install(key:block:)")));
+
+/**
+ * Installs the plugin from the [other] client's configuration.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.plusAssign)
+ */
 - (void)plusAssignOther:(MsdkCoreKtor_client_coreHttpClientConfig<T> *)other __attribute__((swift_name("plusAssign(other:)")));
-@property BOOL developmentMode __attribute__((swift_name("developmentMode")));
+
+/**
+ * Development mode is no longer required all functionality is enabled by default. The property is safe to remove.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.developmentMode)
+ */
+@property BOOL developmentMode __attribute__((swift_name("developmentMode"))) __attribute__((deprecated("Development mode is no longer required. The property will be removed in the future.")));
+
+/**
+ * Terminates [HttpClient.receivePipeline] if the status code is not successful (>=300).
+ * Learn more from [Response validation](https://ktor.io/docs/response-validation.html).
+ *
+ * For more details, see the [HttpCallValidator] documentation.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.expectSuccess)
+ */
 @property BOOL expectSuccess __attribute__((swift_name("expectSuccess")));
+
+/**
+ * Specifies whether the client redirects to URLs provided in the `Location` header.
+ * You can disable redirections by setting this property to `false`.
+ *
+ * For an advanced redirection configuration, use the [HttpRedirect] plugin.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.followRedirects)
+ */
 @property BOOL followRedirects __attribute__((swift_name("followRedirects")));
+
+/**
+ * Enables body transformations for many common types like [String], [ByteArray], [ByteReadChannel], etc.
+ * These transformations are applied to the request and response bodies.
+ *
+ * The transformers will be used when the response body is received with a type:
+ * ```kotlin
+ * val client = HttpClient()
+ * val bytes = client.get("https://ktor.io")
+ *                   .body<ByteArray>()
+ * ```
+ *
+ * This flag is enabled by default.
+ * You might want to disable it if you want to write your own transformers or handle body manually.
+ *
+ * For more details, see the [defaultTransformers] documentation.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.HttpClientConfig.useDefaultTransformers)
+ */
 @property BOOL useDefaultTransformers __attribute__((swift_name("useDefaultTransformers")));
 @end
 
+
+/**
+ * Represents a capability that an [HttpClientEngine] can support, with [T] representing the type
+ * of configuration or metadata associated with the capability.
+ *
+ * Capabilities are used to declare optional features or behaviors that an engine may support,
+ * such as WebSocket communication, HTTP/2, or custom timeouts. They enable plugins and request
+ * builders to configure engine-specific functionality by associating a capability with a
+ * specific configuration.
+ *
+ * Capabilities can be set on a per-request basis using the `HttpRequestBuilder.setCapability` method,
+ * allowing users to configure engine-specific behavior for individual requests.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.HttpClientEngineCapability)
+ *
+ * @param T The type of the configuration or metadata associated with this capability.
+ *
+ * Example:
+ * Suppose you have a custom capability for WebSocket support that requires a specific configuration:
+ * ```kotlin
+ * object WebSocketCapability : HttpClientEngineCapability<WebSocketConfig>
+ *
+ * data class WebSocketConfig(val maxFrameSize: Int, val pingIntervalMillis: Long)
+ * ```
+ *
+ * Setting a capability in a request:
+ * ```kotlin
+ * client.request {
+ *     setCapability(WebSocketCapability, WebSocketConfig(
+ *         maxFrameSize = 65536,
+ *         pingIntervalMillis = 30000
+ *     ))
+ * }
+ * ```
+ *
+ * Engine Example:
+ * A custom engine implementation can declare support for specific capabilities in its `supportedCapabilities` property:
+ * ```kotlin
+ * override val supportedCapabilities: Set<HttpClientEngineCapability<*>> = setOf(WebSocketCapability)
+ * ```
+ *
+ * Plugin Integration Example:
+ * Plugins use capabilities to interact with engine-specific features. For example:
+ * ```kotlin
+ * if (engine.supportedCapabilities.contains(WebSocketCapability)) {
+ *     // Configure WebSocket behavior if supported by the engine
+ * }
+ * ```
+ *
+ * When creating a custom capability:
+ * - Define a singleton object implementing `HttpClientEngineCapability`.
+ * - Use the type parameter [T] to provide the associated configuration type or metadata.
+ * - Ensure that engines supporting the capability handle the associated configuration properly.
+ */
 __attribute__((swift_name("Ktor_client_coreHttpClientEngineCapability")))
 @protocol MsdkCoreKtor_client_coreHttpClientEngineCapability
 @required
 @end
 
+
+/**
+ * Map of attributes accessible by [AttributeKey] in a typed manner
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes)
+ */
 __attribute__((swift_name("Ktor_utilsAttributes")))
 @protocol MsdkCoreKtor_utilsAttributes
 @required
+
+/**
+ * Gets a value of the attribute for the specified [key], or calls supplied [block] to compute its value
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.computeIfAbsent)
+ */
 - (id)computeIfAbsentKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key block:(id (^)(void))block __attribute__((swift_name("computeIfAbsent(key:block:)")));
+
+/**
+ * Checks if an attribute with the specified [key] exists
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.contains)
+ */
 - (BOOL)containsKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("contains(key:)")));
+
+/**
+ * Gets a value of the attribute for the specified [key], or throws an exception if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.get)
+ */
 - (id)getKey_:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("get(key_:)")));
+
+/**
+ * Gets a value of the attribute for the specified [key], or return `null` if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.getOrNull)
+ */
 - (id _Nullable)getOrNullKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("getOrNull(key:)")));
+
+/**
+ * Creates or changes an attribute with the specified [key] using [value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.put)
+ */
 - (void)putKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key value:(id)value __attribute__((swift_name("put(key:value:)")));
+
+/**
+ * Removes an attribute with the specified [key]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.remove)
+ */
 - (void)removeKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("remove(key:)")));
+
+/**
+ * Creates or changes an attribute with the specified [key] using [value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.set)
+ */
+- (void)setKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key value:(id)value __attribute__((swift_name("set(key:value:)")));
+
+/**
+ * Removes an attribute with the specified [key] and returns its current value, throws an exception if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.take)
+ */
 - (id)takeKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("take(key:)")));
+
+/**
+ * Removes an attribute with the specified [key] and returns its current value, returns `null` if an attribute doesn't exist
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.takeOrNull)
+ */
 - (id _Nullable)takeOrNullKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("takeOrNull(key:)")));
+
+/**
+ * Returns [List] of all [AttributeKey] instances in this map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.Attributes.allKeys)
+ */
 @property (readonly) NSArray<MsdkCoreKtor_utilsAttributeKey<id> *> *allKeys __attribute__((swift_name("allKeys")));
 @end
 
@@ -3369,36 +4449,156 @@ __attribute__((swift_name("Ktor_eventsEvents")))
 @interface MsdkCoreKtor_eventsEvents : MsdkCoreBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+
+/**
+ * Raises the event specified by [definition] with the [value] and calls all handlers.
+ *
+ * Handlers are called in order of subscriptions.
+ * If some handler throws an exception, all remaining handlers will still run. The exception will eventually be re-thrown.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.raise)
+ */
 - (void)raiseDefinition:(MsdkCoreKtor_eventsEventDefinition<id> *)definition value:(id _Nullable)value __attribute__((swift_name("raise(definition:value:)")));
+
+/**
+ * Subscribe [handler] to an event specified by [definition]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.subscribe)
+ */
 - (id<MsdkCoreKotlinx_coroutines_coreDisposableHandle>)subscribeDefinition:(MsdkCoreKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("subscribe(definition:handler:)")));
+
+/**
+ * Unsubscribe [handler] from an event specified by [definition]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.Events.unsubscribe)
+ */
 - (void)unsubscribeDefinition:(MsdkCoreKtor_eventsEventDefinition<id> *)definition handler:(void (^)(id _Nullable))handler __attribute__((swift_name("unsubscribe(definition:handler:)")));
 @end
 
+
+/**
+ * Represents an execution pipeline for asynchronous extensible computations
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline)
+ */
 __attribute__((swift_name("Ktor_utilsPipeline")))
 @interface MsdkCoreKtor_utilsPipeline<TSubject, TContext> : MsdkCoreBase
 - (instancetype)initWithPhases:(MsdkCoreKotlinArray<MsdkCoreKtor_utilsPipelinePhase *> *)phases __attribute__((swift_name("init(phases:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithPhase:(MsdkCoreKtor_utilsPipelinePhase *)phase interceptors:(NSArray<id<MsdkCoreKotlinSuspendFunction2>> *)interceptors __attribute__((swift_name("init(phase:interceptors:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Adds [phase] to the end of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.addPhase)
+ */
 - (void)addPhasePhase:(MsdkCoreKtor_utilsPipelinePhase *)phase __attribute__((swift_name("addPhase(phase:)")));
+
+/**
+ * Invoked after an interceptor has been installed
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.afterIntercepted)
+ */
 - (void)afterIntercepted __attribute__((swift_name("afterIntercepted()")));
 
 /**
+ * Executes this pipeline in the given [context] and with the given [subject]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.execute)
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)executeContext:(TContext)context subject:(TSubject)subject completionHandler:(void (^)(TSubject _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("execute(context:subject:completionHandler:)")));
+
+/**
+ * Inserts [phase] after the [reference] phase. If there are other phases inserted after [reference], then [phase]
+ * will be inserted after them.
+ * Example:
+ * ```
+ * val pipeline = Pipeline<String, String>(a)
+ * pipeline.insertPhaseAfter(a, b)
+ * pipeline.insertPhaseAfter(a, c)
+ * assertEquals(listOf(a, b, c), pipeline.items)
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.insertPhaseAfter)
+ */
 - (void)insertPhaseAfterReference:(MsdkCoreKtor_utilsPipelinePhase *)reference phase:(MsdkCoreKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseAfter(reference:phase:)")));
+
+/**
+ * Inserts [phase] before the [reference] phase.
+ * Example:
+ * ```
+ * val pipeline = Pipeline<String, String>(c)
+ * pipeline.insertPhaseBefore(c, a)
+ * pipeline.insertPhaseBefore(c, b)
+ * assertEquals(listOf(a, b, c), pipeline.items)
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.insertPhaseBefore)
+ */
 - (void)insertPhaseBeforeReference:(MsdkCoreKtor_utilsPipelinePhase *)reference phase:(MsdkCoreKtor_utilsPipelinePhase *)phase __attribute__((swift_name("insertPhaseBefore(reference:phase:)")));
+
+/**
+ * Adds [block] to the [phase] of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.intercept)
+ */
 - (void)interceptPhase:(MsdkCoreKtor_utilsPipelinePhase *)phase block:(id<MsdkCoreKotlinSuspendFunction2>)block __attribute__((swift_name("intercept(phase:block:)")));
 - (NSArray<id<MsdkCoreKotlinSuspendFunction2>> *)interceptorsForPhasePhase:(MsdkCoreKtor_utilsPipelinePhase *)phase __attribute__((swift_name("interceptorsForPhase(phase:)")));
+
+/**
+ * Merges another pipeline into this pipeline, maintaining relative phases order
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.merge)
+ */
 - (void)mergeFrom:(MsdkCoreKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("merge(from:)")));
 - (void)mergePhasesFrom:(MsdkCoreKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("mergePhases(from:)")));
+
+/**
+ * Reset current pipeline from other.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.resetFrom)
+ */
 - (void)resetFromFrom:(MsdkCoreKtor_utilsPipeline<TSubject, TContext> *)from __attribute__((swift_name("resetFrom(from:)")));
+- (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * Provides common place to store pipeline attributes
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.attributes)
+ */
 @property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+
+/**
+ * Indicated if debug mode is enabled. In debug mode users will get more details in the stacktrace.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.developmentMode)
+ */
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
+
+/**
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.isEmpty)
+ *
+ * @return `true` if there are no interceptors installed regardless number of phases
+ */
 @property (readonly) BOOL isEmpty __attribute__((swift_name("isEmpty")));
+
+/**
+ * Phases of this pipeline
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.Pipeline.items)
+ */
 @property (readonly) NSArray<MsdkCoreKtor_utilsPipelinePhase *> *items __attribute__((swift_name("items")));
 @end
 
+
+/**
+ * [HttpClient] Pipeline used for receiving [HttpResponse] without any processing.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpReceivePipeline)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpReceivePipeline")))
 @interface MsdkCoreKtor_client_coreHttpReceivePipeline : MsdkCoreKtor_utilsPipeline<MsdkCoreKtor_client_coreHttpResponse *, MsdkCoreKotlinUnit *>
@@ -3409,6 +4609,12 @@ __attribute__((swift_name("Ktor_client_coreHttpReceivePipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * An [HttpClient]'s pipeline used for executing [HttpRequest].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpRequestPipeline")))
 @interface MsdkCoreKtor_client_coreHttpRequestPipeline : MsdkCoreKtor_utilsPipeline<id, MsdkCoreKtor_client_coreHttpRequestBuilder *>
@@ -3419,6 +4625,12 @@ __attribute__((swift_name("Ktor_client_coreHttpRequestPipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * [HttpClient] Pipeline used for executing [HttpResponse].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpResponsePipeline")))
 @interface MsdkCoreKtor_client_coreHttpResponsePipeline : MsdkCoreKtor_utilsPipeline<MsdkCoreKtor_client_coreHttpResponseContainer *, MsdkCoreKtor_client_coreHttpClientCall *>
@@ -3429,6 +4641,12 @@ __attribute__((swift_name("Ktor_client_coreHttpResponsePipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * An [HttpClient]'s pipeline used for sending [HttpRequest] to a remote server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpSendPipeline")))
 @interface MsdkCoreKtor_client_coreHttpSendPipeline : MsdkCoreKtor_utilsPipeline<id, MsdkCoreKtor_client_coreHttpRequestBuilder *>
@@ -3439,107 +4657,25 @@ __attribute__((swift_name("Ktor_client_coreHttpSendPipeline")))
 @property (readonly) BOOL developmentMode __attribute__((swift_name("developmentMode")));
 @end
 
+
+/**
+ * Ktor type information.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.reflect.TypeInfo)
+ *
+ * @property type Source KClass<*>
+ * @property kotlinType Kotlin reified type with all generic type parameters.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsTypeInfo")))
 @interface MsdkCoreKtor_utilsTypeInfo : MsdkCoreBase
-- (instancetype)initWithType:(id<MsdkCoreKotlinKClass>)type reifiedType:(id<MsdkCoreKotlinKType>)reifiedType kotlinType:(id<MsdkCoreKotlinKType> _Nullable)kotlinType __attribute__((swift_name("init(type:reifiedType:kotlinType:)"))) __attribute__((objc_designated_initializer));
-- (MsdkCoreKtor_utilsTypeInfo *)doCopyType:(id<MsdkCoreKotlinKClass>)type reifiedType:(id<MsdkCoreKotlinKType>)reifiedType kotlinType:(id<MsdkCoreKotlinKType> _Nullable)kotlinType __attribute__((swift_name("doCopy(type:reifiedType:kotlinType:)")));
+- (instancetype)initWithType:(id<MsdkCoreKotlinKClass>)type kotlinType:(id<MsdkCoreKotlinKType> _Nullable)kotlinType __attribute__((swift_name("init(type:kotlinType:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithType:(id<MsdkCoreKotlinKClass>)type reifiedType:(id<MsdkCoreKotlinKType>)reifiedType kotlinType:(id<MsdkCoreKotlinKType> _Nullable)kotlinType __attribute__((swift_name("init(type:reifiedType:kotlinType:)"))) __attribute__((objc_designated_initializer)) __attribute__((deprecated("Use constructor without reifiedType parameter.")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) id<MsdkCoreKotlinKType> _Nullable kotlinType __attribute__((swift_name("kotlinType")));
-@property (readonly) id<MsdkCoreKotlinKType> reifiedType __attribute__((swift_name("reifiedType")));
 @property (readonly) id<MsdkCoreKotlinKClass> type __attribute__((swift_name("type")));
-@end
-
-__attribute__((swift_name("Ktor_ioInput")))
-@interface MsdkCoreKtor_ioInput : MsdkCoreBase <MsdkCoreKtor_ioCloseable>
-- (instancetype)initWithHead:(MsdkCoreKtor_ioChunkBuffer *)head remaining:(int64_t)remaining pool:(id<MsdkCoreKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:remaining:pool:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_ioInputCompanion *companion __attribute__((swift_name("companion")));
-- (BOOL)canRead __attribute__((swift_name("canRead()")));
-- (void)close __attribute__((swift_name("close()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)closeSource __attribute__((swift_name("closeSource()")));
-- (int32_t)discardN:(int32_t)n __attribute__((swift_name("discard(n:)")));
-- (int64_t)discardN_:(int64_t)n __attribute__((swift_name("discard(n_:)")));
-- (void)discardExactN:(int32_t)n __attribute__((swift_name("discardExact(n:)")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (MsdkCoreKtor_ioChunkBuffer * _Nullable)fill __attribute__((swift_name("fill()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (int32_t)fillDestination:(MsdkCoreKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("fill(destination:offset:length:)")));
-- (BOOL)hasBytesN:(int32_t)n __attribute__((swift_name("hasBytes(n:)")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)markNoMoreChunksAvailable __attribute__((swift_name("markNoMoreChunksAvailable()")));
-- (int32_t)peekToBuffer:(MsdkCoreKtor_ioChunkBuffer *)buffer __attribute__((swift_name("peekTo(buffer:)")));
-- (int64_t)peekToDestination:(MsdkCoreKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:)")));
-- (int8_t)readByte __attribute__((swift_name("readByte()")));
-- (NSString *)readTextMin:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(min:max:)")));
-- (int32_t)readTextOut:(id<MsdkCoreKotlinAppendable>)out min:(int32_t)min max:(int32_t)max __attribute__((swift_name("readText(out:min:max:)")));
-- (NSString *)readTextExactExactCharacters:(int32_t)exactCharacters __attribute__((swift_name("readTextExact(exactCharacters:)")));
-- (void)readTextExactOut:(id<MsdkCoreKotlinAppendable>)out exactCharacters:(int32_t)exactCharacters __attribute__((swift_name("readTextExact(out:exactCharacters:)")));
-- (void)release_ __attribute__((swift_name("release()")));
-- (int32_t)tryPeek __attribute__((swift_name("tryPeek()")));
-@property (readonly) BOOL endOfInput __attribute__((swift_name("endOfInput")));
-@property (readonly) id<MsdkCoreKtor_ioObjectPool> pool __attribute__((swift_name("pool")));
-@property (readonly) int64_t remaining __attribute__((swift_name("remaining")));
-@end
-
-__attribute__((swift_name("Ktor_httpOutgoingContent")))
-@interface MsdkCoreKtor_httpOutgoingContent : MsdkCoreBase
-- (id _Nullable)getPropertyKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("getProperty(key:)")));
-- (void)setPropertyKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key value:(id _Nullable)value __attribute__((swift_name("setProperty(key:value:)")));
-- (id<MsdkCoreKtor_httpHeaders> _Nullable)trailers __attribute__((swift_name("trailers()")));
-@property (readonly) MsdkCoreLong * _Nullable contentLength __attribute__((swift_name("contentLength")));
-@property (readonly) MsdkCoreKtor_httpContentType * _Nullable contentType __attribute__((swift_name("contentType")));
-@property (readonly) id<MsdkCoreKtor_httpHeaders> headers __attribute__((swift_name("headers")));
-@property (readonly) MsdkCoreKtor_httpHttpStatusCode * _Nullable status __attribute__((swift_name("status")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHeaderValueParam")))
-@interface MsdkCoreKtor_httpHeaderValueParam : MsdkCoreBase
-- (instancetype)initWithName:(NSString *)name value:(NSString *)value __attribute__((swift_name("init(name:value:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithName:(NSString *)name value:(NSString *)value escapeValue:(BOOL)escapeValue __attribute__((swift_name("init(name:value:escapeValue:)"))) __attribute__((objc_designated_initializer));
-- (MsdkCoreKtor_httpHeaderValueParam *)doCopyName:(NSString *)name value:(NSString *)value escapeValue:(BOOL)escapeValue __attribute__((swift_name("doCopy(name:value:escapeValue:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) BOOL escapeValue __attribute__((swift_name("escapeValue")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@property (readonly) NSString *value __attribute__((swift_name("value")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHeaderValueWithParameters.Companion")))
-@interface MsdkCoreKtor_httpHeaderValueWithParametersCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_httpHeaderValueWithParametersCompanion *shared __attribute__((swift_name("shared")));
-- (id _Nullable)parseValue:(NSString *)value init:(id _Nullable (^)(NSString *, NSArray<MsdkCoreKtor_httpHeaderValueParam *> *))init __attribute__((swift_name("parse(value:init:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpContentType.Companion")))
-@interface MsdkCoreKtor_httpContentTypeCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_httpContentTypeCompanion *shared __attribute__((swift_name("shared")));
-- (MsdkCoreKtor_httpContentType *)parseValue:(NSString *)value __attribute__((swift_name("parse(value:)")));
-@property (readonly) MsdkCoreKtor_httpContentType *Any __attribute__((swift_name("Any")));
 @end
 
 
@@ -3601,6 +4737,19 @@ __attribute__((swift_name("Kotlinx_serialization_jsonJsonElement.Companion")))
 - (id<MsdkCoreKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Kotlinx_serialization_jsonClassDiscriminatorMode")))
+@interface MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode : MsdkCoreKotlinEnum<MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *>
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly) MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *none __attribute__((swift_name("none")));
+@property (class, readonly) MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *allJsonObjects __attribute__((swift_name("allJsonObjects")));
+@property (class, readonly) MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *polymorphic __attribute__((swift_name("polymorphic")));
++ (MsdkCoreKotlinArray<MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MsdkCoreKotlinx_serialization_jsonClassDiscriminatorMode *> *entries __attribute__((swift_name("entries")));
+@end
+
 
 /**
  * @note annotations
@@ -3647,11 +4796,6 @@ __attribute__((swift_name("KotlinAnnotation")))
 @required
 @end
 
-
-/**
- * @note annotations
- *   kotlinx.serialization.ExperimentalSerializationApi
-*/
 __attribute__((swift_name("Kotlinx_serialization_coreSerialKind")))
 @interface MsdkCoreKotlinx_serialization_coreSerialKind : MsdkCoreBase
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -3727,10 +4871,23 @@ __attribute__((swift_name("KotlinCancellationException")))
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(MsdkCoreKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
+
+/**
+ * Actual data of the [HttpRequest], including [url], [method], [headers], [body] and [executionContext].
+ * Built by [HttpRequestBuilder].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestData)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpRequestData")))
 @interface MsdkCoreKtor_client_coreHttpRequestData : MsdkCoreBase
 - (instancetype)initWithUrl:(MsdkCoreKtor_httpUrl *)url method:(MsdkCoreKtor_httpHttpMethod *)method headers:(id<MsdkCoreKtor_httpHeaders>)headers body:(MsdkCoreKtor_httpOutgoingContent *)body executionContext:(id<MsdkCoreKotlinx_coroutines_coreJob>)executionContext attributes:(id<MsdkCoreKtor_utilsAttributes>)attributes __attribute__((swift_name("init(url:method:headers:body:executionContext:attributes:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Retrieve extension by its key.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestData.getCapabilityOrNull)
+ */
 - (id _Nullable)getCapabilityOrNullKey:(id<MsdkCoreKtor_client_coreHttpClientEngineCapability>)key __attribute__((swift_name("getCapabilityOrNull(key:)")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
@@ -3741,6 +4898,12 @@ __attribute__((swift_name("Ktor_client_coreHttpRequestData")))
 @property (readonly) MsdkCoreKtor_httpUrl *url __attribute__((swift_name("url")));
 @end
 
+
+/**
+ * Data prepared for [HttpResponse].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpResponseData)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpResponseData")))
 @interface MsdkCoreKtor_client_coreHttpResponseData : MsdkCoreBase
@@ -3755,6 +4918,17 @@ __attribute__((swift_name("Ktor_client_coreHttpResponseData")))
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *version __attribute__((swift_name("version")));
 @end
 
+
+/**
+ * Proxy configuration.
+ *
+ * See [ProxyBuilder] to create proxy.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.engine.ProxyConfig)
+ *
+ * @param url: proxy url address.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreProxyConfig")))
 @interface MsdkCoreKtor_client_coreProxyConfig : MsdkCoreBase
@@ -3763,9 +4937,45 @@ __attribute__((swift_name("Ktor_client_coreProxyConfig")))
 @property (readonly) MsdkCoreKtor_httpUrl *url __attribute__((swift_name("url")));
 @end
 
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 __attribute__((swift_name("Ktor_eventsEventDefinition")))
 @interface MsdkCoreKtor_eventsEventDefinition<T> : MsdkCoreBase
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Definition of an event.
+ * Event is used as a key so both [hashCode] and [equals] need to be implemented properly.
+ * Inheriting of this class is an experimental feature.
+ * Instantiate directly if inheritance not necessary.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.events.EventDefinition)
+ *
+ * @param T specifies what is a type of value passed to the event
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @end
 
@@ -3775,6 +4985,15 @@ __attribute__((swift_name("Kotlinx_coroutines_coreDisposableHandle")))
 - (void)dispose __attribute__((swift_name("dispose()")));
 @end
 
+
+/**
+ * Represents a phase in a pipeline
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.pipeline.PipelinePhase)
+ *
+ * @param name a name for this phase
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsPipelinePhase")))
 @interface MsdkCoreKtor_utilsPipelinePhase : MsdkCoreBase
@@ -3806,27 +5025,127 @@ __attribute__((swift_name("Ktor_client_coreHttpReceivePipeline.Phases")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpReceivePipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * Latest response pipeline phase
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpReceivePipeline.Phases.After)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
+
+/**
+ * The earliest phase that happens before any other
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpReceivePipeline.Phases.Before)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+
+/**
+ * Use this phase to store request shared state
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpReceivePipeline.Phases.State)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *State __attribute__((swift_name("State")));
 @end
 
+
+/**
+ * A message either from the client or the server,
+ * that has [headers] associated.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMessage)
+ */
 __attribute__((swift_name("Ktor_httpHttpMessage")))
 @protocol MsdkCoreKtor_httpHttpMessage
 @required
+
+/**
+ * Message [Headers]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMessage.headers)
+ */
 @property (readonly) id<MsdkCoreKtor_httpHeaders> headers __attribute__((swift_name("headers")));
 @end
 
+
+/**
+ * An [HttpClient]'s response, a second part of [HttpClientCall].
+ *
+ * Learn more from [Receiving responses](https://ktor.io/docs/response.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse)
+ */
 __attribute__((swift_name("Ktor_client_coreHttpResponse")))
 @interface MsdkCoreKtor_client_coreHttpResponse : MsdkCoreBase <MsdkCoreKtor_httpHttpMessage, MsdkCoreKotlinx_coroutines_coreCoroutineScope>
+
+/**
+ * An [HttpClient]'s response, a second part of [HttpClientCall].
+ *
+ * Learn more from [Receiving responses](https://ktor.io/docs/response.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse)
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * An [HttpClient]'s response, a second part of [HttpClientCall].
+ *
+ * Learn more from [Receiving responses](https://ktor.io/docs/response.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse)
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * The associated [HttpClientCall] containing both
+ * the underlying [HttpClientCall.request] and [HttpClientCall.response].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.call)
+ */
 @property (readonly) MsdkCoreKtor_client_coreHttpClientCall *call __attribute__((swift_name("call")));
-@property (readonly) id<MsdkCoreKtor_ioByteReadChannel> content __attribute__((swift_name("content")));
+
+/**
+ * Provides a raw [ByteReadChannel] to the response content as it is read from the network.
+ * This content can be still compressed or encoded.
+ *
+ * This content doesn't go through any interceptors from [HttpResponsePipeline].
+ *
+ * If you need to read the content as decoded bytes, use the [bodyAsChannel] method instead.
+ *
+ * This property produces a new channel every time it's accessed.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.rawContent)
+ */
+@property (readonly) id<MsdkCoreKtor_ioByteReadChannel> rawContent __attribute__((swift_name("rawContent")));
+
+/**
+ * [GMTDate] of the request start.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.requestTime)
+ */
 @property (readonly) MsdkCoreKtor_utilsGMTDate *requestTime __attribute__((swift_name("requestTime")));
+
+/**
+ * [GMTDate] of the response start.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.responseTime)
+ */
 @property (readonly) MsdkCoreKtor_utilsGMTDate *responseTime __attribute__((swift_name("responseTime")));
+
+/**
+ * The [HttpStatusCode] returned by the server. It includes both,
+ * the [HttpStatusCode.description] and the [HttpStatusCode.value] (code).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.status)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *status __attribute__((swift_name("status")));
+
+/**
+ * HTTP version. Usually [HttpProtocolVersion.HTTP_1_1] or [HttpProtocolVersion.HTTP_2_0].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponse.version)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *version __attribute__((swift_name("version")));
 @end
 
@@ -3840,45 +5159,210 @@ __attribute__((swift_name("KotlinUnit")))
 - (NSString *)description __attribute__((swift_name("description()")));
 @end
 
+
+/**
+ * All interceptors accept payload as [subject] and try to convert it to [OutgoingContent].
+ * Last phase should proceed with [HttpClientCall].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpRequestPipeline.Phases")))
 @interface MsdkCoreKtor_client_coreHttpRequestPipelinePhases : MsdkCoreBase
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * All interceptors accept payload as [subject] and try to convert it to [OutgoingContent].
+ * Last phase should proceed with [HttpClientCall].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpRequestPipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * The earliest phase that happens before any other.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases.Before)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+
+/**
+ * Encode a request body to [OutgoingContent].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases.Render)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Render __attribute__((swift_name("Render")));
+
+/**
+ * A phase for the [HttpSend] plugin.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases.Send)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Send __attribute__((swift_name("Send")));
+
+/**
+ * Use this phase to modify a request with a shared state.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases.State)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *State __attribute__((swift_name("State")));
+
+/**
+ * Transform a request body to supported render format.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestPipeline.Phases.Transform)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
+
+/**
+ * A builder message either for the client or the server,
+ * that has a [headers] builder associated.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMessageBuilder)
+ */
 __attribute__((swift_name("Ktor_httpHttpMessageBuilder")))
 @protocol MsdkCoreKtor_httpHttpMessageBuilder
 @required
+
+/**
+ * MessageBuilder [HeadersBuilder]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMessageBuilder.headers)
+ */
 @property (readonly) MsdkCoreKtor_httpHeadersBuilder *headers __attribute__((swift_name("headers")));
 @end
 
+
+/**
+ * Contains parameters used to make an HTTP request.
+ *
+ * Learn more from [Making requests](https://ktor.io/docs/request.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpRequestBuilder")))
 @interface MsdkCoreKtor_client_coreHttpRequestBuilder : MsdkCoreBase <MsdkCoreKtor_httpHttpMessageBuilder>
+
+/**
+ * Contains parameters used to make an HTTP request.
+ *
+ * Learn more from [Making requests](https://ktor.io/docs/request.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder)
+ */
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
+
+/**
+ * Contains parameters used to make an HTTP request.
+ *
+ * Learn more from [Making requests](https://ktor.io/docs/request.html).
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder)
+ */
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @property (class, readonly, getter=companion) MsdkCoreKtor_client_coreHttpRequestBuilderCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ * Creates immutable [HttpRequestData].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.build)
+ */
 - (MsdkCoreKtor_client_coreHttpRequestData *)build __attribute__((swift_name("build()")));
+
+/**
+ * Retrieves capability by the key.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.getCapabilityOrNull)
+ */
 - (id _Nullable)getCapabilityOrNullKey:(id<MsdkCoreKtor_client_coreHttpClientEngineCapability>)key __attribute__((swift_name("getCapabilityOrNull(key:)")));
+
+/**
+ * Sets request-specific attributes specified by [block].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.setAttributes)
+ */
 - (void)setAttributesBlock:(void (^)(id<MsdkCoreKtor_utilsAttributes>))block __attribute__((swift_name("setAttributes(block:)")));
+
+/**
+ * Sets capability configuration.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.setCapability)
+ */
 - (void)setCapabilityKey:(id<MsdkCoreKtor_client_coreHttpClientEngineCapability>)key capability:(id)capability __attribute__((swift_name("setCapability(key:capability:)")));
+
+/**
+ * Mutates [this] by copying all the data but execution context from another [builder] using it as the base.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.takeFrom)
+ */
 - (MsdkCoreKtor_client_coreHttpRequestBuilder *)takeFromBuilder:(MsdkCoreKtor_client_coreHttpRequestBuilder *)builder __attribute__((swift_name("takeFrom(builder:)")));
+
+/**
+ * Mutates [this] copying all the data from another [builder] using it as the base.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.takeFromWithExecutionContext)
+ */
 - (MsdkCoreKtor_client_coreHttpRequestBuilder *)takeFromWithExecutionContextBuilder:(MsdkCoreKtor_client_coreHttpRequestBuilder *)builder __attribute__((swift_name("takeFromWithExecutionContext(builder:)")));
+
+/**
+ * Executes a [block] that configures the [URLBuilder] associated to this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.url)
+ */
 - (void)urlBlock:(void (^)(MsdkCoreKtor_httpURLBuilder *, MsdkCoreKtor_httpURLBuilder *))block __attribute__((swift_name("url(block:)")));
+
+/**
+ * Provides access to attributes specific for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.attributes)
+ */
 @property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+
+/**
+ * The [body] for this request. Initially [EmptyContent].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.body)
+ */
 @property id body __attribute__((swift_name("body")));
+
+/**
+ * The [KType] of [body] for this request. Null for default types that don't need serialization.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.bodyType)
+ */
 @property MsdkCoreKtor_utilsTypeInfo * _Nullable bodyType __attribute__((swift_name("bodyType")));
+
+/**
+ * A deferred used to control the execution of this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.executionContext)
+ */
 @property (readonly) id<MsdkCoreKotlinx_coroutines_coreJob> executionContext __attribute__((swift_name("executionContext")));
+
+/**
+ * [HeadersBuilder] to configure the headers for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.headers)
+ */
 @property (readonly) MsdkCoreKtor_httpHeadersBuilder *headers __attribute__((swift_name("headers")));
+
+/**
+ * [HttpMethod] used by this request. [HttpMethod.Get] by default.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.method)
+ */
 @property MsdkCoreKtor_httpHttpMethod *method __attribute__((swift_name("method")));
+
+/**
+ * [URLBuilder] to configure the URL for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequestBuilder.url)
+ */
 @property (readonly) MsdkCoreKtor_httpURLBuilder *url __attribute__((swift_name("url")));
 @end
 
@@ -3889,25 +5373,100 @@ __attribute__((swift_name("Ktor_client_coreHttpResponsePipeline.Phases")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpResponsePipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * Latest response pipeline phase
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline.Phases.After)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *After __attribute__((swift_name("After")));
+
+/**
+ * Decode response body
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline.Phases.Parse)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Parse __attribute__((swift_name("Parse")));
+
+/**
+ * The earliest phase that happens before any other
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline.Phases.Receive)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Receive __attribute__((swift_name("Receive")));
+
+/**
+ * Use this phase to store request shared state
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline.Phases.State)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *State __attribute__((swift_name("State")));
+
+/**
+ * Transform response body to expected format
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponsePipeline.Phases.Transform)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Transform __attribute__((swift_name("Transform")));
 @end
 
+
+/**
+ * Class representing a typed [response] with an attached [expectedType].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponseContainer)
+ *
+ * @param expectedType: information about expected type.
+ * @param response: current response state.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_client_coreHttpResponseContainer")))
 @interface MsdkCoreKtor_client_coreHttpResponseContainer : MsdkCoreBase
 - (instancetype)initWithExpectedType:(MsdkCoreKtor_utilsTypeInfo *)expectedType response:(id)response __attribute__((swift_name("init(expectedType:response:)"))) __attribute__((objc_designated_initializer));
 - (MsdkCoreKtor_client_coreHttpResponseContainer *)doCopyExpectedType:(MsdkCoreKtor_utilsTypeInfo *)expectedType response:(id)response __attribute__((swift_name("doCopy(expectedType:response:)")));
+
+/**
+ * Class representing a typed [response] with an attached [expectedType].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponseContainer)
+ *
+ * @param expectedType: information about expected type.
+ * @param response: current response state.
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Class representing a typed [response] with an attached [expectedType].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponseContainer)
+ *
+ * @param expectedType: information about expected type.
+ * @param response: current response state.
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Class representing a typed [response] with an attached [expectedType].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.statement.HttpResponseContainer)
+ *
+ * @param expectedType: information about expected type.
+ * @param response: current response state.
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) MsdkCoreKtor_utilsTypeInfo *expectedType __attribute__((swift_name("expectedType")));
 @property (readonly) id response __attribute__((swift_name("response")));
 @end
 
+
+/**
+ * A pair of a [request] and [response] for a specific [HttpClient].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall)
+ *
+ * @property client the client that executed the call.
+ */
 __attribute__((swift_name("Ktor_client_coreHttpClientCall")))
 @interface MsdkCoreKtor_client_coreHttpClientCall : MsdkCoreBase <MsdkCoreKotlinx_coroutines_coreCoroutineScope>
 - (instancetype)initWithClient:(MsdkCoreKtor_client_coreHttpClient *)client __attribute__((swift_name("init(client:)"))) __attribute__((objc_designated_initializer));
@@ -3915,12 +5474,31 @@ __attribute__((swift_name("Ktor_client_coreHttpClientCall")))
 @property (class, readonly, getter=companion) MsdkCoreKtor_client_coreHttpClientCallCompanion *companion __attribute__((swift_name("companion")));
 
 /**
+ * Tries to receive the payload of the [response] as a specific expected type provided in [info].
+ * Returns [response] if [info] corresponds to [HttpResponse].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall.body)
+ *
+ * @throws NoTransformationFoundException If no transformation is found for the type [info].
+ * @throws DoubleReceiveException If already called [body].
+ * @throws NullPointerException If content is `null`.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (void)bodyInfo:(MsdkCoreKtor_utilsTypeInfo *)info completionHandler:(void (^)(id _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("body(info:completionHandler:)")));
 
 /**
+ * Tries to receive the payload of the [response] as a specific expected type provided in [info].
+ * Returns [response] if [info] corresponds to [HttpResponse].
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall.bodyNullable)
+ *
+ * @throws NoTransformationFoundException If no transformation is found for the type [info].
+ * @throws DoubleReceiveException If already called [body].
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
@@ -3938,10 +5516,28 @@ __attribute__((swift_name("Ktor_client_coreHttpClientCall")))
  * @note This property has protected visibility in Kotlin source and is intended only for use by subclasses.
 */
 @property (readonly) BOOL allowDoubleReceive __attribute__((swift_name("allowDoubleReceive")));
+
+/**
+ * Typed [Attributes] associated to this call serving as a lightweight container.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall.attributes)
+ */
 @property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
 @property (readonly) MsdkCoreKtor_client_coreHttpClient *client __attribute__((swift_name("client")));
 @property (readonly) id<MsdkCoreKotlinCoroutineContext> coroutineContext __attribute__((swift_name("coroutineContext")));
+
+/**
+ * The [request] sent by the client.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall.request)
+ */
 @property id<MsdkCoreKtor_client_coreHttpRequest> request __attribute__((swift_name("request")));
+
+/**
+ * The [response] sent by the server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.call.HttpClientCall.response)
+ */
 @property MsdkCoreKtor_client_coreHttpResponse *response __attribute__((swift_name("response")));
 @end
 
@@ -3952,10 +5548,40 @@ __attribute__((swift_name("Ktor_client_coreHttpSendPipeline.Phases")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)phases __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpSendPipelinePhases *shared __attribute__((swift_name("shared")));
+
+/**
+ * The earliest phase that happens before any other.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline.Phases.Before)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Before __attribute__((swift_name("Before")));
+
+/**
+ * Send a request to a remote server.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline.Phases.Engine)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Engine __attribute__((swift_name("Engine")));
+
+/**
+ * Use this phase for logging and other actions that don't modify a request or shared data.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline.Phases.Monitoring)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Monitoring __attribute__((swift_name("Monitoring")));
+
+/**
+ * Receive a pipeline execution phase.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline.Phases.Receive)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *Receive __attribute__((swift_name("Receive")));
+
+/**
+ * Use this phase to modify request with a shared state.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpSendPipeline.Phases.State)
+ */
 @property (readonly) MsdkCoreKtor_utilsPipelinePhase *State __attribute__((swift_name("State")));
 @end
 
@@ -3977,136 +5603,35 @@ __attribute__((swift_name("KotlinKType")))
 @property (readonly) BOOL isMarkedNullable __attribute__((swift_name("isMarkedNullable")));
 @end
 
-__attribute__((swift_name("Ktor_ioBuffer")))
-@interface MsdkCoreKtor_ioBuffer : MsdkCoreBase
-- (instancetype)initWithMemory:(MsdkCoreKtor_ioMemory *)memory __attribute__((swift_name("init(memory:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_ioBufferCompanion *companion __attribute__((swift_name("companion")));
-- (void)commitWrittenCount:(int32_t)count __attribute__((swift_name("commitWritten(count:)")));
-- (void)discardExactCount:(int32_t)count __attribute__((swift_name("discardExact(count:)")));
-- (MsdkCoreKtor_ioBuffer *)duplicate __attribute__((swift_name("duplicate()")));
+__attribute__((swift_name("Ktor_ioJvmSerializable")))
+@protocol MsdkCoreKtor_ioJvmSerializable
+@required
+@end
+
 
 /**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
+ * Represents an immutable URL
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url)
+ *
+ * @property protocol
+ * @property host name without port (domain)
+ * @property port the specified port or protocol default port
+ * @property specifiedPort port number that was specified to override protocol's default
+ * @property encodedPath encoded path without query string
+ * @property parameters URL query parameters
+ * @property fragment URL fragment (anchor name)
+ * @property user username part of URL
+ * @property password password part of URL
+ * @property trailingQuery keep trailing question character even if there are no query parameters
+ *
+ * @note annotations
+ *   kotlinx.serialization.Serializable(with=NormalClass(value=io/ktor/http/UrlSerializer))
 */
-- (void)duplicateToCopy:(MsdkCoreKtor_ioBuffer *)copy __attribute__((swift_name("duplicateTo(copy:)")));
-- (int8_t)readByte __attribute__((swift_name("readByte()")));
-- (void)reserveEndGapEndGap:(int32_t)endGap __attribute__((swift_name("reserveEndGap(endGap:)")));
-- (void)reserveStartGapStartGap:(int32_t)startGap __attribute__((swift_name("reserveStartGap(startGap:)")));
-- (void)reset __attribute__((swift_name("reset()")));
-- (void)resetForRead __attribute__((swift_name("resetForRead()")));
-- (void)resetForWrite __attribute__((swift_name("resetForWrite()")));
-- (void)resetForWriteLimit:(int32_t)limit __attribute__((swift_name("resetForWrite(limit:)")));
-- (void)rewindCount:(int32_t)count __attribute__((swift_name("rewind(count:)")));
-- (NSString *)description __attribute__((swift_name("description()")));
-- (int32_t)tryPeekByte __attribute__((swift_name("tryPeekByte()")));
-- (int32_t)tryReadByte __attribute__((swift_name("tryReadByte()")));
-- (void)writeByteValue:(int8_t)value __attribute__((swift_name("writeByte(value:)")));
-@property (readonly) int32_t capacity __attribute__((swift_name("capacity")));
-@property (readonly) int32_t endGap __attribute__((swift_name("endGap")));
-@property (readonly) int32_t limit __attribute__((swift_name("limit")));
-@property (readonly) MsdkCoreKtor_ioMemory *memory __attribute__((swift_name("memory")));
-@property (readonly) int32_t readPosition __attribute__((swift_name("readPosition")));
-@property (readonly) int32_t readRemaining __attribute__((swift_name("readRemaining")));
-@property (readonly) int32_t startGap __attribute__((swift_name("startGap")));
-@property (readonly) int32_t writePosition __attribute__((swift_name("writePosition")));
-@property (readonly) int32_t writeRemaining __attribute__((swift_name("writeRemaining")));
-@end
-
-__attribute__((swift_name("Ktor_ioChunkBuffer")))
-@interface MsdkCoreKtor_ioChunkBuffer : MsdkCoreKtor_ioBuffer
-- (instancetype)initWithMemory:(MsdkCoreKtor_ioMemory *)memory origin:(MsdkCoreKtor_ioChunkBuffer * _Nullable)origin parentPool:(id<MsdkCoreKtor_ioObjectPool> _Nullable)parentPool __attribute__((swift_name("init(memory:origin:parentPool:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMemory:(MsdkCoreKtor_ioMemory *)memory __attribute__((swift_name("init(memory:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MsdkCoreKtor_ioChunkBufferCompanion *companion __attribute__((swift_name("companion")));
-- (MsdkCoreKtor_ioChunkBuffer * _Nullable)cleanNext __attribute__((swift_name("cleanNext()")));
-- (MsdkCoreKtor_ioChunkBuffer *)duplicate __attribute__((swift_name("duplicate()")));
-- (void)releasePool:(id<MsdkCoreKtor_ioObjectPool>)pool __attribute__((swift_name("release(pool:)")));
-- (void)reset __attribute__((swift_name("reset()")));
-@property (getter=next_) MsdkCoreKtor_ioChunkBuffer * _Nullable next __attribute__((swift_name("next")));
-@property (readonly) MsdkCoreKtor_ioChunkBuffer * _Nullable origin __attribute__((swift_name("origin")));
-@property (readonly) int32_t referenceCount __attribute__((swift_name("referenceCount")));
-@end
-
-__attribute__((swift_name("Ktor_ioObjectPool")))
-@protocol MsdkCoreKtor_ioObjectPool <MsdkCoreKtor_ioCloseable>
-@required
-- (id)borrow __attribute__((swift_name("borrow()")));
-- (void)dispose __attribute__((swift_name("dispose()")));
-- (void)recycleInstance:(id)instance __attribute__((swift_name("recycle(instance:)")));
-@property (readonly) int32_t capacity __attribute__((swift_name("capacity")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioInput.Companion")))
-@interface MsdkCoreKtor_ioInputCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_ioInputCompanion *shared __attribute__((swift_name("shared")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioMemory")))
-@interface MsdkCoreKtor_ioMemory : MsdkCoreBase
-- (instancetype)initWithPointer:(void *)pointer size:(int64_t)size __attribute__((swift_name("init(pointer:size:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_ioMemoryCompanion *companion __attribute__((swift_name("companion")));
-- (void)doCopyToDestination:(MsdkCoreKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length destinationOffset:(int32_t)destinationOffset __attribute__((swift_name("doCopyTo(destination:offset:length:destinationOffset:)")));
-- (void)doCopyToDestination:(MsdkCoreKtor_ioMemory *)destination offset:(int64_t)offset length:(int64_t)length destinationOffset_:(int64_t)destinationOffset __attribute__((swift_name("doCopyTo(destination:offset:length:destinationOffset_:)")));
-- (int8_t)loadAtIndex:(int32_t)index __attribute__((swift_name("loadAt(index:)")));
-- (int8_t)loadAtIndex_:(int64_t)index __attribute__((swift_name("loadAt(index_:)")));
-- (MsdkCoreKtor_ioMemory *)sliceOffset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("slice(offset:length:)")));
-- (MsdkCoreKtor_ioMemory *)sliceOffset:(int64_t)offset length_:(int64_t)length __attribute__((swift_name("slice(offset:length_:)")));
-- (void)storeAtIndex:(int32_t)index value:(int8_t)value __attribute__((swift_name("storeAt(index:value:)")));
-- (void)storeAtIndex:(int64_t)index value_:(int8_t)value __attribute__((swift_name("storeAt(index:value_:)")));
-@property (readonly) void *pointer __attribute__((swift_name("pointer")));
-@property (readonly) int64_t size __attribute__((swift_name("size")));
-@property (readonly) int32_t size32 __attribute__((swift_name("size32")));
-@end
-
-__attribute__((swift_name("KotlinAppendable")))
-@protocol MsdkCoreKotlinAppendable
-@required
-- (id<MsdkCoreKotlinAppendable>)appendValue:(unichar)value __attribute__((swift_name("append(value:)")));
-- (id<MsdkCoreKotlinAppendable>)appendValue_:(id _Nullable)value __attribute__((swift_name("append(value_:)")));
-- (id<MsdkCoreKotlinAppendable>)appendValue:(id _Nullable)value startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("append(value:startIndex:endIndex:)")));
-@end
-
-__attribute__((swift_name("Ktor_utilsStringValues")))
-@protocol MsdkCoreKtor_utilsStringValues
-@required
-- (BOOL)containsName:(NSString *)name __attribute__((swift_name("contains(name:)")));
-- (BOOL)containsName:(NSString *)name value:(NSString *)value __attribute__((swift_name("contains(name:value:)")));
-- (NSSet<id<MsdkCoreKotlinMapEntry>> *)entries __attribute__((swift_name("entries()")));
-- (void)forEachBody:(void (^)(NSString *, NSArray<NSString *> *))body __attribute__((swift_name("forEach(body:)")));
-- (NSString * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
-- (NSArray<NSString *> * _Nullable)getAllName:(NSString *)name __attribute__((swift_name("getAll(name:)")));
-- (BOOL)isEmpty_ __attribute__((swift_name("isEmpty()")));
-- (NSSet<NSString *> *)names __attribute__((swift_name("names()")));
-@property (readonly) BOOL caseInsensitiveName __attribute__((swift_name("caseInsensitiveName")));
-@end
-
-__attribute__((swift_name("Ktor_httpHeaders")))
-@protocol MsdkCoreKtor_httpHeaders <MsdkCoreKtor_utilsStringValues>
-@required
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHttpStatusCode")))
-@interface MsdkCoreKtor_httpHttpStatusCode : MsdkCoreBase <MsdkCoreKotlinComparable>
-- (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
-- (int32_t)compareToOther:(MsdkCoreKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
-- (MsdkCoreKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
-- (MsdkCoreKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
-@property (readonly) int32_t value __attribute__((swift_name("value")));
-@end
-
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpUrl")))
-@interface MsdkCoreKtor_httpUrl : MsdkCoreBase
+@interface MsdkCoreKtor_httpUrl : MsdkCoreBase <MsdkCoreKtor_ioJvmSerializable>
 @property (class, readonly, getter=companion) MsdkCoreKtor_httpUrlCompanion *companion __attribute__((swift_name("companion")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -4121,33 +5646,314 @@ __attribute__((swift_name("Ktor_httpUrl")))
 @property (readonly) NSString *host __attribute__((swift_name("host")));
 @property (readonly) id<MsdkCoreKtor_httpParameters> parameters __attribute__((swift_name("parameters")));
 @property (readonly) NSString * _Nullable password __attribute__((swift_name("password")));
-@property (readonly) NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments")));
+
+/**
+ * A list containing the segments of the URL path.
+ *
+ * This property was designed to distinguish between absolute and relative paths,
+ * so it will have an empty segment at the beginning for URLs with a hostname
+ * and an empty segment at the end for URLs with a trailing slash.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.pathSegments == listOf("", "docs", "")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.pathSegments == listOf("", "docs", "")
+ *
+ * val relative = Url("docs")
+ * relative.pathSegments == listOf("docs")
+ * ```
+ *
+ * This behaviour may not be ideal if you're working only with full URLs.
+ * If you don't require the specific handling of empty segments, consider using the [segments] property instead:
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ *
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * To address this issue, the current [pathSegments] property will be renamed to [rawSegments].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.pathSegments)
+ */
+@property (readonly) NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments"))) __attribute__((deprecated("\n        `pathSegments` is deprecated.\n\n        This property will contain an empty path segment at the beginning for URLs with a hostname,\n        and an empty path segment at the end for the URLs with a trailing slash. If you need to keep this behaviour please\n        use [rawSegments]. If you only need to access the meaningful parts of the path, consider using [segments] instead.\n             \n        Please decide if you need [rawSegments] or [segments] explicitly.\n        ")));
 @property (readonly) int32_t port __attribute__((swift_name("port")));
 @property (readonly) MsdkCoreKtor_httpURLProtocol *protocol __attribute__((swift_name("protocol")));
+@property (readonly) MsdkCoreKtor_httpURLProtocol * _Nullable protocolOrNull __attribute__((swift_name("protocolOrNull")));
+
+/**
+ * A list containing the segments of the URL path.
+ *
+ * This property is designed to distinguish between absolute and relative paths,
+ * so it will have an empty segment at the beginning for URLs with a hostname
+ * and an empty segment at the end for URLs with a trailing slash.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.rawSegments == listOf("", "docs", "")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.rawSegments == listOf("", "docs", "")
+ *
+ * val relative = Url("docs")
+ * relative.rawSegments == listOf("docs")
+ * ```
+ *
+ * This behaviour may not be ideal if you're working only with full URLs.
+ * If you don't require the specific handling of empty segments, consider using the [segments] property instead:
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ *
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.rawSegments)
+ */
+@property (readonly) NSArray<NSString *> *rawSegments __attribute__((swift_name("rawSegments")));
+
+/**
+ * A list of path segments derived from the URL, excluding any leading
+ * and trailing empty segments.
+ *
+ * ```kotlin
+ * val fullUrl = Url("http://ktor.io/docs/")
+ * fullUrl.segments == listOf("docs")
+ *
+ * val absolute = Url("/docs/")
+ * absolute.segments == listOf("docs")
+ * val relative = Url("docs")
+ * relative.segments == listOf("docs")
+ * ```
+ *
+ * If you need to check for trailing slash and relative/absolute paths, please check the [rawSegments] property.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Url.segments)
+ **/
+@property (readonly) NSArray<NSString *> *segments __attribute__((swift_name("segments")));
 @property (readonly) int32_t specifiedPort __attribute__((swift_name("specifiedPort")));
 @property (readonly) BOOL trailingQuery __attribute__((swift_name("trailingQuery")));
 @property (readonly) NSString * _Nullable user __attribute__((swift_name("user")));
 @end
 
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpMethod")))
 @interface MsdkCoreKtor_httpHttpMethod : MsdkCoreBase
 - (instancetype)initWithValue:(NSString *)value __attribute__((swift_name("init(value:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreKtor_httpHttpMethodCompanion *companion __attribute__((swift_name("companion")));
 - (MsdkCoreKtor_httpHttpMethod *)doCopyValue:(NSString *)value __attribute__((swift_name("doCopy(value:)")));
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents an HTTP method (verb)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod)
+ *
+ * @property value contains method name
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * Provides data structure for associating a [String] with a [List] of Strings
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues)
+ */
+__attribute__((swift_name("Ktor_utilsStringValues")))
+@protocol MsdkCoreKtor_utilsStringValues
+@required
+
+/**
+ * Checks if the given [name] exists in the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.contains)
+ */
+- (BOOL)containsName:(NSString *)name __attribute__((swift_name("contains(name:)")));
+
+/**
+ * Checks if the given [name] and [value] pair exists in the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.contains)
+ */
+- (BOOL)containsName:(NSString *)name value:(NSString *)value __attribute__((swift_name("contains(name:value:)")));
+
+/**
+ * Gets all entries from the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.entries)
+ */
+- (NSSet<id<MsdkCoreKotlinMapEntry>> *)entries __attribute__((swift_name("entries()")));
+
+/**
+ * Iterates over all entries in this map and calls [body] for each pair
+ *
+ * Can be optimized in implementations
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.forEach)
+ */
+- (void)forEachBody:(void (^)(NSString *, NSArray<NSString *> *))body __attribute__((swift_name("forEach(body:)")));
+
+/**
+ * Gets first value from the list of values associated with a [name], or null if the name is not present
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.get)
+ */
+- (NSString * _Nullable)getName:(NSString *)name __attribute__((swift_name("get(name:)")));
+
+/**
+ * Gets all values associated with the [name], or null if the name is not present
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.getAll)
+ */
+- (NSArray<NSString *> * _Nullable)getAllName:(NSString *)name __attribute__((swift_name("getAll(name:)")));
+
+/**
+ * Checks if this map is empty
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.isEmpty)
+ */
+- (BOOL)isEmpty_ __attribute__((swift_name("isEmpty()")));
+
+/**
+ * Gets all names from the map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.names)
+ */
+- (NSSet<NSString *> *)names __attribute__((swift_name("names()")));
+
+/**
+ * Specifies if map has case-sensitive or case-insensitive names
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.StringValues.caseInsensitiveName)
+ */
+@property (readonly) BOOL caseInsensitiveName __attribute__((swift_name("caseInsensitiveName")));
+@end
+
+
+/**
+ * Represents HTTP headers as a map from case-insensitive names to collection of [String] values
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Headers)
+ */
+__attribute__((swift_name("Ktor_httpHeaders")))
+@protocol MsdkCoreKtor_httpHeaders <MsdkCoreKtor_utilsStringValues>
+@required
+@end
+
+
+/**
+ * Information about the content to be sent to the peer, recognized by a client or server engine
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent)
+ */
+__attribute__((swift_name("Ktor_httpOutgoingContent")))
+@interface MsdkCoreKtor_httpOutgoingContent : MsdkCoreBase
+
+/**
+ * Gets an extension property for this content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.getProperty)
+ */
+- (id _Nullable)getPropertyKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key __attribute__((swift_name("getProperty(key:)")));
+
+/**
+ * Sets an extension property for this content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.setProperty)
+ */
+- (void)setPropertyKey:(MsdkCoreKtor_utilsAttributeKey<id> *)key value:(id _Nullable)value __attribute__((swift_name("setProperty(key:value:)")));
+
+/**
+ * Trailers to set when sending this content, will be ignored if request is not in HTTP2 mode
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.trailers)
+ */
+- (id<MsdkCoreKtor_httpHeaders> _Nullable)trailers __attribute__((swift_name("trailers()")));
+
+/**
+ * Specifies content length in bytes for this resource.
+ *
+ * If null, the resources will be sent as `Transfer-Encoding: chunked`
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.contentLength)
+ */
+@property (readonly) MsdkCoreLong * _Nullable contentLength __attribute__((swift_name("contentLength")));
+
+/**
+ * Specifies [ContentType] for this resource.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.contentType)
+ */
+@property (readonly) MsdkCoreKtor_httpContentType * _Nullable contentType __attribute__((swift_name("contentType")));
+
+/**
+ * Headers to set when sending this content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.headers)
+ */
+@property (readonly) id<MsdkCoreKtor_httpHeaders> headers __attribute__((swift_name("headers")));
+
+/**
+ * Status code to set when sending this content
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.content.OutgoingContent.status)
+ */
+@property (readonly) MsdkCoreKtor_httpHttpStatusCode * _Nullable status __attribute__((swift_name("status")));
+@end
+
 __attribute__((swift_name("Kotlinx_coroutines_coreJob")))
 @protocol MsdkCoreKotlinx_coroutines_coreJob <MsdkCoreKotlinCoroutineContextElement>
 @required
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 - (id<MsdkCoreKotlinx_coroutines_coreChildHandle>)attachChildChild:(id<MsdkCoreKotlinx_coroutines_coreChildJob>)child __attribute__((swift_name("attachChild(child:)")));
 - (void)cancelCause:(MsdkCoreKotlinCancellationException * _Nullable)cause __attribute__((swift_name("cancel(cause:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 - (MsdkCoreKotlinCancellationException *)getCancellationException __attribute__((swift_name("getCancellationException()")));
 - (id<MsdkCoreKotlinx_coroutines_coreDisposableHandle>)invokeOnCompletionHandler:(void (^)(MsdkCoreKotlinThrowable * _Nullable))handler __attribute__((swift_name("invokeOnCompletion(handler:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 - (id<MsdkCoreKotlinx_coroutines_coreDisposableHandle>)invokeOnCompletionOnCancelling:(BOOL)onCancelling invokeImmediately:(BOOL)invokeImmediately handler:(void (^)(MsdkCoreKotlinThrowable * _Nullable))handler __attribute__((swift_name("invokeOnCompletion(onCancelling:invokeImmediately:handler:)")));
 
 /**
@@ -4170,14 +5976,121 @@ __attribute__((swift_name("Kotlinx_coroutines_coreJob")))
 @property (readonly) id<MsdkCoreKotlinx_coroutines_coreJob> _Nullable parent __attribute__((swift_name("parent")));
 @end
 
+
+/**
+ * Represents an HTTP status code and description.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode)
+ *
+ * @param value is a numeric code.
+ * @param description is free form description of a status.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHttpStatusCode")))
+@interface MsdkCoreKtor_httpHttpStatusCode : MsdkCoreBase <MsdkCoreKotlinComparable>
+- (instancetype)initWithValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("init(value:description:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MsdkCoreKtor_httpHttpStatusCodeCompanion *companion __attribute__((swift_name("companion")));
+- (int32_t)compareToOther:(MsdkCoreKtor_httpHttpStatusCode *)other __attribute__((swift_name("compareTo(other:)")));
+- (MsdkCoreKtor_httpHttpStatusCode *)doCopyValue:(int32_t)value description:(NSString *)description __attribute__((swift_name("doCopy(value:description:)")));
+
+/**
+ * Returns a copy of `this` code with a description changed to [value].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.description)
+ */
+- (MsdkCoreKtor_httpHttpStatusCode *)descriptionValue:(NSString *)value __attribute__((swift_name("description(value:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *description_ __attribute__((swift_name("description_")));
+@property (readonly) int32_t value __attribute__((swift_name("value")));
+@end
+
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ *
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsGMTDate")))
 @interface MsdkCoreKtor_utilsGMTDate : MsdkCoreBase <MsdkCoreKotlinComparable>
+- (instancetype)initWithSeconds:(int32_t)seconds minutes:(int32_t)minutes hours:(int32_t)hours dayOfWeek:(MsdkCoreKtor_utilsWeekDay *)dayOfWeek dayOfMonth:(int32_t)dayOfMonth dayOfYear:(int32_t)dayOfYear month:(MsdkCoreKtor_utilsMonth *)month year:(int32_t)year timestamp:(int64_t)timestamp __attribute__((swift_name("init(seconds:minutes:hours:dayOfWeek:dayOfMonth:dayOfYear:month:year:timestamp:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreKtor_utilsGMTDateCompanion *companion __attribute__((swift_name("companion")));
 - (int32_t)compareToOther:(MsdkCoreKtor_utilsGMTDate *)other __attribute__((swift_name("compareTo(other:)")));
+- (MsdkCoreKtor_utilsGMTDate *)doCopy __attribute__((swift_name("doCopy()")));
 - (MsdkCoreKtor_utilsGMTDate *)doCopySeconds:(int32_t)seconds minutes:(int32_t)minutes hours:(int32_t)hours dayOfWeek:(MsdkCoreKtor_utilsWeekDay *)dayOfWeek dayOfMonth:(int32_t)dayOfMonth dayOfYear:(int32_t)dayOfYear month:(MsdkCoreKtor_utilsMonth *)month year:(int32_t)year timestamp:(int64_t)timestamp __attribute__((swift_name("doCopy(seconds:minutes:hours:dayOfWeek:dayOfMonth:dayOfYear:month:year:timestamp:)")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Date in GMT timezone
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate)
+ *
+ * @property seconds: seconds from 0 to 60(last is for leap second)
+ * @property minutes: minutes from 0 to 59
+ * @property hours: hours from 0 to 23
+ * @property dayOfWeek an instance of the corresponding day of week
+ * @property dayOfMonth: day of month from 1 to 31
+ * @property dayOfYear: day of year from 1 to 366
+ * @property month an instance of the corresponding month
+ * @property year: year in common era(CE: https://en.wikipedia.org/wiki/Common_Era)
+ *
+ * @property timestamp is a number of epoch milliseconds
+ */
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) int32_t dayOfMonth __attribute__((swift_name("dayOfMonth")));
 @property (readonly) MsdkCoreKtor_utilsWeekDay *dayOfWeek __attribute__((swift_name("dayOfWeek")));
@@ -4190,13 +6103,43 @@ __attribute__((swift_name("Ktor_utilsGMTDate")))
 @property (readonly) int32_t year __attribute__((swift_name("year")));
 @end
 
+
+/**
+ * Represents an HTTP protocol version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion)
+ *
+ * @property name specifies name of the protocol, e.g. "HTTP".
+ * @property major specifies protocol major version.
+ * @property minor specifies protocol minor version.
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpProtocolVersion")))
 @interface MsdkCoreKtor_httpHttpProtocolVersion : MsdkCoreBase
 - (instancetype)initWithName:(NSString *)name major:(int32_t)major minor:(int32_t)minor __attribute__((swift_name("init(name:major:minor:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreKtor_httpHttpProtocolVersionCompanion *companion __attribute__((swift_name("companion")));
 - (MsdkCoreKtor_httpHttpProtocolVersion *)doCopyName:(NSString *)name major:(int32_t)major minor:(int32_t)minor __attribute__((swift_name("doCopy(name:major:minor:)")));
+
+/**
+ * Represents an HTTP protocol version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion)
+ *
+ * @property name specifies name of the protocol, e.g. "HTTP".
+ * @property major specifies protocol major version.
+ * @property minor specifies protocol minor version.
+ */
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents an HTTP protocol version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion)
+ *
+ * @property name specifies name of the protocol, e.g. "HTTP".
+ * @property major specifies protocol major version.
+ * @property minor specifies protocol minor version.
+ */
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) int32_t major __attribute__((swift_name("major")));
@@ -4204,155 +6147,36 @@ __attribute__((swift_name("Ktor_httpHttpProtocolVersion")))
 @property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
+
+/**
+ * Channel for asynchronous reading of sequences of bytes.
+ * This is a **single-reader channel**.
+ *
+ * Operations on this channel cannot be invoked concurrently.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.utils.io.ByteReadChannel)
+ */
 __attribute__((swift_name("Ktor_ioByteReadChannel")))
 @protocol MsdkCoreKtor_ioByteReadChannel
 @required
 
 /**
+ * Suspend the channel until it has [min] bytes or gets closed. Throws exception if the channel was closed with an
+ * error. If there are bytes available in the channel, this function returns immediately.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.utils.io.ByteReadChannel.awaitContent)
+ *
+ * @return return `false` eof is reached, otherwise `true`.
+ *
  * @note This method converts instances of CancellationException to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (void)awaitContentWithCompletionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("awaitContent(completionHandler:)")));
-- (BOOL)cancelCause_:(MsdkCoreKotlinThrowable * _Nullable)cause __attribute__((swift_name("cancel(cause_:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)discardMax:(int64_t)max completionHandler:(void (^)(MsdkCoreLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("discard(max:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)peekToDestination:(MsdkCoreKtor_ioMemory *)destination destinationOffset:(int64_t)destinationOffset offset:(int64_t)offset min:(int64_t)min max:(int64_t)max completionHandler:(void (^)(MsdkCoreLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("peekTo(destination:destinationOffset:offset:min:max:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(MsdkCoreKtor_ioChunkBuffer *)dst completionHandler:(void (^)(MsdkCoreInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:completionHandler:)")));
-- (int32_t)readAvailableMin:(int32_t)min block:(void (^)(MsdkCoreKtor_ioBuffer *))block __attribute__((swift_name("readAvailable(min:block:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(MsdkCoreKotlinByteArray *)dst offset:(int32_t)offset length:(int32_t)length completionHandler:(void (^)(MsdkCoreInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(void *)dst offset:(int32_t)offset length:(int32_t)length completionHandler_:(void (^)(MsdkCoreInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler_:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readAvailableDst:(void *)dst offset:(int64_t)offset length:(int64_t)length completionHandler__:(void (^)(MsdkCoreInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readAvailable(dst:offset:length:completionHandler__:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readBooleanWithCompletionHandler:(void (^)(MsdkCoreBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readBoolean(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readByteWithCompletionHandler:(void (^)(MsdkCoreByte * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readByte(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readDoubleWithCompletionHandler:(void (^)(MsdkCoreDouble * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readDouble(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFloatWithCompletionHandler:(void (^)(MsdkCoreFloat * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readFloat(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(MsdkCoreKtor_ioChunkBuffer *)dst n:(int32_t)n completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:n:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(MsdkCoreKotlinByteArray *)dst offset:(int32_t)offset length:(int32_t)length completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(void *)dst offset:(int32_t)offset length:(int32_t)length completionHandler_:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler_:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readFullyDst:(void *)dst offset:(int64_t)offset length:(int64_t)length completionHandler__:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readFully(dst:offset:length:completionHandler__:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readIntWithCompletionHandler:(void (^)(MsdkCoreInt * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readInt(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readLongWithCompletionHandler:(void (^)(MsdkCoreLong * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readLong(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readPacketSize:(int32_t)size completionHandler:(void (^)(MsdkCoreKtor_ioByteReadPacket * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readPacket(size:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readRemainingLimit:(int64_t)limit completionHandler:(void (^)(MsdkCoreKtor_ioByteReadPacket * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readRemaining(limit:completionHandler:)")));
-- (void)readSessionConsumer:(void (^)(id<MsdkCoreKtor_ioReadSession>))consumer __attribute__((swift_name("readSession(consumer:)"))) __attribute__((deprecated("Use read { } instead.")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readShortWithCompletionHandler:(void (^)(MsdkCoreShort * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readShort(completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readSuspendableSessionConsumer:(id<MsdkCoreKotlinSuspendFunction1>)consumer completionHandler:(void (^)(NSError * _Nullable))completionHandler __attribute__((swift_name("readSuspendableSession(consumer:completionHandler:)"))) __attribute__((deprecated("Use read { } instead.")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readUTF8LineLimit:(int32_t)limit completionHandler:(void (^)(NSString * _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("readUTF8Line(limit:completionHandler:)")));
-
-/**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (void)readUTF8LineToOut:(id<MsdkCoreKotlinAppendable>)out limit:(int32_t)limit completionHandler:(void (^)(MsdkCoreBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("readUTF8LineTo(out:limit:completionHandler:)")));
-@property (readonly) int32_t availableForRead __attribute__((swift_name("availableForRead")));
+- (void)awaitContentMin:(int32_t)min completionHandler:(void (^)(MsdkCoreBoolean * _Nullable, NSError * _Nullable))completionHandler __attribute__((swift_name("awaitContent(min:completionHandler:)")));
+- (void)cancelCause_:(MsdkCoreKotlinThrowable * _Nullable)cause __attribute__((swift_name("cancel(cause_:)")));
 @property (readonly) MsdkCoreKotlinThrowable * _Nullable closedCause __attribute__((swift_name("closedCause")));
 @property (readonly) BOOL isClosedForRead __attribute__((swift_name("isClosedForRead")));
-@property (readonly) BOOL isClosedForWrite __attribute__((swift_name("isClosedForWrite")));
-@property (readonly) int64_t totalBytesRead __attribute__((swift_name("totalBytesRead")));
+@property (readonly) id<MsdkCoreKotlinx_io_coreSource> readBuffer __attribute__((swift_name("readBuffer")));
 @end
 
 __attribute__((swift_name("Ktor_utilsStringValuesBuilder")))
@@ -4445,12 +6269,41 @@ __attribute__((swift_name("Ktor_client_coreHttpRequestBuilder.Companion")))
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpRequestBuilderCompanion *shared __attribute__((swift_name("shared")));
 @end
 
+
+/**
+ * A URL builder with all mutable components
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder)
+ *
+ * @property protocol URL protocol (scheme)
+ * @property host name without port (domain)
+ * @property port port number
+ * @property user username part (optional)
+ * @property password password part (optional)
+ * @property pathSegments URL path without query
+ * @property parameters URL query parameters
+ * @property fragment URL fragment (anchor name)
+ * @property trailingQuery keep a trailing question character even if there are no query parameters
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpURLBuilder")))
 @interface MsdkCoreKtor_httpURLBuilder : MsdkCoreBase
-- (instancetype)initWithProtocol:(MsdkCoreKtor_httpURLProtocol *)protocol host:(NSString *)host port:(int32_t)port user:(NSString * _Nullable)user password:(NSString * _Nullable)password pathSegments:(NSArray<NSString *> *)pathSegments parameters:(id<MsdkCoreKtor_httpParameters>)parameters fragment:(NSString *)fragment trailingQuery:(BOOL)trailingQuery __attribute__((swift_name("init(protocol:host:port:user:password:pathSegments:parameters:fragment:trailingQuery:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithProtocol:(MsdkCoreKtor_httpURLProtocol * _Nullable)protocol host:(NSString *)host port:(int32_t)port user:(NSString * _Nullable)user password:(NSString * _Nullable)password pathSegments:(NSArray<NSString *> *)pathSegments parameters:(id<MsdkCoreKtor_httpParameters>)parameters fragment:(NSString *)fragment trailingQuery:(BOOL)trailingQuery __attribute__((swift_name("init(protocol:host:port:user:password:pathSegments:parameters:fragment:trailingQuery:)"))) __attribute__((objc_designated_initializer));
 @property (class, readonly, getter=companion) MsdkCoreKtor_httpURLBuilderCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ * Build a [Url] instance (everything is copied to a new instance)
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder.build)
+ */
 - (MsdkCoreKtor_httpUrl *)build __attribute__((swift_name("build()")));
+
+/**
+ * Build a URL string
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLBuilder.buildString)
+ */
 - (NSString *)buildString __attribute__((swift_name("buildString()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property NSString *encodedFragment __attribute__((swift_name("encodedFragment")));
@@ -4465,6 +6318,7 @@ __attribute__((swift_name("Ktor_httpURLBuilder")))
 @property NSArray<NSString *> *pathSegments __attribute__((swift_name("pathSegments")));
 @property int32_t port __attribute__((swift_name("port")));
 @property MsdkCoreKtor_httpURLProtocol *protocol __attribute__((swift_name("protocol")));
+@property MsdkCoreKtor_httpURLProtocol * _Nullable protocolOrNull __attribute__((swift_name("protocolOrNull")));
 @property BOOL trailingQuery __attribute__((swift_name("trailingQuery")));
 @property NSString * _Nullable user __attribute__((swift_name("user")));
 @end
@@ -4476,16 +6330,52 @@ __attribute__((swift_name("Ktor_client_coreHttpClientCall.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_client_coreHttpClientCallCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_utilsAttributeKey<id> *CustomResponse __attribute__((swift_name("CustomResponse"))) __attribute__((unavailable("This is going to be removed. Please file a ticket with clarification why and what for do you need it.")));
 @end
 
+
+/**
+ * A request for [HttpClient], first part of [HttpClientCall].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest)
+ */
 __attribute__((swift_name("Ktor_client_coreHttpRequest")))
 @protocol MsdkCoreKtor_client_coreHttpRequest <MsdkCoreKtor_httpHttpMessage, MsdkCoreKotlinx_coroutines_coreCoroutineScope>
 @required
+
+/**
+ * Typed [Attributes] associated to this call serving as a lightweight container.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest.attributes)
+ */
 @property (readonly) id<MsdkCoreKtor_utilsAttributes> attributes __attribute__((swift_name("attributes")));
+
+/**
+ * The associated [HttpClientCall] containing both
+ * the underlying [HttpClientCall.request] and [HttpClientCall.response].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest.call)
+ */
 @property (readonly) MsdkCoreKtor_client_coreHttpClientCall *call __attribute__((swift_name("call")));
+
+/**
+ * An [OutgoingContent] representing the request body
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest.content)
+ */
 @property (readonly) MsdkCoreKtor_httpOutgoingContent *content __attribute__((swift_name("content")));
+
+/**
+ * The [HttpMethod] or HTTP VERB used for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest.method)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpMethod *method __attribute__((swift_name("method")));
+
+/**
+ * The [Url] representing the endpoint and the uri for this request.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.client.request.HttpRequest.url)
+ */
 @property (readonly) MsdkCoreKtor_httpUrl *url __attribute__((swift_name("url")));
 @end
 
@@ -4508,36 +6398,103 @@ __attribute__((swift_name("KotlinKTypeProjection")))
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioBuffer.Companion")))
-@interface MsdkCoreKtor_ioBufferCompanion : MsdkCoreBase
+__attribute__((swift_name("Ktor_httpUrl.Companion")))
+@interface MsdkCoreKtor_httpUrlCompanion : MsdkCoreBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_ioBufferCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_ioBuffer *Empty __attribute__((swift_name("Empty")));
-@property (readonly) int32_t ReservedSize __attribute__((swift_name("ReservedSize")));
+@property (class, readonly, getter=shared) MsdkCoreKtor_httpUrlCompanion *shared __attribute__((swift_name("shared")));
+- (id<MsdkCoreKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+
+/**
+ * Represents HTTP parameters as a map from case-insensitive names to collection of [String] values
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.Parameters)
+ */
+__attribute__((swift_name("Ktor_httpParameters")))
+@protocol MsdkCoreKtor_httpParameters <MsdkCoreKtor_utilsStringValues>
+@required
+@end
+
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpURLProtocol")))
+@interface MsdkCoreKtor_httpURLProtocol : MsdkCoreBase <MsdkCoreKtor_ioJvmSerializable>
+- (instancetype)initWithName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("init(name:defaultPort:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MsdkCoreKtor_httpURLProtocolCompanion *companion __attribute__((swift_name("companion")));
+- (MsdkCoreKtor_httpURLProtocol *)doCopyName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("doCopy(name:defaultPort:)")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Represents URL protocol
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol)
+ *
+ * @property name of protocol (schema)
+ * @property defaultPort default port for protocol or `-1` if not known
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) int32_t defaultPort __attribute__((swift_name("defaultPort")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
 @end
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioChunkBuffer.Companion")))
-@interface MsdkCoreKtor_ioChunkBufferCompanion : MsdkCoreBase
+__attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
+@interface MsdkCoreKtor_httpHttpMethodCompanion : MsdkCoreBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_ioChunkBufferCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_ioChunkBuffer *Empty __attribute__((swift_name("Empty")));
-@property (readonly) id<MsdkCoreKtor_ioObjectPool> EmptyPool __attribute__((swift_name("EmptyPool")));
-@property (readonly) id<MsdkCoreKtor_ioObjectPool> Pool __attribute__((swift_name("Pool")));
-@end
+@property (class, readonly, getter=shared) MsdkCoreKtor_httpHttpMethodCompanion *shared __attribute__((swift_name("shared")));
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioMemory.Companion")))
-@interface MsdkCoreKtor_ioMemoryCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_ioMemoryCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_ioMemory *Empty __attribute__((swift_name("Empty")));
+/**
+ * Parse HTTP method by [method] string
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod.Companion.parse)
+ */
+- (MsdkCoreKtor_httpHttpMethod *)parseMethod:(NSString *)method __attribute__((swift_name("parse(method:)")));
+
+/**
+ * A list of default HTTP methods
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpMethod.Companion.DefaultMethods)
+ */
+@property (readonly) NSArray<MsdkCoreKtor_httpHttpMethod *> *DefaultMethods __attribute__((swift_name("DefaultMethods")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Delete __attribute__((swift_name("Delete")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Get __attribute__((swift_name("Get")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Head __attribute__((swift_name("Head")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Options __attribute__((swift_name("Options")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Patch __attribute__((swift_name("Patch")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Post __attribute__((swift_name("Post")));
+@property (readonly) MsdkCoreKtor_httpHttpMethod *Put __attribute__((swift_name("Put")));
 @end
 
 __attribute__((swift_name("KotlinMapEntry")))
@@ -4547,6 +6504,157 @@ __attribute__((swift_name("KotlinMapEntry")))
 @property (readonly) id _Nullable value_ __attribute__((swift_name("value_")));
 @end
 
+
+/**
+ * Represents a header value that consist of [content] followed by [parameters].
+ * Useful for headers such as `Content-Type`, `Content-Disposition` and so on.
+ *
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HeaderValueWithParameters)
+ *
+ * @property content header's content without parameters
+ * @property parameters
+ */
+__attribute__((swift_name("Ktor_httpHeaderValueWithParameters")))
+@interface MsdkCoreKtor_httpHeaderValueWithParameters : MsdkCoreBase
+- (instancetype)initWithContent:(NSString *)content parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(content:parameters:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) MsdkCoreKtor_httpHeaderValueWithParametersCompanion *companion __attribute__((swift_name("companion")));
+
+/**
+ * The first value for the parameter with [name] comparing case-insensitively or `null` if no such parameters found
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HeaderValueWithParameters.parameter)
+ */
+- (NSString * _Nullable)parameterName:(NSString *)name __attribute__((swift_name("parameter(name:)")));
+- (NSString *)description __attribute__((swift_name("description()")));
+
+/**
+ * @note This property has protected visibility in Kotlin source and is intended only for use by subclasses.
+*/
+@property (readonly) NSString *content __attribute__((swift_name("content")));
+@property (readonly) NSArray<MsdkCoreKtor_httpHeaderValueParam *> *parameters __attribute__((swift_name("parameters")));
+@end
+
+
+/**
+ * Represents a value for a `Content-Type` header.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType)
+ *
+ * @property contentType represents a type part of the media type.
+ * @property contentSubtype represents a subtype part of the media type.
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpContentType")))
+@interface MsdkCoreKtor_httpContentType : MsdkCoreKtor_httpHeaderValueWithParameters
+- (instancetype)initWithContentType:(NSString *)contentType contentSubtype:(NSString *)contentSubtype parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(contentType:contentSubtype:parameters:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithContent:(NSString *)content parameters:(NSArray<MsdkCoreKtor_httpHeaderValueParam *> *)parameters __attribute__((swift_name("init(content:parameters:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (class, readonly, getter=companion) MsdkCoreKtor_httpContentTypeCompanion *companion __attribute__((swift_name("companion")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
+ * The `this` type must be a more specific type than the [pattern] type. In other words:
+ *
+ * ```kotlin
+ * ContentType("a", "b").match(ContentType("a", "b").withParameter("foo", "bar")) === false
+ * ContentType("a", "b").withParameter("foo", "bar").match(ContentType("a", "b")) === true
+ * ContentType("a", "*").match(ContentType("a", "b")) === false
+ * ContentType("a", "b").match(ContentType("a", "*")) === true
+ * ```
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.match)
+ */
+- (BOOL)matchPattern:(MsdkCoreKtor_httpContentType *)pattern __attribute__((swift_name("match(pattern:)")));
+
+/**
+ * Checks if `this` type matches a [pattern] type taking into account placeholder symbols `*` and parameters.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.match)
+ */
+- (BOOL)matchPattern_:(NSString *)pattern __attribute__((swift_name("match(pattern_:)")));
+
+/**
+ * Creates a copy of `this` type with the added parameter with the [name] and [value].
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.withParameter)
+ */
+- (MsdkCoreKtor_httpContentType *)withParameterName:(NSString *)name value:(NSString *)value __attribute__((swift_name("withParameter(name:value:)")));
+
+/**
+ * Creates a copy of `this` type without any parameters
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.withoutParameters)
+ */
+- (MsdkCoreKtor_httpContentType *)withoutParameters __attribute__((swift_name("withoutParameters()")));
+@property (readonly) NSString *contentSubtype __attribute__((swift_name("contentSubtype")));
+@property (readonly) NSString *contentType __attribute__((swift_name("contentType")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+__attribute__((swift_name("Kotlinx_coroutines_coreChildHandle")))
+@protocol MsdkCoreKotlinx_coroutines_coreChildHandle <MsdkCoreKotlinx_coroutines_coreDisposableHandle>
+@required
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+- (BOOL)childCancelledCause:(MsdkCoreKotlinThrowable *)cause __attribute__((swift_name("childCancelled(cause:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+@property (readonly) id<MsdkCoreKotlinx_coroutines_coreJob> _Nullable parent __attribute__((swift_name("parent")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+__attribute__((swift_name("Kotlinx_coroutines_coreChildJob")))
+@protocol MsdkCoreKotlinx_coroutines_coreChildJob <MsdkCoreKotlinx_coroutines_coreJob>
+@required
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+- (void)parentCancelledParentJob:(id<MsdkCoreKotlinx_coroutines_coreParentJob>)parentJob __attribute__((swift_name("parentCancelled(parentJob:)")));
+@end
+
+__attribute__((swift_name("KotlinSequence")))
+@protocol MsdkCoreKotlinSequence
+@required
+- (id<MsdkCoreKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
+__attribute__((swift_name("Kotlinx_coroutines_coreSelectClause")))
+@protocol MsdkCoreKotlinx_coroutines_coreSelectClause
+@required
+@property (readonly) id clauseObject __attribute__((swift_name("clauseObject")));
+@property (readonly) MsdkCoreKotlinUnit *(^(^ _Nullable onCancellationConstructor)(id<MsdkCoreKotlinx_coroutines_coreSelectInstance>, id _Nullable, id _Nullable))(MsdkCoreKotlinThrowable *, id _Nullable, id<MsdkCoreKotlinCoroutineContext>) __attribute__((swift_name("onCancellationConstructor")));
+@property (readonly) id _Nullable (^processResFunc)(id, id _Nullable, id _Nullable) __attribute__((swift_name("processResFunc")));
+@property (readonly) void (^regFunc)(id, id<MsdkCoreKotlinx_coroutines_coreSelectInstance>, id _Nullable) __attribute__((swift_name("regFunc")));
+@end
+
+__attribute__((swift_name("Kotlinx_coroutines_coreSelectClause0")))
+@protocol MsdkCoreKotlinx_coroutines_coreSelectClause0 <MsdkCoreKotlinx_coroutines_coreSelectClause>
+@required
+@end
+
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @interface MsdkCoreKtor_httpHttpStatusCodeCompanion : MsdkCoreBase
@@ -4554,6 +6662,12 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_httpHttpStatusCodeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Creates an instance of [HttpStatusCode] with the given numeric value.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.fromValue)
+ */
 - (MsdkCoreKtor_httpHttpStatusCode *)fromValueValue:(int32_t)value __attribute__((swift_name("fromValue(value:)")));
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *Accepted __attribute__((swift_name("Accepted")));
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *BadGateway __attribute__((swift_name("BadGateway")));
@@ -4608,101 +6722,33 @@ __attribute__((swift_name("Ktor_httpHttpStatusCode.Companion")))
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *UseProxy __attribute__((swift_name("UseProxy")));
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *VariantAlsoNegotiates __attribute__((swift_name("VariantAlsoNegotiates")));
 @property (readonly) MsdkCoreKtor_httpHttpStatusCode *VersionNotSupported __attribute__((swift_name("VersionNotSupported")));
+
+/**
+ * All known status codes
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpStatusCode.Companion.allStatusCodes)
+ */
 @property (readonly) NSArray<MsdkCoreKtor_httpHttpStatusCode *> *allStatusCodes __attribute__((swift_name("allStatusCodes")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpUrl.Companion")))
-@interface MsdkCoreKtor_httpUrlCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_httpUrlCompanion *shared __attribute__((swift_name("shared")));
-@end
 
-__attribute__((swift_name("Ktor_httpParameters")))
-@protocol MsdkCoreKtor_httpParameters <MsdkCoreKtor_utilsStringValues>
-@required
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpURLProtocol")))
-@interface MsdkCoreKtor_httpURLProtocol : MsdkCoreBase
-- (instancetype)initWithName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("init(name:defaultPort:)"))) __attribute__((objc_designated_initializer));
-@property (class, readonly, getter=companion) MsdkCoreKtor_httpURLProtocolCompanion *companion __attribute__((swift_name("companion")));
-- (MsdkCoreKtor_httpURLProtocol *)doCopyName:(NSString *)name defaultPort:(int32_t)defaultPort __attribute__((swift_name("doCopy(name:defaultPort:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) int32_t defaultPort __attribute__((swift_name("defaultPort")));
-@property (readonly) NSString *name __attribute__((swift_name("name")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_httpHttpMethod.Companion")))
-@interface MsdkCoreKtor_httpHttpMethodCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_httpHttpMethodCompanion *shared __attribute__((swift_name("shared")));
-- (MsdkCoreKtor_httpHttpMethod *)parseMethod:(NSString *)method __attribute__((swift_name("parse(method:)")));
-@property (readonly) NSArray<MsdkCoreKtor_httpHttpMethod *> *DefaultMethods __attribute__((swift_name("DefaultMethods")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Delete __attribute__((swift_name("Delete")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Get __attribute__((swift_name("Get")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Head __attribute__((swift_name("Head")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Options __attribute__((swift_name("Options")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Patch __attribute__((swift_name("Patch")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Post __attribute__((swift_name("Post")));
-@property (readonly) MsdkCoreKtor_httpHttpMethod *Put __attribute__((swift_name("Put")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreChildHandle")))
-@protocol MsdkCoreKotlinx_coroutines_coreChildHandle <MsdkCoreKotlinx_coroutines_coreDisposableHandle>
-@required
-- (BOOL)childCancelledCause:(MsdkCoreKotlinThrowable *)cause __attribute__((swift_name("childCancelled(cause:)")));
-@property (readonly) id<MsdkCoreKotlinx_coroutines_coreJob> _Nullable parent __attribute__((swift_name("parent")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreChildJob")))
-@protocol MsdkCoreKotlinx_coroutines_coreChildJob <MsdkCoreKotlinx_coroutines_coreJob>
-@required
-- (void)parentCancelledParentJob:(id<MsdkCoreKotlinx_coroutines_coreParentJob>)parentJob __attribute__((swift_name("parentCancelled(parentJob:)")));
-@end
-
-__attribute__((swift_name("KotlinSequence")))
-@protocol MsdkCoreKotlinSequence
-@required
-- (id<MsdkCoreKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreSelectClause")))
-@protocol MsdkCoreKotlinx_coroutines_coreSelectClause
-@required
-@property (readonly) id clauseObject __attribute__((swift_name("clauseObject")));
-@property (readonly) MsdkCoreKotlinUnit *(^(^ _Nullable onCancellationConstructor)(id<MsdkCoreKotlinx_coroutines_coreSelectInstance>, id _Nullable, id _Nullable))(MsdkCoreKotlinThrowable *) __attribute__((swift_name("onCancellationConstructor")));
-@property (readonly) id _Nullable (^processResFunc)(id, id _Nullable, id _Nullable) __attribute__((swift_name("processResFunc")));
-@property (readonly) void (^regFunc)(id, id<MsdkCoreKotlinx_coroutines_coreSelectInstance>, id _Nullable) __attribute__((swift_name("regFunc")));
-@end
-
-__attribute__((swift_name("Kotlinx_coroutines_coreSelectClause0")))
-@protocol MsdkCoreKotlinx_coroutines_coreSelectClause0 <MsdkCoreKotlinx_coroutines_coreSelectClause>
-@required
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_utilsGMTDate.Companion")))
-@interface MsdkCoreKtor_utilsGMTDateCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_utilsGMTDateCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_utilsGMTDate *START __attribute__((swift_name("START")));
-@end
-
+/**
+ * Day of week
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsWeekDay")))
 @interface MsdkCoreKtor_utilsWeekDay : MsdkCoreKotlinEnum<MsdkCoreKtor_utilsWeekDay *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Day of week
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MsdkCoreKtor_utilsWeekDayCompanion *companion __attribute__((swift_name("companion")));
@@ -4714,13 +6760,28 @@ __attribute__((swift_name("Ktor_utilsWeekDay")))
 @property (class, readonly) MsdkCoreKtor_utilsWeekDay *saturday __attribute__((swift_name("saturday")));
 @property (class, readonly) MsdkCoreKtor_utilsWeekDay *sunday __attribute__((swift_name("sunday")));
 + (MsdkCoreKotlinArray<MsdkCoreKtor_utilsWeekDay *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MsdkCoreKtor_utilsWeekDay *> *entries __attribute__((swift_name("entries")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
 @end
 
+
+/**
+ * Month
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month)
+ */
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Ktor_utilsMonth")))
 @interface MsdkCoreKtor_utilsMonth : MsdkCoreKotlinEnum<MsdkCoreKtor_utilsMonth *>
 + (instancetype)alloc __attribute__((unavailable));
+
+/**
+ * Month
+ * [value] is 3 letter shortcut
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month)
+ */
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 - (instancetype)initWithName:(NSString *)name ordinal:(int32_t)ordinal __attribute__((swift_name("init(name:ordinal:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (class, readonly, getter=companion) MsdkCoreKtor_utilsMonthCompanion *companion __attribute__((swift_name("companion")));
@@ -4737,7 +6798,25 @@ __attribute__((swift_name("Ktor_utilsMonth")))
 @property (class, readonly) MsdkCoreKtor_utilsMonth *november __attribute__((swift_name("november")));
 @property (class, readonly) MsdkCoreKtor_utilsMonth *december __attribute__((swift_name("december")));
 + (MsdkCoreKotlinArray<MsdkCoreKtor_utilsMonth *> *)values __attribute__((swift_name("values()")));
+@property (class, readonly) NSArray<MsdkCoreKtor_utilsMonth *> *entries __attribute__((swift_name("entries")));
 @property (readonly) NSString *value __attribute__((swift_name("value")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_utilsGMTDate.Companion")))
+@interface MsdkCoreKtor_utilsGMTDateCompanion : MsdkCoreBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MsdkCoreKtor_utilsGMTDateCompanion *shared __attribute__((swift_name("shared")));
+- (id<MsdkCoreKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+
+/**
+ * An instance of [GMTDate] corresponding to the epoch beginning
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.GMTDate.Companion.START)
+ */
+@property (readonly) MsdkCoreKtor_utilsGMTDate *START __attribute__((swift_name("START")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -4747,57 +6826,91 @@ __attribute__((swift_name("Ktor_httpHttpProtocolVersion.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_httpHttpProtocolVersionCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Creates an instance of [HttpProtocolVersion] from the given parameters.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.fromValue)
+ */
 - (MsdkCoreKtor_httpHttpProtocolVersion *)fromValueName:(NSString *)name major:(int32_t)major minor:(int32_t)minor __attribute__((swift_name("fromValue(name:major:minor:)")));
+
+/**
+ * Create an instance of [HttpProtocolVersion] from http string representation.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.parse)
+ */
 - (MsdkCoreKtor_httpHttpProtocolVersion *)parseValue:(id)value __attribute__((swift_name("parse(value:)")));
+
+/**
+ * HTTP/1.0 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.HTTP_1_0)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *HTTP_1_0 __attribute__((swift_name("HTTP_1_0")));
+
+/**
+ * HTTP/1.1 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.HTTP_1_1)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *HTTP_1_1 __attribute__((swift_name("HTTP_1_1")));
+
+/**
+ * HTTP/2.0 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.HTTP_2_0)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *HTTP_2_0 __attribute__((swift_name("HTTP_2_0")));
+
+/**
+ * HTTP/3.0 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.HTTP_3_0)
+ */
+@property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *HTTP_3_0 __attribute__((swift_name("HTTP_3_0")));
+
+/**
+ * QUIC/1.0 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.QUIC)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *QUIC __attribute__((swift_name("QUIC")));
+
+/**
+ * SPDY/3.0 version.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HttpProtocolVersion.Companion.SPDY_3)
+ */
 @property (readonly) MsdkCoreKtor_httpHttpProtocolVersion *SPDY_3 __attribute__((swift_name("SPDY_3")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioByteReadPacket")))
-@interface MsdkCoreKtor_ioByteReadPacket : MsdkCoreKtor_ioInput
-- (instancetype)initWithHead:(MsdkCoreKtor_ioChunkBuffer *)head pool:(id<MsdkCoreKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:pool:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithHead:(MsdkCoreKtor_ioChunkBuffer *)head remaining:(int64_t)remaining pool:(id<MsdkCoreKtor_ioObjectPool>)pool __attribute__((swift_name("init(head:remaining:pool:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-@property (class, readonly, getter=companion) MsdkCoreKtor_ioByteReadPacketCompanion *companion __attribute__((swift_name("companion")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (void)closeSource __attribute__((swift_name("closeSource()")));
-- (MsdkCoreKtor_ioByteReadPacket *)doCopy __attribute__((swift_name("doCopy()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (MsdkCoreKtor_ioChunkBuffer * _Nullable)fill __attribute__((swift_name("fill()")));
-
-/**
- * @note This method has protected visibility in Kotlin source and is intended only for use by subclasses.
-*/
-- (int32_t)fillDestination:(MsdkCoreKtor_ioMemory *)destination offset:(int32_t)offset length:(int32_t)length __attribute__((swift_name("fill(destination:offset:length:)")));
-- (NSString *)description __attribute__((swift_name("description()")));
+__attribute__((swift_name("Kotlinx_io_coreRawSource")))
+@protocol MsdkCoreKotlinx_io_coreRawSource <MsdkCoreKotlinAutoCloseable>
+@required
+- (int64_t)readAtMostToSink:(MsdkCoreKotlinx_io_coreBuffer *)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readAtMostTo(sink:byteCount:)")));
 @end
 
-__attribute__((swift_name("Ktor_ioReadSession")))
-@protocol MsdkCoreKtor_ioReadSession
+__attribute__((swift_name("Kotlinx_io_coreSource")))
+@protocol MsdkCoreKotlinx_io_coreSource <MsdkCoreKotlinx_io_coreRawSource>
 @required
-- (int32_t)discardN:(int32_t)n __attribute__((swift_name("discard(n:)")));
-- (MsdkCoreKtor_ioChunkBuffer * _Nullable)requestAtLeast:(int32_t)atLeast __attribute__((swift_name("request(atLeast:)")));
-@property (readonly) int32_t availableForRead __attribute__((swift_name("availableForRead")));
-@end
-
-__attribute__((swift_name("KotlinSuspendFunction1")))
-@protocol MsdkCoreKotlinSuspendFunction1 <MsdkCoreKotlinFunction>
-@required
+- (BOOL)exhausted __attribute__((swift_name("exhausted()")));
+- (id<MsdkCoreKotlinx_io_coreSource>)peek __attribute__((swift_name("peek()")));
+- (int32_t)readAtMostToSink:(MsdkCoreKotlinByteArray *)sink startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("readAtMostTo(sink:startIndex:endIndex:)")));
+- (int8_t)readByte __attribute__((swift_name("readByte()")));
+- (int32_t)readInt __attribute__((swift_name("readInt()")));
+- (int64_t)readLong __attribute__((swift_name("readLong()")));
+- (int16_t)readShort __attribute__((swift_name("readShort()")));
+- (void)readToSink:(id<MsdkCoreKotlinx_io_coreRawSink>)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readTo(sink:byteCount:)")));
+- (BOOL)requestByteCount:(int64_t)byteCount __attribute__((swift_name("request(byteCount:)")));
+- (void)requireByteCount:(int64_t)byteCount __attribute__((swift_name("require(byteCount:)")));
+- (void)skipByteCount:(int64_t)byteCount __attribute__((swift_name("skip(byteCount:)")));
+- (int64_t)transferToSink:(id<MsdkCoreKotlinx_io_coreRawSink>)sink __attribute__((swift_name("transferTo(sink:)")));
 
 /**
- * @note This method converts instances of CancellationException to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
 */
-- (void)invokeP1:(id _Nullable)p1 completionHandler:(void (^)(id _Nullable_result, NSError * _Nullable))completionHandler __attribute__((swift_name("invoke(p1:completionHandler:)")));
+@property (readonly) MsdkCoreKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -4867,21 +6980,151 @@ __attribute__((swift_name("Ktor_httpURLProtocol.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_httpURLProtocolCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Create an instance by [name] or use already existing instance
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.createOrDefault)
+ */
 - (MsdkCoreKtor_httpURLProtocol *)createOrDefaultName:(NSString *)name __attribute__((swift_name("createOrDefault(name:)")));
+
+/**
+ * HTTP with port 80
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.HTTP)
+ */
 @property (readonly) MsdkCoreKtor_httpURLProtocol *HTTP __attribute__((swift_name("HTTP")));
+
+/**
+ * secure HTTPS with port 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.HTTPS)
+ */
 @property (readonly) MsdkCoreKtor_httpURLProtocol *HTTPS __attribute__((swift_name("HTTPS")));
+
+/**
+ * Socks proxy url protocol.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.SOCKS)
+ */
 @property (readonly) MsdkCoreKtor_httpURLProtocol *SOCKS __attribute__((swift_name("SOCKS")));
+
+/**
+ * Web socket over HTTP on port 80
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.WS)
+ */
 @property (readonly) MsdkCoreKtor_httpURLProtocol *WS __attribute__((swift_name("WS")));
+
+/**
+ * Web socket over secure HTTPS on port 443
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.WSS)
+ */
 @property (readonly) MsdkCoreKtor_httpURLProtocol *WSS __attribute__((swift_name("WSS")));
+
+/**
+ * Protocols by names map
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.URLProtocol.Companion.byName)
+ */
 @property (readonly) NSDictionary<NSString *, MsdkCoreKtor_httpURLProtocol *> *byName __attribute__((swift_name("byName")));
 @end
 
+
+/**
+ * Represents a single value parameter
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HeaderValueParam)
+ *
+ * @property name of parameter
+ * @property value of parameter
+ * @property escapeValue specifies if the value should be escaped
+ */
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHeaderValueParam")))
+@interface MsdkCoreKtor_httpHeaderValueParam : MsdkCoreBase
+- (instancetype)initWithName:(NSString *)name value:(NSString *)value __attribute__((swift_name("init(name:value:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithName:(NSString *)name value:(NSString *)value escapeValue:(BOOL)escapeValue __attribute__((swift_name("init(name:value:escapeValue:)"))) __attribute__((objc_designated_initializer));
+- (MsdkCoreKtor_httpHeaderValueParam *)doCopyName:(NSString *)name value:(NSString *)value escapeValue:(BOOL)escapeValue __attribute__((swift_name("doCopy(name:value:escapeValue:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+
+/**
+ * Represents a single value parameter
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HeaderValueParam)
+ *
+ * @property name of parameter
+ * @property value of parameter
+ * @property escapeValue specifies if the value should be escaped
+ */
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) BOOL escapeValue __attribute__((swift_name("escapeValue")));
+@property (readonly) NSString *name __attribute__((swift_name("name")));
+@property (readonly) NSString *value __attribute__((swift_name("value")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpHeaderValueWithParameters.Companion")))
+@interface MsdkCoreKtor_httpHeaderValueWithParametersCompanion : MsdkCoreBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MsdkCoreKtor_httpHeaderValueWithParametersCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Parse header with parameter and pass it to [init] function to instantiate particular type
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.HeaderValueWithParameters.Companion.parse)
+ */
+- (id _Nullable)parseValue:(NSString *)value init:(id _Nullable (^)(NSString *, NSArray<MsdkCoreKtor_httpHeaderValueParam *> *))init __attribute__((swift_name("parse(value:init:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Ktor_httpContentType.Companion")))
+@interface MsdkCoreKtor_httpContentTypeCompanion : MsdkCoreBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) MsdkCoreKtor_httpContentTypeCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Parses a string representing a `Content-Type` header into a [ContentType] instance.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.Companion.parse)
+ */
+- (MsdkCoreKtor_httpContentType *)parseValue:(NSString *)value __attribute__((swift_name("parse(value:)")));
+
+/**
+ * Represents a pattern `* / *` to match any content type.
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.http.ContentType.Companion.Any)
+ */
+@property (readonly) MsdkCoreKtor_httpContentType *Any __attribute__((swift_name("Any")));
+@end
+
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 __attribute__((swift_name("Kotlinx_coroutines_coreParentJob")))
 @protocol MsdkCoreKotlinx_coroutines_coreParentJob <MsdkCoreKotlinx_coroutines_coreJob>
 @required
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 - (MsdkCoreKotlinCancellationException *)getChildJobCancellationCause __attribute__((swift_name("getChildJobCancellationCause()")));
 @end
 
+
+/**
+ * @note annotations
+ *   kotlinx.coroutines.InternalCoroutinesApi
+*/
 __attribute__((swift_name("Kotlinx_coroutines_coreSelectInstance")))
 @protocol MsdkCoreKotlinx_coroutines_coreSelectInstance
 @required
@@ -4898,7 +7141,19 @@ __attribute__((swift_name("Ktor_utilsWeekDay.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_utilsWeekDayCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Lookup an instance by [ordinal]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay.Companion.from)
+ */
 - (MsdkCoreKtor_utilsWeekDay *)fromOrdinal:(int32_t)ordinal __attribute__((swift_name("from(ordinal:)")));
+
+/**
+ * Lookup an instance by short week day name [WeekDay.value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.WeekDay.Companion.from)
+ */
 - (MsdkCoreKtor_utilsWeekDay *)fromValue:(NSString *)value __attribute__((swift_name("from(value:)")));
 @end
 
@@ -4909,18 +7164,101 @@ __attribute__((swift_name("Ktor_utilsMonth.Companion")))
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) MsdkCoreKtor_utilsMonthCompanion *shared __attribute__((swift_name("shared")));
+
+/**
+ * Lookup an instance by [ordinal]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month.Companion.from)
+ */
 - (MsdkCoreKtor_utilsMonth *)fromOrdinal:(int32_t)ordinal __attribute__((swift_name("from(ordinal:)")));
+
+/**
+ * Lookup an instance by short month name [Month.value]
+ *
+ * [Report a problem](https://ktor.io/feedback/?fqname=io.ktor.util.date.Month.Companion.from)
+ */
 - (MsdkCoreKtor_utilsMonth *)fromValue:(NSString *)value __attribute__((swift_name("from(value:)")));
 @end
 
+__attribute__((swift_name("Kotlinx_io_coreRawSink")))
+@protocol MsdkCoreKotlinx_io_coreRawSink <MsdkCoreKotlinAutoCloseable>
+@required
+- (void)flush __attribute__((swift_name("flush()")));
+- (void)writeSource:(MsdkCoreKotlinx_io_coreBuffer *)source byteCount:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount:)")));
+@end
+
+__attribute__((swift_name("Kotlinx_io_coreSink")))
+@protocol MsdkCoreKotlinx_io_coreSink <MsdkCoreKotlinx_io_coreRawSink>
+@required
+- (void)emit __attribute__((swift_name("emit()")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+- (void)hintEmit __attribute__((swift_name("hintEmit()")));
+- (int64_t)transferFromSource:(id<MsdkCoreKotlinx_io_coreRawSource>)source __attribute__((swift_name("transferFrom(source:)")));
+- (void)writeSource:(id<MsdkCoreKotlinx_io_coreRawSource>)source byteCount_:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount_:)")));
+- (void)writeSource:(MsdkCoreKotlinByteArray *)source startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("write(source:startIndex:endIndex:)")));
+- (void)writeByteByte:(int8_t)byte __attribute__((swift_name("writeByte(byte:)")));
+- (void)writeIntInt:(int32_t)int_ __attribute__((swift_name("writeInt(int:)")));
+- (void)writeLongLong:(int64_t)long_ __attribute__((swift_name("writeLong(long:)")));
+- (void)writeShortShort:(int16_t)short_ __attribute__((swift_name("writeShort(short:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+@property (readonly) MsdkCoreKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
+@end
+
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Ktor_ioByteReadPacket.Companion")))
-@interface MsdkCoreKtor_ioByteReadPacketCompanion : MsdkCoreBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)companion __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) MsdkCoreKtor_ioByteReadPacketCompanion *shared __attribute__((swift_name("shared")));
-@property (readonly) MsdkCoreKtor_ioByteReadPacket *Empty __attribute__((swift_name("Empty")));
+__attribute__((swift_name("Kotlinx_io_coreBuffer")))
+@interface MsdkCoreKotlinx_io_coreBuffer : MsdkCoreBase <MsdkCoreKotlinx_io_coreSource, MsdkCoreKotlinx_io_coreSink>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)clear __attribute__((swift_name("clear()")));
+- (void)close __attribute__((swift_name("close()")));
+- (MsdkCoreKotlinx_io_coreBuffer *)doCopy __attribute__((swift_name("doCopy()")));
+- (void)doCopyToOut:(MsdkCoreKotlinx_io_coreBuffer *)out startIndex:(int64_t)startIndex endIndex:(int64_t)endIndex __attribute__((swift_name("doCopyTo(out:startIndex:endIndex:)")));
+- (void)emit __attribute__((swift_name("emit()")));
+- (BOOL)exhausted __attribute__((swift_name("exhausted()")));
+- (void)flush __attribute__((swift_name("flush()")));
+- (int8_t)getPosition:(int64_t)position __attribute__((swift_name("get(position:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+- (void)hintEmit __attribute__((swift_name("hintEmit()")));
+- (id<MsdkCoreKotlinx_io_coreSource>)peek __attribute__((swift_name("peek()")));
+- (int64_t)readAtMostToSink:(MsdkCoreKotlinx_io_coreBuffer *)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readAtMostTo(sink:byteCount:)")));
+- (int32_t)readAtMostToSink:(MsdkCoreKotlinByteArray *)sink startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("readAtMostTo(sink:startIndex:endIndex:)")));
+- (int8_t)readByte __attribute__((swift_name("readByte()")));
+- (int32_t)readInt __attribute__((swift_name("readInt()")));
+- (int64_t)readLong __attribute__((swift_name("readLong()")));
+- (int16_t)readShort __attribute__((swift_name("readShort()")));
+- (void)readToSink:(id<MsdkCoreKotlinx_io_coreRawSink>)sink byteCount:(int64_t)byteCount __attribute__((swift_name("readTo(sink:byteCount:)")));
+- (BOOL)requestByteCount:(int64_t)byteCount __attribute__((swift_name("request(byteCount:)")));
+- (void)requireByteCount:(int64_t)byteCount __attribute__((swift_name("require(byteCount:)")));
+- (void)skipByteCount:(int64_t)byteCount __attribute__((swift_name("skip(byteCount:)")));
+- (NSString *)description __attribute__((swift_name("description()")));
+- (int64_t)transferFromSource:(id<MsdkCoreKotlinx_io_coreRawSource>)source __attribute__((swift_name("transferFrom(source:)")));
+- (int64_t)transferToSink:(id<MsdkCoreKotlinx_io_coreRawSink>)sink __attribute__((swift_name("transferTo(sink:)")));
+- (void)writeSource:(MsdkCoreKotlinx_io_coreBuffer *)source byteCount:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount:)")));
+- (void)writeSource:(id<MsdkCoreKotlinx_io_coreRawSource>)source byteCount_:(int64_t)byteCount __attribute__((swift_name("write(source:byteCount_:)")));
+- (void)writeSource:(MsdkCoreKotlinByteArray *)source startIndex:(int32_t)startIndex endIndex:(int32_t)endIndex __attribute__((swift_name("write(source:startIndex:endIndex:)")));
+- (void)writeByteByte:(int8_t)byte __attribute__((swift_name("writeByte(byte:)")));
+- (void)writeIntInt:(int32_t)int_ __attribute__((swift_name("writeInt(int:)")));
+- (void)writeLongLong:(int64_t)long_ __attribute__((swift_name("writeLong(long:)")));
+- (void)writeShortShort:(int16_t)short_ __attribute__((swift_name("writeShort(short:)")));
+
+/**
+ * @note annotations
+ *   kotlinx.io.InternalIoApi
+*/
+@property (readonly) MsdkCoreKotlinx_io_coreBuffer *buffer __attribute__((swift_name("buffer")));
+@property (readonly) int64_t size __attribute__((swift_name("size")));
 @end
 
 #pragma pop_macro("_Nullable_result")

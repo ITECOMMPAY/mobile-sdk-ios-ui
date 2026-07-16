@@ -442,7 +442,8 @@ struct MainScreen: View {
             country: recipientData.country,
             stateCode: recipientData.stateCode,
             city: recipientData.city,
-            address: recipientData.address
+            address: recipientData.address,
+            dayOfBirth: recipientData.dayOfBirth
         )
 
         if !paymentData.languageCode.isEmpty {

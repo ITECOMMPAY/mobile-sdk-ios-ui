@@ -17,6 +17,7 @@ struct RecipientData {
     var stateCode: String?
     var city: String?
     var address: String?
+    var dayOfBirth: String?
 }
 
 struct RecipientInfoScreen: View {
@@ -36,6 +37,9 @@ struct RecipientInfoScreen: View {
                 }
                 FieldWithLabel(label: "Card holder") {
                     TextField("Card holder", text: $recipientInfo.cardHolder.flatten())
+                }
+                FieldWithLabel(label: "Day of birth") {
+                    MaskedDateTextField("DD-MM-YYYY", text: dayOfBirth)
                 }
                 FieldWithLabel(label: "Country") {
                     TextField("Country", text: $recipientInfo.country.flatten())
@@ -62,10 +66,18 @@ struct RecipientInfoScreen: View {
                     recipientInfo.stateCode = nil
                     recipientInfo.city = nil
                     recipientInfo.address = nil
+                    recipientInfo.dayOfBirth = nil
                 }
             }
         }
         .navigationTitle("Recipient Info")
+    }
+
+    private var dayOfBirth: Binding<String> {
+        Binding<String>(
+            get: { recipientInfo.dayOfBirth ?? "" },
+            set: { recipientInfo.dayOfBirth = MaskedDateTextField.maskDate($0) }
+        )
     }
 }
 

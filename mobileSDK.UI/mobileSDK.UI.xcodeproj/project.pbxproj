@@ -94,6 +94,7 @@
 		84C87CC128CB476200B684DE /* CardType+Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8400A54F28B392CE00C202E5 /* CardType+Logo.swift */; };
 		84C87CC228CB476200B684DE /* CustomerField+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C532893E3AF0037A604 /* CustomerField+Validate.swift */; };
 		84C87CC328CB476200B684DE /* PaymentMethod+Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C8A289A7F4F0037A604 /* PaymentMethod+Logo.swift */; };
+		A1B2C3D42F10000100C0FFEE /* String+CurrencySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D32F10000100C0FFEE /* String+CurrencySymbol.swift */; };
 		84C87CC428CB476200B684DE /* PaymentMethod+ComputedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEF5FE289C043100D8481D /* PaymentMethod+ComputedField.swift */; };
 		84C87CC528CB476200B684DE /* PaymentMethod+DisplayName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A35C7A289A6AFA0037A604 /* PaymentMethod+DisplayName.swift */; };
 		84C87CC628CB476600B684DE /* EmptyTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241C9288E589E00259A50 /* EmptyTransformation.swift */; };
@@ -230,6 +231,7 @@
 		84A35C82289A7C700037A604 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		84A35C83289A7C700037A604 /* BackportAsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackportAsyncImage.swift; sourceTree = "<group>"; };
 		84A35C8A289A7F4F0037A604 /* PaymentMethod+Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PaymentMethod+Logo.swift"; sourceTree = "<group>"; };
+		A1B2C3D32F10000100C0FFEE /* String+CurrencySymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CurrencySymbol.swift"; sourceTree = "<group>"; };
 		84A35C90289AAE6D0037A604 /* View+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Keyboard.swift"; sourceTree = "<group>"; };
 		84AAF9DE28AE3FB500441224 /* UIKitTextField+Configuration+UITextInputTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Configuration+UITextInputTraits.swift"; sourceTree = "<group>"; };
 		84AAF9DF28AE3FB500441224 /* UIKitTextField+Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKitTextField+Coordinator.swift"; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 		8455079D2859BCDC002BBFE0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A1B2C3D52F10000100C0FFEE /* Extensions */,
 				84AAF9CD28AE3F8300441224 /* Frameworks */,
 				8454EEF128AA230E00199FF3 /* Utils */,
 				8454EEE328A685AF00199FF3 /* PreviewMocks */,
@@ -599,6 +602,14 @@
 				8400A54F28B392CE00C202E5 /* CardType+Logo.swift */,
 			);
 			path = CoreExtentions;
+			sourceTree = "<group>";
+		};
+		A1B2C3D52F10000100C0FFEE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D32F10000100C0FFEE /* String+CurrencySymbol.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		84A35C5F2897A55C0037A604 /* InitialLoadingScreen */ = {
@@ -955,6 +966,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B2C3D42F10000100C0FFEE /* String+CurrencySymbol.swift in Sources */,
 				84C87CB528CB475900B684DE /* BaseUITextField.swift in Sources */,
 				84C87CA228CB474100B684DE /* BaseCustomerTextField.swift in Sources */,
 				84C87CD028CB477100B684DE /* AsyncImagePhase.swift in Sources */,

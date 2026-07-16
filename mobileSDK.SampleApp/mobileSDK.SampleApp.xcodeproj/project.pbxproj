@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		752AF8352E44D63400D14658 /* EcommpaySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 752AF8342E44D63400D14658 /* EcommpaySDK */; };
 		8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB4F28B338DB00814D93 /* SignatureUtils.swift */; };
+		8434FB5228B338DB00814D93 /* MaskedDateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434FB5128B338DB00814D93 /* MaskedDateTextField.swift */; };
 		845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D428B33DFA001C2A24 /* MainScreenState.swift */; };
 		845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1D828B340A3001C2A24 /* PaymentID.swift */; };
 		845BB1DE28B35592001C2A24 /* Ecommpay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DD28B35592001C2A24 /* Ecommpay.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		840304B428B74E7E00DE38D3 /* EcommpaySample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EcommpaySample.entitlements; sourceTree = "<group>"; };
 		8434FB4F28B338DB00814D93 /* SignatureUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureUtils.swift; sourceTree = "<group>"; };
+		8434FB5128B338DB00814D93 /* MaskedDateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedDateTextField.swift; sourceTree = "<group>"; };
 		845BB1D428B33DFA001C2A24 /* MainScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenState.swift; sourceTree = "<group>"; };
 		845BB1D828B340A3001C2A24 /* PaymentID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentID.swift; sourceTree = "<group>"; };
 		845BB1DD28B35592001C2A24 /* Ecommpay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ecommpay.swift; sourceTree = "<group>"; };
@@ -60,9 +62,18 @@
 		8434FB4928B3378E00814D93 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8434FB5328B338DB00814D93 /* Components */,
 				8434FB4E28B338A000814D93 /* Utils */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8434FB5328B338DB00814D93 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8434FB5128B338DB00814D93 /* MaskedDateTextField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		8434FB4A28B337A800814D93 /* MainScreen */ = {
@@ -251,6 +262,7 @@
 				CED706FC2E9FF0050088AFFE /* AppConfig.swift in Sources */,
 				845FC81C28AE153300C71288 /* MainScreen.swift in Sources */,
 				8434FB5028B338DB00814D93 /* SignatureUtils.swift in Sources */,
+				8434FB5228B338DB00814D93 /* MaskedDateTextField.swift in Sources */,
 				845FC81A28AE153300C71288 /* mobileSDK_SampleApp.swift in Sources */,
 				845BB1D928B340A3001C2A24 /* PaymentID.swift in Sources */,
 				845BB1D528B33DFA001C2A24 /* MainScreenState.swift in Sources */,

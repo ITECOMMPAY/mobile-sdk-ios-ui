@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// This data class represents additional info requered for ApplePay auth with support FT and F52 fundings
+/// This data class represents additional info required for ApplePay auth with support FT and F52 fundings
 @objcMembers public final class RecipientInfo: NSObject, Codable {
     /// Wallet ID for replenishment. Field is mandatory for MasterCard.
     public var walletId: String?
@@ -26,6 +26,8 @@ import Foundation
     public var city: String?
     /// Recipient address
     public var address: String?
+    /// Recipient day of birth in DD-MM-YYYY format
+    public var dayOfBirth: String?
 
     /// Init Recipient Info
     ///
@@ -38,7 +40,8 @@ import Foundation
     ///   - stateCode: State/province of recipient. Optional.
     ///   - city: City of recipient. Optional.
     ///   - address: Address of recipient. Optional.
-    @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:)
+    ///   - dayOfBirth: Day of birth of recipient in DD-MM-YYYY format. Optional.
+    @objc(initWithWalletId:walletOwner:pan:cardHolder:country:stateCode:city:address:dayOfBirth:)
     public init(
         walletId: String? = nil,
         walletOwner: String? = nil,
@@ -47,7 +50,8 @@ import Foundation
         country: String? = nil,
         stateCode: String? = nil,
         city: String? = nil,
-        address: String? = nil
+        address: String? = nil,
+        dayOfBirth: String? = nil
     ) {
         self.walletId = walletId
         self.walletOwner = walletOwner
@@ -57,6 +61,7 @@ import Foundation
         self.stateCode = stateCode
         self.city = city
         self.address = address
+        self.dayOfBirth = dayOfBirth
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -68,5 +73,6 @@ import Foundation
         case stateCode = "state_code"
         case city = "city"
         case address = "address"
+        case dayOfBirth = "day_of_birth"
     }
 }
