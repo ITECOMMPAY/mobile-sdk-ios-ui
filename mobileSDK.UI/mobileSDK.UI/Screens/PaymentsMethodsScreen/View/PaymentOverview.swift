@@ -10,18 +10,19 @@ import SwiftUI
 struct PaymentOverview: View {
     let priceValue: Decimal
     let currency: String
+    let currencyExponent: Int
     let recurringData: [RecurringDetailsData]
     let paymentDetails: [PaymentDetailData]
     let logoImage: Image?
     var isDimBackground: Bool = false
 
-    private let numberFormatter = { () -> NumberFormatter in
+    private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = 2
-        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = currencyExponent
+        formatter.minimumFractionDigits = currencyExponent
         formatter.decimalSeparator = "."
         return formatter
-    }()
+    }
 
     var body: some View {
         VStack(
@@ -102,6 +103,7 @@ struct PaymentSummaryView_Previews: PreviewProvider {
         PaymentOverview(
             priceValue: Decimal(238.50),
             currency: "EUR",
+            currencyExponent: 2,
             recurringData: [
                 RecurringDetailsData(
                     title: L.recurring_start_date,

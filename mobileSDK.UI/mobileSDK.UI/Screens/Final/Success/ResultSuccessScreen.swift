@@ -116,6 +116,7 @@ struct ResultSuccessScreen<VM: ResultSuccessScreenViewModelProtocol>: View, View
             PaymentOverview(
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent,
                 recurringData: [],
                 paymentDetails: [],
                 logoImage: viewModel.state.paymentOptions.summary.logo

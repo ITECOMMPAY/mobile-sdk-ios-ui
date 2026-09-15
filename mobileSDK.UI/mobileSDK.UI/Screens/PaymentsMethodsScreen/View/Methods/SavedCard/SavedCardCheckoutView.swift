@@ -149,7 +149,8 @@ struct SavedCardCheckoutView: View {
             return PayButtonLabel(
                 style: .pay(
                     amount: paymentOptions.summary.value,
-                    currency: paymentOptions.summary.currency
+                    currency: paymentOptions.summary.currency,
+                    currencyExponent: paymentOptions.summary.currencyExponent
                 )
             )
         }

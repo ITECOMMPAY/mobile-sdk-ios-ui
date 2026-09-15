@@ -196,6 +196,11 @@ __attribute__((swift_name("MSDKCoreSession")))
 - (MsdkCoreCardRemoveInteractor *)getCardRemoveInteractor __attribute__((swift_name("getCardRemoveInteractor()")));
 
 /**
+ * Currency exponent received from the init response.
+ */
+- (MsdkCoreInt * _Nullable)getCurrencyExponent __attribute__((swift_name("getCurrencyExponent()")));
+
+/**
  * current Payment object
  */
 - (MsdkCorePayment * _Nullable)getCurrentPayment __attribute__((swift_name("getCurrentPayment()")));
@@ -216,6 +221,14 @@ __attribute__((swift_name("MSDKCoreSession")))
  * @return  [PayInteractor][com.paymentpage.msdk.core.domain.interactors.pay.PayInteractor]
  */
 - (MsdkCorePayInteractor *)getPayInteractor __attribute__((swift_name("getPayInteractor()")));
+
+/**
+ * Payment amount converted from minor to major currency units.
+ *
+ * The value is represented as a decimal string to avoid floating-point precision loss.
+ * If the init response does not contain a currency exponent, the legacy exponent of 2 is used.
+ */
+- (NSString * _Nullable)getPaymentAmountInMajorUnits __attribute__((swift_name("getPaymentAmountInMajorUnits()")));
 
 /**
  * Payment info

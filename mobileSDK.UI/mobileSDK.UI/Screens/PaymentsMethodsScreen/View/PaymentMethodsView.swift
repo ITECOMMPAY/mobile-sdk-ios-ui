@@ -94,6 +94,7 @@ struct PaymentMethodsScreen<VM: PaymentMethodsScreenViewModelProtocol>: View, Vi
             PaymentOverview(
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
                 logoImage: viewModel.state.paymentOptions.summary.logo

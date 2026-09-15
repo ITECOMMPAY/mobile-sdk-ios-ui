@@ -78,6 +78,7 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             PaymentOverview(
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
                 logoImage: viewModel.state.paymentOptions.summary.logo
@@ -95,7 +96,8 @@ struct ClarificationFieldsScreen<VM: ClarificationFieldsScreenModelProtocol>: Vi
             return PayButtonLabel(
                 style: .pay(
                     amount: viewModel.state.paymentOptions.summary.value,
-                    currency: viewModel.state.paymentOptions.summary.currency
+                    currency: viewModel.state.paymentOptions.summary.currency,
+                    currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent
                 )
             )
         }
