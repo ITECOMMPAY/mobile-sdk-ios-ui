@@ -42,7 +42,7 @@ struct PayButton<Label: View>: View {
 
 struct PayButtonLabel: View {
     enum Style {
-        case pay(amount: Decimal, currency: String)
+        case pay(amount: Decimal, currency: String, currencyExponent: Int)
         case `continue`
         case tokenize
         case verify
@@ -77,11 +77,11 @@ struct PayButtonLabel: View {
 
     var body: some View {
         switch style {
-        case let .pay(amount, currency):
+        case let .pay(amount, currency, currencyExponent):
             let numberFormatter = { () -> NumberFormatter in
                 let formatter = NumberFormatter()
-                formatter.maximumFractionDigits = 2
-                formatter.minimumFractionDigits = 2
+                formatter.maximumFractionDigits = currencyExponent
+                formatter.minimumFractionDigits = currencyExponent
                 return formatter
             }()
             HStack(spacing: UIScheme.dimension.payButtonPayPriceSpacing) {
@@ -108,7 +108,9 @@ struct PayButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             PayButton(
-                label: PayButtonLabel(style: .pay(amount: 100.50, currency: "RUB")),
+                label: PayButtonLabel(
+                    style: .pay(amount: 100.50, currency: "RUB", currencyExponent: 2)
+                ),
                 disabled: false
             ) {
                 AudioServicesPlaySystemSound(1016)

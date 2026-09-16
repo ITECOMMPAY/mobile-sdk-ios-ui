@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'MsdkCore'
-    spec.version                  = '0.14.2'
+    spec.version                  = '0.14.3'
     spec.homepage                 = '/paymentpage-sdk-ios-core'
-    spec.source                   = { :http => '/paymentpage-sdk-ios-core/releases/download/0.14.2/MsdkCore.xcframework.zip' }
+    spec.source                   = { :http => '/paymentpage-sdk-ios-core/releases/download/0.14.3/MsdkCore.xcframework.zip' }
     spec.authors                  = { '' => '' }
     spec.license                  = 'MIT'
     spec.summary                  = 'Payment msdk core module'

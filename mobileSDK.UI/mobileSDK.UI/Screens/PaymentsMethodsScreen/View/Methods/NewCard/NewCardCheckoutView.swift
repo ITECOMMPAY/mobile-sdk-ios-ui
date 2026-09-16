@@ -127,8 +127,15 @@ struct NewCardCheckoutView: View {
         
         let paymentAmount = paymentOptions.summary.value
         let paymentCurrency = paymentOptions.summary.currency
+        let currencyExponent = paymentOptions.summary.currencyExponent
         
-        return PayButtonLabel(style: .pay(amount: paymentAmount, currency: paymentCurrency))
+        return PayButtonLabel(
+            style: .pay(
+                amount: paymentAmount,
+                currency: paymentCurrency,
+                currencyExponent: currencyExponent
+            )
+        )
     }
     
     private var isContinueButton: Bool {

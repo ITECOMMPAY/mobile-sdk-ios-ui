@@ -90,7 +90,7 @@ class SDKInteractor {
         let delegateProxy = InitDelegateProxy()
 
         let view = ViewFactory.assembleRootView(
-            paymentOptions: paymentOptions.uiPaymentOptions,
+            paymentOptions: paymentOptions.uiPaymentOptions(msdkSession: msdkSession),
             initPublisher: delegateProxy.createPublisher(with: { delegate in
                 let initRequest =  InitRequest(
                     paymentInfo: paymentOptions.paymentInfo,
@@ -151,8 +151,8 @@ class SDKInteractor {
 }
 
 fileprivate extension PaymentOptions {
-    var uiPaymentOptions: some mobileSDK_UI.PaymentOptions {
-        PaymentOptionsWrapper(publicType: self)
+    func uiPaymentOptions(msdkSession: MSDKCoreSession) -> some mobileSDK_UI.PaymentOptions {
+        PaymentOptionsWrapper(publicType: self, msdkSession: msdkSession)
     }
 }
 
@@ -162,6 +162,7 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     }
     
     let publicType: PaymentOptions
+    let msdkSession: MSDKCoreSession
     
     var action: ActionType {
         ActionType.init(rawValue: publicType.action.rawValue) ?? .Sale
@@ -220,7 +221,13 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         return PaymentSummaryData(
             logo: publicType.logoImage.map({ Image(uiImage: $0)}),
             currency: publicType.paymentInfo.paymentCurrency,
-            value: Decimal(publicType.paymentInfo.paymentAmount) / 100
+            value: msdkSession.getPaymentAmountInMajorUnits()
+                .flatMap(CurrencyAmountFormatter.decimal)
+                ?? CurrencyAmountFormatter.decimal(
+                    minorUnits: publicType.paymentInfo.paymentAmount,
+                    currencyExponent: nil
+                ),
+            currencyExponent: currencyExponent
         )
     }
 
@@ -286,7 +293,11 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
             recurringDetails.append(
                 RecurringDetailsData(
                     title: L.recurring_charged_right_now,
-                    description: .value("0.00 " + publicType.paymentInfo.paymentCurrency)
+                    description: .value(
+                        formattedRecurringAmount(minorUnits: 0)
+                            + " "
+                            + publicType.paymentInfo.paymentCurrency
+                    )
                 )
             )
         }
@@ -307,22 +318,22 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
             )
         }
 
-        let numberFormatter = { () -> NumberFormatter in
-            let formatter = NumberFormatter()
-            formatter.maximumFractionDigits = 2
-            formatter.minimumFractionDigits = 2
-            return formatter
-        }()
-        let paymentAmount = recurrentInfo?.amount ?? Int(publicType.paymentInfo.paymentAmount)
-
-        if let amount = numberFormatter.string(for: (Decimal(integerLiteral: paymentAmount) / 100) as NSDecimalNumber) {
-            recurringDetails.append(
-                RecurringDetailsData(
-                    title: L.recurring_amount,
-                    description: .value(amount + " " + publicType.paymentInfo.paymentCurrency)
+        let paymentAmount: Int64
+        if let recurrentAmount = recurrentInfo?.amount {
+            paymentAmount = Int64(recurrentAmount)
+        } else {
+            paymentAmount = publicType.paymentInfo.paymentAmount
+        }
+        recurringDetails.append(
+            RecurringDetailsData(
+                title: L.recurring_amount,
+                description: .value(
+                    formattedRecurringAmount(minorUnits: paymentAmount)
+                        + " "
+                        + publicType.paymentInfo.paymentCurrency
                 )
             )
-        }
+        )
 
         if let frequency = recurrentInfo?.period, recurrentInfo?.interval == nil || recurrentInfo?.interval == 1 {
             let period: L
@@ -362,6 +373,28 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
         return recurringDetails
     }
 
+    private var currencyExponent: Int {
+        CurrencyAmountFormatter.validExponent(
+            Int(msdkSession.getCurrencyExponent()?.intValue ?? 2)
+        )
+    }
+
+    private func formattedRecurringAmount(minorUnits: Int64) -> String {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = currencyExponent
+        formatter.minimumFractionDigits = currencyExponent
+
+        let amount = CurrencyAmountFormatter.decimal(
+            minorUnits: minorUnits,
+            currencyExponent: currencyExponent
+        )
+        return formatter.string(for: amount as NSDecimalNumber)
+            ?? CurrencyAmountFormatter.string(
+                minorUnits: minorUnits,
+                currencyExponent: currencyExponent
+            )
+    }
+
     var recurringDisclaimer: L? {
         let recurrentInfo = publicType.recurrentInfo
         
@@ -376,5 +409,49 @@ private struct PaymentOptionsWrapper: mobileSDK_UI.PaymentOptions {
     
     var hideFooterLogo: Bool {
         publicType.hideFooterLogo
+    }
+}
+
+private enum CurrencyAmountFormatter {
+    private static let defaultCurrencyExponent = 2
+    private static let maximumCurrencyExponent = 18
+    private static let posixLocale = Locale(identifier: "en_US_POSIX")
+
+    static func validExponent(_ currencyExponent: Int?) -> Int {
+        guard let currencyExponent,
+              (0...maximumCurrencyExponent).contains(currencyExponent) else {
+            return defaultCurrencyExponent
+        }
+        return currencyExponent
+    }
+
+    static func decimal(_ majorUnits: String) -> Decimal? {
+        Decimal(string: majorUnits, locale: posixLocale)
+    }
+
+    static func decimal(minorUnits: Int64, currencyExponent: Int?) -> Decimal {
+        Decimal(
+            string: string(
+                minorUnits: minorUnits,
+                currencyExponent: currencyExponent
+            ),
+            locale: posixLocale
+        ) ?? .zero
+    }
+
+    static func string(minorUnits: Int64, currencyExponent: Int?) -> String {
+        let exponent = validExponent(currencyExponent)
+        let amount = String(minorUnits)
+        guard exponent > 0 else { return amount }
+
+        let isNegative = amount.hasPrefix("-")
+        let digits = isNegative ? String(amount.dropFirst()) : amount
+        let paddedDigits = String(repeating: "0", count: max(0, exponent - digits.count + 1)) + digits
+        let separatorIndex = paddedDigits.index(paddedDigits.endIndex, offsetBy: -exponent)
+        let majorUnits = String(paddedDigits[..<separatorIndex])
+            + "."
+            + String(paddedDigits[separatorIndex...])
+
+        return (isNegative ? "-" : "") + majorUnits
     }
 }

@@ -30,7 +30,14 @@ struct ApsCheckoutView: View {
     private var buttonLabel: PayButtonLabel {
         let paymentAmount = paymentOptions.summary.value
         let paymentCurrency = paymentOptions.summary.currency
-        return PayButtonLabel(style: .pay(amount: paymentAmount, currency: paymentCurrency))
+        let currencyExponent = paymentOptions.summary.currencyExponent
+        return PayButtonLabel(
+            style: .pay(
+                amount: paymentAmount,
+                currency: paymentCurrency,
+                currencyExponent: currencyExponent
+            )
+        )
     }
 }
 

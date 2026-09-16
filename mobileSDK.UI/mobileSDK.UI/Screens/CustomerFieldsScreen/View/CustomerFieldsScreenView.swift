@@ -85,6 +85,7 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
             PaymentOverview(
                 priceValue: viewModel.state.paymentOptions.summary.value,
                 currency: viewModel.state.paymentOptions.summary.currency,
+                currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent,
                 recurringData: viewModel.state.paymentOptions.recurringDetails,
                 paymentDetails: viewModel.state.paymentOptions.details,
                 logoImage: viewModel.state.paymentOptions.summary.logo
@@ -102,7 +103,8 @@ struct CustomerFieldsScreen<VM: CustomerFieldsScreenModelProtocol>: View, ViewWi
             return PayButtonLabel(
                 style: .pay(
                     amount: viewModel.state.paymentOptions.summary.value,
-                    currency: viewModel.state.paymentOptions.summary.currency
+                    currency: viewModel.state.paymentOptions.summary.currency,
+                    currencyExponent: viewModel.state.paymentOptions.summary.currencyExponent
                 )
             )
         }
